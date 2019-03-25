@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="我想在家里通过SSH访问位于办公室里的电脑。不幸的是，从我家里的电脑到办公室里的电脑至少要通过两个NAT。还在学校专门提供了一台机器提供SSH中转。 电脑的名字叫做：ssh.rennes.telecom-bretagne.eu, 只是我忘记了，给ssh开发的端口号是哪个了。所以第一步需要通过nmap看看目标主机上哪些端口是开放的。 Smart Grid Traffic Behaviour Disc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="how to establish a ssh connection between two PCs behind NAT">
+<meta property="og:url" content="http://rennesong.com/2015/08/02/how-to-establish-a-ssh-connection-between-two-PCs-behind-NAT/index.html">
+<meta property="og:site_name" content="Rennesong&#39;s blog">
+<meta property="og:description" content="我想在家里通过SSH访问位于办公室里的电脑。不幸的是，从我家里的电脑到办公室里的电脑至少要通过两个NAT。还在学校专门提供了一台机器提供SSH中转。 电脑的名字叫做：ssh.rennes.telecom-bretagne.eu, 只是我忘记了，给ssh开发的端口号是哪个了。所以第一步需要通过nmap看看目标主机上哪些端口是开放的。 Smart Grid Traffic Behaviour Disc">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-25T10:27:10.938Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="how to establish a ssh connection between two PCs behind NAT">
+<meta name="twitter:description" content="我想在家里通过SSH访问位于办公室里的电脑。不幸的是，从我家里的电脑到办公室里的电脑至少要通过两个NAT。还在学校专门提供了一台机器提供SSH中转。 电脑的名字叫做：ssh.rennes.telecom-bretagne.eu, 只是我忘记了，给ssh开发的端口号是哪个了。所以第一步需要通过nmap看看目标主机上哪些端口是开放的。 Smart Grid Traffic Behaviour Disc">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://rennesong.com/2015/08/02/how-to-establish-a-ssh-connection-between-two-PCs-behind-NAT/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>how to establish a ssh connection between two PCs behind NAT | Rennesong's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rennesong's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Blog my life from now on!</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2015/08/02/how-to-establish-a-ssh-connection-between-two-PCs-behind-NAT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">how to establish a ssh connection between two PCs behind NAT
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-08-02 14:22:43" itemprop="dateCreated datePublished" datetime="2015-08-02T14:22:43+02:00">2015-08-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-25 11:27:10" itemprop="dateModified" datetime="2019-03-25T11:27:10+01:00">2019-03-25</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>我想在家里通过SSH访问位于办公室里的电脑。不幸的是，从我家里的电脑到办公室里的电脑至少要通过两个NAT。还在学校专门提供了一台机器提供SSH中转。</p>
+<p>电脑的名字叫做：<a href="http://ssh.rennes.telecom-bretagne.eu" target="_blank" rel="noopener">ssh.rennes.telecom-bretagne.eu</a>, 只是我忘记了，给ssh开发的端口号是哪个了。所以第一步需要通过nmap看看目标主机上哪些端口是开放的。</p>
+<p>Smart Grid Traffic Behaviour Discussion， 2010，April<br>
+这篇文章属于讨论性质的文章，最大的亮点在于为学术界定义了 Smart grid 的 Traffic Characteristics。当然文章里也提到了一句：</p>
+<blockquote>
+<p>Overload control has been prioritized for work in Rel-10 time frame together with several other functinalities.</p>
+</blockquote>
+<p>当然文章还指出了，我们可以做改进的apsects:</p>
+<ul>
+<li>Radio resource overload control</li>
+<li>MME overload control</li>
+</ul>
+<h1>Reliable reporting for Massive M2M communications with periodic resource pooling, 2014, August</h1>
+<p>关注的case: periodic reporting<br>
+问题： massive M2M devices, 保证report被在给定的dealine之前以比如99%的可靠性被发送<br>
+方法：a M2M-dedicated resource pool, 作者论证了这个资源池的规模至少要多大。<br>
+分析简述：首先一个 M2M device 在上述的资源池里要发送的transmission number是随机变量，因为：1）自last reporting至current reporting之间的arrived reports的数目是随机的。2）retransmission mechanism 这么一个事实 使得 问题变得较为复杂了。(不然，我们可以提前周期性的给这些设备分配资源了)<br>
+a massive number of devices 使得 中心极限定理 可以使用了。</p>
+<p>对于确定的 资源池，在保证一定的 reliability level的前提下，最多可以服务多少 M2M device 呢？</p>
+<p>System model:<br>
+Reporting Interval (RI), 可以被 视为 Poisson process 亦可以被视为 Uniform distribution。作者只考虑 Poisson process 的情况，但同时也是，他们推导的结论，亦适用于 Uniform distribution 的情况。<br>
+Time-frequency 资源被分作两个资源池：一个给M2M，另一个给non-M2M。并且指出了这种 seperation 是常用手段。接下来，M2M-dedicated resource pool 也被分为两部分：preallocated and common pool。</p>
+<p>我比较好奇，上文中提到的LTE simulator究竟是何方神圣？</p>
+<p>#Radio Resource Allocation in LTE-Advanced Cellular Networks with M2M Communications<br>
+作者认为，M2M的特性有：group-based communications, low or no mobility, time-controlled, time-tolerant, small data transmission, secure connection, MTC monitoring, priority alarm messages, extra low power consumption, etc.<br>
+提出 group-based communications 的特性，蛮有意思的。<br>
+作者也指出了(不知是否为首创)MTCD-related transmission有三种情景：Direct transmission, Multiple-hop transmisison, peer-to-peer transmission(实际上就是D2D)<br>
+。<br>
+作者在本文中对network applications进行了分类：Class1 Elastic applications, Class2 Hard Real-time appliation, Class3 Delay adaptivea applications, Class4 Rata-adaptive applications。<br>
+作者提出了user utility的指标来优化，作者认为：simple QoS indicator是不足以<br>
+“the user utility of a service is a measurement of its QoS performance based on the provided network services such as the bandwidth, transmission delay, and loss ratio.” “With the control of the eNB, radio resources can be efficiently shared between the eNB-to-UE and eNB-to-MTCD links by using the utility-based scheduling scheme.” 貌似Utility这个函数值在0，1之间，可是具体究竟是什么就无从得知了。</p>
+<p>总得来说，这篇文章虽然不是致力于 Energy-saving/efficiency 的，它主要是讨论在M2M参与的情况下，如何在Cellular network中进行RRA，以减少 Co-channel inteference和提高network efficiency。(不就是提高服务用户数么)它给我们定义了一个很好的分析模型框架使得日后的许多研究都可以这个框架进行。</p>
+<p>这篇文章中关于 Architectual enhancement 的部分(比如各类名词的引入，比如MTCG功能的介绍)可以吸收整合进我的SOTA。另外 “On the assumption of half-duplex MTCGs” 的描述，是本文作者之首创还是真的有文献如此论述过呢？作者并未回答，鉴于MTCG 这种新型网络节点并非此文作者引入，我倾向于某个3GPP文档里，有关于 MTCG 双工模式的探讨。“To avoid self-inteference and reduce implementation complexity, half-duplex MTCGs are preferred for deployement in the networks.”</p>
+<p>作者最后也做了 system-level simulation，但是用的究竟是 什么工具呢？</p>
+<h1>Energy-efficent Uplink Resource Allocation in LTE network with M2M/H2H co-existence under statistical QoS guarantees</h1>
+<p>作者试图从 Resource allocation 的角度研究 LTE 上行信道 能量效率问题。突然有一个疑问：为什么 Radio Resource Allocation 会对能量消耗有影响？<br>
+我的理解是：Radio Resource Allocation 实际上决定了跟 UE 分配多少个 RBs 的问题，实际上就是分给了 UE 多少 Bandwidth, 而根据香浓公式(不过要注意，这是极限情况)。速度一定的情况下，带宽B是可以可以决定信噪比SNR的，而信噪比SNR是可以影响误码率的，通信的正常进行是以保证误码率BER在一定水平之内为前提的。为了达到一定的信噪比，则对 UE 的发射功率P 提出了要求，在 time slot 长度一定的时候，单位 slot 消耗的能量就是确定的。由此可见，RRM(RRA)是可以影响到能量效率 Energy efficiency 的。<br>
+所以这篇文章中，作者将 Energy efficiency 问题转换成了一个 optimization 的问题，并且用数学方法求出了极值。虽然其中涉及的数学知识，至今都不是很明白，但个人感觉，这篇文章，相当完美。</p>
+<h1>On radio resource allocation in LTE networks with machine-to-machine communications</h1>
+<p>依然是 Aijaz 的作品，采用了 heuristic 算法 来解决 energy-efficient resource allocation 问题。</p>
+<h1>A Tractable Model of the LTE Access Reservation Procedure for Machine-Type Communications</h1>
+<p>作者认为：The number of served devices in a single LTE cell is not determined by the available aggregate rate, but rather by the limitations of the LTE access reservation protoco. 故而提出了一个 数学模型 研究现行 LTE接入机制 上行信道可以容纳多少 M2M 设备。我比较喜欢此文中的数学推导，马尔科夫链。</p>
+<h1>Machine Type Communications in 3GPP Networks: Potential, Challenges, and Solutions</h1>
+<p>作者认为：</p>
+<blockquote>
+<p>This explains the focus of 3GPP on finding efficient mechanisms to handle congestion at mainly the control plane of EPS that may happen due to nearly simultaneous signaling messages issued by a significant number of mobile devices. Thanks to the wide bandwidth of LTE and other emerging radio technologies (e.g., LTE-advanced), congestion due to user data packets is, for the time being, of less impor- tance.</p>
+</blockquote>
+<p>因为作者提出：</p>
+<blockquote>
+<p>One aspect which is missing so far in MTC signaling congestion control consists in the lack of a mechanism that handles a bulk of similar signaling messages from MTCs in a single shot (i.e. bulk MTC signaling handling).</p>
+</blockquote>
+<p>我们是不是可虑构造一个表格，这个表格里面，我们详细对比 跟Energy(甚至是M2M)有关的proposal。</p>
+<p>经常看到 Utility function 这样的表述，其为何意？</p>
+<h1>Modeling and Characterization of Transmission Energy Consumption in Machine-to-Machine Networks</h1>
+<p>作者认为：A key step in building energy-efficient protocols for large-scale M2M communications is to assess, model or characterize a network energy consumption profile. 可见作者之最终目的为：build energy-efficient protocol。所用知识为随机几何。</p>
+<blockquote>
+<p>We borrowed tools from stochastic geometry and Poisson point process to model and study energy consumption in large-scale M2M communications by deriving the cumula- tive distribution function (CDF) of energy consumption.</p>
+</blockquote>
+<h1>Energy-saving massive access control and resource allocation schemes for M2M communications in OFDMA cellular networks</h1>
+<p>作者之侧重点在于：Energy-based access control and resource allocation，缺点在乎于 a single cell。</p>
+<p>Green Communications: Principles, Concepts and Practice 这本书是2015年新出的书，可以考虑。</p>
+<p>D2D communication is a feature that has been introduced in the 3GPP Release 12.</p>
+<p>5G考虑使用 毫米波波段</p>
+<p>64QAM貌似适合在离基站比较近的地方用，QPSK适合在比较远的地方用。我猜测64QAM速度高但抗干扰能力差，反之，QPSK速率低，但是可以恢复出信号。</p>
+<p>LTE-M 的 活动 我没有考虑过啊。。。这个可以加到 SOTA 之中<br>
+在 Design of an improved energy efficient clustering in M2M communication 中，作者的描述：long term evolution for machine type communication (LTE-M) network, which comes under LTE network. 感觉LTE-M是 EXALTED 项目的一部分。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/01/how-to-install-ns-3-in-Ubuntu-15-04/" rel="next" title="Ubuntu 15.04下安装NS-3">
+                <i class="fa fa-chevron-left"></i> Ubuntu 15.04下安装NS-3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/19/LTE-Basics/" rel="prev" title="LTE-Basics">
+                LTE-Basics <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">rennsong</p>
+              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Reliable reporting for Massive M2M communications with periodic resource pooling, 2014, August</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Energy-efficent Uplink Resource Allocation in LTE network with M2M/H2H co-existence under statistical QoS guarantees</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">On radio resource allocation in LTE networks with machine-to-machine communications</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">A Tractable Model of the LTE Access Reservation Procedure for Machine-Type Communications</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Machine Type Communications in 3GPP Networks: Potential, Challenges, and Solutions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">Modeling and Characterization of Transmission Energy Consumption in Machine-to-Machine Networks</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">Energy-saving massive access control and resource allocation schemes for M2M communications in OFDMA cellular networks</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

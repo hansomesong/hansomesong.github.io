@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="2015年7月末，微软终于发布了新一代操作系统Windows 10。据说相对于Windows 8有了非常大的改进，加上利用学校的邮箱可以免费下载到MSNAA的ISO镜像并且附送激活码，更重要的是，现在手里有一台购于2013年西天，型号为SVE141CCW的SONY电脑闲置。所以，我决定抽出一两天的时间，在这台PC上搭建一个 Windows 10&amp;amp;Ubuntu 15.04 双系统：像文字处理">
+<meta name="keywords" content="windows10, ubuntu, 15.04, dual-boot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows 10 和 Ubuntu 15.04 dual-boot 系统安装全攻略">
+<meta property="og:url" content="http://rennesong.com/2015/08/01/win10-ubuntun-dual-boot-system/index.html">
+<meta property="og:site_name" content="Rennesong&#39;s blog">
+<meta property="og:description" content="2015年7月末，微软终于发布了新一代操作系统Windows 10。据说相对于Windows 8有了非常大的改进，加上利用学校的邮箱可以免费下载到MSNAA的ISO镜像并且附送激活码，更重要的是，现在手里有一台购于2013年西天，型号为SVE141CCW的SONY电脑闲置。所以，我决定抽出一两天的时间，在这台PC上搭建一个 Windows 10&amp;amp;Ubuntu 15.04 双系统：像文字处理">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://7xkqa9.com1.z0.glb.clouddn.com/available-win10-version.png">
+<meta property="og:image" content="http://7xkqa9.com1.z0.glb.clouddn.com/win10-installation-unallocated-disk.jpg">
+<meta property="og:image" content="http://7xkqa9.com1.z0.glb.clouddn.com/win10-installation-after-allocation.jpg">
+<meta property="og:image" content="http://7xkqa9.com1.z0.glb.clouddn.com/hard_disk_repartition.PNG">
+<meta property="og:image" content="http://7xkqa9.com1.z0.glb.clouddn.com/warning.png">
+<meta property="og:image" content="http://7xkqa9.com1.z0.glb.clouddn.com/ubuntu_fdisk_output.png">
+<meta property="og:image" content="http://7xkqa9.com1.z0.glb.clouddn.com/partition_root.png">
+<meta property="og:image" content="http://7xkqa9.com1.z0.glb.clouddn.com/hard_partion_ubuntu_installation.png">
+<meta property="og:image" content="http://7xkqa9.com1.z0.glb.clouddn.com/partition_swap.png">
+<meta property="og:image" content="http://7xkqa9.com1.z0.glb.clouddn.com/partition_resume.png">
+<meta property="og:image" content="http://7xkqa9.com1.z0.glb.clouddn.com/update_grub_output.png">
+<meta property="og:updated_time" content="2019-03-25T10:27:10.939Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows 10 和 Ubuntu 15.04 dual-boot 系统安装全攻略">
+<meta name="twitter:description" content="2015年7月末，微软终于发布了新一代操作系统Windows 10。据说相对于Windows 8有了非常大的改进，加上利用学校的邮箱可以免费下载到MSNAA的ISO镜像并且附送激活码，更重要的是，现在手里有一台购于2013年西天，型号为SVE141CCW的SONY电脑闲置。所以，我决定抽出一两天的时间，在这台PC上搭建一个 Windows 10&amp;amp;Ubuntu 15.04 双系统：像文字处理">
+<meta name="twitter:image" content="http://7xkqa9.com1.z0.glb.clouddn.com/available-win10-version.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://rennesong.com/2015/08/01/win10-ubuntun-dual-boot-system/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Windows 10 和 Ubuntu 15.04 dual-boot 系统安装全攻略 | Rennesong's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rennesong's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Blog my life from now on!</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2015/08/01/win10-ubuntun-dual-boot-system/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Windows 10 和 Ubuntu 15.04 dual-boot 系统安装全攻略
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-08-01 16:33:47" itemprop="dateCreated datePublished" datetime="2015-08-01T16:33:47+02:00">2015-08-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-25 11:27:10" itemprop="dateModified" datetime="2019-03-25T11:27:10+01:00">2019-03-25</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>2015年7月末，微软终于发布了新一代操作系统Windows 10。据说相对于Windows 8有了非常大的改进，加上利用学校的邮箱可以免费下载到MSNAA的ISO镜像并且附送激活码，更重要的是，现在手里有一台购于2013年西天，型号为SVE141CCW的SONY电脑闲置。所以，我决定抽出一两天的时间，在这台PC上搭建一个 Windows 10&amp;Ubuntu 15.04 双系统：像文字处理，游戏之类的可以在 windows 平台下处理；开发编程Geek相关的东西可以在 Linux(Ubuntu)下来处理。完美！</p>
+<h1>安装 Windows 10</h1>
+<h2 id="下载-windows-10镜像"><a class="header-anchor" href="#下载-windows-10镜像">null</a>下载 Windows 10镜像</h2>
+<p>国外上学的孩子比较幸福的一点儿就是，可以通过学校的邮箱来免费使用微软收费的软件，比如各种操作系统。现在Windows发布了，我当然不能错过这样的机会了。登陆我的MSNAA账号，发现与以往不同，对于Windows 10 有好多版本，不知所云。<br>
+<img src="http://7xkqa9.com1.z0.glb.clouddn.com/available-win10-version.png" alt="Available windows 10 version proposed by DreamSpark"></p>
+<p>来看看<a href="http://www.reddit.com/r/Windows10/comments/3f14bg/win10_just_popped_up_in_my_dreamspark_premium_but/," title="reddit" target="_blank" rel="noopener">Reddit讨论帖</a>里面大家是怎么说吧</p>
+<blockquote>
+<p>Windows 10 EDU and Windows 10 Multiple versions are probably the only ones of interest to you.<br>
+Windows 10 EDU is a educational version which is similar in feature set to Windows 10 enterprise<br>
+Windows 10 (Multiple Editions) will give you the option to install Windows 10 home or professional.<br>
+The N versions are identical but do not include media software such as windows media player or dvd playback software. These versions are provided as I believe it is a law for the EU to have an option that gives users choice for what software to use rather than the Microsoft default.<br>
+The Features on demand only contains the core basic components of Windows and others can be chosen to be installed.<br>
+The IoT versions are stripped down version meant to be used on low power hardware like a Raspberry Pi.<br>
+The language packs I believe are just provide options for localising Windows in to different languages.<br>
+The debug checked and symbols versions are versions which are more suitable for development and debugging of OS like features. They do not use as much compiler optimisation so identifying and diagnosing operating-system-level problems are easier. So stuff like drivers would be developed on these versions.</p>
+</blockquote>
+<p>关于下载镜像，还有一个插曲：最开始我是通过Mac来下载ISO的，家里网速较慢没有下载完我就去睡觉了，第二天醒来发现下载的ISO文件只有不到3G，当时就很奇怪：不是说 windows 10的安装镜像是3 G多么？为啥我的只有2.3G呢？我想莫非学生优惠版的确实就是小么？后来用这个镜像刻录出来的U盘是无法启动的！再后来我在 Windows 平台又下载同样的文件，显示是3.8G 这才是Win10镜像的正常大小！而且下载速度也是快的多。可惜微软没有提供这些镜像的哈希值，我们也无从校验我们下载的东西是否完整，通过这个事儿，第一次感觉到，下载完大文件之后，核对下哈希值还是很有必要的。</p>
+<h2 id="制作-windows-10-usb-bootable-安装盘"><a class="header-anchor" href="#制作-windows-10-usb-bootable-安装盘">null</a>制作 Windows 10 USB-bootable 安装盘</h2>
+<p>现在最流行的操作系统安装方式便是通过制作 USB-bootable 启动盘了。我是用的制作工具是：<a href="https://rufus.akeo.ie/" target="_blank" rel="noopener">Rufus</a>。下面是我当时查看的教程<a href="http://www.groovypost.com/howto/create-windows-10-bootable-usb-flash-drive/" target="_blank" rel="noopener">Create a Windows 10 USB Bootable Flash Drive (Updated)</a>。后来才意思到这其实做的是不支持UEFI的安装盘，其实这也给我带来了些许困扰。因为下面我要说的 Ubuntu 15.04 的安装盘确实支持 UEFI的。虽然我勾选了: MBR partition scheme for BIOS or UEFI computers。写这篇文章的时候才发现还可以通过Rufus来制作 UEFI-supported 的安装盘。请看教程<a href="http://news.mydrivers.com/1/440/440478.htm" target="_blank" rel="noopener">教你制作支持UEFI PC的Win10安装U盘</a></p>
+<h2 id="uefi-vs-legacy-mode"><a class="header-anchor" href="#uefi-vs-legacy-mode">null</a>UEFI vs Legacy mode</h2>
+<p>帖子<a href="http://ubuntuforums.org/showthread.php?t=2248301" target="_blank" rel="noopener">Can i install windows 10 tech preview along ubuntu 14.04?</a>中指出，windows installer 会把 Windows boot loader 安装在每一个硬盘分区上。这意味着，如果我们的PC如果之前就安装有 Ubuntu 的话，安装 Windows 之后，我们将没有办法直接登录 Ubuntu 了，需要使用 <a href="https://help.ubuntu.com/community/Boot-Repair" target="_blank" rel="noopener">Boot Repair</a>来做一些修复。</p>
+<p>这个UEFI实在是太折磨人了，感觉完全颠覆了我之前的安装系统的习惯啊<br>
+用U盘刻录了一个USB-installer，使用Assist-&gt;F11(用光盘/USB启动)，结果发现显示opertation system not found。给我郁闷了，好在这是一个常见问题，视频<a href="https://www.youtube.com/watch?v=65Kb3meWeDs" target="_blank" rel="noopener">How To Fix Operating System Not Found Error In Sony Vaio</a>给我解答了我的问题。总结一下思路就是：进入BIOS设置，将Boot mode由 UEFI转换为Legacy, 并且External Bootable device由 disable变为 enable。这个时候就可以使用 win10-usb-installer了。</p>
+<p><a href="https://help.ubuntu.com/community/UEFI" target="_blank" rel="noopener">UEFI</a><br>
+目前主流的启动模式为：UEFI mode 以及 BIOS mode。BISO mode我们都比较熟悉了，这里不做介绍。如今预装win8的机器都采用的UEFI模式。</p>
+<h2 id="开始安装"><a class="header-anchor" href="#开始安装">null</a>开始安装</h2>
+<p>因为一个星期前，我才刚把这台可怜的电脑上的 Windows 8 彻底格式化安装了 Ubuntu, 现在我又需要把后者再格式掉，全硬盘安装 Windows 10(可惜了我刚安装好的NS-3)。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Windows cannot be installed to this disk. The selected disk is of the GPT partition style. Windows cannot be installed to this hard disk space. Windows must be installed to a partition formatted as NTFS. Windows cannot be installed to this hard disk space. The partition is of an unrecognized type.</span><br></pre></td></tr></table></figure>
+<p>在把所有 Windows installer 无法识别的分区都删除掉之后，我们看到有一个将近700 G的未分配空间，如下图所示。<br>
+<img src="http://7xkqa9.com1.z0.glb.clouddn.com/win10-installation-unallocated-disk.jpg" alt="全硬盘安装 windows 10"><br>
+很有意思，为了安装 windows 10，系统会额外给我创建一个500 MB的 system reserved 分区处理，特此截图留念：<br>
+<img src="http://7xkqa9.com1.z0.glb.clouddn.com/win10-installation-after-allocation.jpg" alt="为 windows 10 分配磁盘空间"></p>
+<h2 id="硬盘分区"><a class="header-anchor" href="#硬盘分区">null</a>硬盘分区</h2>
+<p>安装完Windows之后，现在就一个硬盘分区，安装完 windows 10，系统文件占了将近20 G，记得以前学校的老师说过，建议把所有的软件都安装到C盘，这样可以避免一些意想不到的问题。所以我觉得分150G 给C盘比较合适，如果以后安装了游戏，可以考虑放到D盘什么。受Linux还有Mac使用经验影响，我决定再只分出一个D盘专门用来存放非系统文件。剩余的将近150G空间则给Linux之用。分区工具我使用的是<a href="http://www.disktool.cn/download.html" target="_blank" rel="noopener">分区助手</a>，确实还是蛮好用的，下图是分区完毕之后：<br>
+<img src="http://7xkqa9.com1.z0.glb.clouddn.com/hard_disk_repartition.PNG" alt></p>
+<p>#安装 Ubuntu 15.04<br>
+现在开始安装 Ubuntu 15.04, 第一个麻烦就是：电脑无法识别我U盘里的Ubuntu，又是头一次遇到这种问题，屏幕上只显示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SYSLINUX 4.04 EDD 20110518 Copyright (C) 1994-2013 H. Peter Anvin et al</span><br></pre></td></tr></table></figure>
+<p>还好有人遇到跟我一样的问题，我马上怀疑是不是又是由于 UEFI/legacy mode的缘故。为了安装 Windows 10 我把这个设定由UEFI变成了 Legacy mode，而现在我制作的 Ubuntu安装盘应该是 UEFI模式，只有切换回来，电脑才可以找到操作系统入口，事实证明，我的猜想是正确的。不过在一开始安装Ubuntu的时候，安装程序就检测出来了有非UEFI模式下安装的其他操作系统存在，如下图所示：<br>
+<img src="http://7xkqa9.com1.z0.glb.clouddn.com/warning.png" alt="警告"><br>
+仔细阅读之后，我觉得我应该选<em>Go Back</em>，回过头来看，这里的<em>Go Back</em>应该指的是用Legacy mode(而不是UEFI模式)。另外，下图佐证了：我安装的 Windows 10是基于MBR的，因为Disklabel type: dos，如果是基于GPT的，我们应该看到的是：Disklabel type: gpt。<br>
+<img src="http://7xkqa9.com1.z0.glb.clouddn.com/ubuntu_fdisk_output.png" alt="Ubuntu fdisk 结果"><br>
+<img src="http://7xkqa9.com1.z0.glb.clouddn.com/partition_root.png" alt="Root分区分配示意图"><br>
+关于swap分区介绍(<a href="https://www.maketecheasier.com/swap-partitions-on-linux/" target="_blank" rel="noopener">https://www.maketecheasier.com/swap-partitions-on-linux/</a>)<br>
+设置为primary分区是无法继续分割的。。。<br>
+<img src="http://7xkqa9.com1.z0.glb.clouddn.com/hard_partion_ubuntu_installation.png" alt="xxx"><br>
+<img src="http://7xkqa9.com1.z0.glb.clouddn.com/partition_swap.png" alt="Swap分区分配示意图"><br>
+<img src="http://7xkqa9.com1.z0.glb.clouddn.com/partition_resume.png" alt="最终分区示意图"><br>
+其实做完分区开始安装还是蛮紧张的，因为生怕安装了 Ubuntu了以后，就再也没法启动 windows 了，最坏的情况就是，就是两个系统都进不去了(现在想想，好像没有道理无法登陆 Ubuntu)。<br>
+<img src="http://7xkqa9.com1.z0.glb.clouddn.com/update_grub_output.png" alt="Ubuntu update-grub 结果"><br>
+因为是在UEFI模式下读取的U盘但是安装的是非UEFI模式，所以开机的时候，又是Operation system not found。选择回 Legacy mode，终于顺利启动！<br>
+为了进一步验证，现在Ubuntu处于Legacy模式下，输入下面命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">如果/sys/firmware/efi文件夹存在，则显示<span class="string">"EFI boot on HDD"</span>。不然则显示<span class="string">"Legacy boot on HDD"</span></span></span><br><span class="line">[ -d /sys/firmware/efi ] &amp;&amp; echo "EFI boot on HDD" || echo "Legacy boot on HDD"</span><br></pre></td></tr></table></figure>
+<p>结果显示为&quot;Legacy boot on HDD&quot;。(曾经显示为EFI boot on HDD)</p>
+<p>最后还有个问题就是：每次在Windows和Ubuntu之间切换时间就不一致了。</p>
+<h1>参考资料</h1>
+<p><a href="http://askubuntu.com/questions/221835/installing-ubuntu-on-a-pre-installed-windows-8-64-bit-system-uefi-supported" target="_blank" rel="noopener">Installing Ubuntu on a Pre-Installed Windows 8 (64-bit) System (UEFI Supported)</a><br>
+<a href="http://linuxbsdos.com/2015/01/18/tip-for-dual-booting-windows-10-preview-and-linux-on-a-pc-with-uefi-firmware/" target="_blank" rel="noopener">Tip for dual-booting Windows 10 preview and Linux on a PC with UEFI firmware</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/30/Common-used-vim-commands/" rel="next" title="常用 VIM 命令备忘">
+                <i class="fa fa-chevron-left"></i> 常用 VIM 命令备忘
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/01/how-to-install-ns-3-in-Ubuntu-15-04/" rel="prev" title="Ubuntu 15.04下安装NS-3">
+                Ubuntu 15.04下安装NS-3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">rennsong</p>
+              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">安装 Windows 10</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载-windows-10镜像"><span class="nav-number">1.1.</span> <span class="nav-text">null下载 Windows 10镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作-windows-10-usb-bootable-安装盘"><span class="nav-number">1.2.</span> <span class="nav-text">null制作 Windows 10 USB-bootable 安装盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uefi-vs-legacy-mode"><span class="nav-number">1.3.</span> <span class="nav-text">nullUEFI vs Legacy mode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始安装"><span class="nav-number">1.4.</span> <span class="nav-text">null开始安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#硬盘分区"><span class="nav-number">1.5.</span> <span class="nav-text">null硬盘分区</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

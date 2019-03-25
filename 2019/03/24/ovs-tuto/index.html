@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="OVS nullcase study: OpenDayLight 项目中的 demo: sfc103 OVS is more powerful bridge than linux bridge, but since it is still a L2 bridge, some general bridge conventions it has to conform to[1]. 1234567fun">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ovs_tuto">
+<meta property="og:url" content="http://rennesong.com/2019/03/24/ovs-tuto/index.html">
+<meta property="og:site_name" content="Rennesong&#39;s blog">
+<meta property="og:description" content="OVS nullcase study: OpenDayLight 项目中的 demo: sfc103 OVS is more powerful bridge than linux bridge, but since it is still a L2 bridge, some general bridge conventions it has to conform to[1]. 1234567fun">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-25T10:27:10.935Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ovs_tuto">
+<meta name="twitter:description" content="OVS nullcase study: OpenDayLight 项目中的 demo: sfc103 OVS is more powerful bridge than linux bridge, but since it is still a L2 bridge, some general bridge conventions it has to conform to[1]. 1234567fun">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://rennesong.com/2019/03/24/ovs-tuto/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ovs_tuto | Rennesong's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rennesong's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Blog my life from now on!</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/24/ovs-tuto/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ovs_tuto
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-24 17:57:49" itemprop="dateCreated datePublished" datetime="2019-03-24T17:57:49+01:00">2019-03-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-25 11:27:10" itemprop="dateModified" datetime="2019-03-25T11:27:10+01:00">2019-03-25</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1>OVS</h1>
+<h2 id="case-study-opendaylight-项目中的-demo-sfc103"><a class="header-anchor" href="#case-study-opendaylight-项目中的-demo-sfc103">null</a>case study: OpenDayLight 项目中的 demo: sfc103</h2>
+<p>OVS is more powerful bridge than linux bridge, but since it is still a L2 bridge, some general bridge conventions it has to conform to<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function ovs_start &#123;</span><br><span class="line">    service openvswitch-switch start</span><br><span class="line">    # In the passive mode, OVS connects to an ODL instance </span><br><span class="line">    # (6640 is the IANA registered port for ovsdb)</span><br><span class="line">    ovs-vsctl set-manager tcp:192.168.1.5:6640</span><br><span class="line">    ovs-vsctl add-br br-sfc</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>如何理解这段代码</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function ovs_add_app_veth-br &#123;</span><br><span class="line">    # 创建名为 &apos;app&apos; 的 Linux 网络命名空间(network name space)</span><br><span class="line">    ip netns add app </span><br><span class="line">    # 增加一对 veth 虚拟网卡, 名字分别为: veth-app 以及 veth-br</span><br><span class="line">    # 我知道了 因为在sfc103这个demo中，发送http请求的client和classfier1</span><br><span class="line">    # 处于同一个容器中, 作者想把他们隔离开来</span><br><span class="line">    ip link add veth-app type veth peer name veth-br</span><br><span class="line">    ovs-vsctl add-port br-sfc veth-br</span><br><span class="line">    # dev 指的是 device 的意思</span><br><span class="line">    ip link set dev veth-br up</span><br><span class="line">    # 将 veth-app 添加到 app 虚拟网络环境</span><br><span class="line">    # 注意: 从此 ip link show type veth 将看不到 veth-app</span><br><span class="line">    # 只有在命名空间 app 中才看得到 </span><br><span class="line">    ip link set veth-app netns app</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>network namespace 是实现网络虚拟化的重要功能，它能创建多个隔离的网络空间，它们有独自的网络栈信息。不管是虚拟机还是容器，运行的时候仿佛自己就在独立的网络中。 Initially everything is in the global namespace 对于每个 network namespace。 来说，它会有自己独立的网卡、路由表、ARP 表、iptables 等和网络相关的资源。</p>
+<h1>ovs 使用命令</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 测试flow 匹配执行情况，但并不发送真的packet</span><br><span class="line">ovs-appctl ofproto/trace br-sfc in_port=1,tcp,nw_src=192.168.2.1,nw_dst=192.168.2.2,nw_ttl=64,tcp_dst=80,tcp_flags=syn -generate</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 添加一条flow 但是这条flow在actions执行过程中会导致错误</span><br><span class="line">ovs-ofctl add-flow -OOpenFlow13 br-sfc &quot;table=0,tcp,priority=1002,in_port=1,nw_src=192.168.2.0/24,nw_dst=192.168.2.0/24,tp_dst=80,actions=encap(nsh),encap(ethernet),set_field:0x49-&gt;nsh_spi,set_field:255-&gt;nsh_si,set_field:0x1-&gt;nsh_c1,set_field:0x2-&gt;nsh_c2,set_field:0x3-&gt;nsh_c3,set_field:0x4-&gt;nsh_c4, load:0xc0a80114-&gt;NXM_NX_TUN_IPV4_DST[],output:2&quot;</span><br></pre></td></tr></table></figure>
+<h1>prerequisite knowledge</h1>
+<h2 id="network-namespace-之间通信"><a class="header-anchor" href="#network-namespace-之间通信">null</a>network namespace 之间通信</h2>
+<p>默认情况下，network namespace 是不能和主机网络，或者其他 network namespace 通信的。</p>
+<p>有了不同 network namespace 之后，也就有了网络的隔离，但是如果它们之间没有办法通信，也没有实际用处。要把两个网络连接起来，linux 提供了veth pair 。可以把 veth pair 当做是双向的 pipe（管道），从一个方向发送的网络数据，可以直接被另外一端接收到；或者也可以想象成两个 namespace 直接通过一个特殊的虚拟网卡连接起来，可以直接通信。</p>
+<p>我们可以使用 ip link add type veth 来创建一对 veth pair 出来，需要记住的是 veth pair 无法单独存在，删除其中一个，另一个也会自动消失。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ip netns exec app ifconfig veth-app 192.168.2.1/24 up</span><br><span class="line"># 配置 veth-app 网卡 MAC 地址</span><br><span class="line">ip netns exec app ip link set dev veth-app  addr 00:00:11:11:11:11</span><br><span class="line"># 选项s: 设置主机 IP 地址和 MAC 的静态映射</span><br><span class="line"># 选项i: 后跟接口, 指定要操作 arp 缓冲区的网络接口 veth-app 是本地接口</span><br><span class="line">ip netns exec app arp -s 192.168.2.2 00:00:22:22:22:22 -i veth-app</span><br><span class="line">ip netns exec app ip link set dev veth-app up</span><br><span class="line"># 为何要把 loopback 设备也开启呢？网上好多例子都是这样</span><br><span class="line">ip netns exec app ip link set dev lo up</span><br><span class="line">ip netns exec app ifconfig veth-app mtu 1400</span><br><span class="line">ovs-vsctl show</span><br></pre></td></tr></table></figure>
+<p>A veth device pair is a virtual ethernet cable, packets sent on one end come out the other (and vice versa of course) <sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>.</p>
+<h1>create tunnel devices using rtnetlink interface</h1>
+<p>Developers of network layer protocol handlers can use RTNETLINK to modify and monitor different components of networking, such as the routing table and network interfaces<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>. =&gt; 这个功能是否可以帮助我实现 Montida’s paper 的实现？</p>
+<p>It helps reduce the complexity of the kernel code if you implement these protocols in user space.</p>
+<p>rtnetlink就是一组操作rtnetlink消息的宏<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>。</p>
+<p>rtnetlink是基于netlink机制的一个内核和协议栈相关操作的机制。其允许用户程序对内核的路由表进行读写。这个功能非常重要，在很多基础的工具中的使用也非常广泛。但是很少资料直接对 rtnetlink 的具体使用进行讲解，中文的资料只有一些对 <a href="http://man7.org/linux/man-pages/man7/rtnetlink.7.html" title="RTNETLINK(7)" target="_blank" rel="noopener">Manual</a> 的翻译和补充。Linux Journal<sup class="footnote-ref"><a href="#fn3" id="fnref3:1">[3]</a></sup> 有非常详细的一篇框架文章，但是对具体过程解释不详细。另一方面，由于现实的应用中，对路由表等的处理较为复杂，没有比较简单直接的例子。并且其 <a href="http://man7.org/linux/man-pages/man7/rtnetlink.7.html" title="RTNETLINK(7)" target="_blank" rel="noopener">Manual</a> 中说到这个是 Linux IPv4 的路由 socket，但是其支持 Ipv6，应该是 <a href="http://man7.org/linux/man-pages/man7/rtnetlink.7.html" title="RTNETLINK(7)" target="_blank" rel="noopener">Manual</a> 太久没更新的缘故。 因此，这篇文章并不对rtnetlink的数据结构或<a href="http://man7.org/linux/man-pages/man7/rtnetlink.7.html" title="RTNETLINK(7)" target="_blank" rel="noopener">Manual</a>进行详细的解释，而是解释其使用方式，并且举一个具体的使用样例。对一些操作和数据结构的构成有疑惑，可以直接看 <a href="http://man7.org/linux/man-pages/man7/rtnetlink.7.html" title="RTNETLINK(7)" target="_blank" rel="noopener">Manual</a>。</p>
+<h1>基于 VxLAN 的 NSH 封装<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup></h1>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a href="https://arthurchiao.github.io/blog/ovs-deep-dive-6-internal-port/" target="_blank" rel="noopener">https://arthurchiao.github.io/blog/ovs-deep-dive-6-internal-port/</a> <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p><a href="https://matthewarcus.wordpress.com/2018/02/04/veth-devices-network-namespaces-and-open-vswitch/" target="_blank" rel="noopener">https://matthewarcus.wordpress.com/2018/02/04/veth-devices-network-namespaces-and-open-vswitch/</a> <a href="#fnref2" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p><a href="https://www.linuxjournal.com/article/8498" target="_blank" rel="noopener">https://www.linuxjournal.com/article/8498</a> <a href="#fnref3" class="footnote-backref">↩</a> <a href="#fnref3:1" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p><a href="https://blog.csdn.net/iteye_18932/article/details/82139564" target="_blank" rel="noopener">https://blog.csdn.net/iteye_18932/article/details/82139564</a> <a href="#fnref4" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p><a href="https://www.sdnlab.com/16610.html" target="_blank" rel="noopener">https://www.sdnlab.com/16610.html</a> <a href="#fnref5" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/24/stochastic-geometry-tuto/" rel="next" title="stochastic_geometry_tuto">
+                <i class="fa fa-chevron-left"></i> stochastic_geometry_tuto
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/25/israel-visa/" rel="prev" title="法国巴黎申请以色列旅游签证">
+                法国巴黎申请以色列旅游签证 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">rennsong</p>
+              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">OVS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#case-study-opendaylight-项目中的-demo-sfc103"><span class="nav-number">1.1.</span> <span class="nav-text">nullcase study: OpenDayLight 项目中的 demo: sfc103</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">如何理解这段代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">ovs 使用命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">prerequisite knowledge</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#network-namespace-之间通信"><span class="nav-number">4.1.</span> <span class="nav-text">nullnetwork namespace 之间通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">create tunnel devices using rtnetlink interface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">基于 VxLAN 的 NSH 封装[5]</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
