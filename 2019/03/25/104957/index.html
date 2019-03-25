@@ -72,7 +72,7 @@
     root: '/',
     scheme: 'Mist',
     version: '7.0.1',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
     back2top_sidebar: false,
     fancybox: false,
@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="Sublime is a powerful, easy-to-use, lightweight and elegent text editor. Hexo is a light but powerful static personal blog framework. This post focuses on how to combine sublime and hexo allowing us t">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-25T10:33:27.300Z">
+<meta property="og:updated_time" content="2019-03-25T13:46:47.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to gracefully write blog with Sublime Text and Hexo (without command line)">
 <meta name="twitter:description" content="Sublime is a powerful, easy-to-use, lightweight and elegent text editor. Hexo is a light but powerful static personal blog framework. This post focuses on how to combine sublime and hexo allowing us t">
@@ -174,7 +174,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -389,7 +389,7 @@
                 
               
 
-              <time title="创建时间：2019-03-25 10:49:59 / 修改时间：11:33:27" itemprop="dateCreated datePublished" datetime="2019-03-25T10:49:59+01:00">2019-03-25</time>
+              <time title="创建时间：2019-03-25 10:49:59 / 修改时间：14:46:47" itemprop="dateCreated datePublished" datetime="2019-03-25T10:49:59+01:00">2019-03-25</time>
             
 
             
@@ -442,11 +442,7 @@
 <p>Then save as “hexo-start.sublime-build”</p>
 <h2 id="build-system-script-for-hexo-deploy"><a class="header-anchor" href="#build-system-script-for-hexo-deploy">null</a>Build system script for “hexo deploy”</h2>
 <p>Click Sublime&gt;&gt;Tools&gt;&gt;Build System&gt;&gt;New Build System…，put the following contents：</p>
-<p>{<br>
-“shell_cmd”: “hexo clean &amp;&amp; hexo g -d”,<br>
-“working_dir”: “/Users/mac/Documents/blog/”<br>
-}</p>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"shell_cmd"</span>: <span class="string">"hexo clean &amp;&amp; hexo g -d"</span>,</span><br><span class="line">    <span class="string">"working_dir"</span>: <span class="string">"/Users/mac/Documents/blog/"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -486,8 +482,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/25/112146/" rel="prev" title="112146">
-                112146 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/25/112146/" rel="prev" title="Vagrant tuto">
+                Vagrant tuto <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -557,7 +553,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -584,7 +580,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -603,6 +607,21 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hansomesong" title="GitHub &rarr; https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
           
 
           
@@ -797,6 +816,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
 
