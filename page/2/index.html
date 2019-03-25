@@ -935,7 +935,7 @@ In order to meet the requirements of LTE- Advanced such as peak data rates of up
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-25 11:27:10" itemprop="dateModified" datetime="2019-03-25T11:27:10+01:00">2019-03-25</time>
+                <time title="修改时间：2019-03-25 12:08:17" itemprop="dateModified" datetime="2019-03-25T12:08:17+01:00">2019-03-25</time>
               
             
           </span>
@@ -970,75 +970,16 @@ In order to meet the requirements of LTE- Advanced such as peak data rates of up
 
       
         
+          <p>I have one Linux server (I will call it as remote server in the following of this post) in my office, which is behind a NAT router and restrictive rewall. Now I want to SSH to the remote server while I’m away from my office. How would you set that up? SSH portforwarding will certainly be an option. However, port forwarding can become tricky if you are dealing with multiple nested NAT environment. Besides, it can be interfered with undervarious ISP-specific conditions, such as restrictive firewalls which block forwarded ports,or carrier-grade NAT which shares IPv4 addresses among users.</p>
+          <!--noindex-->
           
-            <p>我想在家里通过SSH访问位于办公室里的电脑。不幸的是，从我家里的电脑到办公室里的电脑至少要通过两个NAT。还在学校专门提供了一台机器提供SSH中转。</p>
-<p>电脑的名字叫做：<a href="http://ssh.rennes.telecom-bretagne.eu" target="_blank" rel="noopener">ssh.rennes.telecom-bretagne.eu</a>, 只是我忘记了，给ssh开发的端口号是哪个了。所以第一步需要通过nmap看看目标主机上哪些端口是开放的。</p>
-<p>Smart Grid Traffic Behaviour Discussion， 2010，April<br>
-这篇文章属于讨论性质的文章，最大的亮点在于为学术界定义了 Smart grid 的 Traffic Characteristics。当然文章里也提到了一句：</p>
-<blockquote>
-<p>Overload control has been prioritized for work in Rel-10 time frame together with several other functinalities.</p>
-</blockquote>
-<p>当然文章还指出了，我们可以做改进的apsects:</p>
-<ul>
-<li>Radio resource overload control</li>
-<li>MME overload control</li>
-</ul>
-<h1>Reliable reporting for Massive M2M communications with periodic resource pooling, 2014, August</h1>
-<p>关注的case: periodic reporting<br>
-问题： massive M2M devices, 保证report被在给定的dealine之前以比如99%的可靠性被发送<br>
-方法：a M2M-dedicated resource pool, 作者论证了这个资源池的规模至少要多大。<br>
-分析简述：首先一个 M2M device 在上述的资源池里要发送的transmission number是随机变量，因为：1）自last reporting至current reporting之间的arrived reports的数目是随机的。2）retransmission mechanism 这么一个事实 使得 问题变得较为复杂了。(不然，我们可以提前周期性的给这些设备分配资源了)<br>
-a massive number of devices 使得 中心极限定理 可以使用了。</p>
-<p>对于确定的 资源池，在保证一定的 reliability level的前提下，最多可以服务多少 M2M device 呢？</p>
-<p>System model:<br>
-Reporting Interval (RI), 可以被 视为 Poisson process 亦可以被视为 Uniform distribution。作者只考虑 Poisson process 的情况，但同时也是，他们推导的结论，亦适用于 Uniform distribution 的情况。<br>
-Time-frequency 资源被分作两个资源池：一个给M2M，另一个给non-M2M。并且指出了这种 seperation 是常用手段。接下来，M2M-dedicated resource pool 也被分为两部分：preallocated and common pool。</p>
-<p>我比较好奇，上文中提到的LTE simulator究竟是何方神圣？</p>
-<p>#Radio Resource Allocation in LTE-Advanced Cellular Networks with M2M Communications<br>
-作者认为，M2M的特性有：group-based communications, low or no mobility, time-controlled, time-tolerant, small data transmission, secure connection, MTC monitoring, priority alarm messages, extra low power consumption, etc.<br>
-提出 group-based communications 的特性，蛮有意思的。<br>
-作者也指出了(不知是否为首创)MTCD-related transmission有三种情景：Direct transmission, Multiple-hop transmisison, peer-to-peer transmission(实际上就是D2D)<br>
-。<br>
-作者在本文中对network applications进行了分类：Class1 Elastic applications, Class2 Hard Real-time appliation, Class3 Delay adaptivea applications, Class4 Rata-adaptive applications。<br>
-作者提出了user utility的指标来优化，作者认为：simple QoS indicator是不足以<br>
-“the user utility of a service is a measurement of its QoS performance based on the provided network services such as the bandwidth, transmission delay, and loss ratio.” “With the control of the eNB, radio resources can be efficiently shared between the eNB-to-UE and eNB-to-MTCD links by using the utility-based scheduling scheme.” 貌似Utility这个函数值在0，1之间，可是具体究竟是什么就无从得知了。</p>
-<p>总得来说，这篇文章虽然不是致力于 Energy-saving/efficiency 的，它主要是讨论在M2M参与的情况下，如何在Cellular network中进行RRA，以减少 Co-channel inteference和提高network efficiency。(不就是提高服务用户数么)它给我们定义了一个很好的分析模型框架使得日后的许多研究都可以这个框架进行。</p>
-<p>这篇文章中关于 Architectual enhancement 的部分(比如各类名词的引入，比如MTCG功能的介绍)可以吸收整合进我的SOTA。另外 “On the assumption of half-duplex MTCGs” 的描述，是本文作者之首创还是真的有文献如此论述过呢？作者并未回答，鉴于MTCG 这种新型网络节点并非此文作者引入，我倾向于某个3GPP文档里，有关于 MTCG 双工模式的探讨。“To avoid self-inteference and reduce implementation complexity, half-duplex MTCGs are preferred for deployement in the networks.”</p>
-<p>作者最后也做了 system-level simulation，但是用的究竟是 什么工具呢？</p>
-<h1>Energy-efficent Uplink Resource Allocation in LTE network with M2M/H2H co-existence under statistical QoS guarantees</h1>
-<p>作者试图从 Resource allocation 的角度研究 LTE 上行信道 能量效率问题。突然有一个疑问：为什么 Radio Resource Allocation 会对能量消耗有影响？<br>
-我的理解是：Radio Resource Allocation 实际上决定了跟 UE 分配多少个 RBs 的问题，实际上就是分给了 UE 多少 Bandwidth, 而根据香浓公式(不过要注意，这是极限情况)。速度一定的情况下，带宽B是可以可以决定信噪比SNR的，而信噪比SNR是可以影响误码率的，通信的正常进行是以保证误码率BER在一定水平之内为前提的。为了达到一定的信噪比，则对 UE 的发射功率P 提出了要求，在 time slot 长度一定的时候，单位 slot 消耗的能量就是确定的。由此可见，RRM(RRA)是可以影响到能量效率 Energy efficiency 的。<br>
-所以这篇文章中，作者将 Energy efficiency 问题转换成了一个 optimization 的问题，并且用数学方法求出了极值。虽然其中涉及的数学知识，至今都不是很明白，但个人感觉，这篇文章，相当完美。</p>
-<h1>On radio resource allocation in LTE networks with machine-to-machine communications</h1>
-<p>依然是 Aijaz 的作品，采用了 heuristic 算法 来解决 energy-efficient resource allocation 问题。</p>
-<h1>A Tractable Model of the LTE Access Reservation Procedure for Machine-Type Communications</h1>
-<p>作者认为：The number of served devices in a single LTE cell is not determined by the available aggregate rate, but rather by the limitations of the LTE access reservation protoco. 故而提出了一个 数学模型 研究现行 LTE接入机制 上行信道可以容纳多少 M2M 设备。我比较喜欢此文中的数学推导，马尔科夫链。</p>
-<h1>Machine Type Communications in 3GPP Networks: Potential, Challenges, and Solutions</h1>
-<p>作者认为：</p>
-<blockquote>
-<p>This explains the focus of 3GPP on finding efficient mechanisms to handle congestion at mainly the control plane of EPS that may happen due to nearly simultaneous signaling messages issued by a significant number of mobile devices. Thanks to the wide bandwidth of LTE and other emerging radio technologies (e.g., LTE-advanced), congestion due to user data packets is, for the time being, of less impor- tance.</p>
-</blockquote>
-<p>因为作者提出：</p>
-<blockquote>
-<p>One aspect which is missing so far in MTC signaling congestion control consists in the lack of a mechanism that handles a bulk of similar signaling messages from MTCs in a single shot (i.e. bulk MTC signaling handling).</p>
-</blockquote>
-<p>我们是不是可虑构造一个表格，这个表格里面，我们详细对比 跟Energy(甚至是M2M)有关的proposal。</p>
-<p>经常看到 Utility function 这样的表述，其为何意？</p>
-<h1>Modeling and Characterization of Transmission Energy Consumption in Machine-to-Machine Networks</h1>
-<p>作者认为：A key step in building energy-efficient protocols for large-scale M2M communications is to assess, model or characterize a network energy consumption profile. 可见作者之最终目的为：build energy-efficient protocol。所用知识为随机几何。</p>
-<blockquote>
-<p>We borrowed tools from stochastic geometry and Poisson point process to model and study energy consumption in large-scale M2M communications by deriving the cumula- tive distribution function (CDF) of energy consumption.</p>
-</blockquote>
-<h1>Energy-saving massive access control and resource allocation schemes for M2M communications in OFDMA cellular networks</h1>
-<p>作者之侧重点在于：Energy-based access control and resource allocation，缺点在乎于 a single cell。</p>
-<p>Green Communications: Principles, Concepts and Practice 这本书是2015年新出的书，可以考虑。</p>
-<p>D2D communication is a feature that has been introduced in the 3GPP Release 12.</p>
-<p>5G考虑使用 毫米波波段</p>
-<p>64QAM貌似适合在离基站比较近的地方用，QPSK适合在比较远的地方用。我猜测64QAM速度高但抗干扰能力差，反之，QPSK速率低，但是可以恢复出信号。</p>
-<p>LTE-M 的 活动 我没有考虑过啊。。。这个可以加到 SOTA 之中<br>
-在 Design of an improved energy efficient clustering in M2M communication 中，作者的描述：long term evolution for machine type communication (LTE-M) network, which comes under LTE network. 感觉LTE-M是 EXALTED 项目的一部分。</p>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2015/08/02/how-to-establish-a-ssh-connection-between-two-PCs-behind-NAT/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -1928,7 +1869,7 @@ QQ, skype之类的还有<br>
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-25 11:27:10" itemprop="dateModified" datetime="2019-03-25T11:27:10+01:00">2019-03-25</time>
+                <time title="修改时间：2019-03-25 12:26:07" itemprop="dateModified" datetime="2019-03-25T12:26:07+01:00">2019-03-25</time>
               
             
           </span>
@@ -1979,46 +1920,32 @@ QQ, skype之类的还有<br>
 <p>个人感觉申请美国签证最麻烦最“困难”的一个环节是 DS-160 表格的填写。不过还好，众多拿到过美国签证的小伙伴们都充分发挥了共产主义精神，在网上详细的填写说明俯拾皆是。不过好多帖子的日期都是过去一两年的了，DS-160 表格也有一些变化，所以我在这里做一个总结性的工作，详细地介绍每一页我是怎么填写的</p>
 <h2 id="step-1-创建申请"><a class="header-anchor" href="#step-1-创建申请">null</a>step 1: 创建申请</h2>
 <p>由于博主身在法国留学，自然而然应该选择 France,Paris 了，然后点击 <strong>Start an Application</strong>。系统会给你创建一个 Appplication ID 的，记好这个ID。</p>
-<div style="text-align: center">
-![Home page](/images/USA_VISA/DS-160-step-1.png "DS-160 主页")
-</div>
+<img src="/2015/07/28/Apply-USA-VISA-in-Paris/images/USA_VISA/DS-160-step-1.png" title="DS-160 主页">
 <h2 id="step-2-申请者个人信息"><a class="header-anchor" href="#step-2-申请者个人信息">null</a>step 2: 申请者个人信息</h2>
 <p>个人信息分由两页构成。以下都是不完全截图，博主用红色方框勾出了值得注意的地方</p>
-<div style="text-align: center">
-![Personal information 1](/images/USA_VISA/DS-160-Personal-information-1.png)
-</div>
-下图中的 National Identification Number指的是身份证号而非护照号，护照号需要在以后的页面中填写。
-<div style="text-align: center">
-![Personal information 2](/images/USA_VISA/DS-160-Personal-Information-2.png)
-</div>
+<img src="/2015/07/28/Apply-USA-VISA-in-Paris/images/USA_VISA/DS-160-Personal-information-1.png" title="Personal information 1">
+<p>下图中的 National Identification Number指的是身份证号而非护照号，护照号需要在以后的页面中填写。</p>
+<img src="/2015/07/28/Apply-USA-VISA-in-Paris/images/USA_VISA/DS-160-Personal-Information-2.png" title="Personal information 2">
 <h2 id="step-3-地址及联系方式"><a class="header-anchor" href="#step-3-地址及联系方式">null</a>step 3: 地址及联系方式</h2>
 <p>如实填写即可，为了避免本文图片过多，影响加载速度，所以这里不予贴图。后面的step 6,7,9,11也是类似情况。</p>
 <h2 id="step-4-护照信息"><a class="header-anchor" href="#step-4-护照信息">null</a>step 4: 护照信息</h2>
 <p>需要指出的是：Passport Book Number这一项，对于我们中国护照而言，就是护照信息页右边竖着写的那8位数字, 而不是我们的Passport number</p>
-<div style="text-align: center">
-![Passport information](/images/USA_VISA/DS-160-Passport-information.png)
-</div>
+<img src="/2015/07/28/Apply-USA-VISA-in-Paris/images/USA_VISA/DS-160-Passport-information.png" title="Passport information">
 <h2 id="step-5-旅行信息"><a class="header-anchor" href="#step-5-旅行信息">null</a>step 5: 旅行信息</h2>
 <p>博主以及博主女朋友去美国签证都是B类型的，不管商务会议还是旅游，都选择 B1&amp;B2</p>
-<div style="text-align: center">
-![Travel information](/images/USA_VISA/DS-160-Travel-information.png)
-</div>
+<img src="/2015/07/28/Apply-USA-VISA-in-Paris/images/USA_VISA/DS-160-Travel-information.png" title="Travel information">
 <h2 id="step-6-同行者信息"><a class="header-anchor" href="#step-6-同行者信息">null</a>step 6: 同行者信息</h2>
 <p>虽然我们俩个是一起去美国，但是我是去开会，女朋友是去旅游，所以这一页面，我们选择的都是No。</p>
 <h2 id="step-7-之前的美国旅行"><a class="header-anchor" href="#step-7-之前的美国旅行">null</a>step 7: 之前的美国旅行</h2>
 <p>之前从未去过美国，所以都是No</p>
 <h2 id="step-8-美国联系人信息"><a class="header-anchor" href="#step-8-美国联系人信息">null</a>step 8: 美国联系人信息</h2>
 <p>这是我花费时间最多的地方，鉴于我是去参加会议，所以之前一直以为这一页我应该填写 VTC 这个会议 General Chair 的信息。同事说，这类信息都会在会议发的邀请信上写出来的。所以一开始我填到这页时候就停了下来，等着 VTC 给我发信息了。谁知道 VTC 今年的组织比较混乱，我迟迟拿不到邀请信(现在都木有！！！)，所以最后我 Google 了一下 Chair 信息自己填了进去。后来网上说，其实填写你居住酒店的联系方式都是可以的。</p>
-<div style="text-align: center">
-![Point of contact information in USA](/images/USA_VISA/DS-160-Point-of-contact.png)
-</div>
+<img src="/2015/07/28/Apply-USA-VISA-in-Paris/images/USA_VISA/DS-160-Point-of-contact.png" title="Point of contact information in USA">
 <h2 id="step-9-父母信息"><a class="header-anchor" href="#step-9-父母信息">null</a>step 9: 父母信息</h2>
 <p>这一页无他可言。</p>
 <h2 id="step-10-工作-教育-培训"><a class="header-anchor" href="#step-10-工作-教育-培训">null</a>step 10: 工作/教育/培训</h2>
 <p>这一项里我犯过一个错误。我当时只填写了自己的研究生教育经历（居然忘记了填写自己的本科经历），因为我对网页上一条信息理解有误: 我以为只要填最近的一次教育经历就行。女朋友比我填 DS-160 的时间晚，所以我提醒了她要注意。不过事实证明，没有填写本科学习经历没有导致拒签，不过不建议效仿。</p>
-<div style="text-align: center">
-![Previous working/education/formation experience](/images/USA_VISA/DS-160-Previous-education.png)
-</div>
+<img src="/2015/07/28/Apply-USA-VISA-in-Paris/images/USA_VISA/DS-160-Previous-education.png" title="Previous working/education/formation experience">
 <h2 id="step-11-犯罪记录"><a class="header-anchor" href="#step-11-犯罪记录">null</a>step 11: 犯罪记录</h2>
 <p>这一页我基本是当做拓展词汇量的阅读来做了，都是些很有意思的问题，基本上选择的都是 No 吧。</p>
 <p>当一切信息都填写完毕之后，会让你上传照片的。我是用自己的Mac在自己的办公室照的，可以通过这个<a href="http://travel.state.gov/content/visas/english/general/photos/digital-image-requirements.html" target="_blank" rel="noopener">网站</a>来检验是不是符合标准。而且最后VISA上面用的就是我自己照的这张照片（色调偏暗，没有大使馆里的Photomaton照出来的清晰，这是后话。）回顾起来，填写 DS-160 表格，我居然用了两个星期！！！尤其是填写Point of Contact in USA。其他小伙伴在填写时候记得避免我这样的错误。</p>
@@ -2030,9 +1957,7 @@ QQ, skype之类的还有<br>
 <li>转账金额是152欧（不知道以后是否会变）其中包含了护照寄给你的邮费</li>
 </ul>
 <p>通过网银转账后，一般2，3个工作日，大使馆就能收到你的汇款，系统也就允许你选RDV日期了。我记得我是6月13日左右发出转账申请，6月15号我才可以选择RDV日期。当我进入选日期页面发现最早的RDV也是7月4，5号了。要命的是，我7月11日要跟女朋友去西班牙旅游啊，据说Easyjet登机的时候要求查看护照啊！如果我选择7月11日之前的 RDV，万一不幸被 check 了（就算是秒过，也很难保证我7月11日之前就拿到护照啊），那我的西班牙之旅岂不是就泡汤了。也就说为了保证不耽误西班牙之旅，我只能选择最早7月20日的 RDV！！！我心里当时对自己的那个恨啊。。。后来我心想：那就没事儿多刷刷 RDV 吧，看有没有更早的日期可选，没想到第二天早上就出现了个6月30日的。二话不说，赶紧预约上。女朋友也是，好像是6月20左右才可以选 RDV，当时能选的日期也很靠后了，后来也跟我一样，刷出来了6月30日的。(PS: 事实证明，从法国去西班牙，Easyjet 几乎不查看护照，Vuling 倒是要求了看护照，我直接给人家看了我的 Titre de sejour (长期居留卡)，人家也没说啥。)</p>
-<div style="text-align: center">
-![VISA Payment Instructions](/images/USA_VISA/VISA-Payment-Instruction.png)
-</div>
+<img src="/2015/07/28/Apply-USA-VISA-in-Paris/images/USA_VISA/VISA-Payment-Instruction.png" title="VISA Payment Instructions">
 <h1>材料准备</h1>
 <p>首先列出来我们共同准备的材料清单</p>
 <ul>
