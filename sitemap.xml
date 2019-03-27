@@ -2,6 +2,97 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://rennesong.com/2015/06/24/%E4%BB%8A%E5%A4%A9%E7%BB%83%E8%BD%A6%E5%8F%88%E6%9C%89%E4%B8%80%E4%B8%AA%E6%8C%AB%E8%B4%A5%E6%84%9F/</loc>
+    
+    <lastmod>2019-03-27T14:13:04.929Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2015/06/18/%E4%BB%8A%E5%A4%A9%E6%98%AF%E5%BC%80%E8%BD%A6%E7%9A%84%E7%AC%AC20%E4%B8%AA%E5%B0%8F%E6%97%B6/</loc>
+    
+    <lastmod>2019-03-27T14:12:53.677Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2016/10/23/french-useful-phrases/</loc>
+    
+    <lastmod>2019-03-27T13:59:16.892Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/03/25/linux-ovs-vxlan/</loc>
+    
+    <lastmod>2019-03-27T13:58:58.993Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/03/26/patched-ovs-older-odl/</loc>
+    
+    <lastmod>2019-03-27T13:58:51.424Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/03/24/ovs-tuto/</loc>
+    
+    <lastmod>2019-03-27T13:58:35.091Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2015/07/28/Apply-USA-VISA-in-Paris/</loc>
+    
+    <lastmod>2019-03-27T13:56:52.980Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/03/25/israel-visa/</loc>
+    
+    <lastmod>2019-03-27T13:56:17.920Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/03/25/104957/</loc>
+    
+    <lastmod>2019-03-27T13:52:01.723Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2015/08/02/how-to-establish-a-ssh-connection-between-two-PCs-behind-NAT/</loc>
+    
+    <lastmod>2019-03-27T13:49:42.342Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/index.html</loc>
+    
+    <lastmod>2019-03-27T13:48:32.165Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/about/index.html</loc>
+    
+    <lastmod>2019-03-26T10:38:50.910Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/03/25/113554/</loc>
+    
+    <lastmod>2019-03-25T21:31:19.169Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://rennesong.com/2019/03/25/hello-world/</loc>
     
     <lastmod>2019-03-25T14:52:30.032Z</lastmod>
@@ -19,48 +110,6 @@
     <loc>http://rennesong.com/tags/index.html</loc>
     
     <lastmod>2019-03-25T14:48:12.670Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2015/08/02/how-to-establish-a-ssh-connection-between-two-PCs-behind-NAT/</loc>
-    
-    <lastmod>2019-03-25T14:38:21.262Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/03/25/israel-visa/</loc>
-    
-    <lastmod>2019-03-25T13:58:34.813Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/03/25/104957/</loc>
-    
-    <lastmod>2019-03-25T13:46:47.817Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2015/07/28/Apply-USA-VISA-in-Paris/</loc>
-    
-    <lastmod>2019-03-25T11:26:07.138Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/03/25/113554/</loc>
-    
-    <lastmod>2019-03-25T10:39:48.968Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/about/index.html</loc>
-    
-    <lastmod>2019-03-25T10:27:10.941Z</lastmod>
     
   </url>
   
@@ -86,13 +135,6 @@
   </url>
   
   <url>
-    <loc>http://rennesong.com/2016/10/23/french-useful-phrases/</loc>
-    
-    <lastmod>2019-03-25T10:27:10.936Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://rennesong.com/2016/10/22/TP-IPv6/</loc>
     
     <lastmod>2019-03-25T10:27:10.936Z</lastmod>
@@ -101,13 +143,6 @@
   
   <url>
     <loc>http://rennesong.com/2015/08/01/how-to-install-ns-3-in-Ubuntu-15-04/</loc>
-    
-    <lastmod>2019-03-25T10:27:10.935Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/03/24/ovs-tuto/</loc>
     
     <lastmod>2019-03-25T10:27:10.935Z</lastmod>
     

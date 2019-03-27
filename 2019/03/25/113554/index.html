@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="Hello OVS!">
+  <meta name="description" content="nullBridge OpenvSwitch的网桥对应物理交换机，其功能是根据流规则，把从一个端口接收到的数据包转发到另一个或者多个端口 null网桥的fail-mode设置  standalone： 该模式下，没有运行controller的情况下，OVS会自动调整为普通交换机模式，像物理交换机一样，此时可能会有环路产生的问题。如果有controller的情况，OVS会自动变成 openflow交">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OVS tutorial">
 <meta property="og:url" content="http://rennesong.com/2019/03/25/113554/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
-<meta property="og:description" content="Hello OVS!">
+<meta property="og:description" content="nullBridge OpenvSwitch的网桥对应物理交换机，其功能是根据流规则，把从一个端口接收到的数据包转发到另一个或者多个端口 null网桥的fail-mode设置  standalone： 该模式下，没有运行controller的情况下，OVS会自动调整为普通交换机模式，像物理交换机一样，此时可能会有环路产生的问题。如果有controller的情况，OVS会自动变成 openflow交">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-25T10:39:48.968Z">
+<meta property="og:updated_time" content="2019-03-25T21:31:19.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OVS tutorial">
-<meta name="twitter:description" content="Hello OVS!">
+<meta name="twitter:description" content="nullBridge OpenvSwitch的网桥对应物理交换机，其功能是根据流规则，把从一个端口接收到的数据包转发到另一个或者多个端口 null网桥的fail-mode设置  standalone： 该模式下，没有运行controller的情况下，OVS会自动调整为普通交换机模式，像物理交换机一样，此时可能会有环路产生的问题。如果有controller的情况，OVS会自动变成 openflow交">
 
 
 
@@ -388,7 +388,7 @@
                 
               
 
-              <time title="创建时间：2019-03-25 11:35:56 / 修改时间：11:39:48" itemprop="dateCreated datePublished" datetime="2019-03-25T11:35:56+01:00">2019-03-25</time>
+              <time title="创建时间：2019-03-25 11:35:56 / 修改时间：22:31:19" itemprop="dateCreated datePublished" datetime="2019-03-25T11:35:56+01:00">2019-03-25</time>
             
 
             
@@ -427,7 +427,41 @@
       
 
       
-        <p>Hello OVS!</p>
+        <h2 id="bridge"><a class="header-anchor" href="#bridge">null</a>Bridge</h2>
+<p>OpenvSwitch的网桥对应物理交换机，其功能是根据流规则，把从一个端口接收到的数据包转发到另一个或者多个端口</p>
+<h3 id="网桥的fail-mode设置"><a class="header-anchor" href="#网桥的fail-mode设置">null</a>网桥的fail-mode设置</h3>
+<ul>
+<li>standalone： 该模式下，没有运行controller的情况下，OVS会自动调整为普通交换机模式，像物理交换机一样，此时可能会有环路产生的问题。如果有controller的情况，OVS会自动变成 openflow交换机</li>
+<li>secure： 该模式下，无论有没有controller，OVS都会作为openflow交换机运行， 也就是所有网桥上的端口，等待controller或者用户添加flow到OVS来进行通信。</li>
+</ul>
+<h2 id="port"><a class="header-anchor" href="#port">null</a>Port</h2>
+<p>端口是收发数据包的单元。每个端口都属于一个特定的网桥。端口收到的数据包会经过流规则的处理，发往其他端口；也会把其他端口来的数据包发送出去。主要有端口类型有：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Normal</td>
+<td>可以把操作系统的网络适配器绑定到OVS的某个网桥，OVS会生成一个普通端口处理这块网卡的收发数据包</td>
+</tr>
+<tr>
+<td style="text-align:center">Internal</td>
+<td>端口类型为Internal时，OVS创建虚拟网络适配器，端口接收到所有数据包都交给该网络适配器，发出的数据包交给OVS。OVS创建一个新网桥时，默认会创建一个与该网桥同名的Internal端口</td>
+</tr>
+<tr>
+<td style="text-align:center">Patch</td>
+<td>当存在多个OVS网桥时候，可以使用Patch端口连接两个网桥，Patch端口成对出现，分别位于两个网桥</td>
+</tr>
+<tr>
+<td style="text-align:center">Tunnel</td>
+<td>Tunnel端口是一种虚拟端口，支持使用gre或vxlan等隧道技术与位于网络上其他位置的远程端口通讯</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -467,6 +501,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/25/linux-ovs-vxlan/" rel="prev" title="linux_ovs_vxlan">
+                linux_ovs_vxlan <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -510,8 +548,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -526,12 +573,39 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
               
 
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
               
 
               
@@ -561,7 +635,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -610,6 +694,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#bridge"><span class="nav-number">1.</span> <span class="nav-text">nullBridge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网桥的fail-mode设置"><span class="nav-number">1.1.</span> <span class="nav-text">null网桥的fail-mode设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#port"><span class="nav-number">2.</span> <span class="nav-text">nullPort</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
