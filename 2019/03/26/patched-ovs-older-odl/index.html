@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="Troubleshooting nullOVS-2.6.1 with NSH support compilation and setup If you want to test OVS 2.6 with NSH patch, remember to use linux kernel older than 4.3.x 1configure: error: Linux kernel in /lib/m">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-27T13:58:51.424Z">
+<meta property="og:updated_time" content="2019-03-27T18:15:18.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Experimentation note on setting up service function chaining based on ODL oxygen and OVS 2.6.1 with NSH support">
 <meta name="twitter:description" content="Troubleshooting nullOVS-2.6.1 with NSH support compilation and setup If you want to test OVS 2.6 with NSH patch, remember to use linux kernel older than 4.3.x 1configure: error: Linux kernel in /lib/m">
@@ -406,7 +406,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-27 14:58:51" itemprop="dateModified" datetime="2019-03-27T14:58:51+01:00">2019-03-27</time>
+                <time title="修改时间：2019-03-27 19:15:18" itemprop="dateModified" datetime="2019-03-27T19:15:18+01:00">2019-03-27</time>
               
             
           </span>
@@ -494,6 +494,10 @@ The error is simple. The package add-apt-repository is not installed on your sys
 <h2 id="empty-openflow-tables"><a class="header-anchor" href="#empty-openflow-tables">null</a>Empty OpenFlow tables:</h2>
 <p>We notice that, even with RESTCONF API, the openflow tables are still empty!!!</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@classifier1:/# ovs-ofctl dump-flows -OOpenflow13 br-sfc</span><br><span class="line">OFPST_FLOW reply (OF1.3) (xid=0x2):</span><br><span class="line">root@classifier1:/#</span><br></pre></td></tr></table></figure>
+<p>I think this is due to the lack of <code>openvswitch-datapath-dkms*</code> package. As per its name, this package is important for data path of OVS.</p>
+<h2 id="rebuild-docker-image-after-modification-of-dockerfile-docker-compose-yaml"><a class="header-anchor" href="#rebuild-docker-image-after-modification-of-dockerfile-docker-compose-yaml">null</a>Rebuild docker image after modification of Dockerfile/docker-compose.yaml</h2>
+<p>I tried to install <code>openvswitch-datapath-dkms*</code> in each involved docker container. However, no matter how I modify the <code>Dockerfile</code>, I finally found that the required package has not been installed within each container.</p>
+<p>The reason relies in that if you run <code>docker-composer up</code> without option <code>build</code>, docker always create container with previousl built image, which has no required package.</p>
 <h2 id="none-v2"><a class="header-anchor" href="#none-v2">null</a></h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2019-03-27T09:03:20.805Z|00036|dpif|WARN|system@ovs-system: execute 2 failed (Invalid argument) on packet vlan_tci=0x0000,dl_src=46:27:01:57:2f:78,dl_dst=01:23:00:00:00:01,dl_type=0x88cc</span><br><span class="line"> mtu 0</span><br><span class="line">2019-03-27T09:03:23.948Z|00037|dpif|WARN|system@ovs-system: execute 2 failed (Invalid argument) on packet vlan_tci=0x0000,dl_src=46:27:01:57:2f:78,dl_dst=01:23:00:00:00:01,dl_type=0x88cc</span><br><span class="line"> mtu 0</span><br><span class="line">2019-03-27T09:03:28.945Z|00038|dpif|WARN|system@ovs-system: execute 2 failed (Invalid argument) on packet vlan_tci=0x0000,dl_src=46:27:01:57:2f:78,dl_dst=01:23:00:00:00:01,dl_type=0x88cc</span><br></pre></td></tr></table></figure>
 <p>Still invalid argument problem!! but why??</p>
@@ -568,6 +572,10 @@ The error is simple. The package add-apt-repository is not installed on your sys
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/03/27/sfc-mailing-list-takeaways/" rel="prev" title="Key takeaways from ODL SFC mailing list">
+                Key takeaways from ODL SFC mailing list <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -635,7 +643,7 @@ The error is simple. The package add-apt-repository is not installed on your sys
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -664,7 +672,11 @@ The error is simple. The package add-apt-repository is not installed on your sys
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -707,7 +719,11 @@ The error is simple. The package add-apt-repository is not installed on your sys
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -767,7 +783,7 @@ The error is simple. The package add-apt-repository is not installed on your sys
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Troubleshooting</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ovs-2-6-1-with-nsh-support-compilation-and-setup"><span class="nav-number">1.1.</span> <span class="nav-text">nullOVS-2.6.1 with NSH support compilation and setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ovs-2-6-1-cannot-create-ovs-bridge"><span class="nav-number">1.2.</span> <span class="nav-text">nullOVS-2.6.1 cannot create ovs-bridge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#none"><span class="nav-number">1.3.</span> <span class="nav-text">null</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#add-apt-repository-command-not-found-within-ubuntu-14-04-kernel-4-2"><span class="nav-number">1.4.</span> <span class="nav-text">nulladd-apt-repository: command not found, within ubuntu 14.04, kernel 4.2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ovs-in-docker-cannot-creata-ovs-bridge"><span class="nav-number">1.5.</span> <span class="nav-text">nullOVS in docker cannot creata ovs bridge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#anormal-error-logs-in-var-log-openvswitch-ovs-vswitchd-log"><span class="nav-number">1.6.</span> <span class="nav-text">nullAnormal error logs in /var/log/openvswitch/ovs-vswitchd.log</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#empty-openflow-tables"><span class="nav-number">1.7.</span> <span class="nav-text">nullEmpty OpenFlow tables:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#none-v2"><span class="nav-number">1.8.</span> <span class="nav-text">null</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Appendix</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#how-to-downgrade-linux-kernel-version-under-ubuntu-16-04"><span class="nav-number">2.1.</span> <span class="nav-text">nullHow to downgrade linux kernel version (under Ubuntu 16.04)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Troubleshooting</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ovs-2-6-1-with-nsh-support-compilation-and-setup"><span class="nav-number">1.1.</span> <span class="nav-text">nullOVS-2.6.1 with NSH support compilation and setup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ovs-2-6-1-cannot-create-ovs-bridge"><span class="nav-number">1.2.</span> <span class="nav-text">nullOVS-2.6.1 cannot create ovs-bridge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#none"><span class="nav-number">1.3.</span> <span class="nav-text">null</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#add-apt-repository-command-not-found-within-ubuntu-14-04-kernel-4-2"><span class="nav-number">1.4.</span> <span class="nav-text">nulladd-apt-repository: command not found, within ubuntu 14.04, kernel 4.2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ovs-in-docker-cannot-creata-ovs-bridge"><span class="nav-number">1.5.</span> <span class="nav-text">nullOVS in docker cannot creata ovs bridge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#anormal-error-logs-in-var-log-openvswitch-ovs-vswitchd-log"><span class="nav-number">1.6.</span> <span class="nav-text">nullAnormal error logs in /var/log/openvswitch/ovs-vswitchd.log</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#empty-openflow-tables"><span class="nav-number">1.7.</span> <span class="nav-text">nullEmpty OpenFlow tables:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rebuild-docker-image-after-modification-of-dockerfile-docker-compose-yaml"><span class="nav-number">1.8.</span> <span class="nav-text">nullRebuild docker image after modification of Dockerfile/docker-compose.yaml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#none-v2"><span class="nav-number">1.9.</span> <span class="nav-text">null</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Appendix</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#how-to-downgrade-linux-kernel-version-under-ubuntu-16-04"><span class="nav-number">2.1.</span> <span class="nav-text">nullHow to downgrade linux kernel version (under Ubuntu 16.04)</span></a></li></ol></li></ol></div>
             
 
           </div>
