@@ -104,7 +104,7 @@
 <meta property="og:description" content="I have one Linux server (I will call it as remote server in the following of this post) in my office, which is behind a NAT router and restrictive rewall. Now I want to SSH to the remote server while">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://rennesong.com/2015/08/02/how-to-establish-a-ssh-connection-between-two-PCs-behind-NAT/reverse_ssh_illustration.png">
-<meta property="og:updated_time" content="2019-03-27T13:49:42.342Z">
+<meta property="og:updated_time" content="2019-04-10T13:17:10.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="how to establish a ssh connection between two PCs behind NAT">
 <meta name="twitter:description" content="I have one Linux server (I will call it as remote server in the following of this post) in my office, which is behind a NAT router and restrictive rewall. Now I want to SSH to the remote server while">
@@ -407,7 +407,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-27 14:49:42" itemprop="dateModified" datetime="2019-03-27T14:49:42+01:00">2019-03-27</time>
+                <time title="修改时间：2019-04-10 15:17:10" itemprop="dateModified" datetime="2019-04-10T15:17:10+02:00">2019-04-10</time>
               
             
           </span>
@@ -502,7 +502,7 @@
 <li>web server (Apache2 or Nginx), SSH server and SSLH<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> are installed on the relay server. Please refer to~\cite{ssh_via_sslh} for more details.</li>
 </ul>
 <p>Provided that the operations on the relay server side are done, we now log into the home server can establish a reverse SSH tunnel with relay server with the following command:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -fN -R 10022:localhost:22 root@51.77.215.18 -p 443</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -fN -R 10022:localhost:22 root@51.77.215.18 -p 443</span><br></pre></td></tr></table></figure>
 <p>Some explanaition about above command:</p>
 <ul>
 <li>with option <code>p</code>, the destination port of SSH is set as 443, instead of 22, which is the default port for SSH. In other words, remote server will establish ssh connection with destination port <code>443</code>, which won’t be blocked by firewall.</li>
@@ -513,12 +513,22 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">    ServerAliveInterval 300</span><br><span class="line">    ServerAliveCountMax 2</span><br><span class="line">\end&#123;lstlisting&#125;</span><br><span class="line">You can also make your OpenSSH server keep alive all connections with clients by adding the following to /etc/ssh/sshd\_config:</span><br><span class="line">\begin&#123;lstlisting&#125;[language=bash,frame=single]</span><br><span class="line">Host *</span><br><span class="line">    ClientAliveInterval 300</span><br><span class="line">    ClientAliveCountMax 2</span><br></pre></td></tr></table></figure>
 <p>These settings will make the SSH client or server send a null packet to the other side every 300 seconds (5 minutes), and give up if it doesn’t receive any response after 2 tries, at which point the connection is likely to have been discarded anyway.</p>
 <p>\cite{macosx_ssh_terminal_color} describes how to use different terminal color schema when establishing SSH connection.</p>
+<h1>SSH from A to C through a intermedir server B</h1>
+<h2 id="simplify-your-life-with-an-ssh-config-file"><a class="header-anchor" href="#simplify-your-life-with-an-ssh-config-file">null</a>Simplify your life With an SSH Config File <sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></h2>
+<p>Create a SSH config file under path <code>~/.ssh/config</code>. This is the per-user configuration file.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> My personal VPS serves as a broker for connection from my Mac to my Ubnuntu server</span><br><span class="line">Host my_vps</span><br><span class="line">  HostName 51.77.215.18</span><br><span class="line">  User root</span><br><span class="line">  Port 443</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> my remote Ubuntu server</span><br><span class="line">Host ubuntu_server</span><br><span class="line"><span class="meta">#</span> example: ProxyCommand ssh -q my_vps nc -qo hostname.or.IP.address.internal.machine 22</span><br><span class="line"><span class="meta">#</span> change hostname.or.IP.address.internal.machine and port 22 to machine you like to reach</span><br><span class="line"><span class="meta">#</span> if you would from the `my_vps` machine</span><br><span class="line">ProxyCommand ssh -q my_vps nc -q0 localhost 22222</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> my vagrant vm running in my ubuntu_server</span><br><span class="line"><span class="meta">#</span> the following ssh command options are obtained from `ps aux | grep ssh` on my ubuntu_server.</span><br><span class="line">Host sfc103-vm</span><br><span class="line">  ProxyJump qsong@ubuntu_server</span><br><span class="line">  HostName 127.0.0.1</span><br><span class="line">  User vagrant</span><br><span class="line">  Port 2222</span><br><span class="line">  LogLevel FATAL</span><br><span class="line">  Compression yes</span><br><span class="line">  DSAAuthentication yes</span><br><span class="line">  IdentitiesOnly yes</span><br><span class="line">  StrictHostKeyChecking no</span><br><span class="line">  UserKnownHostsFile /dev/null</span><br><span class="line">  IdentityFile ~/Documents/sfc-patch/sfc-demo/sfc103/.vagrant/machines/odl/virtualbox/private_key</span><br></pre></td></tr></table></figure>
+<p>Also note that now you have a single SSH host target name for it, you can use this in other applications as well. E.g.: SCP to copy files.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp somefile user@internalmachine:~/</span><br></pre></td></tr></table></figure>
+<p>Copy your public key from A directly to C:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_rsa.pub qsong@ubuntu_server</span><br></pre></td></tr></table></figure>
+<p>This allows one to SSH from A to C without password.</p>
+<p>On my macbook pro, I have openssh 7.9p1 installed. From OpenSSH 7.3, <code>ProxyJump</code> is supported in <code>ssh_config</code>. I find that even though my remote <code>ubuntu_server</code> (having OpenSSH 7.2) have no support for such an option, this does not bother the using of <code>ProxyJump</code> on my macbook pro.</p>
 <h1>Mount remote directory on a remote server with SSHFS</h1>
 <p>If you use SSHFS on MacOS and the end point stops responding or crashes, you need to do new SSHFS connection. You need to either restart your mac or umount the old connection first.<br>
 I use sshfs to access data on my vmware ( Ubuntu ) – if that restarts, or crashes – I end up with the following error message:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount_osxfuse: mount point /xx/yy/zz is itself on a OSXFUSE volume</span><br></pre></td></tr></table></figure>
-<p>This post gives the cause and solution<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>. Simply speaking, the remote directory is not correctly unmounted. We need to find its mount point and unmount it another time.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshfs -o defer_permissions root@vps639023.ovh.net:/home/hansomesong /mnt/droplet/hansomesong</span><br></pre></td></tr></table></figure>
+<p>This post gives the cause and solution<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>. Simply speaking, the remote directory is not correctly unmounted. We need to find its mount point and unmount it another time.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshfs -o defer_permissions root@hostname.or.ip.address:/path/to/your/folder /mnt/path/to/your/mount_point</span><br></pre></td></tr></table></figure>
 <ul>
 <li>-o <code>defer\_permissions</code>: without this option, we will encounter error <code>permission defined</code> if we try to write something into the mounted directory.</li>
 </ul>
@@ -534,14 +544,15 @@ By itself, FUSE for OS X doesn’t do much, it provides the layer for userspace 
 <p>One one terminal and type into the following command:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -L 33333:localhost:22222 &lt;user_on_relay_server&gt;@&lt;relay_server_addr&gt;</span><br></pre></td></tr></table></figure>
 <p>With above command, one has to keep this terminal window open. If you want to keep this binding running in the background:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh -NfL 33333:localhost:22222 &lt;user_on_relay_server&gt;@&lt;relay_server_addr&gt;</span></span><br></pre></td></tr></table></figure>
-<p>Remember to adapt <code>&lt;user_on_relay_server&gt;</code> and <code>&lt;relay_server_addr&gt;</code> for your own case.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh -NfL 33333:localhost:22222 &lt;user_on_relay_server&gt;@&lt;relay_server_addr&gt;</span><br></pre></td></tr></table></figure>
+<p>Remember to adapt <code>&lt;user_on_relay_server&gt;</code> and <code>&lt;relay_server_addr&gt;</code> for your own case. The <code>-N</code> prevents SSH from executing a command on the remote system. This is useful when just forwarding ports.</p>
+<p>If you have a slow network, you may wish to include the <code>-C</code> option in both the ssh and sshfs commands as well to enable compression. Don’t bother if you are on a fast network as in the time taken to compress the file and send the smaller version, you can instead just get the uncompressed version quicker.</p>
 <h3 id="2-create-a-local-mount-point-and-mount-the-remote-file-system"><a class="header-anchor" href="#2-create-a-local-mount-point-and-mount-the-remote-file-system">null</a>2.create a local mount point and mount the remote file system</h3>
 <p>Then, mounting the directory <code>my_remote_server:/home/path/to/folder</code> to a local foler for example named <code>pcB</code> on <code>my_working_laptop</code>. First create a mount point:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir /mnt/pcB</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> mkdir /mnt/pcB</span><br></pre></td></tr></table></figure>
 <p>Where you mount it matters as that’s where the drive icon will appear. In the above example, I create the local mount point in the Desktop folder, which makes the drive appear on the Desktop when mounted. The downside of that, is then when the drive is not mounted, you have an empty folder that appear on the Desktop.</p>
 <p>Another popular approach is to mount it in <code>/Volumes</code>, where OS X traditionally mounts drives.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir /Volumes/server</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> mkdir /Volumes/server</span><br></pre></td></tr></table></figure>
 <p>Then mount the folder with the following command:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshfs -o defer_permissions -o port=33333 -o volname=sfc103demo &lt;user_at_my_remote_server&gt;@localhost:/home/path/to/folder /mnt/pcB</span><br></pre></td></tr></table></figure>
 <ul>
@@ -554,9 +565,26 @@ By itself, FUSE for OS X doesn’t do much, it provides the layer for userspace 
 <p>Remember to replace <code>/mnt/pcB</code>. In Mac OSX, one can also eject the mounted file system in the Finder. (key combination <code>cmd+shift+G</code> to open any folder within Finder window)。</p>
 <p>If you encounter the following messages:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount(/mnt/pcB): Resource busy -- try 'diskutil unmount'</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> fusermount -u /mnt/pcB/</span><br></pre></td></tr></table></figure>
 <p>You may use:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diskutil unmount /mnt/pcB</span><br></pre></td></tr></table></figure>
-<p>You can refer to <sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup> for more details.</p>
+<p>You can refer to <sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup> for more details.</p>
+<h3 id="4-killing-the-tunnel"><a class="header-anchor" href="#4-killing-the-tunnel">null</a>4.Killing the tunnel <sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup></h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ps ax | grep "ssh_command" | awk '&#123;print $1&#125;' | \</span><br><span class="line">  xargs -i kill &#123;&#125; 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+<p>Firstly, ps is used to find all running processes. We then pipe the output to grep which looks for “ssh_command” (which should be replaced with whichever command you used to establish the tunnel). Then we use awk to return only the PID numbers for the relevant processes and these are finally piped to kill to terminate the process. All errors are redirected to /dev/null. For a simple explanation of output redirection, see this <a href="http://www.xaprb.com/blog/2006/06/06/what-does-devnull-21-mean/" target="_blank" rel="noopener">tutorial</a>.</p>
+<h1>Tcpdump over SSH tunnel and read capture with local wireshark</h1>
+<p>It’s often more useful to capture packets using <code>tcpdump</code> rather than <code>wireshark</code>. For example, you might want to do a remote capture and either don’t have GUI access or don’t have Wireshark installed on the remote machine.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -i &lt;interface-name&gt; -s 65535 -w &lt;some-file&gt;</span><br></pre></td></tr></table></figure>
+<p>Imagine now you want to capture traffic on remote server and use local wirehshark to read captured traffic.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh &lt;remote_server&gt; "sudo tcpdump -s0 -w - 'port 8080'" | wireshark -k -i -</span><br></pre></td></tr></table></figure>
+<p><code>tcpdump</code> requires priveldged right to be launched. To avoid inputing password, it is better enable password-less <code>sudo</code></p>
+<h2 id="open-the-etc-sudoers-file-as-root-of-course-by-running"><a class="header-anchor" href="#open-the-etc-sudoers-file-as-root-of-course-by-running">null</a>Open the /etc/sudoers file (as root, of course!) by running:</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo visudo</span><br></pre></td></tr></table></figure>
+<p><strong>Note that you should never edit /etc/sudoers with a regular text editor, such as Vim or nano, because they do not validate the syntax like the visudo editor!</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username     ALL=(ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure>
+<p>Replace username with your account username, of course. Save the file and exit. If you have any sort of syntax problem, visudo will warn you and you can abort the change or open the file for editing again.</p>
+<p>It is important to add this line at the end of the file, so that the other permissions do not override this directive, since they are processed in order.</p>
 <h2 id="special-issue-connection-closed-by-remote-host"><a class="header-anchor" href="#special-issue-connection-closed-by-remote-host">null</a>Special issue: connection closed by remote host</h2>
 <p>I haven’t connected from my Macbook Pro at home to my server at school since one month. Both my VPS and my laptop server has never been shut down. However,<br>
 it is very strange that the ssh server on my laptop server does not work. When I log into my VPS and further try to ssh into my laptop server, I was stuck with the following error (in the terminal of my VPS):</p>
@@ -580,9 +608,13 @@ it is very strange that the ssh server on my laptop server does not work. When I
 <ol class="footnotes-list">
 <li id="fn1" class="footnote-item"><p>RUTSCHLE YVES, SSLH, <a href="http://www.rutschle.net/tech/sslh/README.html" target="_blank" rel="noopener">http://www.rutschle.net/tech/sslh/README.html</a>. <a href="#fnref1" class="footnote-backref">↩</a></p>
 </li>
-<li id="fn2" class="footnote-item"><p><a href="https://phpsolved.com/mount-point-xyz-osxfuse-volume/" target="_blank" rel="noopener">https://phpsolved.com/mount-point-xyz-osxfuse-volume/</a> <a href="#fnref2" class="footnote-backref">↩</a></p>
+<li id="fn2" class="footnote-item"><p>Simplify Your Life With an SSH Config File, <a href="https://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/" target="_blank" rel="noopener">https://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/</a> <a href="#fnref2" class="footnote-backref">↩</a></p>
 </li>
-<li id="fn3" class="footnote-item"><p>FUSE and SSHFS on OS X, <a href="https://stuff-things.net/2015/05/20/fuse-and-sshfs-on-os-x/" target="_blank" rel="noopener">https://stuff-things.net/2015/05/20/fuse-and-sshfs-on-os-x/</a> <a href="#fnref3" class="footnote-backref">↩</a></p>
+<li id="fn3" class="footnote-item"><p><a href="https://phpsolved.com/mount-point-xyz-osxfuse-volume/" target="_blank" rel="noopener">https://phpsolved.com/mount-point-xyz-osxfuse-volume/</a> <a href="#fnref3" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>FUSE and SSHFS on OS X, <a href="https://stuff-things.net/2015/05/20/fuse-and-sshfs-on-os-x/" target="_blank" rel="noopener">https://stuff-things.net/2015/05/20/fuse-and-sshfs-on-os-x/</a> <a href="#fnref4" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>Mounting file systems over two SSH hops, <a href="https://www.larkinweb.co.uk/computing/mounting_file_systems_over_two_ssh_hops.html" target="_blank" rel="noopener">https://www.larkinweb.co.uk/computing/mounting_file_systems_over_two_ssh_hops.html</a> <a href="#fnref5" class="footnote-backref">↩</a></p>
 </li>
 </ol>
 </section>
@@ -730,7 +762,13 @@ it is very strange that the ssh server on my laptop server does not work. When I
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -777,7 +815,9 @@ it is very strange that the ssh server on my laptop server does not work. When I
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -837,7 +877,7 @@ it is very strange that the ssh server on my laptop server does not work. When I
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Reverse SSH Tunnel</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">SSH connection without password</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Enable the tunnel at boot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#special-case-outgoing-port-22-i-e-for-ssh-is-filtered-by-firewall"><span class="nav-number">3.1.</span> <span class="nav-text">nullSpecial case: outgoing port 22 (i.e. for SSH) is filtered by firewall</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Mount remote directory on a remote server with SSHFS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#problem-description"><span class="nav-number">4.1.</span> <span class="nav-text">nullProblem description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fuse-for-os-x"><span class="nav-number">4.2.</span> <span class="nav-text">nullFUSE for OS X</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#key-idea"><span class="nav-number">4.3.</span> <span class="nav-text">nullkey idea</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concret-steps"><span class="nav-number">4.4.</span> <span class="nav-text">nullconcret steps</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-bind-one-local-port-with-port-in-relay-server"><span class="nav-number">4.4.1.</span> <span class="nav-text">null1. Bind one local port with port in relay server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-create-a-local-mount-point-and-mount-the-remote-file-system"><span class="nav-number">4.4.2.</span> <span class="nav-text">null2.create a local mount point and mount the remote file system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-unmount-the-file-system"><span class="nav-number">4.4.3.</span> <span class="nav-text">null3.unmount the file system</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#special-issue-connection-closed-by-remote-host"><span class="nav-number">4.5.</span> <span class="nav-text">nullSpecial issue: connection closed by remote host</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Reverse SSH Tunnel</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">SSH connection without password</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Enable the tunnel at boot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#special-case-outgoing-port-22-i-e-for-ssh-is-filtered-by-firewall"><span class="nav-number">3.1.</span> <span class="nav-text">nullSpecial case: outgoing port 22 (i.e. for SSH) is filtered by firewall</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">SSH from A to C through a intermedir server B</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#simplify-your-life-with-an-ssh-config-file"><span class="nav-number">4.1.</span> <span class="nav-text">nullSimplify your life With an SSH Config File [2]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Mount remote directory on a remote server with SSHFS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#problem-description"><span class="nav-number">5.1.</span> <span class="nav-text">nullProblem description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fuse-for-os-x"><span class="nav-number">5.2.</span> <span class="nav-text">nullFUSE for OS X</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#key-idea"><span class="nav-number">5.3.</span> <span class="nav-text">nullkey idea</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concret-steps"><span class="nav-number">5.4.</span> <span class="nav-text">nullconcret steps</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-bind-one-local-port-with-port-in-relay-server"><span class="nav-number">5.4.1.</span> <span class="nav-text">null1. Bind one local port with port in relay server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-create-a-local-mount-point-and-mount-the-remote-file-system"><span class="nav-number">5.4.2.</span> <span class="nav-text">null2.create a local mount point and mount the remote file system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-unmount-the-file-system"><span class="nav-number">5.4.3.</span> <span class="nav-text">null3.unmount the file system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-killing-the-tunnel"><span class="nav-number">5.4.4.</span> <span class="nav-text">null4.Killing the tunnel [5]</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">Tcpdump over SSH tunnel and read capture with local wireshark</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#open-the-etc-sudoers-file-as-root-of-course-by-running"><span class="nav-number">6.1.</span> <span class="nav-text">nullOpen the /etc/sudoers file (as root, of course!) by running:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#special-issue-connection-closed-by-remote-host"><span class="nav-number">6.2.</span> <span class="nav-text">nullSpecial issue: connection closed by remote host</span></a></li></ol></li></ol></div>
             
 
           </div>
