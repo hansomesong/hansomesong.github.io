@@ -96,18 +96,17 @@
 
 
 
-  <meta name="description" content="Creation of VxLAN port with default UDP service port: key=flow is meant to get the tunnel ID from the flow and remote_ip=flow is meant to get the tunnel destination IP address from the flow 12# br-tun">
-<meta name="keywords" content="ovs,vxlan,linux">
+  <meta name="description" content="Create a new non-root user OVH 上购买的 VPS 在创建之初只有一个user: root. 使用下列命令查看当前VPS上都有哪些用户: 1cut -d: -f1 /etc/passwd 奇怪的是，当时从root以hansomesong的用户登录的时候，居然不是默认切换到该用户的home directory很奇怪，最后只能在.bashrc文件中加了一个cd指令解决 In">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to create VxLAN with Open Vswitch">
-<meta property="og:url" content="http://rennesong.com/2019/03/25/linux-ovs-vxlan/index.html">
+<meta property="og:title" content="打造趁手的 VPS">
+<meta property="og:url" content="http://rennesong.com/2019/04/17/vps-install-cofig/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
-<meta property="og:description" content="Creation of VxLAN port with default UDP service port: key=flow is meant to get the tunnel ID from the flow and remote_ip=flow is meant to get the tunnel destination IP address from the flow 12# br-tun">
+<meta property="og:description" content="Create a new non-root user OVH 上购买的 VPS 在创建之初只有一个user: root. 使用下列命令查看当前VPS上都有哪些用户: 1cut -d: -f1 /etc/passwd 奇怪的是，当时从root以hansomesong的用户登录的时候，居然不是默认切换到该用户的home directory很奇怪，最后只能在.bashrc文件中加了一个cd指令解决 In">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-08T10:46:13.153Z">
+<meta property="og:updated_time" content="2019-04-17T15:56:46.660Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to create VxLAN with Open Vswitch">
-<meta name="twitter:description" content="Creation of VxLAN port with default UDP service port: key=flow is meant to get the tunnel ID from the flow and remote_ip=flow is meant to get the tunnel destination IP address from the flow 12# br-tun">
+<meta name="twitter:title" content="打造趁手的 VPS">
+<meta name="twitter:description" content="Create a new non-root user OVH 上购买的 VPS 在创建之初只有一个user: root. 使用下列命令查看当前VPS上都有哪些用户: 1cut -d: -f1 /etc/passwd 奇怪的是，当时从root以hansomesong的用户登录的时候，居然不是默认切换到该用户的home directory很奇怪，最后只能在.bashrc文件中加了一个cd指令解决 In">
 
 
 
@@ -117,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="http://rennesong.com/2019/03/25/linux-ovs-vxlan/">
+  <link rel="canonical" href="http://rennesong.com/2019/04/17/vps-install-cofig/">
 
 
 
@@ -127,7 +126,7 @@
   };
 </script>
 
-  <title>How to create VxLAN with Open Vswitch | Rennesong's blog</title>
+  <title>打造趁手的 VPS | Rennesong's blog</title>
   
 
 
@@ -347,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/25/linux-ovs-vxlan/">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/17/vps-install-cofig/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="rennsong">
@@ -364,7 +363,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">How to create VxLAN with Open Vswitch
+          <h1 class="post-title" itemprop="name headline">打造趁手的 VPS
 
               
             
@@ -390,46 +389,16 @@
                 
               
 
-              <time title="创建时间：2019-03-25 20:49:27" itemprop="dateCreated datePublished" datetime="2019-03-25T20:49:27+01:00">2019-03-25</time>
+              <time title="创建时间：2019-04-17 15:44:14 / 修改时间：17:56:46" itemprop="dateCreated datePublished" datetime="2019-04-17T15:44:14+02:00">2019-04-17</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-08 12:46:13" itemprop="dateModified" datetime="2019-04-08T12:46:13+02:00">2019-04-08</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-networking/" itemprop="url" rel="index"><span itemprop="name">linux networking</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -459,19 +428,25 @@
       
 
       
-        <h1 id="creation-of-vxlan-port-with-default-udp-service-port">Creation of VxLAN port with default UDP service port:</h1>
-<p><code>key=flow</code> is meant to get the tunnel ID from the flow and <code>remote_ip=flow</code> is meant to get the tunnel destination IP address from the flow <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> br-tun is the name of ovs bridge</span></span><br><span class="line">ovs-vsctl add-port br-tun vxlan0 -- set Interface vxlan0  type=vxlan  options:remote_ip=flow options:key=flow</span><br></pre></td></tr></table></figure></p>
-<h1 id="create-the-vxlan-port-by-specifying-udp-destination-port-5000.">create the VxLAN port by specifying UDP destination port, 5000.</h1>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-port br-tun vxlan1 -- set Interface vxlan1 type=vxlan options:remote_ip=flow options:key=flow options:dst_port=5000</span><br></pre></td></tr></table></figure>
-<h1 id="create-openflow-flows-without-having-to-have-external-openflow-controller">Create Openflow flows without having to have external Openflow controller</h1>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl add-flow br-tun "in_port=LOCAL actions=set_tunnel:1,set_field:172.16.2.3-&gt;tun_dst,output:1"</span><br></pre></td></tr></table></figure>
-<p>or <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl add-flow br-tun "in_port=LOCAL actions=set_field:172.16.2.3-&gt;tun_dst, set_field:1-&gt;tun_id, output:1</span><br></pre></td></tr></table></figure></p>
-<p><code>set_tunnel</code> is used to specify the VNI. <code>set_field</code> to specify the tunnel destination.</p>
-<h1 id="ovs-nsh-测试脚本手动实验">OVS NSH 测试脚本手动实验</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">AT_BANNER([network service header (NSH)])</span><br><span class="line"></span><br><span class="line">### -----------------------------------------------------------------</span><br><span class="line">###   Simple NSH matching test case</span><br><span class="line">### -----------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">AT_SETUP([nsh - matching])</span><br><span class="line"></span><br><span class="line">OVS_VSWITCHD_START([dnl</span><br><span class="line">    set bridge br0 datapath_type=dummy \</span><br><span class="line">        protocols=OpenFlow10,OpenFlow13,OpenFlow14,OpenFlow15 -- \</span><br><span class="line">    add-port br0 p1 -- set Interface p1 type=dummy ofport_request=1 -- \</span><br><span class="line">    add-port br0 p2 -- set Interface p2 type=dummy ofport_request=2])</span><br><span class="line"></span><br><span class="line">AT_DATA([flows.txt], [dnl</span><br><span class="line">    table=0,in_port=1,dl_type=0x894f,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=255,nsh_c1=0x11223344,actions=set_field:0x2-&gt;nsh_flags,set_field:254-&gt;nsh_si,set_field:0x44332211-&gt;nsh_c1,2</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">AT_CHECK([</span><br><span class="line">    ovs-ofctl del-flows br0</span><br><span class="line">    ovs-ofctl -Oopenflow13 add-flows br0 flows.txt</span><br><span class="line">    ovs-ofctl -Oopenflow13 dump-flows br0 | ofctl_strip | sort | grep actions</span><br><span class="line">], [0], [dnl</span><br><span class="line"> in_port=1,dl_type=0x894f,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=255,nsh_c1=0x11223344 actions=set_field:2-&gt;nsh_flags,set_field:254-&gt;nsh_si,set_field:0x44332211-&gt;nsh_c1,output:2</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">AT_CHECK([</span><br><span class="line">    ovs-appctl ofproto/trace br0 &apos;in_port=1,dl_type=0x894f,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=255,nsh_c1=0x11223344,nsh_c2=0x55667788,nsh_c3=0x99aabbcc,nsh_c4=0xddeeff00&apos;</span><br><span class="line">], [0], [dnl</span><br><span class="line">Flow: in_port=1,vlan_tci=0x0000,dl_src=00:00:00:00:00:00,dl_dst=00:00:00:00:00:00,dl_type=0x894f,nsh_flags=0,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=255,nsh_c1=0x11223344,nsh_c2=0x55667788,nsh_c3=0x99aabbcc,nsh_c4=0xddeeff00,nw_proto=0,nw_tos=0,nw_ecn=0,nw_ttl=0</span><br><span class="line"></span><br><span class="line">bridge(&quot;br0&quot;)</span><br><span class="line">-------------</span><br><span class="line"> 0. in_port=1,dl_type=0x894f,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=255,nsh_c1=0x11223344, priority 32768</span><br><span class="line">    set_field:2-&gt;nsh_flags</span><br><span class="line">    set_field:254-&gt;nsh_si</span><br><span class="line">    set_field:0x44332211-&gt;nsh_c1</span><br><span class="line">    output:2</span><br><span class="line"></span><br><span class="line">Final flow: in_port=1,vlan_tci=0x0000,dl_src=00:00:00:00:00:00,dl_dst=00:00:00:00:00:00,dl_type=0x894f,nsh_flags=2,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=254,nsh_c1=0x44332211,nsh_c2=0x55667788,nsh_c3=0x99aabbcc,nsh_c4=0xddeeff00,nw_proto=0,nw_tos=0,nw_ecn=0,nw_ttl=0</span><br><span class="line">Megaflow: recirc_id=0,eth,in_port=1,dl_type=0x894f,nsh_flags=0,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=255,nsh_c1=0x11223344</span><br><span class="line">Datapath actions: set(nsh(flags=2,ttl=63,spi=0x123456,si=254,c1=0x44332211)),2</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">OVS_VSWITCHD_STOP</span><br><span class="line">AT_CLEANUP</span><br></pre></td></tr></table></figure>
-<p>我觉得 这里面 <code>dnl</code> 应该指代的是 <code>ovs-vsctl add-bridge br0</code>. 比如如下命令：<code>--</code> 双横线好像是代表 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-br br0 -- set bridge br0 datapath_type=netdev</span><br></pre></td></tr></table></figure></p>
-<h1 id="延伸阅读">延伸阅读</h1>
-<p><a href="http://netsecinfo.blogspot.com/2013/07/linux-ovs-vxlan-based-virtual-networks.html" target="_blank" rel="noopener">Linux OVS &amp; VxLAN based virtual networks</a> <a href="http://netsecinfo.blogspot.com/2011/12/vxlan-virtual-extensible-lan-virtual.html" target="_blank" rel="noopener">VXLAN (Virtual eXtensible LAN) - Virtual Data Centers - Tutorial</a> <a href="https://that.guru/blog/gnu-autotest/" target="_blank" rel="noopener">GNU AUTOTEST</a></p>
+        <h1 id="create-a-new-non-root-user">Create a new non-root user</h1>
+<p>OVH 上购买的 VPS 在创建之初只有一个user: <code>root</code>. 使用下列命令查看当前VPS上都有哪些用户: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -d: -f1 /etc/passwd</span><br></pre></td></tr></table></figure></p>
+<p>奇怪的是，当时从root以hansomesong的用户登录的时候，居然不是默认切换到该用户的home directory很奇怪，最后只能在<code>.bashrc</code>文件中加了一个<code>cd</code>指令解决</p>
+<h1 id="install-vnc-server-xfce4">Install VNC server + Xfce4</h1>
+<p>参考这个<a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-16-04" target="_blank" rel="noopener">链接</a>, 解释非常详细</p>
+<h1 id="shadowsocks-安装-通过网友提供的脚本">Shadowsocks 安装 (通过网友提供的脚本)</h1>
+<h2 id="shadowsocks-简介">Shadowsocks 简介</h2>
+<p>参考链接：https://vc2tea.com/whats-shadowsocks/ 写的非常不错！清晰！易懂！ ## 安装 (通过网友提供的脚本) 为了防止<a href="https://teddysun.com/486.html/comment-page-1#comments" target="_blank" rel="noopener">原链接</a>失效，还是手动复制一遍：</p>
+<p>使用root用户登录，运行以下命令: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</span><br><span class="line">chmod +x shadowsocks-all.sh</span><br><span class="line">./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log</span><br></pre></td></tr></table></figure></p>
+<p>安装完成后，脚本提示如下: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Congratulations, Shadowsocks-Python server install completed!</span><br><span class="line">Your Server IP        :  &lt;your.vps.ip.address&gt;</span><br><span class="line">Your Server Port      :  9164</span><br><span class="line">Your Password         :  &lt;password-to-shadowsocks-python-server&gt;</span><br><span class="line">Your Encryption Method:  aes-256-gcm</span><br><span class="line"></span><br><span class="line">Your QR Code: (For Shadowsocks Windows, OSX, Android and iOS clients)</span><br><span class="line"> ss://YWVzLTI1Ni1nY206MTIzNDU2QDUxLjc3LjIxNS4xODo5MTY0</span><br><span class="line">Your QR Code has been saved as a PNG file path:</span><br><span class="line"> /root/shadowsocks_python_qr.png</span><br><span class="line">Welcome to visit: https://teddysun.com/486.html</span><br><span class="line">Enjoy it!</span><br></pre></td></tr></table></figure></p>
+<h2 id="卸载方法-通过网友提供的脚本">卸载方法 (通过网友提供的脚本)</h2>
+<p>若已安装多个版本，则卸载时也需多次运行（每次卸载一种。使用root用户登录，运行以下命令： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./shadowsocks-all.sh uninstall</span><br></pre></td></tr></table></figure></p>
+<h2 id="启动脚本">启动脚本</h2>
+<p>启动脚本后面的参数含义，从左至右依次为：启动，停止，重启，查看状态。 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Shadowsocks-Python 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-python start | stop | restart | status</span><br><span class="line"><span class="meta">#</span><span class="bash">ShadowsocksR 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-r start | stop | restart | status</span><br><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-Go 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-go start | stop | restart | status</span><br><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-libev 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-libev start | stop | restart | status</span><br></pre></td></tr></table></figure></p>
+<h2 id="各版本默认配置文件">各版本默认配置文件</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-Python 版：</span></span><br><span class="line">/etc/shadowsocks-python/config.json</span><br><span class="line"><span class="meta">#</span><span class="bash">ShadowsocksR 版：</span></span><br><span class="line">/etc/shadowsocks-r/config.json</span><br><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-Go 版：</span></span><br><span class="line">/etc/shadowsocks-go/config.json</span><br><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-libev 版：</span></span><br><span class="line">/etc/shadowsocks-libev/config.json</span><br></pre></td></tr></table></figure>
+<h2 id="mac-osx-客户端如何使用-shadowsocks">Mac OSX 客户端如何使用 Shadowsocks</h2>
+<h3 id="通过shadowsocks-x-ng客户端">通过Shadowsocks-X NG客户端</h3>
+<p>通过客户端的好处是，全局都翻墙，而不仅仅只是浏览器翻墙了 下载地址：https://github.com/shadowsocks/ShadowsocksX-NG/releases ### 通过Chrome插件</p>
 
       
     </div>
@@ -493,16 +468,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/ovs/" rel="tag"># ovs</a>
-          
-            <a href="/tags/vxlan/" rel="tag"># vxlan</a>
-          
-            <a href="/tags/linux/" rel="tag"># linux</a>
-          
-        </div>
-      
 
       
       
@@ -512,8 +477,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/25/hello-world/" rel="next" title="Hexo 基本命令以及 Markdown 基本语法">
-                <i class="fa fa-chevron-left"></i> Hexo 基本命令以及 Markdown 基本语法
+              <a href="/2019/04/17/basic-number-theory/" rel="next" title="A basic tutorial about number theory">
+                <i class="fa fa-chevron-left"></i> A basic tutorial about number theory
               </a>
             
           </div>
@@ -521,10 +486,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/26/patched-ovs-older-odl/" rel="prev" title="Experimentation note on setting up service function chaining based on ODL oxygen and OVS 2.6.1 with NSH support">
-                Experimentation note on setting up service function chaining based on ODL oxygen and OVS 2.6.1 with NSH support <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -749,7 +710,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#creation-of-vxlan-port-with-default-udp-service-port"><span class="nav-number">1.</span> <span class="nav-text">Creation of VxLAN port with default UDP service port:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#create-the-vxlan-port-by-specifying-udp-destination-port-5000."><span class="nav-number">2.</span> <span class="nav-text">create the VxLAN port by specifying UDP destination port, 5000.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#create-openflow-flows-without-having-to-have-external-openflow-controller"><span class="nav-number">3.</span> <span class="nav-text">Create Openflow flows without having to have external Openflow controller</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ovs-nsh-测试脚本手动实验"><span class="nav-number">4.</span> <span class="nav-text">OVS NSH 测试脚本手动实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#延伸阅读"><span class="nav-number">5.</span> <span class="nav-text">延伸阅读</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#create-a-new-non-root-user"><span class="nav-number">1.</span> <span class="nav-text">Create a new non-root user</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#install-vnc-server-xfce4"><span class="nav-number">2.</span> <span class="nav-text">Install VNC server + Xfce4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shadowsocks-安装-通过网友提供的脚本"><span class="nav-number">3.</span> <span class="nav-text">Shadowsocks 安装 (通过网友提供的脚本)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shadowsocks-简介"><span class="nav-number">3.1.</span> <span class="nav-text">Shadowsocks 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载方法-通过网友提供的脚本"><span class="nav-number">3.2.</span> <span class="nav-text">卸载方法 (通过网友提供的脚本)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动脚本"><span class="nav-number">3.3.</span> <span class="nav-text">启动脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各版本默认配置文件"><span class="nav-number">3.4.</span> <span class="nav-text">各版本默认配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mac-osx-客户端如何使用-shadowsocks"><span class="nav-number">3.5.</span> <span class="nav-text">Mac OSX 客户端如何使用 Shadowsocks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过shadowsocks-x-ng客户端"><span class="nav-number">3.5.1.</span> <span class="nav-text">通过Shadowsocks-X NG客户端</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
