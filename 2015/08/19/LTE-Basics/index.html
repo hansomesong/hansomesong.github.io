@@ -16,7 +16,7 @@
 
 <html class="theme-next mist use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -46,19 +46,19 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
 
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -71,7 +71,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    version: '7.0.1',
+    version: '7.1.0',
     sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
     back2top_sidebar: false,
@@ -114,7 +114,8 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="http://rennesong.com/2015/08/19/LTE-Basics/">
 
 
@@ -162,7 +163,7 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -173,7 +174,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -441,12 +442,10 @@
       
         <p>此贴是一个草稿性质的帖子，目的是记录下我对LTE的基础知识的理解和总结，若干时间后，此贴必将是一个宝贵的财富。</p>
 <p>When a UE has packets to transmit, it performs random access (RA) during an allowable time slot. This timeslot is called an Access Grant Time Interval(ACGI) or RA opportunity (i.e., RA-slot).</p>
-<p>The minimum resource scheduling unit for downlink and uplink transmission is referred to as an RB. One RB consists of 12 subcarriers (180 kHz) in the frequency domain and one subframe (1 ms) in the time domain. Details of the LTE-A physical layer is provided in [3GPP TS 36.300 V11.2.0, “Evolved Universal Terrestrial Radio Access (E-UTRA) and Evolved Universal Terrestrial Radio Access Network (EUTRAN), Overall Description,” June 2012., Sec. 5], and a brief review of M2M scheduling and signaling over LTE-A is provided in [4].<br>
-RA allows MTC devices to request a connection initialization. The RA-slots have bandwidth corresponding to six RBs (1.08 MHz) in the frequency domain, and the basic duration of an RA-slot is 1 ms in the time domain.</p>
+<p>The minimum resource scheduling unit for downlink and uplink transmission is referred to as an RB. One RB consists of 12 subcarriers (180 kHz) in the frequency domain and one subframe (1 ms) in the time domain. Details of the LTE-A physical layer is provided in [3GPP TS 36.300 V11.2.0, “Evolved Universal Terrestrial Radio Access (E-UTRA) and Evolved Universal Terrestrial Radio Access Network (EUTRAN), Overall Description,” June 2012., Sec. 5], and a brief review of M2M scheduling and signaling over LTE-A is provided in [4]. RA allows MTC devices to request a connection initialization. The RA-slots have bandwidth corresponding to six RBs (1.08 MHz) in the frequency domain, and the basic duration of an RA-slot is 1 ms in the time domain.</p>
 <p>In LTE-Advanced networks, radio resources are usually divided into resource blocks (RBs) along the frequency domain per time slot, which is also referred to as subchannels in radio resource allocation.</p>
 <p>In the LTE-A, RA can be used for initial access to establish a radio link, resource request when no uplink radio resource has been allocated, scheduling request if no dedicated scheduling request has been configured (i.e., no dedicated physical uplink control channel [PUCCH] is available), and re-establishing a radio link after failure.</p>
-<p>在物理层方面 \cite{KanZheng12}：<br>
-In order to meet the requirements of LTE- Advanced such as peak data rates of up to 1 Gb/s, more spectrum bands are needed. Besides the existing carriers for 3G networks, spectrum bands located at 450–470 MHz, 698–790 MHz, 2.3–2.4 GHz, and 3.4–3.6 GHz can be used for the deployment of LTE and LTE-Advanced networks. Moreover, LTE-Advanced has been defined to support scalable carrier bandwidth exceeding 20 MHz, potentially up to 100 MHz, in a variety of carriers for deployments.</p>
+<p>在物理层方面 ： In order to meet the requirements of LTE- Advanced such as peak data rates of up to 1 Gb/s, more spectrum bands are needed. Besides the existing carriers for 3G networks, spectrum bands located at 450–470 MHz, 698–790 MHz, 2.3–2.4 GHz, and 3.4–3.6 GHz can be used for the deployment of LTE and LTE-Advanced networks. Moreover, LTE-Advanced has been defined to support scalable carrier bandwidth exceeding 20 MHz, potentially up to 100 MHz, in a variety of carriers for deployments.</p>
 
       
     </div>
@@ -477,8 +476,8 @@ In order to meet the requirements of LTE- Advanced such as peak data rates of up
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/02/how-to-establish-a-ssh-connection-between-two-PCs-behind-NAT/" rel="next" title="how to establish a ssh connection between two PCs behind NAT">
-                <i class="fa fa-chevron-left"></i> how to establish a ssh connection between two PCs behind NAT
+              <a href="/2015/08/02/ssh-tuto/" rel="next" title="Simplify your life with SSH">
+                <i class="fa fa-chevron-left"></i> Simplify your life with SSH
               </a>
             
           </div>
@@ -549,7 +548,7 @@ In order to meet the requirements of LTE- Advanced such as peak data rates of up
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -588,7 +587,13 @@ In order to meet the requirements of LTE- Advanced such as peak data rates of up
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -637,7 +642,9 @@ In order to meet the requirements of LTE- Advanced such as peak data rates of up
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -721,7 +728,7 @@ In order to meet the requirements of LTE- Advanced such as peak data rates of up
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.1</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
 
 
 
@@ -799,31 +806,48 @@ In order to meet the requirements of LTE- Advanced such as peak data rates of up
   
 
 
-  <script src="/js/src/utils.js?v=7.0.1"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script src="/js/src/motion.js?v=7.0.1"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
-
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
   
-  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
-<script src="/js/src/post-details.js?v=7.0.1"></script>
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
 
 
 
   
 
 
-  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
   

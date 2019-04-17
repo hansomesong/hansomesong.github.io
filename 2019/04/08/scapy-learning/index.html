@@ -16,7 +16,7 @@
 
 <html class="theme-next mist use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -46,19 +46,19 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
 
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -71,7 +71,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    version: '7.0.1',
+    version: '7.1.0',
     sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
     back2top_sidebar: false,
@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="Scapy 安装 https://github.com/phaethon/kamene. kamene is more than buggy and outdated. It’s based on a 2015 version of scapy, and is missing around 3000 commits (in year of 2018) https://github.com/secd">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-09T16:42:16.084Z">
+<meta property="og:updated_time" content="2019-04-12T10:04:48.962Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="scapy-learning">
 <meta name="twitter:description" content="Scapy 安装 https://github.com/phaethon/kamene. kamene is more than buggy and outdated. It’s based on a 2015 version of scapy, and is missing around 3000 commits (in year of 2018) https://github.com/secd">
@@ -115,7 +115,8 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="http://rennesong.com/2019/04/08/scapy-learning/">
 
 
@@ -163,7 +164,7 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -174,7 +175,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -406,7 +407,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-09 18:42:16" itemprop="dateModified" datetime="2019-04-09T18:42:16+02:00">2019-04-09</time>
+                <time title="修改时间：2019-04-12 12:04:48" itemprop="dateModified" datetime="2019-04-12T12:04:48+02:00">2019-04-12</time>
               
             
           </span>
@@ -465,33 +466,31 @@
       
 
       
-        <h1>Scapy 安装</h1>
-<p><a href="https://github.com/phaethon/kamene" target="_blank" rel="noopener">https://github.com/phaethon/kamene</a>. kamene is more than buggy and outdated. It’s based on a 2015 version of scapy, and is missing around 3000 commits (in year of 2018)</p>
-<p><a href="https://github.com/secdev/scapy" target="_blank" rel="noopener">https://github.com/secdev/scapy</a> 这个明显更活跃 功能也最全面 比如有对NSH的支持</p>
-<h1>Scapy 开发过程中的问题</h1>
+        <h1 id="scapy-安装">Scapy 安装</h1>
+<p>https://github.com/phaethon/kamene. kamene is more than buggy and outdated. It’s based on a 2015 version of scapy, and is missing around 3000 commits (in year of 2018)</p>
+<p>https://github.com/secdev/scapy 这个明显更活跃 功能也最全面 比如有对NSH的支持</p>
+<h1 id="scapy-开发过程中的问题">Scapy 开发过程中的问题</h1>
 <ul>
 <li>从版本 2.2.0 开始，scapy 社区有人创建了一个只支持 python 3 的项目克隆(fork). 遗憾的是，该项目克隆发展有些混乱，并且没有将共享回馈给 scapy 社区。更严重的是，这个项目克隆被有些 Linux 发行版被打包成<code>python3-scapy</code>软件包，被 PyPI 收录成为了<code>scapy-python3</code>. 这给用户的使用带来了更大的困扰.</li>
 <li>从版本 2.4.0 开始, scapy 同时支持 python 3 和 Python 2. 开源项目都建议以 Scapy v2.4.0 官方代码基础. 该项目克隆被重命名为 <a href="https://github.com/phaethon/kamene" target="_blank" rel="noopener">kamene</a>.</li>
 </ul>
-<h1>Scapy API 查询</h1>
-<p><a href="https://fossies.org/dox/scapy-2.4.2/namespacescapy_1_1sendrecv.html" target="_blank" rel="noopener">https://fossies.org/dox/scapy-2.4.2/namespacescapy_1_1sendrecv.html</a></p>
-<h1></h1>
-<p>sniff<br>
-The filter parameter needs a BPF filter. The correct syntax is hence <code>filter=&quot;ether dst aa:bb:cc:dd:ee:ff&quot;</code>.</p>
+<h1 id="scapy-教程">Scapy 教程</h1>
+<p>https://thepacketgeek.com/scapy-sniffing-with-custom-actions-part-1/</p>
+<h1 id="scapy-api-查询">Scapy API 查询</h1>
+<p>https://fossies.org/dox/scapy-2.4.2/namespacescapy_1_1sendrecv.html</p>
+<h1 id="section"></h1>
+<p>sniff The filter parameter needs a BPF filter. The correct syntax is hence <code>filter="ether dst aa:bb:cc:dd:ee:ff"</code>.</p>
 <p>Paramter <code>count</code> allows to limite la capture à 5 paquets (0 indique «sans arrêt»).</p>
 <p><code>filter</code> permet de donner une expression de filtrage avec la syntaxe de <code>tcpdump</code>.</p>
-<h1>send back modified packet</h1>
+<h1 id="send-back-modified-packet">send back modified packet</h1>
 <ul>
 <li>send(): send a Layer 3 packet</li>
 <li>sendp(): send a Layer 2 packet</li>
 </ul>
-<h1>Troubleshooting</h1>
-<h2 id="通过-ssh-远程到另一台服务器上启动-scapy"><a class="header-anchor" href="#通过-ssh-远程到另一台服务器上启动-scapy">null</a>通过 SSH 远程到另一台服务器上启动 scapy</h2>
-<p>当我SSH进远程服务器试着执行<code>sudo scapy</code>的时候，遇到了如下错误. 有意思的是，通过teamviewer远程到远程服务器的时候，scapy 顺利启动并没有任何问题！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Failed to connect to Mir: Failed to connect to server socket: No such file or directory</span><br><span class="line">Unable to init server: Could not connect: Connection refused</span><br><span class="line"></span><br><span class="line">(scapy:29722): Gtk-WARNING **: Locale not supported by C library.</span><br><span class="line">    Using the fallback &apos;C&apos; locale.</span><br><span class="line">Failed to connect to Mir: Failed to connect to server socket: No such file or directory</span><br><span class="line">Unable to init server: Could not connect: Connection refused</span><br><span class="line"></span><br><span class="line">(scapy:29722): Gdk-CRITICAL **: gdk_cursor_new_for_display: assertion &apos;GDK_IS_DISPLAY (display)&apos; failed</span><br></pre></td></tr></table></figure>
-<p>解决方案：<br>
-在发起 SSH 连接的电脑(而不是被远程访问的电脑)终端里输入如下命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export DISPLAY=:0</span><br></pre></td></tr></table></figure>
+<h1 id="troubleshooting">Troubleshooting</h1>
+<h2 id="通过-ssh-远程到另一台服务器上启动-scapy">通过 SSH 远程到另一台服务器上启动 scapy</h2>
+<p>当我SSH进远程服务器试着执行<code>sudo scapy</code>的时候，遇到了如下错误. 有意思的是，通过teamviewer远程到远程服务器的时候，scapy 顺利启动并没有任何问题！ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Failed to connect to Mir: Failed to connect to server socket: No such file or directory</span><br><span class="line">Unable to init server: Could not connect: Connection refused</span><br><span class="line"></span><br><span class="line">(scapy:29722): Gtk-WARNING **: Locale not supported by C library.</span><br><span class="line">    Using the fallback &apos;C&apos; locale.</span><br><span class="line">Failed to connect to Mir: Failed to connect to server socket: No such file or directory</span><br><span class="line">Unable to init server: Could not connect: Connection refused</span><br><span class="line"></span><br><span class="line">(scapy:29722): Gdk-CRITICAL **: gdk_cursor_new_for_display: assertion &apos;GDK_IS_DISPLAY (display)&apos; failed</span><br></pre></td></tr></table></figure></p>
+<p>解决方案： 在发起 SSH 连接的电脑(而不是被远程访问的电脑)终端里输入如下命令： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export DISPLAY=:0</span><br></pre></td></tr></table></figure></p>
 <p>有的网友说，在他们的机器里(Gnome on Ubuntu 16.04) <code>DISPLAY=:1</code> 有用.</p>
 
       
@@ -540,6 +539,10 @@ The filter parameter needs a BPF filter. The correct syntax is hence <code>filte
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/11/sublime-tips/" rel="prev" title="sublime-tips">
+                sublime-tips <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -608,7 +611,7 @@ The filter parameter needs a BPF filter. The correct syntax is hence <code>filte
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -647,7 +650,13 @@ The filter parameter needs a BPF filter. The correct syntax is hence <code>filte
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -696,7 +705,9 @@ The filter parameter needs a BPF filter. The correct syntax is hence <code>filte
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -756,7 +767,7 @@ The filter parameter needs a BPF filter. The correct syntax is hence <code>filte
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Scapy 安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Scapy 开发过程中的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Scapy API 查询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">send back modified packet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">Troubleshooting</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通过-ssh-远程到另一台服务器上启动-scapy"><span class="nav-number">6.1.</span> <span class="nav-text">null通过 SSH 远程到另一台服务器上启动 scapy</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#scapy-安装"><span class="nav-number">1.</span> <span class="nav-text">Scapy 安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scapy-开发过程中的问题"><span class="nav-number">2.</span> <span class="nav-text">Scapy 开发过程中的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scapy-教程"><span class="nav-number">3.</span> <span class="nav-text">Scapy 教程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scapy-api-查询"><span class="nav-number">4.</span> <span class="nav-text">Scapy API 查询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-number">5.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#send-back-modified-packet"><span class="nav-number">6.</span> <span class="nav-text">send back modified packet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#troubleshooting"><span class="nav-number">7.</span> <span class="nav-text">Troubleshooting</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通过-ssh-远程到另一台服务器上启动-scapy"><span class="nav-number">7.1.</span> <span class="nav-text">通过 SSH 远程到另一台服务器上启动 scapy</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -797,7 +808,7 @@ The filter parameter needs a BPF filter. The correct syntax is hence <code>filte
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.1</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
 
 
 
@@ -875,31 +886,48 @@ The filter parameter needs a BPF filter. The correct syntax is hence <code>filte
   
 
 
-  <script src="/js/src/utils.js?v=7.0.1"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script src="/js/src/motion.js?v=7.0.1"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
-
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
   
-  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
-<script src="/js/src/post-details.js?v=7.0.1"></script>
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
 
 
 
   
 
 
-  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
   

@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="I have one Ubuntu Linux server (I will call it as remote server in the following of this post) in my office, which is behind a NAT router and restrictive rewall. Now I want to SSH to the remote server">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Simplify your life with SSH">
+<meta property="og:url" content="http://rennesong.com/2015/08/02/ssh-tuto/index.html">
+<meta property="og:site_name" content="Rennesong&#39;s blog">
+<meta property="og:description" content="I have one Ubuntu Linux server (I will call it as remote server in the following of this post) in my office, which is behind a NAT router and restrictive rewall. Now I want to SSH to the remote server">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://rennesong.com/2015/08/02/ssh-tuto/reverse_ssh_illustration.png">
+<meta property="og:updated_time" content="2019-04-14T19:28:37.779Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simplify your life with SSH">
+<meta name="twitter:description" content="I have one Ubuntu Linux server (I will call it as remote server in the following of this post) in my office, which is behind a NAT router and restrictive rewall. Now I want to SSH to the remote server">
+<meta name="twitter:image" content="http://rennesong.com/2015/08/02/ssh-tuto/reverse_ssh_illustration.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://rennesong.com/2015/08/02/ssh-tuto/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Simplify your life with SSH | Rennesong's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rennesong's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Blog my life from now on!</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2015/08/02/ssh-tuto/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Simplify your life with SSH
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-08-02 14:22:43" itemprop="dateCreated datePublished" datetime="2015-08-02T14:22:43+02:00">2015-08-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-14 21:28:37" itemprop="dateModified" datetime="2019-04-14T21:28:37+02:00">2019-04-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SSH/" itemprop="url" rel="index"><span itemprop="name">SSH</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>I have one Ubuntu Linux server (I will call it as remote server in the following of this post) in my office, which is behind a NAT router and restrictive rewall. Now I want to SSH to the remote server while I'm away from my office. How would you set that up?</p>
+<p>SSH portforwarding will certainly be an option. However, port forwarding can become tricky if you are dealing with multiple nested NAT environment. Besides, it can be interfered with under various ISP-specific conditions, such as restrictive firewalls which block forwarded ports, or carrier-grade NAT which shares IPv4 addresses among users.</p>
+<figure>
+<img src="/2015/08/02/ssh-tuto/reverse_ssh_illustration.png" alt="Reverse SSH Tunnel Illustration"><figcaption>Reverse SSH Tunnel Illustration</figcaption>
+</figure>
+<h1 id="part-1-reverse-ssh-tunnel">Part 1: Reverse SSH Tunnel</h1>
+<p>One alternative to SSH port forwarding is reverse SSH tunneling. The concept of reverse SSH tunneling is simple. For this, you will need another host (so-called "relay host") outside your restrictive office network, which you can connect to via SSH from where you are. You could set up a relay host using a VPS instance with a public IP address. What you do then is to set up a persistent SSH tunnel from the remote server in your office network to the public relay host. With that, you can connect "back" to the remote server from the relay host (which is why it's called a "reverse" tunnel). As long as the relay host is reachable to you, you can connect to your remote server wherever you are, or however restrictive your NAT or firewall is in your office network.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -fN -R &lt;your_selected_port&gt;:localhost:22 &lt;relayserver_username&gt;@relayserver</span><br></pre></td></tr></table></figure>
+<p>Some explanations about the above command: * term <code>&lt;your_selected_port&gt;</code> is any arbitrary unoccupied port number (e.g. 10222) that you can choose on the relay server(for exampler, your VPS). Similarly, term <code>&lt;relayserver_username&gt;</code> should be replaced by your user name on the relay server; * with the option combination <code>fN</code>, SSH will go right into the background once you successfully authenticate with an SSH server (in this case, relay server). This option is useful when you do not want to execute any command on a remote SSH server, and just want to forward ports; * option <code>R</code>, along side with string <code>&lt;your_selected_port&gt;:localhost:22</code> defines a reverse SSH tunnel. It forwards traffic received by port <code>&lt;your_selected_port&gt;</code> of relay server to port 22 of homeserver.</p>
+<p>Now I will log into my VPS with root user and check the opening port on my VPS:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;user_name&gt;@&lt;your_machine_name&gt;:~# netstat -autn | grep 22222</span><br><span class="line">tcp        0      0 127.0.0.1:22222         0.0.0.0:*               LISTEN</span><br><span class="line">tcp6       0      0 ::1:22222               :::*                    LISTEN</span><br></pre></td></tr></table></figure>
+<p>Now that you can ssh into your remote server with the following command: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@vps639023:~# ssh -p &lt;your_selected_port&gt; &lt;username_at_remote_server&gt;@localhost</span><br></pre></td></tr></table></figure></p>
+<p>, where <code>&lt;your_selected_port&gt;</code> should be replaced by port number such as 22222.</p>
+<h2 id="special-case-outgoing-port-22-i.e.-for-ssh-is-filtered-by-firewall">Special case: outgoing port 22 (i.e. for SSH) is filtered by firewall</h2>
+<p>During the establishment of reverse SSH tunnel (i.e. from remote server to relay server), it is very possible that the remote server has no outbound SSH access to a machine on the public Internet (in my case: my VPS instance), because port <code>22</code> is blokced by restrictive firewall. With port <code>22</code> open allows malicious attackers establishing reverse tunnel and bypassing completely bypassing the firewall. Thus, in practice, some enterprise may block the outbound port 22 for the sake of network security. In this case, how we could establish reverse SSH tunnel?</p>
+<p>The answer is yes if: * the outbound port 443 (i.e. for HTTPS) is not filtered by the firewall in the network of remote server; * web server (Apache2 or Nginx), SSH server and SSLH[^sslh] are installed on the relay server. Please refer to~ for more details.</p>
+<p>Provided that the operations on the relay server side are done, we now log into the home server can establish a reverse SSH tunnel with relay server with the following command: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -fN -R 10022:localhost:22 root@51.77.215.18 -p 443</span><br></pre></td></tr></table></figure></p>
+<p>Some explanaition about above command: * with option <code>p</code>, the destination port of SSH is set as 443, instead of 22, which is the default port for SSH. In other words, remote server will establish ssh connection with destination port <code>443</code>, which won't be blocked by firewall.</p>
+<h1 id="part-2-enable-ssh-connection-without-password">Part 2: Enable SSH connection without password</h1>
+<p>You can also configure to enable log in without password. First you have to generate a public and private key pair in your relay server, namely your VPS <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@vps639023:~# ssh-keygen -t rsa -P &apos;&apos;</span><br></pre></td></tr></table></figure></p>
+<p>Then, you have to transfer the newly generated public key to your target server: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@vps639023:~# ssh-copy-id -i .ssh/id_rsa.pub &lt;user_at_remote_server&gt;@localhost -p 22222</span><br></pre></td></tr></table></figure></p>
+<p>Note that command <code>ssh-copy-id</code> relies on scp that uses port 22 as default port. Here we explicitly specify here the used port is 22222.</p>
+<h1 id="part-3-how-make-a-tunnel-persistent-autossh_ssh_tunneling">Part 3: How make a tunnel persistent [^autossh_ssh_tunneling]</h1>
+<p>By persistent I mean, that it is made sure the tunnel will always run. For example, once your ssh connection times out (By server-side timeout), your tunnel should be re-established automatically.</p>
+<p>Many NAT firewalls time out idle sessions after a certain period of time to keep their trunks clean. Sometimes the interval between session drops is 24 hours, but on many commodity firewalls, connections are killed after as little as 300 seconds.</p>
+<h2 id="ssh-command-option-serveraliveinterval-and-serveralivecountmax">3.1 SSH command option <code>ServerAliveInterval</code> and <code>ServerAliveCountMax</code></h2>
+<p>To avoid having your SSH sessions become unresponsive after e.g. 5 minutes, do the following (On Linux machine):</p>
+<p>To enable the keep alive system-wide (root access required), edit <code>/etc/ssh/ssh_config</code>; to set the settings for just your user, edit <code>~/.ssh/config</code> (create the file if it doesn’t exist).</p>
+<p>Insert the following snipet of code: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">    ServerAliveInterval 300</span><br><span class="line">    ServerAliveCountMax 2</span><br></pre></td></tr></table></figure></p>
+<p>You can also make your OpenSSH server keep alive all connections with clients by adding the following to <code>/etc/ssh/sshd_config</code>: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">    ClientAliveInterval 300</span><br><span class="line">    ClientAliveCountMax 2</span><br></pre></td></tr></table></figure></p>
+<p>These settings will make the SSH client or server send a null packet to the other side every 300 seconds (5 minutes), and give up if it doesn’t receive any response after 2 tries, at which point the connection is likely to have been discarded anyway.</p>
+<p> describes how to use different terminal color schema when establishing SSH connection.</p>
+<h2 id="autossh">3.2 AutoSSH</h2>
+<p>Autossh is a program to start a copy of ssh and monitor it, restarting it as necessary should it die or stop passing traffic.</p>
+<p>AutoSSH basic usage: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usage: autossh [-V] [-M monitor_port[:echo_port]] [-f] [SSH_OPTIONS]</span><br></pre></td></tr></table></figure></p>
+<p>The important part to remember is that <code>-f</code> (run in background) is not passed to the ssh command, but handled by autossh itself. Apart from that you can then use it just like you would use ssh to create any forward or reverse tunnels.</p>
+<p><strong>Note 1</strong>: Before you use autossh, make sure the connection works as expected by trying it with ssh first.</p>
+<p><strong>Note 2</strong>: Make sure you use public/private key authentification instead of password-based authentification when you use -f. This is required for ssh as well as for autossh, simply because in a background run a passphrase cannot be entered interactively.</p>
+<p>With <code>-M</code> AutoSSH will continuously send data back and forth through the pair of monitoring ports in order to keep track of an established connection. If no data is going through anymore, it will restart the connection. The specified monitoring and the port directly above (+1) must be free. The first one is used to send data and the one above to receive data on.</p>
+<p>Unfortunately, this is not too handy, as it must be made sure both ports (the specified one and the one directly above) a free (not used). So in order to overcome this problem, there is a better solution:</p>
+<p>ServerAliveInterval and ServerAliveCountMax – they cause the SSH client to send traffic through the encrypted link to the server. This will keep the connection alive when there is no other activity and also when it does not receive any alive data, it will tell AutoSSH that the connection is broken and AutoSSH will then restart the connection.</p>
+<p>The AutoSSH man page also recommends the second solution: &gt;-M [:echo_port], &gt;… &gt;In many ways this [ServerAliveInterval and ServerAliveCountMax options] may be a better solution than the monitoring port.</p>
+<p>You can disable the built-in AutoSSH monitoring port by giving it a value of 0: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autossh -M 0</span><br></pre></td></tr></table></figure></p>
+<p>Additionally you will also have to specify values for <code>ServerAliveInterval</code> and <code>ServerAliveCountMax</code>: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3"</span><br></pre></td></tr></table></figure></p>
+<table>
+<colgroup>
+<col style="width: 48%">
+<col style="width: 51%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ServerAliveInterval</td>
+<td style="text-align: left;">ServerAliveInterval: number of seconds that the client will wait before sending a null packet to the server (to keep the connection alive). Default: 30</td>
+</tr>
+<tr class="even">
+<td>ServerAliveCountMax</td>
+<td style="text-align: left;">Sets the number of server alive messages which may be sent without ssh receiving any messages back from the server. If this threshold is reached while server alive messages are being sent, ssh will disconnect from the server, terminating the session. Default: 3</td>
+</tr>
+</tbody>
+</table>
+<h1 id="part-4-enable-the-tunnel-at-system-boot">Part 4: Enable the tunnel at system boot</h1>
+<p>To make sure that even the remote server is restarted, we still have this reverse SSH tunnel, we configure that this server executes this command at boot time.</p>
+<p>In recent years, Linux distributions have increasingly transitioned from other <code>init</code> systems to <code>systemd</code>. The systemd suite of tools provides a fast and flexible init model for managing an entire machine from boot onwards. Refer to [^systemd_tuto] for a quick tutorial for systemd.</p>
+<h3 id="under-ubuntu-system">4.1 Under Ubuntu system</h3>
+<h4 id="modify-etcrc.local">Modify <code>/etc/rc.local</code></h4>
+<p>We are going to edit the /etc/rc.local file. This script normally does nothing, but gets executed at boot. If you make any errors in this script, your machine might not boot so make sure to do this correctly.</p>
+<p>Add the following instruction with your preferred editor into <code>/etc/rc.local</code> % credit:https://tex.stackexchange.com/questions/116534/lstlisting-line-wrapping <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autossh -M 10984 -N -f -o &quot;PubkeyAuthentication=yes&quot; -o &quot;PasswordAuthentication=no&quot; -i /path/to/.ssh/id_rsa -R 6666:localhost:22 remy@middleman -p 2222 &amp;</span><br></pre></td></tr></table></figure></p>
+<p>We have three new things in this command:</p>
+<ul>
+<li><code>-N</code>: Do not execute a command on the middleman machine</li>
+<li><code>-f</code>: drop in the background</li>
+<li><code>&amp;</code>: Execute this command but do not wait for output or an exit code. If this is not added, your machine might hang at boot.</li>
+</ul>
+<p>Save the file, and as make it executable if necessary: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /etc/rc.local</span><br></pre></td></tr></table></figure></p>
+<h3 id="use-cron-command">Use <code>cron</code> command</h3>
+<h3 id="create-systemd-service">Create systemd service</h3>
+<p>If you want a permanent SSH tunnel already created during boot time, you will (nowadays) have to create a systemd service and enable it. There is however an important thing to note about systemd and AutoSSH: -f (background usage) already implies AUTOSSH_GATETIME=0, however -f is not supported by systemd.</p>
+<blockquote>
+<p>http://www.freedesktop.org/software/systemd/man/systemd.service.html […] running programs in the background using “&amp;”, and other elements of shell syntax are not supported.</p>
+</blockquote>
+<p>So in the case of systemd we need to make use of AUTOSSH_GATETIME. Let’s look at a very basic service:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/systemd/system/revtun2vps.service</span><br><span class="line">[Unit]</span><br><span class="line">Description=AutoSSH managed reverse SSH tunnel service to bind local port 22 with port 22222 on VPS server</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Environment=&quot;AUTOSSH_GATETIME=0&quot;</span><br><span class="line">ExecStart=/usr/bin/autossh -M 0 -o &quot;ServerAliveInterval 30&quot; -o &quot;ServerAliveCountMax 3&quot; -N -R 5000:localhost:22 &lt;user_name&gt;@&lt;vps.host.name&gt; -p 443</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>One can refer to [^systemd_unit_file] for more details about the directives such as <code>after=</code>, <code>WantedBy</code>.</p>
+<p>问题：难道 systemd service 启动的 autossh 难道不需要指明运行在后台？</p>
+<p>Tell systemd that we have added some stuff: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure></p>
+<p>Start the service: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start revtun2vps.service</span><br></pre></td></tr></table></figure></p>
+<p>Enable during boot time: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable revtun2vps.service</span><br></pre></td></tr></table></figure></p>
+<h3 id="under-mac-osx">4.2 Under Mac OSX</h3>
+<p>On Mac, the alternative to service and systemctl is launchctl. Mac OSX relies on <code>launchctl</code> to manage the services that need to be started at boot time. Unfortunately, Systemd, which systemctl is a part of, is a service manager designed specifically for Linux and uses interfaces and constructs specific to it such as <code>cgroups</code>. There is no port of it to Mac OS.</p>
+<p><code>launchd</code>, a unified service-management framework, starts, stops and manages daemons, applications, processes, and scripts in mac OS. <code>launchd</code> has two main tasks. The first is to boot the system, and the second is to load and maintain services.</p>
+<h1 id="part-5-simplify-your-life-with-an-ssh-config-file-ssh_config_tuto">Part 5: Simplify your life With an SSH Config File [^ssh_config_tuto]</h1>
+<p>Create a SSH config file under path <code>~/.ssh/config</code>. This is the per-user configuration file. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> My personal VPS serves as a broker <span class="keyword">for</span> connection from my Mac to my Ubnuntu server</span></span><br><span class="line">Host my_vps</span><br><span class="line">  HostName 51.77.215.18</span><br><span class="line">  User root</span><br><span class="line">  Port 443</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> my remote Ubuntu server</span></span><br><span class="line">Host ubuntu_server</span><br><span class="line"><span class="meta">#</span><span class="bash"> example: ProxyCommand ssh -q my_vps nc -qo hostname.or.IP.address.internal.machine 22</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> change hostname.or.IP.address.internal.machine and port 22 to machine you like to reach</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">if</span> you would from the `my_vps` machine</span></span><br><span class="line">ProxyCommand ssh -q my_vps nc -q0 localhost 22222</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> my vagrant vm running <span class="keyword">in</span> my ubuntu_server</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> the following ssh <span class="built_in">command</span> options are obtained from `ps aux | grep ssh` on my ubuntu_server.</span></span><br><span class="line">Host sfc103-vm</span><br><span class="line">  ProxyJump qsong@ubuntu_server</span><br><span class="line">  HostName 127.0.0.1</span><br><span class="line">  User vagrant</span><br><span class="line">  Port 2222</span><br><span class="line">  LogLevel FATAL</span><br><span class="line">  Compression yes</span><br><span class="line">  DSAAuthentication yes</span><br><span class="line">  IdentitiesOnly yes</span><br><span class="line">  StrictHostKeyChecking no</span><br><span class="line">  UserKnownHostsFile /dev/null</span><br><span class="line">  IdentityFile ~/Documents/sfc-patch/sfc-demo/sfc103/.vagrant/machines/odl/virtualbox/private_key</span><br></pre></td></tr></table></figure></p>
+<p>Also note that now you have a single SSH host target name for it, you can use this in other applications as well. E.g.: SCP to copy files. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp somefile user@internalmachine:~/</span><br></pre></td></tr></table></figure></p>
+<p>Copy your public key from A directly to C: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_rsa.pub qsong@ubuntu_server</span><br></pre></td></tr></table></figure></p>
+<p>This allows one to SSH from A to C without password.</p>
+<p>On my macbook pro, I have <code>openssh 7.9p1</code> installed. From OpenSSH 7.3, <code>ProxyJump</code> is supported in <code>ssh_config</code>. I find that even though my remote <code>ubuntu_server</code> (having OpenSSH 7.2) have no support for such an option, this does not bother the using of <code>ProxyJump</code> on my macbook pro. # Part 6: Mount remote directory on a remote server with SSHFS If you use SSHFS on MacOS and the end point stops responding or crashes, you need to do new SSHFS connection. You need to either restart your mac or umount the old connection first. I use sshfs to access data on my vmware ( Ubuntu ) – if that restarts, or crashes – I end up with the following error message: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount_osxfuse: mount point /xx/yy/zz is itself on a OSXFUSE volume</span><br></pre></td></tr></table></figure></p>
+<p>This post gives the cause and solution[^1]. Simply speaking, the remote directory is not correctly unmounted. We need to find its mount point and unmount it another time.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshfs -o defer_permissions root@hostname.or.ip.address:/path/to/your/folder /mnt/path/to/your/mount_point</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-o <code>defer\_permissions</code>: without this option, we will encounter error <code>permission defined</code> if we try to write something into the mounted directory.</li>
+</ul>
+<h2 id="problem-description">Problem description</h2>
+<p>Now I have three machines: my working laptop (Mac OSX), my remote server (Ubuntu 16.04) and VPS server. I want to mount a directory in my remote Ubuntu server on my working laptop.</p>
+<h2 id="fuse-for-os-x">FUSE for OS X</h2>
+<p>The first step to using SSHFS is to install <a href="https://osxfuse.github.io/" target="_blank" rel="noopener">FUSE for OS X</a> (There’s a prior version called MacFUSE, you don’t want that). Once installed, reboot your Mac. By itself, FUSE for OS X doesn’t do much, it provides the layer for userspace filesystems, but no filesystems itself, so <a href="https://osxfuse.github.io/" target="_blank" rel="noopener">download</a> (found on the FfOSX page) and install SSHFS as well.</p>
+<h2 id="key-idea">key idea</h2>
+<p>All one has to do is bind the one local port (e.g. 33333) of my VPS to a port (e.g. 22222) on remote server. The port of remote server is the one used to establish reverse SSH tunnel.</p>
+<h2 id="concret-steps">concret steps</h2>
+<h3 id="bind-one-local-port-with-port-in-relay-server">1. Bind one local port with port in relay server</h3>
+<p>One one terminal and type into the following command: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -L 33333:localhost:22222 &lt;user_on_relay_server&gt;@&lt;relay_server_addr&gt;</span><br></pre></td></tr></table></figure></p>
+<p>With above command, one has to keep this terminal window open. If you want to keep this binding running in the background: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh -NfL 33333:localhost:22222 &lt;user_on_relay_server&gt;@&lt;relay_server_addr&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>Remember to adapt <code>&lt;user_on_relay_server&gt;</code> and <code>&lt;relay_server_addr&gt;</code> for your own case. The <code>-N</code> prevents SSH from executing a command on the remote system. This is useful when just forwarding ports.</p>
+<p>If you have a slow network, you may wish to include the <code>-C</code> option in both the ssh and sshfs commands as well to enable compression. Don't bother if you are on a fast network as in the time taken to compress the file and send the smaller version, you can instead just get the uncompressed version quicker.</p>
+<h3 id="create-a-local-mount-point-and-mount-the-remote-file-system">2.create a local mount point and mount the remote file system</h3>
+<p>Then, mounting the directory <code>my_remote_server:/home/path/to/folder</code> to a local foler for example named <code>pcB</code> on <code>my_working_laptop</code>. First create a mount point: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir /mnt/pcB</span></span><br></pre></td></tr></table></figure></p>
+<p>Where you mount it matters as that’s where the drive icon will appear. In the above example, I create the local mount point in the Desktop folder, which makes the drive appear on the Desktop when mounted. The downside of that, is then when the drive is not mounted, you have an empty folder that appear on the Desktop.</p>
+<p>Another popular approach is to mount it in <code>/Volumes</code>, where OS X traditionally mounts drives. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir /Volumes/server</span></span><br></pre></td></tr></table></figure></p>
+<p>Then mount the folder with the following command: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshfs -o defer_permissions -o port=33333 -o volname=sfc103demo &lt;user_at_my_remote_server&gt;@localhost:/home/path/to/folder /mnt/pcB</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>-o defer_permissions</code>: this option is very important. Without this option, we will encounter error <code>permission defined</code> if we try to write something into the mounted directory.</li>
+<li><code>-o volname=Server</code> sets the name that the volume will have in the Finder. Otherwise it’s called something like <code>OSXFUSE Volume 0</code> (sshfs)</li>
+</ul>
+<p>By default, the file system is only visible to the person that mounted it. To allow other users to see it you can add <code>-o allow_other</code> to the command line. This can be a little dangerous when combined with <code>-o defer_permissions</code> as everyone will have the permissions of the account that was used for the SSH connection. Use this option with care.</p>
+<h3 id="unmount-the-file-system">3.unmount the file system</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /mnt/pcB</span><br></pre></td></tr></table></figure>
+<p>Remember to replace <code>/mnt/pcB</code>. In Mac OSX, one can also eject the mounted file system in the Finder. (key combination <code>cmd+shift+G</code> to open any folder within Finder window)。</p>
+<p>If you encounter the following messages: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount(/mnt/pcB): Resource busy -- try 'diskutil unmount'</span><br></pre></td></tr></table></figure></p>
+<p>or <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> fusermount -u /mnt/pcB/</span></span><br></pre></td></tr></table></figure></p>
+<p>You may use: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diskutil unmount /mnt/pcB</span><br></pre></td></tr></table></figure></p>
+<p>You can refer to [^fuse-sshfs-osx] for more details.</p>
+<h3 id="killing-the-tunnel-mount_remote_fs">4.Killing the tunnel [^mount_remote_fs]</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ps ax | grep <span class="string">"ssh_command"</span> | awk <span class="string">'&#123;print $1&#125;'</span> | \</span></span><br><span class="line">  xargs -i kill &#123;&#125; 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+<p>Firstly, ps is used to find all running processes. We then pipe the output to grep which looks for "ssh_command" (which should be replaced with whichever command you used to establish the tunnel). Then we use awk to return only the PID numbers for the relevant processes and these are finally piped to kill to terminate the process. All errors are redirected to /dev/null. For a simple explanation of output redirection, see this <a href="http://www.xaprb.com/blog/2006/06/06/what-does-devnull-21-mean/" target="_blank" rel="noopener">tutorial</a>.</p>
+<h1 id="tcpdump-over-ssh-tunnel-and-read-capture-with-local-wireshark">Tcpdump over SSH tunnel and read capture with local wireshark</h1>
+<p>It’s often more useful to capture packets using <code>tcpdump</code> rather than <code>wireshark</code>. For example, you might want to do a remote capture and either don’t have GUI access or don’t have Wireshark installed on the remote machine.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -i &lt;interface-name&gt; -s 65535 -w &lt;some-file&gt;</span><br></pre></td></tr></table></figure>
+<p>Imagine now you want to capture traffic on remote server and use local wirehshark to read captured traffic. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh &lt;remote_server&gt; "sudo tcpdump -s0 -w - 'port 8080'" | wireshark -k -i -</span><br></pre></td></tr></table></figure></p>
+<p><code>tcpdump</code> requires priveldged right to be launched. To avoid inputing password, it is better enable password-less <code>sudo</code></p>
+<h2 id="open-the-etcsudoers-file-as-root-of-course-by-running">Open the /etc/sudoers file (as root, of course!) by running:</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo visudo</span><br></pre></td></tr></table></figure>
+<p><strong>Note that you should never edit /etc/sudoers with a regular text editor, such as Vim or nano, because they do not validate the syntax like the visudo editor!</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username     ALL=(ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure>
+<p>Replace username with your account username, of course. Save the file and exit. If you have any sort of syntax problem, visudo will warn you and you can abort the change or open the file for editing again.</p>
+<p>It is important to add this line at the end of the file, so that the other permissions do not override this directive, since they are processed in order.</p>
+<h1 id="troubleshooting-and-astuce">Troubleshooting and astuce</h1>
+<h2 id="connection-closed-by-remote-host-after-one-month-without-any-activity">1. connection closed by remote host after one month without any activity</h2>
+<p>I haven't connected to my Ubuntu server in my office from my Macbook Pro at home since one month. In the meantime, both my VPS and my Ubuntu server have never been shut down. However, I surprisingly observe that the SSH server on my Ubuntu server does not work. When I log into my VPS and further try to ssh into my laptop server, the following error are prompted (in the terminal of my VPS): <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh_exchange_identification: Connection closed by remote host</span><br></pre></td></tr></table></figure></p>
+<p>At the terminal of my laptop server at school, such an error message prompts up: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect_to localhost port 22: failed.</span><br></pre></td></tr></table></figure></p>
+<p>I found that <code>sshd</code> daemon is not running at my Ubuntu server. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~ ps aux | grep sshd</span><br><span class="line">qsong    31271  0.0  0.0  15972   952 pts/2    S+   00:40   0:00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn sshd</span><br></pre></td></tr></table></figure></p>
+<p>Naturally, I tried to restart sshd service: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">~ sudo service sshd restart</span><br><span class="line">[sudo] password for qsong: </span><br><span class="line">Job for ssh.service failed because the control process exited with error code. See &quot;systemctl status ssh.service&quot; and &quot;journalctl -xe&quot; for details.</span><br><span class="line">~ sudo systemctl restart sshd</span><br><span class="line">Job for ssh.service failed because the control process exited with error code. See &quot;systemctl status ssh.service&quot; and &quot;journalctl -xe&quot; for details.</span><br><span class="line">~ sudo systemctl status ssh.service </span><br><span class="line">● ssh.service - OpenBSD Secure Shell server</span><br><span class="line">   Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: failed (Result: start-limit-hit) since mer. 2019-03-13 00:42:14 CET; 15s ago</span><br><span class="line">  Process: 31500 ExecStartPre=/usr/sbin/sshd -t (code=exited, status=255)</span><br><span class="line"> Main PID: 12601 (code=exited, status=0/SUCCESS)</span><br><span class="line"></span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: Failed to start OpenBSD Secure Shell server.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: ssh.service: Unit entered failed state.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: ssh.service: Failed with result &apos;exit-code&apos;.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: ssh.service: Service hold-off time over, scheduling restart.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: Stopped OpenBSD Secure Shell server.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: ssh.service: Start request repeated too quickly.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: Failed to start OpenBSD Secure Shell server.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: ssh.service: Unit entered failed state.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: ssh.service: Failed with result &apos;start-limit-hit&apos;.</span><br></pre></td></tr></table></figure></p>
+<p>Finally, I solve this issue by reinstalling <code>openssh-server</code> again. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge openssh-server</span><br><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure></p>
+<p>Now the sshd daemon is runing again. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~ps aux | grep sshd</span><br><span class="line">root      1390  0.0  0.0  65512  5404 ?        Ss   00:46   0:00 /usr/sbin/sshd -D</span><br><span class="line">root      1510  0.0  0.0  96980  6964 ?        Ss   00:47   0:00 sshd: qsong [priv]</span><br><span class="line">qsong     1576  0.0  0.0  96980  3332 ?        S    00:47   0:00 sshd: qsong@pts/15</span><br><span class="line">qsong     2085  0.0  0.0  15940  1020 pts/15   S+   01:07   0:00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn sshd</span><br></pre></td></tr></table></figure></p>
+<h2 id="how-to-check-if-a-certain-port-is-open-or-used">How to check if a certain port is open or used?</h2>
+<p>We can use <code>lsof</code>. The syntax is: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo lsof -i -P -n</span><br><span class="line">$ sudo lsof -i -P -n | grep LISTEN</span><br><span class="line">$ doas lsof -i -P -n | grep &lt;A port Number&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="linux-nohup-command">linux nohup command</h2>
+<p>If you want to run some commands over SSH connection and keep it running after the SSH connection close, nohup command is your friend.</p>
+<p>如果你正在运行一个进程，而且你觉得在退出帐户时该进程还不会结束，那么可以使用nohup命令。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。nohup就是不挂起的意思( n ohang up)。</p>
+<p>一般都是在linux下nohup格式:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup &lt;your_command&gt;</span><br></pre></td></tr></table></figure>
+<p>or <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup &lt;your_command&gt; &amp;</span><br></pre></td></tr></table></figure></p>
+<p>这二者之间的差别是带<code>&amp;</code>的命令行，即使terminal关闭，或者电脑死机程序依然运行（前提是你把程序递交到服务器上）；它把标准输出（STDOUT）和标准错误（STDERR）结果输出到<code>nohup.txt</code>文件. 这个看似很方便，但是当输出很大的时候，nohup.txt文件会非常大，或者多个后台命令的时候大家都会输出到nohup.txt文件，不利于查找结果和调试程序。所以能够重定向输出会非常方便。下面要介绍标准输出，标准输入 和标准错误了。</p>
+<h3 id="note-for-linux-command-redirection">Note for linux command redirection</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;your_command&gt; &gt; output</span><br></pre></td></tr></table></figure>
+<p>这其中的<code>&gt;</code>就是标准输出符号，其实是 <code>1&gt;output</code> 的缩写 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;your_command&gt; 2&gt; output</span><br></pre></td></tr></table></figure></p>
+<p>这里的<code>2&gt;</code>就是stand err输出到output文件里。而 <code>0&lt;</code> 则是标准输入了。 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup &lt;your_command&gt; &gt; output 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure></p>
+<p>主要是中间的 <code>2&gt;&amp;1</code> 的意思. 这个意思是把stand err（2）重定向到标准输出中 stdout（1），而标准输出又导入文件 output 里面. 所以结果是标准错误和标准输出都导入文件output里面了。</p>
+<p>至于为什么需要将标准错误重定向到标准输出的原因，那就归结为标准错误没有缓冲区，而stdout有。 这就会导致 <code>&gt;output 2&gt;output</code> 文件output被两次打开，而stdout和stderr将会竞争覆盖，这肯定不是我门想要的. 这就是为什么有人会写成： <code>nohup ./command.sh &gt;output 2&gt;output</code> 出错的原因了</p>
+<p>最后谈一下/dev/null文件的作用 这是一个无底洞，任何东西都可以定向到这里，但是却无法打开。 所以一般很大的stdou和stderr当你不关心的时候可以利用stdout和stderr定向到这里 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./command.sh &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure></p>
+<p>Refereces: [^1]: https://phpsolved.com/mount-point-xyz-osxfuse-volume/ [^sslh]: RUTSCHLE YVES, SSLH, http://www.rutschle.net/tech/sslh/README.html. [^fuse-sshfs-osx]: FUSE and SSHFS on OS X, https://stuff-things.net/2015/05/20/fuse-and-sshfs-on-os-x/ [^ssh_config_tuto]: Simplify Your Life With an SSH Config File, https://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/ [^mount_remote_fs]: Mounting file systems over two SSH hops, https://www.larkinweb.co.uk/computing/mounting_file_systems_over_two_ssh_hops.html [^autossh_ssh_tunneling]: SSH TUNNELLING FOR FUN AND PROFIT: AUTOSSH, https://www.everythingcli.org/ssh-tunnelling-for-fun-and-profit-autossh/ [^systemd_tuto]: Systemd Essentials: Working with Services, Units, and the Journal, https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal [^systemd_unit_file]: Understanding Systemd Units and Unit Files, https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files</p>
+<style>
+.center {
+    text-align: center;
+    margin: 0 auto;
+        }
+</style>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/01/how-to-install-ns-3-in-Ubuntu-15-04/" rel="next" title="Ubuntu 15.04下安装NS-3">
+                <i class="fa fa-chevron-left"></i> Ubuntu 15.04下安装NS-3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/19/LTE-Basics/" rel="prev" title="LTE-Basics">
+                LTE-Basics <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">rennsong</p>
+              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hansomesong" title="GitHub &rarr; https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#part-1-reverse-ssh-tunnel"><span class="nav-number">1.</span> <span class="nav-text">Part 1: Reverse SSH Tunnel</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#special-case-outgoing-port-22-i.e.-for-ssh-is-filtered-by-firewall"><span class="nav-number">1.1.</span> <span class="nav-text">Special case: outgoing port 22 (i.e. for SSH) is filtered by firewall</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-2-enable-ssh-connection-without-password"><span class="nav-number">2.</span> <span class="nav-text">Part 2: Enable SSH connection without password</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-3-how-make-a-tunnel-persistent-autossh_ssh_tunneling"><span class="nav-number">3.</span> <span class="nav-text">Part 3: How make a tunnel persistent [^autossh_ssh_tunneling]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh-command-option-serveraliveinterval-and-serveralivecountmax"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 SSH command option ServerAliveInterval and ServerAliveCountMax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#autossh"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 AutoSSH</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-4-enable-the-tunnel-at-system-boot"><span class="nav-number">4.</span> <span class="nav-text">Part 4: Enable the tunnel at system boot</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#under-ubuntu-system"><span class="nav-number">4.0.1.</span> <span class="nav-text">4.1 Under Ubuntu system</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#modify-etcrc.local"><span class="nav-number">4.0.1.1.</span> <span class="nav-text">Modify /etc/rc.local</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#use-cron-command"><span class="nav-number">4.0.2.</span> <span class="nav-text">Use cron command</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#create-systemd-service"><span class="nav-number">4.0.3.</span> <span class="nav-text">Create systemd service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#under-mac-osx"><span class="nav-number">4.0.4.</span> <span class="nav-text">4.2 Under Mac OSX</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#part-5-simplify-your-life-with-an-ssh-config-file-ssh_config_tuto"><span class="nav-number">5.</span> <span class="nav-text">Part 5: Simplify your life With an SSH Config File [^ssh_config_tuto]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#problem-description"><span class="nav-number">5.1.</span> <span class="nav-text">Problem description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fuse-for-os-x"><span class="nav-number">5.2.</span> <span class="nav-text">FUSE for OS X</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#key-idea"><span class="nav-number">5.3.</span> <span class="nav-text">key idea</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concret-steps"><span class="nav-number">5.4.</span> <span class="nav-text">concret steps</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bind-one-local-port-with-port-in-relay-server"><span class="nav-number">5.4.1.</span> <span class="nav-text">1. Bind one local port with port in relay server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#create-a-local-mount-point-and-mount-the-remote-file-system"><span class="nav-number">5.4.2.</span> <span class="nav-text">2.create a local mount point and mount the remote file system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unmount-the-file-system"><span class="nav-number">5.4.3.</span> <span class="nav-text">3.unmount the file system</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#killing-the-tunnel-mount_remote_fs"><span class="nav-number">5.4.4.</span> <span class="nav-text">4.Killing the tunnel [^mount_remote_fs]</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tcpdump-over-ssh-tunnel-and-read-capture-with-local-wireshark"><span class="nav-number">6.</span> <span class="nav-text">Tcpdump over SSH tunnel and read capture with local wireshark</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#open-the-etcsudoers-file-as-root-of-course-by-running"><span class="nav-number">6.1.</span> <span class="nav-text">Open the /etc/sudoers file (as root, of course!) by running:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#troubleshooting-and-astuce"><span class="nav-number">7.</span> <span class="nav-text">Troubleshooting and astuce</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#connection-closed-by-remote-host-after-one-month-without-any-activity"><span class="nav-number">7.1.</span> <span class="nav-text">1. connection closed by remote host after one month without any activity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how-to-check-if-a-certain-port-is-open-or-used"><span class="nav-number">7.2.</span> <span class="nav-text">How to check if a certain port is open or used?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux-nohup-command"><span class="nav-number">7.3.</span> <span class="nav-text">linux nohup command</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#note-for-linux-command-redirection"><span class="nav-number">7.3.1.</span> <span class="nav-text">Note for linux command redirection</span></a></li></ol></li></ol></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

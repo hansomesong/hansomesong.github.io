@@ -16,7 +16,7 @@
 
 <html class="theme-next mist use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -46,19 +46,19 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
 
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -71,7 +71,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    version: '7.0.1',
+    version: '7.1.0',
     sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
     back2top_sidebar: false,
@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="1docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i dumm0 -w /traces/sfc103demo.pcap 一些说明:  -v $PWD:/traces: mount current working directory on host machine as tr">
+  <meta name="description" content="docker教程整理:https://www.jianshu.com/p/4b808c2341bd 1docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i dumm0 -w /traces/sfc103demo.pcap 一些说明: * -v $PWD:/traces: mo">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A brief and concise Docker tutorial">
 <meta property="og:url" content="http://rennesong.com/2019/03/25/docker-tuto/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
-<meta property="og:description" content="1docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i dumm0 -w /traces/sfc103demo.pcap 一些说明:  -v $PWD:/traces: mount current working directory on host machine as tr">
+<meta property="og:description" content="docker教程整理:https://www.jianshu.com/p/4b808c2341bd 1docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i dumm0 -w /traces/sfc103demo.pcap 一些说明: * -v $PWD:/traces: mo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-09T16:29:58.083Z">
+<meta property="og:updated_time" content="2019-04-12T15:57:30.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A brief and concise Docker tutorial">
-<meta name="twitter:description" content="1docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i dumm0 -w /traces/sfc103demo.pcap 一些说明:  -v $PWD:/traces: mount current working directory on host machine as tr">
+<meta name="twitter:description" content="docker教程整理:https://www.jianshu.com/p/4b808c2341bd 1docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i dumm0 -w /traces/sfc103demo.pcap 一些说明: * -v $PWD:/traces: mo">
 
 
 
@@ -115,7 +115,8 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="http://rennesong.com/2019/03/25/docker-tuto/">
 
 
@@ -163,7 +164,7 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -174,7 +175,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -406,7 +407,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-09 18:29:58" itemprop="dateModified" datetime="2019-04-09T18:29:58+02:00">2019-04-09</time>
+                <time title="修改时间：2019-04-12 17:57:30" itemprop="dateModified" datetime="2019-04-12T17:57:30+02:00">2019-04-12</time>
               
             
           </span>
@@ -458,32 +459,13 @@
       
 
       
-        <h1></h1>
+        <h1 id="section"></h1>
+<p>docker教程整理:https://www.jianshu.com/p/4b808c2341bd</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i dumm0 -w /traces/sfc103demo.pcap</span><br></pre></td></tr></table></figure>
-<p>一些说明:</p>
-<ul>
-<li><code>-v $PWD:/traces</code>: mount current working directory on host machine as <code>traces</code> folder under root directory of target container. Please refer to <a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a> for more information. It is also possible specify volume mount without specifying location of source folder in host machine by syntax such as <code>-v /traces</code>. Command <code>docker inspect &lt;container_name&gt;</code> allows to check the source file in host machine corresponding to volume mounted in container.</li>
-<li><code>--net container:classifier1</code>: monitor a certain container. Rememer to replace <code>classifier1</code> with regard to your need.</li>
-<li><code>nicolaka/netshoot</code> is a very powerful network troubleshooting docker image. Refer to <a href="https://github.com/nicolaka/netshoot" target="_blank" rel="noopener">nicolaka/netshoot</a> for more details.</li>
-<li><code>tcpdump –i dumm0 -w /traces/sfc103demo.pcap</code> is actually how to use tcpdump command:
-<ul>
-<li><code>–i dumm0</code>: listen for interface <code>eth0</code></li>
-<li><code>-w /traces/sfc103demo.pcap</code>: output monitored traffic to a PCAP file.</li>
-</ul>
-</li>
-</ul>
-<p><a href="https://medium.com/the-code-review/top-10-docker-run-command-options-you-cant-live-without-a-reference-d256834e86c1" target="_blank" rel="noopener">Top 10 options for docker run</a></p>
-<h1>Volume in container</h1>
-<p>Container 内部数据持久化的问题 =&gt; 解决之道: data volume 机制<br>
-3 options are available in docker:</p>
-<ul>
-<li>bind mount</li>
-<li>volume</li>
-<li>tmpfs mount</li>
-</ul>
+<p>一些说明: * <code>-v $PWD:/traces</code>: mount current working directory on host machine as <code>traces</code> folder under root directory of target container. Please refer to <a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a> for more information. It is also possible specify volume mount without specifying location of source folder in host machine by syntax such as <code>-v /traces</code>. Command <code>docker inspect &lt;container_name&gt;</code> allows to check the source file in host machine corresponding to volume mounted in container. * <code>--net container:classifier1</code>: monitor a certain container. Rememer to replace <code>classifier1</code> with regard to your need. * <code>nicolaka/netshoot</code> is a very powerful network troubleshooting docker image. Refer to <a href="https://github.com/nicolaka/netshoot" target="_blank" rel="noopener">nicolaka/netshoot</a> for more details. * <code>tcpdump –i dumm0 -w /traces/sfc103demo.pcap</code> is actually how to use tcpdump command: - <code>–i dumm0</code>: listen for interface <code>eth0</code> - <code>-w /traces/sfc103demo.pcap</code>: output monitored traffic to a PCAP file.</p>
+<p><a href="https://medium.com/the-code-review/top-10-docker-run-command-options-you-cant-live-without-a-reference-d256834e86c1" target="_blank" rel="noopener">Top 10 options for docker run</a> # Volume in container Container 内部数据持久化的问题 =&gt; 解决之道: data volume 机制 3 options are available in docker: * bind mount * volume * tmpfs mount</p>
 <p>Among them,volumes are the preferred mechanism for persisting data generated by and used by Docker containers. While bind mounts are dependent on the directory structure of the host machine, volumes are completely managed by Docker. Volumes have several advantages over bind mounts</p>
-<p><a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a><br>
-<a href="http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/" target="_blank" rel="noopener">Docker RUN vs CMD vs ENTRYPOINT</a></p>
+<p><a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a> <a href="http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/" target="_blank" rel="noopener">Docker RUN vs CMD vs ENTRYPOINT</a></p>
 
       
     </div>
@@ -601,7 +583,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -640,7 +622,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -689,7 +677,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -749,7 +739,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Volume in container</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></div>
             
 
           </div>
@@ -790,7 +780,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.1</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
 
 
 
@@ -868,31 +858,48 @@
   
 
 
-  <script src="/js/src/utils.js?v=7.0.1"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script src="/js/src/motion.js?v=7.0.1"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
-
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
   
-  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
-<script src="/js/src/post-details.js?v=7.0.1"></script>
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
 
 
 
   
 
 
-  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
   
