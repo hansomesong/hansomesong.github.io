@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="文件系统最初的由来 文件系统最开始不过是个简单的 *** 磁盘管理器 *** 操作系统中，所有需要进行读写操作的进程都必须通过这个模块才能对磁盘进行读写。如此一来， 不同进程占用不同的磁盘分区就可以有条不紊地进行。 为了在磁盘中定位文件，文件夹的概念得以引入。至此，数据了有了树状结构。 # 所谓的 虚拟文件系统 文件系统的概念获得了巨大的成功。后来我们将文件系统的概念进行了扩展。以至于我们常说：“">
+  <meta name="description" content="文件系统最初的由来 文件系统最开始不过是个简单的 *** 磁盘管理器 *** 操作系统中，所有需要进行读写操作的进程都必须通过这个模块才能对磁盘进行读写。如此一来， 不同进程占用不同的磁盘分区就可以有条不紊地进行。 为了在磁盘中定位文件，文件夹的概念得以引入。至此，数据了有了树状结构。 所谓的 虚拟文件系统 文件系统的概念获得了巨大的成功。后来我们将文件系统的概念进行了扩展。以至于我们常说：“一切">
 <meta name="keywords" content="文件系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tuto_magie_file_system">
 <meta property="og:url" content="http://rennesong.com/2016/10/22/tuto-magie-file-system/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
-<meta property="og:description" content="文件系统最初的由来 文件系统最开始不过是个简单的 *** 磁盘管理器 *** 操作系统中，所有需要进行读写操作的进程都必须通过这个模块才能对磁盘进行读写。如此一来， 不同进程占用不同的磁盘分区就可以有条不紊地进行。 为了在磁盘中定位文件，文件夹的概念得以引入。至此，数据了有了树状结构。 # 所谓的 虚拟文件系统 文件系统的概念获得了巨大的成功。后来我们将文件系统的概念进行了扩展。以至于我们常说：“">
+<meta property="og:description" content="文件系统最初的由来 文件系统最开始不过是个简单的 *** 磁盘管理器 *** 操作系统中，所有需要进行读写操作的进程都必须通过这个模块才能对磁盘进行读写。如此一来， 不同进程占用不同的磁盘分区就可以有条不紊地进行。 为了在磁盘中定位文件，文件夹的概念得以引入。至此，数据了有了树状结构。 所谓的 虚拟文件系统 文件系统的概念获得了巨大的成功。后来我们将文件系统的概念进行了扩展。以至于我们常说：“一切">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-03-25T10:27:10.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tuto_magie_file_system">
-<meta name="twitter:description" content="文件系统最初的由来 文件系统最开始不过是个简单的 *** 磁盘管理器 *** 操作系统中，所有需要进行读写操作的进程都必须通过这个模块才能对磁盘进行读写。如此一来， 不同进程占用不同的磁盘分区就可以有条不紊地进行。 为了在磁盘中定位文件，文件夹的概念得以引入。至此，数据了有了树状结构。 # 所谓的 虚拟文件系统 文件系统的概念获得了巨大的成功。后来我们将文件系统的概念进行了扩展。以至于我们常说：“">
+<meta name="twitter:description" content="文件系统最初的由来 文件系统最开始不过是个简单的 *** 磁盘管理器 *** 操作系统中，所有需要进行读写操作的进程都必须通过这个模块才能对磁盘进行读写。如此一来， 不同进程占用不同的磁盘分区就可以有条不紊地进行。 为了在磁盘中定位文件，文件夹的概念得以引入。至此，数据了有了树状结构。 所谓的 虚拟文件系统 文件系统的概念获得了巨大的成功。后来我们将文件系统的概念进行了扩展。以至于我们常说：“一切">
 
 
 
@@ -441,18 +441,21 @@
       
 
       
-        <h1 id="文件系统最初的由来">文件系统最初的由来</h1>
+        <h1>文件系统最初的由来</h1>
 <p>文件系统最开始不过是个简单的 *** 磁盘管理器 ***</p>
 <p>操作系统中，所有需要进行读写操作的进程都必须通过这个模块才能对磁盘进行读写。如此一来， 不同进程占用不同的磁盘分区就可以有条不紊地进行。</p>
-<p>为了在磁盘中定位文件，文件夹的概念得以引入。至此，数据了有了树状结构。 # 所谓的 虚拟文件系统 文件系统的概念获得了巨大的成功。后来我们将文件系统的概念进行了扩展。以至于我们常说：“一切皆文件”。</p>
+<p>为了在磁盘中定位文件，文件夹的概念得以引入。至此，数据了有了树状结构。</p>
+<h1>所谓的 虚拟文件系统</h1>
+<p>文件系统的概念获得了巨大的成功。后来我们将文件系统的概念进行了扩展。以至于我们常说：“一切皆文件”。</p>
 <p>树状表示很好，为什么我们不用来表示除磁盘数据之外的东西呢？比如，用 PID 命名的文件夹里 管理正在执行中的进程的信息。这就是挂载在挂载点 /proc 之下的文件系统的功能。</p>
 <p>对于连接在电脑上的外设，我们也采用同样的思路：挂载在挂载点 /dev 之下。</p>
 <p>同样的思路，为什么我们不可以在内存空间(而不是磁盘空间)中开辟一块空间，来管理一些临时文件呢？这样大大加速一些程序的执行。这就是 tmpfs 的使命。</p>
 <p>这样的例子，在计算机中，不胜枚举。</p>
 <p>对于这样的例子，我们一定要明白，我们始终贯彻的是“一切皆文件”的理念。</p>
 <p>开发基于 FUSE 的文件系统的好处是：不需要动内核。但代价是性能的下降。但是：为啥我们需要这么一个文件系统呢？</p>
-<p>Live CD 最大的难点在于：如何在只读载体上，比如CD上，创造出来一个允许我们读写的文件系统？</p>
-<p>文章出处：La Magie des Filesystems: 1-Tour d'Horizon, Linux Magazine, 2014, Fevrier</p>
+<p>Live CD<br>
+最大的难点在于：如何在只读载体上，比如CD上，创造出来一个允许我们读写的文件系统？</p>
+<p>文章出处：La Magie des Filesystems: 1-Tour d’Horizon, Linux Magazine, 2014, Fevrier</p>
 
       
     </div>
@@ -570,7 +573,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">41</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -726,7 +729,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文件系统最初的由来"><span class="nav-number">1.</span> <span class="nav-text">文件系统最初的由来</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">文件系统最初的由来</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">所谓的 虚拟文件系统</span></a></li></ol></div>
             
 
           </div>

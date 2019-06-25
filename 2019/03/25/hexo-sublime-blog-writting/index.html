@@ -460,19 +460,20 @@
 
       
         <p>Sublime is a powerful, easy-to-use, lightweight and elegent text editor. Hexo is a light but powerful static personal blog framework. This post focuses on how to combine sublime and hexo allowing us to write and deploy blogs without any command line.</p>
-<h1 id="build-system-of-sublime-text">Build system of Sublime Text</h1>
-<h2 id="build-system-script-for-hexo-new-command">Build system script for "hexo new command"</h2>
+<h1>Build system of Sublime Text</h1>
+<h2 id="build-system-script-for-hexo-new-command"><a class="header-anchor" href="#build-system-script-for-hexo-new-command">null</a>Build system script for “hexo new command”</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"shell_cmd"</span>: <span class="string">"title=\\<span class="variable">$(date +%H%M%S)</span> &amp;&amp; hexo new \\<span class="variable">$title</span> &amp;&amp; subl /Users/mac/Documents/blog/source/_posts/\\<span class="variable">$title</span>.md"</span>,</span><br><span class="line">    <span class="string">"working_dir"</span>: <span class="string">"/Users/mac/Documents/blog/"</span>,</span><br><span class="line">    <span class="string">"path"</span>: <span class="string">"/Applications/Sublime Text.app/Contents/SharedSupport/bin:<span class="variable">$PATH</span>"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Note: *<strong>remember to adapt shell_cmd and working_dir with your own computer</strong></p>
-<p>Just click File&gt;&gt;Save and use default save location to save as "hexo-new-blog.sublime-build". In Mac OSX, the default build system scripts path is:</p>
+<p>Just click File&gt;&gt;Save and use default save location to save as “hexo-new-blog.sublime-build”. In Mac OSX, the default build system scripts path is:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Library/Application Support/Sublime Text 3/Packages/User</span><br></pre></td></tr></table></figure>
-<p>On Linux, the path should be: <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/&lt;username&gt;/.config/sublime-text-3/Packages/User</span><br></pre></td></tr></table></figure></p>
-<h2 id="build-system-script-for-hexo-server">Build system script for "hexo server"</h2>
+<p>On Linux, the path should be:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/&lt;username&gt;/.config/sublime-text-3/Packages/User</span><br></pre></td></tr></table></figure>
+<h2 id="build-system-script-for-hexo-server"><a class="header-anchor" href="#build-system-script-for-hexo-server">null</a>Build system script for “hexo server”</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"shell_cmd"</span>: <span class="string">"ps -ef|grep hexo|grep -v grep|awk '&#123;print \"kill -9 \"\\<span class="variable">$2</span>&#125;'|sh &amp;&amp; hexo clean &amp;&amp; hexo server --debug"</span>,</span><br><span class="line">    <span class="string">"working_dir"</span>: <span class="string">"/Users/mac/Documents/blog/"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Then save as "hexo-start.sublime-build"</p>
-<h2 id="build-system-script-for-hexo-deploy">Build system script for "hexo deploy"</h2>
-<p>Click Sublime&gt;&gt;Tools&gt;&gt;Build System&gt;&gt;New Build System…，put the following contents： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"shell_cmd"</span>: <span class="string">"hexo clean &amp;&amp; hexo g -d"</span>,</span><br><span class="line">    <span class="string">"working_dir"</span>: <span class="string">"/Users/mac/Documents/blog/"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+<p>Then save as “hexo-start.sublime-build”</p>
+<h2 id="build-system-script-for-hexo-deploy"><a class="header-anchor" href="#build-system-script-for-hexo-deploy">null</a>Build system script for “hexo deploy”</h2>
+<p>Click Sublime&gt;&gt;Tools&gt;&gt;Build System&gt;&gt;New Build System…，put the following contents：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"shell_cmd"</span>: <span class="string">"hexo clean &amp;&amp; hexo g -d"</span>,</span><br><span class="line">    <span class="string">"working_dir"</span>: <span class="string">"/Users/mac/Documents/blog/"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -583,7 +584,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">41</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -739,7 +740,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#build-system-of-sublime-text"><span class="nav-number">1.</span> <span class="nav-text">Build system of Sublime Text</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#build-system-script-for-hexo-new-command"><span class="nav-number">1.1.</span> <span class="nav-text">Build system script for &quot;hexo new command&quot;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-system-script-for-hexo-server"><span class="nav-number">1.2.</span> <span class="nav-text">Build system script for &quot;hexo server&quot;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-system-script-for-hexo-deploy"><span class="nav-number">1.3.</span> <span class="nav-text">Build system script for &quot;hexo deploy&quot;</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Build system of Sublime Text</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#build-system-script-for-hexo-new-command"><span class="nav-number">1.1.</span> <span class="nav-text">nullBuild system script for “hexo new command”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-system-script-for-hexo-server"><span class="nav-number">1.2.</span> <span class="nav-text">nullBuild system script for “hexo server”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-system-script-for-hexo-deploy"><span class="nav-number">1.3.</span> <span class="nav-text">nullBuild system script for “hexo deploy”</span></a></li></ol></li></ol></div>
             
 
           </div>

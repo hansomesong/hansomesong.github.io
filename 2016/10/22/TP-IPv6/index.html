@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="需要熟练记忆的命令 实验室网络拓扑结构图：  在privileged mode下  show ipv6 interface brief show ipv6 route  在configuration mode下 123456Routeur# configure terminalRouteur(config)# interface FastEthernet0/1.101Routeur(config-">
+  <meta name="description" content="需要熟练记忆的命令 实验室网络拓扑结构图：  在privileged mode下  show ipv6 interface brief show ipv6 route   在configuration mode下  123456Routeur# configure terminalRouteur(config)# interface FastEthernet0/1.101Routeur(confi">
 <meta name="keywords" content="IPv6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IPv6 实验课准备以及遇到的问题">
 <meta property="og:url" content="http://rennesong.com/2016/10/22/TP-IPv6/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
-<meta property="og:description" content="需要熟练记忆的命令 实验室网络拓扑结构图：  在privileged mode下  show ipv6 interface brief show ipv6 route  在configuration mode下 123456Routeur# configure terminalRouteur(config)# interface FastEthernet0/1.101Routeur(config-">
+<meta property="og:description" content="需要熟练记忆的命令 实验室网络拓扑结构图：  在privileged mode下  show ipv6 interface brief show ipv6 route   在configuration mode下  123456Routeur# configure terminalRouteur(config)# interface FastEthernet0/1.101Routeur(confi">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-03-25T10:27:10.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IPv6 实验课准备以及遇到的问题">
-<meta name="twitter:description" content="需要熟练记忆的命令 实验室网络拓扑结构图：  在privileged mode下  show ipv6 interface brief show ipv6 route  在configuration mode下 123456Routeur# configure terminalRouteur(config)# interface FastEthernet0/1.101Routeur(config-">
+<meta name="twitter:description" content="需要熟练记忆的命令 实验室网络拓扑结构图：  在privileged mode下  show ipv6 interface brief show ipv6 route   在configuration mode下  123456Routeur# configure terminalRouteur(config)# interface FastEthernet0/1.101Routeur(confi">
 
 
 
@@ -441,19 +441,30 @@
       
 
       
-        <p>需要熟练记忆的命令 实验室网络拓扑结构图：</p>
+        <p>需要熟练记忆的命令<br>
+实验室网络拓扑结构图：</p>
 <ul>
 <li>在privileged mode下
 <ul>
 <li>show ipv6 interface brief</li>
 <li>show ipv6 route</li>
-</ul></li>
-<li>在configuration mode下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Routeur# configure terminal</span><br><span class="line">Routeur(config)# interface FastEthernet0/1.101</span><br><span class="line">Routeur(config-if)# ipv6 address 2001:660:7301:27_1::/64 eui-64</span><br><span class="line">Routeur(config-if)# exit</span><br><span class="line">Routeur(config)# exit</span><br><span class="line">Routeur#</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>以上代码块用来配置面向内网的那块以太网卡的 IPV6 地址的 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Routeur# configure terminal</span><br><span class="line">Routeur(config)# interface FastEthernet0/0</span><br><span class="line">Routeur(config-if)# no shutdown</span><br><span class="line">Routeur(config-if)# ipv6 address 2001:660:7301:2700::_/64</span><br><span class="line">Routeur(config-if)# ipv6 enable</span><br><span class="line">Routeur(config-if)# exit</span><br><span class="line">Routeur(config)#</span><br></pre></td></tr></table></figure></p>
+</li>
+<li>在configuration mode下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Routeur# configure terminal</span><br><span class="line">Routeur(config)# interface FastEthernet0/1.101</span><br><span class="line">Routeur(config-if)# ipv6 address 2001:660:7301:27_1::/64 eui-64</span><br><span class="line">Routeur(config-if)# exit</span><br><span class="line">Routeur(config)# exit</span><br><span class="line">Routeur#</span><br></pre></td></tr></table></figure>
+<p>以上代码块用来配置面向内网的那块以太网卡的 IPV6 地址的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Routeur# configure terminal</span><br><span class="line">Routeur(config)# interface FastEthernet0/0</span><br><span class="line">Routeur(config-if)# no shutdown</span><br><span class="line">Routeur(config-if)# ipv6 address 2001:660:7301:2700::_/64</span><br><span class="line">Routeur(config-if)# ipv6 enable</span><br><span class="line">Routeur(config-if)# exit</span><br><span class="line">Routeur(config)#</span><br></pre></td></tr></table></figure>
 <p>以上代码块是用来配置面向 Reseau d’Interconnextion 的那块儿以太网卡的IPv6的地址。</p>
 <p>配置路由器接口 IPv6 的方法其实有两种，第一种是：直接给出完完整的IPv6地址，第二种是，只告诉这块网卡的网络前缀，然后指定 EUI-64 模式，然后根据该接口的MAC地址，自己生成IPv6地址。</p>
-<p>还没有搞清楚的问题： 在配置模式下，命令ipv6 unicast-routing 是什么意思？ 思科路由器的virtual interface的概念 问题是 在配置模式下，为什么 命令 interface fastethernet 0/1.101 可以直接通过呢？是不是0/1.501之类的命令也可以通过呢？ 路由器属于哪些multicast group里，这个有什么用？ 其实一直没有闹明白，思科路由器下面的 redistribute connected 究竟是个什么意思呢？ 为什么 RA一下子要 3连发呢？ 什么又是 MLD sol???</p>
+<p>还没有搞清楚的问题：<br>
+在配置模式下，命令ipv6 unicast-routing 是什么意思？<br>
+思科路由器的virtual interface的概念<br>
+问题是 在配置模式下，为什么 命令 interface fastethernet 0/1.101 可以直接通过呢？是不是0/1.501之类的命令也可以通过呢？<br>
+路由器属于哪些multicast group里，这个有什么用？<br>
+其实一直没有闹明白，思科路由器下面的 redistribute connected 究竟是个什么意思呢？<br>
+为什么 RA一下子要 3连发呢？<br>
+什么又是 MLD sol???</p>
 <p>no shutdown 其实相当于 开启了 路由器的某一块儿网卡，</p>
 <p>通过本次试验我们可以知道，配置了IPv6的路由器，是不会提供 DNS 服务的</p>
 <p>其实要是想完全搞懂，还得懂DHCP IPV4 是怎么搞的</p>
@@ -461,24 +472,39 @@
 <p>Solicited-node multicast address 是IPv6体系之下一种layer3类型地址，在Neighbour Discovery过程之中的，是用来获取目标硬件的 layer-2，也即是 MAC地址的时候，使用的 IPV6地址，我们一般用ARP协议与之类比。</p>
 <p>NDP (Neighbour Discovery Protocol) 的基础是 Neighbour Advertisement 信息，所有的 IPv6-enable的机器都会 周期性的 向谁？to other hosts present on the same network (那我怀疑这里的目的地址应该是：ff02::1 了) 发送 包含自己 link-local 的地址，以便其他人在做 ND的时候可以发现你。</p>
 <p>IPv6 DAD or Duplicate Address Detection is a neighbor solicitations function.</p>
-<p>这个教程讲 IPv6真是不错：http://howdoesinternetwork.com/2012/ndp-ipv6-neighbor-discovery-protocol</p>
-<p>本次TP中，有组学生非常认真，他们仔细对了课本上讲的知识以及他们实际观察到的traces是否一致，有个地方问住了我（因为我也确实不熟悉），就是为什么 Host想router所在的组(ff02::2)发送了Neighbour Solicitation 请求，但是router一直没有回复呢？ 猛一下把我问住了，因为对DAD机制不熟悉，所以不敢造次，后来才知道，其实没有回复就是最好的回复。因为只有真的有其他机器跟自己使用了一样的Global address，它才会看到有人回复自己。</p>
+<p>这个教程讲 IPv6真是不错：<a href="http://howdoesinternetwork.com/2012/ndp-ipv6-neighbor-discovery-protocol" target="_blank" rel="noopener">http://howdoesinternetwork.com/2012/ndp-ipv6-neighbor-discovery-protocol</a></p>
+<p>本次TP中，有组学生非常认真，他们仔细对了课本上讲的知识以及他们实际观察到的traces是否一致，有个地方问住了我（因为我也确实不熟悉），就是为什么 Host想router所在的组(ff02::2)发送了Neighbour Solicitation 请求，但是router一直没有回复呢？<br>
+猛一下把我问住了，因为对DAD机制不熟悉，所以不敢造次，后来才知道，其实没有回复就是最好的回复。因为只有真的有其他机器跟自己使用了一样的Global address，它才会看到有人回复自己。</p>
 <p>需要使用 DHCPv6 的机器，是不会自己自动发起请求，要求分配一个 IPv6 地址的，需要在客户端有个软件发起请求。</p>
-<p>DHCPV6的工作流程大致可以分为 Solicite, advertise, request, reply. 在solicite的时候，目的地址应该是 FF02::1:3 还是 FF02::1:2?(因为poly上写的可是FF02::1:2啊，为啥我们的答案里写的确实FF02::1:3呢？）=》在PC2发出SOLICITE message 的时候，目的地址确实为多播类型（FF02::1:2）, 而思科路由器在做Relay的时候，目的地址是FF02::1:3, 因为后者代表的是所有的 DHCPv6 server.</p>
-<p>今天有学生问的问题还是很犀利的： 问题是：为什么使用了DHCPv6了，我们还是需要发送这些 RA 之类的信息？ 我无法作答。</p>
-<p>另一个问题是：有一组学生做DHCP的时候，非常奇怪，他们观察到了 client给relais(routor)发送的 solicte, 也确实看到了，router给DHCP serveur 转发的 soliste, DHCP serveur 看起来也确实是给 router 发送 transmit advertise了，但是workflow就卡在了这一步。。。后来进一步试验发现，在 DHCP server 上我们没有办法 ping6 通 router 的 virtual interface 0/1.101 反之却可以！使用什么命令？没想到这Cisco路由器里，即使是ping一个IPv6的地址，依然用的是ping命令。可能不同的Router型号，最后使用的命令不同的</p>
+<p>DHCPV6的工作流程大致可以分为 Solicite, advertise, request, reply.<br>
+在solicite的时候，目的地址应该是 FF02::1:3 还是 FF02::1:2?(因为poly上写的可是FF02::1:2啊，为啥我们的答案里写的确实FF02::1:3呢？）=》在PC2发出SOLICITE message 的时候，目的地址确实为多播类型（FF02::1:2）, 而思科路由器在做Relay的时候，目的地址是FF02::1:3, 因为后者代表的是所有的 DHCPv6 server.</p>
+<p>今天有学生问的问题还是很犀利的：<br>
+问题是：为什么使用了DHCPv6了，我们还是需要发送这些 RA 之类的信息？<br>
+我无法作答。</p>
+<p>另一个问题是：有一组学生做DHCP的时候，非常奇怪，他们观察到了 client给relais(routor)发送的 solicte, 也确实看到了，router给DHCP serveur 转发的 soliste, DHCP serveur 看起来也确实是给 router 发送 transmit advertise了，但是workflow就卡在了这一步。。。后来进一步试验发现，在 DHCP server 上我们没有办法 ping6 通 router 的 virtual interface 0/1.101<br>
+反之却可以！使用什么命令？没想到这Cisco路由器里，即使是ping一个IPv6的地址，依然用的是ping命令。可能不同的Router型号，最后使用的命令不同的</p>
 <p>后来学生们自己发现了问题，就是eth1接口在一开始的时候就被配置上了 global ip v6 的地址，所以ping router的时候，貌似使用的是这个地址！所以无法工作！！</p>
 <p>他们后来删除了给 eth1 配置的 IPv6地址，一切工作正常。</p>
-<p>有组学生比较懒，在Banc4上没有删除之前学生的工作，方便了他们但是给我造成了很大的麻烦！！！ 比如不知道为什么，他们的 PC du serveur 上 eth1 被分配了 公共IPv6的地址，但是 eth0 却一直没有自动生成 Global IPv6 address, 最后我的解决方案是：让他们先把两个网卡都关掉，然后只开启 eth0, 然后等待 20 秒左右，之后果然 eth0 被分配了 IPv6 地址，然后再开启 eth1, 并且删除掉其上的 <span class="citation" data-cites="IP">@IP</span>，因为 eth1 上的 <span class="citation" data-cites="IP">@IP</span> 会影响之后的实验。那么，我困惑的是，eth1所在的端口明明被配置成了 monitoring, 并且在 VLAN1 上？为什么会被配置一个 IPv6的地址？</p>
-<p>在本次TP中，我们使用如下命令来禁止一些 IPv6的功能（在eth1上），我们使用如下命令: echo 0 &gt; /proc/sys/net/ipv6/conf/eth1/accept_ra</p>
-<p>首先需要知道accept_ra是个啥，这个链接解释了此变量的作用： http://www.tldp.org/HOWTO/Linux+IPv6-HOWTO/proc-sys-net-ipv6..html 我概括一下，这个变量的是一个布尔类型的，如果被设置为真，则会接受 Router 发送的 RA 信心，并且据此来配置自己的 Global IPv6 地址。如果设置为假（即数值0），此接口不再接受 来自 routor 的RA。也就没有办法采用自动模式配置 IPv6 的地址了。</p>
-<p>有一个问题：A quel groups multicast est abonne le routeur？ 答案是：FF02::1 FF02::2 FF02::XXXX::XXXX (Multicast solicite) 什么是 Multicast solicite？为什么要有这种多播地址？</p>
+<p>有组学生比较懒，在Banc4上没有删除之前学生的工作，方便了他们但是给我造成了很大的麻烦！！！<br>
+比如不知道为什么，他们的 PC du serveur 上 eth1 被分配了 公共IPv6的地址，但是 eth0 却一直没有自动生成 Global IPv6 address, 最后我的解决方案是：让他们先把两个网卡都关掉，然后只开启 eth0, 然后等待 20 秒左右，之后果然 eth0 被分配了 IPv6 地址，然后再开启 eth1, 并且删除掉其上的 @IP，因为 eth1 上的 @IP 会影响之后的实验。那么，我困惑的是，eth1所在的端口明明被配置成了 monitoring, 并且在 VLAN1 上？为什么会被配置一个 IPv6的地址？</p>
+<p>在本次TP中，我们使用如下命令来禁止一些 IPv6的功能（在eth1上），我们使用如下命令:<br>
+echo 0 &gt; /proc/sys/net/ipv6/conf/eth1/accept_ra</p>
+<p>首先需要知道accept_ra是个啥，这个链接解释了此变量的作用：<br>
+<a href="http://www.tldp.org/HOWTO/Linux+IPv6-HOWTO/proc-sys-net-ipv6..html" target="_blank" rel="noopener">http://www.tldp.org/HOWTO/Linux+IPv6-HOWTO/proc-sys-net-ipv6…html</a><br>
+我概括一下，这个变量的是一个布尔类型的，如果被设置为真，则会接受 Router 发送的 RA 信心，并且据此来配置自己的 Global IPv6 地址。如果设置为假（即数值0），此接口不再接受 来自 routor 的RA。也就没有办法采用自动模式配置 IPv6 的地址了。</p>
+<p>有一个问题：A quel groups multicast est abonne le routeur？<br>
+答案是：FF02::1<br>
+FF02::2<br>
+FF02::XXXX::XXXX (Multicast solicite)<br>
+什么是 Multicast solicite？为什么要有这种多播地址？</p>
 <p>有一组学生遇到了个我无法解决的问题：PC1（作为DHCPv6 server）配置正常，工作正常，PC2（作为DHCPv6 client）配置正常，工作正常。但是Wireshark中观察到了 PC2向Cisco Router发出的 SOLICIT message, 但是奇怪的是，并没有观察到 Router relay的 SOLICIT message（to PC1）啊，但是查看了下 Router的配置，显示一切正常啊。</p>
-<p>=&gt; Google is your teacher. 再我准备放弃的时候，突然想到，不如最后google一下，看看有木有什么解决方案。在这个帖子[https://supportforums.cisco.com/document/118551/stateful-dhcpv6-relay-configuration-example]中, 终于找到了线索。貌似Router没有被指明Relay的地址是哪里啊？也是啊，管理员如果不明确说明relay的地址，那么Router在接到SOLICIT message的时候，它又如何知道这个SOLICIT message该转发至何处呢？</p>
-<p>还有学生问我：在思科路由器配置完毕，PC1上的 DHCPv6的 server 已经运转起来，为啥进行PC1上的 server里的output停在 skip the blabla...上了呢？ 答案是：不要忘记了运行 PC2上的DHCPv6的client软件啊。。。即使在IPv6下，DHCP request可是不会自己自主进行的。。。</p>
+<p>=&gt; Google is your teacher. 再我准备放弃的时候，突然想到，不如最后google一下，看看有木有什么解决方案。在这个帖子[<a href="https://supportforums.cisco.com/document/118551/stateful-dhcpv6-relay-configuration-example" target="_blank" rel="noopener">https://supportforums.cisco.com/document/118551/stateful-dhcpv6-relay-configuration-example</a>]中, 终于找到了线索。貌似Router没有被指明Relay的地址是哪里啊？也是啊，管理员如果不明确说明relay的地址，那么Router在接到SOLICIT message的时候，它又如何知道这个SOLICIT message该转发至何处呢？</p>
+<p>还有学生问我：在思科路由器配置完毕，PC1上的 DHCPv6的 server 已经运转起来，为啥进行PC1上的 server里的output停在<br>
+skip the blabla…上了呢？<br>
+答案是：不要忘记了运行 PC2上的DHCPv6的client软件啊。。。即使在IPv6下，DHCP request可是不会自己自主进行的。。。</p>
 <p>passion process vs uniform distribution.</p>
-<p>mais en cadre...</p>
-<p>ratasuk date rate paler citation... limitation de vitesse....</p>
+<p>mais en cadre…</p>
+<p>ratasuk date rate paler citation… limitation de vitesse…</p>
 
       
     </div>
@@ -587,7 +613,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">41</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

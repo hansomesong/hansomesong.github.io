@@ -2,16 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://rennesong.com/2016/10/23/french-useful-phrases/</loc>
+    
+    <lastmod>2019-06-25T15:22:10.680Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/about/index.html</loc>
+    
+    <lastmod>2019-06-23T16:16:39.497Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/06/21/java-tuto/</loc>
+    
+    <lastmod>2019-06-21T11:52:09.303Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://rennesong.com/2019/05/20/opendaylight-dev/</loc>
     
-    <lastmod>2019-06-15T13:35:59.010Z</lastmod>
+    <lastmod>2019-06-20T21:34:06.936Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2015/08/02/ssh-tuto/</loc>
+    
+    <lastmod>2019-06-17T12:24:14.976Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2019/06/14/bash-tuto/</loc>
     
-    <lastmod>2019-06-14T13:04:08.677Z</lastmod>
+    <lastmod>2019-06-16T16:18:02.848Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/03/25/docker-tuto/</loc>
+    
+    <lastmod>2019-06-16T16:17:51.055Z</lastmod>
     
   </url>
   
@@ -19,13 +54,6 @@
     <loc>http://rennesong.com/2019/03/29/latest-sfc103demo-trial/</loc>
     
     <lastmod>2019-06-11T03:15:25.291Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2015/08/02/ssh-tuto/</loc>
-    
-    <lastmod>2019-05-17T19:26:31.527Z</lastmod>
     
   </url>
   
@@ -40,13 +68,6 @@
     <loc>http://rennesong.com/2019/05/02/linux-networking/</loc>
     
     <lastmod>2019-05-02T15:00:52.716Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/03/25/docker-tuto/</loc>
-    
-    <lastmod>2019-05-02T15:00:50.760Z</lastmod>
     
   </url>
   
@@ -75,13 +96,6 @@
     <loc>http://rennesong.com/2019/04/11/elliptic-curve-cipher/</loc>
     
     <lastmod>2019-04-26T10:48:49.121Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/about/index.html</loc>
-    
-    <lastmod>2019-04-25T09:25:52.336Z</lastmod>
     
   </url>
   
@@ -208,13 +222,6 @@
     <loc>http://rennesong.com/2015/06/24/%E4%BB%8A%E5%A4%A9%E7%BB%83%E8%BD%A6%E5%8F%88%E6%9C%89%E4%B8%80%E4%B8%AA%E6%8C%AB%E8%B4%A5%E6%84%9F/</loc>
     
     <lastmod>2019-03-27T14:17:22.488Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2016/10/23/french-useful-phrases/</loc>
-    
-    <lastmod>2019-03-27T13:59:16.892Z</lastmod>
     
   </url>
   
