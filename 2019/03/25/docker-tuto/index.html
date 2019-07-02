@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="docker教程整理:https://www.jianshu.com/p/4b808c2341bd 1docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i eth0 -w /traces/sfc103demo.pcap 一些说明:  -v $PWD:/traces: moun">
+  <meta name="description" content="docker教程整理:https://www.jianshu.com/p/4b808c2341bd 1docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i eth0 -w /traces/sfc103demo.pcap 一些说明: * -v $PWD:/traces: mou">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A brief and concise Docker tutorial">
 <meta property="og:url" content="http://rennesong.com/2019/03/25/docker-tuto/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
-<meta property="og:description" content="docker教程整理:https://www.jianshu.com/p/4b808c2341bd 1docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i eth0 -w /traces/sfc103demo.pcap 一些说明:  -v $PWD:/traces: moun">
+<meta property="og:description" content="docker教程整理:https://www.jianshu.com/p/4b808c2341bd 1docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i eth0 -w /traces/sfc103demo.pcap 一些说明: * -v $PWD:/traces: mou">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-16T16:17:51.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A brief and concise Docker tutorial">
-<meta name="twitter:description" content="docker教程整理:https://www.jianshu.com/p/4b808c2341bd 1docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i eth0 -w /traces/sfc103demo.pcap 一些说明:  -v $PWD:/traces: moun">
+<meta name="twitter:description" content="docker教程整理:https://www.jianshu.com/p/4b808c2341bd 1docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i eth0 -w /traces/sfc103demo.pcap 一些说明: * -v $PWD:/traces: mou">
 
 
 
@@ -459,37 +459,17 @@
       
 
       
-        <h1></h1>
-<p>docker教程整理:<a href="https://www.jianshu.com/p/4b808c2341bd" target="_blank" rel="noopener">https://www.jianshu.com/p/4b808c2341bd</a></p>
+        <h1 id="section"></h1>
+<p>docker教程整理:https://www.jianshu.com/p/4b808c2341bd</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i eth0 -w /traces/sfc103demo.pcap</span><br></pre></td></tr></table></figure>
-<p>一些说明:</p>
-<ul>
-<li><code>-v $PWD:/traces</code>: mount current working directory on host machine as <code>traces</code> folder under root directory of target container. Please refer to <a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a> for more information. It is also possible specify volume mount without specifying location of source folder in host machine by syntax such as <code>-v /traces</code>. Command <code>docker inspect &lt;container_name&gt;</code> allows to check the source file in host machine corresponding to volume mounted in container.</li>
-<li><code>--net container:classifier1</code>: monitor a certain container. Rememer to replace <code>classifier1</code> with regard to your need.</li>
-<li><code>nicolaka/netshoot</code> is a very powerful network troubleshooting docker image. Refer to <a href="https://github.com/nicolaka/netshoot" target="_blank" rel="noopener">nicolaka/netshoot</a> for more details.</li>
-<li><code>tcpdump –i eth0 -w /traces/sfc103demo.pcap</code> is actually how to use tcpdump command:
-<ul>
-<li><code>–i eth0</code>: listen for interface <code>eth0</code></li>
-<li><code>-w /traces/sfc103demo.pcap</code>: output monitored traffic to a PCAP file.</li>
-</ul>
-</li>
-</ul>
-<p><a href="https://medium.com/the-code-review/top-10-docker-run-command-options-you-cant-live-without-a-reference-d256834e86c1" target="_blank" rel="noopener">Top 10 options for docker run</a></p>
-<h1>Volume in container</h1>
-<p>Container 内部数据持久化的问题 =&gt; 解决之道: data volume 机制<br>
-3 options are available in docker:</p>
-<ul>
-<li>bind mount</li>
-<li>volume</li>
-<li>tmpfs mount</li>
-</ul>
+<p>一些说明: * <code>-v $PWD:/traces</code>: mount current working directory on host machine as <code>traces</code> folder under root directory of target container. Please refer to <a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a> for more information. It is also possible specify volume mount without specifying location of source folder in host machine by syntax such as <code>-v /traces</code>. Command <code>docker inspect &lt;container_name&gt;</code> allows to check the source file in host machine corresponding to volume mounted in container. * <code>--net container:classifier1</code>: monitor a certain container. Rememer to replace <code>classifier1</code> with regard to your need. * <code>nicolaka/netshoot</code> is a very powerful network troubleshooting docker image. Refer to <a href="https://github.com/nicolaka/netshoot" target="_blank" rel="noopener">nicolaka/netshoot</a> for more details. * <code>tcpdump –i eth0 -w /traces/sfc103demo.pcap</code> is actually how to use tcpdump command: - <code>–i eth0</code>: listen for interface <code>eth0</code> - <code>-w /traces/sfc103demo.pcap</code>: output monitored traffic to a PCAP file.</p>
+<p><a href="https://medium.com/the-code-review/top-10-docker-run-command-options-you-cant-live-without-a-reference-d256834e86c1" target="_blank" rel="noopener">Top 10 options for docker run</a> # Volume in container Container 内部数据持久化的问题 =&gt; 解决之道: data volume 机制 3 options are available in docker: * bind mount * volume * tmpfs mount</p>
 <p>Among them,volumes are the preferred mechanism for persisting data generated by and used by Docker containers. While bind mounts are dependent on the directory structure of the host machine, volumes are completely managed by Docker. Volumes have several advantages over bind mounts</p>
-<h1>Run script within a Dockerfile</h1>
-<p>A short but nice explanation: <a href="https://stackoverflow.com/questions/34549859/run-a-script-in-dockerfile" target="_blank" rel="noopener">https://stackoverflow.com/questions/34549859/run-a-script-in-dockerfile</a></p>
-<h1>Kill all containers in a command line</h1>
+<h1 id="run-script-within-a-dockerfile">Run script within a Dockerfile</h1>
+<p>A short but nice explanation: https://stackoverflow.com/questions/34549859/run-a-script-in-dockerfile</p>
+<h1 id="kill-all-containers-in-a-command-line">Kill all containers in a command line</h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container ls | awk &apos;&#123;if (NR&gt;1) print $1&#125;&apos; | xargs docker kill</span><br></pre></td></tr></table></figure>
-<p><a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a><br>
-<a href="http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/" target="_blank" rel="noopener">Docker RUN vs CMD vs ENTRYPOINT</a></p>
+<p><a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a> <a href="http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/" target="_blank" rel="noopener">Docker RUN vs CMD vs ENTRYPOINT</a></p>
 
       
     </div>
@@ -763,7 +743,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Volume in container</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Run script within a Dockerfile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Kill all containers in a command line</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#run-script-within-a-dockerfile"><span class="nav-number">2.</span> <span class="nav-text">Run script within a Dockerfile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kill-all-containers-in-a-command-line"><span class="nav-number">3.</span> <span class="nav-text">Kill all containers in a command line</span></a></li></ol></div>
             
 
           </div>

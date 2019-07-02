@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="On Oxygen, it states [1]  SFC needs changes in OVS to include the Network Service Headers (NSH) Chaining encapsulation feature. This patch has been ongoing for quite a while, but has finally been offi">
+  <meta name="description" content="On Oxygen, it states [^odl-oxygen-release-notes]  SFC needs changes in OVS to include the Network Service Headers (NSH) Chaining encapsulation feature. This patch has been ongoing for quite a while, b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Key takeaways from ODL SFC mailing list">
 <meta property="og:url" content="http://rennesong.com/2019/03/27/sfc-mailing-list-takeaways/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
-<meta property="og:description" content="On Oxygen, it states [1]  SFC needs changes in OVS to include the Network Service Headers (NSH) Chaining encapsulation feature. This patch has been ongoing for quite a while, but has finally been offi">
+<meta property="og:description" content="On Oxygen, it states [^odl-oxygen-release-notes]  SFC needs changes in OVS to include the Network Service Headers (NSH) Chaining encapsulation feature. This patch has been ongoing for quite a while, b">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-03-27T21:51:29.325Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Key takeaways from ODL SFC mailing list">
-<meta name="twitter:description" content="On Oxygen, it states [1]  SFC needs changes in OVS to include the Network Service Headers (NSH) Chaining encapsulation feature. This patch has been ongoing for quite a while, but has finally been offi">
+<meta name="twitter:description" content="On Oxygen, it states [^odl-oxygen-release-notes]  SFC needs changes in OVS to include the Network Service Headers (NSH) Chaining encapsulation feature. This patch has been ongoing for quite a while, b">
 
 
 
@@ -428,37 +428,18 @@
       
 
       
-        <p>On Oxygen, it states <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+        <p>On Oxygen, it states [^odl-oxygen-release-notes]</p>
 <blockquote>
-<p>SFC needs changes in OVS to include the Network Service Headers (NSH)<br>
-Chaining encapsulation feature. This patch has been ongoing for quite<br>
-a while, but has finally been officially merged in OVS 2.8.<br>
-OpenDaylight will be updated to use this new version of OVS in the<br>
-Fluorine release. Until then, SFC will use a branched version of OVS<br>
-based on 2.6.1, called the “Yi Yang Patch”, located here. Previous<br>
-versions of this OVS patch only supported VXLAN-GPE + NSH<br>
-encapsulation, but this version supports both ETH + NSH and VXLAN-GPE<br>
-+ ETH + NSH.</p>
+<p>SFC needs changes in OVS to include the Network Service Headers (NSH) Chaining encapsulation feature. This patch has been ongoing for quite a while, but has finally been officially merged in OVS 2.8. OpenDaylight will be updated to use this new version of OVS in the Fluorine release. Until then, SFC will use a branched version of OVS based on 2.6.1, called the “Yi Yang Patch”, located here. Previous versions of this OVS patch only supported VXLAN-GPE + NSH encapsulation, but this version supports both ETH + NSH and VXLAN-GPE + ETH + NSH.</p>
 </blockquote>
 <p>On Fluorine</p>
 <blockquote>
-<p>Support for Network Service Headers (NSH) has been officially<br>
-implemented in the OVS 2.9 release. As a result, support for the<br>
-older, unofficial branched OVS versions has been removed, and now<br>
-only OVS 2.9 is supported.</p>
+<p>Support for Network Service Headers (NSH) has been officially implemented in the OVS 2.9 release. As a result, support for the older, unofficial branched OVS versions has been removed, and now only OVS 2.9 is supported.</p>
 </blockquote>
-<p>So OVS version 2.10.1 will only work with SFC at ODL release Fluorine<br>
-or newer.</p>
-<p><a href="https://github.com/yyang13/ovs_nsh_patches/" target="_blank" rel="noopener">https://github.com/yyang13/ovs_nsh_patches/</a> are only for ovs 2.5.98</p>
-<p>The patchset for ovs 2.6.1 is <a href="https://github.com/yyang13/ovs_nsh_patches/tree/master/v2.6.1" target="_blank" rel="noopener">https://github.com/yyang13/ovs_nsh_patches/tree/master/v2.6.1</a> it can be built on almost any Linux distribution (kernel version &gt;= 3.11, &lt;= 4.8) (但是我试了 高于4.3 内核版本都不行的)</p>
-<p>References:</p>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p><a href="https://docs.opendaylight.org/en/stable-oxygen/release-notes/projects/sfc.html" target="_blank" rel="noopener">https://docs.opendaylight.org/en/stable-oxygen/release-notes/projects/sfc.html</a> <a href="#fnref1" class="footnote-backref">↩</a></p>
-</li>
-</ol>
-</section>
+<p>So OVS version 2.10.1 will only work with SFC at ODL release Fluorine or newer.</p>
+<p>https://github.com/yyang13/ovs_nsh_patches/ are only for ovs 2.5.98</p>
+<p>The patchset for ovs 2.6.1 is https://github.com/yyang13/ovs_nsh_patches/tree/master/v2.6.1 it can be built on almost any Linux distribution (kernel version &gt;= 3.11, &lt;= 4.8) (但是我试了 高于4.3 内核版本都不行的)</p>
+<p>References: [^odl-oxygen-release-notes]: https://docs.opendaylight.org/en/stable-oxygen/release-notes/projects/sfc.html</p>
 
       
     </div>

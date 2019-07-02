@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://rennesong.com/2019/05/20/opendaylight-dev/</loc>
+    
+    <lastmod>2019-07-02T12:52:20.290Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/06/21/java-tuto/</loc>
+    
+    <lastmod>2019-06-28T16:51:44.645Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://rennesong.com/2016/10/23/french-useful-phrases/</loc>
     
-    <lastmod>2019-06-25T15:22:10.680Z</lastmod>
+    <lastmod>2019-06-25T15:25:45.351Z</lastmod>
     
   </url>
   
@@ -12,20 +26,6 @@
     <loc>http://rennesong.com/about/index.html</loc>
     
     <lastmod>2019-06-23T16:16:39.497Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/06/21/java-tuto/</loc>
-    
-    <lastmod>2019-06-21T11:52:09.303Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/05/20/opendaylight-dev/</loc>
-    
-    <lastmod>2019-06-20T21:34:06.936Z</lastmod>
     
   </url>
   

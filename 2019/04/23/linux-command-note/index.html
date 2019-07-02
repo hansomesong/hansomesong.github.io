@@ -440,62 +440,44 @@
       
 
       
-        <h1>linux nohup command</h1>
+        <h1 id="linux-nohup-command">linux nohup command</h1>
 <p>If you want to run some commands over SSH connection and keep it running after the SSH connection close, nohup command is your friend.</p>
 <p>如果你正在运行一个进程，而且你觉得在退出帐户时该进程还不会结束，那么可以使用nohup命令。该命令可以在你退出帐户/关闭终端之后继续运行相应的进程。nohup就是不挂起的意思( n ohang up)。</p>
 <p>一般都是在linux下nohup格式:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup &lt;your_command&gt;</span><br></pre></td></tr></table></figure>
-<p>or</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup &lt;your_command&gt; &amp;</span><br></pre></td></tr></table></figure>
+<p>or <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup &lt;your_command&gt; &amp;</span><br></pre></td></tr></table></figure></p>
 <p>这二者之间的差别是带<code>&amp;</code>的命令行，即使terminal关闭，或者电脑死机程序依然运行（前提是你把程序递交到服务器上）；它把标准输出（STDOUT）和标准错误（STDERR）结果输出到<code>nohup.txt</code>文件. 这个看似很方便，但是当输出很大的时候，nohup.txt文件会非常大，或者多个后台命令的时候大家都会输出到nohup.txt文件，不利于查找结果和调试程序。所以能够重定向输出会非常方便。下面要介绍标准输出，标准输入 和标准错误了。</p>
-<h2 id="note-for-linux-command-redirection"><a class="header-anchor" href="#note-for-linux-command-redirection">null</a>Note for linux command redirection</h2>
+<h2 id="note-for-linux-command-redirection">Note for linux command redirection</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;your_command&gt; &gt; output</span><br></pre></td></tr></table></figure>
-<p>这其中的<code>&gt;</code>就是标准输出符号，其实是 <code>1&gt;output</code> 的缩写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;your_command&gt; 2&gt; output</span><br></pre></td></tr></table></figure>
-<p>这里的<code>2&gt;</code>就是stand err输出到output文件里。而 <code>0&lt;</code> 则是标准输入了。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup &lt;your_command&gt; &gt; output 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<p>这其中的<code>&gt;</code>就是标准输出符号，其实是 <code>1&gt;output</code> 的缩写 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;your_command&gt; 2&gt; output</span><br></pre></td></tr></table></figure></p>
+<p>这里的<code>2&gt;</code>就是stand err输出到output文件里。而 <code>0&lt;</code> 则是标准输入了。 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup &lt;your_command&gt; &gt; output 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure></p>
 <p>主要是中间的 <code>2&gt;&amp;1</code> 的意思. 这个意思是把stand err（2）重定向到标准输出中 stdout（1），而标准输出又导入文件 output 里面. 所以结果是标准错误和标准输出都导入文件output里面了。</p>
-<p>至于为什么需要将标准错误重定向到标准输出的原因，那就归结为标准错误没有缓冲区，而stdout有。<br>
-这就会导致 <code>&gt;output 2&gt;output</code> 文件output被两次打开，而stdout和stderr将会竞争覆盖，这肯定不是我门想要的.<br>
-这就是为什么有人会写成：<br>
-<code>nohup ./command.sh &gt;output 2&gt;output</code> 出错的原因了</p>
-<p>最后谈一下<code>/dev/null</code>文件的作用<br>
-这是一个无底洞，任何东西都可以定向到这里，但是却无法打开。<br>
-所以一般很大的stdou和stderr当你不关心的时候可以利用stdout和stderr定向到这里</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./command.sh &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<p>至于为什么需要将标准错误重定向到标准输出的原因，那就归结为标准错误没有缓冲区，而stdout有。 这就会导致 <code>&gt;output 2&gt;output</code> 文件output被两次打开，而stdout和stderr将会竞争覆盖，这肯定不是我门想要的. 这就是为什么有人会写成： <code>nohup ./command.sh &gt;output 2&gt;output</code> 出错的原因了</p>
+<p>最后谈一下<code>/dev/null</code>文件的作用 这是一个无底洞，任何东西都可以定向到这里，但是却无法打开。 所以一般很大的stdou和stderr当你不关心的时候可以利用stdout和stderr定向到这里 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./command.sh &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure></p>
 <p>关于 <code>time</code> 命令的使用：</p>
-<p><code>time</code> writes its output to stderr, so you need to pipe stderr instead of stdout. But it’s also important to remember that time is part of the syntax of bash, and it times an entire pipeline. Consequently, you need to wrap the pipeline in braces, or run it in a subshell:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ &#123; time ls -l &gt;/dev/null; &#125; 2&gt;&amp;1 | grep real</span><br><span class="line">real   0m0.005s</span><br></pre></td></tr></table></figure>
+<p><code>time</code> writes its output to stderr, so you need to pipe stderr instead of stdout. But it's also important to remember that time is part of the syntax of bash, and it times an entire pipeline. Consequently, you need to wrap the pipeline in braces, or run it in a subshell: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ &#123; time ls -l &gt;/dev/null; &#125; 2&gt;&amp;1 | grep real</span><br><span class="line">real   0m0.005s</span><br></pre></td></tr></table></figure></p>
 <p>怪不得 我用sed替换命令咋都不好使呢，原来<code>time</code>的输出在<code>stderr</code>里！</p>
-<p>With Bash v4.0 (probably universal on Linux distributions but still not standard on Mac OS X), you can use |&amp; to pipe both stdout and stderr:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; time ls -l &gt;/dev/null; &#125; |&amp; grep real</span><br></pre></td></tr></table></figure>
-<p>sed教程 <a href="https://www.tutorialspoint.com/unix/unix-regular-expressions.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/unix/unix-regular-expressions.htm</a></p>
+<p>With Bash v4.0 (probably universal on Linux distributions but still not standard on Mac OS X), you can use |&amp; to pipe both stdout and stderr: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; time ls -l &gt;/dev/null; &#125; |&amp; grep real</span><br></pre></td></tr></table></figure></p>
+<p>sed教程 https://www.tutorialspoint.com/unix/unix-regular-expressions.htm</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repeat 100 &#123;(time example/bls &lt; param/a.param) 2&gt;&amp;1 &gt;/dev/null | grep total&#125; | cut -d' ' -f11 | awk '&#123;print $1*1000&#125;' | pbcopy</span><br></pre></td></tr></table></figure>
-<p>tar 常用命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar cvzf pbc-song.tar.gz .</span><br></pre></td></tr></table></figure>
-<p>如何产生95%置信区间？？？<br>
-<a href="https://stackoverflow.com/questions/44603615/plot-95-confidence-interval-errorbar-python-pandas-dataframes" target="_blank" rel="noopener">https://stackoverflow.com/questions/44603615/plot-95-confidence-interval-errorbar-python-pandas-dataframes</a></p>
-<p>Docker image and container management<br>
-<a href="https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/" target="_blank" rel="noopener">https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/</a></p>
-<p>How to hash into Elliptic curve? <a href="https://eprint.iacr.org/2009/226.pdf" target="_blank" rel="noopener">https://eprint.iacr.org/2009/226.pdf</a></p>
-<h1>如何只执行一个shell脚本里的某一个函数而不是全部？</h1>
+<p>tar 常用命令 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar cvzf pbc-song.tar.gz .</span><br></pre></td></tr></table></figure></p>
+<p>如何产生95%置信区间？？？ https://stackoverflow.com/questions/44603615/plot-95-confidence-interval-errorbar-python-pandas-dataframes</p>
+<p>Docker image and container management https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/</p>
+<p>How to hash into Elliptic curve? https://eprint.iacr.org/2009/226.pdf</p>
+<h1 id="如何只执行一个shell脚本里的某一个函数而不是全部">如何只执行一个shell脚本里的某一个函数而不是全部？</h1>
 <p>The <code>dot</code> operator or <code>source</code> builtin in bash is analogous to the <code>import</code> statement in Java.</p>
-<p>假如你有一个名叫 run_demo.sh 的脚本文件，里面有一个名为 start_demo 的函数，除此之外还有一些其他的初始化，包安装的函数，你只想执行 start_demo函数呢？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source run_demo.sh; start_demo</span><br></pre></td></tr></table></figure>
-<p>This commit works. Even though Ordered Multi-Signature (OMS) does not work, HTTP can be sent out and acknowledged. I don’t know when I modify <a href="http://start.sh" target="_blank" rel="noopener">start.sh</a>, which is entry point of container. Container sf1 and sf2 cannot be started.<br>
-Even thought I roll back to a previously operational commit, these two containers still cannot be launched.</p>
-<h1>ps 的时候，如何避免显示进程 grep --color …</h1>
+<p>假如你有一个名叫 run_demo.sh 的脚本文件，里面有一个名为 start_demo 的函数，除此之外还有一些其他的初始化，包安装的函数，你只想执行 start_demo函数呢？ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source run_demo.sh; start_demo</span><br></pre></td></tr></table></figure></p>
+<p>This commit works. Even though Ordered Multi-Signature (OMS) does not work, HTTP can be sent out and acknowledged. I don't know when I modify start.sh, which is entry point of container. Container sf1 and sf2 cannot be started. Even thought I roll back to a previously operational commit, these two containers still cannot be launched.</p>
+<h1 id="ps-的时候如何避免显示进程-grep---color-...">ps 的时候，如何避免显示进程 grep --color ...</h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux | grep &quot;[f]nord&quot;</span><br></pre></td></tr></table></figure>
-<p>By putting the brackets around the letter and quotes around the string you search for the regex, which says, “Find the character ‘f’ followed by ‘nord’.”</p>
-<p>But since you put the brackets in the pattern ‘f’ is now followed by ‘]’, so grep won’t show up in the results list. Neato!</p>
-<h1>awk 命令在 double quote 环境下失效问题</h1>
-<p>参考: <a href="https://superuser.com/questions/178425/awk-doesnt-work-when-inside-double-quotes" target="_blank" rel="noopener">https://superuser.com/questions/178425/awk-doesnt-work-when-inside-double-quotes</a></p>
-<p>Variable interpolation is performed within double quotes, so here’s what I think might be happening: when you type in <code>ssh $HOST &quot;ls -l | awk '{print $1}'&quot;</code>, your shell (the one on your local computer, where you are running the SSH client) sees $1 within the double quotes and replaces it with the value of the variable $1, which will be blank. It isn’t able to detect that the <code>$1</code> is nested within single quotes within the double quotes. So what winds up getting sent to the remote server is <code>ls -l | awk '{print }'</code>, which is basically equivalent to <code>ls -l | cat</code>, i.e. it just prints out the output of <code>ls -l</code>.</p>
-<p>Solution: escape the $ with a backslash,</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh $HOST &quot;ls -l | awk &apos;&#123;print \$1&#125;</span><br></pre></td></tr></table></figure>
-<p>According to this comment, if I want to kill a proces within a container, I shoud do as follows:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">for i in sf1 sf2; do </span><br><span class="line">    echo "Kill sfc_agent.py in container $i"</span><br><span class="line">    docker exec -it $i /bin/bash -c "ps aux | grep [s]fc/sfc_agent.py | awk '&#123;print \$2&#125;'";</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-<h1>如何重启docker下的通过ENTRY启动的进程？？？</h1>
+<p>By putting the brackets around the letter and quotes around the string you search for the regex, which says, "Find the character 'f' followed by 'nord'."</p>
+<p>But since you put the brackets in the pattern 'f' is now followed by ']', so grep won't show up in the results list. Neato!</p>
+<h1 id="awk-命令在-double-quote-环境下失效问题">awk 命令在 double quote 环境下失效问题</h1>
+<p>参考: https://superuser.com/questions/178425/awk-doesnt-work-when-inside-double-quotes</p>
+<p>Variable interpolation is performed within double quotes, so here's what I think might be happening: when you type in <code>ssh $HOST "ls -l | awk '{print $1}'"</code>, your shell (the one on your local computer, where you are running the SSH client) sees $1 within the double quotes and replaces it with the value of the variable $1, which will be blank. It isn't able to detect that the <code>$1</code> is nested within single quotes within the double quotes. So what winds up getting sent to the remote server is <code>ls -l | awk '{print }'</code>, which is basically equivalent to <code>ls -l | cat</code>, i.e. it just prints out the output of <code>ls -l</code>.</p>
+<p>Solution: escape the $ with a backslash, <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh $HOST &quot;ls -l | awk &apos;&#123;print \$1&#125;</span><br></pre></td></tr></table></figure></p>
+<p>According to this comment, if I want to kill a proces within a container, I shoud do as follows: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">for i in sf1 sf2; do </span><br><span class="line">    echo "Kill sfc_agent.py in container $i"</span><br><span class="line">    docker exec -it $i /bin/bash -c "ps aux | grep [s]fc/sfc_agent.py | awk '&#123;print \$2&#125;'";</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<h1 id="如何重启docker下的通过entry启动的进程">如何重启docker下的通过ENTRY启动的进程？？？</h1>
 <p>我一直想通过docker exec命令解决，但是实际上重启一下不就好了？？？</p>
 
       
@@ -764,7 +746,7 @@ Even thought I roll back to a previously operational commit, these two container
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">linux nohup command</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#note-for-linux-command-redirection"><span class="nav-number">1.1.</span> <span class="nav-text">nullNote for linux command redirection</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">如何只执行一个shell脚本里的某一个函数而不是全部？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">ps 的时候，如何避免显示进程 grep --color …</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">awk 命令在 double quote 环境下失效问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">如何重启docker下的通过ENTRY启动的进程？？？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-nohup-command"><span class="nav-number">1.</span> <span class="nav-text">linux nohup command</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#note-for-linux-command-redirection"><span class="nav-number">1.1.</span> <span class="nav-text">Note for linux command redirection</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何只执行一个shell脚本里的某一个函数而不是全部"><span class="nav-number">2.</span> <span class="nav-text">如何只执行一个shell脚本里的某一个函数而不是全部？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ps-的时候如何避免显示进程-grep---color-..."><span class="nav-number">3.</span> <span class="nav-text">ps 的时候，如何避免显示进程 grep --color ...</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#awk-命令在-double-quote-环境下失效问题"><span class="nav-number">4.</span> <span class="nav-text">awk 命令在 double quote 环境下失效问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何重启docker下的通过entry启动的进程"><span class="nav-number">5.</span> <span class="nav-text">如何重启docker下的通过ENTRY启动的进程？？？</span></a></li></ol></div>
             
 
           </div>
