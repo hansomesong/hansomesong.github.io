@@ -442,7 +442,8 @@
       
         <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">==&gt; openssl</span><br><span class="line">A CA file has been bootstrapped using certificates from the SystemRoots</span><br><span class="line">keychain. To add additional certificates (e.g. the certificates added in</span><br><span class="line">the System keychain), place .pem files in</span><br><span class="line">  /usr/local/etc/openssl/certs</span><br><span class="line"></span><br><span class="line">and run</span><br><span class="line">  /usr/local/opt/openssl/bin/c_rehash</span><br><span class="line"></span><br><span class="line">openssl is keg-only, which means it was not symlinked into /usr/local,</span><br><span class="line">because Apple has deprecated use of OpenSSL in favor of its own TLS and crypto libraries.</span><br><span class="line"></span><br><span class="line">If you need to have openssl first in your PATH run:</span><br><span class="line">  echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' &gt;&gt; ~/.zshrc</span><br><span class="line"></span><br><span class="line">For compilers to find openssl you may need to set:</span><br><span class="line">  export LDFLAGS="-L/usr/local/opt/openssl/lib"</span><br><span class="line">  export CPPFLAGS="-I/usr/local/opt/openssl/include"</span><br></pre></td></tr></table></figure>
 <p>我发现在执行 ./configure 命令之后，生成的 Makefile 中关于 LDFLAGS 和 CPPFLAGS 是空的 所以，我只能手动填写了。</p>
-<p>在Linux环境下，只安装openssl是不行的，需要安装libssl-dev <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libssl-dev</span><br></pre></td></tr></table></figure></p>
+<p>在Linux环境下，只安装openssl是不行的，需要安装libssl-dev</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libssl-dev</span><br></pre></td></tr></table></figure>
 <p>安装位置 <code>/usr/include/openssl</code> 估计这个路径被 pbc makefile 涵盖了，所以并不需要要配置 <code>LDFLAGS</code> 和 <code>CPPFLAGS</code> 程序依然可以正常编译</p>
 
       
@@ -546,7 +547,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -642,7 +643,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">19</span>
+                      
+                    
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>

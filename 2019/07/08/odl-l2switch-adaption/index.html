@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="l2switch is currently not being maintained by anyone and thus did not participate in the Fluorine release cycle. It needs version bumps and code changes to conform with upstream changes in yangtools,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="odl-l2switch-adaption">
+<meta property="og:url" content="http://rennesong.com/2019/07/08/odl-l2switch-adaption/index.html">
+<meta property="og:site_name" content="Rennesong&#39;s blog">
+<meta property="og:description" content="l2switch is currently not being maintained by anyone and thus did not participate in the Fluorine release cycle. It needs version bumps and code changes to conform with upstream changes in yangtools,">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-11T20:26:37.871Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="odl-l2switch-adaption">
+<meta name="twitter:description" content="l2switch is currently not being maintained by anyone and thus did not participate in the Fluorine release cycle. It needs version bumps and code changes to conform with upstream changes in yangtools,">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://rennesong.com/2019/07/08/odl-l2switch-adaption/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>odl-l2switch-adaption | Rennesong's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rennesong's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Blog my life from now on!</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/07/08/odl-l2switch-adaption/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">odl-l2switch-adaption
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-08 23:46:13" itemprop="dateCreated datePublished" datetime="2019-07-08T23:46:13+02:00">2019-07-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-11 22:26:37" itemprop="dateModified" datetime="2019-07-11T22:26:37+02:00">2019-07-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><code>l2switch</code> is currently not being maintained by anyone and thus did not participate in the Fluorine release cycle. It needs version bumps and code changes to conform with upstream changes in <code>yangtools</code>, <code>mdsal</code>, etc. For the compile errors above, <code>getAugmentation</code> is now <code>augmentation</code> and <code>setKey</code> is now <code>withKey</code>.</p>
+<p>These upstream changes were made in Fluorine along with others. This was all documented on the ODL mailing lists and TSC JIRA items during the Fluorine release cycle. Any contributions to reboot the project and get it building again and maintain it going forward would be welcomed by the ODL community.</p>
+<p>可以参考的改进</p>
+<h1>常见的类以及所属包以及路径</h1>
+<p>RpcResult org.opendaylight.yangtools<br>
+openflow.action org.opendaylight.openflowplugin<br>
+openflow.inventory =&gt; org.opendaylight.msdal<br>
+org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress =&gt; org.opendaylight.msdal<br>
+openflow.inventory.rev130819.node.NodeConnector =&gt; org.opendaylight.controller.msdal<br>
+opendaylight.packet.service =&gt; org.opendaylight.openflowplugin<br>
+opendaylight.arp.packet.* =&gt; org.opendaylight.l2switch</p>
+<h1>查看 ODL Javadoc</h1>
+<p><a href="https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/l2switch/packethandler/packethandler-model/0.7.4/" target="_blank" rel="noopener">https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/l2switch/packethandler/packethandler-model/0.7.4/</a> 比如bundle <code>packethandler-model</code> 的 javadoc 就可以通过这里查看</p>
+<p><a href="https://javadocs.opendaylight.org/org.opendaylight.mdsal/fluorine/" target="_blank" rel="noopener">https://javadocs.opendaylight.org/org.opendaylight.mdsal/fluorine/</a> 这里也可以查，比如<code>MD-SAL</code>所有的API都在这里</p>
+<h1>org.opendaylight.yang.gen.v1.urn.opendaylight.inventory.rev130819.node.NodeConnector</h1>
+<p>getKey()变成了key()<br>
+setKey()变成了withKey()<br>
+getAugmentation 变成了 augmentation()</p>
+<h1>Bundle <code>arphandler-impl</code> 编译失败</h1>
+<h2 id="错误信息"><a class="header-anchor" href="#错误信息">null</a>错误信息</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.7.0:compile (default-compile) on project addresstracker-impl: Compilation failure: Compilation failure:</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/addresstracker/implementation/src/main/java/org/opendaylight/l2switch/addresstracker/addressobserver/AddressObserverUsingArp.java:[60,17] no suitable constructor found for IpAddress(char[])</span><br><span class="line">[ERROR]     constructor org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress.IpAddress(org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.Ipv4Address) is not applicable</span><br><span class="line">[ERROR]       (argument mismatch; char[] cannot be converted to org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.Ipv4Address)</span><br><span class="line">[ERROR]     constructor org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress.IpAddress(org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.Ipv6Address) is not applicable</span><br><span class="line">[ERROR]       (argument mismatch; char[] cannot be converted to org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.Ipv6Address)</span><br><span class="line">[ERROR]     constructor org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress.IpAddress(org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress) is not applicable</span><br><span class="line">[ERROR]       (argument mismatch; char[] cannot be converted to org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress)</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/addresstracker/implementation/src/main/java/org/opendaylight/l2switch/addresstracker/addressobserver/AddressObservationWriter.java:[127,21] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getAugmentation(java.lang.Class&lt;org.opendaylight.yang.gen.v1.urn.opendaylight.address.tracker.rev140617.AddressCapableNodeConnector&gt;)</span><br><span class="line">[ERROR]   location: variable nc of type org.opendaylight.yang.gen.v1.urn.opendaylight.inventory.rev130819.node.NodeConnector</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/addresstracker/implementation/src/main/java/org/opendaylight/l2switch/addresstracker/addressobserver/AddressObservationWriter.java:[138,61] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: interface org.opendaylight.yang.gen.v1.urn.opendaylight.address.tracker.rev140617.address.node.connector.Addresses</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/addresstracker/implementation/src/main/java/org/opendaylight/l2switch/addresstracker/addressobserver/AddressObservationWriter.java:[152,31] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: variable addressBuilder of type org.opendaylight.yang.gen.v1.urn.opendaylight.address.tracker.rev140617.address.node.connector.AddressesBuilder</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/addresstracker/implementation/src/main/java/org/opendaylight/l2switch/addresstracker/addressobserver/AddressObservationWriter.java:[153,31] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method setKey(org.opendaylight.yang.gen.v1.urn.opendaylight.address.tracker.rev140617.address.node.connector.AddressesKey)</span><br><span class="line">[ERROR]   location: variable addressBuilder of type org.opendaylight.yang.gen.v1.urn.opendaylight.address.tracker.rev140617.address.node.connector.AddressesBuilder</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/addresstracker/implementation/src/main/java/org/opendaylight/l2switch/addresstracker/addressobserver/AddressObserverUsingIpv4.java:[62,21] no suitable constructor found for IpAddress(char[])</span><br><span class="line">[ERROR]     constructor org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress.IpAddress(org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.Ipv4Address) is not applicable</span><br><span class="line">[ERROR]       (argument mismatch; char[] cannot be converted to org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.Ipv4Address)</span><br><span class="line">[ERROR]     constructor org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress.IpAddress(org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.Ipv6Address) is not applicable</span><br><span class="line">[ERROR]       (argument mismatch; char[] cannot be converted to org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.Ipv6Address)</span><br><span class="line">[ERROR]     constructor org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress.IpAddress(org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress) is not applicable</span><br><span class="line">[ERROR]       (argument mismatch; char[] cannot be converted to org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress)</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/addresstracker/implementation/src/main/java/org/opendaylight/l2switch/addresstracker/addressobserver/AddressObserverUsingIpv6.java:[62,21] no suitable constructor found for IpAddress(char[])</span><br><span class="line">[ERROR]     constructor org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress.IpAddress(org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.Ipv4Address) is not applicable</span><br><span class="line">[ERROR]       (argument mismatch; char[] cannot be converted to org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.Ipv4Address)</span><br><span class="line">[ERROR]     constructor org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress.IpAddress(org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.Ipv6Address) is not applicable</span><br><span class="line">[ERROR]       (argument mismatch; char[] cannot be converted to org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.Ipv6Address)</span><br><span class="line">[ERROR]     constructor org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress.IpAddress(org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress) is not applicable</span><br><span class="line">[ERROR]       (argument mismatch; char[] cannot be converted to org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev130715.IpAddress)</span><br><span class="line">[ERROR] -&gt; [Help 1]</span><br></pre></td></tr></table></figure>
+<h2 id="原因-在fluorine中-org-opendaylight-msdal-中定义的-ipaddress-删去了构造体-ipaddress-char-ipaddress-方法-org-opendaylight-msdal-中引入了-ipaddressbuilder-该方法支持从-string直接构造ipaddress对象"><a class="header-anchor" href="#原因-在fluorine中-org-opendaylight-msdal-中定义的-ipaddress-删去了构造体-ipaddress-char-ipaddress-方法-org-opendaylight-msdal-中引入了-ipaddressbuilder-该方法支持从-string直接构造ipaddress对象">null</a>原因: 在fluorine中, org.opendaylight.msdal 中定义的 IpAddress 删去了构造体 IpAddress(Char[] ipAddress)方法。org.opendaylight.msdal 中引入了 IpAddressBuilder 该方法支持从 String直接构造IpAddress对象</h2>
+<p><a href="http://www.gzhshoulu.wang/article/1549928" target="_blank" rel="noopener">http://www.gzhshoulu.wang/article/1549928</a> 源码解读ODL的MAC地址学习(二)</p>
+<p>修改完上述错误之后，还有下面的问题要解决:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.7.0:compile (default-compile) on project addresstracker-impl: Compilation failure: Compilation failure:</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/addresstracker/implementation/src/main/java/org/opendaylight/l2switch/addresstracker/addressobserver/AddressObservationWriter.java:[138,61] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: interface org.opendaylight.yang.gen.v1.urn.opendaylight.address.tracker.rev140617.address.node.connector.Addresses</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/addresstracker/implementation/src/main/java/org/opendaylight/l2switch/addresstracker/addressobserver/AddressObservationWriter.java:[152,31] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: variable addressBuilder of type org.opendaylight.yang.gen.v1.urn.opendaylight.address.tracker.rev140617.address.node.connector.AddressesBuilder</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/addresstracker/implementation/src/main/java/org/opendaylight/l2switch/addresstracker/addressobserver/AddressObservationWriter.java:[153,31] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method setKey(org.opendaylight.yang.gen.v1.urn.opendaylight.address.tracker.rev140617.address.node.connector.AddressesKey)</span><br><span class="line">[ERROR]   location: variable addressBuilder of type org.opendaylight.yang.gen.v1.urn.opendaylight.address.tracker.rev140617.address.node.connector.AddressesBuilder</span><br></pre></td></tr></table></figure>
+<p>IntelliJ IDEA 真的是个神器。居然可以查看<code>.class</code>后缀的文件。通过查看<code>addresstracker</code>之下编译生成的<code>target/classes</code>中<code>Address.class</code>以及<code>AddressBuilder.class</code>文件<br>
+, 确认Fluorine之前版本之中的<code>getKey()</code>以及<code>setKey()</code>方法相应地被<code>key()</code>和<code>withKey()</code>替换了。</p>
+<h1>编译 Bundle <code>hosttracker</code> 报错</h1>
+<h2 id="报错信息"><a class="header-anchor" href="#报错信息">null</a>报错信息</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.7.0:compile (default-compile) on project hosttracker-impl: Compilation failure: Compilation failure:</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/inventory/Host.java:[47,33] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getAugmentation(java.lang.Class&lt;org.opendaylight.yang.gen.v1.urn.opendaylight.host.tracker.rev140624.HostNode&gt;)</span><br><span class="line">[ERROR]   location: variable node of type org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology.Node</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/inventory/Host.java:[108,13] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method setKey(org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology.NodeKey)</span><br><span class="line">[ERROR]   location: variable node of type org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology.NodeBuilder</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/inventory/Host.java:[229,41] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: variable apb of type org.opendaylight.yang.gen.v1.urn.opendaylight.host.tracker.rev140624.host.AttachmentPointsBuilder</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/inventory/Host.java:[229,21] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: variable apbi of type org.opendaylight.yang.gen.v1.urn.opendaylight.host.tracker.rev140624.host.AttachmentPointsBuilder</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/internal/ConcurrentClusterAwareHostHashMap.java:[132,86] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: variable hostNode of type org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology.Node</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/internal/ConcurrentClusterAwareHostHashMap.java:[150,90] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: variable hostNode of type org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology.Node</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/internal/ConcurrentClusterAwareHostHashMap.java:[170,86] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: variable hostNode of type org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology.Node</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/internal/ConcurrentClusterAwareHostHashMap.java:[189,83] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: variable hostNode of type org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology.Node</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/internal/HostTrackerImpl.java:[200,37] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getAugmentation(java.lang.Class&lt;org.opendaylight.yang.gen.v1.urn.opendaylight.host.tracker.rev140624.HostNode&gt;)</span><br><span class="line">[ERROR]   location: variable node of type org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology.Node</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/internal/HostTrackerImpl.java:[286,43] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: variable nodeConnector of type org.opendaylight.yang.gen.v1.urn.opendaylight.inventory.rev130819.node.NodeConnector</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/internal/HostTrackerImpl.java:[356,79] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: variable l of type org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology.Link</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/internal/HostTrackerImpl.java:[363,79] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: variable l of type org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology.Link</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/internal/HostTrackerImpl.java:[383,48] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getAugmentation(java.lang.Class&lt;org.opendaylight.yang.gen.v1.urn.opendaylight.host.tracker.rev140624.HostNode&gt;)</span><br><span class="line">[ERROR]   location: interface org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology.Node</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/internal/SimpleAddressObserver.java:[190,14] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method setKey(org.opendaylight.yang.gen.v1.urn.opendaylight.address.tracker.rev140617.address.node.connector.AddressesKey)</span><br><span class="line">[ERROR]   location: variable addrs of type org.opendaylight.yang.gen.v1.urn.opendaylight.address.tracker.rev140617.address.node.connector.AddressesBuilder</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/util/Utilities.java:[44,15] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method setKey(org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology.LinkKey)</span><br><span class="line">[ERROR]   location: variable srcdst of type org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology.LinkBuilder</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/util/Utilities.java:[52,15] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method setKey(org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology.LinkKey)</span><br><span class="line">[ERROR]   location: variable dstsrc of type org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology.LinkBuilder</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/hosttracker/implementation/src/main/java/org/opendaylight/l2switch/hosttracker/plugin/util/Utilities.java:[80,17] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method setKey(org.opendaylight.yang.gen.v1.urn.opendaylight.host.tracker.rev140624.host.AttachmentPointsKey)</span><br><span class="line">[ERROR]   location: class org.opendaylight.yang.gen.v1.urn.opendaylight.host.tracker.rev140624.host.AttachmentPointsBuilder</span><br></pre></td></tr></table></figure>
+<p><code>org.opendaylight.yang.gen.v1.urn.tbd.params.xml.ns.yang.network.topology.rev131021.network.topology.topology</code> 属于 <code>org.opendaylight.mdsal</code>.</p>
+<h1>l2switch-main 编译错误</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.7.0:compile (default-compile) on project main-impl: Compilation failure: Compilation failure:</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/l2switch-main/src/main/java/org/opendaylight/l2switch/inventory/InventoryReader.java:[73,69] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getAugmentation(java.lang.Class&lt;org.opendaylight.yang.gen.v1.urn.opendaylight.l2switch.loopremover.rev140714.StpStatusAwareNodeConnector&gt;)</span><br><span class="line">[ERROR]   location: variable nc of type org.opendaylight.yang.gen.v1.urn.opendaylight.inventory.rev130819.node.NodeConnector</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/l2switch-main/src/main/java/org/opendaylight/l2switch/inventory/InventoryReader.java:[77,88] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: variable nc of type org.opendaylight.yang.gen.v1.urn.opendaylight.inventory.rev130819.node.NodeConnector</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/l2switch-main/src/main/java/org/opendaylight/l2switch/inventory/InventoryReader.java:[78,58] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getAugmentation(java.lang.Class&lt;org.opendaylight.yang.gen.v1.urn.opendaylight.address.tracker.rev140617.AddressCapableNodeConnector&gt;)</span><br><span class="line">[ERROR]   location: variable nc of type org.opendaylight.yang.gen.v1.urn.opendaylight.inventory.rev130819.node.NodeConnector</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/l2switch-main/src/main/java/org/opendaylight/l2switch/inventory/InventoryReader.java:[85,84] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: variable nc of type org.opendaylight.yang.gen.v1.urn.opendaylight.inventory.rev130819.node.NodeConnector</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/l2switch-main/src/main/java/org/opendaylight/l2switch/inventory/InventoryReader.java:[87,102] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   method getKey()</span><br><span class="line">[ERROR]   location: variable nc of type org.opendaylight.yang.gen.v1.urn.opendaylight.inventory.rev130819.node.NodeConnector</span><br></pre></td></tr></table></figure>
+<h1>feature odl-l2switch-packethandler 编译报错</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[ERROR] Failed to execute goal on project odl-l2switch-packethandler: Could not resolve dependencies for project org.opendaylight.l2switch:odl-l2switch-packethandler:feature:0.8.0-SNAPSHOT: Could not find artifact org.opendaylight.openflowplugin:odl-openflowplugin-southbound:xml:features:0.7.0-SNAPSHOT in opendaylight-snapshot (https://nexus.opendaylight.org/content/repositories/opendaylight.snapshot/) -&gt; [Help 1]</span><br><span class="line">[ERROR]</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">依赖问题，因为从fluorine起，maven采用的repository是`https://nexus.opendaylight.org/content/repositories/public/`, snapshot采用的是`https://nexus.opendaylight.org/content/repositories/opendaylight.snapshot/` 而`opendaylight.snapshot`删掉了好多东西</span><br><span class="line"></span><br><span class="line">修改`odl-l2switch-packethandler/pom.xml`中的依赖关系如下:</span><br></pre></td></tr></table></figure>
+<dependency>
+    <groupid>org.opendaylight.openflowplugin</groupid>
+    <artifactid>odl-openflowplugin-southbound</artifactid>
+    <version>0.7.0</version>
+    <type>xml</type>
+    <classifier>features</classifier>
+</dependency>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># feature odl-l2switch-loopremover 编译报错</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[ERROR] Failed to execute goal on project odl-l2switch-loopremover: Could not resolve dependencies for project org.opendaylight.l2switch:odl-l2switch-loopremover:feature:0.8.0-SNAPSHOT: Could not find artifact org.opendaylight.openflowplugin:odl-openflowplugin-flow-services:xml:features:0.7.0-SNAPSHOT in opendaylight-snapshot (https://nexus.opendaylight.org/content/repositories/opendaylight.snapshot/) -&gt; [Help 1]</span><br><span class="line">[ERROR]</span><br></pre></td></tr></table></figure>
+<p>编译好的的<code>l2switch</code>(0.7.4)依赖<code>odl-openflowplugin-flow-services</code>的版本是0.6.4<br>
+鉴于其他SFC项目都采用了0.9.0-SNAPSHOT的<code>odl-openflowplugin-flow-services</code>。所以这里修改如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.opendaylight.openflowplugin&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;odl-openflowplugin-flow-services&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.9.0-SNAPSHOT&lt;/version&gt;</span><br><span class="line">    &lt;type&gt;xml&lt;/type&gt;</span><br><span class="line">    &lt;classifier&gt;features&lt;/classifier&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h1>feature odl-l2switch-switch-rest 编译失败</h1>
+<p>因为项目的<code>pom.xml</code>依赖的是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;org.opendaylight.netconf&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;odl-restconf&lt;/artifactId&gt;</span><br><span class="line">&lt;version&gt;1.8.0-SNAPSHOT&lt;/version&gt;</span><br><span class="line">&lt;type&gt;xml&lt;/type&gt;</span><br><span class="line">&lt;classifier&gt;features&lt;/classifier&gt;</span><br></pre></td></tr></table></figure>
+<p>以SFC项目为例，odl-sfc-provider-rest 依赖的<code>odl-restconf</code>工件版本已经是1.10.0-SNAPSHOT. 应该与SFC统一。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line"> &lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;org.opendaylight.netconf&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;odl-restconf&lt;/artifactId&gt;</span><br><span class="line">&lt;version&gt;1.10.0-SNAPSHOT&lt;/version&gt;</span><br><span class="line">&lt;type&gt;xml&lt;/type&gt;</span><br><span class="line">&lt;classifier&gt;features&lt;/classifier&gt;</span><br></pre></td></tr></table></figure>
+<h1>feature odl-l2switch-ui 编译报错</h1>
+<p>在<code>features/pom.xml</code>注释掉/删掉关于 <code>odl-l2switch-switch-ui</code> 的模块</p>
+<h1>feature-l2switch 编译报错</h1>
+<p>该项目下的pom.xml中注销掉关于<code>odl-l2switch-switch-ui</code>的依赖</p>
+<h1>distribution-karaf 编译报错</h1>
+<p>有几个现象值得注意下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[INFO] ------------&lt; org.opendaylight.l2switch:distribution-karaf &gt;------------</span><br><span class="line">[INFO] Building distribution-karaf 0.8.0-SNAPSHOT                         [2/5]</span><br><span class="line">[INFO] --------------------------------[ pom ]---------------------------------</span><br><span class="line">Downloading from opendaylight-mirror: https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/odlparent/karaf-plugin/3.1.0/karaf-plugin-3.1.0.pom</span><br><span class="line">Downloaded from opendaylight-mirror: https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/odlparent/karaf-plugin/3.1.0/karaf-plugin-3.1.0.pom (5.6 kB at 9.9 kB/s)</span><br><span class="line">Downloading from opendaylight-mirror: https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/odlparent/karaf-plugin/3.1.0/karaf-plugin-3.1.0.jar</span><br><span class="line">Downloaded from opendaylight-mirror: https://nexus.opendaylight.org/content/repositories/public/org/opendaylight/odlparent/karaf-plugin/3.1.0/karaf-plugin-3.1.0.jar (32 kB at 96 kB/s)</span><br><span class="line">Downloading from opendaylight-mirror: https://nexus.opendaylight.org/content/repositories/public/org/apache/karaf/features/framework/4.1.5/framework-4.1.5.pom</span><br><span class="line">Downloaded from opendaylight-mirror: https://nexus.opendaylight.org/content/repositories/public/org/apache/karaf/features/framework/4.1.5/framework-4.1.5.pom (12 kB at 53 kB/s)</span><br><span class="line">Downloading from opendaylight-mirror: https://nexus.opendaylight.org/content/repositories/public/org/apache/karaf/features/base/4.1.5/base-4.1.5.pom</span><br><span class="line">Downloaded from opendaylight-mirror: https://nexus.opendaylight.org/content/repositories/public/org/apache/karaf/features/base/4.1.5/base-4.1.5.pom (9.1 kB at 37 kB/s)</span><br><span class="line">Downloading from opendaylight-mirror: https://nexus.opendaylight.org/content/repositories/public/org/apache/karaf/org.ap</span><br></pre></td></tr></table></figure>
+<p>针对这一点有两处需要改动：</p>
+<ol>
+<li>features/featues-l2switch<br>
+貌似下载的是<code>karaf 3.1.1</code>, 而SFC依赖的是(定义在<code>features/features-l2switch/pom.xml</code>中):</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;parent&gt;</span><br><span class="line">    &lt;groupId&gt;org.opendaylight.odlparent&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;feature-repo-parent&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;5.0.0&lt;/version&gt;</span><br><span class="line">    &lt;relativePath/&gt;</span><br><span class="line">&lt;/parent&gt;</span><br></pre></td></tr></table></figure>
+<p>修改<code>features/features-l2switch</code>使二者统一</p>
+<ol start="2">
+<li>artifacts/pom.xml<br>
+修改后的内容:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;parent&gt;</span><br><span class="line">    &lt;groupId&gt;org.opendaylight.odlparent&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;odlparent-lite&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;5.0.0&lt;/version&gt;</span><br><span class="line">    &lt;relativePath/&gt;</span><br><span class="line">&lt;/parent&gt;</span><br></pre></td></tr></table></figure>
+<p>为何sfc项目保持一致。&lt;openflow.plugin.version&gt;0.9.0-SNAPSHOT&lt;/openflow.plugin.version&gt; 统一改为0.9.0-SNAPSHOT 之前是多少？</p>
+<p>parent 文件夹中pom.xml中<parent>亦是改成4.0.2(之前为0.13.0)</parent></p>
+<p>第二，报错依然跟<code>odl-l2switch-switch-ui/</code>有关</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[ERROR] Failed to execute goal org.apache.karaf.tooling:karaf-maven-plugin:4.1.5:assembly (process-resources) on project distribution-karaf: Unable to build assembly: Could not find matching feature for odl-l2switch-switch-ui/0.0.0 -&gt; [Help 1]</span><br><span class="line">[ERROR]</span><br></pre></td></tr></table></figure>
+<p>这是因为在文件<code>/distribution/karaf/pom.xml</code> 中，有这么个配置，而这么个配置是编译中产生的:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--properties&gt;</span><br><span class="line">  &lt;karaf.localFeature&gt;odl-l2switch-switch-ui&lt;/karaf.localFeature&gt;</span><br><span class="line">&lt;/properties--&gt;</span><br></pre></td></tr></table></figure>
+<p>删掉这个配置！<br>
+同时parent的版本号要改成5.0.0</p>
+<h1></h1>
+<p>[INFO] ------------------------------------------------------------------------<br>
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.7.0:compile (default-compile) on project packethandler-model: Compilation failure<br>
+[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/packethandler/model/target/generated-sources/mdsal-binding/org/opendaylight/yang/gen/v1/urn/opendaylight/packet/basepacket/rev140528/raw/packet/fields/MatchBuilder.java:[293,26] org.opendaylight.yang.gen.v1.urn.opendaylight.packet.basepacket.rev140528.raw.packet.fields.MatchBuilder.MatchImpl is not abstract and does not override abstract method implementedInterface() in org.opendaylight.yang.gen.v1.urn.opendaylight.model.match.types.rev131026.Match</p>
+<p>这个错误是由于依赖从&lt;openflow.plugin.version&gt;0.9.0-SNAPSHOT&lt;/openflow.plugin.version&gt; 改为0.9.0-SNAPSHOT引起的，当其为0.7.0的时候，并没有这个问题！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 获取另外分支上的更新到 src/js 文件/文件夹下</span><br><span class="line">git checkout feature-branch -- src/js/</span><br><span class="line"># 比较两个分支上跟新的不同</span><br><span class="line">git diff branchA branchB -- file.cs</span><br></pre></td></tr></table></figure>
+<h1></h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">[INFO] --- maven-surefire-plugin:2.18.1:test (default) @ odl-l2switch-packethandler ---</span><br><span class="line">[INFO] Surefire report directory: /home/qsong/Documents/sfc-patch/sfc-l2switch/features/odl-l2switch-packethandler/target/surefire-reports</span><br><span class="line"></span><br><span class="line">-------------------------------------------------------</span><br><span class="line"> T E S T S</span><br><span class="line">-------------------------------------------------------</span><br><span class="line">Running org.opendaylight.odlparent.featuretest.SingleFeatureTest</span><br><span class="line">Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 18.655 sec &lt;&lt;&lt; FAILURE! - in org.opendaylight.odlparent.featuretest.SingleFeatureTest</span><br><span class="line">installFeatureCatchAndLog(org.opendaylight.odlparent.featuretest.SingleFeatureTest)[repoUrl: file:/home/qsong/Documents/sfc-patch/sfc-l2switch/features/odl-l2switch-packethandler/target/feature/feature.xml, Feature: odl-l2switch-packethandler 0.8.0.SNAPSHOT]  Time elapsed: 17.925 sec  &lt;&lt;&lt; ERROR!</span><br><span class="line">org.osgi.service.resolver.ResolutionException: Unable to resolve root: missing requirement [root] osgi.identity; osgi.identity=odl-l2switch-packethandler; type=karaf.feature; version=&quot;[0.8.0.SNAPSHOT,0.8.0.SNAPSHOT]&quot;; filter:=&quot;(&amp;(osgi.identity=odl-l2switch-packethandler)(type=karaf.feature)(version&gt;=0.8.0.SNAPSHOT)(version&lt;=0.8.0.SNAPSHOT))&quot; [caused by: Unable to resolve odl-l2switch-packethandler/0.8.0.SNAPSHOT: missing requirement [odl-l2switch-packethandler/0.8.0.SNAPSHOT] osgi.identity; osgi.identity=odl-openflowplugin-southbound; type=karaf.feature; version=&quot;[0.7.0,0.7.0]&quot; [caused by: Unable to resolve odl-openflowplugin-southbound/0.7.0: missing requirement [odl-openflowplugin-southbound/0.7.0] osgi.identity; osgi.identity=odl-serviceutils-tools; type=karaf.feature; version=&quot;[0.2.0,0.2.0]&quot; [caused by: Unable to resolve odl-serviceutils-tools/0.2.0: missing requirement [odl-serviceutils-tools/0.2.0] osgi.identity; osgi.identity=odl-infrautils-metrics; type=karaf.feature; version=&quot;[1.4.0,1.4.0]&quot; [caused by: Unable to resolve odl-infrautils-metrics/1.4.0: missing requirement [odl-infrautils-metrics/1.4.0] osgi.identity; osgi.identity=io.dropwizard.metrics.jvm; type=osgi.bundle; version=&quot;[4.0.2,4.0.2]&quot;; resolution:=mandatory [caused by: Unable to resolve io.dropwizard.metrics.jvm/4.0.2: missing requirement [io.dropwizard.metrics.jvm/4.0.2] osgi.wiring.package; filter:=&quot;(osgi.wiring.package=com.sun.management)&quot;]]]]]</span><br><span class="line">    at org.apache.felix.resolver.ResolutionError.toException(ResolutionError.java:42)</span><br><span class="line">    at org.apache.felix.resolver.ResolverImpl.doResolve(ResolverImpl.java:391)</span><br><span class="line">    at org.apache.felix.resolver.ResolverImpl.resolve(ResolverImpl.java:377)</span><br><span class="line">    at org.apache.felix.resolver.ResolverImpl.resolve(ResolverImpl.java:349)</span><br><span class="line">    at org.apache.karaf.features.internal.region.SubsystemResolver.resolve(SubsystemResolver.java:218)</span><br><span class="line">    at org.apache.karaf.features.internal.service.Deployer.deploy(Deployer.java:291)</span><br><span class="line">    at org.apache.karaf.features.internal.service.FeaturesServiceImpl.doProvision(FeaturesServiceImpl.java:1248)</span><br><span class="line">    at org.apache.karaf.features.internal.service.FeaturesServiceImpl.lambda$doProvisionInThread$1(FeaturesServiceImpl.java:1147)</span><br><span class="line">    at java.util.concurrent.FutureTask.run(FutureTask.java:266)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)</span><br><span class="line">    at java.lang.Thread.run(Thread.java:748)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Results :</span><br><span class="line"></span><br><span class="line">Tests in error:</span><br><span class="line">  Unable to resolve root: missing requirement [root] osgi.identity; osgi.identity=odl-l2switch-packethandler; type=karaf.feature; version=&quot;[0.8.0.SNAPSHOT,0.8.0.SNAPSHOT]&quot;; filter:=&quot;(&amp;(osgi.identity=odl-l2switch-packethandler)(type=karaf.feature)(version&gt;=0.8.0.SNAPSHOT)(version&lt;=0.8.0.SNAPSHOT))&quot; [caused by: Unable to resolve odl-l2switch-packethandler/0.8.0.SNAPSHOT: missing requirement [odl-l2switch-packethandler/0.8.0.SNAPSHOT] osgi.identity; osgi.identity=odl-openflowplugin-southbound; type=karaf.feature; version=&quot;[0.7.0,0.7.0]&quot; [caused by: Unable to resolve odl-openflowplugin-southbound/0.7.0: missing requirement [odl-openflowplugin-southbound/0.7.0] osgi.identity; osgi.identity=odl-serviceutils-tools; type=karaf.feature; version=&quot;[0.2.0,0.2.0]&quot; [caused by: Unable to resolve odl-serviceutils-tools/0.2.0: missing requirement [odl-serviceutils-tools/0.2.0] osgi.identity; osgi.identity=odl-infrautils-metrics; type=karaf.feature; version=&quot;[1.4.0,1.4.0]&quot; [caused by: Unable to resolve odl-infrautils-metrics/1.4.0: missing requirement [odl-infrautils-metrics/1.4.0] osgi.identity; osgi.identity=io.dropwizard.metrics.jvm; type=osgi.bundle; version=&quot;[4.0.2,4.0.2]&quot;; resolution:=mandatory [caused by: Unable to resolve io.dropwizard.metrics.jvm/4.0.2: missing requirement [io.dropwizard.metrics.jvm/4.0.2] osgi.wiring.package; filter:=&quot;(osgi.wiring.package=com.sun.management)&quot;]]]]]</span><br><span class="line"></span><br><span class="line">Tests run: 1, Failures: 0, Errors: 1, Skipped: 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[INFO] ------------------------------------------------------------------------</span><br><span class="line">[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.7.0:compile (default-compile) on project packethandler-model: Compilation failure: Compilation failure:</span><br><span class="line">[ERROR] /home/qsong/Documents/sfc-patch/sfc-l2switch/packethandler/model/src/main/yang-gen-sal/org/opendaylight/yang/gen/v1/urn/opendaylight/packet/ethernet/rev140528/VlanId.java:[10,47] cannot find symbol</span><br><span class="line">[ERROR]   symbol:   class TypeObject</span><br><span class="line">[ERROR]   location: package org.opendaylight.yangtools.yang.binding</span><br></pre></td></tr></table></figure>
+<p>好端端的为啥 <code>org.opendaylight.yangtools.yang.binding.TypeObject</code> 就找不到了？<br>
+这个包定义在 <code>org.opendaylight.mdsal</code>之中</p>
+<p><code>https://github.com/opendaylight/mdsal/tree/stable/fluorine/binding/yang-binding/src/main/java/org/opendaylight/yangtools/yang/binding</code> 显示 这个<code>TypeObject</code>类没有了</p>
+<p><a href="https://javadocs.opendaylight.org/org.opendaylight.mdsal/master/" target="_blank" rel="noopener">ODL MDSAL Javadoc</a> 显示: <code>TypeObject</code>这个类似乎是master分支才引进的，之前(包括Fluorine版本)从来没有存在过！L2switch代码我下载的也是master分支的，并且其中代码实现了接口类<code>TypeObject</code>.</p>
+<p>问题: 为什么在<code>l2switch-parent/pom.xml</code>中，之前使用老版本的mdsal反倒没有这种问题呢？<br>
+我发现<code>~/.m2/repository/org/opendaylight/mdsal/yang-binding/2.0.2/yang-binding-2.0.2.jar</code>中倒是发现了<code>TypeObject这个类</code></p>
+<p>IntelliJ IDEA 真是写代码神器，有这个工具的帮助，感觉效率成倍提高！我的目标是让l2switch跟sfc代码兼容，让他们有相同的依赖，没有依赖冲突。现在的策略是一个一个模块来编译</p>
+<p>在做static code analysis 的时候，将<code>javax.annotation.Nonnull</code>统一替换为<code>org.eclipse.jdt.annotation.NonNull</code></p>
+<p>loopremover/NetworkGraphImpl 下有几个特殊字符，不知道IDE 自动替换的是否正确啊</p>
+<p>原来一直odl-l2switch-switch-rest中依赖的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;org.opendaylight.netconf&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;odl-restconf&lt;/artifactId&gt;</span><br><span class="line">&lt;version&gt;1.8.0-SNAPSHOT&lt;/version&gt;</span><br><span class="line">&lt;type&gt;xml&lt;/type&gt;</span><br><span class="line">&lt;classifier&gt;features&lt;/classifier&gt;</span><br></pre></td></tr></table></figure>
+<p>在编译成distribution-karaf的时候，依赖一些老的东西, 采用<version>1.10.0-SNAPSHOT</version></p>
+<h1>后来在编译feature odl-l2switch-loopremover 的时候，又是因为在dependency里面显式地依赖了org.opendaylight.openflowplugin 的 odl-openflowplugin-flow-services (0.7.0版本) 而不是0.9.0-SNAPSHOT 最后又出现了需要 com.google.common.base version = 27.1.0 提供的是 28.0.0</h1>
+<h1>这个问题终于找到了原因了</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[INFO] Running org.opendaylight.odlparent.featuretest.SingleFeatureTest</span><br><span class="line">[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 27.367 s &lt;&lt;&lt; FAILURE! - in org.opendaylight.odlparent.featuretest.SingleFeatureTest</span><br><span class="line">[ERROR] installFeatureCatchAndLog(org.opendaylight.odlparent.featuretest.SingleFeatureTest)[repoUrl: file:/Users/qsong/Documents/Post-doc-doc/sfc-patch/features/odl-sfc-sfp-checker/target/feature/feature.xml, Feature: odl-sfc-sfp-checker 0.10.0.SNAPSHOT]  Time elapsed: 24.488 s  &lt;&lt;&lt; ERROR!</span><br><span class="line">org.apache.felix.resolver.reason.ReasonException: Unable to resolve org.opendaylight.sfc.sfp-checker/0.10.0.SNAPSHOT: missing requirement [org.opendaylight.sfc.sfp-checker/0.10.0.SNAPSHOT] osgi.wiring.package; filter:=&quot;(osgi.wiring.package=org.opendaylight.l2switch.arphandler.core)&quot;</span><br><span class="line">    at org.apache.felix.resolver.Candidates$MissingRequirementError.toException(Candidates.java:1343)</span><br><span class="line">    at org.apache.felix.resolver.Candidates$MissingRequirementError.toException(Candidates.java:1343)</span><br><span class="line">    at org.apache.felix.resolver.Candidates$MissingRequirementError.toException(Candidates.java:1343)</span><br><span class="line">    at org.apache.felix.resolver.ResolverImpl.doResolve(ResolverImpl.java:392)</span><br><span class="line">    at org.apache.felix.resolver.ResolverImpl.resolve(ResolverImpl.java:378)</span><br><span class="line">    at org.apache.felix.resolver.ResolverImpl.resolve(ResolverImpl.java:332)</span><br><span class="line">    at org.apache.karaf.features.internal.region.SubsystemResolver.resolve(SubsystemResolver.java:257)</span><br><span class="line">    at org.apache.karaf.features.internal.service.Deployer.deploy(Deployer.java:388)</span><br><span class="line">    at org.apache.karaf.features.internal.service.FeaturesServiceImpl.doProvision(FeaturesServiceImpl.java:1025)</span><br><span class="line">    at org.apache.karaf.features.internal.service.FeaturesServiceImpl.lambda$doProvisionInThread$13(FeaturesServiceImpl.java:964)</span><br><span class="line">    at org.apache.karaf.features.internal.service.FeaturesServiceImpl$$Lambda$75.00000000E79B4420.call(Unknown Source)</span><br><span class="line">    at java.util.concurrent.FutureTask.run(FutureTask.java:266)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)</span><br><span class="line">    at java.lang.Thread.run(Thread.java:819)</span><br></pre></td></tr></table></figure>
+<p>根本原因是 arphandler-impl 这个bundle并没有export-package其中的core包，但问题是：为啥这个sfc-sfp-checker这个模块依赖arphandler-impl的时候 却没有任何问题呢？？？</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/21/java-tuto/" rel="next" title="Maven Java 经验积累">
+                <i class="fa fa-chevron-left"></i> Maven Java 经验积累
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/13/yang-model-tuto/" rel="prev" title="深入浅出理解 YANG 模型">
+                深入浅出理解 YANG 模型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">rennsong</p>
+              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hansomesong" title="GitHub &rarr; https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">常见的类以及所属包以及路径</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">查看 ODL Javadoc</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">org.opendaylight.yang.gen.v1.urn.opendaylight.inventory.rev130819.node.NodeConnector</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Bundle arphandler-impl 编译失败</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#错误信息"><span class="nav-number">4.1.</span> <span class="nav-text">null错误信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因-在fluorine中-org-opendaylight-msdal-中定义的-ipaddress-删去了构造体-ipaddress-char-ipaddress-方法-org-opendaylight-msdal-中引入了-ipaddressbuilder-该方法支持从-string直接构造ipaddress对象"><span class="nav-number">4.2.</span> <span class="nav-text">null原因: 在fluorine中, org.opendaylight.msdal 中定义的 IpAddress 删去了构造体 IpAddress(Char[] ipAddress)方法。org.opendaylight.msdal 中引入了 IpAddressBuilder 该方法支持从 String直接构造IpAddress对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">编译 Bundle hosttracker 报错</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#报错信息"><span class="nav-number">5.1.</span> <span class="nav-text">null报错信息</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">l2switch-main 编译错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">feature odl-l2switch-packethandler 编译报错</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">feature odl-l2switch-switch-rest 编译失败</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">9.</span> <span class="nav-text">feature odl-l2switch-ui 编译报错</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">10.</span> <span class="nav-text">feature-l2switch 编译报错</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">11.</span> <span class="nav-text">distribution-karaf 编译报错</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">12.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">13.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">14.</span> <span class="nav-text">后来在编译feature odl-l2switch-loopremover 的时候，又是因为在dependency里面显式地依赖了org.opendaylight.openflowplugin 的 odl-openflowplugin-flow-services (0.7.0版本) 而不是0.9.0-SNAPSHOT 最后又出现了需要 com.google.common.base version = 27.1.0 提供的是 28.0.0</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">15.</span> <span class="nav-text">这个问题终于找到了原因了</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
