@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="VPS 提供商选择 我最终选择了 Vultr 家的，因为有新手注册送50美金的优惠，而且是按时间收费 https://www.10besty.com/best-vps-hosting-services/ 可以看看这个文章，分析如何选取VPS服务商 Create a new non-root user OVH 上购买的 VPS 在创建之初只有一个user: root. 使用下列命令查看当前VPS上都">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-02T14:21:23.501Z">
+<meta property="og:updated_time" content="2019-08-22T08:28:59.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="打造趁手的 VPS">
 <meta name="twitter:description" content="VPS 提供商选择 我最终选择了 Vultr 家的，因为有新手注册送50美金的优惠，而且是按时间收费 https://www.10besty.com/best-vps-hosting-services/ 可以看看这个文章，分析如何选取VPS服务商 Create a new non-root user OVH 上购买的 VPS 在创建之初只有一个user: root. 使用下列命令查看当前VPS上都">
@@ -406,7 +406,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-02 16:21:23" itemprop="dateModified" datetime="2019-05-02T16:21:23+02:00">2019-05-02</time>
+                <time title="修改时间：2019-08-22 10:28:59" itemprop="dateModified" datetime="2019-08-22T10:28:59+02:00">2019-08-22</time>
               
             
           </span>
@@ -506,6 +506,8 @@
 <p>锐速已经停更，对于新的系统内核支持有限，建议改用谷歌的开源方案：Google BBR 对 SS 进行优化加速。效果都差不多的。</p>
 <h3 id="kcptun-加速"><a class="header-anchor" href="#kcptun-加速">null</a>KCPTUN 加速</h3>
 <p>KCPTUN是一款服务器双边加速工具，可以将服务器的TCP流量，比如Shadowsokcs/Shadowsocksr的流量，转化为KCP协议的UDP流量发出。作为一款暴力发包工具，KCPTUN可以有效解决丢包问题，明显提升传输速度。</p>
+<p>Kcptun是一个非常简单和快速的，基于KCP协议的UDP隧道，它可以将TCP流转换为KCP+UDP流。而KCP是一个快速可靠协议，能以比TCP浪费10%-20%的带宽的代价，换取平均延迟降低 30%-40%，且最大延迟降低三倍的传输效果。</p>
+<p>Kcptun是KCP协议的一个简单应用，可以用于任意TCP网络程序的传输承载，以提高网络流畅度，降低掉线情况。</p>
 <h4 id="服务器端"><a class="header-anchor" href="#服务器端">null</a>服务器端</h4>
 <p>通过以下数条指导令安装</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.sh</span><br><span class="line">chmod +x ./kcptun.sh</span><br><span class="line">./kcptun.sh</span><br></pre></td></tr></table></figure>
@@ -515,7 +517,7 @@
 <li>要加速的地址：默认127.0.0.1。</li>
 <li>要加速的端口：设置为你的SS/SSR使用的端口。</li>
 <li>密码：自己设置，用于KCPTUN客户端连接使用，不要使用默认密码。</li>
-<li>加密方式选择：较强的加密方式会影响网速，建议默认aes或不加密。</li>
+<li>加密方式选择：较强的加密方式会影响网速，建议默认aes或不加密。因为我们是配合ss使用的，所以不必加密，直接选none就行</li>
 <li>加速模式：默认fast即可。随后可以手动修改为其它模式，测试加速效果。</li>
 <li>MTU：默认1350即可。</li>
 <li>sndwnd：发送窗口大小，与服务器的上传带宽大小有关，这项与rcvwnd的比例会影响加速效果，可以暂时设置为默认的512。</li>
@@ -535,6 +537,12 @@ KCPTUN的参数配置文件：/usr/local/kcptun/server-config.json<br>
 <p>在shadowsocks插件中只需要填写kcptun，当然前提是这个命令被放在$PATH涵盖的路径之下，不然，需要填写完整路径。关于参数，</p>
 <p>“key=123456;crypt=none;mode=fast;mtu=1350;sndwnd=512;rcvwnd=512;datashard=10;parityshard=3;dscp=0”<br>
 这种格式就好，在kcptun服务器端安装成功只有，会生成这种字符串。</p>
+<p>在使用kcptun的时候，没有按照kcptun官网github网站上的建议，即没有在<code>/etc/sysctl.conf</code>中添加处理UDP的配置，导致使用kcptun加速之后的效果反而还不如不加速，甚至会出现断网。</p>
+<p>注意在shadowsocks-NR中password给的还是shadowsocks进程的密码，而不是kcptun进程的密码。</p>
+<h1>Kcptun 参数调优</h1>
+<p><a href="https://blog.csdn.net/weixin_41732074/article/details/88747400" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41732074/article/details/88747400</a></p>
+<h1></h1>
+<p><a href="https://zhuanlan.zhihu.com/p/64467370" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/64467370</a> 这个知乎帖子详细分析了国内三大运营商宽带出海的情况 非常值得一读！原来翻墙线路选择有这么大的学问</p>
 <p>参考资料：</p>
 <hr class="footnotes-sep">
 <section class="footnotes">
@@ -654,7 +662,7 @@ KCPTUN的参数配置文件：/usr/local/kcptun/server-config.json<br>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -812,7 +820,7 @@ KCPTUN的参数配置文件：/usr/local/kcptun/server-config.json<br>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">VPS 提供商选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Create a new non-root user</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Install VNC server + Xfce4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Shadowsocks 安装 (通过网友提供的脚本)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shadowsocks-简介"><span class="nav-number">4.1.</span> <span class="nav-text">nullShadowsocks 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-通过网友提供的脚本"><span class="nav-number">4.2.</span> <span class="nav-text">null安装 (通过网友提供的脚本)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载方法-通过网友提供的脚本"><span class="nav-number">4.3.</span> <span class="nav-text">null卸载方法 (通过网友提供的脚本)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动脚本"><span class="nav-number">4.4.</span> <span class="nav-text">null启动脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各版本默认配置文件"><span class="nav-number">4.5.</span> <span class="nav-text">null各版本默认配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mac-osx-客户端如何使用-shadowsocks"><span class="nav-number">4.6.</span> <span class="nav-text">nullMac OSX 客户端如何使用 Shadowsocks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过shadowsocks-x-ng客户端"><span class="nav-number">4.6.1.</span> <span class="nav-text">null通过Shadowsocks-X NG客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过chrome插件"><span class="nav-number">4.6.2.</span> <span class="nav-text">null通过Chrome插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过proxychains让iterm终端上网"><span class="nav-number">4.7.</span> <span class="nav-text">null通过ProxyChains让Iterm终端上网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化"><span class="nav-number">4.8.</span> <span class="nav-text">null优化 [1]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bbr加速"><span class="nav-number">4.8.1.</span> <span class="nav-text">nullBBR加速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锐速加速两种方案"><span class="nav-number">4.8.2.</span> <span class="nav-text">null锐速加速两种方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kcptun-加速"><span class="nav-number">4.8.3.</span> <span class="nav-text">nullKCPTUN 加速</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器端"><span class="nav-number">4.8.3.1.</span> <span class="nav-text">null服务器端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器端安装与使用"><span class="nav-number">4.8.3.2.</span> <span class="nav-text">null服务器端安装与使用</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">VPS 提供商选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Create a new non-root user</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Install VNC server + Xfce4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Shadowsocks 安装 (通过网友提供的脚本)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shadowsocks-简介"><span class="nav-number">4.1.</span> <span class="nav-text">nullShadowsocks 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-通过网友提供的脚本"><span class="nav-number">4.2.</span> <span class="nav-text">null安装 (通过网友提供的脚本)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载方法-通过网友提供的脚本"><span class="nav-number">4.3.</span> <span class="nav-text">null卸载方法 (通过网友提供的脚本)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动脚本"><span class="nav-number">4.4.</span> <span class="nav-text">null启动脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各版本默认配置文件"><span class="nav-number">4.5.</span> <span class="nav-text">null各版本默认配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mac-osx-客户端如何使用-shadowsocks"><span class="nav-number">4.6.</span> <span class="nav-text">nullMac OSX 客户端如何使用 Shadowsocks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过shadowsocks-x-ng客户端"><span class="nav-number">4.6.1.</span> <span class="nav-text">null通过Shadowsocks-X NG客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过chrome插件"><span class="nav-number">4.6.2.</span> <span class="nav-text">null通过Chrome插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过proxychains让iterm终端上网"><span class="nav-number">4.7.</span> <span class="nav-text">null通过ProxyChains让Iterm终端上网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化"><span class="nav-number">4.8.</span> <span class="nav-text">null优化 [1]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bbr加速"><span class="nav-number">4.8.1.</span> <span class="nav-text">nullBBR加速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锐速加速两种方案"><span class="nav-number">4.8.2.</span> <span class="nav-text">null锐速加速两种方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kcptun-加速"><span class="nav-number">4.8.3.</span> <span class="nav-text">nullKCPTUN 加速</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器端"><span class="nav-number">4.8.3.1.</span> <span class="nav-text">null服务器端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器端安装与使用"><span class="nav-number">4.8.3.2.</span> <span class="nav-text">null服务器端安装与使用</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Kcptun 参数调优</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text"></span></a></li></ol></div>
             
 
           </div>

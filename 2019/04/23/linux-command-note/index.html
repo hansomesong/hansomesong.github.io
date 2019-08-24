@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="linux nohup command If you want to run some commands over SSH connection and keep it running after the SSH connection close, nohup command is your friend. 如果你正在运行一个进程，而且你觉得在退出帐户时该进程还不会结束，那么可以使用nohup命令">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-27T06:58:21.463Z">
+<meta property="og:updated_time" content="2019-07-19T11:05:58.683Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux_command_note">
 <meta name="twitter:description" content="linux nohup command If you want to run some commands over SSH connection and keep it running after the SSH connection close, nohup command is your friend. 如果你正在运行一个进程，而且你觉得在退出帐户时该进程还不会结束，那么可以使用nohup命令">
@@ -406,7 +406,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-27 08:58:21" itemprop="dateModified" datetime="2019-04-27T08:58:21+02:00">2019-04-27</time>
+                <time title="修改时间：2019-07-19 13:05:58" itemprop="dateModified" datetime="2019-07-19T13:05:58+02:00">2019-07-19</time>
               
             
           </span>
@@ -497,6 +497,17 @@ Even thought I roll back to a previously operational commit, these two container
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">for i in sf1 sf2; do </span><br><span class="line">    echo "Kill sfc_agent.py in container $i"</span><br><span class="line">    docker exec -it $i /bin/bash -c "ps aux | grep [s]fc/sfc_agent.py | awk '&#123;print \$2&#125;'";</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 <h1>如何重启docker下的通过ENTRY启动的进程？？？</h1>
 <p>我一直想通过docker exec命令解决，但是实际上重启一下不就好了？？？</p>
+<h1>How to enable sudo command without requiring passowrd?</h1>
+<p>Open the /etc/sudoers file (as root, of course!) by running:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo visudo</span><br></pre></td></tr></table></figure>
+<p>You should never edit <code>/etc/sudoers</code> with a regular text editor, such as <code>Vim</code> or <code>nano</code>, because they do not validate the syntax like the <code>visudo</code> editor.</p>
+<p>At the end of the /etc/sudoers file add this line:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;username&gt;     ALL=(ALL) NOPASSWD:ALL`</span><br></pre></td></tr></table></figure>
+<p>Replace <username> with your account username, of course. Save the file and exit with <esc>wq. If you have any sort of syntax problem, visudo will warn you and you can abort the change or open the file for editing again.</esc></username></p>
+<p>It is important to add this line at the end of the file, so that the other permissions do not override this directive, since they are processed in order.</p>
+<h1>locale: Cannot set LC_ALL to default locale: No such file or directory</h1>
+<p>参考下面这个链接<br>
+<a href="https://www.skyminds.net/linux-cannot-set-default-locale/" target="_blank" rel="noopener">https://www.skyminds.net/linux-cannot-set-default-locale/</a></p>
 
       
     </div>
@@ -608,7 +619,7 @@ Even thought I roll back to a previously operational commit, these two container
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -766,7 +777,7 @@ Even thought I roll back to a previously operational commit, these two container
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">linux nohup command</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#note-for-linux-command-redirection"><span class="nav-number">1.1.</span> <span class="nav-text">nullNote for linux command redirection</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">如何只执行一个shell脚本里的某一个函数而不是全部？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">ps 的时候，如何避免显示进程 grep --color …</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">awk 命令在 double quote 环境下失效问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">如何重启docker下的通过ENTRY启动的进程？？？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">linux nohup command</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#note-for-linux-command-redirection"><span class="nav-number">1.1.</span> <span class="nav-text">nullNote for linux command redirection</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">如何只执行一个shell脚本里的某一个函数而不是全部？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">ps 的时候，如何避免显示进程 grep --color …</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">awk 命令在 double quote 环境下失效问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">如何重启docker下的通过ENTRY启动的进程？？？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">How to enable sudo command without requiring passowrd?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">locale: Cannot set LC_ALL to default locale: No such file or directory</span></a></li></ol></div>
             
 
           </div>

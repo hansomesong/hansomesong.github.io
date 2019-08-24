@@ -104,7 +104,7 @@
 <meta property="og:description" content="I have one Ubuntu Linux server (I will call it as remote server in the following of this post) in my office, which is behind a NAT router and restrictive rewall. Now I want to SSH to the remote server">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://rennesong.com/2015/08/02/ssh-tuto/reverse_ssh_illustration.png">
-<meta property="og:updated_time" content="2019-07-14T09:23:13.990Z">
+<meta property="og:updated_time" content="2019-07-18T20:21:52.841Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Simplify your life with SSH">
 <meta name="twitter:description" content="I have one Ubuntu Linux server (I will call it as remote server in the following of this post) in my office, which is behind a NAT router and restrictive rewall. Now I want to SSH to the remote server">
@@ -408,7 +408,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-14 11:23:13" itemprop="dateModified" datetime="2019-07-14T11:23:13+02:00">2019-07-14</time>
+                <time title="修改时间：2019-07-18 22:21:52" itemprop="dateModified" datetime="2019-07-18T22:21:52+02:00">2019-07-18</time>
               
             
           </span>
@@ -579,15 +579,16 @@ In many ways this [ServerAliveInterval and ServerAliveCountMax options] may be a
 <p>Save the file, and as make it executable if necessary:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /etc/rc.local</span><br></pre></td></tr></table></figure>
 <h3 id="use-cron-command"><a class="header-anchor" href="#use-cron-command">null</a>Use <code>cron</code> command</h3>
+<p>TBD</p>
 <h3 id="create-systemd-service"><a class="header-anchor" href="#create-systemd-service">null</a>Create systemd service</h3>
-<p>If you want a permanent SSH tunnel already created during boot time, you will (nowadays) have to create a systemd service and enable it. There is however an important thing to note about systemd and AutoSSH: -f (background usage) already implies AUTOSSH_GATETIME=0, however -f is not supported by systemd.</p>
+<p>If you want a permanent SSH tunnel already created during boot time, you will (nowadays) have to create a systemd service and enable it. There is however an important thing to note about systemd and <code>AutoSSH: -f</code> (background usage) already implies <code>AUTOSSH_GATETIME=0</code>, however <code>-f</code> is not supported by systemd.</p>
 <blockquote>
 <p><a href="http://www.freedesktop.org/software/systemd/man/systemd.service.html" target="_blank" rel="noopener">http://www.freedesktop.org/software/systemd/man/systemd.service.html</a><br>
 […]<br>
 running programs in the background using “&amp;”, and other elements of shell syntax are not supported.</p>
 </blockquote>
 <p>So in the case of systemd we need to make use of AUTOSSH_GATETIME. Let’s look at a very basic service:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/systemd/system/revtun2vps.service</span><br><span class="line">[Unit]</span><br><span class="line">Description=AutoSSH managed reverse SSH tunnel service to bind local port 22 with port 22222 on VPS server</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Environment=&quot;AUTOSSH_GATETIME=0&quot;</span><br><span class="line">ExecStart=/usr/bin/autossh -M 0 -o &quot;ServerAliveInterval 30&quot; -o &quot;ServerAliveCountMax 3&quot; -N -R 5000:localhost:22 &lt;user_name&gt;@&lt;vps.host.name&gt; -p 443</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># The following command should be run with root priviledge</span><br><span class="line">$ vim /etc/systemd/system/revtun2vps.service</span><br><span class="line">[Unit]</span><br><span class="line">Description=AutoSSH managed reverse SSH tunnel service to bind local port 22 with port 22222 on VPS server</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Environment=&quot;AUTOSSH_GATETIME=0&quot;</span><br><span class="line">ExecStart=/usr/bin/autossh -M 0 -o &quot;ServerAliveInterval 30&quot; -o &quot;ServerAliveCountMax 3&quot; -N -R 22222:localhost:22 &lt;user_name&gt;@&lt;vps.host.name&gt; -p 443</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
 <p>One can refer to <sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup> for more details about the directives such as <code>after=</code>, <code>WantedBy</code>.</p>
 <p>Note 1: 以上systemd service将会以root身份启动autossh进程，如果root身份从未跟VPS建立过SSH connection的话，通过<code>systemctl status revtun2vps.service</code>, 将会看到SSH connection实际上并没有被创建，由于<code>host key verification failed</code>的错误。最后我的解决办法是，<code>sudo su</code> 切换为root，然后<code>ssh-keygen</code>创建root专属的公私钥，最后再<code>ssh-copy-id -i .ssh/id_rsa.pub root@vps.ip.addr -p 443</code>使得root可以免密登录VPS. 之后再启动<code>revtun2vps</code> service，将会顺利创建reverse tunnel了。</p>
 <p>虽然我之前一直都以qsong的身份在和VPS建立SSH连接, 但是 VPS 的host key确实被保存在/home/qsong/.ssh/known_hosts文件中的，当我第一次以root身份去发起连接的时候，root用户的工作目录(即/root)下并没有known_hosts这么一个文件！</p>
@@ -873,7 +874,7 @@ By itself, FUSE for OS X doesn’t do much, it provides the layer for userspace 
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

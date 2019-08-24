@@ -105,7 +105,7 @@
 <meta property="og:description" content="因为科研的需要，进行 OpenDaylight 开发，但是自己的 Macbook pro 性能有限，并且不在办公室的时候网络连接性能不太好，所以传统方案，直接在Mac上编辑编译运行，这么一个路子对我来说并不适用。我有一台放置在办公室的运行 Ubuntu 16.04 的笔记本电脑 (16G内存，性能上相对来说强悍的多)，我也可以通过 SSH 远程访问这台笔记本电脑。所以，针对我的工程需求，我觉得最优">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://rennesong.com/2019/05/17/intelliJ-idea-install-crack/IDEA-licence.png">
-<meta property="og:updated_time" content="2019-07-13T21:08:11.642Z">
+<meta property="og:updated_time" content="2019-07-19T11:06:00.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IntelliJ IDEA 下本地开发+远程同步+编译调试 工作流程">
 <meta name="twitter:description" content="因为科研的需要，进行 OpenDaylight 开发，但是自己的 Macbook pro 性能有限，并且不在办公室的时候网络连接性能不太好，所以传统方案，直接在Mac上编辑编译运行，这么一个路子对我来说并不适用。我有一台放置在办公室的运行 Ubuntu 16.04 的笔记本电脑 (16G内存，性能上相对来说强悍的多)，我也可以通过 SSH 远程访问这台笔记本电脑。所以，针对我的工程需求，我觉得最优">
@@ -409,7 +409,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-13 23:08:11" itemprop="dateModified" datetime="2019-07-13T23:08:11+02:00">2019-07-13</time>
+                <time title="修改时间：2019-07-19 13:06:00" itemprop="dateModified" datetime="2019-07-19T13:06:00+02:00">2019-07-19</time>
               
             
           </span>
@@ -468,7 +468,13 @@
 <a href="https://blog.csdn.net/qq_40914991/article/details/85543575" target="_blank" rel="noopener">https://blog.csdn.net/qq_40914991/article/details/85543575</a></p>
 <h1>ODL remote debug</h1>
 <p>什么是remote debugging?给我的感觉这像是一个java编译时的特性。</p>
-<p>IDEs such as Eclipse and IntelliJ IDEA allow developpers to debug a locally running or remote running controller.</p>
+<p>IDEs such as Eclipse and IntelliJ IDEA allow developpers to debug a locally running or remote running controller. Thankfully, the way you do either debugging is the same.</p>
+<ol>
+<li>start ODL with a debug flag <code>path/karaf debug</code></li>
+<li>attach your IDE to the running application via IP<br>
+2.1.</li>
+</ol>
+<p>就冲这一点，IntelliJ 就彻底征服了我！之前在Eclipse(ODL官方推荐的IDE开发环境)下配置remote debugging环境的时候，Eclipse下根本就识别不了我在<code>~/.ssh/config</code>中定义的配置(如果我当时没有操作失误的话)</p>
 
       
     </div>
@@ -586,7 +592,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
