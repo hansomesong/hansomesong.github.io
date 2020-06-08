@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -26,10 +26,9 @@
 <meta property="og:url" content="http://rennesong.com/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="Personal blog site, to note technique and life related articles">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="rennsong">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rennesong&#39;s blog">
-<meta name="twitter:description" content="Personal blog site, to note technique and life related articles">
 
 <link rel="canonical" href="http://rennesong.com/">
 
@@ -73,12 +72,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -164,7 +163,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/05/31/VNC连接远程Linux服务器/">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/06/08/hexo-math-support-tuto/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -178,7 +177,96 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/31/VNC连接远程Linux服务器/" class="post-title-link" itemprop="url">VNC连接远程Linux服务器</a>
+            <a href="/2020/06/08/hexo-math-support-tuto/" class="post-title-link" itemprop="url">Hexo博客系统使用Mathjax渲染数学公式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-06-08 12:12:21 / 修改时间：14:12:20" itemprop="dateCreated datePublished" datetime="2020-06-08T12:12:21+08:00">2020-06-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>首先在Front-matter部分还是要加上语句：<code>mathjax: true</code>. 否则，数学公式无法被正常渲染.</p>
+<p>\( f(x) = ax + b \)</p>
+<h1 id="安装hexo-math">安装<code>hexo-math</code></h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-math --save</span><br></pre></td></tr></table></figure>
+<p>如果安装完毕，启动网站的时候出现跟<code>hexo-inject</code>相关的错误的时候，可以试着先删除<code>hexo-math</code>,然后再重新安装.</p>
+<p><code>Mathjax</code>是一个JavaScript库，可以让你使用LaTeX风格的语法，在网页的HTML(或者 Markdown) 的源码中显示数学表达式。</p>
+<h1 id="更换markdown渲染引擎">更换Markdown渲染引擎</h1>
+<p>更换<code>Hexo</code>的<code>markdown</code>渲染引擎，<code>hexo-renderer-pandoc</code>引擎是在默认的渲染引擎hexo-renderer-marked的基础上修改了一些bug，两者比较接近，也比较轻量级。</p>
+<p><code>Hexo</code>的默认渲染器<code>hexo-renderer-marked</code>不支持<code>Latex</code>语法，一些<code>Latex</code>中的符号会被误认为是markdown语法，比如<code>\</code>、<code>_</code>和<code>*</code>，这让<code>Mathjax</code>不能正确地渲染（katex需要渲染器支持，根本不能工作）。</p>
+<p>粗暴的办法是，写<code>Latex</code>公式时，对冲突符号添加markdown转义符号<code>\</code>，这个方法很糟糕，公式书写不便，可移植性也差。或者修改渲染器代码里的正则表达式，改动语法规则，例如去掉<code>markdown</code>里用<code>*</code>强调的语法，参考<a href="https://zhuanlan.zhihu.com/p/33857596" target="_blank" rel="noopener">这篇文章</a>，显然这不是一个好的解决方案。这是Next用户的一大痛点，<a href="ttps://github.com/theme-next/hexo-theme-next/blob/master/docs/MATH.md">Hexo官方网站</a>对此有比较全面的探讨。</p>
+<p>对于<code>Mathjax</code>，可以选择<code>hexo-renderer-pandoc</code>或<code>hexo-renderer-kramed</code>。</p>
+<p><code>hexo-renderer-pandoc</code>用的是<code>pandoc</code>渲染器. <code>pandoc</code>是一种特别设计的<code>markdown</code>语法，用它写的文档可以转换成五花八门的格式，该语法天然支持<code>Latex</code>。这也意味着<code>pandoc</code>与<code>markdown</code>语法不全相同。</p>
+<p><code>hexo-renderer-kramed</code>渲染器也有缺点，它不支持行内<code>Latex</code>公式。解决办法是有的——和上面一样，要么在行内自己加上转义符号，要么修改渲染规则。渲染器作者建议是用把公式标注成代码块，参见<a href="https://duskcloudxu.github.io/2018/07/14/hexo-renderer-kramed%E4%B8%8EmathJax%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" target="_blank" rel="noopener">此处</a>。</p>
+<h1 id="修改主题配置文件">修改主题配置文件</h1>
+<p><code>hexo</code>把数学渲染相关的配置交由各个theme中的配置文件管理了。我采用的是经典的<code>next</code>主题，是可以直接配置公式支持，可选择mathjax和katex两种主流插件。因此，需要修改该主题目录下的<code>_config.yaml</code>文件。</p>
+<p><code>Mathjax</code>使用js动态渲染用<code>$</code>标记的<code>Latex</code>代码，提供一些交互操作。</p>
+<p><code>katex</code>有js版和css版，<code>next</code>主题支持的是后者。显然，需要先把<code>Latex</code>公式渲染成<code>katex</code>对应的html代码，公式才能正确显示。好处是，网页里公式的加载速度更快。但相较于<code>Mathjax</code>，katex的对<code>Latex</code>的语法支持更有限。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># Math Formulas Render Support</span><br><span class="line">math:</span><br><span class="line">  # Default (true) will load mathjax &#x2F; katex script on demand.</span><br><span class="line">  # That is it only render those page which has &#96;mathjax: true&#96; in Front-matter.</span><br><span class="line">  # If you set it to false, it will load mathjax &#x2F; katex srcipt EVERY PAGE.</span><br><span class="line">  per_page: true</span><br><span class="line"></span><br><span class="line">  # hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.</span><br><span class="line">  mathjax:</span><br><span class="line">    enable: true</span><br><span class="line">    cdn: &#x2F;&#x2F;cdn.mathjax.org&#x2F;mathjax&#x2F;latest&#x2F;MathJax.js?config&#x3D;TeX-AMS-MML_HTMLorMML</span><br><span class="line">    # See: https:&#x2F;&#x2F;mhchem.github.io&#x2F;MathJax-mhchem&#x2F;</span><br><span class="line">    mhchem: false</span><br><span class="line"></span><br><span class="line">  # hexo-renderer-markdown-it-plus (or hexo-renderer-markdown-it with markdown-it-katex plugin) required for full Katex support.</span><br><span class="line">  katex:</span><br><span class="line">    enable: false</span><br><span class="line">    # See: https:&#x2F;&#x2F;github.com&#x2F;KaTeX&#x2F;KaTeX&#x2F;tree&#x2F;master&#x2F;contrib&#x2F;copy-tex</span><br><span class="line">    copy_tex: false</span><br></pre></td></tr></table></figure>
+<h1 id="存在的问题">存在的问题</h1>
+<p><code>Marked.js</code>和<code>MathJax</code>共存时可能会发生一些渲染冲突。</p>
+<p>如下面的LaTeX源码，在不处理冲突时便会导致公式内的换行符<code>(\\)</code>失效。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;eqnarray&#125;</span><br><span class="line">\nabla\cdot\vec&#123;E&#125; &amp;&#x3D;&amp; \frac&#123;\rho&#125;&#123;\epsilon_0&#125; \\</span><br><span class="line">\nabla\cdot\vec&#123;B&#125; &amp;&#x3D;&amp; 0 \\</span><br><span class="line">\nabla\times\vec&#123;E&#125; &amp;&#x3D;&amp; -\frac&#123;\partial B&#125;&#123;\partial t&#125; \\</span><br><span class="line">\nabla\times\vec&#123;B&#125; &amp;&#x3D;&amp; \mu_0\left(\vec&#123;J&#125;+\epsilon_0\frac&#123;\partial E&#125;&#123;\partial t&#125; \right)</span><br><span class="line">\end&#123;eqnarray&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure></p>
+<p><span class="math display">\[\begin{align}
+-4 + 5x &amp;= 2+y \nonumber  \\
+ w+2 &amp;= -1+w \\
+ ab &amp;= cb
+\end{align}\]</span></p>
+<h1 id="踩过的坑">踩过的坑</h1>
+<p>我一直没有闹明白<code>hexo-math, hexo-inject</code>以及<code>hexo-render-marked</code>之间到底是个什么关系呢？为啥我调用npm卸载<code>hexo-renderer-marked</code>的时候，输出的日志确显示安装了<code>hexo-inject</code>. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line"></span><br><span class="line">&gt; hexo-math@3.0.4 postinstall &#x2F;Users&#x2F;qsong&#x2F;Documents&#x2F;song&#x2F;personal_blog&#x2F;node_modules&#x2F;hexo-math</span><br><span class="line">&gt; cd ..&#x2F;.. &amp;&amp; npm install --save hexo-inject</span><br><span class="line"></span><br><span class="line">npm WARN deprecated hexo-inject@1.0.0: The author does not use Hexo any more. This plugin is no longer maintained.</span><br><span class="line">npm WARN deprecated core-js@2.6.11: core-js@&lt;3 is no longer maintained and not recommended for usage due to the number of issues. Please, upgrade your dependencies to the actual version of core-js@3.</span><br><span class="line"></span><br><span class="line">&gt; core-js@2.6.11 postinstall &#x2F;Users&#x2F;qsong&#x2F;Documents&#x2F;song&#x2F;personal_blog&#x2F;node_modules&#x2F;core-js</span><br><span class="line">&gt; node -e &quot;try&#123;require(&#39;.&#x2F;postinstall&#39;)&#125;catch(e)&#123;&#125;&quot;</span><br><span class="line"></span><br><span class="line">Thank you for using core-js ( https:&#x2F;&#x2F;github.com&#x2F;zloirock&#x2F;core-js ) for polyfilling JavaScript standard library!</span><br><span class="line"></span><br><span class="line">The project needs your help! Please consider supporting of core-js on Open Collective or Patreon:</span><br><span class="line">&gt; https:&#x2F;&#x2F;opencollective.com&#x2F;core-js</span><br><span class="line">&gt; https:&#x2F;&#x2F;www.patreon.com&#x2F;zloirock</span><br><span class="line"></span><br><span class="line">Also, the author of core-js ( https:&#x2F;&#x2F;github.com&#x2F;zloirock ) is looking for a good job -)</span><br><span class="line"></span><br><span class="line">+ hexo-inject@1.0.0</span><br><span class="line">added 1 package, removed 3 packages, updated 1 package, moved 1 package and audited 459 packages in 85.148s</span><br></pre></td></tr></table></figure></p>
+<p>参考文献:</p>
+<p>https://yccalan.github.io/%E6%B8%B2%E6%9F%93-Hexo-%E5%8D%9A%E5%AE%A2%E9%87%8C%E7%9A%84-latex-%E5%85%AC%E5%BC%8F/</p>
+<p>http://blog.mobing.net/content/hexo/hexo-mathjax.html</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/05/31/VNC%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8BLinux%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/31/VNC%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8BLinux%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">VNC连接远程Linux服务器</a>
         </h2>
 
         <div class="post-meta">
@@ -203,8 +291,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>输入vncserver命令之后，输出结果显示如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">New &apos;X&apos; desktop is qsong-P650SE:1</span><br><span class="line"></span><br><span class="line">Starting applications specified in /home/qsong/.vnc/xstartup</span><br><span class="line">Log file is /home/qsong/.vnc/qsong-P650SE:1.log</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ lsof -i:5901</span><br><span class="line">COMMAND    PID  USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME</span><br><span class="line">Xtightvnc 5222 qsong    3u  IPv4 35313713      0t0  TCP *:5901 (LISTEN)</span><br></pre></td></tr></table></figure>
+          <p>输入vncserver命令之后，输出结果显示如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">New &#39;X&#39; desktop is qsong-P650SE:1</span><br><span class="line"></span><br><span class="line">Starting applications specified in &#x2F;home&#x2F;qsong&#x2F;.vnc&#x2F;xstartup</span><br><span class="line">Log file is &#x2F;home&#x2F;qsong&#x2F;.vnc&#x2F;qsong-P650SE:1.log</span><br></pre></td></tr></table></figure> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ lsof -i:5901</span><br><span class="line">COMMAND    PID  USER   FD   TYPE   DEVICE SIZE&#x2F;OFF NODE NAME</span><br><span class="line">Xtightvnc 5222 qsong    3u  IPv4 35313713      0t0  TCP *:5901 (LISTEN)</span><br></pre></td></tr></table></figure></p>
 <p>OS X has a built in VNC (Screen Sharing) server, but it is a little known feature that it also has a built in VNC client. No additional software is necessary.</p>
 <p>To setup the server go to <code>Preferences-&gt;Sharing</code> and check the “On” checkbox next to <code>Screen Sharing</code>. Make sure to only allow access to Administrators or a specific user/user group.</p>
 <p>To connect to your computer from another one using VNC open Finder and press ⌘+k. In the Server Address enter vnc:// followed by your computer name or IP address, for example: <code>vnc:127.0.0.1:5901</code>.</p>
@@ -411,10 +498,10 @@
 <h2 id="microsoft-office-2019for-mac">Microsoft office 2019(for mac)</h2>
 <p>https://www.macappbox.com/a/office-2019-for-mac.html 在这个页面上下载了MS Office 2019 for mac安装包，但是没有安装，因为win10虚拟机里已经安装了MS office没有必要重复安装了，浪费空间！</p>
 <h2 id="endnote-x9">Endnote X9</h2>
-<p>参考链接：https://www.maoxinhang.com/2020/02/28/168/ 版本号 X9.3.1 中科大授权版， 注意事项: 1. 如果是在mac下下载得到的安装包，最好放置在windows系统盘下面 2. 关闭 windows defend 防病毒系统，避免安装过程出现问题 <img src="/2020/03/09/parralel-desktop-preparation/endnotex9-install-step1.png" alt="步骤一: 安装文件放置于C盘根目录下并打开"><span class="image-caption">步骤一: 安装文件放置于C盘根目录下并打开</span> <img src="/2020/03/09/parralel-desktop-preparation/endnotex9-install-step2.png" alt="步骤二: 安装文件会自动加载注册号无需其他操作"><span class="image-caption">步骤二: 安装文件会自动加载注册号无需其他操作</span></p>
+<p>参考链接：https://www.maoxinhang.com/2020/02/28/168/ 版本号 X9.3.1 中科大授权版， 注意事项: 1. 如果是在mac下下载得到的安装包，最好放置在windows系统盘下面 2. 关闭 windows defend 防病毒系统，避免安装过程出现问题 <img src="/.com//endnotex9-install-step1.png" alt="步骤一: 安装文件放置于C盘根目录下并打开"><span class="image-caption">步骤一: 安装文件放置于C盘根目录下并打开</span> <img src="/.com//endnotex9-install-step2.png" alt="步骤二: 安装文件会自动加载注册号无需其他操作"><span class="image-caption">步骤二: 安装文件会自动加载注册号无需其他操作</span></p>
 <h3 id="endnote-x9-使用技巧">Endnote X9 使用技巧</h3>
 <p>EndNote插入引文序号为上标怎么破？https://www.howsci.com/endnote-number-sup.html 如何将中国知网的文献导入到Endnote X9中？ 第一步: 访问中国知网查询页<code>http://new.gb.oversea.cnki.net/index/</code>, 并在搜索框中搜索需要的文献</p>
-<p>第二步：勾选要导出的文献后，选择【导出/参考文献】——进入下一页面——选择EndNote导出——下载的是一个text文件 <img src="/2020/03/09/parralel-desktop-preparation/中国知网文献导出3.png" alt="步骤2: 文献导出"><span class="image-caption">步骤2: 文献导出</span></p>
+<p>第二步：勾选要导出的文献后，选择【导出/参考文献】——进入下一页面——选择EndNote导出——下载的是一个text文件 <img src="/.com//中国知网文献导出3.png" alt="步骤2: 文献导出"><span class="image-caption">步骤2: 文献导出</span></p>
 <p>https://blog.csdn.net/lyc_daniel/article/details/12514057</p>
 <p>Endnote插入文献不现实URL怎么办？https://community.endnote.com/t5/EndNote-General/Showing-URLs-and-DOIs/td-p/26057</p>
 <p>如何获取RFC以及Internet draft文献的RIS格式引用信息？ 可以用开源社区提供的命令行工具包<code>bibutil</code>中的<code>bib2xml</code>以及<code>xml2ris</code> https://tex.stackexchange.com/questions/227852/conversion-of-bibtex-to-endnote-bibliography-02-12-2015/227920 下载地址: https://sourceforge.net/projects/bibutils/</p>
@@ -784,93 +871,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Python中str类型对象不可以做item assigment。因为string是一个immutable data type. 比如 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [70]: a = &quot;123&quot;</span><br><span class="line"></span><br><span class="line">In [71]: a[0]=4</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-71-998c6162715b&gt; in &lt;module&gt;</span><br><span class="line">----&gt; 1 a[0]=4</span><br><span class="line"></span><br><span class="line">TypeError: &apos;str&apos; object does not support item assignment</span><br></pre></td></tr></table></figure></p>
-<p>再比如，想对str对象做原地址字符交换: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [68]: a = &quot;hello&quot;</span><br><span class="line"></span><br><span class="line">In [69]: a[0], a[1] = a[1], a[0]</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-69-e773f64dcc58&gt; in &lt;module&gt;</span><br><span class="line">----&gt; 1 a[0], a[1] = a[1], a[0]</span><br><span class="line"></span><br><span class="line">TypeError: &apos;str&apos; object does not support item assignment</span><br></pre></td></tr></table></figure></p>
+          <p>Python中str类型对象不可以做item assigment。因为string是一个immutable data type. 比如 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [70]: a &#x3D; &quot;123&quot;</span><br><span class="line"></span><br><span class="line">In [71]: a[0]&#x3D;4</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-71-998c6162715b&gt; in &lt;module&gt;</span><br><span class="line">----&gt; 1 a[0]&#x3D;4</span><br><span class="line"></span><br><span class="line">TypeError: &#39;str&#39; object does not support item assignment</span><br></pre></td></tr></table></figure> 再比如，想对str对象做原地址字符交换: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [68]: a &#x3D; &quot;hello&quot;</span><br><span class="line"></span><br><span class="line">In [69]: a[0], a[1] &#x3D; a[1], a[0]</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-69-e773f64dcc58&gt; in &lt;module&gt;</span><br><span class="line">----&gt; 1 a[0], a[1] &#x3D; a[1], a[0]</span><br><span class="line"></span><br><span class="line">TypeError: &#39;str&#39; object does not support item assignment</span><br></pre></td></tr></table></figure></p>
 <h1 id="create-2d-array-without-numpy-with-populating-an-element">Create 2D array without numpy with populating an element</h1>
 <p>source: https://python-forum.io/Thread-Creating-2D-array-without-Numpy</p>
-<p>The first way doesn't work because [[0] * n] creates a mutable list of zeros once. Then when the second *n copies the list, it copies references to first list, not the list itself. So you have a list of references, not a list of lists. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n = 10</span><br><span class="line">p = [[0] * n for row in n]</span><br></pre></td></tr></table></figure></p>
+<p>The first way doesn't work because [[0] * n] creates a mutable list of zeros once. Then when the second *n copies the list, it copies references to first list, not the list itself. So you have a list of references, not a list of lists. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n &#x3D; 10</span><br><span class="line">p &#x3D; [[0] * n for row in n]</span><br></pre></td></tr></table></figure></p>
 <h1 id="jupyter-notebook-安装包问题">Jupyter notebook 安装包问题</h1>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/10/27/python-regex/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/27/python-regex/" class="post-title-link" itemprop="url">正则表达式以及在 Python 中的使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-27 19:02:08" itemprop="dateCreated datePublished" datetime="2019-10-27T19:02:08+08:00">2019-10-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-06 05:35:50" itemprop="dateModified" datetime="2019-11-06T05:35:50+08:00">2019-11-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/Regluar-expression/" itemprop="url" rel="index"><span itemprop="name">Regluar expression</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="关于本文的定位">关于本文的定位</h1>
-<p>系统地介绍正则表达式规则，使用不是一篇博文可以涵盖的。基本的概念和知识可以通过网上的文章去了解。同时正则表达式在不同的编程语言下，其实现与使用略有不同。本文只针对 Python中的正则表达式。本文的主要目的是，记录和总结自己在平时的工作中，通过一些具体的用例，学到的一些 Python 正则表达式的技巧，以备不时之需。所以可以认为本文是基于 case driven 的理念。</p>
-<h2 id="section"></h2>
-<p>方案: 采用(?!...) Matches if ... doesn’t match next. This is a negative lookahead assertion. For example, Isaac (?!Asimov) will match 'Isaac ' only if it’s not followed by 'Asimov'.</p>
 
       
     </div>
@@ -955,7 +960,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -966,14 +971,14 @@
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/hansomesong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
   </div>
 
@@ -1004,7 +1009,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">rennsong</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         
@@ -1024,31 +1029,92 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
-
-  
-
-
-
-
-
-
-
-
-
-
-
+<script src="/js/next-boot.js"></script>
 
 
 
 
   
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

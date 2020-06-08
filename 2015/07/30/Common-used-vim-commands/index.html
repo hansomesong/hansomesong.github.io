@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -21,17 +21,17 @@
   </script>
 
   <meta name="description" content="利用此贴记录下自己常用的VIM的命令，备忘： 在command mode下，键入 shift+G: 跳转至文章的最后一行 gg: 跳转至文章的开头 o: 跳转至光标当前所在行的下一行并进入insert mode Error trying to parse settings: Unexpected character, expected a comma or closing bracket in P">
-<meta name="keywords" content="VIM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常用 VIM 命令备忘">
 <meta property="og:url" content="http://rennesong.com/2015/07/30/Common-used-vim-commands/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="利用此贴记录下自己常用的VIM的命令，备忘： 在command mode下，键入 shift+G: 跳转至文章的最后一行 gg: 跳转至文章的开头 o: 跳转至光标当前所在行的下一行并进入insert mode Error trying to parse settings: Unexpected character, expected a comma or closing bracket in P">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-25T10:27:10.933Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-07-30T15:59:36.000Z">
+<meta property="article:modified_time" content="2019-03-25T10:27:10.933Z">
+<meta property="article:author" content="rennsong">
+<meta property="article:tag" content="VIM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常用 VIM 命令备忘">
-<meta name="twitter:description" content="利用此贴记录下自己常用的VIM的命令，备忘： 在command mode下，键入 shift+G: 跳转至文章的最后一行 gg: 跳转至文章的开头 o: 跳转至光标当前所在行的下一行并进入insert mode Error trying to parse settings: Unexpected character, expected a comma or closing bracket in P">
 
 <link rel="canonical" href="http://rennesong.com/2015/07/30/Common-used-vim-commands/">
 
@@ -75,12 +75,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -222,13 +222,7 @@
 <p>#汉字字符显示问题 关键：将non-Unicode编码为 汉语</p>
 <p>#应用程序安装 第一个先安装Google chrome 改变默认程序的方法： To chagne your default apps, go to Settings-&gt;System-&gt;Default apps 第二个是office QQ, skype之类的还有 其他也确实想不到该去安装什么了(目前)</p>
 <p>Ubuntu的社区对Grub2有很好的说明的。</p>
-<p>#Ubuntu开发环境搭建 (这个其实可以专门写个文章了) 更新系统软件仓库 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get udpate</span><br></pre></td></tr></table></figure></p>
-<p>安装openssh-server, 以便从mac上ssh进入这台机器, 安装VIM，以方便编辑配置文件 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server vim</span><br><span class="line">ps aux | grep sshd</span><br></pre></td></tr></table></figure></p>
-<p>如果发现有sshd守护进程运行，则说明openssh server成功安装并且启动。 接下来在Ubuntu下创建公钥私钥，以便可以不需要密码接入 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure></p>
-<p>接下来将Mac上的公钥copy到Ubuntu下 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>ssh-copy-id可以通过Homebrew安装</span><br><span class="line">ssh-copy-id qsong@10.35.130.207</span><br></pre></td></tr></table></figure></p>
-<p>还是不习惯使用Utity界面，还是使用传统界面吧 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gnome-session-flashback</span><br></pre></td></tr></table></figure></p>
-<p>安装完毕之后，log out再log in就生效了。 用命令行访问 Windows 10 分区 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>首先需要知道 哪个分区(sdaX)是我们需要访问的分区</span><br><span class="line">cat /proc/partitions</span><br><span class="line"><span class="meta">#</span>接下来在/mnt创建一个文件夹，用以挂载我们需要访问的分区</span><br><span class="line">mkdir /mnt/win</span><br><span class="line"><span class="meta">#</span>接下来, 挂载分区。注意将X换成相应的数字，比如3</span><br><span class="line">mount /dev/sdaX /mnt/win</span><br><span class="line"><span class="meta">#</span>我们可以通过命令行访问分区了</span><br><span class="line">cd /mnt/win</span><br></pre></td></tr></table></figure></p>
-<p>不过，现在 Ubuntu 系统都会默认把 windows partition 挂载在某个挂载点的(通常在/media之下)。如何获取哪个分区挂载哪个挂载点之下呢？有以下几种方法 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>方法一：</span><br><span class="line">cat /etc/mtab</span><br><span class="line"><span class="meta">#</span>方法二：</span><br><span class="line">df</span><br></pre></td></tr></table></figure></p>
+<p>#Ubuntu开发环境搭建 (这个其实可以专门写个文章了) 更新系统软件仓库 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get udpate</span><br></pre></td></tr></table></figure> 安装openssh-server, 以便从mac上ssh进入这台机器, 安装VIM，以方便编辑配置文件 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server vim</span><br><span class="line">ps aux | grep sshd</span><br></pre></td></tr></table></figure> 如果发现有sshd守护进程运行，则说明openssh server成功安装并且启动。 接下来在Ubuntu下创建公钥私钥，以便可以不需要密码接入 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure> 接下来将Mac上的公钥copy到Ubuntu下 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">ssh-copy-id可以通过Homebrew安装</span></span><br><span class="line">ssh-copy-id qsong@10.35.130.207</span><br></pre></td></tr></table></figure> 还是不习惯使用Utity界面，还是使用传统界面吧 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gnome-session-flashback</span><br></pre></td></tr></table></figure> 安装完毕之后，log out再log in就生效了。 用命令行访问 Windows 10 分区 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">首先需要知道 哪个分区(sdaX)是我们需要访问的分区</span></span><br><span class="line">cat /proc/partitions</span><br><span class="line"><span class="meta">#</span><span class="bash">接下来在/mnt创建一个文件夹，用以挂载我们需要访问的分区</span></span><br><span class="line">mkdir /mnt/win</span><br><span class="line"><span class="meta">#</span><span class="bash">接下来, 挂载分区。注意将X换成相应的数字，比如3</span></span><br><span class="line">mount /dev/sdaX /mnt/win</span><br><span class="line"><span class="meta">#</span><span class="bash">我们可以通过命令行访问分区了</span></span><br><span class="line">cd /mnt/win</span><br></pre></td></tr></table></figure> 不过，现在 Ubuntu 系统都会默认把 windows partition 挂载在某个挂载点的(通常在/media之下)。如何获取哪个分区挂载哪个挂载点之下呢？有以下几种方法 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">方法一：</span></span><br><span class="line">cat /etc/mtab</span><br><span class="line"><span class="meta">#</span><span class="bash">方法二：</span></span><br><span class="line">df</span><br></pre></td></tr></table></figure></p>
 
     </div>
 
@@ -325,7 +319,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -336,14 +330,14 @@
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/hansomesong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
   </div>
 
@@ -374,7 +368,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">rennsong</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         
@@ -394,9 +388,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+<script src="/js/next-boot.js"></script>
+
 
 
 

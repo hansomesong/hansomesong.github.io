@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -21,21 +21,21 @@
   </script>
 
   <meta name="description" content="容器网络 随着Docker的普及和使用，其自身的性能无法满足大规模集群的使用，需要一个工具对成千上万个容器进行统一编排。在2015年又开始了容器编排之争，行业内最主要的三个编排框架分别是docker公司的swarm、google的kubernetes以及Apache mesos。 Mesos是参考谷歌的borg大规模集群管理系统，并于2009年推出的。swarm和kubernetes是为docke">
-<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 网络教程">
 <meta property="og:url" content="http://rennesong.com/2019/09/05/docker-networking/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="容器网络 随着Docker的普及和使用，其自身的性能无法满足大规模集群的使用，需要一个工具对成千上万个容器进行统一编排。在2015年又开始了容器编排之争，行业内最主要的三个编排框架分别是docker公司的swarm、google的kubernetes以及Apache mesos。 Mesos是参考谷歌的borg大规模集群管理系统，并于2009年推出的。swarm和kubernetes是为docke">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://rennesong.com/2019/09/05/docker-networking/docker-cnm.png">
-<meta property="og:image" content="http://rennesong.com/2019/09/05/docker-networking/docker-bridge-mode.png">
-<meta property="og:image" content="http://rennesong.com/2019/09/05/docker-networking/docker-overlay-mode.png">
-<meta property="og:updated_time" content="2019-10-08T10:12:22.596Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://rennesong.com/.com//docker-cnm.png">
+<meta property="og:image" content="http://rennesong.com/.com//docker-bridge-mode.png">
+<meta property="og:image" content="http://rennesong.com/.com//docker-overlay-mode.png">
+<meta property="article:published_time" content="2019-09-05T03:23:04.000Z">
+<meta property="article:modified_time" content="2019-10-08T10:12:22.596Z">
+<meta property="article:author" content="rennsong">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker 网络教程">
-<meta name="twitter:description" content="容器网络 随着Docker的普及和使用，其自身的性能无法满足大规模集群的使用，需要一个工具对成千上万个容器进行统一编排。在2015年又开始了容器编排之争，行业内最主要的三个编排框架分别是docker公司的swarm、google的kubernetes以及Apache mesos。 Mesos是参考谷歌的borg大规模集群管理系统，并于2009年推出的。swarm和kubernetes是为docke">
-<meta name="twitter:image" content="http://rennesong.com/2019/09/05/docker-networking/docker-cnm.png">
+<meta name="twitter:image" content="http://rennesong.com/.com//docker-cnm.png">
 
 <link rel="canonical" href="http://rennesong.com/2019/09/05/docker-networking/">
 
@@ -79,12 +79,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -232,7 +232,7 @@
 <p>虚拟机网络与容器网络异同 * VM network 拥有完善的隔离机制，虚拟网卡与硬件网卡在使用上没有啥区别，而 container network 则使用 network namespace 提供网络在Linux kernel 中的隔离 * 处于安全考虑，很多情况下，容器会部署在VM内部，这种嵌套部署需要设计心得网络模型 * Container migration 速度很快，因此 network policy 的更新需要跟得上其速度 * 容器数量多了，多主机之间的 ARP flooding 会造成大量资源浪费</p>
 <p>Docker 在开始的很长一段时间内只支持使用 <code>Linux bridge + iptables</code> 进行<code>single-host</code>的部署，自动化方面也只有 Pipework 这类 shell 脚本</p>
 <figure>
-<img src="/2019/09/05/docker-networking/docker-cnm.png" alt="Docker 提出的 container network model (CNM)"><span class="image-caption">Docker 提出的 container network model (CNM)</span><figcaption>Docker 提出的 container network model (CNM)</figcaption>
+<img src="/.com//docker-cnm.png" alt="Docker 提出的 container network model (CNM)"><span class="image-caption">Docker 提出的 container network model (CNM)</span><figcaption>Docker 提出的 container network model (CNM)</figcaption>
 </figure>
 <ul>
 <li>Sandbox: isolated netwokring running environment. Save the essential container network stack configuration, including: network interface pairs, routing table and DNS configuration. Under linux, sandbox is implemnted in form of linux network namespace. A sanbox may include several endponts from several networks.</li>
@@ -245,7 +245,7 @@
 <li>使用docker network create命令来创建，只能创建docker内建的网络模式</li>
 <li>使用docker plugin，创建自定义网络 创建自定义网络需要设置网络的driver和ipam。</li>
 </ul>
-<p>Docker支持以下5中内建网络模式: ## Bridge: Docker默认的容器网络驱动。由Docker设计的一种NAT网络模型。Container通过一对veth pair连接到docker0网桥上，由Docker为容器动态分配IP及配置路由、防火墙规则等。Bridge模式下，Docker容器于Internet通信，以及不同容器之间的通信，都是通过iptables规则(如更换源或者目的地址等)控制的。 <img src="/2019/09/05/docker-networking/docker-bridge-mode.png" alt="Docker bridge mode"><span class="image-caption">Docker bridge mode</span></p>
+<p>Docker支持以下5中内建网络模式: ## Bridge: Docker默认的容器网络驱动。由Docker设计的一种NAT网络模型。Container通过一对veth pair连接到docker0网桥上，由Docker为容器动态分配IP及配置路由、防火墙规则等。Bridge模式下，Docker容器于Internet通信，以及不同容器之间的通信，都是通过iptables规则(如更换源或者目的地址等)控制的。 <img src="/.com//docker-bridge-mode.png" alt="Docker bridge mode"><span class="image-caption">Docker bridge mode</span></p>
 <ul>
 <li>Host: 容器与主机共享同一Network Namespace，共享同一套网络协议栈、路由表及iptables规则等。容器与主机看到的是相同的网络视图.</li>
 <li>Null: 容器内网络配置为空，需要用户手动为容器配置网络接口及路由等。</li>
@@ -253,7 +253,7 @@
 </ul>
 <h2 id="overlay-mode">Overlay mode</h2>
 <p>Docker原生的跨主机多子网网络方案。主要通过使用Linux bridge和vxlan隧道实现，底层通过类似于etcd或consul的KV存储系统实现多机的信息同步(宋祁朋：需要确认下)。The overlay network driver creates a distributed network among multiple Docker daemon hosts. This network sits on top of (overlays) the host-specific networks, allowing containers connected to it (including swarm service containers) to communicate securely. Docker transparently handles routing of each packet to and from the correct Docker daemon host and the correct destination container.</p>
-<p>overlay网络模型比较复杂，底层需要类似consul或etcd的KV存储系统进行消息同步，核心是通过Linux网桥与vxlan隧道实现跨主机划分子网。每创建一个网络，Docker daemon 会在主机上创建一个单独的沙盒(i.e. network namespace). 在沙盒中，Docker(实际上是Docker daemon, 下同) 会创建名为br0的网桥，并在网桥上增加一个vxlan接口，每个网络占用一个<code>vxlan ID</code>，当前Docker创建vxlan隧道的ID范围为256~1000，因而最多可以创建745个网络。当添加一个容器到某一个网络上时，Docker会创建一对veth网卡设备，一端连接到此网络相关沙盒内的br0网桥上，另一端放入容器的沙盒内，并设置br0的IP地址作为容器内路由默认的网关地址，从而实现容器加入网络的目的。 <img src="/2019/09/05/docker-networking/docker-overlay-mode.png" alt="Docker overlay mode"><span class="image-caption">Docker overlay mode</span></p>
+<p>overlay网络模型比较复杂，底层需要类似consul或etcd的KV存储系统进行消息同步，核心是通过Linux网桥与vxlan隧道实现跨主机划分子网。每创建一个网络，Docker daemon 会在主机上创建一个单独的沙盒(i.e. network namespace). 在沙盒中，Docker(实际上是Docker daemon, 下同) 会创建名为br0的网桥，并在网桥上增加一个vxlan接口，每个网络占用一个<code>vxlan ID</code>，当前Docker创建vxlan隧道的ID范围为256~1000，因而最多可以创建745个网络。当添加一个容器到某一个网络上时，Docker会创建一对veth网卡设备，一端连接到此网络相关沙盒内的br0网桥上，另一端放入容器的沙盒内，并设置br0的IP地址作为容器内路由默认的网关地址，从而实现容器加入网络的目的。 <img src="/.com//docker-overlay-mode.png" alt="Docker overlay mode"><span class="image-caption">Docker overlay mode</span></p>
 <p>总而言之，Docker的整个网络模型，是建立在Network Namespace、Linux网桥、vxlan隧道、iptables规则之上的，也正是由于过于依赖网桥与iptables，导致Docker的网络效率不高，招致了用户和开发者的诟病.</p>
 <h1 id="appendix">Appendix</h1>
 <h2 id="linux-network-namespace">Linux network namespace</h2>
@@ -363,7 +363,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -374,14 +374,14 @@
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/hansomesong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
   </div>
 
@@ -412,7 +412,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">rennsong</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         
@@ -432,9 +432,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+<script src="/js/next-boot.js"></script>
+
 
 
 

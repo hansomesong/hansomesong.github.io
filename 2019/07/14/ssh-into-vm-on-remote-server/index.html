@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -26,14 +26,14 @@
 <meta property="og:url" content="http://rennesong.com/2019/07/14/ssh-into-vm-on-remote-server/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="In daily work, we heavily rely on Vagrant VM to test and deploy our program. It is really straightfoward to log into a VM on our working PC (vagrant ssh). However, it may also be possible that we need">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://rennesong.com/2019/07/14/ssh-into-vm-on-remote-server/ssh-into-remote-vm.png">
-<meta property="og:image" content="http://rennesong.com/2019/07/14/ssh-into-vm-on-remote-server/proxycommand-netcat-illustration.png">
-<meta property="og:updated_time" content="2019-07-18T22:33:41.705Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://rennesong.com/.com//ssh-into-remote-vm.png">
+<meta property="og:image" content="http://rennesong.com/.com//proxycommand-netcat-illustration.png">
+<meta property="article:published_time" content="2019-07-14T03:32:27.000Z">
+<meta property="article:modified_time" content="2020-06-08T06:31:48.630Z">
+<meta property="article:author" content="rennsong">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SSH log into a Vagrant VM on remote server via jump server">
-<meta name="twitter:description" content="In daily work, we heavily rely on Vagrant VM to test and deploy our program. It is really straightfoward to log into a VM on our working PC (vagrant ssh). However, it may also be possible that we need">
-<meta name="twitter:image" content="http://rennesong.com/2019/07/14/ssh-into-vm-on-remote-server/ssh-into-remote-vm.png">
+<meta name="twitter:image" content="http://rennesong.com/.com//ssh-into-remote-vm.png">
 
 <link rel="canonical" href="http://rennesong.com/2019/07/14/ssh-into-vm-on-remote-server/">
 
@@ -77,12 +77,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -199,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-07-19 06:33:41" itemprop="dateModified" datetime="2019-07-19T06:33:41+08:00">2019-07-19</time>
+                <time title="修改时间：2020-06-08 14:31:48" itemprop="dateModified" datetime="2020-06-08T14:31:48+08:00">2020-06-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,7 +226,7 @@
 <p>In this post, I will give a solution that I got during my work. Basically I have my working PC at home (Mac OSX), a public VPS instance serving as a jumper/proxy server (Ubuntu 16.04), a remote servert (Ubuntu) and a Vagrant VM instance created in my remote server. I want to do a proxyjump from the PC to the target going through the proxy. Authentication from the proxy to the target and from the PC to the proxy use pubkey authentication and each machine has its own key pair.</p>
 <p>The network topology of this use case is illustrated in the following figure:</p>
 <figure>
-<img src="/2019/07/14/ssh-into-vm-on-remote-server/ssh-into-remote-vm.png" alt="Network topology of use case"><span class="image-caption">Network topology of use case</span><figcaption>Network topology of use case</figcaption>
+<img src="/.com//ssh-into-remote-vm.png" alt="Network topology of use case"><span class="image-caption">Network topology of use case</span><figcaption>Network topology of use case</figcaption>
 </figure>
 <p>In a word, we need to finally connect to the VM via two jump servers: VPS server, remote server.</p>
 <p>In this <a href="/ssh-tuto.md">post</a>, we have dealed with how to connect to remote Ubuntu server via VPS instance</p>
@@ -239,18 +239,16 @@
 <li>Ubuntu server's ssh public key is present in <code>~/.ssh/authorized_keys</code></li>
 </ul>
 <h1 id="prerequisite-knowledge-netcat-command">Prerequisite knowledge <code>netcat</code> command</h1>
-<p>Netcat utility can be used to created TCP tunnel (port forwarding). Here is how to establish a tunnel using netcat to a given host and port. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netcat -L 127.0.0.1:22 -p 8080 -vvv</span><br></pre></td></tr></table></figure></p>
-<p>Listen on port 8080 of the server, and when somebody tries to connect, establish a link with 127.0.0.1:22 (i.e.: SSH server). <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netcat -L google.fr:80 -p 25000 -vvv</span><br></pre></td></tr></table></figure></p>
-<p>Listen on port 25000 of the server, and when somebody tries to connect, connect him to Google web server.</p>
+<p>Netcat utility can be used to created TCP tunnel (port forwarding). Here is how to establish a tunnel using netcat to a given host and port. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netcat -L 127.0.0.1:22 -p 8080 -vvv</span><br></pre></td></tr></table></figure> Listen on port 8080 of the server, and when somebody tries to connect, establish a link with 127.0.0.1:22 (i.e.: SSH server). <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netcat -L google.fr:80 -p 25000 -vvv</span><br></pre></td></tr></table></figure> Listen on port 25000 of the server, and when somebody tries to connect, connect him to Google web server.</p>
 <h1 id="proxycommand-directive">ProxyCommand directive</h1>
 <p>This part is taken from this <a href="https://backreference.org/2010/02/26/jump-in-with-ssh-and-netcat/" target="_blank" rel="noopener">tutorial</a>. This post also gives a solution based on DNAT on proxy server. It is worth of carefully reading on it.</p>
 <p>Essentially, a command is specified that SSH will use as a transport channel to connect to the target host. That is, instead of using TCP as usual, where I/O is performed through a network socket, it will write to and read from respectively the standard input(<code>stdin</code>) and standard output(<code>stdout</code>) of the given command. It follows that such command should eventually convert its <code>stdin</code> and <code>stdout</code> into a true network connection to some host. In other words, a command that acts like <code>cat</code> on one side but that also connects to a network socket and moves data back and forth between the two channels. As you guessed, this command is <code>netcat</code>.</p>
-<p>Here's how we can use it in the <code>ProxyCommand</code>: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># ~/.ssh/config</span><br><span class="line">Host internal1</span><br><span class="line">User root</span><br><span class="line">ProxyCommand ssh user@firewall &apos;nc 192.168.0.1 22&apos;</span><br></pre></td></tr></table></figure></p>
+<p>Here's how we can use it in the <code>ProxyCommand</code>: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># ~&#x2F;.ssh&#x2F;config</span><br><span class="line">Host internal1</span><br><span class="line">User root</span><br><span class="line">ProxyCommand ssh user@firewall &#39;nc 192.168.0.1 22&#39;</span><br></pre></td></tr></table></figure></p>
 <figure>
-<img src="/2019/07/14/ssh-into-vm-on-remote-server/proxycommand-netcat-illustration.png" alt="Combination usage of ProxyCommand and netcat"><span class="image-caption">Combination usage of ProxyCommand and netcat</span><figcaption>Combination usage of ProxyCommand and netcat</figcaption>
+<img src="/.com//proxycommand-netcat-illustration.png" alt="Combination usage of ProxyCommand and netcat"><span class="image-caption">Combination usage of ProxyCommand and netcat</span><figcaption>Combination usage of ProxyCommand and netcat</figcaption>
 </figure>
 <p>The actual connection between sshd and netcat on the sshd side uses a UNIX socket, or a pipe in recent versions of SSH, not shown above for simplicity; the result is what you see above. And <code>stdin</code> and <code>stdout</code> just mean file descriptor <code>0</code> and <code>1</code> here. The dashed red arrow indicates the logical bidirectional channel that is established. Of course this is not enough as it's just a transport channel; the SSH negotiation should be carried on and eventually completed. By using the above command as <code>ProxyCommand</code>, ssh then uses this new channel (instead of TCP) to carry on the usual protocol negotiation, effectively talking to the SSH daemon on the internal host:</p>
-<p>If you are curious and want to verify that ssh is really reading from/writing to the local <code>stdin/stdout</code>, thus effectively using the transport channel created by <code>ProxyCommand</code> (comment: <code>ProxyCommand</code> actually establish a logicl transport channel so that client and server can negociate with each other. That's why without <code>ssh-add</code> command, client will use its local keys to authenticate with server, instead of using keys in proxy server), you can modify the <code>ProxyCommand</code> directive as follows: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># ~/.ssh/config</span><br><span class="line">Host internal1</span><br><span class="line">User root</span><br><span class="line">ProxyCommand tee /tmp/loc2rem | ssh user@firewall &apos;nc 192.168.0.1 22&apos; | tee /tmp/rem2loc</span><br></pre></td></tr></table></figure></p>
+<p>If you are curious and want to verify that ssh is really reading from/writing to the local <code>stdin/stdout</code>, thus effectively using the transport channel created by <code>ProxyCommand</code> (comment: <code>ProxyCommand</code> actually establish a logicl transport channel so that client and server can negociate with each other. That's why without <code>ssh-add</code> command, client will use its local keys to authenticate with server, instead of using keys in proxy server), you can modify the <code>ProxyCommand</code> directive as follows: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># ~&#x2F;.ssh&#x2F;config</span><br><span class="line">Host internal1</span><br><span class="line">User root</span><br><span class="line">ProxyCommand tee &#x2F;tmp&#x2F;loc2rem | ssh user@firewall &#39;nc 192.168.0.1 22&#39; | tee &#x2F;tmp&#x2F;rem2loc</span><br></pre></td></tr></table></figure></p>
 <p>The first <code>tee</code> command is to capture the <code>stdin</code> of the <code>ProxyCommand</code> (ie, what goes from client to internal1), the last <code>tee</code> is to capture its <code>stdout</code> (ie, what goes from internal1 to client). Adding those extra commands does not change the semantics of the <code>ProxyCommand</code>, which overall still looks like a command that presents <code>stdin/stdout</code> on the local side, and connects to internal1 on the remote side. However, by adding those tees we are able to save the data in transit in two files, one per direction, imaginatively named loc2rem and rem2loc.</p>
 <h1 id="solution">Solution</h1>
 <p>Basically, there are three solutions: 1. Copy the private key initially stored in the remote Ubuntu server (using <code>vagrant ssh-config</code> to check the location) to your working host and configure it to be used. 2. <code>ssh -t ubuntu_server ssh vagrant_vm</code>. This method will create a dedicated SSH process in remote Ubuntu server that read private key inside and connect to the vagrant VM 3. <code>ProxyCommand</code> + <code>SSH agent forwardig</code> + <code>ssh-add</code>. The corresponding entry in <code>~/.ssh/config</code>: The concrete command</p>
@@ -371,7 +369,7 @@ Host sfc103-vm
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -382,14 +380,14 @@ Host sfc103-vm
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/hansomesong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
   </div>
 
@@ -420,7 +418,7 @@ Host sfc103-vm
   </span>
   <span class="author" itemprop="copyrightHolder">rennsong</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         
@@ -440,9 +438,17 @@ Host sfc103-vm
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+<script src="/js/next-boot.js"></script>
+
 
 
 

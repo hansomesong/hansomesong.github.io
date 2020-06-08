@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -21,19 +21,19 @@
   </script>
 
   <meta name="description" content="因为科研的需要，进行 OpenDaylight 开发，但是自己的 Macbook pro 性能有限，并且不在办公室的时候网络连接性能不太好，所以传统方案，直接在Mac上编辑编译运行，这么一个路子对我来说并不适用。我有一台放置在办公室的运行 Ubuntu 16.04 的笔记本电脑 (16G内存，性能上相对来说强悍的多)，我也可以通过 SSH 远程访问这台笔记本电脑。所以，针对我的工程需求，我觉得最优">
-<meta name="keywords" content="IDEA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IntelliJ IDEA 下本地开发+远程同步+编译调试 工作流程">
 <meta property="og:url" content="http://rennesong.com/2019/05/17/intelliJ-idea-install-crack/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="因为科研的需要，进行 OpenDaylight 开发，但是自己的 Macbook pro 性能有限，并且不在办公室的时候网络连接性能不太好，所以传统方案，直接在Mac上编辑编译运行，这么一个路子对我来说并不适用。我有一台放置在办公室的运行 Ubuntu 16.04 的笔记本电脑 (16G内存，性能上相对来说强悍的多)，我也可以通过 SSH 远程访问这台笔记本电脑。所以，针对我的工程需求，我觉得最优">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://rennesong.com/2019/05/17/intelliJ-idea-install-crack/IDEA-licence.png">
-<meta property="og:updated_time" content="2019-07-19T11:06:00.155Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://rennesong.com/.com//IDEA-licence.png">
+<meta property="article:published_time" content="2019-05-17T07:39:40.000Z">
+<meta property="article:modified_time" content="2019-07-19T11:06:00.155Z">
+<meta property="article:author" content="rennsong">
+<meta property="article:tag" content="IDEA">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IntelliJ IDEA 下本地开发+远程同步+编译调试 工作流程">
-<meta name="twitter:description" content="因为科研的需要，进行 OpenDaylight 开发，但是自己的 Macbook pro 性能有限，并且不在办公室的时候网络连接性能不太好，所以传统方案，直接在Mac上编辑编译运行，这么一个路子对我来说并不适用。我有一台放置在办公室的运行 Ubuntu 16.04 的笔记本电脑 (16G内存，性能上相对来说强悍的多)，我也可以通过 SSH 远程访问这台笔记本电脑。所以，针对我的工程需求，我觉得最优">
-<meta name="twitter:image" content="http://rennesong.com/2019/05/17/intelliJ-idea-install-crack/IDEA-licence.png">
+<meta name="twitter:image" content="http://rennesong.com/.com//IDEA-licence.png">
 
 <link rel="canonical" href="http://rennesong.com/2019/05/17/intelliJ-idea-install-crack/">
 
@@ -77,12 +77,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -222,12 +222,12 @@
 <p>某盘链接: https://pan.baidu.com/s/1rWTWiwrPh-tyW0IP6fG6Hg 提取码: h4ee 将下载的破解包<code>JetbrainsCrack.jar</code>, 放置于<code>/Applications/IntelliJ IDEA.app/Contents/bin</code>路径下。(Windows/Linux平台，路径有所不同)</p>
 <h2 id="修改配置文件">修改配置文件</h2>
 <p>注意：不能直接修改在<code>bin</code>目录下的配置文件 <code>idea.vmoptions</code>。否则，将无法打开安装好的 <code>IntelliJ IDEA</code>，不然系统提示安装文件损毁，需要移除到回收站。</p>
-<p>先打开idea试用30天，然后点击你要注册的IDE菜单：<code>“Help” -&gt; “Edit Custom VM Options …”</code>，如果提示是否要创建文件，请点 "是|Yes"。</p>
+<p>先打开idea试用30天，然后点击你要注册的IDE菜单：<code>“Help” -&gt; “Edit Custom VM Options …”</code>，如果提示是否要创建文件，请点 &quot;是|Yes&quot;。</p>
 <h2 id="重新启-idea">重新启 IDEA</h2>
 <h1 id="注册">注册</h1>
-<p>注册"Help" -&gt; “Register”，选择License server方式，地址填入：http://jetbrains-license-server （应该会自动填上）。再次重启，看到Licensed to 用户名，即激活成功！</p>
+<p>注册&quot;Help&quot; -&gt; “Register”，选择License server方式，地址填入：http://jetbrains-license-server （应该会自动填上）。再次重启，看到Licensed to 用户名，即激活成功！</p>
 <figure>
-<img src="/2019/05/17/intelliJ-idea-install-crack/IDEA-licence.png" alt="Licence-IDEA"><span class="image-caption">Licence-IDEA</span><figcaption>Licence-IDEA</figcaption>
+<img src="/.com//IDEA-licence.png" alt="Licence-IDEA"><span class="image-caption">Licence-IDEA</span><figcaption>Licence-IDEA</figcaption>
 </figure>
 <p>Credit: https://blog.csdn.net/qq_40914991/article/details/85543575</p>
 <h1 id="odl-remote-debug">ODL remote debug</h1>
@@ -335,7 +335,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -346,14 +346,14 @@
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/hansomesong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
   </div>
 
@@ -384,7 +384,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">rennsong</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         
@@ -404,9 +404,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+<script src="/js/next-boot.js"></script>
+
 
 
 

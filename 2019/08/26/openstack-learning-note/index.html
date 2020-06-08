@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -26,14 +26,14 @@
 <meta property="og:url" content="http://rennesong.com/2019/08/26/openstack-learning-note/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="KVM 狭义地来说，其实只是一个 linux 内核模块(kvm.ko), 负责虚拟机的调度以及内存管理。虚拟机的IO则有其他linux内核模块以及QEMU完成。 Libvirt 简单说其实就是KVM的管理工具，不但是KVM，还提供了对 Xen, VirtualBox 的支持。Libvirt 包含 3 个东西：后台 daemon 程序 libvirtd、API 库和命令行工具 virsh 作为 KV">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://rennesong.com/2019/08/26/openstack-learning-note/iaas-paas-saas.jpg">
-<meta property="og:image" content="http://rennesong.com/2019/08/26/openstack-learning-note/openstack-vm-creation-procedures.png">
-<meta property="og:updated_time" content="2019-08-29T15:03:29.541Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://rennesong.com/.com//iaas-paas-saas.jpg">
+<meta property="og:image" content="http://rennesong.com/.com//openstack-vm-creation-procedures.png">
+<meta property="article:published_time" content="2019-08-26T10:02:14.000Z">
+<meta property="article:modified_time" content="2019-08-29T15:03:29.541Z">
+<meta property="article:author" content="rennsong">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="每天5分钟玩转 OpenStack 读书笔记">
-<meta name="twitter:description" content="KVM 狭义地来说，其实只是一个 linux 内核模块(kvm.ko), 负责虚拟机的调度以及内存管理。虚拟机的IO则有其他linux内核模块以及QEMU完成。 Libvirt 简单说其实就是KVM的管理工具，不但是KVM，还提供了对 Xen, VirtualBox 的支持。Libvirt 包含 3 个东西：后台 daemon 程序 libvirtd、API 库和命令行工具 virsh 作为 KV">
-<meta name="twitter:image" content="http://rennesong.com/2019/08/26/openstack-learning-note/iaas-paas-saas.jpg">
+<meta name="twitter:image" content="http://rennesong.com/.com//iaas-paas-saas.jpg">
 
 <link rel="canonical" href="http://rennesong.com/2019/08/26/openstack-learning-note/">
 
@@ -77,12 +77,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,10 +217,10 @@
 <p><code>Libvirt</code> 简单说其实就是KVM的管理工具，不但是KVM，还提供了对 Xen, VirtualBox 的支持。<code>Libvirt</code> 包含 3 个东西：后台 daemon 程序 libvirtd、API 库和命令行工具 virsh</p>
 <p>作为 KVM 和 OpenStack 的实施人员，virsh 和 virt-manager 是一定要会用的。</p>
 <figure>
-<img src="/2019/08/26/openstack-learning-note/iaas-paas-saas.jpg" alt="云计算三种模式: IaaS, PaaS, SaaS"><span class="image-caption">云计算三种模式: IaaS, PaaS, SaaS</span><figcaption>云计算三种模式: IaaS, PaaS, SaaS</figcaption>
+<img src="/.com//iaas-paas-saas.jpg" alt="云计算三种模式: IaaS, PaaS, SaaS"><span class="image-caption">云计算三种模式: IaaS, PaaS, SaaS</span><figcaption>云计算三种模式: IaaS, PaaS, SaaS</figcaption>
 </figure>
 <figure>
-<img src="/2019/08/26/openstack-learning-note/openstack-vm-creation-procedures.png" alt="OpenStack创建VM步骤示意图"><span class="image-caption">OpenStack创建VM步骤示意图</span><figcaption>OpenStack创建VM步骤示意图</figcaption>
+<img src="/.com//openstack-vm-creation-procedures.png" alt="OpenStack创建VM步骤示意图"><span class="image-caption">OpenStack创建VM步骤示意图</span><figcaption>OpenStack创建VM步骤示意图</figcaption>
 </figure>
 
     </div>
@@ -315,7 +315,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -326,14 +326,14 @@
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/hansomesong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
   </div>
 
@@ -364,7 +364,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">rennsong</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         
@@ -384,9 +384,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+<script src="/js/next-boot.js"></script>
+
 
 
 

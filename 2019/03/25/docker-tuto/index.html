@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -21,17 +21,17 @@
   </script>
 
   <meta name="description" content="Docker 以及容器 我们往往会把容器和docker这两个词混为一谈。仔细说来，容器其实指的更多是 Linux container (LXC)技术，LXC 核心的技术是 namespace以及Cgroups。Docker是一家专注于在LXC技术基础上推出更容易管理使用容器技术的公司，Docker同时也是该公司推出的容器引擎。 说到容器技术，也不是什么新技术，只是非常的小众。然而, 随着2013年">
-<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A brief and concise Docker tutorial">
 <meta property="og:url" content="http://rennesong.com/2019/03/25/docker-tuto/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="Docker 以及容器 我们往往会把容器和docker这两个词混为一谈。仔细说来，容器其实指的更多是 Linux container (LXC)技术，LXC 核心的技术是 namespace以及Cgroups。Docker是一家专注于在LXC技术基础上推出更容易管理使用容器技术的公司，Docker同时也是该公司推出的容器引擎。 说到容器技术，也不是什么新技术，只是非常的小众。然而, 随着2013年">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-07T08:26:47.446Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-25T03:21:48.000Z">
+<meta property="article:modified_time" content="2020-06-07T08:26:47.446Z">
+<meta property="article:author" content="rennsong">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="A brief and concise Docker tutorial">
-<meta name="twitter:description" content="Docker 以及容器 我们往往会把容器和docker这两个词混为一谈。仔细说来，容器其实指的更多是 Linux container (LXC)技术，LXC 核心的技术是 namespace以及Cgroups。Docker是一家专注于在LXC技术基础上推出更容易管理使用容器技术的公司，Docker同时也是该公司推出的容器引擎。 说到容器技术，也不是什么新技术，只是非常的小众。然而, 随着2013年">
 
 <link rel="canonical" href="http://rennesong.com/2019/03/25/docker-tuto/">
 
@@ -75,12 +75,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -226,14 +226,14 @@
 <p>docker教程整理:https://www.jianshu.com/p/4b808c2341bd</p>
 <p>Docker 是基于容器技术的轻量级虚拟化技术。其虚拟化技术是基于内核的Cgroup以及Namespace技术。处理逻辑与内核深度融合，所以在很多方面，性能与物理机非常接近。通信上，Docker并不会直接和内核交互，它是通过一个更底层的工具libcontainer与内核交互的。Libcontainer是真正意义上的容器引擎。它通过clone系统调用直接创建容器，通过<code>pivot_root</code> system call 进入容器，且通过直接操作<code>cgroupfs</code>文件实现对资源的管控，而docker本身则侧重于处理更上层的业务。</p>
 <h1 id="层级镜像的概念">层级镜像的概念</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i eth0 -w /traces/sfc103demo.pcap</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti -v $PWD:&#x2F;traces --net container:classifier1 nicolaka&#x2F;netshoot tcpdump –i eth0 -w &#x2F;traces&#x2F;sfc103demo.pcap</span><br></pre></td></tr></table></figure>
 <p>一些说明: * <code>-v $PWD:/traces</code>: mount current working directory on host machine as <code>traces</code> folder under root directory of target container. Please refer to <a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a> for more information. It is also possible specify volume mount without specifying location of source folder in host machine by syntax such as <code>-v /traces</code>. Command <code>docker inspect &lt;container_name&gt;</code> allows to check the source file in host machine corresponding to volume mounted in container. * <code>--net container:classifier1</code>: monitor a certain container. Rememer to replace <code>classifier1</code> with regard to your need. * <code>nicolaka/netshoot</code> is a very powerful network troubleshooting docker image. Refer to <a href="https://github.com/nicolaka/netshoot" target="_blank" rel="noopener">nicolaka/netshoot</a> for more details. * <code>tcpdump –i eth0 -w /traces/sfc103demo.pcap</code> is actually how to use tcpdump command: - <code>–i eth0</code>: listen for interface <code>eth0</code> - <code>-w /traces/sfc103demo.pcap</code>: output monitored traffic to a PCAP file.</p>
 <p><a href="https://medium.com/the-code-review/top-10-docker-run-command-options-you-cant-live-without-a-reference-d256834e86c1" target="_blank" rel="noopener">Top 10 options for docker run</a> # Volume in container Container 内部数据持久化的问题 =&gt; 解决之道: data volume 机制 3 options are available in docker: * bind mount * volume * tmpfs mount</p>
 <p>Among them,volumes are the preferred mechanism for persisting data generated by and used by Docker containers. While bind mounts are dependent on the directory structure of the host machine, volumes are completely managed by Docker. Volumes have several advantages over bind mounts</p>
 <h1 id="run-script-within-a-dockerfile">Run script within a Dockerfile</h1>
 <p>A short but nice explanation: https://stackoverflow.com/questions/34549859/run-a-script-in-dockerfile</p>
 <h1 id="kill-all-containers-in-a-command-line">Kill all containers in a command line</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container ls | awk &apos;&#123;if (NR&gt;1) print $1&#125;&apos; | xargs docker kill</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container ls | awk &#39;&#123;if (NR&gt;1) print $1&#125;&#39; | xargs docker kill</span><br></pre></td></tr></table></figure>
 <h1 id="rootless-docker-usage">Rootless docker usage</h1>
 <p>今天发现一个很奇怪的现象：通过创建用户组<code>docker</code>并添加自己账户之后， 通过SSH链接的qsong账户，可以无sudo执行docker命令，然而通过teamviewer访问(等同于直接在host上操作)，却依然要求sudo. 这个问题困扰了我许久，下午突然灵光一现，想到了原因：通过创建用户组<code>docker</code>并添加自己账户之后，需要退出重新登录. 我在host上并没有执行log out then log in的操作。</p>
 <h1 id="docker无法使用本地dns服务">Docker无法使用本地DNS服务</h1>
@@ -247,10 +247,9 @@
 <li>docker build --network=host -t my-image-name 运行容器的时候，采用和host一样的网络协议栈，但是缺乏足够的隔离性，有安全隐患</li>
 </ul>
 <p>Now container DNS lookups go through your local dnsmasq instance, so DNS in the container should work just as well as DNS on the host.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/resolv.conf</span><br><span class="line"># Dynamic resolv.conf(5) file for glibc resolver(3) generated by resolvconf(8)</span><br><span class="line">#     DO NOT EDIT THIS FILE BY HAND -- YOUR CHANGES WILL BE OVERWRITTEN</span><br><span class="line">nameserver 127.0.1.1</span><br><span class="line">search imtld.local</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;etc&#x2F;resolv.conf</span><br><span class="line"># Dynamic resolv.conf(5) file for glibc resolver(3) generated by resolvconf(8)</span><br><span class="line">#     DO NOT EDIT THIS FILE BY HAND -- YOUR CHANGES WILL BE OVERWRITTEN</span><br><span class="line">nameserver 127.0.1.1</span><br><span class="line">search imtld.local</span><br></pre></td></tr></table></figure>
 <p>我们会发现dns服务器为<code>127.0.1.1</code>，记住不是<code>127.0.0.1</code>!好奇葩的一个地址. 原来ubuntu下有一个本地的dns服务叫做<code>dnsmasq</code>，它是由<code>NetworkManager</code>控制的. 它监听的本地地址，<code>--listen-address=127.0.1.1</code> (ubuntu12.04及之前的版本是 127.0.0.1), 这个地址是一个本地回环地址,而你真实的dns服务器地址，是被这个服务管理维护着的 由一张图表示就是： <code>local process -&gt; local dnsmasq -&gt; router -&gt; ISP dns</code> 问题是：为什么<code>dnsmasq</code>不接受来自container的请求呢？</p>
-<p>我们发现，在学校内网中，即使显示地要求docker采用谷歌提供的DNS服务器地址，DNS请求依然无法被解析。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run --dns 8.8.8.8  busybox nslookup www.google.com</span><br><span class="line">;; connection timed out; no servers could be reached</span><br></pre></td></tr></table></figure></p>
-<p>我之后试着<code>ping 8.8.8.8</code>，发现有回复，这说明，虽然我可以ping通谷歌公共DNS服务器，然而学校的网络配置却禁止我使用外部DNS，为什么呢？</p>
+<p>我们发现，在学校内网中，即使显示地要求docker采用谷歌提供的DNS服务器地址，DNS请求依然无法被解析。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run --dns 8.8.8.8  busybox nslookup www.google.com</span><br><span class="line">;; connection timed out; no servers could be reached</span><br></pre></td></tr></table></figure> 我之后试着<code>ping 8.8.8.8</code>，发现有回复，这说明，虽然我可以ping通谷歌公共DNS服务器，然而学校的网络配置却禁止我使用外部DNS，为什么呢？</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$:nmcli dev show | grep IP4.DNS</span><br><span class="line">IP4.DNS[1]:                             10.59.130.129</span><br><span class="line">IP4.DNS[2]:                             10.59.130.130</span><br></pre></td></tr></table></figure>
 <p>注意：<code>nmcli</code> only applies to systems running <code>NetworkManager</code>, there is not an equivalent for other setups.</p>
 <p><a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a> <a href="http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/" target="_blank" rel="noopener">Docker RUN vs CMD vs ENTRYPOINT</a></p>
@@ -276,8 +275,8 @@
       <i class="fa fa-chevron-left"></i> How to gracefully write blog with Sublime Text and Hexo (without command line)
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/03/25/hello-world/" rel="next" title="Hexo 基本命令以及 Markdown 基本语法">
-      Hexo 基本命令以及 Markdown 基本语法 <i class="fa fa-chevron-right"></i>
+    <a href="/2019/03/25/hello-world/" rel="next" title="Hexo 安装，配置，使用以及更新基本命令以及 Markdown 基本语法">
+      Hexo 安装，配置，使用以及更新基本命令以及 Markdown 基本语法 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -351,7 +350,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -362,14 +361,14 @@
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/hansomesong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
   </div>
 
@@ -400,7 +399,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">rennsong</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         
@@ -420,9 +419,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+<script src="/js/next-boot.js"></script>
+
 
 
 

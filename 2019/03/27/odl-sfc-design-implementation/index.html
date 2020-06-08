@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -26,14 +26,14 @@
 <meta property="og:url" content="http://rennesong.com/2019/03/27/odl-sfc-design-implementation/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="NSH NSH header MD type 1 IETF NSH Only NSH Metadata type 1 is implemented. ODL SFC architecture[^cisco-odl-sfc14] Opendaylight sfc architecture * ODL SFC in essence a point to multipoint architecture">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://rennesong.com/2019/03/27/odl-sfc-design-implementation/NSH-header-md-type1.png">
-<meta property="og:image" content="http://rennesong.com/2019/03/27/odl-sfc-design-implementation/odl-sfc-architecture.png">
-<meta property="og:updated_time" content="2019-07-19T11:05:57.838Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://rennesong.com/.com//NSH-header-md-type1.png">
+<meta property="og:image" content="http://rennesong.com/.com//odl-sfc-architecture.png">
+<meta property="article:published_time" content="2019-03-27T08:59:46.000Z">
+<meta property="article:modified_time" content="2019-07-19T11:05:57.838Z">
+<meta property="article:author" content="rennsong">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenDayLight SFC design and its implementation">
-<meta name="twitter:description" content="NSH NSH header MD type 1 IETF NSH Only NSH Metadata type 1 is implemented. ODL SFC architecture[^cisco-odl-sfc14] Opendaylight sfc architecture * ODL SFC in essence a point to multipoint architecture">
-<meta name="twitter:image" content="http://rennesong.com/2019/03/27/odl-sfc-design-implementation/NSH-header-md-type1.png">
+<meta name="twitter:image" content="http://rennesong.com/.com//NSH-header-md-type1.png">
 
 <link rel="canonical" href="http://rennesong.com/2019/03/27/odl-sfc-design-implementation/">
 
@@ -77,12 +77,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -223,10 +223,10 @@
 
       
         <h1 id="nsh">NSH</h1>
-<p><img src="/2019/03/27/odl-sfc-design-implementation/NSH-header-md-type1.png" alt="NSH header MD type 1"><span class="image-caption">NSH header MD type 1</span> IETF NSH Only NSH Metadata type 1 is implemented.</p>
+<p><img src="/.com//NSH-header-md-type1.png" alt="NSH header MD type 1"><span class="image-caption">NSH header MD type 1</span> IETF NSH Only NSH Metadata type 1 is implemented.</p>
 <h1 id="odl-sfc-architecturecisco-odl-sfc14">ODL SFC architecture[^cisco-odl-sfc14]</h1>
-<p><img src="/2019/03/27/odl-sfc-design-implementation/odl-sfc-architecture.png" alt="Opendaylight sfc architecture"><span class="image-caption">Opendaylight sfc architecture</span> * ODL SFC in essence a point to multipoint architecture * <strong><em>SFC</em></strong> Provider manages all configuration information provided by orchestration system or admin. * <strong><em>SFC</em></strong> Provider writes constructed Service Function Paths and Rendered Service Path to the datastore * <strong><em>Protocol datastore listeners</em></strong> are notified of service objects creation * These listeners will process RSP information and communicate to their controlled southbound devices</p>
-<p>"How do you prove that traffic follows the sugguested path?". Proof-of-Transit is proposed by Cisco to solve this problem.</p>
+<p><img src="/.com//odl-sfc-architecture.png" alt="Opendaylight sfc architecture"><span class="image-caption">Opendaylight sfc architecture</span> * ODL SFC in essence a point to multipoint architecture * <strong><em>SFC</em></strong> Provider manages all configuration information provided by orchestration system or admin. * <strong><em>SFC</em></strong> Provider writes constructed Service Function Paths and Rendered Service Path to the datastore * <strong><em>Protocol datastore listeners</em></strong> are notified of service objects creation * These listeners will process RSP information and communicate to their controlled southbound devices</p>
+<p>&quot;How do you prove that traffic follows the sugguested path?&quot;. Proof-of-Transit is proposed by Cisco to solve this problem.</p>
 <p>Key elements to support this: * in-site (in-band) OAM: the key idea behind is to transport operation/administration/manintenance related information within the packet, insteading using a dedicated packet (such as ping, traceroute, etc.).</p>
 <ul>
 <li>transportation of OAM: basically two catogories:
@@ -260,8 +260,8 @@
 </ul></li>
 </ul></li>
 </ul>
-<p>参考文献 [^cisco-odl-sfc14]: "ODL: Service function chaining", https://events.static.linuxfound.org/sites/events/files/slides/odl%20summit%20sfc%20v5.pdf</p>
-<p>张老师，跟你update下最近的工作。跟montida讨论的结果，汉语说快。我发现Cisco提出了一种叫做 iOAM-Pot的机制，解决的正是我们这个Securecom文章要解决的问题："How do you prove that traffic follows the sugguested path?".</p>
+<p>参考文献 [^cisco-odl-sfc14]: &quot;ODL: Service function chaining&quot;, https://events.static.linuxfound.org/sites/events/files/slides/odl%20summit%20sfc%20v5.pdf</p>
+<p>张老师，跟你update下最近的工作。跟montida讨论的结果，汉语说快。我发现Cisco提出了一种叫做 iOAM-Pot的机制，解决的正是我们这个Securecom文章要解决的问题：&quot;How do you prove that traffic follows the sugguested path?&quot;.</p>
 <p>Cisco提出的iOAM-Pot由两部分组成，第一个是iOAM. 简单说就是跟network service有关的operation/administration/maintenance的信息(比如延时，带宽之类的信息)。伴随这service种传递的packet一起发送。Ciso提出很多种方案实现iOAM，比如利用NSH type2 metadata(和我们希望传递北邮设计的签名是一样的思路)，比如设计一个iOAM专用协议层放在NSH header后面。</p>
 <p>第二个就是PoT, Proof-of-Transit的简写。就是一种数据用以证明携带这个PoT的packet确实被希望的service function处理了。PoT是依赖于Shamir’s secret sharing机制实现的。这个PoT被认为是一种OAM信息。所以PoT可以被配置为通过NSH type2 metadata传递，也可以放在专用协议头里传递。</p>
 <p>目前这个工作成熟度很高。Cisco写了不少 IETF draft(尚未标准化成RFC)。 ODL里有control plane的支持，data plane有个叫做FD.io/VPP的开源项目去实现。Cisco的产品里也实现了对这种机制的支持。</p>
@@ -272,13 +272,13 @@
 <h1 id="文章的组织结构">文章的组织结构</h1>
 <ul>
 <li><p>Approach Add meta-data to all packets that traverse a path or service chain. The added meta-data allows a verifying node (egress node) to check whether a packet traversed the servcie chain correctly or not. Security mechanisms are used on the meta-data to protect against incorrect or miuse (i.e. configuration mistakes, peoply playing tricks with routing, capturing, spoofing and replaying packets.) The meta-dat is secured through the use of keys. Sercivce functions retrieve the keys from a controller over a secure channel.</p></li>
-<li><p>Related</p>
+<li>Related
 <ul>
 <li>Compose the onion + PoT</li>
 <li>symmetric masking + PoT</li>
 </ul></li>
-<li><p>The mathmatics</p></li>
-<li><p>Protocol Aspects</p></li>
+<li>The mathmatics</li>
+<li>Protocol Aspects</li>
 <li><p>Implementation and Demo side</p></li>
 </ul>
 <p>in-band solution 可以被批判的点： 1. 最后一个service function 负责贡献最后一份秘钥 同时还负责检验。在SDN环境中，如果 service function 不幸被compromised了。那就完全不可信了。</p>
@@ -376,7 +376,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -387,14 +387,14 @@
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/hansomesong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
   </div>
 
@@ -425,7 +425,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">rennsong</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         
@@ -445,9 +445,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/muse.js"></script>
-<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+<script src="/js/next-boot.js"></script>
+
 
 
 
