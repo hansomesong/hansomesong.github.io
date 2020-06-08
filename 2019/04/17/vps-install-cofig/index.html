@@ -1,100 +1,24 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.1.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="VPS 提供商选择 我最终选择了 Vultr 家的，因为有新手注册送50美金的优惠，而且是按时间收费 https://www.10besty.com/best-vps-hosting-services/ 可以看看这个文章，分析如何选取VPS服务商 Create a new non-root user OVH 上购买的 VPS 在创建之初只有一个user: root. 使用下列命令查看当前VPS上都">
 <meta property="og:type" content="article">
@@ -103,26 +27,24 @@
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="VPS 提供商选择 我最终选择了 Vultr 家的，因为有新手注册送50美金的优惠，而且是按时间收费 https://www.10besty.com/best-vps-hosting-services/ 可以看看这个文章，分析如何选取VPS服务商 Create a new non-root user OVH 上购买的 VPS 在创建之初只有一个user: root. 使用下列命令查看当前VPS上都">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-22T08:28:59.314Z">
+<meta property="og:image" content="http://rennesong.com/2019/04/17/vps-install-cofig/shadowsocks_principle.png">
+<meta property="og:image" content="http://rennesong.com/2019/04/17/vps-install-cofig/ssr-kcptun-udp2raw-vps.png">
+<meta property="og:updated_time" content="2020-03-01T05:31:39.203Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="打造趁手的 VPS">
 <meta name="twitter:description" content="VPS 提供商选择 我最终选择了 Vultr 家的，因为有新手注册送50美金的优惠，而且是按时间收费 https://www.10besty.com/best-vps-hosting-services/ 可以看看这个文章，分析如何选取VPS服务商 Create a new non-root user OVH 上购买的 VPS 在创建之初只有一个user: root. 使用下列命令查看当前VPS上都">
+<meta name="twitter:image" content="http://rennesong.com/2019/04/17/vps-install-cofig/shadowsocks_principle.png">
+
+<link rel="canonical" href="http://rennesong.com/2019/04/17/vps-install-cofig/">
 
 
-
-  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
-
-
-
-  
-  
-  <link rel="canonical" href="http://rennesong.com/2019/04/17/vps-install-cofig/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -134,15 +56,8 @@
 
 
 
-
-
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -151,9 +66,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -167,153 +81,69 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Rennesong's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
-      
-        <p class="site-subtitle">Blog my life from now on!</p>
-      
-    
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
-
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
+  </ul>
 </nav>
 
-
-
-  
 
 
 
@@ -321,115 +151,70 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/17/vps-install-cofig/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">打造趁手的 VPS
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          打造趁手的 VPS
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-04-17 15:44:14" itemprop="dateCreated datePublished" datetime="2019-04-17T15:44:14+02:00">2019-04-17</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <time title="创建时间：2019-04-17 15:44:14" itemprop="dateCreated datePublished" datetime="2019-04-17T15:44:14+08:00">2019-04-17</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-22 10:28:59" itemprop="dateModified" datetime="2019-08-22T10:28:59+02:00">2019-08-22</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-01 13:31:39" itemprop="dateModified" datetime="2020-03-01T13:31:39+08:00">2020-03-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/VPS/" itemprop="url" rel="index"><span itemprop="name">VPS</span></a>
+                </span>
+            </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -437,80 +222,68 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        <h1>VPS 提供商选择</h1>
+        <h1 id="vps-提供商选择">VPS 提供商选择</h1>
 <p>我最终选择了 Vultr 家的，因为有新手注册送50美金的优惠，而且是按时间收费</p>
-<p><a href="https://www.10besty.com/best-vps-hosting-services/" target="_blank" rel="noopener">https://www.10besty.com/best-vps-hosting-services/</a> 可以看看这个文章，分析如何选取VPS服务商</p>
-<h1>Create a new non-root user</h1>
-<p>OVH 上购买的 VPS 在创建之初只有一个user: <code>root</code>. 使用下列命令查看当前VPS上都有哪些用户:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -d: -f1 /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>https://www.10besty.com/best-vps-hosting-services/ 可以看看这个文章，分析如何选取VPS服务商</p>
+<h1 id="create-a-new-non-root-user">Create a new non-root user</h1>
+<p>OVH 上购买的 VPS 在创建之初只有一个user: <code>root</code>. 使用下列命令查看当前VPS上都有哪些用户: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -d: -f1 /etc/passwd</span><br></pre></td></tr></table></figure></p>
 <p>奇怪的是，当时从root以hansomesong的用户登录的时候，居然不是默认切换到该用户的home directory很奇怪，最后只能在<code>.bashrc</code>文件中加了一个<code>cd</code>指令解决</p>
-<h1>Install VNC server + Xfce4</h1>
+<h1 id="添加gui支持">添加GUI支持</h1>
+<h2 id="install-vnc-server-xfce4">Install VNC server + Xfce4</h2>
 <p>参考这个<a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-16-04" target="_blank" rel="noopener">链接</a>, 解释非常详细</p>
-<h1>Shadowsocks 安装 (通过网友提供的脚本)</h1>
-<p>GFW实现网络封锁的手段主要有两种：dns劫持和ip封锁（除此之外，还有dns污染和关键词过滤，这里我们不讨论.</p>
-<h2 id="shadowsocks-简介"><a class="header-anchor" href="#shadowsocks-简介">null</a>Shadowsocks 简介</h2>
-<p>Shadowsocks 是 clowwindy 开发的一个开源代理加密协议，有很多用途，当然最常见的还是拿来翻墙。事实上现在所有的商业的翻墙代理（云梯，多态等）底层都是Shadowsocks技术。</p>
-<p><a href="https://medium.com/@thomas_summon/%E6%B5%85%E8%B0%88vpn-vps-proxy%E4%BB%A5%E5%8F%8Ashadowsocks%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB%E5%92%8C%E5%8C%BA%E5%88%AB-b0198f92db1b" target="_blank" rel="noopener">https://medium.com/@thomas_summon/浅谈vpn-vps-proxy以及shadowsocks之间的联系和区别-b0198f92db1b</a> Shadowsocks 的一个较为全面的介绍</p>
-<p>参考链接：<a href="https://vc2tea.com/whats-shadowsocks/" target="_blank" rel="noopener">https://vc2tea.com/whats-shadowsocks/</a> 写的非常不错！清晰！易懂！</p>
+<p>Ubuntu Desktop requires downloading about 500 MB of packages and an additional 2 GB of disk space. If that's too much, you can install a more lightweight desktop environment called Xfce. It's just 45 MB of packages that use an extra 175 MB of space.</p>
+<h2 id="依靠-teamviewer">依靠 Teamviewer</h2>
+<p>https://vitux.com/how-to-install-teamviewer-on-ubuntu/ 该帖子介绍了如何通过CLI界面安装teamviewer</p>
+<p>https://serverfault.com/questions/547206/how-to-find-my-teamviewer-id-on-ssh 该帖子描述了如何通过命令行界面获取安装的teamviewer的ID以及如何设置链接密码</p>
+<p>X11forwarding和GUI desktop有何区别联系呢？</p>
+<p>不知道为啥，每次命令行安装teamviewer结束之后，都会遇到如下错误: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">pst@ubuntu-openstack:~$ sudo apt-get update</span><br><span class="line">...</span><br><span class="line">Ign:13 http://linux.teamviewer.com/deb stable InRelease</span><br><span class="line">Ign:14 http://linux.teamviewer.com/deb stable Release</span><br><span class="line">Ign:15 http://linux.teamviewer.com/deb stable/main amd64 Packages.diff/Index</span><br><span class="line">...</span><br><span class="line">Ign:19 http://linux.teamviewer.com/deb stable/main amd64 Packages</span><br><span class="line">Ign:20 http://linux.teamviewer.com/deb stable/main i386 Packages</span><br><span class="line">Ign:17 http://linux.teamviewer.com/deb stable/main all Packages</span><br><span class="line">Ign:18 http://linux.teamviewer.com/deb stable/main Translation-en</span><br><span class="line">...</span><br><span class="line">Err:19 http://linux.teamviewer.com/deb stable/main amd64 Packages</span><br><span class="line">  Unable to connect to 172.27.254.1:http:</span><br><span class="line">Fetched 3711 kB in 30s (120 kB/s)</span><br><span class="line">Reading package lists... Done</span><br><span class="line">W: The repository &apos;http://linux.teamviewer.com/deb stable Release&apos; does not have a Release file.</span><br><span class="line">N: Data from such a repository can&apos;t be authenticated and is therefore potentially dangerous to use.</span><br><span class="line">N: See apt-secure(8) manpage for repository creation and user configuration details.</span><br><span class="line">E: Failed to fetch http://172.27.254.1/UserCheck/PortalMain?IID=8C811C51-17AD-2746-8F44-757FD1A3A938&amp;origUrl=aHR0cDovL2xpbnV4LnRlYW12aWV3ZXIuY29tL2RlYi9kaXN0cy9zdGFibGUvbWFpbi9iaW5hcnktYW1kNjQvUGFja2FnZXM  Unable to connect to 172.27.254.1:http:</span><br><span class="line">E: Failed to fetch http://172.27.254.1/UserCheck/PortalMain?IID=1113313D-D6BA-3C1B-3173-AFB380757E7F&amp;origUrl=aHR0cDovL2xpbnV4LnRlYW12aWV3ZXIuY29tL2RlYi9kaXN0cy9zdGFibGUvbWFpbi9iaW5hcnktaTM4Ni9QYWNrYWdlcw  Unable to connect to 172.27.254.1:http:</span><br><span class="line">E: Some index files failed to download. They have been ignored, or old ones used instead.</span><br></pre></td></tr></table></figure></p>
+<p>第一反应是，那还是把teamviewer从apt-source中删掉吧。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key remove TeamViewer2017.asc</span><br><span class="line">sudo rm /etc/apt/sources.list.d/teamviewer.list</span><br></pre></td></tr></table></figure></p>
+<p>之后一切正常！</p>
+<h1 id="shadowsocks-安装-通过网友提供的脚本">Shadowsocks 安装 (通过网友提供的脚本)</h1>
+<p>GFW实现网络封锁的手段主要有两种：dns劫持和ip封锁（除此之外，还有dns污染和关键词过滤，这里我们不讨论. ## Shadowsocks 简介 Shadowsocks 是 clowwindy 开发的一个开源代理加密协议，有很多用途，当然最常见的还是拿来翻墙。事实上现在所有的商业的翻墙代理（云梯，多态等）底层都是Shadowsocks技术。</p>
+<p>https://medium.com/<span class="citation" data-cites="thomas_summon">@thomas_summon</span>/%E6%B5%85%E8%B0%88vpn-vps-proxy%E4%BB%A5%E5%8F%8Ashadowsocks%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB%E5%92%8C%E5%8C%BA%E5%88%AB-b0198f92db1b Shadowsocks 的一个较为全面的介绍</p>
+<p>参考链接：https://vc2tea.com/whats-shadowsocks/ 写的非常不错！清晰！易懂！</p>
 <p>ShadowsocksR (SSR) 是 Shadowsock 的继承者。</p>
-<h2 id="安装-通过网友提供的脚本"><a class="header-anchor" href="#安装-通过网友提供的脚本">null</a>安装 (通过网友提供的脚本)</h2>
+<figure>
+<img src="/2019/04/17/vps-install-cofig/shadowsocks_principle.png" alt="Shadowsocks principle"><span class="image-caption">Shadowsocks principle</span><figcaption>Shadowsocks principle</figcaption>
+</figure>
+<h2 id="安装-通过网友提供的脚本">安装 (通过网友提供的脚本)</h2>
 <p>为了防止<a href="https://teddysun.com/486.html/comment-page-1#comments" target="_blank" rel="noopener">原链接</a>失效，还是手动复制一遍：</p>
-<p>使用root用户登录，运行以下命令:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</span><br><span class="line">chmod +x shadowsocks-all.sh</span><br><span class="line">./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log</span><br></pre></td></tr></table></figure>
-<p>安装完成后，脚本提示如下:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Congratulations, Shadowsocks-Python server install completed!</span><br><span class="line">Your Server IP        :  &lt;your.vps.ip.address&gt;</span><br><span class="line">Your Server Port      :  9164</span><br><span class="line">Your Password         :  &lt;password-to-shadowsocks-python-server&gt;</span><br><span class="line">Your Encryption Method:  aes-256-gcm</span><br><span class="line"></span><br><span class="line">Your QR Code: (For Shadowsocks Windows, OSX, Android and iOS clients)</span><br><span class="line"> ss://YWVzLTI1Ni1nY206MTIzNDU2QDUxLjc3LjIxNS4xODo5MTY0</span><br><span class="line">Your QR Code has been saved as a PNG file path:</span><br><span class="line"> /root/shadowsocks_python_qr.png</span><br><span class="line">Welcome to visit: https://teddysun.com/486.html</span><br><span class="line">Enjoy it!</span><br></pre></td></tr></table></figure>
-<h2 id="卸载方法-通过网友提供的脚本"><a class="header-anchor" href="#卸载方法-通过网友提供的脚本">null</a>卸载方法 (通过网友提供的脚本)</h2>
-<p>若已安装多个版本，则卸载时也需多次运行（每次卸载一种。使用root用户登录，运行以下命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./shadowsocks-all.sh uninstall</span><br></pre></td></tr></table></figure>
-<h2 id="启动脚本"><a class="header-anchor" href="#启动脚本">null</a>启动脚本</h2>
-<p>启动脚本后面的参数含义，从左至右依次为：启动，停止，重启，查看状态。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Shadowsocks-Python 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-python start | stop | restart | status</span><br><span class="line"><span class="meta">#</span><span class="bash">ShadowsocksR 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-r start | stop | restart | status</span><br><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-Go 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-go start | stop | restart | status</span><br><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-libev 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-libev start | stop | restart | status</span><br></pre></td></tr></table></figure>
-<p>事实证明, <code>shadowsocks-python</code> 程序是通过一个 Python 程序启动了<code>ssserver</code>程序</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@vpsname:~# ps aux | grep ssserver</span><br><span class="line">root      4623  0.0  0.7  51012 15804 ?        Ss   17:08   0:02 /usr/bin/python /usr/local/bin/ssserver -c /etc/shadowsocks-python/config.json -d start</span><br><span class="line">root      6256  0.0  0.0  12916   976 pts/1    S+   22:45   0:00 grep --color=auto ssserver</span><br></pre></td></tr></table></figure>
-<h2 id="各版本默认配置文件"><a class="header-anchor" href="#各版本默认配置文件">null</a>各版本默认配置文件</h2>
+<p>使用root用户登录，运行以下命令: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</span><br><span class="line">chmod +x shadowsocks-all.sh</span><br><span class="line">./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log</span><br></pre></td></tr></table></figure></p>
+<p>安装完成后，脚本提示如下: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Congratulations, Shadowsocks-Python server install completed!</span><br><span class="line">Your Server IP        :  &lt;your.vps.ip.address&gt;</span><br><span class="line">Your Server Port      :  9164</span><br><span class="line">Your Password         :  &lt;password-to-shadowsocks-python-server&gt;</span><br><span class="line">Your Encryption Method:  aes-256-gcm</span><br><span class="line"></span><br><span class="line">Your QR Code: (For Shadowsocks Windows, OSX, Android and iOS clients)</span><br><span class="line"> ss://YWVzLTI1Ni1nY206MTIzNDU2QDUxLjc3LjIxNS4xODo5MTY0</span><br><span class="line">Your QR Code has been saved as a PNG file path:</span><br><span class="line"> /root/shadowsocks_python_qr.png</span><br><span class="line">Welcome to visit: https://teddysun.com/486.html</span><br><span class="line">Enjoy it!</span><br></pre></td></tr></table></figure></p>
+<p>ShadowsocksX Python libev Go 都有啥区别呢？ 这次安装选下 libev版本 需要设定密码 依然设定 123456 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">Which Shadowsocks server you&apos;d select:</span><br><span class="line">1) Shadowsocks-Python</span><br><span class="line">2) ShadowsocksR</span><br><span class="line">3) Shadowsocks-Go</span><br><span class="line">4) Shadowsocks-libev</span><br><span class="line">Please enter a number (Default Shadowsocks-Python):4</span><br><span class="line"></span><br><span class="line">You choose = Shadowsocks-libev</span><br><span class="line"></span><br><span class="line">Please enter password for Shadowsocks-libev</span><br><span class="line">(Default password: teddysun.com):123456</span><br><span class="line"></span><br><span class="line">password = 123456</span><br><span class="line"></span><br><span class="line">Please enter a port for Shadowsocks-libev [1-65535]</span><br><span class="line">(Default port: 13313):9164</span><br><span class="line"></span><br><span class="line">port = 9164</span><br><span class="line"></span><br><span class="line">Please select stream cipher for Shadowsocks-libev:</span><br><span class="line">1) aes-256-gcm</span><br><span class="line">2) aes-192-gcm</span><br><span class="line">3) aes-128-gcm</span><br><span class="line">4) aes-256-ctr</span><br><span class="line">5) aes-192-ctr</span><br><span class="line">6) aes-128-ctr</span><br><span class="line">7) aes-256-cfb</span><br><span class="line">8) aes-192-cfb</span><br><span class="line">9) aes-128-cfb</span><br><span class="line">10) camellia-128-cfb</span><br><span class="line">11) camellia-192-cfb</span><br><span class="line">12) camellia-256-cfb</span><br><span class="line">13) xchacha20-ietf-poly1305</span><br><span class="line">14) chacha20-ietf-poly1305</span><br><span class="line">15) chacha20-ietf</span><br><span class="line">16) chacha20</span><br><span class="line">17) salsa20</span><br><span class="line">18) rc4-md5</span><br><span class="line">Which cipher you&apos;d select(Default: aes-256-gcm):</span><br><span class="line"></span><br><span class="line">cipher = aes-256-gcm</span><br><span class="line"></span><br><span class="line">[Info] Starting install package autoconf</span><br><span class="line">Do you want install simple-obfs for Shadowsocks-libev? [y/n]</span><br><span class="line">(default: n):y</span><br><span class="line"></span><br><span class="line">You choose = y</span><br><span class="line"></span><br><span class="line">Please select obfs for simple-obfs:</span><br><span class="line">1) http</span><br><span class="line">2) tls</span><br><span class="line">Which obfs you&apos;d select(Default: http):1</span><br><span class="line"></span><br><span class="line">obfs = http</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Press any key to start...or Press Ctrl+C to cancel</span><br></pre></td></tr></table></figure></p>
+<h2 id="卸载方法-通过网友提供的脚本">卸载方法 (通过网友提供的脚本)</h2>
+<p>若已安装多个版本，则卸载时也需多次运行（每次卸载一种。使用root用户登录，运行以下命令： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./shadowsocks-all.sh uninstall</span><br></pre></td></tr></table></figure></p>
+<h2 id="启动脚本">启动脚本</h2>
+<p>启动脚本后面的参数含义，从左至右依次为：启动，停止，重启，查看状态。 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Shadowsocks-Python 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-python start | stop | restart | status</span><br><span class="line"><span class="meta">#</span><span class="bash">ShadowsocksR 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-r start | stop | restart | status</span><br><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-Go 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-go start | stop | restart | status</span><br><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-libev 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-libev start | stop | restart | status</span><br></pre></td></tr></table></figure></p>
+<p>事实证明, <code>shadowsocks-python</code> 程序是通过一个 Python 程序启动了<code>ssserver</code>程序 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@vpsname:~# ps aux | grep ssserver</span><br><span class="line">root      4623  0.0  0.7  51012 15804 ?        Ss   17:08   0:02 /usr/bin/python /usr/local/bin/ssserver -c /etc/shadowsocks-python/config.json -d start</span><br><span class="line">root      6256  0.0  0.0  12916   976 pts/1    S+   22:45   0:00 grep --color=auto ssserver</span><br></pre></td></tr></table></figure></p>
+<h2 id="各版本默认配置文件">各版本默认配置文件</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-Python 版：</span></span><br><span class="line">/etc/shadowsocks-python/config.json</span><br><span class="line"><span class="meta">#</span><span class="bash">ShadowsocksR 版：</span></span><br><span class="line">/etc/shadowsocks-r/config.json</span><br><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-Go 版：</span></span><br><span class="line">/etc/shadowsocks-go/config.json</span><br><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-libev 版：</span></span><br><span class="line">/etc/shadowsocks-libev/config.json</span><br></pre></td></tr></table></figure>
-<h2 id="mac-osx-客户端如何使用-shadowsocks"><a class="header-anchor" href="#mac-osx-客户端如何使用-shadowsocks">null</a>Mac OSX 客户端如何使用 Shadowsocks</h2>
+<h2 id="mac-osx-客户端如何使用-shadowsocks">Mac OSX 客户端如何使用 Shadowsocks</h2>
 <p>注意：以下内容和VPS配置无关，都是在 VPS 已经安装好 Shadowsocks 的基础上在客户端配置的！</p>
-<h3 id="通过shadowsocks-x-ng客户端"><a class="header-anchor" href="#通过shadowsocks-x-ng客户端">null</a>通过Shadowsocks-X NG客户端</h3>
-<p>ShadowsocksX-NG 是官方支持的 macOS 下的 shadowsocks 客户端，支持诸多 shadowsocks 协议的特性。这篇帖子讲了<a href="https://fafe.me/2017/10/07/shadowsocksx-ng/" target="_blank" rel="noopener">ShadowsocksX-NG的工作原理</a>。重要信息如下:</p>
-<ul>
-<li>ShadowsocksX-NG 只是 Swift 写的一个 GUI 而已, 底层依赖 ss-local 程序</li>
-<li>ss-local 启动后监听在 1080 端口，接受 socks 协议的请求</li>
-<li>http 协议的代理，则是集成了 privoxy 程序，监听在 1087 端口，然后转发到 1080 端口上，实现对 http 协议的代理</li>
-<li>还有一个 pac server，监听在 1089 端口，用来给系统代理提供 PAC 文件</li>
-</ul>
-<p>通过客户端的好处是，全局都翻墙，而不仅仅只是浏览器翻墙了<br>
-下载地址：<a href="https://github.com/shadowsocks/ShadowsocksX-NG/releases" target="_blank" rel="noopener">https://github.com/shadowsocks/ShadowsocksX-NG/releases</a></p>
-<p>关于如何使用 Shadowsocks-X 的图文教程: <a href="https://enlightor.wordpress.com/2018/04/18/shadowsocksx-ng-on-macosx-10-11-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" target="_blank" rel="noopener">https://enlightor.wordpress.com/2018/04/18/shadowsocksx-ng-on-macosx-10-11-使用教程/</a></p>
+<h3 id="通过shadowsocks-x-ng客户端">通过Shadowsocks-X NG客户端</h3>
+<p>ShadowsocksX-NG 是官方支持的 macOS 下的 shadowsocks 客户端，支持诸多 shadowsocks 协议的特性。这篇帖子讲了<a href="https://fafe.me/2017/10/07/shadowsocksx-ng/" target="_blank" rel="noopener">ShadowsocksX-NG的工作原理</a>。重要信息如下: * ShadowsocksX-NG 只是 Swift 写的一个 GUI 而已, 底层依赖 ss-local 程序 * ss-local 启动后监听在 1080 端口，接受 socks 协议的请求 * http 协议的代理，则是集成了 privoxy 程序，监听在 1087 端口，然后转发到 1080 端口上，实现对 http 协议的代理 * 还有一个 pac server，监听在 1089 端口，用来给系统代理提供 PAC 文件</p>
+<p>通过客户端的好处是，全局都翻墙，而不仅仅只是浏览器翻墙了 下载地址：https://github.com/shadowsocks/ShadowsocksX-NG/releases</p>
+<p>关于如何使用 Shadowsocks-X 的图文教程: https://enlightor.wordpress.com/2018/04/18/shadowsocksx-ng-on-macosx-10-11-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</p>
 <p>PAC (Proxy Auto Configuration) 文件的放置路径: <code>.ShadowsocksX-NG</code> 文件夹下。</p>
-<p>顾名思义，全局模式 (Global mode) 就是所有流量都走服务器，而 自动代理模式 (Proxy Auto Configuration 是通过代理自动配置文件(PAC文件)来配置走服务器的流量。使用自动代理模式可以实现国内网站直连，国外网站使用代理连接，即加速了浏览国内网站的速度，又节省了服务器的流量，一石二鸟。</p>
-<h3 id="通过chrome插件"><a class="header-anchor" href="#通过chrome插件">null</a>通过Chrome插件</h3>
-<h2 id="通过proxychains让iterm终端上网"><a class="header-anchor" href="#通过proxychains让iterm终端上网">null</a>通过ProxyChains让Iterm终端上网</h2>
-<p><a href="http://haoweiguang.me/2017/05/08/Mac%E4%B8%8Bshadowsocks%E5%85%A8%E8%87%AA%E5%8A%A8%E5%9C%B0%E4%BB%A3%E7%90%86%E7%BF%BB%E5%A2%99/" target="_blank" rel="noopener">http://haoweiguang.me/2017/05/08/Mac下shadowsocks全自动地代理翻墙/</a></p>
-<p>浏览器科学上网只是一部分，想让命令行工具科学上网肿么办？<br>
-<code>ProxyChains</code> 就是一个这样用途的工具，它可以让你的其它工具通过 Socks 或 HTTP 代理访问网络。</p>
+<p>顾名思义，全局模式 (Global mode) 就是所有流量都走服务器，而 自动代理模式 (Proxy Auto Configuration 是通过代理自动配置文件(PAC文件)来配置走服务器的流量。使用自动代理模式可以实现国内网站直连，国外网站使用代理连接，即加速了浏览国内网站的速度，又节省了服务器的流量，一石二鸟。 ### 通过Chrome插件</p>
+<h2 id="通过proxychains让iterm终端上网">通过ProxyChains让Iterm终端上网</h2>
+<p>http://haoweiguang.me/2017/05/08/Mac%E4%B8%8Bshadowsocks%E5%85%A8%E8%87%AA%E5%8A%A8%E5%9C%B0%E4%BB%A3%E7%90%86%E7%BF%BB%E5%A2%99/</p>
+<p>浏览器科学上网只是一部分，想让命令行工具科学上网肿么办？ <code>ProxyChains</code> 就是一个这样用途的工具，它可以让你的其它工具通过 Socks 或 HTTP 代理访问网络。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install proxychains-ng</span><br></pre></td></tr></table></figure>
 <p>编辑配置文件 mvim /usr/local/etc/proxychains.conf</p>
-<p>为git,nodejs,gradle,maven等进行代理服务器的配置<br>
-<a href="http://www.snowdream.tech/2016/03/31/proxy-settings-with-shadowsocks/#IDEA" target="_blank" rel="noopener">http://www.snowdream.tech/2016/03/31/proxy-settings-with-shadowsocks/#IDEA</a></p>
-<h2 id="优化"><a class="header-anchor" href="#优化">null</a>优化 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></h2>
-<h3 id="bbr加速"><a class="header-anchor" href="#bbr加速">null</a>BBR加速</h3>
+<p>为git,nodejs,gradle,maven等进行代理服务器的配置 http://www.snowdream.tech/2016/03/31/proxy-settings-with-shadowsocks/#IDEA</p>
+<h2 id="优化-shadowsocks-setup">优化 [^shadowsocks-setup]</h2>
+<h3 id="bbr加速">BBR加速</h3>
 <p>Shadowsocks加速优化流行的有很多方式，我进行尝试和比较之后，推荐大家使用BBR（一种TCP拥塞控制算法）来加速。</p>
-<p>根据帖子：<a href="https://zhuanlan.zhihu.com/p/36750024" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/36750024</a><br>
-安装的BBR</p>
-<p>加速效果比较：<a href="https://ssr.tools/674" target="_blank" rel="noopener">https://ssr.tools/674</a></p>
-<h3 id="锐速加速两种方案"><a class="header-anchor" href="#锐速加速两种方案">null</a>锐速加速两种方案</h3>
-<p>锐速已经停更，对于新的系统内核支持有限，建议改用谷歌的开源方案：Google BBR 对 SS 进行优化加速。效果都差不多的。</p>
-<h3 id="kcptun-加速"><a class="header-anchor" href="#kcptun-加速">null</a>KCPTUN 加速</h3>
+<p>根据帖子：https://zhuanlan.zhihu.com/p/36750024 安装的BBR</p>
+<p>加速效果比较：https://ssr.tools/674 ### 锐速加速两种方案 锐速已经停更，对于新的系统内核支持有限，建议改用谷歌的开源方案：Google BBR 对 SS 进行优化加速。效果都差不多的。</p>
+<h3 id="kcptun-加速">KCPTUN 加速</h3>
 <p>KCPTUN是一款服务器双边加速工具，可以将服务器的TCP流量，比如Shadowsokcs/Shadowsocksr的流量，转化为KCP协议的UDP流量发出。作为一款暴力发包工具，KCPTUN可以有效解决丢包问题，明显提升传输速度。</p>
 <p>Kcptun是一个非常简单和快速的，基于KCP协议的UDP隧道，它可以将TCP流转换为KCP+UDP流。而KCP是一个快速可靠协议，能以比TCP浪费10%-20%的带宽的代价，换取平均延迟降低 30%-40%，且最大延迟降低三倍的传输效果。</p>
 <p>Kcptun是KCP协议的一个简单应用，可以用于任意TCP网络程序的传输承载，以提高网络流畅度，降低掉线情况。</p>
-<h4 id="服务器端"><a class="header-anchor" href="#服务器端">null</a>服务器端</h4>
-<p>通过以下数条指导令安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.sh</span><br><span class="line">chmod +x ./kcptun.sh</span><br><span class="line">./kcptun.sh</span><br></pre></td></tr></table></figure>
+<h4 id="服务器端">服务器端</h4>
+<p>通过以下数条指导令安装 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.sh</span><br><span class="line">chmod +x ./kcptun.sh</span><br><span class="line">./kcptun.sh</span><br></pre></td></tr></table></figure></p>
 <p>安装过程中会有提示选项，这里有几点需要注意：</p>
 <ul>
 <li>端口：默认29900，即为KCPTUN与其客户端连接使用的端口，默认即可。</li>
@@ -518,389 +291,219 @@
 <li>要加速的端口：设置为你的SS/SSR使用的端口。</li>
 <li>密码：自己设置，用于KCPTUN客户端连接使用，不要使用默认密码。</li>
 <li>加密方式选择：较强的加密方式会影响网速，建议默认aes或不加密。因为我们是配合ss使用的，所以不必加密，直接选none就行</li>
-<li>加速模式：默认fast即可。随后可以手动修改为其它模式，测试加速效果。</li>
+<li>加速模式：传输速度自然是fast3最大，流量也消耗最大。所以追求速度的可以选fast3，fast2是最折中的。默认fast即可。随后可以手动修改为其它模式，测试加速效果。</li>
 <li>MTU：默认1350即可。</li>
 <li>sndwnd：发送窗口大小，与服务器的上传带宽大小有关，这项与rcvwnd的比例会影响加速效果，可以暂时设置为默认的512。</li>
-<li>rcvwnd：接收窗口大小，与服务器的下载带宽大小有关，也可以暂设置为默认的512，或者1024也可以。<br>
-以下几项中，除了数据压缩外，其它保持默认参数即可。建议关闭数据压缩，可以在一定程度上提升传输效率。其余各项设置，保持默认即可，设置完成后，按任意键开始安装过程。</li>
+<li>rcvwnd：接收窗口大小，与服务器的下载带宽大小有关，也可以暂设置为默认的512，或者1024也可以。 以下几项中，除了数据压缩外，其它保持默认参数即可。建议关闭数据压缩，可以在一定程度上提升传输效率。其余各项设置，保持默认即可，设置完成后，按任意键开始安装过程。</li>
 </ul>
-<p>KCPTUN常用功能及命令：<br>
-KCPTUN安装目录：/usr/local/kcptun<br>
-KCPTUN的参数配置文件：/usr/local/kcptun/server-config.json<br>
-启动：supervisorctl start kcptun<br>
-停止：supervisorctl stop kcptun<br>
-重启：supervisorctl restart kcptun<br>
-状态：supervisorctl status kcptun<br>
-卸载：./kcptun.sh uninstall</p>
+<p>注意：客户端和服务端的参数 <code>-sndwnd 2048 -rcvwnd 2048</code> 这两个值不要大于你的本地宽带，否则流量消耗会浪费好几倍。适用大部分 ADSL 接入（非对称上下行）的参数。 其它带宽请按比例调整，比如 50M ADSL，把 -sndwnd -rcvwnd 减掉一半。100M 就是 2048，50M 就是 1024。这两个值可以逐渐调小，但是不能比本地的实际宽带大！ 注意：产生大量重传时，一定是窗口偏大了</p>
+<ul>
+<li>nc（关闭拥塞控制），其实据网友的测试，最重要的就是这个参数 如果不关闭的话，基本没有加速效果，所以预置的几种模式都把它的值设为了 1。[https://www.keakon.net/2016/10/29/用kcptun加速Shadowsocks]</li>
+</ul>
+<p>关于kcptun参数调整设置[https://blog.csdn.net/weixin_41732074/article/details/88747400]</p>
+<p>KCPTUN常用功能及命令：</p>
+<ul>
+<li>KCPTUN安装目录：/usr/local/kcptun</li>
+<li>KCPTUN的参数配置文件：/usr/local/kcptun/server-config.json</li>
+<li>启动：supervisorctl start kcptun</li>
+<li>停止：supervisorctl stop kcptun</li>
+<li>重启：supervisorctl restart kcptun</li>
+<li>状态：supervisorctl status kcptun</li>
+<li>卸载：./kcptun.sh uninstall</li>
+</ul>
 <p>可以通过 <code>./kcptun.sh help</code> 查看脚本的使用说明，比如如何查看日志，查看服务器端配置情况，添加多端口加速等等</p>
-<h4 id="服务器端安装与使用"><a class="header-anchor" href="#服务器端安装与使用">null</a>服务器端安装与使用</h4>
+<p>kcptun正常运转时的日志: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"> 2019-12-31 07:46:39 INFO: plugin &quot;plugins/kcptun&quot; enabled</span><br><span class="line"> 2019-12-31 07:46:39 INFO: using tcp fast open</span><br><span class="line"> 2019-12-31 07:46:39 INFO: initializing ciphers... aes-256-gcm</span><br><span class="line"> 2019-12-31 07:46:39 INFO: listening at 127.0.0.1:1086</span><br><span class="line"> 2019-12-31 07:46:39 INFO: tcp port reuse enabled</span><br><span class="line">2019/12/31 07:46:39 version: 20190905</span><br><span class="line">2019/12/31 07:46:39 initiating key derivation</span><br><span class="line">2019/12/31 07:46:39 listening on: 127.0.0.1:63259</span><br><span class="line">2019/12/31 07:46:39 encryption: aes</span><br><span class="line">2019/12/31 07:46:39 nodelay parameters: 1 20 2 1</span><br><span class="line">2019/12/31 07:46:39 remote address: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:46:39 sndwnd: 512 rcvwnd: 512</span><br><span class="line">2019/12/31 07:46:39 compression: true</span><br><span class="line">2019/12/31 07:46:39 mtu: 1350</span><br><span class="line">2019/12/31 07:46:39 datashard: 10 parityshard: 3</span><br><span class="line">2019/12/31 07:46:39 acknodelay: false</span><br><span class="line">2019/12/31 07:46:39 dscp: 0</span><br><span class="line">2019/12/31 07:46:39 sockbuf: 4194304</span><br><span class="line">2019/12/31 07:46:39 smuxbuf: 4194304</span><br><span class="line">2019/12/31 07:46:39 keepalive: 10</span><br><span class="line">2019/12/31 07:46:39 conn: 1</span><br><span class="line">2019/12/31 07:46:39 autoexpire: 0</span><br><span class="line">2019/12/31 07:46:39 scavengettl: 600</span><br><span class="line">2019/12/31 07:46:39 snmplog: </span><br><span class="line">2019/12/31 07:46:39 snmpperiod: 60</span><br><span class="line">2019/12/31 07:46:39 quiet: false</span><br><span class="line">2019/12/31 07:46:39 tcp: false</span><br><span class="line">2019/12/31 07:46:39 connection: 0.0.0.0:54581 -&gt; &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:46:40 stream opened in: 127.0.0.1:63263 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(3)</span><br><span class="line">2019/12/31 07:46:40 stream opened in: 127.0.0.1:63265 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(5)</span><br><span class="line">2019/12/31 07:46:40 stream opened in: 127.0.0.1:63267 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(7)</span><br><span class="line">2019/12/31 07:46:40 stream closed in: 127.0.0.1:63267 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(7)</span><br><span class="line">2019/12/31 07:46:41 stream opened in: 127.0.0.1:63270 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(9)</span><br><span class="line">2019/12/31 07:46:41 stream opened in: 127.0.0.1:63272 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(11)</span><br><span class="line">2019/12/31 07:46:42 stream opened in: 127.0.0.1:63275 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(13)</span><br><span class="line">2019/12/31 07:46:42 stream opened in: 127.0.0.1:63276 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(15)</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h4 id="服务器端安装与使用">服务器端安装与使用</h4>
 <p>在shadowsocks插件中只需要填写kcptun，当然前提是这个命令被放在$PATH涵盖的路径之下，不然，需要填写完整路径。关于参数，</p>
-<p>“key=123456;crypt=none;mode=fast;mtu=1350;sndwnd=512;rcvwnd=512;datashard=10;parityshard=3;dscp=0”<br>
-这种格式就好，在kcptun服务器端安装成功只有，会生成这种字符串。</p>
+<p>“key=123456;crypt=none;mode=fast;mtu=1350;sndwnd=512;rcvwnd=512;datashard=10;parityshard=3;dscp=0” 这种格式就好，在kcptun服务器端安装成功只有，会生成这种字符串。</p>
+<p><strong><em>注意</em></strong>:</p>
 <p>在使用kcptun的时候，没有按照kcptun官网github网站上的建议，即没有在<code>/etc/sysctl.conf</code>中添加处理UDP的配置，导致使用kcptun加速之后的效果反而还不如不加速，甚至会出现断网。</p>
 <p>注意在shadowsocks-NR中password给的还是shadowsocks进程的密码，而不是kcptun进程的密码。</p>
-<h1>Kcptun 参数调优</h1>
-<p><a href="https://blog.csdn.net/weixin_41732074/article/details/88747400" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41732074/article/details/88747400</a></p>
-<h1></h1>
-<p><a href="https://zhuanlan.zhihu.com/p/64467370" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/64467370</a> 这个知乎帖子详细分析了国内三大运营商宽带出海的情况 非常值得一读！原来翻墙线路选择有这么大的学问</p>
-<p>参考资料：</p>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>Shadowsocks 服务器搭建比较全的纪录,<a href="https://kylindc.github.io/post/63883/" target="_blank" rel="noopener">https://kylindc.github.io/post/63883/</a> <a href="#fnref1" class="footnote-backref">↩</a></p>
-</li>
-</ol>
-</section>
+<h1 id="kcptun-参数调优">Kcptun 参数调优</h1>
+<p>https://blog.csdn.net/weixin_41732074/article/details/88747400</p>
+<p>注意: 2019-9-22至2019-9-29回国期间，由于建国70年国庆的缘故，国内安防级别升级，所以我的VPS的公有IP地址被网络长城封禁了。但是我惊讶的发现，带着KCPTUN的代理依然可以正常使用！我猜想是，网络长城封禁了来自OVH且走TCP的流量，因为这被判定为翻墙流量，而KCPTUN走的是UDP，所以幸运地绕过了网络长城！这是个意外的发现。可以考虑再用上混淆等技术？</p>
+<p>注意: 2019-12-24至2020-01-03回国期间，发现我的 kcptun + shadowsocks翻墙工具在西安不好用了。首先肯定不是完全封禁，25/26在北京的时侯还是工作良好的，虽然在机场有时候也连接不上。而在西安，则连接不上的时间越来越长。我怀疑是不是西安的运营商QoS策略问题，毕竟是大规模的UDP流量。</p>
+<p>我又在OVH账户里创建了一个位于新加坡的VPS，这次发现，SSH连接(端口号22)有时候会连接不上，即使连接上了，延时巨大，还很容易断掉，我怀疑是受到了GFW的强烈干扰。幸好之前位于法国的VPS，可以支持通过443端口访问，延时也不算高，可以通过先SSH登录法国的VPS，然后再登录新建的位于新加坡的VPS.</p>
+<h1 id="section"></h1>
+<p>https://zhuanlan.zhihu.com/p/64467370 这个知乎帖子详细分析了国内三大运营商宽带出海的情况 非常值得一读！原来翻墙线路选择有这么大的学问</p>
+<p>https://www.newlearner.site/2019/07/06/vultr-clivps-anniversary.html 关于VPS提供商选择的问题！一些VPS使用心得！看来搬瓦工比较推荐哈！</p>
+<h3 id="section-1"></h3>
+<p>2020-02-25: 这一天，我彻底回了国，结束了为期近10年的法漂岁月。回国之前购买的expressVPN居然在西安不好使！无奈只好重新捡起了shadowsocks+kcptun方案。让人惊讶的是，这次居然没有任何问题，完全可以正常使用！！这是何故呢？ 有可能是OVH的VPS超售问题？但如果是VPS流量超售，为啥19年年末在北京的时候没问题，但是回到西安就有了问题。在无法翻墙的情况下，可以通过使用站长工具: https://ping.chinaz.com/, 看看大多数PING结果是否为time out, 如果是的话，那就VPS去背这个锅。 但如果是西安本地运营商的问题，为啥这次回来了反而可以了？</p>
+<h1 id="shadowsocks-kcptun-udp2raw-翻墙">Shadowsocks + kcptun + udp2raw 翻墙</h1>
+<p>udp2raw-tunnel 项目地址: https://github.com/wangyu-/udp2raw-tunnel ## VPS端 将下载好的udp2raw_amd64放置于路径/usr/local/bin之下。然后创建一个service来管理udp2raw_amd64的启动/停止/重启等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./udp2raw_amd64 -s -l0.0.0.0:9191 -r 127.0.0.1:29900  -a -k &quot;brysj12345&quot; --raw-mode faketcp</span><br></pre></td></tr></table></figure>
+<p>说明: VPS端程序持续监听本地的9191端口。此端口收到的流量会被转发给29900端口(kcptun服务端监听的端口)。具体参数说明: * <code>-a</code>: xxxxx * <code>-s</code>: 服务器模式 * <code>-l</code>: 监听的地址以及端口号</p>
+<p>为了让udp2raw-tunnel开机启动，我们为之创建相应的service [Unit] Description=udp2raw service which redirects traffic incoming from port 9191 to 29900 (port used by kcptun server) on VPS server. Note that if kcptun server changes monitored port, the present service should be accordingly adapted. After=network.target</p>
+<p>[Service] ExecStart=/usr/local/bin/ udp2raw_amd64 -s -l0.0.0.0:9191 -r 127.0.0.1:29900 -a -k "brysj12345" --raw-mode faketcp</p>
+<p>[Install] WantedBy=multi-user.target ## 客户端 思路: 在mac本地端启动</p>
+<p>除了shadowsocks之外，客户端需要下载udp2raw客户端。运行命令为: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/udp2raw_mp_nolibnet -c -l0.0.0.0:3333  -r139.99.88.29:9191 -k &quot;passwd&quot; --raw-mode easy-faketcp</span><br></pre></td></tr></table></figure></p>
+<p>说明: 客户端udp2raw程序一直监听3333端口，并将此端口接受的流量转发给远程VPS的9191端口。</p>
+<p>https://segmentfault.com/a/1190000018458044 这里面给出了比较好的 udp2raw-tunnel启动示例。</p>
+<p><img src="/2019/04/17/vps-install-cofig/ssr-kcptun-udp2raw-vps.png" alt="VPS configurations"><span class="image-caption">VPS configurations</span> 一些思考 # 如何确保SSH链接执行的命令在SSH链接中断的情况下继续执行？？？</p>
+<h1 id="debug">DEBUG</h1>
+<h2 id="kcptun-翻墙链接不稳定">kcptun 翻墙链接不稳定</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">2019/12/31 07:55:19 session marked as expired &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:55:19 connection: 0.0.0.0:56970 -&gt; &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:55:19 stream opened in: 127.0.0.1:63370 out: &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900(3)</span><br><span class="line">2019/12/31 07:55:19 session normally closed &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:55:49 stream closed in: 127.0.0.1:63370 out: &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900(3)</span><br><span class="line">2019/12/31 07:56:09 session marked as expired &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:56:09 connection: 0.0.0.0:54998 -&gt; &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:56:09 stream opened in: 127.0.0.1:63373 out: &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900(3)</span><br><span class="line">2019/12/31 07:56:09 session normally closed &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:56:18 stream opened in: 127.0.0.1:63376 out: &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900(5)</span><br></pre></td></tr></table></figure>
+<p>在出问题的同时，我试图ssh进入到远程VPS中，看看server端的日志(其实到底是服务器端的问题还是客户端的问题)，发现ssh链接过程也很慢 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> qsong@song-macbookpro  ~  ssh vps -vvv</span><br><span class="line">...</span><br><span class="line">debug1: Connecting to 51.77.215.18 [51.77.215.18] port 443.</span><br><span class="line">(上下两条信息间隔有点儿久。。。)</span><br><span class="line">debug1: Connection established.</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>最终ssh链接还是建立了起来.</p>
+<p>奇怪啊，过了大概20来分钟，又可以正常翻墙了，在打开youtube的过程中，还出现了下面这个问题: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2019/12/31 08:11:51 stream closed in: 127.0.0.1:63648 out: 51.77.215.18:29900(21)</span><br><span class="line"> 2019-12-31 08:11:51 ERROR: remote_recv_cb_recv: Connection reset by peer</span><br><span class="line">2019/12/31 08:11:53 stream closed in: 127.0.0.1:63657 out: 51.77.215.18:29900(23)</span><br></pre></td></tr></table></figure></p>
+<p>但是youtube可以正常打开。</p>
+<h2 id="kcptun-udp2raw-翻墙链接不稳定">kcptun + udp2raw 翻墙链接不稳定</h2>
+<p>在西安的时候，发现很神奇的现象: 北京时间早上6点多醒来(法国时间将近午夜)，一切翻墙链接均可用，不管是shadowsocks + Kcptun还是shadowsocks+kcptun+udp2raw。工作正常的情况下，shadowsocks的日志中(路径:<code>~/Library/Logs/ss-local.log</code>)大量显示如下记录: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">2019/12/31 07:15:04 stream opened in: 127.0.0.1:62660 out: 127.0.0.1:3333(33)</span><br><span class="line">2019/12/31 07:15:04 stream opened in: 127.0.0.1:62662 out: 127.0.0.1:3333(35)</span><br><span class="line">2019/12/31 07:15:05 stream opened in: 127.0.0.1:62666 out: 127.0.0.1:3333(37)</span><br><span class="line">2019/12/31 07:15:05 stream opened in: 127.0.0.1:62667 out: 127.0.0.1:3333(39)</span><br><span class="line">2019/12/31 07:15:05 stream closed in: 127.0.0.1:62662 out: 127.0.0.1:3333(35)</span><br><span class="line">2019/12/31 07:15:07 stream opened in: 127.0.0.1:62674 out: 127.0.0.1:3333(41)</span><br><span class="line">2019/12/31 07:15:16 stream closed in: 127.0.0.1:62667 out: 127.0.0.1:3333(39)</span><br><span class="line">2019/12/31 07:15:21 stream closed in: 127.0.0.1:62566 out: 127.0.0.1:3333(5)</span><br><span class="line">2019/12/31 07:15:25 stream closed in: 127.0.0.1:62591 out: 127.0.0.1:3333(13)</span><br><span class="line">2019/12/31 07:15:25 stream closed in: 127.0.0.1:62608 out: 127.0.0.1:3333(17)</span><br><span class="line">2019/12/31 07:15:25 stream closed in: 127.0.0.1:62666 out: 127.0.0.1:3333(37)</span><br><span class="line">2019/12/31 07:15:25 stream opened in: 127.0.0.1:62695 out: 127.0.0.1:3333(43)</span><br><span class="line">2019/12/31 07:15:25 stream closed in: 127.0.0.1:62627 out: 127.0.0.1:3333(21)</span><br><span class="line">2019/12/31 07:15:26 stream closed in: 127.0.0.1:62633 out: 127.0.0.1:3333(25)</span><br><span class="line">2019/12/31 07:15:26 stream closed in: 127.0.0.1:62630 out: 127.0.0.1:3333(23)</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>不过，我感觉在正常工作一段时间之后，无法正常翻墙，日志中出现如下信息: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">2019/12/31 07:29:15 session marked as expired 127.0.0.1:3333</span><br><span class="line">2019/12/31 07:29:15 SetReadBuffer: set udp4 0.0.0.0:52396: setsockopt: no buffer space available</span><br><span class="line">2019/12/31 07:29:15 SetWriteBuffer: set udp4 0.0.0.0:52396: setsockopt: no buffer space available</span><br><span class="line">2019/12/31 07:29:15 connection: 0.0.0.0:52396 -&gt; 127.0.0.1:3333</span><br><span class="line">2019/12/31 07:29:15 stream opened in: 127.0.0.1:62875 out: 127.0.0.1:3333(3)</span><br><span class="line">2019/12/31 07:29:15 session normally closed 127.0.0.1:3333</span><br><span class="line">2019/12/31 07:29:16 stream opened in: 127.0.0.1:62878 out: 127.0.0.1:3333(5)</span><br><span class="line">2019/12/31 07:29:24 stream opened in: 127.0.0.1:62882 out: 127.0.0.1:3333(7)</span><br><span class="line">2019/12/31 07:29:45 stream closed in: 127.0.0.1:62875 out: 127.0.0.1:3333(3)</span><br><span class="line">2019/12/31 07:29:45 stream closed in: 127.0.0.1:62878 out: 127.0.0.1:3333(5)</span><br><span class="line">2019/12/31 07:29:45 stream closed in: 127.0.0.1:62882 out: 127.0.0.1:3333(7)</span><br><span class="line">2019/12/31 07:29:49 session marked as expired 127.0.0.1:3333</span><br><span class="line">2019/12/31 07:29:49 SetReadBuffer: set udp4 0.0.0.0:65215: setsockopt: no buffer space available</span><br><span class="line">2019/12/31 07:29:49 SetWriteBuffer: set udp4 0.0.0.0:65215: setsockopt: no buffer space available</span><br><span class="line">2019/12/31 07:29:49 connection: 0.0.0.0:65215 -&gt; 127.0.0.1:3333</span><br><span class="line">2019/12/31 07:29:49 stream opened in: 127.0.0.1:62890 out: 127.0.0.1:3333(3)</span><br><span class="line">2019/12/31 07:29:49 session normally closed 127.0.0.1:3333</span><br><span class="line">2019/12/31 07:29:53 stream opened in: 127.0.0.1:62892 out: 127.0.0.1:3333(5)</span><br><span class="line">2019/12/31 07:30:19 stream closed in: 127.0.0.1:62890 out: 127.0.0.1:3333(3)</span><br><span class="line">2019/12/31 07:30:19 stream closed in: 127.0.0.1:62892 out: 127.0.0.1:3333(5)</span><br></pre></td></tr></table></figure></p>
+<p>有kcptun用户讨论过类似现象[https://github.com/xtaci/kcptun/issues/254]</p>
+<p>我感觉错误信息诸如<code>SetReadBuffer: set udp4 0.0.0.0:65215: setsockopt: no buffer space available</code>, 是和客户端udp2raw-tunnel程序的参数<code>sockbuff=</code></p>
+<h1 id="configure-ipv6-on-ovh-vps">Configure IPv6 on OVH VPS</h1>
+<p>Link: https://docs.ovh.com/gb/en/vps/configuring-ipv6/ By default, only IPv4 is configured on a OVH VPS. Thus, we need to manually configure IPV6 on our VPS.</p>
+<p>编辑文件: <code>/etc/network/interfaces.d/50-cloud-init.cfg</code> 注意: 修改<code>/etc/network/interfaces</code>, 之后启动<code>service networking restart</code>会报错，因为关于<code>ens3</code>设备是定义在前者之中。如果再此文件中再添加关于<code>ens3</code>的配置，会报错: file exixts.</p>
+<p>之后在Mac终端下, 去ping6这台VPS的IPv6地址就可以ping通了。</p>
+<p>参考资料： [^shadowsocks-setup]: Shadowsocks 服务器搭建比较全的纪录,https://kylindc.github.io/post/63883/</p>
 
-      
     </div>
 
     
-
-    
-    
-    
-
-    
-
-    
-      
     
     
 
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/17/basic-number-theory/" rel="prev" title="A basic tutorial about number theory">
+      <i class="fa fa-chevron-left"></i> A basic tutorial about number theory
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/17/v2ray-tuto/" rel="next" title="v2ray 科学上网教程">
+      v2ray 科学上网教程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
     
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/04/17/basic-number-theory/" rel="next" title="A basic tutorial about number theory">
-                <i class="fa fa-chevron-left"></i> A basic tutorial about number theory
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/17/systemd-tuto/" rel="prev" title="Linux 系统的开机以及服务管理">
-                Linux 系统的开机以及服务管理 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
   </article>
+  
+  
+  
 
-
-  </div>
 
 
           </div>
           
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">rennsong</p>
-              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">47</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">20</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/hansomesong" title="GitHub &rarr; https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">VPS 提供商选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Create a new non-root user</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Install VNC server + Xfce4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Shadowsocks 安装 (通过网友提供的脚本)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shadowsocks-简介"><span class="nav-number">4.1.</span> <span class="nav-text">nullShadowsocks 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-通过网友提供的脚本"><span class="nav-number">4.2.</span> <span class="nav-text">null安装 (通过网友提供的脚本)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载方法-通过网友提供的脚本"><span class="nav-number">4.3.</span> <span class="nav-text">null卸载方法 (通过网友提供的脚本)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动脚本"><span class="nav-number">4.4.</span> <span class="nav-text">null启动脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各版本默认配置文件"><span class="nav-number">4.5.</span> <span class="nav-text">null各版本默认配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mac-osx-客户端如何使用-shadowsocks"><span class="nav-number">4.6.</span> <span class="nav-text">nullMac OSX 客户端如何使用 Shadowsocks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过shadowsocks-x-ng客户端"><span class="nav-number">4.6.1.</span> <span class="nav-text">null通过Shadowsocks-X NG客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过chrome插件"><span class="nav-number">4.6.2.</span> <span class="nav-text">null通过Chrome插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过proxychains让iterm终端上网"><span class="nav-number">4.7.</span> <span class="nav-text">null通过ProxyChains让Iterm终端上网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化"><span class="nav-number">4.8.</span> <span class="nav-text">null优化 [1]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bbr加速"><span class="nav-number">4.8.1.</span> <span class="nav-text">nullBBR加速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锐速加速两种方案"><span class="nav-number">4.8.2.</span> <span class="nav-text">null锐速加速两种方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kcptun-加速"><span class="nav-number">4.8.3.</span> <span class="nav-text">nullKCPTUN 加速</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器端"><span class="nav-number">4.8.3.1.</span> <span class="nav-text">null服务器端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器端安装与使用"><span class="nav-number">4.8.3.2.</span> <span class="nav-text">null服务器端安装与使用</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Kcptun 参数调优</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text"></span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">rennsong</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
 
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vps-提供商选择"><span class="nav-number">1.</span> <span class="nav-text">VPS 提供商选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#create-a-new-non-root-user"><span class="nav-number">2.</span> <span class="nav-text">Create a new non-root user</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加gui支持"><span class="nav-number">3.</span> <span class="nav-text">添加GUI支持</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#install-vnc-server-xfce4"><span class="nav-number">3.1.</span> <span class="nav-text">Install VNC server + Xfce4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依靠-teamviewer"><span class="nav-number">3.2.</span> <span class="nav-text">依靠 Teamviewer</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shadowsocks-安装-通过网友提供的脚本"><span class="nav-number">4.</span> <span class="nav-text">Shadowsocks 安装 (通过网友提供的脚本)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-通过网友提供的脚本"><span class="nav-number">4.1.</span> <span class="nav-text">安装 (通过网友提供的脚本)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载方法-通过网友提供的脚本"><span class="nav-number">4.2.</span> <span class="nav-text">卸载方法 (通过网友提供的脚本)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动脚本"><span class="nav-number">4.3.</span> <span class="nav-text">启动脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各版本默认配置文件"><span class="nav-number">4.4.</span> <span class="nav-text">各版本默认配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mac-osx-客户端如何使用-shadowsocks"><span class="nav-number">4.5.</span> <span class="nav-text">Mac OSX 客户端如何使用 Shadowsocks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过shadowsocks-x-ng客户端"><span class="nav-number">4.5.1.</span> <span class="nav-text">通过Shadowsocks-X NG客户端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过proxychains让iterm终端上网"><span class="nav-number">4.6.</span> <span class="nav-text">通过ProxyChains让Iterm终端上网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化-shadowsocks-setup"><span class="nav-number">4.7.</span> <span class="nav-text">优化 [^shadowsocks-setup]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bbr加速"><span class="nav-number">4.7.1.</span> <span class="nav-text">BBR加速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kcptun-加速"><span class="nav-number">4.7.2.</span> <span class="nav-text">KCPTUN 加速</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器端"><span class="nav-number">4.7.2.1.</span> <span class="nav-text">服务器端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器端安装与使用"><span class="nav-number">4.7.2.2.</span> <span class="nav-text">服务器端安装与使用</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kcptun-参数调优"><span class="nav-number">5.</span> <span class="nav-text">Kcptun 参数调优</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-number">6.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#section-1"><span class="nav-number">6.0.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shadowsocks-kcptun-udp2raw-翻墙"><span class="nav-number">7.</span> <span class="nav-text">Shadowsocks + kcptun + udp2raw 翻墙</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#debug"><span class="nav-number">8.</span> <span class="nav-text">DEBUG</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#kcptun-翻墙链接不稳定"><span class="nav-number">8.1.</span> <span class="nav-text">kcptun 翻墙链接不稳定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kcptun-udp2raw-翻墙链接不稳定"><span class="nav-number">8.2.</span> <span class="nav-text">kcptun + udp2raw 翻墙链接不稳定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#configure-ipv6-on-ovh-vps"><span class="nav-number">9.</span> <span class="nav-text">Configure IPv6 on OVH VPS</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
 
 
 
@@ -909,125 +512,35 @@ KCPTUN的参数配置文件：/usr/local/kcptun/server-config.json<br>
 
 
 
+      </div>
+    </footer>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.0"></script>
-
-  <script src="/js/motion.js?v=7.1.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
 
-  
-  <script src="/js/scrollspy.js?v=7.1.0"></script>
-<script src="/js/post-details.js?v=7.1.0"></script>
-
-
-
-  
-
-
-  <script src="/js/next-boot.js?v=7.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-
-  
 
 
 
 
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
 
 
-  
 
-  
 
-  
 
-  
 
-  
-
-  
-
-  
-
-  
 
   
 

@@ -1,100 +1,24 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.1.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="Personal blog site, to note technique and life related articles">
 <meta property="og:type" content="website">
@@ -107,21 +31,16 @@
 <meta name="twitter:title" content="Rennesong&#39;s blog">
 <meta name="twitter:description" content="Personal blog site, to note technique and life related articles">
 
+<link rel="canonical" href="http://rennesong.com/">
 
 
-  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
-
-
-
-  
-  
-  <link rel="canonical" href="http://rennesong.com/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -133,15 +52,8 @@
 
 
 
-
-
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -150,9 +62,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -166,154 +77,69 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right 
-  page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Rennesong's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
-      
-        <p class="site-subtitle">Blog my life from now on!</p>
-      
-    
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home menu-item-active">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
-
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
+  </ul>
 </nav>
 
-
-
-  
 
 
 
@@ -321,284 +147,55 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content index posts-expand">
             
-  <section id="posts" class="posts-expand">
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/08/22/dell-r740-handons-notes/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/05/31/VNC连接远程Linux服务器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/22/dell-r740-handons-notes/" class="post-title-link" itemprop="url">dell_r740_handons_notes</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/31/VNC连接远程Linux服务器/" class="post-title-link" itemprop="url">VNC连接远程Linux服务器</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-08-22 09:20:59" itemprop="dateCreated datePublished" datetime="2019-08-22T09:20:59+02:00">2019-08-22</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/08/22/dell-r740-handons-notes/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/07/14/ssh-into-vm-on-remote-server/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/14/ssh-into-vm-on-remote-server/" class="post-title-link" itemprop="url">SSH log into a Vagrant VM on remote server via jump server</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-14 11:32:27" itemprop="dateCreated datePublished" datetime="2019-07-14T11:32:27+02:00">2019-07-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-19 00:33:41" itemprop="dateModified" datetime="2019-07-19T00:33:41+02:00">2019-07-19</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SSH/" itemprop="url" rel="index"><span itemprop="name">SSH</span></a></span>
-
-                
-                
-              
+              <time title="创建时间：2020-05-31 10:33:40 / 修改时间：11:24:58" itemprop="dateCreated datePublished" datetime="2020-05-31T10:33:40+08:00">2020-05-31</time>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -606,164 +203,71 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>输入vncserver命令之后，输出结果显示如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">New &apos;X&apos; desktop is qsong-P650SE:1</span><br><span class="line"></span><br><span class="line">Starting applications specified in /home/qsong/.vnc/xstartup</span><br><span class="line">Log file is /home/qsong/.vnc/qsong-P650SE:1.log</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ lsof -i:5901</span><br><span class="line">COMMAND    PID  USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME</span><br><span class="line">Xtightvnc 5222 qsong    3u  IPv4 35313713      0t0  TCP *:5901 (LISTEN)</span><br></pre></td></tr></table></figure>
+<p>OS X has a built in VNC (Screen Sharing) server, but it is a little known feature that it also has a built in VNC client. No additional software is necessary.</p>
+<p>To setup the server go to <code>Preferences-&gt;Sharing</code> and check the “On” checkbox next to <code>Screen Sharing</code>. Make sure to only allow access to Administrators or a specific user/user group.</p>
+<p>To connect to your computer from another one using VNC open Finder and press ⌘+k. In the Server Address enter vnc:// followed by your computer name or IP address, for example: <code>vnc:127.0.0.1:5901</code>.</p>
+<p>在OSX的命令行中键入下列命令，以建立本地端口59010和远程端口5901(ubuntu_server上VNC server监听5901端口). 需要指出的是：<code>ubuntu_server</code>是在我本地电脑中<code>.ssh/config</code>中提前配置好的项目。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 59010:127.0.0.1:5901 -N -f ubuntu_server</span><br></pre></td></tr></table></figure>
+<p>连接到远程服务器之后发现，还是teamviewer香啊！虽然有一定的延时，但是操纵还是很流畅的。 再次复习一下，各个参数的作用： <code>-N</code>: Do not execute a remote command. This is useful for just forwarding ports, 加上这个参数，输入完上述命令之后，依然在本地的shell, 而不会给你开启远程服务器上的shell. <code>-f</code> option backgrounds ssh and</p>
 
-      
-        
-          
-            <p>
-              In daily work, we heavily rely on Vagrant VM to test and deploy our program. It is really straightfoward to log into a VM on our working PC (vagrant s
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/14/ssh-into-vm-on-remote-server/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/07/13/maven-tuto/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/04/30/libtrace-tutorial/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/13/maven-tuto/" class="post-title-link" itemprop="url">maven-tuto</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/30/libtrace-tutorial/" class="post-title-link" itemprop="url">libtrace-tutorial</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-07-13 01:08:17" itemprop="dateCreated datePublished" datetime="2019-07-13T01:08:17+02:00">2019-07-13</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <time title="创建时间：2020-04-30 16:54:10" itemprop="dateCreated datePublished" datetime="2020-04-30T16:54:10+08:00">2020-04-30</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-19 13:05:59" itemprop="dateModified" datetime="2019-07-19T13:05:59+02:00">2019-07-19</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-31 09:26:33" itemprop="dateModified" datetime="2020-05-31T09:26:33+08:00">2020-05-31</time>
+              </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -771,156 +275,60 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <h1 id="安装">安装</h1>
+<p>libpcap &gt;= 0.8 Libwandio # from libtrace 4.0, libwandio will no longer be included with libtrace and must be installed separately for libtrace to build and run. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># install libpcap</span><br><span class="line">sudo apt-get install libpcap-dev</span><br></pre></td></tr></table></figure></p>
+<p>Following installation, you may need to add the line <code>/usr/local/lib</code> to your <code>/etc/ld.so.conf</code> and run <code>ldconfig</code> as root. For my case (Ubuntu 16.04 LTS version), <code>/etc/ld.so.conf</code> is a file containing an instrument: <code>include /etc/ld.so.conf.d/*.conf</code> and <code>/usr/local/lib</code> has been written into file <code>etc/ld.so.conf.d/libc.conf</code>.</p>
 
-      
-        
-          
-            <p>
-              Maven 入门基本知识
-
-Maven是一个采用纯 Java 编写的开 源项目管理工具。所以 Maven 的运行离不开 JDK 支持, 以及相关环境变量的配置。
-这个 Maven 的科普讲的非常之好: https://www.cnblogs.com/best/p/9676515.html
-Maven
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/13/maven-tuto/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/07/13/yang-model-tuto/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/03/28/international-internet-arch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/13/yang-model-tuto/" class="post-title-link" itemprop="url">深入浅出理解 YANG 模型</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/28/international-internet-arch/" class="post-title-link" itemprop="url">international-internet-arch</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-07-13 00:28:41 / 修改时间：01:03:47" itemprop="dateCreated datePublished" datetime="2019-07-13T00:28:41+02:00">2019-07-13</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+              <time title="创建时间：2020-03-28 16:03:43 / 修改时间：16:16:10" itemprop="dateCreated datePublished" datetime="2020-03-28T16:03:43+08:00">2020-03-28</time>
+            </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -928,168 +336,68 @@ Maven
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>互联网骨干网全面解析</p>
+<p><code>骨干网</code>一词源自<code>NSFNet</code>，这是一种用于早期研究的网络，该网络由美国国家科学基金会(NSF)出资兴建。它创建了至今仍在使用的分层结构模型。这种模型中，本地服务提供商连接到区域服务，而后者又依次连接到全国或全球的服务提供商。目前，已有许多骨干网相互连接在一起，这就使得任何两台主机之间都可通信。此外，许多区域性的网络避开了骨干网而直接彼此相连。</p>
+<p>对等互联所采取的形式多种多样，有的是在公共的NAP处连接，有的则是通过直联的方式。但是对于绝大部分互联网骨干运营商来说，单纯依靠对等互联往往不能满足要求，而必须采用对等互联与非对称互联相结合的方式。</p>
+<p>CHINANET八大节点：</p>
+<p>中国电信CHINANET骨干网核心层由北京、上海、广州、沈阳、南京、武汉、成都、西安等8个城市的核心节点组成。核心节点之间为不完全网状结构。以北京、上海、广州为中心的三中心结构，其他核心节点分别以至少两条高速ATM链路与这三个中心相连。另外各省还建立了二级节点。</p>
 
-      
-        
-          
-            <p>
-              声明：本文主要内容借鉴以下文章:
-YANG FOR DUMMIES, By David Barroso, 08-14-2017
-对YANG的解读(一), By ljyfree, 02-11-2018
-YANG 的诞生
-YANG 是出于配合IETF定义的NETCONF协议的工作而诞生的。NETCONF
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/13/yang-model-tuto/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/07/08/odl-l2switch-adaption/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/03/09/parralel-desktop-preparation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/08/odl-l2switch-adaption/" class="post-title-link" itemprop="url">odl-l2switch-adaption</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/09/parralel-desktop-preparation/" class="post-title-link" itemprop="url">打造趁手的基于Parallel Desktop的Windows 10系统</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-07-08 23:46:13" itemprop="dateCreated datePublished" datetime="2019-07-08T23:46:13+02:00">2019-07-08</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <time title="创建时间：2020-03-09 16:49:13" itemprop="dateCreated datePublished" datetime="2020-03-09T16:49:13+08:00">2020-03-09</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-11 22:26:37" itemprop="dateModified" datetime="2019-07-11T22:26:37+02:00">2019-07-11</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-28 18:34:32" itemprop="dateModified" datetime="2020-03-28T18:34:32+08:00">2020-03-28</time>
+              </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -1097,164 +405,79 @@ YANG 是出于配合IETF定义的NETCONF协议的工作而诞生的。NETCONF
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>parralel desktop 15 明显感觉到在使用 windows app的时候消耗的资源变少了。 安装注意事项: 1. 如果Mac安装有小红伞软件(Avira), 需要关闭实时保护功能，不然安装之后，显示软件被没有被激活 2. 安装完毕止后，关闭掉软件的自动更新。 3. 如果之前安装有 parallel desktop, 也许 # 科研环境</p>
+<h2 id="microsoft-office-2019">Microsoft office 2019</h2>
+<p>破解版，通过拼多多购买。卖家提供了非常详细的安装说明，按照帮助文档一步步执行即可。 安装的时候需要注意，安装包文件需要放在windows文件下面(比如放在C盘下)打开，不然在点击IMG文件的时候，系统会报错”无法加载“ 安装文件存放于李玥的移动硬盘，名为<code>office2019</code>压缩包里。</p>
+<h2 id="microsoft-office-2019for-mac">Microsoft office 2019(for mac)</h2>
+<p>https://www.macappbox.com/a/office-2019-for-mac.html 在这个页面上下载了MS Office 2019 for mac安装包，但是没有安装，因为win10虚拟机里已经安装了MS office没有必要重复安装了，浪费空间！</p>
+<h2 id="endnote-x9">Endnote X9</h2>
+<p>参考链接：https://www.maoxinhang.com/2020/02/28/168/ 版本号 X9.3.1 中科大授权版， 注意事项: 1. 如果是在mac下下载得到的安装包，最好放置在windows系统盘下面 2. 关闭 windows defend 防病毒系统，避免安装过程出现问题 <img src="/2020/03/09/parralel-desktop-preparation/endnotex9-install-step1.png" alt="步骤一: 安装文件放置于C盘根目录下并打开"><span class="image-caption">步骤一: 安装文件放置于C盘根目录下并打开</span> <img src="/2020/03/09/parralel-desktop-preparation/endnotex9-install-step2.png" alt="步骤二: 安装文件会自动加载注册号无需其他操作"><span class="image-caption">步骤二: 安装文件会自动加载注册号无需其他操作</span></p>
+<h3 id="endnote-x9-使用技巧">Endnote X9 使用技巧</h3>
+<p>EndNote插入引文序号为上标怎么破？https://www.howsci.com/endnote-number-sup.html 如何将中国知网的文献导入到Endnote X9中？ 第一步: 访问中国知网查询页<code>http://new.gb.oversea.cnki.net/index/</code>, 并在搜索框中搜索需要的文献</p>
+<p>第二步：勾选要导出的文献后，选择【导出/参考文献】——进入下一页面——选择EndNote导出——下载的是一个text文件 <img src="/2020/03/09/parralel-desktop-preparation/中国知网文献导出3.png" alt="步骤2: 文献导出"><span class="image-caption">步骤2: 文献导出</span></p>
+<p>https://blog.csdn.net/lyc_daniel/article/details/12514057</p>
+<p>Endnote插入文献不现实URL怎么办？https://community.endnote.com/t5/EndNote-General/Showing-URLs-and-DOIs/td-p/26057</p>
+<p>如何获取RFC以及Internet draft文献的RIS格式引用信息？ 可以用开源社区提供的命令行工具包<code>bibutil</code>中的<code>bib2xml</code>以及<code>xml2ris</code> https://tex.stackexchange.com/questions/227852/conversion-of-bibtex-to-endnote-bibliography-02-12-2015/227920 下载地址: https://sourceforge.net/projects/bibutils/</p>
+<h3 id="windows平台下使用docker">Windows平台下使用docker</h3>
+<p>我本人没有这个需要，但是李洋提出了这个问题，并且考虑到以后学生有这方面的需求，还是需要记录下解决方案的。</p>
+<p>对windows 7/8等系统来说，可以采用docker toobox 对于windows 10来说，推荐docker desktop for windows, 采用基于Hyper-V的解决方案。</p>
 
-      
-        
-          
-            <p>
-              l2switch is currently not being maintained by anyone and thus did not participate in the Fluorine release cycle. It needs version bumps and code chang
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/08/odl-l2switch-adaption/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/06/21/java-tuto/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/11/26/micro-service-architecture/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/21/java-tuto/" class="post-title-link" itemprop="url">Maven Java 经验积累</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/26/micro-service-architecture/" class="post-title-link" itemprop="url">Some notes about micro-service architecture</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-06-21 13:52:09" itemprop="dateCreated datePublished" datetime="2019-06-21T13:52:09+02:00">2019-06-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <time title="创建时间：2019-11-26 10:14:46" itemprop="dateCreated datePublished" datetime="2019-11-26T10:14:46+08:00">2019-11-26</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-13 01:09:45" itemprop="dateModified" datetime="2019-07-13T01:09:45+02:00">2019-07-13</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-18 01:57:33" itemprop="dateModified" datetime="2019-12-18T01:57:33+08:00">2019-12-18</time>
+              </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -1262,168 +485,123 @@ YANG 是出于配合IETF定义的NETCONF协议的工作而诞生的。NETCONF
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          
 
-      
-        
-          
-            <p>
-              开发虚拟环境构建
-nulljava8 安装问题
-https://www.javahelps.com/2015/03/install-oracle-jdk-in-ubuntu.html
-Oracle 现在不允许其他源提供下载，但是我们依然可以通过登录 Oracle 官网来下载 tar.gz 文件。
-如
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/06/21/java-tuto/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/06/14/bash-tuto/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/11/25/5G/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/14/bash-tuto/" class="post-title-link" itemprop="url">bash_tuto</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/25/5G/" class="post-title-link" itemprop="url">5G</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-06-14 15:04:08" itemprop="dateCreated datePublished" datetime="2019-06-14T15:04:08+02:00">2019-06-14</time>
-            
+              <time title="创建时间：2019-11-25 10:01:54 / 修改时间：17:02:23" itemprop="dateCreated datePublished" datetime="2019-11-25T10:01:54+08:00">2019-11-25</time>
+            </span>
 
-            
-              
+          
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
+        </div>
+      </header>
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>http://www.sohu.com/a/284291309_257861 很好的科普 关于5G核心网是如何演进的</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/11/24/python-interview-questions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/24/python-interview-questions/" class="post-title-link" itemprop="url">Python 常见面试问题准备</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-24 10:24:47" itemprop="dateCreated datePublished" datetime="2019-11-24T10:24:47+08:00">2019-11-24</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-16 18:18:02" itemprop="dateModified" datetime="2019-06-16T18:18:02+02:00">2019-06-16</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-28 17:52:24" itemprop="dateModified" datetime="2019-11-28T17:52:24+08:00">2019-11-28</time>
+              </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -1431,166 +609,100 @@ Oracle 现在不允许其他源提供下载，但是我们依然可以通过登�
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <h1 id="学习python路线图">学习Python路线图:</h1>
+<h2 id="python基础知识">Python基础知识</h2>
+<h3 id="python-基础数据类型以及数据结构">Python 基础数据类型以及数据结构</h3>
+<h4 id="列表">列表</h4>
+<h4 id="字符串以及正则表达式">字符串(以及正则表达式)</h4>
+<p>在python中，由单引号、双引号和三引号引起来的内容就是字符串。 #### 字典 #### 集合 #### 哈哈</p>
+<h3 id="python-os-module">Python OS module</h3>
+<p>import os os.path.join() os.listdir() os.path.isdir()</p>
+<h3 id="python-单元测试是如何进行的">Python 单元测试是如何进行的?</h3>
+<h3 id="python-内存分析以及内存管理">Python 内存分析以及内存管理</h3>
+<p>https://www.cnblogs.com/geaozhang/p/7111961.html https://stackoverflow.com/questions/14546178/does-python-have-a-stack-heap-and-how-is-memory-managed</p>
+<h2 id="python高级特性">Python高级特性</h2>
+<ul>
+<li>Python 迭代器，生成器</li>
+<li>Python 闭包函数 https://zhuanlan.zhihu.com/p/22229197</li>
+<li>Python 装饰器</li>
+<li>Python GIL 多进程 多线程 https://realpython.com/python-gil/</li>
+</ul>
+<h2 id="面试中常见的算法">面试中常见的算法</h2>
+<ul>
+<li>DFS, BFS</li>
+<li>反转二叉树, 查找重复数字</li>
+</ul>
+<h2 id="python垂直领域应用">Python垂直领域应用</h2>
+<ul>
+<li>web开发: flask, 爬虫</li>
+<li>数据分析: numpy + pandas</li>
+<li>AI 领域: Pytorch</li>
+<li></li>
+</ul>
+<h1 id="python的内存管理模型">Python的内存管理模型</h1>
+<p>对于任何编程语言，我们都需要从下面两个方面去理解其内存管理(memory management)模型: * 内存的分配 * 无用内存的回收 (手动内存回收, 如C语言，以及自动内存回收，如Java/Python)</p>
+<p>Python memory is managed by Python private heap space. Python语言中的内存管理是通过私有堆空间(private heap space) 进行的。任何Python对象以及数据结果都是存储在一个私有的堆空间(private heap spaace)中。程序员必须通过Python解释器进行相关的操作，无法直接访问该私有堆空间。</p>
+<p>Python的垃圾回收机制: 在Python中，每个对象都有指向该对象的引用总数---引用计数(refcount). 对于任何一个Python对象而言，以下操作会导致引用计数的增减: 创建对象，被赋值给其他对象，该对象成为别的容器对象中的一个元素，被作为参数传递给函数. 导致引用计数减小的操作: * 对象的别名被显式的销毁 如 del m * 对象的一个别名被赋值给其他对象 * 对象从一个窗口对象中移除，或，窗口对象本身被销毁 a.remove(123) * 一个本地引用离开了它的作用域，比如上面的foo(x)函数结束时，x指向的对象引用减1。</p>
+<p>当Python的某个对象的引用计数降为0时，说明没有任何引用指向该对象，该对象就成为要被回收的垃圾。</p>
+<h1 id="python易错面试题陷阱题">Python易错面试题(陷阱题)</h1>
+<p>https://lvraikkonen.github.io/2017/06/12/(%E8%BD%AC)Python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%9D%A2%E8%AF%95%E9%A2%98/</p>
 
-      
-        
-          
-            <p>
-              https://linuxconfig.org/how-to-use-arrays-in-bash-script
-How to define array in
-
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/06/14/bash-tuto/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/05/20/opendaylight-dev/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/11/05/dynamic-programming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/20/opendaylight-dev/" class="post-title-link" itemprop="url">opendaylight-dev</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/05/dynamic-programming/" class="post-title-link" itemprop="url">动态规划之最长公共子序列(附过程图解)</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-05-20 16:13:03" itemprop="dateCreated datePublished" datetime="2019-05-20T16:13:03+02:00">2019-05-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <time title="创建时间：2019-11-05 22:11:09" itemprop="dateCreated datePublished" datetime="2019-11-05T22:11:09+08:00">2019-11-05</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-19 13:05:56" itemprop="dateModified" datetime="2019-07-19T13:05:56+02:00">2019-07-19</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-06 05:42:34" itemprop="dateModified" datetime="2019-11-06T05:42:34+08:00">2019-11-06</time>
+              </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -1598,167 +710,73 @@ How to define array in
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>声明： 本文转载自 https://blog.csdn.net/hrn1216/article/details/51534607 感谢原作者的辛勤付出以及详细的解释。如有侵权行为，请联系本人删除。</p>
+<h1 id="基本概念">基本概念</h1>
+<p>首先需要科普一下，最长公共子序列（longest common sequence）和最长公共子串（longest common substring）不是一回事儿。什么是子序列呢？即一个给定的序列的子序列，就是将给定序列中零个或多个元素去掉之后得到的结果。什么是子串呢？给定串中任意个连续的字符组成的子序列称为该串的子串。给一个图再解释一下：</p>
+<h1 id="构造lcs">构造LCS</h1>
+<p>本文 <span class="math inline">\(S_1\)</span> 和 <span class="math inline">\(S_2\)</span> 的最LCS并不是只有1个，本文并不是着重讲输出两个序列的所有LCS，只是介绍如何通过上表，输出其中一个LCS。</p>
+<p>       我们根据递归公式构建了上表，我们将从最后一个元素c[8][9]倒推出S1和S2的LCS。</p>
+<p>       c[8][9] = 5，且S1[8] != S2[9]，所以倒推回去，c[8][9]的值来源于c[8][8]的值(因为c[8][8] &gt; c[7][9])。</p>
+<p>       c[8][8] = 5,  且S1[8] = S2[8], 所以倒推回去，c[8][8]的值来源于 c[7][7]。</p>
+<p>       以此类推，如果遇到S1[i] != S2[j] ，且c[i-1][j] = c[i][j-1] 这种存在分支的情况，这里请都选择一个方向（之后遇到这样的情况，也选择相同的方向）。</p>
+<p>       第一种结果为： ———————————————— 版权声明：本文为CSDN博主「Running07」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。 原文链接：https://blog.csdn.net/hrn1216/article/details/51534607</p>
 
-      
-        
-          
-            <p>
-              http://sdnhub.org/tutorials/opendaylight/ 虽然有点老，但是这个教程也不失为一个比较好的 OpenDaylight 开发教程 我看了下 其内容还是比较系统全面的
-ODL controller 直接发送数据包给 OVS 交换机
-两种思路:
-ODL control
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/20/opendaylight-dev/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/05/17/intelliJ-idea-install-crack/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/10/31/python-learning-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/17/intelliJ-idea-install-crack/" class="post-title-link" itemprop="url">IntelliJ IDEA 下本地开发+远程同步+编译调试 工作流程</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/31/python-learning-note/" class="post-title-link" itemprop="url">Some pitfalls and useful notes during my Python leanring</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-05-17 15:39:40" itemprop="dateCreated datePublished" datetime="2019-05-17T15:39:40+02:00">2019-05-17</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <time title="创建时间：2019-10-31 15:31:06" itemprop="dateCreated datePublished" datetime="2019-10-31T15:31:06+08:00">2019-10-31</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-19 13:06:00" itemprop="dateModified" datetime="2019-07-19T13:06:00+02:00">2019-07-19</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-17 00:32:15" itemprop="dateModified" datetime="2020-03-17T00:32:15+08:00">2020-03-17</time>
+              </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -1766,152 +784,82 @@ ODL control
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>Python中str类型对象不可以做item assigment。因为string是一个immutable data type. 比如 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [70]: a = &quot;123&quot;</span><br><span class="line"></span><br><span class="line">In [71]: a[0]=4</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-71-998c6162715b&gt; in &lt;module&gt;</span><br><span class="line">----&gt; 1 a[0]=4</span><br><span class="line"></span><br><span class="line">TypeError: &apos;str&apos; object does not support item assignment</span><br></pre></td></tr></table></figure></p>
+<p>再比如，想对str对象做原地址字符交换: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [68]: a = &quot;hello&quot;</span><br><span class="line"></span><br><span class="line">In [69]: a[0], a[1] = a[1], a[0]</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-69-e773f64dcc58&gt; in &lt;module&gt;</span><br><span class="line">----&gt; 1 a[0], a[1] = a[1], a[0]</span><br><span class="line"></span><br><span class="line">TypeError: &apos;str&apos; object does not support item assignment</span><br></pre></td></tr></table></figure></p>
+<h1 id="create-2d-array-without-numpy-with-populating-an-element">Create 2D array without numpy with populating an element</h1>
+<p>source: https://python-forum.io/Thread-Creating-2D-array-without-Numpy</p>
+<p>The first way doesn't work because [[0] * n] creates a mutable list of zeros once. Then when the second *n copies the list, it copies references to first list, not the list itself. So you have a list of references, not a list of lists. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n = 10</span><br><span class="line">p = [[0] * n for row in n]</span><br></pre></td></tr></table></figure></p>
+<h1 id="jupyter-notebook-安装包问题">Jupyter notebook 安装包问题</h1>
 
-      
-        
-          
-            <p>
-              因为科研的需要，进行 OpenDaylight 开发，但是自己的 Macbook pro 性能有限，并且不在办公室的时候网络连接性能不太好，所以传统方案，直接在Mac上编辑编译运行，这么一个路子对我来说并不适用。我有一台放置在办公室的运行 Ubuntu 16.04 的笔记本电脑 (16G内存，性能上
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/17/intelliJ-idea-install-crack/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/05/02/linux-networking/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/10/27/python-regex/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/02/linux-networking/" class="post-title-link" itemprop="url">linux-networking</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/27/python-regex/" class="post-title-link" itemprop="url">正则表达式以及在 Python 中的使用</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-05-02 15:39:19 / 修改时间：17:00:52" itemprop="dateCreated datePublished" datetime="2019-05-02T15:39:19+02:00">2019-05-02</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+              <time title="创建时间：2019-10-27 19:02:08" itemprop="dateCreated datePublished" datetime="2019-10-27T19:02:08+08:00">2019-10-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-06 05:35:50" itemprop="dateModified" datetime="2019-11-06T05:35:50+08:00">2019-11-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/Regluar-expression/" itemprop="url" rel="index"><span itemprop="name">Regluar expression</span></a>
+                </span>
+            </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -1919,70 +867,29 @@ ODL control
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <h1 id="关于本文的定位">关于本文的定位</h1>
+<p>系统地介绍正则表达式规则，使用不是一篇博文可以涵盖的。基本的概念和知识可以通过网上的文章去了解。同时正则表达式在不同的编程语言下，其实现与使用略有不同。本文只针对 Python中的正则表达式。本文的主要目的是，记录和总结自己在平时的工作中，通过一些具体的用例，学到的一些 Python 正则表达式的技巧，以备不时之需。所以可以认为本文是基于 case driven 的理念。</p>
+<h2 id="section"></h2>
+<p>方案: 采用(?!...) Matches if ... doesn’t match next. This is a negative lookahead assertion. For example, Isaac (?!Asimov) will match 'Isaac ' only if it’s not followed by 'Asimov'.</p>
 
-      
-        
-          
-            <p>
-              Linux iptables 命令
-VPS 上安装 kcptun 之后，最后弹出这样的信息:
-警告: 自动添加 iptables 规则失败如有必要, 请手动添加端口 29900 的防火墙规则:    iptables -I INPUT -p udp --dport 29900 -j ACCEPT  
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/02/linux-networking/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
-  </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1990,262 +897,117 @@ VPS 上安装 kcptun 之后，最后弹出这样的信息:
           </div>
           
 
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">rennsong</p>
-              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">47</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">20</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/hansomesong" title="GitHub &rarr; https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">rennsong</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
-
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
 
 
 
@@ -2254,141 +1016,35 @@ VPS 上安装 kcptun 之后，最后弹出这样的信息:
 
 
 
+      </div>
+    </footer>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.0"></script>
-
-  <script src="/js/motion.js?v=7.1.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
 
-  
-
-  
-
-
-  <script src="/js/next-boot.js?v=7.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-  
-
-  
-
-  
-
-  
-
-
-
-  
 
 
 
 
-  
-
-  
-
-  
-  
-
-  
-  
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  
-
-  
 
 
-  
 
-  
 
-  
 
-  
 
-  
-
-  
-
-  
-
-  
 
   
 

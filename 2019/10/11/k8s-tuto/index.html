@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="K8S入门的阅读材料 第一阶段：对K8S有个大体宏观的介绍。推荐文章: https://www.servicemesher.com/blog/the-data-center-os-kubernetes/ 第二阶段：认真阅读 Kubernetes in actions. 由浅入深，循序渐进，条理清晰的好书 第三阶段：读一些使用案列，如 https://medium.com/better-progra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="k8s-tuto">
+<meta property="og:url" content="http://rennesong.com/2019/10/11/k8s-tuto/index.html">
+<meta property="og:site_name" content="Rennesong&#39;s blog">
+<meta property="og:description" content="K8S入门的阅读材料 第一阶段：对K8S有个大体宏观的介绍。推荐文章: https://www.servicemesher.com/blog/the-data-center-os-kubernetes/ 第二阶段：认真阅读 Kubernetes in actions. 由浅入深，循序渐进，条理清晰的好书 第三阶段：读一些使用案列，如 https://medium.com/better-progra">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://rennesong.com/2019/10/11/k8s-tuto/k8s-app-outline.png">
+<meta property="og:image" content="http://rennesong.com/2019/10/11/k8s-tuto/daemon-set-vs-replica-set.png">
+<meta property="og:image" content="http://rennesong.com/2019/10/11/k8s-tuto/k8s-high-level-arch.png">
+<meta property="og:image" content="http://rennesong.com/2019/10/11/k8s-tuto/k8s-port-forward-simplified-view.png">
+<meta property="og:image" content="http://rennesong.com/2019/10/11/k8s-tuto/k8s-pv-pvc-illustration.png">
+<meta property="og:image" content="http://rennesong.com/2019/10/11/k8s-tuto/k8s-pv-pvc-namespace.png">
+<meta property="og:image" content="http://rennesong.com/2019/10/11/k8s-tuto/k8s-pv-dynamic-provision.png">
+<meta property="og:updated_time" content="2019-12-17T17:57:07.124Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="k8s-tuto">
+<meta name="twitter:description" content="K8S入门的阅读材料 第一阶段：对K8S有个大体宏观的介绍。推荐文章: https://www.servicemesher.com/blog/the-data-center-os-kubernetes/ 第二阶段：认真阅读 Kubernetes in actions. 由浅入深，循序渐进，条理清晰的好书 第三阶段：读一些使用案列，如 https://medium.com/better-progra">
+<meta name="twitter:image" content="http://rennesong.com/2019/10/11/k8s-tuto/k8s-app-outline.png">
+
+<link rel="canonical" href="http://rennesong.com/2019/10/11/k8s-tuto/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>k8s-tuto | Rennesong's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/10/11/k8s-tuto/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          k8s-tuto
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-11 15:44:48" itemprop="dateCreated datePublished" datetime="2019-10-11T15:44:48+08:00">2019-10-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-18 01:57:07" itemprop="dateModified" datetime="2019-12-18T01:57:07+08:00">2019-12-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/kubernetes/" itemprop="url" rel="index"><span itemprop="name">kubernetes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/kubernetes/k8s/" itemprop="url" rel="index"><span itemprop="name">k8s</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>K8S入门的阅读材料 第一阶段：对K8S有个大体宏观的介绍。推荐文章: https://www.servicemesher.com/blog/the-data-center-os-kubernetes/ 第二阶段：认真阅读 Kubernetes in actions. 由浅入深，循序渐进，条理清晰的好书 第三阶段：读一些使用案列，如 https://medium.com/better-programming/kubernetes-a-detailed-example-of-deployment-of-a-stateful-application-de3de33c8632 第五阶段： 方向1： 了解什么 service mesh 以及 Istio Istio本身就是很精妙的微服务系统，可以通过了解这个项目来深入学习 Kubenetes 方向2： 如果自己有实际需求就去实践</p>
+<p>K8s有三层网络结构</p>
+<p>Service网络 Pod 网络 Node 网络</p>
+<p>真是的，物理的网络只有一个: Node 网络，其他网络均为virtual network</p>
+<p>kubeadm k8s官方推荐的k8s集群安装方案 kubeadm 是运行在GCP平台 Harbor是个仓库</p>
+<p>CentOS 7 (kernel version &gt;= 4.4.x)</p>
+<p>Keep in mind that the app itself needs to support being scaled horizontally. Kubernetes doesn’t magically make your app scalable; it only makes it trivial to scale the app up or down.</p>
+<figure>
+<img src="/2019/10/11/k8s-tuto/k8s-app-outline.png" alt="The basic outline of an application running in Kubernetes"><span class="image-caption">The basic outline of an application running in Kubernetes</span><figcaption>The basic outline of an application running in Kubernetes</figcaption>
+</figure>
+<p>In k8s, apps run in form of pods.</p>
+<ul>
+<li>Pods are usually fronted by Service;</li>
+<li>Pods are usually backened by ReplicationController/ReplicaSet;</li>
+</ul>
+<p>Pod和ReplicationController之间并没有绑定的关系。在任何时候，RepilicationController 管理和其label selector匹配的pod. 因此我们可以通过修改Pod的标签，来更改其和ReplicationController之间的关系。 ## 为啥么从一个pod的一个容器里去ping一个service 的IP 不通，但是curl却没有问题？ 我第一反应是防火墙设置。但是标准答案是：service’s cluster IP is a virtual IP, and only has meaning when combined with the service port.</p>
+<figure>
+<img src="/2019/10/11/k8s-tuto/daemon-set-vs-replica-set.png" alt="DaemonSets run only a single pod replica on each node, whereas ReplicaSets scatter them around the whole cluster randomly"><span class="image-caption">DaemonSets run only a single pod replica on each node, whereas ReplicaSets scatter them around the whole cluster randomly</span><figcaption>DaemonSets run only a single pod replica on each node, whereas ReplicaSets scatter them around the whole cluster randomly</figcaption>
+</figure>
+<h2 id="pod的生命周期管理工具有replicationcontrooler-replicaset-daemonset-job-说说这些工具之间的区别">Pod的生命周期管理工具有：ReplicationControoler, ReplicaSet, DaemonSet, Job 说说这些工具之间的区别。</h2>
+<p>答案：</p>
+<ul>
+<li>ReplicationController 出现最早，按照label selector去选择Pod进行管理。它的任务是永远保证有通过replicas属性申明过的个数的Pod运行着。这些Pod一旦终止掉，马上再创建新的Pod替代</li>
+<li>ReplicaSet 和 ReplicationController 功能基本一致，可被视为新一代 ReplicationController，并会最终取代ReplicationController。ReplicaSet 相较于ReplicationController, 表现力更强。如果想使用 ReplicaSet，在YAML文件中，apiVersion=apps/v1beta2</li>
+<li>DaemontSet 是用来保证由label selector选出来的Pod在每个node上都有运行。DaemonSet 需要在YAML文件中声明 apiVersion=apps/v1beta2(注: 2019-10-23现在 DaemonSet 已经被正式添加到v1中了，反而apiVersion=apps/v1beta2会导致错误!)</li>
+<li>Job 和其他三者比，管理的Pod是会运行完成的，而不是一致无限期运行下去的。Job 只保证在Pod执行的task完成之前，</li>
+</ul>
+<h2 id="请描述下-k8s-的设计原则以及总体框架">请描述下 k8s 的设计原则以及总体框架</h2>
+<p>设计原则: portable, flexible, extensible, automatable 总体框架:</p>
+<figure>
+<img src="/2019/10/11/k8s-tuto/k8s-high-level-arch.png" alt="A High-Level Kubernetes Architecture"><span class="image-caption">A High-Level Kubernetes Architecture</span><figcaption>A High-Level Kubernetes Architecture<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></figcaption>
+</figure>
+<ul>
+<li>Cluster state store: cluster state store is a persistent storage instance which stores the state of all the abstract Kubernetes objects configured in the system. The cluster state store has support for watch functionality. Through this functionality, all the coordinating components could be quickly notified whenever a change is made to an object. Kubernetes needs to store data somewhere. That’s what etcd is for! Kubenetes is a distributed system (i.e. master-worker mode) and thus requires a distributed database.</li>
+<li>Controller Manager: this is the component of master that runs controllers. Controllers run loops and monitor the actual cluster state and state represented in the abstract Kubernetes objects.</li>
+<li>Scheduler: It is the component of the master responsible for allocating physical resources on the cluster to run applications/jobs added to the abstract data store.</li>
+</ul>
+<h2 id="liveness-probe-和-readiness-probe-区别是啥">liveness probe 和 readiness probe 区别是啥？</h2>
+<p>Kubernetes can check if a container is still alive through liveness probes. Kubenetes can probe a container using one of the three mechanisms:</p>
+<ul>
+<li>An HTTP GET probe</li>
+<li>A TCP socket probe</li>
+<li>An Exec probe</li>
+</ul>
+<p>The readiness probe is invoked periodically and determines whether the specific pod should receive client requests or not. The notion of being ready is obviously something that's specific to each container.</p>
+<h2 id="问题为啥要用deployment">问题：为啥要用deployment?</h2>
+<p>因为pod内容器有时候会有升级更新的需求。保持应用的可用性。不会导致在升级的过程中产品中断服务。滚动升级 滚动回退: 用含有新版本应用的镜像(在pod)里逐步替换用含有旧版本应用的镜像。比如一个含有新版本应用的镜像启动之后，一个含有旧版本的镜像才会被删除。</p>
+<h2 id="问题鉴于每个pod实际上都有一个私有ip和主机名那么都有哪些方法可以访问到目标pod呢">问题：鉴于每个pod实际上都有一个私有IP和主机名，那么都有哪些方法可以访问到目标pod呢？</h2>
+<p>答案：</p>
+<ul>
+<li>通过 service: <code>kubectl expose</code> 会为目标pod部署一个load balancer类型的service, 使得目标pod可以从外部同一个公有IP以及端口访问</li>
+<li>通过 port forwarding: <code>kubectl port-forward</code> 可以为目标pod和本地主机之间做一个端口映射。具体实现有k8s给你做了。这种访问方式比较适合debugging以及一些其他目的。 <img src="/2019/10/11/k8s-tuto/k8s-port-forward-simplified-view.png" alt="A simplified view of what happens when you use curl with kubectl port-forward"><span class="image-caption">A simplified view of what happens when you use curl with kubectl port-forward</span></li>
+</ul>
+<h2 id="问-k8s-中-持久化存储都有哪些困难或者问题">问: k8s 中, 持久化存储都有哪些困难或者问题？</h2>
+<ul>
+<li>how to decouple the persistent storage volume create/mount and the infrastructure level storage implementation. so that dev. team has no need to deal with the actual storage technology used underneath =&gt; solution: PersistentVolume and PersistencVolumeClaim resource.</li>
+<li>A cluster administrator need to provision the actual storage up in advance so that the users can decalre and use PV and PVC in their work. =&gt;solution: dynamic provisioning of PersistentVolumes. Cluster administrators deploy a PersistentVolume provisioner and define one or more StorageClass objects to let users choose what type of PersistentVolume they want.</li>
+</ul>
+<h2 id="k8s中你都接触过哪些类型的对象呢资源类型">k8s中你都接触过哪些类型的对象呢/资源类型？</h2>
+<ul>
+<li><p>pod: k8s可以管理调度的最小单元 each pod behaves like a separate independent machine with its own private IP address and hostname.</p></li>
+<li><p>node:</p></li>
+<li><p>ReplicationController: 当 k8s 集群中的master节点收到来自kubectl的，创建pod请求(即RESTFul API)的时候，master节点中会产生一个 ReplicationController对象(具体谁创建有待澄清)</p></li>
+<li><p>Service: 如果需要使得一个pod可以从外部访问，那么我们需要通过 Service (具体说来是LoadBalancer类型)对象来暴露目标pod. 通过LoadBalancer类型的服务对象，一个外部负载均衡就会被创建，然后你可以通过这个负载均衡的公共地址来访问目标pod。</p></li>
+<li><p>Endpoint: Service和Pod之间的关键对象</p></li>
+<li><p>注意：kubernetes in action 成书较早，该书中示例使用的 kubectl run --generator=run/v1 已经不再推荐使用，未来会被 kubectl run --generator=run-pod/v1或者kubectl create替代。</p></li>
+<li><p>PersistentVolumes and PersistentVolumeClaims: to enable apps to request storage in a Kubernetes cluster without having to deal with infrastructure specifics, PC and PVC are introduced. 这两个名字起得很有误导性，因为诸如hostPath之类的存储也可以实现数据持久化。下面这个图可以很好地解释 PersistentVolume, PersistentVolumeClaim，以及 Infrastructure-level storage 实现之间的关系 <img src="/2019/10/11/k8s-tuto/k8s-pv-pvc-illustration.png" alt="PersistentVolumes are provisioned by cluster admins and consumed by pods through PersistentVolumeClaims"><span class="image-caption">PersistentVolumes are provisioned by cluster admins and consumed by pods through PersistentVolumeClaims</span></p></li>
+</ul>
+<figure>
+<img src="/2019/10/11/k8s-tuto/k8s-pv-pvc-namespace.png" alt="PersistentVolumes, like cluster Nodes, don’t belong to any namespace, unlike pods and PersistentVolumeClaims"><span class="image-caption">PersistentVolumes, like cluster Nodes, don’t belong to any namespace, unlike pods and PersistentVolumeClaims</span><figcaption>PersistentVolumes, like cluster Nodes, don’t belong to any namespace, unlike pods and PersistentVolumeClaims</figcaption>
+</figure>
+<figure>
+<img src="/2019/10/11/k8s-tuto/k8s-pv-dynamic-provision.png" alt="The complete picture of dynamic provisioning of PersistentVolumes"><span class="image-caption">The complete picture of dynamic provisioning of PersistentVolumes</span><figcaption>The complete picture of dynamic provisioning of PersistentVolumes</figcaption>
+</figure>
+<p>Referece</p>
+<p>for i in 1 2 3 4 5 do sleep 5;docker exec -it sf1 pidstat -p 11 1 5 | grep "Average" done</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>https://medium.com/better-programming/kubernetes-a-detailed-example-of-deployment-of-a-stateful-application-de3de33c8632<a href="#fnref1" class="footnote-back" role="doc-backlink">↩</a></p></li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/09/06/docker-overlay-net-deep-tuto-zn3/" rel="prev" title="深入了解 Docker overlay 网络机制3">
+      <i class="fa fa-chevron-left"></i> 深入了解 Docker overlay 网络机制3
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/10/14/voip-tuto/" rel="next" title="voip-tuto">
+      voip-tuto <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pod的生命周期管理工具有replicationcontrooler-replicaset-daemonset-job-说说这些工具之间的区别"><span class="nav-number">1.</span> <span class="nav-text">Pod的生命周期管理工具有：ReplicationControoler, ReplicaSet, DaemonSet, Job 说说这些工具之间的区别。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请描述下-k8s-的设计原则以及总体框架"><span class="nav-number">2.</span> <span class="nav-text">请描述下 k8s 的设计原则以及总体框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#liveness-probe-和-readiness-probe-区别是啥"><span class="nav-number">3.</span> <span class="nav-text">liveness probe 和 readiness probe 区别是啥？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题为啥要用deployment"><span class="nav-number">4.</span> <span class="nav-text">问题：为啥要用deployment?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题鉴于每个pod实际上都有一个私有ip和主机名那么都有哪些方法可以访问到目标pod呢"><span class="nav-number">5.</span> <span class="nav-text">问题：鉴于每个pod实际上都有一个私有IP和主机名，那么都有哪些方法可以访问到目标pod呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问-k8s-中-持久化存储都有哪些困难或者问题"><span class="nav-number">6.</span> <span class="nav-text">问: k8s 中, 持久化存储都有哪些困难或者问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k8s中你都接触过哪些类型的对象呢资源类型"><span class="nav-number">7.</span> <span class="nav-text">k8s中你都接触过哪些类型的对象呢/资源类型？</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

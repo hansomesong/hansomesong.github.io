@@ -1,140 +1,53 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.1.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="VirtualBox 5.2 is a major upgrade and the UI takes on a more polished and modern feel. There are a few additional features available;  New ability to enable export VM to Oracle Cloud Unattended guest">
 <meta name="keywords" content="vagrant,virtualbox">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vagrant_virtualbox_install">
+<meta property="og:title" content="How to install VirtualBox and Vagrant under ubuntu 16.04">
 <meta property="og:url" content="http://rennesong.com/2019/04/01/vagrant-virtualbox-install/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="VirtualBox 5.2 is a major upgrade and the UI takes on a more polished and modern feel. There are a few additional features available;  New ability to enable export VM to Oracle Cloud Unattended guest">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-10T10:28:33.952Z">
+<meta property="og:updated_time" content="2019-10-23T09:00:29.519Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vagrant_virtualbox_install">
+<meta name="twitter:title" content="How to install VirtualBox and Vagrant under ubuntu 16.04">
 <meta name="twitter:description" content="VirtualBox 5.2 is a major upgrade and the UI takes on a more polished and modern feel. There are a few additional features available;  New ability to enable export VM to Oracle Cloud Unattended guest">
 
+<link rel="canonical" href="http://rennesong.com/2019/04/01/vagrant-virtualbox-install/">
 
 
-  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
-
-
-
-  
-  
-  <link rel="canonical" href="http://rennesong.com/2019/04/01/vagrant-virtualbox-install/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
-  <title>vagrant_virtualbox_install | Rennesong's blog</title>
+  <title>How to install VirtualBox and Vagrant under ubuntu 16.04 | Rennesong's blog</title>
   
-
-
-
-
-
-
 
 
 
@@ -143,7 +56,6 @@
 
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -152,9 +64,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -168,153 +79,69 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Rennesong's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
-      
-        <p class="site-subtitle">Blog my life from now on!</p>
-      
-    
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
-
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
+  </ul>
 </nav>
 
-
-
-  
 
 
 
@@ -322,141 +149,75 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/01/vagrant-virtualbox-install/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">vagrant_virtualbox_install
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          How to install VirtualBox and Vagrant under ubuntu 16.04
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-04-01 07:38:22" itemprop="dateCreated datePublished" datetime="2019-04-01T07:38:22+02:00">2019-04-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-10 12:28:33" itemprop="dateModified" datetime="2019-07-10T12:28:33+02:00">2019-07-10</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vagrant/" itemprop="url" rel="index"><span itemprop="name">vagrant</span></a></span>
-
-                
-                
-              
+              <time title="创建时间：2019-04-01 07:38:22" itemprop="dateCreated datePublished" datetime="2019-04-01T07:38:22+08:00">2019-04-01</time>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-23 17:00:29" itemprop="dateModified" datetime="2019-10-23T17:00:29+08:00">2019-10-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vagrant/" itemprop="url" rel="index"><span itemprop="name">vagrant</span></a>
+                </span>
+            </span>
 
           
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
 
       
         <p>VirtualBox 5.2 is a major upgrade and the UI takes on a more polished and modern feel. There are a few additional features available;</p>
@@ -465,415 +226,202 @@
 <li>Unattended guest installation</li>
 <li>Virtual Media Manager and Snapshot Pane re-work</li>
 </ul>
-<h1>Installation of Virtualbox 5.2.x on Ubuntu</h1>
-<h2 id="step-1-update-ubuntu"><a class="header-anchor" href="#step-1-update-ubuntu">null</a>step 1: Update Ubuntu</h2>
+<p>Note that if Vagrant want to use VirtualBox 5.2 as provider, make sure that the version of installed Vagrant should be greater than 2.0.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_x86_64.deb</span><br><span class="line">sudo dpkg -i vagrant_2.2.6_x86_64.deb</span><br></pre></td></tr></table></figure>
+<h1 id="installation-of-virtualbox-5.2.x-on-ubuntu">Installation of Virtualbox 5.2.x on Ubuntu</h1>
+<h2 id="step-1-update-ubuntu">step 1: Update Ubuntu</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update </span><br><span class="line">sudo apt-get upgrade</span><br><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure>
-<p>if you need to upgrade your linux system, you can:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get dist-upgrade</span><br></pre></td></tr></table></figure>
-<h2 id="step-2-install-required-linux-headers"><a class="header-anchor" href="#step-2-install-required-linux-headers">null</a>Step 2: Install Required Linux Headers</h2>
+<p>if you need to upgrade your linux system, you can: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get dist-upgrade</span><br></pre></td></tr></table></figure></p>
+<h2 id="step-2-install-required-linux-headers">Step 2: Install Required Linux Headers</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install gcc make linux-headers-$(uname -r) dkms</span><br></pre></td></tr></table></figure>
-<h2 id="step-3-add-virtualbox-repository-and-key"><a class="header-anchor" href="#step-3-add-virtualbox-repository-and-key">null</a>step 3: Add VirtualBox Repository and key</h2>
+<h2 id="step-3-add-virtualbox-repository-and-key">step 3: Add VirtualBox Repository and key</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -</span><br><span class="line">wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -</span><br></pre></td></tr></table></figure>
-<p>Next run the commands below to add VirtualBox repository to your system.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" &gt;&gt; /etc/apt/sources.list'</span><br></pre></td></tr></table></figure>
-<h2 id="step-4-remove-all-previously-installed-virtualbox"><a class="header-anchor" href="#step-4-remove-all-previously-installed-virtualbox">null</a>step 4: Remove all previously installed virtualbox</h2>
-<p>Find installed package using below command:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -l | grep virtualbox</span><br></pre></td></tr></table></figure>
-<p>For my cases:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ii  unity-scope-virtualbox                     0.1+13.10.20130723-0ubuntu1                  all          VirtualBox scope for Unity</span><br><span class="line">rF  virtualbox-5.1                             5.1.38-122592~Ubuntu~xenial                  amd64        Oracle VM VirtualBox</span><br><span class="line">rc  virtualbox-6.0                             6.0.0-127566~Ubuntu~xenial                   amd64        Oracle VM VirtualBox</span><br><span class="line">ii  virtualbox-dkms                            5.1.38-dfsg-0ubuntu1.16.04.3                 all          x86 virtualization solution - kernel module sources for dkms</span><br><span class="line">rc  virtualbox-qt                              5.1.38-dfsg-0ubuntu1.16.04.3                 amd64        x86 virtualization solution - Qt based user interface</span><br></pre></td></tr></table></figure>
-<p>Then copy <packages> and remove using dpkg or apt-get as below:</packages></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg --purge &lt;Packages&gt;</span><br></pre></td></tr></table></figure>
+<p>Next run the commands below to add VirtualBox repository to your system. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" &gt;&gt; /etc/apt/sources.list'</span><br></pre></td></tr></table></figure></p>
+<h2 id="step-4-remove-all-previously-installed-virtualbox">step 4: Remove all previously installed virtualbox</h2>
+<p>Find installed package using below command: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -l | grep virtualbox</span><br></pre></td></tr></table></figure></p>
+<p>For my cases: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ii  unity-scope-virtualbox                     0.1+13.10.20130723-0ubuntu1                  all          VirtualBox scope for Unity</span><br><span class="line">rF  virtualbox-5.1                             5.1.38-122592~Ubuntu~xenial                  amd64        Oracle VM VirtualBox</span><br><span class="line">rc  virtualbox-6.0                             6.0.0-127566~Ubuntu~xenial                   amd64        Oracle VM VirtualBox</span><br><span class="line">ii  virtualbox-dkms                            5.1.38-dfsg-0ubuntu1.16.04.3                 all          x86 virtualization solution - kernel module sources for dkms</span><br><span class="line">rc  virtualbox-qt                              5.1.38-dfsg-0ubuntu1.16.04.3                 amd64        x86 virtualization solution - Qt based user interface</span><br></pre></td></tr></table></figure></p>
+<p>Then copy <packages> and remove using dpkg or apt-get as below: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg --purge &lt;Packages&gt;</span><br></pre></td></tr></table></figure></packages></p>
 <p><code>--force-all</code> optional</p>
-<h2 id="step-4-install-virtualbox-5-2"><a class="header-anchor" href="#step-4-install-virtualbox-5-2">null</a>Step 4: Install VirtualBox 5.2</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install virtualbox-5.2</span><br></pre></td></tr></table></figure>
-<p>To verify if VirtualBox is installed, run the commands below.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage -v</span><br></pre></td></tr></table></figure>
-<h2 id="step-5-install-virtualbox-extension-pack"><a class="header-anchor" href="#step-5-install-virtualbox-extension-pack">null</a>Step 5: Install VirtualBox Extension Pack</h2>
+<h2 id="step-4-install-virtualbox-5.2">Step 4: Install VirtualBox 5.2</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y virtualbox-5.2</span><br></pre></td></tr></table></figure>
+<p>To verify if VirtualBox is installed, run the commands below. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage -v</span><br></pre></td></tr></table></figure></p>
+<h2 id="step-5-install-virtualbox-extension-pack">Step 5: Install VirtualBox Extension Pack</h2>
 <p>Everytime you install VirtualBox make sure to install the extension pack as well. The pack enables VRDP (Virtual Remote Desktop Protocol) and many other enhancements.</p>
-<p>Given that we install virtualbox 5.26, to install it, run the commands below</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -O http://download.virtualbox.org/virtualbox/5.2.26/Oracle_VM_VirtualBox_Extension_Pack-5.2.26-128414.vbox-extpack</span><br><span class="line">sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-5.2.26-128414.vbox-extpack</span><br></pre></td></tr></table></figure>
+<p>Given that we install virtualbox 5.26, to install it, run the commands below <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -O http://download.virtualbox.org/virtualbox/5.2.26/Oracle_VM_VirtualBox_Extension_Pack-5.2.26-128414.vbox-extpack</span><br><span class="line">sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-5.2.26-128414.vbox-extpack</span><br></pre></td></tr></table></figure></p>
 <p>Agree to the terms and install.</p>
-<p>Run the commands below to view the extension pack installed.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage list extpacks</span><br></pre></td></tr></table></figure>
-<h2 id="step-6-check-and-install-vbox-guest-additions"><a class="header-anchor" href="#step-6-check-and-install-vbox-guest-additions">null</a>Step 6: Check and install Vbox guest additions</h2>
-<p>这玩意儿是不是必须的？如果不需要图形用户界面的话。。。<br>
-I install virtualbox 5.2.26, thus I have to download the corresponding iso file.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.virtualbox.org/virtualbox/5.2.26/VBoxGuestAdditions_5.2.26.iso</span><br></pre></td></tr></table></figure>
-<p>Then create an empty directory in /media and mount it there:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /media/iso</span><br><span class="line">sudo mount VBoxGuestAdditions_5.2.26.iso /media/iso</span><br></pre></td></tr></table></figure>
-<p>Then go there and run the Linux installer:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /media/iso</span><br><span class="line">sudo ./VBoxLinuxAdditions.run</span><br></pre></td></tr></table></figure>
-<p>Reboot your guest OS:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<p>Run the commands below to view the extension pack installed. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage list extpacks</span><br></pre></td></tr></table></figure></p>
+<h2 id="step-6-check-and-install-vbox-guest-additions">Step 6: Check and install Vbox guest additions</h2>
+<p>这玩意儿是不是必须的？如果不需要图形用户界面的话。。。 I install virtualbox 5.2.26, thus I have to download the corresponding iso file. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.virtualbox.org/virtualbox/5.2.26/VBoxGuestAdditions_5.2.26.iso</span><br></pre></td></tr></table></figure></p>
+<p>Then create an empty directory in /media and mount it there: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /media/iso</span><br><span class="line">sudo mount VBoxGuestAdditions_5.2.26.iso /media/iso</span><br></pre></td></tr></table></figure></p>
+<p>Then go there and run the Linux installer: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /media/iso</span><br><span class="line">sudo ./VBoxLinuxAdditions.run</span><br></pre></td></tr></table></figure></p>
+<p>Reboot your guest OS: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure></p>
 <p>You should be able to access your shared folder under <code>/media/sf_[your_folder_name]</code></p>
-<h2 id="troubleshooting"><a class="header-anchor" href="#troubleshooting">null</a>Troubleshooting</h2>
+<h2 id="troubleshooting">Troubleshooting</h2>
 <p>At this point, you may be able to open the new VirtualBox UI but in my case, I was not able to start any of my Old VM’s.</p>
 <p>After struggling and panicking for 10 minutes I found that I needed to run the below command twice then everything just started working</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /sbin/vboxconfig</span><br></pre></td></tr></table></figure>
-<h1>Vagrant basic usage</h1>
-<h2 id="relaod"><a class="header-anchor" href="#relaod">null</a>Relaod</h2>
-<p>vagrant reload = vagrant halt + vagrant up. This command is usually required for changes mande in the Vagrantfile to take effect. After making any modifications to the Vagrantfile, a <code>reload</code> should be called. The configured provisoners will not run again, by default. You can force the provisioners to re-run by specifying the <code>--provision</code> flag.</p>
-<p>References:<br>
-<a href="https://websiteforstudents.com/virtualbox-5-2-on-ubuntu-16-04-lts-server-headless/" target="_blank" rel="noopener">https://websiteforstudents.com/virtualbox-5-2-on-ubuntu-16-04-lts-server-headless/</a><br>
-<a href="https://garywoodfine.com/install-virtual-box-5-2-ubuntu-16-04/" target="_blank" rel="noopener">https://garywoodfine.com/install-virtual-box-5-2-ubuntu-16-04/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">qsong@lab01  ~/Documents/linuxkit-test  vagrant up</span><br><span class="line">No usable default provider could be found for your system.</span><br><span class="line"></span><br><span class="line">Vagrant relies on interactions with 3rd party systems, known as</span><br><span class="line">&quot;providers&quot;, to provide Vagrant with resources to run development</span><br><span class="line">environments. Examples are VirtualBox, VMware, Hyper-V.</span><br><span class="line"></span><br><span class="line">The easiest solution to this message is to install VirtualBox, which</span><br><span class="line">is available for free on all major platforms.</span><br><span class="line"></span><br><span class="line">If you believe you already have a provider available, make sure it</span><br><span class="line">is properly installed and configured. You can see more details about</span><br><span class="line">why a particular provider isn&apos;t working by forcing usage with</span><br><span class="line">`vagrant up --provider=PROVIDER`, which should give you a more specific</span><br><span class="line">error message for that particular provider.</span><br></pre></td></tr></table></figure>
+<p>出现上述错误的原因: vagrant版本和virtualbox版本不兼容。需要升级vagrant!</p>
+<h1 id="vagrant-basic-usage">Vagrant basic usage</h1>
+<h2 id="relaod">Relaod</h2>
+<p>vagrant reload = vagrant halt + vagrant up. This command is usually required for changes made in the Vagrantfile to take into effect. After making any modifications to the Vagrantfile, a <code>reload</code> should be called. The configured provisoners will not run again, by default. You can force the provisioners to re-run by specifying the <code>--provision</code> flag.</p>
+<h1 id="how-to-enable-x11-forwarding-for-running-x11-application-within-vagrant-box">How to enable X11 forwarding for running X11 application within vagrant box?</h1>
+<p>First step, in your Vagrant file, please add two instructions: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">config.ssh.forward_agent = true</span><br><span class="line">config.ssh.forward_x11 = true</span><br></pre></td></tr></table></figure></p>
+<p>After such modification, the vagrant file should look like as follows: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|</span><br><span class="line"></span><br><span class="line">  config.vm.box = &quot;generic/ubuntu1604&quot;</span><br><span class="line">  config.ssh.forward_agent = true</span><br><span class="line">  config.ssh.forward_x11 = true</span><br><span class="line">  # config.vm.box = &quot;bento/ubuntu-16.04&quot;</span><br><span class="line">  config.vm.provision &quot;shell&quot;, inline: $script</span><br><span class="line">  config.vm.provision &quot;docker&quot;</span><br><span class="line"></span><br><span class="line">  config.vm.synced_folder &quot;.&quot;, &quot;/vagrant&quot;</span><br><span class="line">  # config.vm.network &quot;public_network&quot;</span><br><span class="line">  config.vm.define &quot;consul&quot; do | con |</span><br><span class="line">    con.vm.provider &quot;consul&quot; do | c |</span><br><span class="line">      c.name = &quot;consul&quot;</span><br><span class="line">      c.memory = 512</span><br><span class="line">      c.cpus = 2</span><br><span class="line">    end</span><br><span class="line">    con.vm.network &quot;private_network&quot;, ip: &quot;192.168.1.11&quot;</span><br><span class="line">    con.vm.hostname = &quot;consul&quot;</span><br><span class="line">  end</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">Second, ssh into your target vagrant box (e.g. your VM), make sure that option `X11Forwarding` is set to `yes`, this is actually done thanks to the configuration in Vagrant file. You also need to add the following configuration:</span><br></pre></td></tr></table></figure></p>
+<p>X11UseLocalhost no <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">By setting `X11UseLocalhost` to `no`, we speicify that the forwarding server should be bound to the wildcard address. By default, this argument is set to `yes`, and sshd` binds the forwarding server to the loopback address and sets the hostname part of the `DISPLAY` environment variable to ``localhost&apos;&apos;. This prevents remote hosts from connecting to the proxy display.</span><br><span class="line"></span><br><span class="line">Don&apos;t forget to `vagrant reload --provision` so that all the above modifications will take into effect. </span><br><span class="line"></span><br><span class="line">Third, ensure that in your PC, where you would like to start an SSH session with X11 forwarding, the corresponding entry in `./ssh/config` has arguemnt such as `ForwardX11 yes`.</span><br><span class="line"></span><br><span class="line">Until this step, normally you can run X11 application with GUI on host machine. To verify, you can simply test with `xeyes` or `xclocks` after establishing an SSH session.</span><br><span class="line"></span><br><span class="line">At worse, you might need to replace the `-X` with a `-Y` if the remote system is untrusted.</span><br><span class="line"></span><br><span class="line">Finally, I would like to say, the GUI rendered by XQuartz, under MacOSX platform, is really realy ugly! Why this project has never been updated since 2016?</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">iLBC library installation: https://launchpad.net/~linphone/+archive/ubuntu/release/+sourcepub/2295457/+listing-archive-extra</span><br><span class="line"></span><br><span class="line"># vagrant port forwarding</span><br><span class="line">One way to set up a temporary terminal, besides opening up the VirtualBox settings, is to use `vagrant ssh`, with additional arguments given after the `--`:</span><br></pre></td></tr></table></figure></p>
+<p>vagrant ssh -- -L 3000:localhost:3000 ``<code>This will forward port 3000 on the host to port 3000 on the guest. The first number is for the host. This will only last as long as your ssh session. If ssh gets disconnected, run it again. To make it persist after restarts, add it to your</code>Vagrantfile`.</p>
+<p>References: https://websiteforstudents.com/virtualbox-5-2-on-ubuntu-16-04-lts-server-headless/ https://garywoodfine.com/install-virtual-box-5-2-ubuntu-16-04/</p>
 
-      
     </div>
 
     
-
-    
-    
-    
-
-    
-
-    
-      
     
     
 
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/vagrant/" rel="tag"># vagrant</a>
-          
-            <a href="/tags/virtualbox/" rel="tag"># virtualbox</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/03/29/latest-sfc103demo-trial/" rel="next" title="latest-sfc103demo-trial">
-                <i class="fa fa-chevron-left"></i> latest-sfc103demo-trial
-              </a>
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vagrant/" rel="tag"># vagrant</a>
+              <a href="/tags/virtualbox/" rel="tag"># virtualbox</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/08/scapy-learning/" rel="prev" title="scapy-learning">
-                scapy-learning <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/29/latest-sfc103demo-trial/" rel="prev" title="latest-sfc103demo-trial">
+      <i class="fa fa-chevron-left"></i> latest-sfc103demo-trial
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/08/scapy-learning/" rel="next" title="scapy-learning">
+      scapy-learning <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-
-  </div>
 
 
           </div>
           
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">rennsong</p>
-              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">47</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">20</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/hansomesong" title="GitHub &rarr; https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Installation of Virtualbox 5.2.x on Ubuntu</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#step-1-update-ubuntu"><span class="nav-number">1.1.</span> <span class="nav-text">nullstep 1: Update Ubuntu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-2-install-required-linux-headers"><span class="nav-number">1.2.</span> <span class="nav-text">nullStep 2: Install Required Linux Headers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-3-add-virtualbox-repository-and-key"><span class="nav-number">1.3.</span> <span class="nav-text">nullstep 3: Add VirtualBox Repository and key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-4-remove-all-previously-installed-virtualbox"><span class="nav-number">1.4.</span> <span class="nav-text">nullstep 4: Remove all previously installed virtualbox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-4-install-virtualbox-5-2"><span class="nav-number">1.5.</span> <span class="nav-text">nullStep 4: Install VirtualBox 5.2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-5-install-virtualbox-extension-pack"><span class="nav-number">1.6.</span> <span class="nav-text">nullStep 5: Install VirtualBox Extension Pack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-6-check-and-install-vbox-guest-additions"><span class="nav-number">1.7.</span> <span class="nav-text">nullStep 6: Check and install Vbox guest additions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#troubleshooting"><span class="nav-number">1.8.</span> <span class="nav-text">nullTroubleshooting</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Vagrant basic usage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#relaod"><span class="nav-number">2.1.</span> <span class="nav-text">nullRelaod</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">rennsong</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
 
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#installation-of-virtualbox-5.2.x-on-ubuntu"><span class="nav-number">1.</span> <span class="nav-text">Installation of Virtualbox 5.2.x on Ubuntu</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#step-1-update-ubuntu"><span class="nav-number">1.1.</span> <span class="nav-text">step 1: Update Ubuntu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-2-install-required-linux-headers"><span class="nav-number">1.2.</span> <span class="nav-text">Step 2: Install Required Linux Headers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-3-add-virtualbox-repository-and-key"><span class="nav-number">1.3.</span> <span class="nav-text">step 3: Add VirtualBox Repository and key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-4-remove-all-previously-installed-virtualbox"><span class="nav-number">1.4.</span> <span class="nav-text">step 4: Remove all previously installed virtualbox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-4-install-virtualbox-5.2"><span class="nav-number">1.5.</span> <span class="nav-text">Step 4: Install VirtualBox 5.2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-5-install-virtualbox-extension-pack"><span class="nav-number">1.6.</span> <span class="nav-text">Step 5: Install VirtualBox Extension Pack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#step-6-check-and-install-vbox-guest-additions"><span class="nav-number">1.7.</span> <span class="nav-text">Step 6: Check and install Vbox guest additions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#troubleshooting"><span class="nav-number">1.8.</span> <span class="nav-text">Troubleshooting</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vagrant-basic-usage"><span class="nav-number">2.</span> <span class="nav-text">Vagrant basic usage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#relaod"><span class="nav-number">2.1.</span> <span class="nav-text">Relaod</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#how-to-enable-x11-forwarding-for-running-x11-application-within-vagrant-box"><span class="nav-number">3.</span> <span class="nav-text">How to enable X11 forwarding for running X11 application within vagrant box?</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
 
 
 
@@ -882,125 +430,35 @@ I install virtualbox 5.2.26, thus I have to download the corresponding iso file.
 
 
 
+      </div>
+    </footer>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.0"></script>
-
-  <script src="/js/motion.js?v=7.1.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
 
-  
-  <script src="/js/scrollspy.js?v=7.1.0"></script>
-<script src="/js/post-details.js?v=7.1.0"></script>
-
-
-
-  
-
-
-  <script src="/js/next-boot.js?v=7.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-
-  
 
 
 
 
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
 
 
-  
 
-  
 
-  
 
-  
 
-  
-
-  
-
-  
-
-  
 
   
 

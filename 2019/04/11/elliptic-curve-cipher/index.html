@@ -1,100 +1,24 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.1.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="http://www.ehcoo.com/cryptology1.html 密码学科普教程 An Essential property for cryptography is that a group has a finite number of points. Calculations over the real numbers are slow and inaccurate due to ro">
 <meta property="og:type" content="article">
@@ -108,21 +32,16 @@
 <meta name="twitter:title" content="elliptic-curve-cipher">
 <meta name="twitter:description" content="http://www.ehcoo.com/cryptology1.html 密码学科普教程 An Essential property for cryptography is that a group has a finite number of points. Calculations over the real numbers are slow and inaccurate due to ro">
 
+<link rel="canonical" href="http://rennesong.com/2019/04/11/elliptic-curve-cipher/">
 
 
-  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
-
-
-
-  
-  
-  <link rel="canonical" href="http://rennesong.com/2019/04/11/elliptic-curve-cipher/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -134,15 +53,8 @@
 
 
 
-
-
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -151,9 +63,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -167,153 +78,69 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Rennesong's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
-      
-        <p class="site-subtitle">Blog my life from now on!</p>
-      
-    
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
-
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
+  </ul>
 </nav>
 
-
-
-  
 
 
 
@@ -321,115 +148,61 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/11/elliptic-curve-cipher/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">elliptic-curve-cipher
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          elliptic-curve-cipher
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-04-11 23:16:17" itemprop="dateCreated datePublished" datetime="2019-04-11T23:16:17+02:00">2019-04-11</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <time title="创建时间：2019-04-11 23:16:17" itemprop="dateCreated datePublished" datetime="2019-04-11T23:16:17+08:00">2019-04-11</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-26 12:48:49" itemprop="dateModified" datetime="2019-04-26T12:48:49+02:00">2019-04-26</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-26 18:48:49" itemprop="dateModified" datetime="2019-04-26T18:48:49+08:00">2019-04-26</time>
+              </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -437,454 +210,225 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        <p><a href="http://www.ehcoo.com/cryptology1.html" target="_blank" rel="noopener">http://www.ehcoo.com/cryptology1.html</a> 密码学科普教程</p>
+        <p>http://www.ehcoo.com/cryptology1.html 密码学科普教程</p>
 <p>An Essential property for cryptography is that a group has a finite number of points.</p>
 <p>Calculations over the real numbers are slow and inaccurate due to round-off error. Cryptographic applications require fast and precise arithmetic; thus elliptic curve groups over the finite fields of Fp and F2m are used in practice.</p>
 <p>我现在需要解决的问题是：</p>
 <p>不管用什么公钥加密方法，不管是否安全，我现在需要生成一个最大长度为16字节的数字签名(digital signature)</p>
-<p>方案1: Doing the math, you’d need to use 16-bit keys in ECC to generate 64-bit signatures, which is very weak. For ECC, anything less than 128 bits can be considered weak. For RSA this is 1024 bits</p>
+<p>方案1: Doing the math, you'd need to use 16-bit keys in ECC to generate 64-bit signatures, which is very weak. For ECC, anything less than 128 bits can be considered weak. For RSA this is 1024 bits</p>
 <p>方案二：采用对称加密，对称加密，加密之后信息会是多长？</p>
 <p>方案三：Message authentication code</p>
-<p>最小哈希签名：<a href="https://blog.mythsman.com/2016/09/17/1/" target="_blank" rel="noopener">https://blog.mythsman.com/2016/09/17/1/</a><br>
-最小哈希签名(minhashing signature)解决的问题是，如何用一个哈希方法来对一个集合（集合大小为n）中的子集进行保留相似度的映射（使他在内存中占用的字节数尽可能的少）。</p>
-<h1>Essential knowledge abouut Group theory</h1>
-<h2 id="definition-of-group"><a class="header-anchor" href="#definition-of-group">null</a>Definition of group</h2>
-<p>群的定义是：一个集合若定义了一个封闭的运算称为乘法，并且满足下面的几条：</p>
-<ul>
-<li>结合律成立</li>
-<li>有左单位元e存在，e左乘任何元素都不变</li>
-<li>有左逆元存在，左逆元与其相乘后是e<br>
-这样的集合就是群。</li>
-</ul>
-<h2 id="order-of-group"><a class="header-anchor" href="#order-of-group">null</a>Order of group</h2>
+<p>最小哈希签名：https://blog.mythsman.com/2016/09/17/1/ 最小哈希签名(minhashing signature)解决的问题是，如何用一个哈希方法来对一个集合（集合大小为n）中的子集进行保留相似度的映射（使他在内存中占用的字节数尽可能的少）。</p>
+<h1 id="essential-knowledge-abouut-group-theory">Essential knowledge abouut Group theory</h1>
+<h2 id="definition-of-group">Definition of group</h2>
+<p>群的定义是：一个集合若定义了一个封闭的运算称为乘法，并且满足下面的几条： * 结合律成立 * 有左单位元e存在，e左乘任何元素都不变 * 有左逆元存在，左逆元与其相乘后是e 这样的集合就是群。</p>
+<h2 id="order-of-group">Order of group</h2>
 <p>群中元素的个数就是群的阶。有限阶的群叫有限群。密码学就是需要用到有限群和有限域的一些定理。</p>
-<h2 id="group-of-prime-order-cyclic-group-of-prime-order"><a class="header-anchor" href="#group-of-prime-order-cyclic-group-of-prime-order">null</a>Group of prime order/cyclic group of prime order</h2>
-<p>A group of prime order, or cyclic group of prime order, is any of the following equivalent things:</p>
-<ul>
-<li>It is a cyclic group whose order is a prime number.</li>
-<li>It is isomorphic to the quotient of the group of integers by a subgroup generated by a prime number.</li>
-<li>It is the additive group of a finite prime field (note that we have to say finite because “prime field” also includes the field of rational numbers, the prime field of characteristic zero).</li>
-</ul>
-<p>If $p$ denotes the order of the group, then the cyclic group of order p is denoted $C_p$, $\mathbb{Z}/p\mathbb{Z}$, $\mathbb{Z}_p$ or $\mathbb{F}_p$.</p>
-<p>素数阶有限群的例子：n为素数的模n的剩余类加群$Z_n$</p>
-<h2 id="prime-field"><a class="header-anchor" href="#prime-field">null</a>Prime field <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></h2>
-<p>A prime field consists of the set of numbers $0, 1, 2… p-1$, where $p$ is prime, and the various operations are defined as follows:<br>
-$$\begin{align}<br>
-a + b:  (a + b) \% p \\<br>
-a + b:  (a + b) \% p \\<br>
-a - b:  (a - b) \% p \\<br>
-a / b:  (a * b^{(p-2)}) \% p<br>
-\end{align}<br>
-$$<br>
-In elliptic curves in reality, the points and equations are usually computed in prime fields.</p>
-<h2 id="extension-field"><a class="header-anchor" href="#extension-field">null</a>Extension field <sup class="footnote-ref"><a href="#fn1" id="fnref1:1">[1]</a></sup></h2>
-<p>The complex number is a typical example of extension field, where the field of real numbers is <strong>extended</strong> with the additional element $sqrt(-1) = i$. Basically, extension fields work by taking an existing field, then “inventing” a new element and defining the relationship between that element and existing elements (in this case, i² + 1 = 0), making sure that this equation does not hold true for any number that is in the original field, and looking at the set of all linear combinations of elements of the original field and the new element that you have just created.</p>
-<p>To divide in extension field, we do:<br>
-$a / b:  (a * b<sup>{p</sup>{2}-2}) % p $</p>
-<h2 id="multiplicative-group-of-integers-modulo-n"><a class="header-anchor" href="#multiplicative-group-of-integers-modulo-n">null</a>Multiplicative group of integers modulo n</h2>
-<p>n剩余类群的定义：n是一个正整数，对于任意一个正整数，被n除后余数会有几种可能，0、1…n-1。所有的这些剩余类所构成的集合叫模n剩余类群。其中的乘法运算定义为：相加后再和n求模。<br>
-举个例子：Z5，模5剩余类群。4与3相乘结果为2<br>
-由于循环群是Able群，其中的运算一般也就写为加法。<br>
-Z5中的生成元：1首先肯定是，2=1+1、3=1+1+1、4=1+1+1+1、0=1+1+1+1+1<br>
-2也是4=2+2、1=2+2+2、3=2+2+2、0=2+2+2+2<br>
-不难发现Z5的生成元是1、2、3、4</p>
-<h2 id="order-of-element-in-group"><a class="header-anchor" href="#order-of-element-in-group">null</a>Order of element in group</h2>
+<h2 id="group-of-prime-ordercyclic-group-of-prime-order">Group of prime order/cyclic group of prime order</h2>
+<p>A group of prime order, or cyclic group of prime order, is any of the following equivalent things: * It is a cyclic group whose order is a prime number. * It is isomorphic to the quotient of the group of integers by a subgroup generated by a prime number. * It is the additive group of a finite prime field (note that we have to say finite because "prime field" also includes the field of rational numbers, the prime field of characteristic zero).</p>
+<p>If <span class="math inline">\(p\)</span> denotes the order of the group, then the cyclic group of order p is denoted <span class="math inline">\(C_p\)</span>, <span class="math inline">\(\mathbb{Z}/p\mathbb{Z}\)</span>, <span class="math inline">\(\mathbb{Z}_p\)</span> or <span class="math inline">\(\mathbb{F}_p\)</span>.</p>
+<p>素数阶有限群的例子：n为素数的模n的剩余类加群<span class="math inline">\(Z_n\)</span></p>
+<h2 id="prime-field-buterinexploring2017">Prime field <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>A prime field consists of the set of numbers <span class="math inline">\(0, 1, 2… p-1\)</span>, where <span class="math inline">\(p\)</span> is prime, and the various operations are defined as follows: <span class="math display">\[\begin{align}
+a + b:  (a + b) \\% p \\\\
+a + b:  (a + b) \\% p \\\\
+a - b:  (a - b) \\% p \\\\
+a / b:  (a * b^{(p-2)}) \\% p 
+\end{align}
+\]</span> In elliptic curves in reality, the points and equations are usually computed in prime fields.</p>
+<h2 id="extension-field-buterinexploring2017">Extension field <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></h2>
+<p>The complex number is a typical example of extension field, where the field of real numbers is <strong>extended</strong> with the additional element <span class="math inline">\(sqrt(-1) = i\)</span>. Basically, extension fields work by taking an existing field, then “inventing” a new element and defining the relationship between that element and existing elements (in this case, i² + 1 = 0), making sure that this equation does not hold true for any number that is in the original field, and looking at the set of all linear combinations of elements of the original field and the new element that you have just created.</p>
+<p>To divide in extension field, we do: $a / b: (a * b<sup>{p</sup>{2}-2}) % p $</p>
+<h2 id="multiplicative-group-of-integers-modulo-n">Multiplicative group of integers modulo n</h2>
+<p>n剩余类群的定义：n是一个正整数，对于任意一个正整数，被n除后余数会有几种可能，0、1....n-1。所有的这些剩余类所构成的集合叫模n剩余类群。其中的乘法运算定义为：相加后再和n求模。 举个例子：Z5，模5剩余类群。4与3相乘结果为2 由于循环群是Able群，其中的运算一般也就写为加法。 Z5中的生成元：1首先肯定是，2=1+1、3=1+1+1、4=1+1+1+1、0=1+1+1+1+1 2也是4=2+2、1=2+2+2、3=2+2+2、0=2+2+2+2 不难发现Z5的生成元是1、2、3、4</p>
+<h2 id="order-of-element-in-group">Order of element in group</h2>
 <p>现在说群中元素的阶。群的定义中说群中运算是封闭的，那么若将群中任何一个元素自己和自己相乘若干次后必定会变成单位元e的。这个次数叫做这个元素的阶。</p>
-<p>Theorem: In any group, there is only one identity element.<br>
-Theorem: A group of prime order is a cyclic group.</p>
-<h2 id="bilinear-paring-aka-bilinear-map"><a class="header-anchor" href="#bilinear-paring-aka-bilinear-map">null</a>Bilinear paring (aka. Bilinear map)</h2>
+<p>Theorem: In any group, there is only one identity element. Theorem: A group of prime order is a cyclic group.</p>
+<h2 id="bilinear-paring-aka.-bilinear-map">Bilinear paring (aka. Bilinear map)</h2>
 <ul>
 <li>bilinear maps, or pairings, give cyclic groups additional properties.</li>
 <li>these additional properties were initially seen as detrimental as they could be exploited to break cryptosystems</li>
-<li>it it was later discovered that they could<br>
-also be exploited to build cryptosystems.</li>
+<li>it it was later discovered that they could also be exploited to build cryptosystems.</li>
 <li>Boneh and Franklin’s identity-based encryption scheme is perhaps the most famous early example (not the first) of what could be achieved using bilinear maps.</li>
 <li>Some research considered its own field called pairing-based cryptography</li>
 </ul>
-<p>如果不考虑安全性，函数$e(x,y) = g^{x,y}$ 就是一个例子，g需要是生成元</p>
-<h3 id="discrete-log-problem"><a class="header-anchor" href="#discrete-log-problem">null</a>Discrete log problem</h3>
-<p>Given $g, g^x$, compute $x$.</p>
-<h3 id="computational-diffie-hellman-problem"><a class="header-anchor" href="#computational-diffie-hellman-problem">null</a>Computational Diffie-Hellman Problem</h3>
-<p>Given $g, g^x, g^y$, compute $g^{xy}$.</p>
-<h3 id="decisional-diffie-hellman-problem"><a class="header-anchor" href="#decisional-diffie-hellman-problem">null</a>Decisional Diffie-Hellman Problem</h3>
-<p>Given $g, g^x, g^y, g^z$,determine if $xy = z$.</p>
+<p>如果不考虑安全性，函数<span class="math inline">\(e(x,y) = g^{x,y}\)</span> 就是一个例子，g需要是生成元</p>
+<h3 id="discrete-log-problem">Discrete log problem</h3>
+<p>Given <span class="math inline">\(g, g^x\)</span>, compute <span class="math inline">\(x\)</span>.</p>
+<h3 id="computational-diffie-hellman-problem">Computational Diffie-Hellman Problem</h3>
+<p>Given <span class="math inline">\(g, g^x, g^y\)</span>, compute <span class="math inline">\(g^{xy}\)</span>.</p>
+<h3 id="decisional-diffie-hellman-problem">Decisional Diffie-Hellman Problem</h3>
+<p>Given <span class="math inline">\(g, g^x, g^y, g^z\)</span>,determine if <span class="math inline">\(xy = z\)</span>.</p>
 <p>A vast array of cryptosystems including the Diffie-Hellman key exchange protocol can be built assuming one of these problems, or one of many other related problems, is difficult to solve. The discrete log problem is the most important, for if it could be solved, all other related problems could also be solved.</p>
-<h2 id="implementation"><a class="header-anchor" href="#implementation">null</a>Implementation</h2>
+<h2 id="implementation">Implementation</h2>
 <p>There are two mathematical settings to choose from when implementing cyclic groups: finite fields and elliptic curves. Finite fields were proposed first, and much has been published on implementing finite fields and their potential weaknesses.</p>
-<h3 id="finite-field"><a class="header-anchor" href="#finite-field">null</a>Finite field</h3>
-<p>One picks a prime n and uses a subgroup G of $Z^{*}_n$ of prime order $r$. so the group operation is field multiplication.</p>
-<h3 id="elliptic-curve"><a class="header-anchor" href="#elliptic-curve">null</a>Elliptic curve</h3>
-<p>For elliptic curves, one takes an elliptic curve $E$ over some finite field $K$ and takes some subgroup $G$ of the group of points $E(K)$ with prime order $r$, so the group operation is point addition. Finite fields can be viewed as a special case of elliptic curves due to a correspondence between certain singular curves and multiplicative groups of finite<br>
-fields.</p>
+<h3 id="finite-field">Finite field</h3>
+<p>One picks a prime n and uses a subgroup G of <span class="math inline">\(Z^{*}_n\)</span> of prime order <span class="math inline">\(r\)</span>. so the group operation is field multiplication.</p>
+<h3 id="elliptic-curve">Elliptic curve</h3>
+<p>For elliptic curves, one takes an elliptic curve <span class="math inline">\(E\)</span> over some finite field <span class="math inline">\(K\)</span> and takes some subgroup <span class="math inline">\(G\)</span> of the group of points <span class="math inline">\(E(K)\)</span> with prime order <span class="math inline">\(r\)</span>, so the group operation is point addition. Finite fields can be viewed as a special case of elliptic curves due to a correspondence between certain singular curves and multiplicative groups of finite fields.</p>
 <p>The security of a 160-bit elliptic curve group and a 1024-bit finite field are roughly equivalent</p>
-<h1>椭圆曲线加密开源实现</h1>
-<p><a href="https://github.com/warner/python-ecdsa" target="_blank" rel="noopener">Pure-Python ECDSA</a>: This library provides key generation, signing, and verifying, for five popular <code>NIST &quot;Suite B&quot;</code> GF§ curves, with key lengths of 192, 224, 256, 384, and 521 bits.</p>
-<h1>经验教训</h1>
-<h2 id="一开始就应该先验证核心的算法-而不是纠结于底层的-sfc-nsh-的搭建"><a class="header-anchor" href="#一开始就应该先验证核心的算法-而不是纠结于底层的-sfc-nsh-的搭建">null</a>一开始就应该先验证核心的算法，而不是纠结于底层的 SFC NSH 的搭建</h2>
+<h1 id="椭圆曲线加密开源实现">椭圆曲线加密开源实现</h1>
+<p><a href="https://github.com/warner/python-ecdsa" target="_blank" rel="noopener">Pure-Python ECDSA</a>: This library provides key generation, signing, and verifying, for five popular <code>NIST "Suite B"</code> GF(p) curves, with key lengths of 192, 224, 256, 384, and 521 bits.</p>
+<h1 id="经验教训">经验教训</h1>
+<h2 id="一开始就应该先验证核心的算法而不是纠结于底层的-sfc-nsh-的搭建">一开始就应该先验证核心的算法，而不是纠结于底层的 SFC NSH 的搭建</h2>
 <p>简单地验证下多层签名的时间消耗是很容易的，至少先验证核心的算法是有效的，再逐步考虑更复杂更底层的平台问题才有意义。不然如果这个算法压根就是有问题的，那么底层搭出来了，也是浪费时间</p>
-<h2 id="当底层搭建的被卡住的时候-而且明确知道不是自己的问题的时候-应该分精力给其他问题-而不是推卸责任似的死等"><a class="header-anchor" href="#当底层搭建的被卡住的时候-而且明确知道不是自己的问题的时候-应该分精力给其他问题-而不是推卸责任似的死等">null</a>当底层搭建的被卡住的时候，而且明确知道不是自己的问题的时候，应该分精力给其他问题，而不是推卸责任似的死等</h2>
-<h1>参考资料：</h1>
-<p><a href="https://stackoverflow.com/questions/279418/what-is-a-somewhat-secure-way-of-generating-a-64-bit-signature" target="_blank" rel="noopener">https://stackoverflow.com/questions/279418/what-is-a-somewhat-secure-way-of-generating-a-64-bit-signature</a></p>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>Exploring Elliptic Curve Pairings,<a href="https://medium.com/@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627" target="_blank" rel="noopener">https://medium.com/@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627</a> <a href="#fnref1" class="footnote-backref">↩</a> <a href="#fnref1:1" class="footnote-backref">↩</a></p>
-</li>
+<h2 id="当底层搭建的被卡住的时候而且明确知道不是自己的问题的时候应该分精力给其他问题而不是推卸责任似的死等">当底层搭建的被卡住的时候，而且明确知道不是自己的问题的时候，应该分精力给其他问题，而不是推卸责任似的死等</h2>
+<h1 id="参考资料">参考资料：</h1>
+<p>https://stackoverflow.com/questions/279418/what-is-a-somewhat-secure-way-of-generating-a-64-bit-signature</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>Exploring Elliptic Curve Pairings,https://medium.com/<span class="citation" data-cites="VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627">@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Exploring Elliptic Curve Pairings,https://medium.com/<span class="citation" data-cites="VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627">@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩</a></p></li>
 </ol>
 </section>
 
-      
     </div>
 
     
-
-    
-    
-    
-
-    
-
-    
-      
     
     
 
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/11/sublime-tips/" rel="prev" title="sublime-tips">
+      <i class="fa fa-chevron-left"></i> sublime-tips
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/12/secsfc-impl-notes/" rel="next" title="secsfc-impl-notes">
+      secsfc-impl-notes <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
     
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/04/11/sublime-tips/" rel="next" title="sublime-tips">
-                <i class="fa fa-chevron-left"></i> sublime-tips
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/12/secsfc-impl-notes/" rel="prev" title="secsfc-impl-notes">
-                secsfc-impl-notes <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
   </article>
+  
+  
+  
 
-
-  </div>
 
 
           </div>
           
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">rennsong</p>
-              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">47</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">20</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/hansomesong" title="GitHub &rarr; https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Essential knowledge abouut Group theory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#definition-of-group"><span class="nav-number">1.1.</span> <span class="nav-text">nullDefinition of group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#order-of-group"><span class="nav-number">1.2.</span> <span class="nav-text">nullOrder of group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#group-of-prime-order-cyclic-group-of-prime-order"><span class="nav-number">1.3.</span> <span class="nav-text">nullGroup of prime order/cyclic group of prime order</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#prime-field"><span class="nav-number">1.4.</span> <span class="nav-text">nullPrime field [1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#extension-field"><span class="nav-number">1.5.</span> <span class="nav-text">nullExtension field [1]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiplicative-group-of-integers-modulo-n"><span class="nav-number">1.6.</span> <span class="nav-text">nullMultiplicative group of integers modulo n</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#order-of-element-in-group"><span class="nav-number">1.7.</span> <span class="nav-text">nullOrder of element in group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bilinear-paring-aka-bilinear-map"><span class="nav-number">1.8.</span> <span class="nav-text">nullBilinear paring (aka. Bilinear map)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#discrete-log-problem"><span class="nav-number">1.8.1.</span> <span class="nav-text">nullDiscrete log problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#computational-diffie-hellman-problem"><span class="nav-number">1.8.2.</span> <span class="nav-text">nullComputational Diffie-Hellman Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decisional-diffie-hellman-problem"><span class="nav-number">1.8.3.</span> <span class="nav-text">nullDecisional Diffie-Hellman Problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#implementation"><span class="nav-number">1.9.</span> <span class="nav-text">nullImplementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#finite-field"><span class="nav-number">1.9.1.</span> <span class="nav-text">nullFinite field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#elliptic-curve"><span class="nav-number">1.9.2.</span> <span class="nav-text">nullElliptic curve</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">椭圆曲线加密开源实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">经验教训</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一开始就应该先验证核心的算法-而不是纠结于底层的-sfc-nsh-的搭建"><span class="nav-number">3.1.</span> <span class="nav-text">null一开始就应该先验证核心的算法，而不是纠结于底层的 SFC NSH 的搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当底层搭建的被卡住的时候-而且明确知道不是自己的问题的时候-应该分精力给其他问题-而不是推卸责任似的死等"><span class="nav-number">3.2.</span> <span class="nav-text">null当底层搭建的被卡住的时候，而且明确知道不是自己的问题的时候，应该分精力给其他问题，而不是推卸责任似的死等</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">rennsong</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
 
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#essential-knowledge-abouut-group-theory"><span class="nav-number">1.</span> <span class="nav-text">Essential knowledge abouut Group theory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#definition-of-group"><span class="nav-number">1.1.</span> <span class="nav-text">Definition of group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#order-of-group"><span class="nav-number">1.2.</span> <span class="nav-text">Order of group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#group-of-prime-ordercyclic-group-of-prime-order"><span class="nav-number">1.3.</span> <span class="nav-text">Group of prime order/cyclic group of prime order</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#prime-field-buterinexploring2017"><span class="nav-number">1.4.</span> <span class="nav-text">Prime field 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#extension-field-buterinexploring2017"><span class="nav-number">1.5.</span> <span class="nav-text">Extension field 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiplicative-group-of-integers-modulo-n"><span class="nav-number">1.6.</span> <span class="nav-text">Multiplicative group of integers modulo n</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#order-of-element-in-group"><span class="nav-number">1.7.</span> <span class="nav-text">Order of element in group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bilinear-paring-aka.-bilinear-map"><span class="nav-number">1.8.</span> <span class="nav-text">Bilinear paring (aka. Bilinear map)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#discrete-log-problem"><span class="nav-number">1.8.1.</span> <span class="nav-text">Discrete log problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#computational-diffie-hellman-problem"><span class="nav-number">1.8.2.</span> <span class="nav-text">Computational Diffie-Hellman Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decisional-diffie-hellman-problem"><span class="nav-number">1.8.3.</span> <span class="nav-text">Decisional Diffie-Hellman Problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#implementation"><span class="nav-number">1.9.</span> <span class="nav-text">Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#finite-field"><span class="nav-number">1.9.1.</span> <span class="nav-text">Finite field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#elliptic-curve"><span class="nav-number">1.9.2.</span> <span class="nav-text">Elliptic curve</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#椭圆曲线加密开源实现"><span class="nav-number">2.</span> <span class="nav-text">椭圆曲线加密开源实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#经验教训"><span class="nav-number">3.</span> <span class="nav-text">经验教训</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一开始就应该先验证核心的算法而不是纠结于底层的-sfc-nsh-的搭建"><span class="nav-number">3.1.</span> <span class="nav-text">一开始就应该先验证核心的算法，而不是纠结于底层的 SFC NSH 的搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当底层搭建的被卡住的时候而且明确知道不是自己的问题的时候应该分精力给其他问题而不是推卸责任似的死等"><span class="nav-number">3.2.</span> <span class="nav-text">当底层搭建的被卡住的时候，而且明确知道不是自己的问题的时候，应该分精力给其他问题，而不是推卸责任似的死等</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
 
 
 
@@ -893,8 +437,21 @@ fields.</p>
 
 
 
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
 
 
+
+  
 
 
 
@@ -911,151 +468,61 @@ fields.</p>
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.0"></script>
-
-  <script src="/js/motion.js?v=7.1.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
-
-
-
-
-  
-  <script src="/js/scrollspy.js?v=7.1.0"></script>
-<script src="/js/post-details.js?v=7.1.0"></script>
-
-
-
-  
-
-
-  <script src="/js/next-boot.js?v=7.1.0"></script>
-
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-
-  
-
-
-
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
-    
-      <script type="text/x-mathjax-config">
-  
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
       
-      equationNumbers: {
-        autoNumber: 'AMS'
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
       }
-    }
-  });
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
-        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
-      }
-    });
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
-    }
-  });
-</script>
-<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
     
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
   
 

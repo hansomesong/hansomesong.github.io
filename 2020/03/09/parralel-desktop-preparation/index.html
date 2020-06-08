@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="parralel desktop 15 明显感觉到在使用 windows app的时候消耗的资源变少了。 安装注意事项: 1. 如果Mac安装有小红伞软件(Avira), 需要关闭实时保护功能，不然安装之后，显示软件被没有被激活 2. 安装完毕止后，关闭掉软件的自动更新。 3. 如果之前安装有 parallel desktop, 也许 # 科研环境 Microsoft office 2019 破解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="打造趁手的基于Parallel Desktop的Windows 10系统">
+<meta property="og:url" content="http://rennesong.com/2020/03/09/parralel-desktop-preparation/index.html">
+<meta property="og:site_name" content="Rennesong&#39;s blog">
+<meta property="og:description" content="parralel desktop 15 明显感觉到在使用 windows app的时候消耗的资源变少了。 安装注意事项: 1. 如果Mac安装有小红伞软件(Avira), 需要关闭实时保护功能，不然安装之后，显示软件被没有被激活 2. 安装完毕止后，关闭掉软件的自动更新。 3. 如果之前安装有 parallel desktop, 也许 # 科研环境 Microsoft office 2019 破解">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://rennesong.com/2020/03/09/parralel-desktop-preparation/endnotex9-install-step1.png">
+<meta property="og:image" content="http://rennesong.com/2020/03/09/parralel-desktop-preparation/endnotex9-install-step2.png">
+<meta property="og:image" content="http://rennesong.com/2020/03/09/parralel-desktop-preparation/中国知网文献导出3.png">
+<meta property="og:updated_time" content="2020-03-28T10:34:32.587Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="打造趁手的基于Parallel Desktop的Windows 10系统">
+<meta name="twitter:description" content="parralel desktop 15 明显感觉到在使用 windows app的时候消耗的资源变少了。 安装注意事项: 1. 如果Mac安装有小红伞软件(Avira), 需要关闭实时保护功能，不然安装之后，显示软件被没有被激活 2. 安装完毕止后，关闭掉软件的自动更新。 3. 如果之前安装有 parallel desktop, 也许 # 科研环境 Microsoft office 2019 破解">
+<meta name="twitter:image" content="http://rennesong.com/2020/03/09/parralel-desktop-preparation/endnotex9-install-step1.png">
+
+<link rel="canonical" href="http://rennesong.com/2020/03/09/parralel-desktop-preparation/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>打造趁手的基于Parallel Desktop的Windows 10系统 | Rennesong's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/03/09/parralel-desktop-preparation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          打造趁手的基于Parallel Desktop的Windows 10系统
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-09 16:49:13" itemprop="dateCreated datePublished" datetime="2020-03-09T16:49:13+08:00">2020-03-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-28 18:34:32" itemprop="dateModified" datetime="2020-03-28T18:34:32+08:00">2020-03-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>parralel desktop 15 明显感觉到在使用 windows app的时候消耗的资源变少了。 安装注意事项: 1. 如果Mac安装有小红伞软件(Avira), 需要关闭实时保护功能，不然安装之后，显示软件被没有被激活 2. 安装完毕止后，关闭掉软件的自动更新。 3. 如果之前安装有 parallel desktop, 也许 # 科研环境</p>
+<h2 id="microsoft-office-2019">Microsoft office 2019</h2>
+<p>破解版，通过拼多多购买。卖家提供了非常详细的安装说明，按照帮助文档一步步执行即可。 安装的时候需要注意，安装包文件需要放在windows文件下面(比如放在C盘下)打开，不然在点击IMG文件的时候，系统会报错”无法加载“ 安装文件存放于李玥的移动硬盘，名为<code>office2019</code>压缩包里。</p>
+<h2 id="microsoft-office-2019for-mac">Microsoft office 2019(for mac)</h2>
+<p>https://www.macappbox.com/a/office-2019-for-mac.html 在这个页面上下载了MS Office 2019 for mac安装包，但是没有安装，因为win10虚拟机里已经安装了MS office没有必要重复安装了，浪费空间！</p>
+<h2 id="endnote-x9">Endnote X9</h2>
+<p>参考链接：https://www.maoxinhang.com/2020/02/28/168/ 版本号 X9.3.1 中科大授权版， 注意事项: 1. 如果是在mac下下载得到的安装包，最好放置在windows系统盘下面 2. 关闭 windows defend 防病毒系统，避免安装过程出现问题 <img src="/2020/03/09/parralel-desktop-preparation/endnotex9-install-step1.png" alt="步骤一: 安装文件放置于C盘根目录下并打开"><span class="image-caption">步骤一: 安装文件放置于C盘根目录下并打开</span> <img src="/2020/03/09/parralel-desktop-preparation/endnotex9-install-step2.png" alt="步骤二: 安装文件会自动加载注册号无需其他操作"><span class="image-caption">步骤二: 安装文件会自动加载注册号无需其他操作</span></p>
+<h3 id="endnote-x9-使用技巧">Endnote X9 使用技巧</h3>
+<p>EndNote插入引文序号为上标怎么破？https://www.howsci.com/endnote-number-sup.html 如何将中国知网的文献导入到Endnote X9中？ 第一步: 访问中国知网查询页<code>http://new.gb.oversea.cnki.net/index/</code>, 并在搜索框中搜索需要的文献</p>
+<p>第二步：勾选要导出的文献后，选择【导出/参考文献】——进入下一页面——选择EndNote导出——下载的是一个text文件 <img src="/2020/03/09/parralel-desktop-preparation/中国知网文献导出3.png" alt="步骤2: 文献导出"><span class="image-caption">步骤2: 文献导出</span></p>
+<p>https://blog.csdn.net/lyc_daniel/article/details/12514057</p>
+<p>Endnote插入文献不现实URL怎么办？https://community.endnote.com/t5/EndNote-General/Showing-URLs-and-DOIs/td-p/26057</p>
+<p>如何获取RFC以及Internet draft文献的RIS格式引用信息？ 可以用开源社区提供的命令行工具包<code>bibutil</code>中的<code>bib2xml</code>以及<code>xml2ris</code> https://tex.stackexchange.com/questions/227852/conversion-of-bibtex-to-endnote-bibliography-02-12-2015/227920 下载地址: https://sourceforge.net/projects/bibutils/</p>
+<h3 id="windows平台下使用docker">Windows平台下使用docker</h3>
+<p>我本人没有这个需要，但是李洋提出了这个问题，并且考虑到以后学生有这方面的需求，还是需要记录下解决方案的。</p>
+<p>对windows 7/8等系统来说，可以采用docker toobox 对于windows 10来说，推荐docker desktop for windows, 采用基于Hyper-V的解决方案。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/11/26/micro-service-architecture/" rel="prev" title="Some notes about micro-service architecture">
+      <i class="fa fa-chevron-left"></i> Some notes about micro-service architecture
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/28/international-internet-arch/" rel="next" title="international-internet-arch">
+      international-internet-arch <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#microsoft-office-2019"><span class="nav-number">1.</span> <span class="nav-text">Microsoft office 2019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#microsoft-office-2019for-mac"><span class="nav-number">2.</span> <span class="nav-text">Microsoft office 2019(for mac)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#endnote-x9"><span class="nav-number">3.</span> <span class="nav-text">Endnote X9</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#endnote-x9-使用技巧"><span class="nav-number">3.1.</span> <span class="nav-text">Endnote X9 使用技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#windows平台下使用docker"><span class="nav-number">3.2.</span> <span class="nav-text">Windows平台下使用docker</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

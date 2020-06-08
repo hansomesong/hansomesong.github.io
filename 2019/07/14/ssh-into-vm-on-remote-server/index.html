@@ -1,100 +1,24 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.1.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="In daily work, we heavily rely on Vagrant VM to test and deploy our program. It is really straightfoward to log into a VM on our working PC (vagrant ssh). However, it may also be possible that we need">
 <meta property="og:type" content="article">
@@ -111,21 +35,16 @@
 <meta name="twitter:description" content="In daily work, we heavily rely on Vagrant VM to test and deploy our program. It is really straightfoward to log into a VM on our working PC (vagrant ssh). However, it may also be possible that we need">
 <meta name="twitter:image" content="http://rennesong.com/2019/07/14/ssh-into-vm-on-remote-server/ssh-into-remote-vm.png">
 
+<link rel="canonical" href="http://rennesong.com/2019/07/14/ssh-into-vm-on-remote-server/">
 
 
-  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
-
-
-
-  
-  
-  <link rel="canonical" href="http://rennesong.com/2019/07/14/ssh-into-vm-on-remote-server/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -137,15 +56,8 @@
 
 
 
-
-
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -154,9 +66,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -170,153 +81,69 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Rennesong's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
-      
-        <p class="site-subtitle">Blog my life from now on!</p>
-      
-    
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
-
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
+  </ul>
 </nav>
 
-
-
-  
 
 
 
@@ -324,133 +151,70 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/07/14/ssh-into-vm-on-remote-server/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">SSH log into a Vagrant VM on remote server via jump server
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          SSH log into a Vagrant VM on remote server via jump server
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-07-14 11:32:27" itemprop="dateCreated datePublished" datetime="2019-07-14T11:32:27+02:00">2019-07-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-19 00:33:41" itemprop="dateModified" datetime="2019-07-19T00:33:41+02:00">2019-07-19</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SSH/" itemprop="url" rel="index"><span itemprop="name">SSH</span></a></span>
-
-                
-                
-              
+              <time title="创建时间：2019-07-14 11:32:27" itemprop="dateCreated datePublished" datetime="2019-07-14T11:32:27+08:00">2019-07-14</time>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-07-19 06:33:41" itemprop="dateModified" datetime="2019-07-19T06:33:41+08:00">2019-07-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SSH/" itemprop="url" rel="index"><span itemprop="name">SSH</span></a>
+                </span>
+            </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -458,46 +222,38 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
         <p>In daily work, we heavily rely on Vagrant VM to test and deploy our program. It is really straightfoward to log into a VM on our working PC (<code>vagrant ssh</code>). However, it may also be possible that we need to access into a remote VM located in a remote server. How can we handle this?</p>
 <p>In this post, I will give a solution that I got during my work. Basically I have my working PC at home (Mac OSX), a public VPS instance serving as a jumper/proxy server (Ubuntu 16.04), a remote servert (Ubuntu) and a Vagrant VM instance created in my remote server. I want to do a proxyjump from the PC to the target going through the proxy. Authentication from the proxy to the target and from the PC to the proxy use pubkey authentication and each machine has its own key pair.</p>
 <p>The network topology of this use case is illustrated in the following figure:</p>
-<p><img src="/2019/07/14/ssh-into-vm-on-remote-server/ssh-into-remote-vm.png" alt="Network topology of use case"></p>
+<figure>
+<img src="/2019/07/14/ssh-into-vm-on-remote-server/ssh-into-remote-vm.png" alt="Network topology of use case"><span class="image-caption">Network topology of use case</span><figcaption>Network topology of use case</figcaption>
+</figure>
 <p>In a word, we need to finally connect to the VM via two jump servers: VPS server, remote server.</p>
 <p>In this <a href="/ssh-tuto.md">post</a>, we have dealed with how to connect to remote Ubuntu server via VPS instance</p>
-<h1>Preconditions</h1>
+<h1 id="preconditions">Preconditions</h1>
 <ul>
 <li>The working PC is running ssh-agent;</li>
 <li>working PC has password-less access to ubuntu server (even via jump server);</li>
 <li>ubuntu server has password-less access to Vagrant VM;</li>
-<li>Working PC’s ssh public key is present in ubuntu server: <code>~/.ssh/authorized_keys</code></li>
-<li>Ubuntu server’s ssh public key is present in <code>~/.ssh/authorized_keys</code></li>
+<li>Working PC's ssh public key is present in ubuntu server: <code>~/.ssh/authorized_keys</code></li>
+<li>Ubuntu server's ssh public key is present in <code>~/.ssh/authorized_keys</code></li>
 </ul>
-<h1>Prerequisite knowledge <code>netcat</code> command</h1>
-<p>Netcat utility can be used to created TCP tunnel (port forwarding). Here is how to establish a tunnel using netcat to a given host and port.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netcat -L 127.0.0.1:22 -p 8080 -vvv</span><br></pre></td></tr></table></figure>
-<p>Listen on port 8080 of the server, and when somebody tries to connect, establish a link with 127.0.0.1:22 (i.e.: SSH server).</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netcat -L google.fr:80 -p 25000 -vvv</span><br></pre></td></tr></table></figure>
+<h1 id="prerequisite-knowledge-netcat-command">Prerequisite knowledge <code>netcat</code> command</h1>
+<p>Netcat utility can be used to created TCP tunnel (port forwarding). Here is how to establish a tunnel using netcat to a given host and port. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netcat -L 127.0.0.1:22 -p 8080 -vvv</span><br></pre></td></tr></table></figure></p>
+<p>Listen on port 8080 of the server, and when somebody tries to connect, establish a link with 127.0.0.1:22 (i.e.: SSH server). <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netcat -L google.fr:80 -p 25000 -vvv</span><br></pre></td></tr></table></figure></p>
 <p>Listen on port 25000 of the server, and when somebody tries to connect, connect him to Google web server.</p>
-<h1>ProxyCommand directive</h1>
+<h1 id="proxycommand-directive">ProxyCommand directive</h1>
 <p>This part is taken from this <a href="https://backreference.org/2010/02/26/jump-in-with-ssh-and-netcat/" target="_blank" rel="noopener">tutorial</a>. This post also gives a solution based on DNAT on proxy server. It is worth of carefully reading on it.</p>
 <p>Essentially, a command is specified that SSH will use as a transport channel to connect to the target host. That is, instead of using TCP as usual, where I/O is performed through a network socket, it will write to and read from respectively the standard input(<code>stdin</code>) and standard output(<code>stdout</code>) of the given command. It follows that such command should eventually convert its <code>stdin</code> and <code>stdout</code> into a true network connection to some host. In other words, a command that acts like <code>cat</code> on one side but that also connects to a network socket and moves data back and forth between the two channels. As you guessed, this command is <code>netcat</code>.</p>
-<p>Here’s how we can use it in the <code>ProxyCommand</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># ~/.ssh/config</span><br><span class="line">Host internal1</span><br><span class="line">User root</span><br><span class="line">ProxyCommand ssh user@firewall &apos;nc 192.168.0.1 22&apos;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/07/14/ssh-into-vm-on-remote-server/proxycommand-netcat-illustration.png" alt="Combination usage of ProxyCommand and netcat"></p>
-<p>The actual connection between sshd and netcat on the sshd side uses a UNIX socket, or a pipe in recent versions of SSH, not shown above for simplicity; the result is what you see above. And <code>stdin</code> and <code>stdout</code> just mean file descriptor <code>0</code> and <code>1</code> here. The dashed red arrow indicates the logical bidirectional channel that is established. Of course this is not enough as it’s just a transport channel; the SSH negotiation should be carried on and eventually completed. By using the above command as <code>ProxyCommand</code>, ssh then uses this new channel (instead of TCP) to carry on the usual protocol negotiation, effectively talking to the SSH daemon on the internal host:</p>
-<p>If you are curious and want to verify that ssh is really reading from/writing to the local <code>stdin/stdout</code>, thus effectively using the transport channel created by <code>ProxyCommand</code> (comment: <code>ProxyCommand</code> actually establish a logicl transport channel so that client and server can negociate with each other. That’s why without <code>ssh-add</code> command, client will use its local keys to authenticate with server, instead of using keys in proxy server), you can modify the <code>ProxyCommand</code> directive as follows:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># ~/.ssh/config</span><br><span class="line">Host internal1</span><br><span class="line">User root</span><br><span class="line">ProxyCommand tee /tmp/loc2rem | ssh user@firewall &apos;nc 192.168.0.1 22&apos; | tee /tmp/rem2loc</span><br></pre></td></tr></table></figure>
+<p>Here's how we can use it in the <code>ProxyCommand</code>: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># ~/.ssh/config</span><br><span class="line">Host internal1</span><br><span class="line">User root</span><br><span class="line">ProxyCommand ssh user@firewall &apos;nc 192.168.0.1 22&apos;</span><br></pre></td></tr></table></figure></p>
+<figure>
+<img src="/2019/07/14/ssh-into-vm-on-remote-server/proxycommand-netcat-illustration.png" alt="Combination usage of ProxyCommand and netcat"><span class="image-caption">Combination usage of ProxyCommand and netcat</span><figcaption>Combination usage of ProxyCommand and netcat</figcaption>
+</figure>
+<p>The actual connection between sshd and netcat on the sshd side uses a UNIX socket, or a pipe in recent versions of SSH, not shown above for simplicity; the result is what you see above. And <code>stdin</code> and <code>stdout</code> just mean file descriptor <code>0</code> and <code>1</code> here. The dashed red arrow indicates the logical bidirectional channel that is established. Of course this is not enough as it's just a transport channel; the SSH negotiation should be carried on and eventually completed. By using the above command as <code>ProxyCommand</code>, ssh then uses this new channel (instead of TCP) to carry on the usual protocol negotiation, effectively talking to the SSH daemon on the internal host:</p>
+<p>If you are curious and want to verify that ssh is really reading from/writing to the local <code>stdin/stdout</code>, thus effectively using the transport channel created by <code>ProxyCommand</code> (comment: <code>ProxyCommand</code> actually establish a logicl transport channel so that client and server can negociate with each other. That's why without <code>ssh-add</code> command, client will use its local keys to authenticate with server, instead of using keys in proxy server), you can modify the <code>ProxyCommand</code> directive as follows: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># ~/.ssh/config</span><br><span class="line">Host internal1</span><br><span class="line">User root</span><br><span class="line">ProxyCommand tee /tmp/loc2rem | ssh user@firewall &apos;nc 192.168.0.1 22&apos; | tee /tmp/rem2loc</span><br></pre></td></tr></table></figure></p>
 <p>The first <code>tee</code> command is to capture the <code>stdin</code> of the <code>ProxyCommand</code> (ie, what goes from client to internal1), the last <code>tee</code> is to capture its <code>stdout</code> (ie, what goes from internal1 to client). Adding those extra commands does not change the semantics of the <code>ProxyCommand</code>, which overall still looks like a command that presents <code>stdin/stdout</code> on the local side, and connects to internal1 on the remote side. However, by adding those tees we are able to save the data in transit in two files, one per direction, imaginatively named loc2rem and rem2loc.</p>
-<h1>Solution</h1>
-<p>Basically, there are three solutions:</p>
-<ol>
-<li>Copy the private key initially stored in the remote Ubuntu server (using <code>vagrant ssh-config</code> to check the location) to your working host and configure it to be used.</li>
-<li><code>ssh -t ubuntu_server ssh vagrant_vm</code>. This method will create a dedicated SSH process in remote Ubuntu server that read private key inside and connect to the vagrant VM</li>
-<li><code>ProxyCommand</code> + <code>SSH agent forwardig</code> + <code>ssh-add</code>. The corresponding entry in <code>~/.ssh/config</code>: The concrete command</li>
-</ol>
+<h1 id="solution">Solution</h1>
+<p>Basically, there are three solutions: 1. Copy the private key initially stored in the remote Ubuntu server (using <code>vagrant ssh-config</code> to check the location) to your working host and configure it to be used. 2. <code>ssh -t ubuntu_server ssh vagrant_vm</code>. This method will create a dedicated SSH process in remote Ubuntu server that read private key inside and connect to the vagrant VM 3. <code>ProxyCommand</code> + <code>SSH agent forwardig</code> + <code>ssh-add</code>. The corresponding entry in <code>~/.ssh/config</code>: The concrete command</p>
 <pre><code># Entry to connect to remote ubuntu server
 Host ubuntu_server
     ...
@@ -507,8 +263,7 @@ Host sfc103-vm
     User vagrant
     HostName localhost
     Port 2222
-    ProxyCommand ssh -T -q -o 'ForwardAgent yes' ubuntu_server 'ssh-add -t 10 ~/.ssh/mykey &amp;&amp; nc %h %p'
-</code></pre>
+    ProxyCommand ssh -T -q -o &#39;ForwardAgent yes&#39; ubuntu_server &#39;ssh-add -t 10 ~/.ssh/mykey &amp;&amp; nc %h %p&#39;</code></pre>
 <ul>
 <li><code>ssh -T -q</code> indicates that it should not allocate a pseudo-TTY (-T) and be quiet (-q);</li>
 <li>once on the jump server <code>ubuntu_server</code>, we add the key to the SSH keys of working PC through <code>ssh-add</code>;</li>
@@ -516,362 +271,159 @@ Host sfc103-vm
 <li><code>ssh-add -t 10</code> indicates that I want the key to be added only for the 10 seconds needed to authenticate to the final VM;</li>
 <li>and finally, <code>nc %h %p</code> initiates a netcat connection to the final VM %h at port %p. If the DNS on the <code>ubuntu_server</code> works correctly, you can even save some keystrokes by using the <code>%h</code> and <code>%p</code> variables that ssh makes available in a <code>ProxyCommand</code>. These two variables are replaced by the supplied hostname and port respectively, based on the information in the ~/.ssh/config file. In this example, %h=localhost, %p=2222). The port defaults to 22 if not provided,</li>
 </ul>
-<p>Actually, <code>SSH agent forwarding</code> as that’s bad practice and currently insecure. Same with <code>ssh -t jump ssh server</code> as that runs another ssh process in the jump server and if attackers have access to the machine they can compromise the ssh binary and still gain access.</p>
-<h1>The difference between SSH into Ubuntu server and into Vagrant VM</h1>
+<p>Actually, <code>SSH agent forwarding</code> as that's bad practice and currently insecure. Same with <code>ssh -t jump ssh server</code> as that runs another ssh process in the jump server and if attackers have access to the machine they can compromise the ssh binary and still gain access.</p>
+<h1 id="the-difference-between-ssh-into-ubuntu-server-and-into-vagrant-vm">The difference between SSH into Ubuntu server and into Vagrant VM</h1>
 <p>Both SSH connection into remote Ubuntu server and Vagrant VM require jump server. What are the differences? The only difference lies in the location of private key (i.g. <code>IdentityFile</code> directive in config file). To enable SSH connection to my Ubuntu server, I rely on the private key stored in standard location(<code>~/.ssh/id_rsa</code>) and copy the corresponding public key into the latter. In addition, jump server (i.e. VPS) also relies on its own private key, in standard location, to password-less connect with Ubuntu server.</p>
 <p>We have to make sure that the SSH connection to Vagrant VM is password-less.</p>
-<p>Directive <code>ProxyCommand</code> jsut gives a tunnel to pipe the outer ssh connection through. <code>ProxyCommand</code> will always authenticate from your local host (i.e. using your local private key). When you do ssh vagrant VM from ubuntu server, you’re probably using a key on your account on ubuntu server. When you do ssh vagrant VM from your working PC, the fact that you’re connecting via that <code>nc</code> command started on ubuntu server is not going to magically give you access to the keys on ubuntu server. We will need to add ubuntu’s keys (private to connect to Vagrant VM) to the SSH agent of working PC (i.e. Mac OSX).</p>
+<p>Directive <code>ProxyCommand</code> jsut gives a tunnel to pipe the outer ssh connection through. <code>ProxyCommand</code> will always authenticate from your local host (i.e. using your local private key). When you do ssh vagrant VM from ubuntu server, you're probably using a key on your account on ubuntu server. When you do ssh vagrant VM from your working PC, the fact that you're connecting via that <code>nc</code> command started on ubuntu server is not going to magically give you access to the keys on ubuntu server. We will need to add ubuntu's keys (private to connect to Vagrant VM) to the SSH agent of working PC (i.e. Mac OSX).</p>
 <p>For instance:</p>
 
-      
     </div>
 
     
-
-    
-    
-    
-
-    
-
-    
-      
     
     
 
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/07/13/maven-tuto/" rel="prev" title="maven-tuto">
+      <i class="fa fa-chevron-left"></i> maven-tuto
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/08/22/dell-r740-handons-notes/" rel="next" title="Notes about hands-on on Dell PowerEdge R740">
+      Notes about hands-on on Dell PowerEdge R740 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
     
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/07/13/maven-tuto/" rel="next" title="maven-tuto">
-                <i class="fa fa-chevron-left"></i> maven-tuto
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/22/dell-r740-handons-notes/" rel="prev" title="dell_r740_handons_notes">
-                dell_r740_handons_notes <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
   </article>
+  
+  
+  
 
-
-  </div>
 
 
           </div>
           
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">rennsong</p>
-              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">47</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">20</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/hansomesong" title="GitHub &rarr; https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Preconditions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Prerequisite knowledge netcat command</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">ProxyCommand directive</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">The difference between SSH into Ubuntu server and into Vagrant VM</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">rennsong</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
 
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#preconditions"><span class="nav-number">1.</span> <span class="nav-text">Preconditions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#prerequisite-knowledge-netcat-command"><span class="nav-number">2.</span> <span class="nav-text">Prerequisite knowledge netcat command</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proxycommand-directive"><span class="nav-number">3.</span> <span class="nav-text">ProxyCommand directive</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#solution"><span class="nav-number">4.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-difference-between-ssh-into-ubuntu-server-and-into-vagrant-vm"><span class="nav-number">5.</span> <span class="nav-text">The difference between SSH into Ubuntu server and into Vagrant VM</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
 
 
 
@@ -880,125 +432,35 @@ Host sfc103-vm
 
 
 
+      </div>
+    </footer>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.0"></script>
-
-  <script src="/js/motion.js?v=7.1.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
 
-  
-  <script src="/js/scrollspy.js?v=7.1.0"></script>
-<script src="/js/post-details.js?v=7.1.0"></script>
-
-
-
-  
-
-
-  <script src="/js/next-boot.js?v=7.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-
-  
 
 
 
 
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
 
 
-  
 
-  
 
-  
 
-  
 
-  
-
-  
-
-  
-
-  
 
   
 

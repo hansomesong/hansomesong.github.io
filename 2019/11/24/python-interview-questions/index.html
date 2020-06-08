@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="学习Python路线图: Python基础知识 Python 基础数据类型以及数据结构 列表 字符串(以及正则表达式) 在python中，由单引号、双引号和三引号引起来的内容就是字符串。 #### 字典 #### 集合 #### 哈哈 Python OS module import os os.path.join() os.listdir() os.path.isdir() Python 单元测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 常见面试问题准备">
+<meta property="og:url" content="http://rennesong.com/2019/11/24/python-interview-questions/index.html">
+<meta property="og:site_name" content="Rennesong&#39;s blog">
+<meta property="og:description" content="学习Python路线图: Python基础知识 Python 基础数据类型以及数据结构 列表 字符串(以及正则表达式) 在python中，由单引号、双引号和三引号引起来的内容就是字符串。 #### 字典 #### 集合 #### 哈哈 Python OS module import os os.path.join() os.listdir() os.path.isdir() Python 单元测试">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-28T09:52:24.766Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 常见面试问题准备">
+<meta name="twitter:description" content="学习Python路线图: Python基础知识 Python 基础数据类型以及数据结构 列表 字符串(以及正则表达式) 在python中，由单引号、双引号和三引号引起来的内容就是字符串。 #### 字典 #### 集合 #### 哈哈 Python OS module import os os.path.join() os.listdir() os.path.isdir() Python 单元测试">
+
+<link rel="canonical" href="http://rennesong.com/2019/11/24/python-interview-questions/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Python 常见面试问题准备 | Rennesong's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/11/24/python-interview-questions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python 常见面试问题准备
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-24 10:24:47" itemprop="dateCreated datePublished" datetime="2019-11-24T10:24:47+08:00">2019-11-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-28 17:52:24" itemprop="dateModified" datetime="2019-11-28T17:52:24+08:00">2019-11-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="学习python路线图">学习Python路线图:</h1>
+<h2 id="python基础知识">Python基础知识</h2>
+<h3 id="python-基础数据类型以及数据结构">Python 基础数据类型以及数据结构</h3>
+<h4 id="列表">列表</h4>
+<h4 id="字符串以及正则表达式">字符串(以及正则表达式)</h4>
+<p>在python中，由单引号、双引号和三引号引起来的内容就是字符串。 #### 字典 #### 集合 #### 哈哈</p>
+<h3 id="python-os-module">Python OS module</h3>
+<p>import os os.path.join() os.listdir() os.path.isdir()</p>
+<h3 id="python-单元测试是如何进行的">Python 单元测试是如何进行的?</h3>
+<h3 id="python-内存分析以及内存管理">Python 内存分析以及内存管理</h3>
+<p>https://www.cnblogs.com/geaozhang/p/7111961.html https://stackoverflow.com/questions/14546178/does-python-have-a-stack-heap-and-how-is-memory-managed</p>
+<h2 id="python高级特性">Python高级特性</h2>
+<ul>
+<li>Python 迭代器，生成器</li>
+<li>Python 闭包函数 https://zhuanlan.zhihu.com/p/22229197</li>
+<li>Python 装饰器</li>
+<li>Python GIL 多进程 多线程 https://realpython.com/python-gil/</li>
+</ul>
+<h2 id="面试中常见的算法">面试中常见的算法</h2>
+<ul>
+<li>DFS, BFS</li>
+<li>反转二叉树, 查找重复数字</li>
+</ul>
+<h2 id="python垂直领域应用">Python垂直领域应用</h2>
+<ul>
+<li>web开发: flask, 爬虫</li>
+<li>数据分析: numpy + pandas</li>
+<li>AI 领域: Pytorch</li>
+<li></li>
+</ul>
+<h1 id="python的内存管理模型">Python的内存管理模型</h1>
+<p>对于任何编程语言，我们都需要从下面两个方面去理解其内存管理(memory management)模型: * 内存的分配 * 无用内存的回收 (手动内存回收, 如C语言，以及自动内存回收，如Java/Python)</p>
+<p>Python memory is managed by Python private heap space. Python语言中的内存管理是通过私有堆空间(private heap space) 进行的。任何Python对象以及数据结果都是存储在一个私有的堆空间(private heap spaace)中。程序员必须通过Python解释器进行相关的操作，无法直接访问该私有堆空间。</p>
+<p>Python的垃圾回收机制: 在Python中，每个对象都有指向该对象的引用总数---引用计数(refcount). 对于任何一个Python对象而言，以下操作会导致引用计数的增减: 创建对象，被赋值给其他对象，该对象成为别的容器对象中的一个元素，被作为参数传递给函数. 导致引用计数减小的操作: * 对象的别名被显式的销毁 如 del m * 对象的一个别名被赋值给其他对象 * 对象从一个窗口对象中移除，或，窗口对象本身被销毁 a.remove(123) * 一个本地引用离开了它的作用域，比如上面的foo(x)函数结束时，x指向的对象引用减1。</p>
+<p>当Python的某个对象的引用计数降为0时，说明没有任何引用指向该对象，该对象就成为要被回收的垃圾。</p>
+<h1 id="python易错面试题陷阱题">Python易错面试题(陷阱题)</h1>
+<p>https://lvraikkonen.github.io/2017/06/12/(%E8%BD%AC)Python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%9D%A2%E8%AF%95%E9%A2%98/</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/11/05/dynamic-programming/" rel="prev" title="动态规划之最长公共子序列(附过程图解)">
+      <i class="fa fa-chevron-left"></i> 动态规划之最长公共子序列(附过程图解)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/11/25/5G/" rel="next" title="5G">
+      5G <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#学习python路线图"><span class="nav-number">1.</span> <span class="nav-text">学习Python路线图:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python基础知识"><span class="nav-number">1.1.</span> <span class="nav-text">Python基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#python-基础数据类型以及数据结构"><span class="nav-number">1.1.1.</span> <span class="nav-text">Python 基础数据类型以及数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#列表"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串以及正则表达式"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">字符串(以及正则表达式)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python-os-module"><span class="nav-number">1.1.2.</span> <span class="nav-text">Python OS module</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python-单元测试是如何进行的"><span class="nav-number">1.1.3.</span> <span class="nav-text">Python 单元测试是如何进行的?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python-内存分析以及内存管理"><span class="nav-number">1.1.4.</span> <span class="nav-text">Python 内存分析以及内存管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python高级特性"><span class="nav-number">1.2.</span> <span class="nav-text">Python高级特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试中常见的算法"><span class="nav-number">1.3.</span> <span class="nav-text">面试中常见的算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python垂直领域应用"><span class="nav-number">1.4.</span> <span class="nav-text">Python垂直领域应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python的内存管理模型"><span class="nav-number">2.</span> <span class="nav-text">Python的内存管理模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python易错面试题陷阱题"><span class="nav-number">3.</span> <span class="nav-text">Python易错面试题(陷阱题)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

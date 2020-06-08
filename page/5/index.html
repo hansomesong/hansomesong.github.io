@@ -1,100 +1,24 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.1.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="Personal blog site, to note technique and life related articles">
 <meta property="og:type" content="website">
@@ -107,21 +31,16 @@
 <meta name="twitter:title" content="Rennesong&#39;s blog">
 <meta name="twitter:description" content="Personal blog site, to note technique and life related articles">
 
+<link rel="canonical" href="http://rennesong.com/page/5/">
 
 
-  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
-
-
-
-  
-  
-  <link rel="canonical" href="http://rennesong.com/page/5/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -133,15 +52,8 @@
 
 
 
-
-
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -150,9 +62,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -166,154 +77,69 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right 
-  page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Rennesong's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
-      
-        <p class="site-subtitle">Blog my life from now on!</p>
-      
-    
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
-
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
+  </ul>
 </nav>
 
-
-
-  
 
 
 
@@ -321,985 +147,74 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content index posts-expand">
             
-  <section id="posts" class="posts-expand">
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2015/08/01/win10-ubuntun-dual-boot-system/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/08/scapy-learning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/08/01/win10-ubuntun-dual-boot-system/" class="post-title-link" itemprop="url">Windows 10 和 Ubuntu 15.04 dual-boot 系统安装全攻略</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/08/scapy-learning/" class="post-title-link" itemprop="url">scapy-learning</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2015-08-01 16:33:47" itemprop="dateCreated datePublished" datetime="2015-08-01T16:33:47+02:00">2015-08-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-25 11:27:10" itemprop="dateModified" datetime="2019-03-25T11:27:10+01:00">2019-03-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              2015年7月末，微软终于发布了新一代操作系统Windows 10。据说相对于Windows 8有了非常大的改进，加上利用学校的邮箱可以免费下载到MSNAA的ISO镜像并且附送激活码，更重要的是，现在手里有一台购于2013年西天，型号为SVE141CCW的SONY电脑闲置。所以，我决定抽出一两天的时
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2015/08/01/win10-ubuntun-dual-boot-system/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2015/07/30/Common-used-vim-commands/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/07/30/Common-used-vim-commands/" class="post-title-link" itemprop="url">常用 VIM 命令备忘</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-07-30 23:59:36" itemprop="dateCreated datePublished" datetime="2015-07-30T23:59:36+02:00">2015-07-30</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-25 11:27:10" itemprop="dateModified" datetime="2019-03-25T11:27:10+01:00">2019-03-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              利用此贴记录下自己常用的VIM的命令，备忘：
-在command mode下，键入
-shift+G:    跳转至文章的最后一行
-gg:         跳转至文章的开头
-o:          跳转至光标当前所在行的下一行并进入insert mode
-Error trying to parse se
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2015/07/30/Common-used-vim-commands/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2015/07/29/How-to-install-node-js-and-npm-on-Mac/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/07/29/How-to-install-node-js-and-npm-on-Mac/" class="post-title-link" itemprop="url">如何在Mac Yosemite中安装node.js以及NPM</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-07-29 21:04:34" itemprop="dateCreated datePublished" datetime="2015-07-29T21:04:34+02:00">2015-07-29</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-25 11:27:10" itemprop="dateModified" datetime="2019-03-25T11:27:10+01:00">2019-03-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              想要使用 Githubs pages 和 hexo 搭建一个静态博客站点，因为 hexo 是台湾小伙儿 tommy3551 使用 Node.js 开发的一个模板引擎，以及我的工作电脑的操作系统系统是 Mac 10.10.4 (Yosemite)。因此，为了使用 hexo, 我首先需要在Mac下安装 
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2015/07/29/How-to-install-node-js-and-npm-on-Mac/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2015/07/28/Apply-USA-VISA-in-Paris/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/07/28/Apply-USA-VISA-in-Paris/" class="post-title-link" itemprop="url">2015年巴黎申请美国10年签证全攻略</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-07-28 22:19:24" itemprop="dateCreated datePublished" datetime="2015-07-28T22:19:24+02:00">2015-07-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-27 14:56:52" itemprop="dateModified" datetime="2019-03-27T14:56:52+01:00">2019-03-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/签证/" itemprop="url" rel="index"><span itemprop="name">签证</span></a></span>
-
-                
-                
-              
+              <time title="创建时间：2019-04-08 23:18:53" itemprop="dateCreated datePublished" datetime="2019-04-08T23:18:53+08:00">2019-04-08</time>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              前言
-话说，今年3月向 VTC2015fall 投了一篇论文，5月中下旬的时候收到邮件说论文被接收了，很开心。一方面这是自己人生的第一篇Paper, 另一方面会议的地点是Boston。利用这次开会的机会，终于有机会亲赴美帝，好好了解一下这个建国不过三百年却跻身为蓝星历史上第一强权的国家。另外女朋友Y
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2015/07/28/Apply-USA-VISA-in-Paris/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2015/07/28/How-to-establish-personal-blog-with-Github-pages-and-hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/07/28/How-to-establish-personal-blog-with-Github-pages-and-hexo/" class="post-title-link" itemprop="url">Github Pages 和 hexo 建立个人博客教程</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-07-28 16:00:46" itemprop="dateCreated datePublished" datetime="2015-07-28T16:00:46+02:00">2015-07-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-25 11:27:10" itemprop="dateModified" datetime="2019-03-25T11:27:10+01:00">2019-03-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              前言
-一直有亲自搭建一个个人博客记录下自己生活学习中点滴的想法, 但每次都以“没有时间”为托词将这个想法压了下去。久而久之这个“宏大”的想法也就被抛诸脑后了。2015年7月，学校里的老师同学差不多都去度假了。老板走之前给我留下了一堆任务，比如 NS-3 的安装使用。于是又像往常一样。在各种技术博客的
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2015/07/28/How-to-establish-personal-blog-with-Github-pages-and-hexo/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2015/06/24/今天练车又有一个挫败感/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/06/24/今天练车又有一个挫败感/" class="post-title-link" itemprop="url">法国学车感悟(2)</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-12 18:04:48" itemprop="dateModified" datetime="2019-04-12T18:04:48+08:00">2019-04-12</time>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-06-24 17:57:49" itemprop="dateCreated datePublished" datetime="2015-06-24T17:57:49+02:00">2015-06-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/scapy/" itemprop="url" rel="index"><span itemprop="name">scapy</span></a>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-27 15:17:22" itemprop="dateModified" datetime="2019-03-27T15:17:22+01:00">2019-03-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/驾驶/" itemprop="url" rel="index"><span itemprop="name">驾驶</span></a></span>
-
-                
-                
-              
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/scapy/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -1307,185 +222,98 @@ Error trying to parse se
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <h1 id="scapy-安装">Scapy 安装</h1>
+<p>https://github.com/phaethon/kamene. kamene is more than buggy and outdated. It’s based on a 2015 version of scapy, and is missing around 3000 commits (in year of 2018)</p>
+<p>https://github.com/secdev/scapy 这个明显更活跃 功能也最全面 比如有对NSH的支持</p>
+<h1 id="scapy-开发过程中的问题">Scapy 开发过程中的问题</h1>
+<ul>
+<li>从版本 2.2.0 开始，scapy 社区有人创建了一个只支持 python 3 的项目克隆(fork). 遗憾的是，该项目克隆发展有些混乱，并且没有将共享回馈给 scapy 社区。更严重的是，这个项目克隆被有些 Linux 发行版被打包成<code>python3-scapy</code>软件包，被 PyPI 收录成为了<code>scapy-python3</code>. 这给用户的使用带来了更大的困扰.</li>
+<li>从版本 2.4.0 开始, scapy 同时支持 python 3 和 Python 2. 开源项目都建议以 Scapy v2.4.0 官方代码基础. 该项目克隆被重命名为 <a href="https://github.com/phaethon/kamene" target="_blank" rel="noopener">kamene</a>.</li>
+</ul>
+<h1 id="scapy-教程">Scapy 教程</h1>
+<p>https://thepacketgeek.com/scapy-sniffing-with-custom-actions-part-1/</p>
+<h1 id="scapy-api-查询">Scapy API 查询</h1>
+<p>https://fossies.org/dox/scapy-2.4.2/namespacescapy_1_1sendrecv.html</p>
+<h1 id="section"></h1>
+<p>sniff The filter parameter needs a BPF filter. The correct syntax is hence <code>filter="ether dst aa:bb:cc:dd:ee:ff"</code>.</p>
+<p>Paramter <code>count</code> allows to limite la capture à 5 paquets (0 indique «sans arrêt»).</p>
+<p><code>filter</code> permet de donner une expression de filtrage avec la syntaxe de <code>tcpdump</code>.</p>
+<h1 id="send-back-modified-packet">send back modified packet</h1>
+<ul>
+<li>send(): send a Layer 3 packet</li>
+<li>sendp(): send a Layer 2 packet</li>
+</ul>
+<h1 id="troubleshooting">Troubleshooting</h1>
+<h2 id="通过-ssh-远程到另一台服务器上启动-scapy">通过 SSH 远程到另一台服务器上启动 scapy</h2>
+<p>当我SSH进远程服务器试着执行<code>sudo scapy</code>的时候，遇到了如下错误. 有意思的是，通过teamviewer远程到远程服务器的时候，scapy 顺利启动并没有任何问题！ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Failed to connect to Mir: Failed to connect to server socket: No such file or directory</span><br><span class="line">Unable to init server: Could not connect: Connection refused</span><br><span class="line"></span><br><span class="line">(scapy:29722): Gtk-WARNING **: Locale not supported by C library.</span><br><span class="line">    Using the fallback &apos;C&apos; locale.</span><br><span class="line">Failed to connect to Mir: Failed to connect to server socket: No such file or directory</span><br><span class="line">Unable to init server: Could not connect: Connection refused</span><br><span class="line"></span><br><span class="line">(scapy:29722): Gdk-CRITICAL **: gdk_cursor_new_for_display: assertion &apos;GDK_IS_DISPLAY (display)&apos; failed</span><br></pre></td></tr></table></figure></p>
+<p>解决方案： 在发起 SSH 连接的电脑(而不是被远程访问的电脑)终端里输入如下命令： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export DISPLAY=:0</span><br></pre></td></tr></table></figure></p>
+<p>有的网友说，在他们的机器里(Gnome on Ubuntu 16.04) <code>DISPLAY=:1</code> 有用.</p>
 
-      
-        
-          
-            <p>
-              今天练车又有一个挫败感：
-第一个错误：忘记了放手刹。起步五部曲，怎么突然之间忘了个精光！
-第二个错误：il y avait un paneau 30 avant le roint point, 我又错过了 30 的限速牌，结果又没看到解除限速30的盘子
-第三个错误：进入 Roind point 太快
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2015/06/24/今天练车又有一个挫败感/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2015/06/18/今天是开车的第20个小时/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/01/vagrant-virtualbox-install/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/06/18/今天是开车的第20个小时/" class="post-title-link" itemprop="url">法国学车感悟(1)</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/01/vagrant-virtualbox-install/" class="post-title-link" itemprop="url">How to install VirtualBox and Vagrant under ubuntu 16.04</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2015-06-18 17:57:49" itemprop="dateCreated datePublished" datetime="2015-06-18T17:57:49+02:00">2015-06-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-27 15:32:49" itemprop="dateModified" datetime="2019-03-27T15:32:49+01:00">2019-03-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/驾驶/" itemprop="url" rel="index"><span itemprop="name">驾驶</span></a></span>
-
-                
-                
-              
+              <time title="创建时间：2019-04-01 07:38:22" itemprop="dateCreated datePublished" datetime="2019-04-01T07:38:22+08:00">2019-04-01</time>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-23 17:00:29" itemprop="dateModified" datetime="2019-10-23T17:00:29+08:00">2019-10-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vagrant/" itemprop="url" rel="index"><span itemprop="name">vagrant</span></a>
+                </span>
+            </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -1493,69 +321,906 @@ Error trying to parse se
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>VirtualBox 5.2 is a major upgrade and the UI takes on a more polished and modern feel. There are a few additional features available;</p>
+<ul>
+<li>New ability to enable export VM to Oracle Cloud</li>
+<li>Unattended guest installation</li>
+<li>Virtual Media Manager and Snapshot Pane re-work</li>
+</ul>
+<p>Note that if Vagrant want to use VirtualBox 5.2 as provider, make sure that the version of installed Vagrant should be greater than 2.0.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_x86_64.deb</span><br><span class="line">sudo dpkg -i vagrant_2.2.6_x86_64.deb</span><br></pre></td></tr></table></figure>
+<h1 id="installation-of-virtualbox-5.2.x-on-ubuntu">Installation of Virtualbox 5.2.x on Ubuntu</h1>
+<h2 id="step-1-update-ubuntu">step 1: Update Ubuntu</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update </span><br><span class="line">sudo apt-get upgrade</span><br><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure>
+<p>if you need to upgrade your linux system, you can: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get dist-upgrade</span><br></pre></td></tr></table></figure></p>
+<h2 id="step-2-install-required-linux-headers">Step 2: Install Required Linux Headers</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install gcc make linux-headers-$(uname -r) dkms</span><br></pre></td></tr></table></figure>
+<h2 id="step-3-add-virtualbox-repository-and-key">step 3: Add VirtualBox Repository and key</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -</span><br><span class="line">wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -</span><br></pre></td></tr></table></figure>
+<p>Next run the commands below to add VirtualBox repository to your system. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" &gt;&gt; /etc/apt/sources.list'</span><br></pre></td></tr></table></figure></p>
+<h2 id="step-4-remove-all-previously-installed-virtualbox">step 4: Remove all previously installed virtualbox</h2>
+<p>Find installed package using below command: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -l | grep virtualbox</span><br></pre></td></tr></table></figure></p>
+<p>For my cases: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ii  unity-scope-virtualbox                     0.1+13.10.20130723-0ubuntu1                  all          VirtualBox scope for Unity</span><br><span class="line">rF  virtualbox-5.1                             5.1.38-122592~Ubuntu~xenial                  amd64        Oracle VM VirtualBox</span><br><span class="line">rc  virtualbox-6.0                             6.0.0-127566~Ubuntu~xenial                   amd64        Oracle VM VirtualBox</span><br><span class="line">ii  virtualbox-dkms                            5.1.38-dfsg-0ubuntu1.16.04.3                 all          x86 virtualization solution - kernel module sources for dkms</span><br><span class="line">rc  virtualbox-qt                              5.1.38-dfsg-0ubuntu1.16.04.3                 amd64        x86 virtualization solution - Qt based user interface</span><br></pre></td></tr></table></figure></p>
+<p>Then copy <packages> and remove using dpkg or apt-get as below: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg --purge &lt;Packages&gt;</span><br></pre></td></tr></table></figure></packages></p>
+<p><code>--force-all</code> optional</p>
+<h2 id="step-4-install-virtualbox-5.2">Step 4: Install VirtualBox 5.2</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y virtualbox-5.2</span><br></pre></td></tr></table></figure>
+<p>To verify if VirtualBox is installed, run the commands below. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage -v</span><br></pre></td></tr></table></figure></p>
+<h2 id="step-5-install-virtualbox-extension-pack">Step 5: Install VirtualBox Extension Pack</h2>
+<p>Everytime you install VirtualBox make sure to install the extension pack as well. The pack enables VRDP (Virtual Remote Desktop Protocol) and many other enhancements.</p>
+<p>Given that we install virtualbox 5.26, to install it, run the commands below <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -O http://download.virtualbox.org/virtualbox/5.2.26/Oracle_VM_VirtualBox_Extension_Pack-5.2.26-128414.vbox-extpack</span><br><span class="line">sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-5.2.26-128414.vbox-extpack</span><br></pre></td></tr></table></figure></p>
+<p>Agree to the terms and install.</p>
+<p>Run the commands below to view the extension pack installed. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBoxManage list extpacks</span><br></pre></td></tr></table></figure></p>
+<h2 id="step-6-check-and-install-vbox-guest-additions">Step 6: Check and install Vbox guest additions</h2>
+<p>这玩意儿是不是必须的？如果不需要图形用户界面的话。。。 I install virtualbox 5.2.26, thus I have to download the corresponding iso file. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.virtualbox.org/virtualbox/5.2.26/VBoxGuestAdditions_5.2.26.iso</span><br></pre></td></tr></table></figure></p>
+<p>Then create an empty directory in /media and mount it there: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /media/iso</span><br><span class="line">sudo mount VBoxGuestAdditions_5.2.26.iso /media/iso</span><br></pre></td></tr></table></figure></p>
+<p>Then go there and run the Linux installer: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /media/iso</span><br><span class="line">sudo ./VBoxLinuxAdditions.run</span><br></pre></td></tr></table></figure></p>
+<p>Reboot your guest OS: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure></p>
+<p>You should be able to access your shared folder under <code>/media/sf_[your_folder_name]</code></p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>At this point, you may be able to open the new VirtualBox UI but in my case, I was not able to start any of my Old VM’s.</p>
+<p>After struggling and panicking for 10 minutes I found that I needed to run the below command twice then everything just started working</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /sbin/vboxconfig</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">qsong@lab01  ~/Documents/linuxkit-test  vagrant up</span><br><span class="line">No usable default provider could be found for your system.</span><br><span class="line"></span><br><span class="line">Vagrant relies on interactions with 3rd party systems, known as</span><br><span class="line">&quot;providers&quot;, to provide Vagrant with resources to run development</span><br><span class="line">environments. Examples are VirtualBox, VMware, Hyper-V.</span><br><span class="line"></span><br><span class="line">The easiest solution to this message is to install VirtualBox, which</span><br><span class="line">is available for free on all major platforms.</span><br><span class="line"></span><br><span class="line">If you believe you already have a provider available, make sure it</span><br><span class="line">is properly installed and configured. You can see more details about</span><br><span class="line">why a particular provider isn&apos;t working by forcing usage with</span><br><span class="line">`vagrant up --provider=PROVIDER`, which should give you a more specific</span><br><span class="line">error message for that particular provider.</span><br></pre></td></tr></table></figure>
+<p>出现上述错误的原因: vagrant版本和virtualbox版本不兼容。需要升级vagrant!</p>
+<h1 id="vagrant-basic-usage">Vagrant basic usage</h1>
+<h2 id="relaod">Relaod</h2>
+<p>vagrant reload = vagrant halt + vagrant up. This command is usually required for changes made in the Vagrantfile to take into effect. After making any modifications to the Vagrantfile, a <code>reload</code> should be called. The configured provisoners will not run again, by default. You can force the provisioners to re-run by specifying the <code>--provision</code> flag.</p>
+<h1 id="how-to-enable-x11-forwarding-for-running-x11-application-within-vagrant-box">How to enable X11 forwarding for running X11 application within vagrant box?</h1>
+<p>First step, in your Vagrant file, please add two instructions: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">config.ssh.forward_agent = true</span><br><span class="line">config.ssh.forward_x11 = true</span><br></pre></td></tr></table></figure></p>
+<p>After such modification, the vagrant file should look like as follows: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|</span><br><span class="line"></span><br><span class="line">  config.vm.box = &quot;generic/ubuntu1604&quot;</span><br><span class="line">  config.ssh.forward_agent = true</span><br><span class="line">  config.ssh.forward_x11 = true</span><br><span class="line">  # config.vm.box = &quot;bento/ubuntu-16.04&quot;</span><br><span class="line">  config.vm.provision &quot;shell&quot;, inline: $script</span><br><span class="line">  config.vm.provision &quot;docker&quot;</span><br><span class="line"></span><br><span class="line">  config.vm.synced_folder &quot;.&quot;, &quot;/vagrant&quot;</span><br><span class="line">  # config.vm.network &quot;public_network&quot;</span><br><span class="line">  config.vm.define &quot;consul&quot; do | con |</span><br><span class="line">    con.vm.provider &quot;consul&quot; do | c |</span><br><span class="line">      c.name = &quot;consul&quot;</span><br><span class="line">      c.memory = 512</span><br><span class="line">      c.cpus = 2</span><br><span class="line">    end</span><br><span class="line">    con.vm.network &quot;private_network&quot;, ip: &quot;192.168.1.11&quot;</span><br><span class="line">    con.vm.hostname = &quot;consul&quot;</span><br><span class="line">  end</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">Second, ssh into your target vagrant box (e.g. your VM), make sure that option `X11Forwarding` is set to `yes`, this is actually done thanks to the configuration in Vagrant file. You also need to add the following configuration:</span><br></pre></td></tr></table></figure></p>
+<p>X11UseLocalhost no <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">By setting `X11UseLocalhost` to `no`, we speicify that the forwarding server should be bound to the wildcard address. By default, this argument is set to `yes`, and sshd` binds the forwarding server to the loopback address and sets the hostname part of the `DISPLAY` environment variable to ``localhost&apos;&apos;. This prevents remote hosts from connecting to the proxy display.</span><br><span class="line"></span><br><span class="line">Don&apos;t forget to `vagrant reload --provision` so that all the above modifications will take into effect. </span><br><span class="line"></span><br><span class="line">Third, ensure that in your PC, where you would like to start an SSH session with X11 forwarding, the corresponding entry in `./ssh/config` has arguemnt such as `ForwardX11 yes`.</span><br><span class="line"></span><br><span class="line">Until this step, normally you can run X11 application with GUI on host machine. To verify, you can simply test with `xeyes` or `xclocks` after establishing an SSH session.</span><br><span class="line"></span><br><span class="line">At worse, you might need to replace the `-X` with a `-Y` if the remote system is untrusted.</span><br><span class="line"></span><br><span class="line">Finally, I would like to say, the GUI rendered by XQuartz, under MacOSX platform, is really realy ugly! Why this project has never been updated since 2016?</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">iLBC library installation: https://launchpad.net/~linphone/+archive/ubuntu/release/+sourcepub/2295457/+listing-archive-extra</span><br><span class="line"></span><br><span class="line"># vagrant port forwarding</span><br><span class="line">One way to set up a temporary terminal, besides opening up the VirtualBox settings, is to use `vagrant ssh`, with additional arguments given after the `--`:</span><br></pre></td></tr></table></figure></p>
+<p>vagrant ssh -- -L 3000:localhost:3000 ``<code>This will forward port 3000 on the host to port 3000 on the guest. The first number is for the host. This will only last as long as your ssh session. If ssh gets disconnected, run it again. To make it persist after restarts, add it to your</code>Vagrantfile`.</p>
+<p>References: https://websiteforstudents.com/virtualbox-5-2-on-ubuntu-16-04-lts-server-headless/ https://garywoodfine.com/install-virtual-box-5-2-ubuntu-16-04/</p>
 
-      
-        
-          
-            <p>
-              今天是开车的第20个小时：刚刚建立起来的自信在大雨中又被打压下去了。
-Une route plus representive, en campagne, il y a bcp de priorites à droit. Comme en campagne, il y n’a pas de perso
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2015/06/18/今天是开车的第20个小时/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/29/latest-sfc103demo-trial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/29/latest-sfc103demo-trial/" class="post-title-link" itemprop="url">latest-sfc103demo-trial</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-29 23:33:10" itemprop="dateCreated datePublished" datetime="2019-03-29T23:33:10+08:00">2019-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-06-11 11:15:25" itemprop="dateModified" datetime="2019-06-11T11:15:25+08:00">2019-06-11</time>
+              </span>
+
+          
+
+        </div>
+      </header>
 
     
-  </section>
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>The Southbound REST Plug-in is used to send configuration from datastore down to network devices supporting a REST API (i.e. they have a configured REST URI). It supports POST/PUT/DELETE operations, which are triggered accordingly by changes in the SFC data stores.</p>
+<p>Network devices supporting REST API (provided by sfc-agent.py)</p>
+<p>we developped a proof-of-concept (PoC) implementation for the proposed schema in the context of SFC environment. The key idea is to carry OMS signature into NSH header we describe the service chain in a high level policy language, let service orchestrator to instantiate the required service nodes and chain them by OpenDaylight SFC feature. To this end,</p>
+<p>The difficulties we are faced with are: 1) how to initialize and distribute OMS parameters (such as publick key, secrete id, etc) for each involved service function on a chain; 2) how to carry and transport generated signature;</p>
+<h1 id="network-topology">Network topology</h1>
+<p>In our proof-of-work, we use Vagrant and Docker to create network topology illustrated in Fig.XX. Each node is instantiated as a container and configure to listen on a port. ODL serves as the SDN controller to stich these nodes together to construct a service function chain on leveraging SFC feature. ODL SFC provides a set of northbound RESTFul to receive high level SFC chaining and translate them into low level OVS instructions and concrete service function settings , which are further sent to create corresponding container to create classifers and service function forwarders and configuration setting to create corresponding service function.</p>
+<p>The service function chain information is described by a JSON format file re</p>
+<h1 id="ibe-pki">IBE PKI</h1>
+<p>The proposed OMS is built on top of Identity Based Encrption, and thus requires an IBE Public key infrastructure. We developped such a PKI with PBC, PyPBC (a Python binding for PBC) and Python Flask web framework. In such a PKI, a master server listening an occupied TCP port is in charge of receiving service function chain information (identities of each involved service function, their connnection order) and cryptography setting (elliptic curve type, key size, etc.). Once that OMS related parameters, such as pairing function, public key, etc, verification parameters in Eq.(5.1), Eq.(5.2), Eq.(5.6), Eq.(5.7), Eq.(5.8). Once these information is ready, master server proactively send them to each involved service functions.</p>
+<h1 id="design-of-nsh-and-oms-aware-service-function">Design of NSH and OMS aware service function</h1>
+<p>The proposed idea requires service functions capable of parsing NSH header and inserting, updating and removing OMS signature into transmitted packet. SFC community provides an open source NSH-aware service function implementation provide service function types such as such as firewall, NAT, IDS, etc. The main difficulty to extend these service functions into NSH and OMS aware ones is how to put generated signature (according to the construction methodology in Sec.5.3) into packet. A intuitive solution is to carry the signature into metadata field of NSH header. Recall that NSH has two types: type 1 and type 2. Type 1 has a fixed length of 16 bytes, whose capactiy is not enough to carray secure signature. Athough NSH type 2 header provi a variable length, theoretically able to carray OMS signature, it is yet implemented. Moreever, the metadata is designed to carry some shared information by service function in data center.</p>
+<p>We proposed to use NSH type 1 to carry signature. The idea is to insert signature between NSH header and the its orignal payload. The signature size is stored by each service function at the inital stage. The first signer of a given chain is in charge of generating and inserting this signature. The last service function on a chain, is in charge first do the last time signature generation, and then do the verification. To this end, each node should know if it is the first node or last node on a given chain (indicated by field SP and SI). The SI of first node and last node can be derived from JSON file describing service function chain. In our design, the workflow of an NSH and OMS aware service function is illustrated in Fig. XX.</p>
+<h1 id="impl.">Impl.</h1>
+<p>Recall that our proposal is aimed to check if the consistency of a given SFC chain is guaranteed. Once man-in-the-middle attacks happens, if any packet transmitted after the occurence of attack is sent alongside the SFP, the anormaly can be detected at receiver because the signature verification is failed. Thus, we don't need to sign and verify every packet over the given SFP. Instead, we can let NSH and OMS aware SF sign and verify the packet in a probabilisic way. Concretely, at the initialisation stage (i.e. establishment of SFC and key distribution), a threshold value <span class="math inline">\(p\)</span>, in range [0,1] will be sent to the evolved SF alongside with other OMS paramters. In the first SF, namely the first signer of a SFP, it randomly select a value in [0,1] according to uniform distribution and compare it with previously stored threshold, to determine if it should signer the received packet. This probabilistic schema avoid high signature related latency at the cost of some latency to detect the attack. How to efficently use the proposed schema, concretely speaking, how to rationaly choose threshold value, to get a trade off between lower transmission overhead and higher attack sensitivity, is left to a future work. How to choose the threshold value is the job of network administrator. For network service with intensive packet exchange, such as video streaming, big file download, this value can be set as small as 0.1%. For network service such as smart metering that may upload a message per hour even per day, this value can be set as 1.</p>
+<h2 id="现阶段任务">现阶段任务：</h2>
+<p>1） 创建一个 shell script, 这个script要可以杀掉container中的某个进程同时重新启动该进程 这脚本叫做 lite_run_demo.sh 2） 创建一个建议版本的setup_sfc.py</p>
+<h1 id="重大喜讯">重大喜讯：</h1>
+<p>之前发送HTTP request虽然会成功但是要等好久。这个问题在社区邮件的帮助下，终于被解决了！ 思路是需要关闭tx offload功能，做法是在容器<code>sf1</code>以及容器<code>sf2</code>里，分别输入: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ethtool --offload  eth0  rx off  tx off</span><br></pre></td></tr></table></figure></p>
+<p>在容器<code>sf2</code>中输入: 我在vagrant虚拟机也做了操作 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ethtool --offload docker0  rx off  tx off</span><br></pre></td></tr></table></figure></p>
+<p>目前不知道是，这两条指令一起作用，还是只需要在容器里操作就行。</p>
+<h1 id="关于-sfc-py-的探索">关于 sfc-py 的探索</h1>
+<h2 id="sfc-agent.py">sfc-agent.py</h2>
+<p>这实际上是启动了一个 RESTFul server, 跟 HTTP server 及其相似，都是可以接受REST Request(put/get action), 区别在于 sfc-agent.py 启动的 server 监听的其实是 ODL相关的端口，默认是 5000.</p>
+<h2 id="sfccommonservices.py">sfc/common/services.py</h2>
+<p>接受，处理，转发 packet！！ 这个脚本里但凡有异常发生，就无法 HTTP client 就无法 联系到 HTTP server了！！！</p>
+<h1 id="python3中-str-bytes-bytesarray-网络数据转换">python3中 str, bytes, bytesarray 网络数据转换</h1>
+<p>从网络数据包中得到的数据其实是个 bytes. 长得很像是str, 但是并不是！！！ 看看这个帖子 https://learning-python.com/strings30.html</p>
+<h1 id="ovs-push-nsh操作导致的checksum问题">ovs push-nsh操作导致的checksum问题</h1>
+<p>问题描述: 在同一个主机内创建虚拟机以创建 service chain 的时候，虽然最终包会发送成功但是延时特比大，因为checksum问题</p>
+<p>在实验开始之前 vagrant based VM 网卡的情况： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vagrant@odl:~$ ip addr</span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000</span><br><span class="line">    link/ether 08:00:27:0b:11:28 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 10.0.2.15/24 brd 10.0.2.255 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">3: docker0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc noqueue state DOWN group default</span><br><span class="line">    link/ether 02:42:2a:a0:ee:b6 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000</span><br><span class="line">    link/ether 08:00:27:0b:11:28 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 10.0.2.15/24 brd 10.0.2.255 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">3: docker0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default</span><br><span class="line">    link/ether 02:42:2a:a0:ee:b6 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">4: ovs-gretap0@NONE: &lt;BROADCAST,MULTICAST&gt; mtu 1462 qdisc noop state DOWN group default qlen 1000</span><br><span class="line">    link/ether 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">5: erspan0@NONE: &lt;BROADCAST,MULTICAST&gt; mtu 1450 qdisc noop state DOWN group default qlen 1000</span><br><span class="line">    link/ether b2:63:44:84:64:73 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">6: ovs-ip6gre0@NONE: &lt;NOARP&gt; mtu 1448 qdisc noop state DOWN group default qlen 1</span><br><span class="line">    link/gre6 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 brd 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00</span><br><span class="line">7: ovs-ip6tnl0@NONE: &lt;NOARP&gt; mtu 1452 qdisc noop state DOWN group default qlen 1</span><br><span class="line">    link/tunnel6 :: brd ::</span><br><span class="line">9: br-ff8a34d3f77c: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc noqueue state DOWN group default</span><br><span class="line">    link/ether 02:42:7a:b9:11:45 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 192.168.1.5/24 brd 192.168.1.255 scope global br-ff8a34d3f77c</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">11: veth1c0a779@if10: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default</span><br><span class="line">    link/ether ce:71:48:f1:7f:e4 brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000</span><br><span class="line">    link/ether 08:00:27:0b:11:28 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 10.0.2.15/24 brd 10.0.2.255 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">3: docker0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc noqueue state DOWN group default</span><br><span class="line">    link/ether 02:42:2a:a0:ee:b6 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">4: ovs-gretap0@NONE: &lt;BROADCAST,MULTICAST&gt; mtu 1462 qdisc noop state DOWN group default qlen 1000</span><br><span class="line">    link/ether 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">5: erspan0@NONE: &lt;BROADCAST,MULTICAST&gt; mtu 1450 qdisc noop state DOWN group default qlen 1000</span><br><span class="line">    link/ether b2:63:44:84:64:73 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">6: ovs-ip6gre0@NONE: &lt;NOARP&gt; mtu 1448 qdisc noop state DOWN group default qlen 1</span><br><span class="line">    link/gre6 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 brd 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00</span><br><span class="line">7: ovs-ip6tnl0@NONE: &lt;NOARP&gt; mtu 1452 qdisc noop state DOWN group default qlen 1</span><br><span class="line">    link/tunnel6 :: brd ::</span><br><span class="line">9: br-ff8a34d3f77c: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default</span><br><span class="line">    link/ether 02:42:7a:b9:11:45 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 192.168.1.5/24 brd 192.168.1.255 scope global br-ff8a34d3f77c</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">15: veth674a731@if14: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master br-ff8a34d3f77c state UP group default</span><br><span class="line">    link/ether 96:50:59:81:9e:1a brd ff:ff:ff:ff:ff:ff link-netnsid 2</span><br><span class="line">17: veth6d4196c@if16: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master br-ff8a34d3f77c state UP group default</span><br><span class="line">    link/ether 3e:12:4a:9f:b6:d7 brd ff:ff:ff:ff:ff:ff link-netnsid 4</span><br><span class="line">19: vetha350c67@if18: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master br-ff8a34d3f77c state UP group default</span><br><span class="line">    link/ether c6:df:c1:f6:5d:09 brd ff:ff:ff:ff:ff:ff link-netnsid 1</span><br><span class="line">21: vethd84d1f8@if20: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master br-ff8a34d3f77c state UP group default</span><br><span class="line">    link/ether d2:7a:f2:6e:7b:67 brd ff:ff:ff:ff:ff:ff link-netnsid 3</span><br><span class="line">23: vethc20c33c@if22: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master br-ff8a34d3f77c state UP group default</span><br><span class="line">    link/ether e2:bd:03:8b:c8:1f brd ff:ff:ff:ff:ff:ff link-netnsid 5</span><br><span class="line">25: veth58754f3@if24: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master br-ff8a34d3f77c state UP group default</span><br><span class="line">    link/ether ae:fc:e0:04:28:46 brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br></pre></td></tr></table></figure>
+<p>在 docker-compos 之后，我们发现多了一个docker netwwork <code>vagrant_sfc103_mgmt</code> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vagrant@odl:~$ docker network ls</span><br><span class="line">NETWORK ID          NAME                  DRIVER              SCOPE</span><br><span class="line">b5886910b27e        bridge                bridge              local</span><br><span class="line">77a1ac9dcff2        host                  host                local</span><br><span class="line">0950370f3d6f        none                  null                local</span><br><span class="line">ff8a34d3f77c        vagrant_sfc103_mgmt   bridge              local</span><br></pre></td></tr></table></figure></p>
+<h1 id="apt-get-update-stuck-at-0-percent">apt-get update stuck at 0 percent</h1>
+<p>https://medium.com/<span class="citation" data-cites="lifez/solved-apt-get-update-stuck-connecting-to-security-ubuntu-com-dbe41eeb5a0b">@lifez/solved-apt-get-update-stuck-connecting-to-security-ubuntu-com-dbe41eeb5a0b</span></p>
+<p>我不知道具体原因，但是一定是跟学校网络设置有关 <code>generic/ubuntu1604</code> 的源就是没有办法连接ubuntu 16.04的软件仓库</p>
+<p>I tried to check the DNS configuration of my Ubuntu server, deployed within school's network.vagrant@odl:~$ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cat /etc/resolv.conf</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Dynamic resolv.conf(5) file <span class="keyword">for</span> glibc resolver(3) generated by resolvconf(8)</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     DO NOT EDIT THIS FILE BY HAND -- YOUR CHANGES WILL BE OVERWRITTEN</span></span><br><span class="line">nameserver 4.2.2.1</span><br><span class="line">nameserver 4.2.2.2</span><br><span class="line">nameserver 208.67.220.220</span><br><span class="line">search imtld.local</span><br></pre></td></tr></table></figure></p>
+<p>IP address such as <code>4.2.2.1</code> is reachable by ping command. However, I don't know why DNS function does not work. One thing I can make sure is, this error is due to the fact that my Ubuntu server works behind school's proxy, because within my home network, this error does not exist.</p>
+<p>A working around I found is to add the following command in Vagrant file: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo "nameserver 10.0.2.3" | sudo tee /etc/resolv.conf</span><br></pre></td></tr></table></figure></p>
+<p>With this command, you will see the content of initial <code>/etc/resolv.conf</code> will be replaced by <code>nameserver 10.0.2.3</code>.</p>
+<p>In NAT networking mode of Virtualbox, each VM is isolated. VM can access host, but host cannot access VM unless if you configure port forwarding.</p>
+<ul>
+<li>IP:10.0.2.15</li>
+<li>Gateway：10.0.2.2</li>
+<li>DNS server: 10.0.2.3</li>
+</ul>
+<h1 id="failed-to-fetch-ubuntukylin-in-host-ubuntu-environment">Failed to fetch ubuntukylin in host Ubuntu environment</h1>
+<p>Failed to fetch http://archive.ubuntukylin.com:10006/ubuntukylin/dists/xenial/InRelease 因为 Host Ubuntu 16.04 安装了搜狗输入法，所以需要用到 ubuntukylin. 为了防止不必要的麻烦。 进入系统设置－软件更新－其他软件，找到ubuntukylin的项目，点击编辑，把precise改成trusty，把non-free改成main</p>
+<h1 id="各种奇葩错误居然独独缺少了-classifier1">各种奇葩错误：居然独独缺少了 classifier1:</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vagrant@odl:~$ docker container ls</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">a6c8b387fac4        sfc-service-node    &quot;/app/start.sh&quot;     47 seconds ago      Up 45 seconds                           sff2</span><br><span class="line">fed2b6d2aab0        sfc-service-node    &quot;/app/start.sh&quot;     47 seconds ago      Up 46 seconds                           classifier2</span><br><span class="line">e42ee4b0a36d        sfc-service-node    &quot;/app/start.sh&quot;     47 seconds ago      Up 45 seconds                           sff1</span><br><span class="line">4bfb58d272e8        sfc-service-node    &quot;/app/start.sh&quot;     47 seconds ago      Up 46 seconds                           sf1</span><br><span class="line">0166b549fa07        sfc-service-node    &quot;/app/start.sh&quot;     47 seconds ago      Up 46 seconds                           sf2</span><br></pre></td></tr></table></figure>
+<p>邪门了啊 为啥就是classifier1没有被创建！！从来没有发生过啊！！！ 但是换了 vagrant 的源就没有这种问题！！这都是什么奇葩事儿！！！</p>
+<p>这应该还是跟 vagrant 创建的虚拟机无法正常使用 DNS 服务有关？？？</p>
+<h1 id="操蛋了">操蛋了。</h1>
+<p>sudo add-apt-repository ppa:webupd8team/java -y 这个java安装源居然出了问题。。。what's the fuck... 从2019年04月16号变得</p>
+<p>试试Java11是否可以 https://www.linuxuprising.com/2018/10/how-to-install-oracle-java-11-in-ubuntu.html</p>
+<h1 id="sf1sf2-容器居然无法启动">sf1,sf2 容器居然无法启动！！！</h1>
+<p>This post saves me! https://www.matthewsetter.com/basic-docker-compose-debugging/</p>
+<p>Thanks a lot. 即使我删了虚拟机，从头来过都不行！！！那这说明这应该跟镜像有关？？？ 网上搜到了下面这个命令: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vagrant@odl:/vagrant$ docker-compose ps</span><br><span class="line">   Name          Command      State    Ports</span><br><span class="line">--------------------------------------------</span><br><span class="line">classifier1   /app/start.sh   Up</span><br><span class="line">classifier2   /app/start.sh   Up</span><br><span class="line">sf1           /app/start.sh   Exit 1</span><br><span class="line">sf2           /app/start.sh   Exit 1</span><br><span class="line">sff1          /app/start.sh   Up</span><br><span class="line">sff2          /app/start.sh   Up</span><br></pre></td></tr></table></figure></p>
+<p>然后输入如下命令 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">vagrant@odl:/vagrant$ docker-compose logs --follow sf1</span><br><span class="line">Attaching to sf1</span><br><span class="line">sf1            | ++ hostname</span><br><span class="line">sf1            | + host=sf1</span><br><span class="line">sf1            | + '[' sf1 == classifier1 ']'</span><br><span class="line">sf1            | + '[' sf1 == classifier2 ']'</span><br><span class="line">sf1            | + '[' sf1 == sff1 ']'</span><br><span class="line">sf1            | + '[' sf1 == sff2 ']'</span><br><span class="line">sf1            | + '[' sf1 == sf1 ']'</span><br><span class="line">sf1            | + cd /sfc/sfc-py</span><br><span class="line">sf1            | ++ cat /pbc/param/a_test.param</span><br><span class="line">sf1            | cat: /pbc/param/a_test.param: No such file or directory</span><br><span class="line">sf1            | + sec_param_str=</span><br><span class="line">sf1            | ++ hostname</span><br><span class="line">sf1            | + host=sf1</span><br><span class="line">sf1            | + '[' sf1 == classifier1 ']'</span><br><span class="line">sf1            | + '[' sf1 == classifier2 ']'</span><br><span class="line">sf1            | + '[' sf1 == sff1 ']'</span><br><span class="line">sf1            | + '[' sf1 == sff2 ']'</span><br><span class="line">sf1            | + '[' sf1 == sf1 ']'</span><br><span class="line">sf1            | + cd /sfc/sfc-py</span><br><span class="line">sf1            | ++ cat /pbc/param/a_test.param</span><br><span class="line">sf1            | cat: /pbc/param/a_test.param: No such file or directory</span><br><span class="line">sf1            | + sec_param_str=</span><br><span class="line">sf1 exited with code 1</span><br></pre></td></tr></table></figure></p>
+<p>某次代码问题，导致虚拟机crash之后，重新启动VM, 重新创建container又遇到了类似问题，这次的故障是: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">sf1            | ++ hostname</span><br><span class="line">sf1            | + host=sf1</span><br><span class="line">sf1            | + &apos;[&apos; sf1 == classifier1 &apos;]&apos;</span><br><span class="line">sf1            | + &apos;[&apos; sf1 == classifier2 &apos;]&apos;</span><br><span class="line">sf1            | + &apos;[&apos; sf1 == sff1 &apos;]&apos;</span><br><span class="line">sf1            | + &apos;[&apos; sf1 == sff2 &apos;]&apos;</span><br><span class="line">sf1            | + &apos;[&apos; sf1 == sff3 &apos;]&apos;</span><br><span class="line">sf1            | + &apos;[&apos; sf1 == sff4 &apos;]&apos;</span><br><span class="line">sf1            | + &apos;[&apos; sf1 == sf1 &apos;]&apos;</span><br><span class="line">sf1            | + cd /sfc/sfc-py</span><br><span class="line">sf1            | + pip3 install -r requirements.txt</span><br><span class="line">sf1            | Collecting ecdsa==0.13 (from -r requirements.txt (line 1))</span><br><span class="line">sf1            | Exception:</span><br><span class="line">sf1            | Traceback (most recent call last):</span><br><span class="line">sf1            |   File &quot;/usr/share/python-wheels/urllib3-1.13.1-py2.py3-none-any.whl/urllib3/connection.py&quot;, line 137, in _new_conn</span><br><span class="line">sf1            |     (self.host, self.port), self.timeout, **extra_kw)</span><br><span class="line">sf1            |   File &quot;/usr/share/python-wheels/urllib3-1.13.1-py2.py3-none-any.whl/urllib3/util/connection.py&quot;, line 67, in create_connection</span><br><span class="line">sf1            |     for res in socket.getaddrinfo(host, port, 0, socket.SOCK_STREAM):</span><br><span class="line">sf1            |   File &quot;/usr/lib/python3.5/socket.py&quot;, line 732, in getaddrinfo</span><br><span class="line">sf1            |     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):</span><br><span class="line">sf1            | socket.gaierror: [Errno -3] Temporary failure in name resolution</span><br><span class="line">sf1            |</span><br><span class="line">sf1            | During handling of the above exception, another exception occurred:</span><br><span class="line">sf1            |</span><br><span class="line">sf1            | Traceback (most recent call last):</span><br><span class="line">sf1            |   File &quot;/usr/share/python-wheels/urllib3-1.13.1-py2.py3-none-any.whl/urllib3/connectionpool.py&quot;, line 560, in urlopen</span><br><span class="line">sf1            |     body=body, headers=headers)</span><br><span class="line">sf1            |   File &quot;/usr/share/python-wheels/urllib3-1.13.1-py2.py3-none-any.whl/urllib3/connectionpool.py&quot;, line 346, in _make_request</span><br><span class="line">sf1            |     self._validate_conn(conn)</span><br><span class="line">sf1            |   File &quot;/usr/share/python-wheels/urllib3-1.13.1-py2.py3-none-any.whl/urllib3/connectionpool.py&quot;, line 787, in _validate_conn</span><br><span class="line">sf1            |     conn.connect()</span><br><span class="line">sf1            |   File &quot;/usr/share/python-wheels/urllib3-1.13.1-py2.py3-none-any.whl/urllib3/connection.py&quot;, line 217, in connect</span><br><span class="line">sf1            |     conn = self._new_conn()</span><br><span class="line">sf1            |   File &quot;/usr/share/python-wheels/urllib3-1.13.1-py2.py3-none-any.whl/urllib3/connection.py&quot;, line 146, in _new_conn</span><br><span class="line">sf1            |     self, &quot;Failed to establish a new connection: %s&quot; % e)</span><br><span class="line">sf1            | requests.packages.urllib3.exceptions.NewConnectionError: &lt;requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x7f5ffeef2668&gt;: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution</span><br></pre></td></tr></table></figure></p>
+<p>看起来像是网络问题啊。。。这都遇到的是啥奇葩事儿啊。。。原来原因还是跟VM的DNS server无法通过学校防火墙有关。/etc/resolv.conf 还是虚拟机模板之前的内容，我通过一个shell script改变为10.0.2.3并没生效</p>
+<p>因为vagrant relaod (=vagrant halt + vagrant up) 默认并不是执行provisioner，而我改变/etc/resolv.conf的内容恰恰是通过shell script来做的。</p>
+<h1 id="classifier1-cannot-be-correctly-launched">classifier1 cannot be correctly launched</h1>
+<p>因为需要对 HTTP request (下载文件) 延时进行测试，所以需要通过编译源码安装 <code>httping</code> utility. 下载地址: https://github.com/flok99/httping 执行<code>make</code>命令时候，发现以下错误: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">classifier1    | # Oh, blatant plug: http://www.vanheusden.com/wishlist.php</span><br><span class="line">classifier1    | msgfmt -o nl.mo nl.po</span><br><span class="line">classifier1    | make: msgfmt: Command not found</span><br><span class="line">classifier1    | Makefile:135: recipe for target &apos;nl.mo&apos; failed</span><br><span class="line">classifier1    | make: *** [nl.mo] Error 127</span><br><span class="line">classifier1 exited with code 2</span><br></pre></td></tr></table></figure></p>
+<p>https://stackoverflow.com/questions/9500898/compiler-error-msgfmt-command-not-found</p>
+<p>发现原因是 <code>gettext</code>包的缺失。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/28/opnfv-sfc-tuto/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/28/opnfv-sfc-tuto/" class="post-title-link" itemprop="url">OPNFV SFC 实验笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-28 10:28:57" itemprop="dateCreated datePublished" datetime="2019-03-28T10:28:57+08:00">2019-03-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-01 00:18:46" itemprop="dateModified" datetime="2019-04-01T00:18:46+08:00">2019-04-01</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="two-sfc-scenarios-in-opnfv-fraser">1.Two SFC scenarios in OPNFV Fraser</h1>
+<ul>
+<li>os-odl-sfc-noha</li>
+<li>os-odl-sfc-ha</li>
+</ul>
+<h1 id="两种部署方法">2.两种部署方法</h1>
+<h2 id="xci-tool">XCI tool</h2>
+<ul>
+<li>integration not finished yet. (这话怎么理解？)</li>
+<li>tested only for mini and noha flavors of XCI</li>
+</ul>
+<h2 id="apex-installer-似乎odl-sfc社区更推崇这种方法">APEX installer (似乎ODL SFC社区更推崇这种方法)</h2>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/27/odl-sfc-design-implementation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/27/odl-sfc-design-implementation/" class="post-title-link" itemprop="url">OpenDayLight SFC design and its implementation</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-27 16:59:46" itemprop="dateCreated datePublished" datetime="2019-03-27T16:59:46+08:00">2019-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-07-19 19:05:57" itemprop="dateModified" datetime="2019-07-19T19:05:57+08:00">2019-07-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SDN/" itemprop="url" rel="index"><span itemprop="name">SDN</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="nsh">NSH</h1>
+<p><img src="/2019/03/27/odl-sfc-design-implementation/NSH-header-md-type1.png" alt="NSH header MD type 1"><span class="image-caption">NSH header MD type 1</span> IETF NSH Only NSH Metadata type 1 is implemented.</p>
+<h1 id="odl-sfc-architecturecisco-odl-sfc14">ODL SFC architecture[^cisco-odl-sfc14]</h1>
+<p><img src="/2019/03/27/odl-sfc-design-implementation/odl-sfc-architecture.png" alt="Opendaylight sfc architecture"><span class="image-caption">Opendaylight sfc architecture</span> * ODL SFC in essence a point to multipoint architecture * <strong><em>SFC</em></strong> Provider manages all configuration information provided by orchestration system or admin. * <strong><em>SFC</em></strong> Provider writes constructed Service Function Paths and Rendered Service Path to the datastore * <strong><em>Protocol datastore listeners</em></strong> are notified of service objects creation * These listeners will process RSP information and communicate to their controlled southbound devices</p>
+<p>"How do you prove that traffic follows the sugguested path?". Proof-of-Transit is proposed by Cisco to solve this problem.</p>
+<p>Key elements to support this: * in-site (in-band) OAM: the key idea behind is to transport operation/administration/manintenance related information within the packet, insteading using a dedicated packet (such as ping, traceroute, etc.).</p>
+<ul>
+<li>transportation of OAM: basically two catogories:
+<ul>
+<li>design a dedicated encapsulation layer
+<ul>
+<li>we need to assign a protocol number for this new layer, for example, if iOAM header is behind NSH header, we have to indicate in NSH header that the next protocol is (NP=IOAM_Trace)</li>
+<li>proposal already exists, iOAM header, (still an IETF draft)</li>
+</ul></li>
+<li>transported within existing header
+<ul>
+<li>NSH type 2 metadata</li>
+<li>IPv6 option</li>
+</ul></li>
+</ul></li>
+<li>Proof-of-transit design
+<ul>
+<li>current mechanism: Shamir’s secret sharing (SSS).</li>
+<li>ordered Proof-of-transit, to keep ordering</li>
+</ul></li>
+<li>Implementation:
+<ul>
+<li>control plane:
+<ul>
+<li>support in ODL from release Carbon</li>
+</ul></li>
+<li>data plane <a href="https://www.cisco.com/c/dam/m/en_us/network-intelligence/service-provider/digital-transformation/knowledge-network-webinars/pdfs/0628-techad-ckn.pdf" target="_blank" rel="noopener">link</a>:
+<ul>
+<li>FD.io/VPP (iOAM/PoT implemented as plug-in)</li>
+<li>IOS (ISR-G2) -P131: an OS in Cisco switch/router</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>参考文献 [^cisco-odl-sfc14]: "ODL: Service function chaining", https://events.static.linuxfound.org/sites/events/files/slides/odl%20summit%20sfc%20v5.pdf</p>
+<p>张老师，跟你update下最近的工作。跟montida讨论的结果，汉语说快。我发现Cisco提出了一种叫做 iOAM-Pot的机制，解决的正是我们这个Securecom文章要解决的问题："How do you prove that traffic follows the sugguested path?".</p>
+<p>Cisco提出的iOAM-Pot由两部分组成，第一个是iOAM. 简单说就是跟network service有关的operation/administration/maintenance的信息(比如延时，带宽之类的信息)。伴随这service种传递的packet一起发送。Ciso提出很多种方案实现iOAM，比如利用NSH type2 metadata(和我们希望传递北邮设计的签名是一样的思路)，比如设计一个iOAM专用协议层放在NSH header后面。</p>
+<p>第二个就是PoT, Proof-of-Transit的简写。就是一种数据用以证明携带这个PoT的packet确实被希望的service function处理了。PoT是依赖于Shamir’s secret sharing机制实现的。这个PoT被认为是一种OAM信息。所以PoT可以被配置为通过NSH type2 metadata传递，也可以放在专用协议头里传递。</p>
+<p>目前这个工作成熟度很高。Cisco写了不少 IETF draft(尚未标准化成RFC)。 ODL里有control plane的支持，data plane有个叫做FD.io/VPP的开源项目去实现。Cisco的产品里也实现了对这种机制的支持。</p>
+<p>我跟montida进行了深入讨论：这个其实就是她之前一直在弄的idea. 最后被否定了。iOAM-PoT的问题在于hamir’s secret sharing是无法保证order的 如果需要保障order的话，需要设计ordered-PoT机制。IETF其实也给出了设计方案(symmetric masking机制)，PoT是被实现的，不知道这个ordered-PoT实现情况。年初Montida的工作，其实就是ordered PoT + NSH type2 meta data传递。后来被替换了成现在北邮设计的签名机制。</p>
+<p>问题：我们这个工作目前最直相关的工作其实就是 iOAM-PoT机制了。我在journal版论文里应该提这个工作，也应该对比iOAM-PoT和我们提出的ordered multiple signature (OMS)之间的性能。我还没有弄出来基于iOAM-PoT的SFC完整性检测实现，但我看了他们这个机制 ，大概率会比我们的 ordered multiple signature (OMS)机制性能好得多。比如，我们设计的签名在保证最低安全限度的前提下, 签名大约要占99 bytes. IOAM-PoT 这个32个字节(如果要保障order的情况下)当然差多少，需要具体实验对比验证尤。</p>
+<h1 id="section"></h1>
+<p><a href="https://www.slideshare.net/frankbrockners/proof-of-transit-securely-verifying-a-path-or-service-chain" target="_blank" rel="noopener">关于PoT最最详细的介绍</a> <a href="https://www.slideshare.net/frankbrockners/nextgen-network-telemetry-is-within-your-packets-inband-oam" target="_blank" rel="noopener">关于IOAM最最详细的介绍</a></p>
+<h1 id="文章的组织结构">文章的组织结构</h1>
+<ul>
+<li><p>Approach Add meta-data to all packets that traverse a path or service chain. The added meta-data allows a verifying node (egress node) to check whether a packet traversed the servcie chain correctly or not. Security mechanisms are used on the meta-data to protect against incorrect or miuse (i.e. configuration mistakes, peoply playing tricks with routing, capturing, spoofing and replaying packets.) The meta-dat is secured through the use of keys. Sercivce functions retrieve the keys from a controller over a secure channel.</p></li>
+<li><p>Related</p>
+<ul>
+<li>Compose the onion + PoT</li>
+<li>symmetric masking + PoT</li>
+</ul></li>
+<li><p>The mathmatics</p></li>
+<li><p>Protocol Aspects</p></li>
+<li><p>Implementation and Demo side</p></li>
+</ul>
+<p>in-band solution 可以被批判的点： 1. 最后一个service function 负责贡献最后一份秘钥 同时还负责检验。在SDN环境中，如果 service function 不幸被compromised了。那就完全不可信了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/27/sfc-mailing-list-takeaways/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/27/sfc-mailing-list-takeaways/" class="post-title-link" itemprop="url">Key takeaways from ODL SFC mailing list</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-27 15:43:14" itemprop="dateCreated datePublished" datetime="2019-03-27T15:43:14+08:00">2019-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-03-28 05:51:29" itemprop="dateModified" datetime="2019-03-28T05:51:29+08:00">2019-03-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>On Oxygen, it states [^odl-oxygen-release-notes]</p>
+<blockquote>
+<p>SFC needs changes in OVS to include the Network Service Headers (NSH) Chaining encapsulation feature. This patch has been ongoing for quite a while, but has finally been officially merged in OVS 2.8. OpenDaylight will be updated to use this new version of OVS in the Fluorine release. Until then, SFC will use a branched version of OVS based on 2.6.1, called the “Yi Yang Patch”, located here. Previous versions of this OVS patch only supported VXLAN-GPE + NSH encapsulation, but this version supports both ETH + NSH and VXLAN-GPE + ETH + NSH.</p>
+</blockquote>
+<p>On Fluorine</p>
+<blockquote>
+<p>Support for Network Service Headers (NSH) has been officially implemented in the OVS 2.9 release. As a result, support for the older, unofficial branched OVS versions has been removed, and now only OVS 2.9 is supported.</p>
+</blockquote>
+<p>So OVS version 2.10.1 will only work with SFC at ODL release Fluorine or newer.</p>
+<p>https://github.com/yyang13/ovs_nsh_patches/ are only for ovs 2.5.98</p>
+<p>The patchset for ovs 2.6.1 is https://github.com/yyang13/ovs_nsh_patches/tree/master/v2.6.1 it can be built on almost any Linux distribution (kernel version &gt;= 3.11, &lt;= 4.8) (但是我试了 高于4.3 内核版本都不行的)</p>
+<p>References: [^odl-oxygen-release-notes]: https://docs.opendaylight.org/en/stable-oxygen/release-notes/projects/sfc.html</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/26/patched-ovs-older-odl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/26/patched-ovs-older-odl/" class="post-title-link" itemprop="url">Experimentation note on setting up service function chaining based on ODL oxygen and OVS 2.6.1 with NSH support</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-26 15:26:38" itemprop="dateCreated datePublished" datetime="2019-03-26T15:26:38+08:00">2019-03-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-03-28 02:15:18" itemprop="dateModified" datetime="2019-03-28T02:15:18+08:00">2019-03-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux-networking/" itemprop="url" rel="index"><span itemprop="name">linux networking</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="troubleshooting">Troubleshooting</h1>
+<h2 id="ovs-2.6.1-with-nsh-support-compilation-and-setup">OVS-2.6.1 with NSH support compilation and setup</h2>
+<p>If you want to test OVS 2.6 with NSH patch, remember to use linux kernel older than 4.3.x <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configure: error: Linux kernel in /lib/modules/4.4.0-141-generic/build is version 4.4.162, but version newer than 4.3.x is not supported (please refer to the FAQ for advice)</span><br></pre></td></tr></table></figure></p>
+<p>Afert linux kernel downgrade, when trying to configure the source code of OVS, we are encountered with the following error: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configure: error: source dir /lib/modules/4.2.0-42-generic/build doesn't exist</span><br></pre></td></tr></table></figure></p>
+<p>The solution is to install the correpsonding linux kernel headers. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install linux-headers-`uname -r`</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="ovs-2.6.1-cannot-create-ovs-bridge">OVS-2.6.1 cannot create ovs-bridge</h2>
+<p>when executing with my vagrant machine <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it classifier1 ovs-ofctl dump-flows -OOpenflow13 br-sfc</span><br></pre></td></tr></table></figure></p>
+<p>The response is: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl: br-sfc is not a bridge or a socket</span><br></pre></td></tr></table></figure></p>
+<p>I checked the log <code>/var/log/openvswitch/ovs-vswitchd.log</code>. I surprisingly found that: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">2019-03-26T23:18:27.931Z|00007|dpif_netlink|WARN|Generic Netlink family &apos;ovs_datapath&apos; does not exist. The Open vSwitch kernel module is probably not loaded.</span><br><span class="line">2019-03-26T23:18:27.931Z|00008|dpif|WARN|failed to enumerate system datapaths: No such file or directory</span><br><span class="line">2019-03-26T23:18:27.931Z|00009|dpif|WARN|failed to create datapath ovs-system: No such file or directory</span><br><span class="line">2019-03-26T23:18:27.933Z|00010|ofproto_dpif|ERR|failed to open datapath of type system: No such file or directory</span><br><span class="line">2019-03-26T23:18:27.933Z|00011|ofproto|ERR|failed to open datapath br-sfc: No such file or directory</span><br><span class="line">2019-03-26T23:18:27.933Z|00012|bridge|ERR|failed to create bridge br-sfc: No such file or directory</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>Then I tried: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ovs-vsctl add-br br-test</span><br></pre></td></tr></table></figure></p>
+<p>The</p>
+<p>the container's linux kernel version is identique to its host: <code>3.13.0-167-generic</code></p>
+<h2 id="section"></h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR: Service 'sff1' failed to build: The command '/bin/sh -c apt-get update &amp;&amp; apt-get install -y vim ping git libtool m4 autoconf automake make     libssl-dev libcap-ng-dev python3 python3-pip python-six vlan iptables wget     net-tools init-system-helpers kmod uuid-runtime' returned a non-zero code: 100</span><br></pre></td></tr></table></figure>
+<p>Because docker use Ubuntu 15.10 image. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/wily-security/universe/binary-amd64/Packages  404  Not Found [IP: 91.189.88.161 80]</span><br></pre></td></tr></table></figure></p>
+<p>Its repository URL is not valid any more.</p>
+<h2 id="add-apt-repository-command-not-found-within-ubuntu-14.04-kernel-4.2">add-apt-repository: command not found, within ubuntu 14.04, kernel 4.2</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vagrant@odl:~/sfc/karaf/target/assembly$ sudo add-apt-repository ppa:webupd8team/java -y</span><br><span class="line">sudo: add-apt-repository: command not found</span><br></pre></td></tr></table></figure>
+<p>Solution: The error is simple. The package add-apt-repository is not installed on your system. So, open a terminal and use this command:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install software-properties-common</span><br></pre></td></tr></table></figure>
+<h2 id="ovs-in-docker-cannot-creata-ovs-bridge">OVS in docker cannot creata ovs bridge</h2>
+<p>Because docker containers share the same kernel with its host. Thus, we have to install ovs package in host first then install within docker container.</p>
+<h2 id="anormal-error-logs-in-varlogopenvswitchovs-vswitchd.log">Anormal error logs in /var/log/openvswitch/ovs-vswitchd.log</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">2019-03-27T09:01:08.093Z|00006|bridge|INFO|ovs-vswitchd (Open vSwitch) 2.6.1</span><br><span class="line">2019-03-27T09:01:08.246Z|00007|ofproto_dpif|INFO|system@ovs-system: Datapath does not support recirculation</span><br><span class="line">2019-03-27T09:01:08.246Z|00008|ofproto_dpif|INFO|system@ovs-system: MPLS label stack length probed as 0</span><br><span class="line">2019-03-27T09:01:08.246Z|00009|ofproto_dpif|INFO|system@ovs-system: datapath does not support masked set action feature.</span><br><span class="line">2019-03-27T09:01:08.246Z|00010|ofproto_dpif|INFO|system@ovs-system: Datapath does not support truncate action</span><br><span class="line">2019-03-27T09:01:08.246Z|00011|ofproto_dpif|INFO|system@ovs-system: Datapath does not support unique flow ids</span><br><span class="line">2019-03-27T09:01:08.246Z|00012|ofproto_dpif|INFO|system@ovs-system: Datapath does not support ct_state</span><br><span class="line">2019-03-27T09:01:08.246Z|00013|ofproto_dpif|INFO|system@ovs-system: Datapath does not support ct_zone</span><br><span class="line">2019-03-27T09:01:08.246Z|00014|ofproto_dpif|INFO|system@ovs-system: Datapath does not support ct_mark</span><br><span class="line">2019-03-27T09:01:08.246Z|00015|ofproto_dpif|INFO|system@ovs-system: Datapath does not support ct_label</span><br><span class="line">2019-03-27T09:01:08.246Z|00016|ofproto_dpif|INFO|system@ovs-system: Datapath does not support ct_state_nat</span><br><span class="line">2019-03-27T09:01:08.249Z|00017|ofproto_dpif|WARN|system@ovs-system: variable-length userdata feature probe failed (Invalid argument)</span><br></pre></td></tr></table></figure>
+<h2 id="empty-openflow-tables">Empty OpenFlow tables:</h2>
+<p>We notice that, even with RESTCONF API, the openflow tables are still empty!!! <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@classifier1:/# ovs-ofctl dump-flows -OOpenflow13 br-sfc</span><br><span class="line">OFPST_FLOW reply (OF1.3) (xid=0x2):</span><br><span class="line">root@classifier1:/#</span><br></pre></td></tr></table></figure></p>
+<p>I think this is due to the lack of <code>openvswitch-datapath-dkms*</code> package. As per its name, this package is important for data path of OVS.</p>
+<h2 id="rebuild-docker-image-after-modification-of-dockerfiledocker-compose.yaml">Rebuild docker image after modification of Dockerfile/docker-compose.yaml</h2>
+<p>I tried to install <code>openvswitch-datapath-dkms*</code> in each involved docker container. However, no matter how I modify the <code>Dockerfile</code>, I finally found that the required package has not been installed within each container.</p>
+<p>The reason relies in that if you run <code>docker-composer up</code> without option <code>build</code>, docker always create container with previousl built image, which has no required package.</p>
+<h2 id="section-1"></h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2019-03-27T09:03:20.805Z|00036|dpif|WARN|system@ovs-system: execute 2 failed (Invalid argument) on packet vlan_tci=0x0000,dl_src=46:27:01:57:2f:78,dl_dst=01:23:00:00:00:01,dl_type=0x88cc</span><br><span class="line"> mtu 0</span><br><span class="line">2019-03-27T09:03:23.948Z|00037|dpif|WARN|system@ovs-system: execute 2 failed (Invalid argument) on packet vlan_tci=0x0000,dl_src=46:27:01:57:2f:78,dl_dst=01:23:00:00:00:01,dl_type=0x88cc</span><br><span class="line"> mtu 0</span><br><span class="line">2019-03-27T09:03:28.945Z|00038|dpif|WARN|system@ovs-system: execute 2 failed (Invalid argument) on packet vlan_tci=0x0000,dl_src=46:27:01:57:2f:78,dl_dst=01:23:00:00:00:01,dl_type=0x88cc</span><br></pre></td></tr></table></figure>
+<p>Still invalid argument problem!! but why??</p>
+<h1 id="appendix">Appendix</h1>
+<h2 id="how-to-downgrade-linux-kernel-version-under-ubuntu-16.04">How to downgrade linux kernel version (under Ubuntu 16.04)</h2>
+<p>If you don't know the exact name of target linux kernel. Take linux kerenl 4.2.x as example, use the following command: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-cache search linux-image | grep linux-image-4.2</span></span><br></pre></td></tr></table></figure></p>
+<p>Install the selected kernel <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install linux-image-4.2.0-42-generic</span><br></pre></td></tr></table></figure></p>
+<p>The output should be similar to the following: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Generating grub configuration file ...</span><br><span class="line">Warning: Setting GRUB_TIMEOUT to a non-zero value when GRUB_HIDDEN_TIMEOUT is set is no longer supported.</span><br><span class="line">Found linux image: /boot/vmlinuz-4.4.0-31-generic</span><br><span class="line">Found initrd image: /boot/initrd.img-4.4.0-31-generic</span><br><span class="line">Found linux image: /boot/vmlinuz-4.2.0-42-generic</span><br><span class="line">Found initrd image: /boot/initrd.img-4.2.0-42-generic</span><br><span class="line">Found memtest86+ image: /memtest86+.elf</span><br><span class="line">Found memtest86+ image: /memtest86+.bin</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
+<p>You can also verify with the following command: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -l | grep 4.2.0-42-generic</span><br></pre></td></tr></table></figure></p>
+<p>Now we configure <code>grub</code> so that the system starts with kernel 4.2.x. Edit the following configuration file with your preferred text editor: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/default/grub</span><br></pre></td></tr></table></figure></p>
+<p>Modify as follows: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRUB_DEFAULT=&quot;Advanced options for Ubuntu&gt;Ubuntu, with Linux 4.2.0-42-generic&quot;</span><br></pre></td></tr></table></figure></p>
+<p>Note that replace the <code>4.2.0-42-generic</code> with your own kernel version.</p>
+<p>Save, quit and update grub: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo update-grub</span><br></pre></td></tr></table></figure></p>
+<p>Then reboot your system and check the linux kernel version!</p>
+<p>If you need to remove the kernel versions that you don't need any more. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove linux-headers-4.15.0-33</span><br></pre></td></tr></table></figure></p>
+<p>参考： https://blog.csdn.net/u013431916/article/details/82530523 https://www.jianshu.com/p/a593067fe9fc</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/25/linux-ovs-vxlan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/25/linux-ovs-vxlan/" class="post-title-link" itemprop="url">How to create VxLAN with Open Vswitch</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-25 20:49:27" itemprop="dateCreated datePublished" datetime="2019-03-25T20:49:27+08:00">2019-03-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-08 18:46:13" itemprop="dateModified" datetime="2019-04-08T18:46:13+08:00">2019-04-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux-networking/" itemprop="url" rel="index"><span itemprop="name">linux networking</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="creation-of-vxlan-port-with-default-udp-service-port">Creation of VxLAN port with default UDP service port:</h1>
+<p><code>key=flow</code> is meant to get the tunnel ID from the flow and <code>remote_ip=flow</code> is meant to get the tunnel destination IP address from the flow <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> br-tun is the name of ovs bridge</span></span><br><span class="line">ovs-vsctl add-port br-tun vxlan0 -- set Interface vxlan0  type=vxlan  options:remote_ip=flow options:key=flow</span><br></pre></td></tr></table></figure></p>
+<h1 id="create-the-vxlan-port-by-specifying-udp-destination-port-5000.">create the VxLAN port by specifying UDP destination port, 5000.</h1>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-port br-tun vxlan1 -- set Interface vxlan1 type=vxlan options:remote_ip=flow options:key=flow options:dst_port=5000</span><br></pre></td></tr></table></figure>
+<h1 id="create-openflow-flows-without-having-to-have-external-openflow-controller">Create Openflow flows without having to have external Openflow controller</h1>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl add-flow br-tun "in_port=LOCAL actions=set_tunnel:1,set_field:172.16.2.3-&gt;tun_dst,output:1"</span><br></pre></td></tr></table></figure>
+<p>or <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl add-flow br-tun "in_port=LOCAL actions=set_field:172.16.2.3-&gt;tun_dst, set_field:1-&gt;tun_id, output:1</span><br></pre></td></tr></table></figure></p>
+<p><code>set_tunnel</code> is used to specify the VNI. <code>set_field</code> to specify the tunnel destination.</p>
+<h1 id="ovs-nsh-测试脚本手动实验">OVS NSH 测试脚本手动实验</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">AT_BANNER([network service header (NSH)])</span><br><span class="line"></span><br><span class="line">### -----------------------------------------------------------------</span><br><span class="line">###   Simple NSH matching test case</span><br><span class="line">### -----------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">AT_SETUP([nsh - matching])</span><br><span class="line"></span><br><span class="line">OVS_VSWITCHD_START([dnl</span><br><span class="line">    set bridge br0 datapath_type=dummy \</span><br><span class="line">        protocols=OpenFlow10,OpenFlow13,OpenFlow14,OpenFlow15 -- \</span><br><span class="line">    add-port br0 p1 -- set Interface p1 type=dummy ofport_request=1 -- \</span><br><span class="line">    add-port br0 p2 -- set Interface p2 type=dummy ofport_request=2])</span><br><span class="line"></span><br><span class="line">AT_DATA([flows.txt], [dnl</span><br><span class="line">    table=0,in_port=1,dl_type=0x894f,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=255,nsh_c1=0x11223344,actions=set_field:0x2-&gt;nsh_flags,set_field:254-&gt;nsh_si,set_field:0x44332211-&gt;nsh_c1,2</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">AT_CHECK([</span><br><span class="line">    ovs-ofctl del-flows br0</span><br><span class="line">    ovs-ofctl -Oopenflow13 add-flows br0 flows.txt</span><br><span class="line">    ovs-ofctl -Oopenflow13 dump-flows br0 | ofctl_strip | sort | grep actions</span><br><span class="line">], [0], [dnl</span><br><span class="line"> in_port=1,dl_type=0x894f,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=255,nsh_c1=0x11223344 actions=set_field:2-&gt;nsh_flags,set_field:254-&gt;nsh_si,set_field:0x44332211-&gt;nsh_c1,output:2</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">AT_CHECK([</span><br><span class="line">    ovs-appctl ofproto/trace br0 &apos;in_port=1,dl_type=0x894f,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=255,nsh_c1=0x11223344,nsh_c2=0x55667788,nsh_c3=0x99aabbcc,nsh_c4=0xddeeff00&apos;</span><br><span class="line">], [0], [dnl</span><br><span class="line">Flow: in_port=1,vlan_tci=0x0000,dl_src=00:00:00:00:00:00,dl_dst=00:00:00:00:00:00,dl_type=0x894f,nsh_flags=0,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=255,nsh_c1=0x11223344,nsh_c2=0x55667788,nsh_c3=0x99aabbcc,nsh_c4=0xddeeff00,nw_proto=0,nw_tos=0,nw_ecn=0,nw_ttl=0</span><br><span class="line"></span><br><span class="line">bridge(&quot;br0&quot;)</span><br><span class="line">-------------</span><br><span class="line"> 0. in_port=1,dl_type=0x894f,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=255,nsh_c1=0x11223344, priority 32768</span><br><span class="line">    set_field:2-&gt;nsh_flags</span><br><span class="line">    set_field:254-&gt;nsh_si</span><br><span class="line">    set_field:0x44332211-&gt;nsh_c1</span><br><span class="line">    output:2</span><br><span class="line"></span><br><span class="line">Final flow: in_port=1,vlan_tci=0x0000,dl_src=00:00:00:00:00:00,dl_dst=00:00:00:00:00:00,dl_type=0x894f,nsh_flags=2,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=254,nsh_c1=0x44332211,nsh_c2=0x55667788,nsh_c3=0x99aabbcc,nsh_c4=0xddeeff00,nw_proto=0,nw_tos=0,nw_ecn=0,nw_ttl=0</span><br><span class="line">Megaflow: recirc_id=0,eth,in_port=1,dl_type=0x894f,nsh_flags=0,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=255,nsh_c1=0x11223344</span><br><span class="line">Datapath actions: set(nsh(flags=2,ttl=63,spi=0x123456,si=254,c1=0x44332211)),2</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">OVS_VSWITCHD_STOP</span><br><span class="line">AT_CLEANUP</span><br></pre></td></tr></table></figure>
+<p>我觉得 这里面 <code>dnl</code> 应该指代的是 <code>ovs-vsctl add-bridge br0</code>. 比如如下命令：<code>--</code> 双横线好像是代表 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-br br0 -- set bridge br0 datapath_type=netdev</span><br></pre></td></tr></table></figure></p>
+<h1 id="延伸阅读">延伸阅读</h1>
+<p><a href="http://netsecinfo.blogspot.com/2013/07/linux-ovs-vxlan-based-virtual-networks.html" target="_blank" rel="noopener">Linux OVS &amp; VxLAN based virtual networks</a> <a href="http://netsecinfo.blogspot.com/2011/12/vxlan-virtual-extensible-lan-virtual.html" target="_blank" rel="noopener">VXLAN (Virtual eXtensible LAN) - Virtual Data Centers - Tutorial</a> <a href="https://that.guru/blog/gnu-autotest/" target="_blank" rel="noopener">GNU AUTOTEST</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/25/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/25/hello-world/" class="post-title-link" itemprop="url">Hexo 基本命令以及 Markdown 基本语法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-25 18:27:10" itemprop="dateCreated datePublished" datetime="2019-03-25T18:27:10+08:00">2019-03-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-18 01:57:54" itemprop="dateModified" datetime="2019-12-18T01:57:54+08:00">2019-12-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h1 id="the-must-to-know-command-of-hexo">The must-to-know command of Hexo</h1>
+<h2 id="create-a-new-post">Create a new post</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br><span class="line">$ hexo server</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>Please refer to <a href="http://hexo.io/docs/writing.html" target="_blank" rel="noopener">hexo official webiste</a> for more information.</p>
+<h1 id="latex-format-mathmatical-equations-in-hexo">LaTeX format mathmatical equations in Hexo</h1>
+<p>This present personal blog is powered by <a href="https://theme-next.org/" target="_blank" rel="noopener"><code>next</code> theme</a>. Next has a good support for <code>Mathjax</code>.参考<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/MATH.md" target="_blank" rel="noopener">链接</a>以获取更多信息(比如方程的编号问题)</p>
+<h2 id="prerequiste">Prerequiste</h2>
+<p>Firstly, you need to uninstall the original renderer <code>hexo-renderer-marked</code>, and install the following renderer: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm un hexo-renderer-marked --save</span><br><span class="line">npm i hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure></p>
+<p><strong>!!Attention!!</strong> Make sure that <code>pandoc</code> has been installed within your system. Without underlying <code>pandoc</code>, an error message will be thrown out when executing <code>hexo g</code>:<code>Error: spawn pandoc ENOENT</code>, which means <code>hexo</code> cannot find information about your underlying <code>pandoc</code>. If your OS is Mac OSX and has Homebrew installed, you can simply install this package via a command line <code>brew install pandoc</code>.</p>
+<h2 id="基础配置">基础配置</h2>
+<p>在每篇博文开头之处， <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mathjax: true</span><br></pre></td></tr></table></figure></p>
+<p>关于 Mathjax 的介绍： &gt;MathJax is a cross-browser JavaScript library that displays mathematical notation in web browsers, using MathML, LaTeX and ASCIIMathML markup. MathJax is released as open-source software under the Apache License.</p>
+<p><span class="math display">\[ E = mc^2 \]</span></p>
+<p>只是不知道为何，一开始 mathjax 貌似并不能很顺利的显示数学公式，为啥第二天就好了呢？是因为我安装了如下npm 包么？</p>
+<p><strong><em>因为使用了 NexT 主题，该主题的配置文件里需要将 math 设置为 enable</em></strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install eslint@4.x babel-eslint@8 --save</span><br></pre></td></tr></table></figure>
+<p>同时对于添加脚注也是一样的，一开始不管怎么 <code>hexo clean &amp;&amp; hexo g</code> 都不工作，后来咋就突然好了呢？ 为了强制浏览器更新资源文件，可以采用’Ctrl+F5’来刷新。</p>
+<p>hexo中插入数学公式 http://stevenshi.me/2017/06/26/hexo-insert-formula/</p>
+<h2 id="hexo-插入图片">Hexo 插入图片</h2>
+<p><a href="http://www.mashangxue123.com/Hexo/1322489026.html" target="_blank" rel="noopener">Hexo 插入图片的几种方法</a></p>
+<h3 id="如何让插入图片居中">如何让插入图片居中？</h3>
+<p>Markdown 没有提供居中图片或者文字的命令，但是 Markdown 支持嵌入的 HTML/CSS 语句。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;text-align:center&quot; markdown=&quot;1&quot;&gt;</span><br><span class="line">![Alt Text](/path/to/image &quot;Caption&quot;)</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="如何给插入的图片居中并且添加caption">如何给插入的图片居中并且添加caption?</h3>
+<p>参加帖子: http://fantding.coding.me/2019/06/12/hexo%E4%B8%BA%E5%9B%BE%E7%89%87%E6%B7%BB%E5%8A%A0caption/</p>
+<p>https://luodian.ink/2018-03-08/Next%E4%B8%BB%E9%A2%98%E4%B8%8B%E5%A6%82%E4%BD%95%E8%AE%A9%E5%9B%BE%E7%89%87%E8%87%AA%E5%8A%A8%E5%B1%85%E4%B8%AD/ 我只参考了博文中的第二点，就实现了图片居中的设置。</p>
+<h2 id="hexo博客如何添加脚注footnote">Hexo博客如何添加脚注(footnote)?</h2>
+<p>删除 Hexo 默认安装的 hexo-renderer-marked 模块， <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm un hexo-renderer-marked --save</span><br></pre></td></tr></table></figure></p>
+<p>安装 <code>hexo-renderer-markdown-it</code> 模块 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-renderer-markdown-it --save</span><br></pre></td></tr></table></figure></p>
+<p>The following code snippet is one example: basic footnote<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> here is an inline footnote[^2] (inline footnote) and another one<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and another one<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>source:http://www.icms.org.uk/downloads/stocpro/Blaszczyszyn_2.pdf source:http://www.chriskrycho.com/2015/academic-markdown-and-citations.html, Academic Markdown and Citations</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>basic footnote content<a href="#fnref1" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn2" role="doc-endnote"><p>paragraph<a href="#fnref2" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn3" role="doc-endnote"><p>footnote content with some <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener">markdown</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩</a></p></li>
+</ol>
+</section>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/25/docker-tuto/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/25/docker-tuto/" class="post-title-link" itemprop="url">A brief and concise Docker tutorial</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-25 11:21:48" itemprop="dateCreated datePublished" datetime="2019-03-25T11:21:48+08:00">2019-03-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-07 16:26:47" itemprop="dateModified" datetime="2020-06-07T16:26:47+08:00">2020-06-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="docker-以及容器">Docker 以及容器</h1>
+<p>我们往往会把容器和docker这两个词混为一谈。仔细说来，容器其实指的更多是 Linux container (LXC)技术，LXC 核心的技术是 namespace以及Cgroups。Docker是一家专注于在LXC技术基础上推出更容易管理使用容器技术的公司，Docker同时也是该公司推出的容器引擎。</p>
+<p>说到容器技术，也不是什么新技术，只是非常的小众。然而, 随着2013年3月 dotcloud 公司推出了一项新的容器技术 Docker。Docker的出现，降低了容器技术使用的门槛，带来了无可比拟的优势，所以迅速在IT行业内普及。</p>
+<p>docker教程整理:https://www.jianshu.com/p/4b808c2341bd</p>
+<p>Docker 是基于容器技术的轻量级虚拟化技术。其虚拟化技术是基于内核的Cgroup以及Namespace技术。处理逻辑与内核深度融合，所以在很多方面，性能与物理机非常接近。通信上，Docker并不会直接和内核交互，它是通过一个更底层的工具libcontainer与内核交互的。Libcontainer是真正意义上的容器引擎。它通过clone系统调用直接创建容器，通过<code>pivot_root</code> system call 进入容器，且通过直接操作<code>cgroupfs</code>文件实现对资源的管控，而docker本身则侧重于处理更上层的业务。</p>
+<h1 id="层级镜像的概念">层级镜像的概念</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i eth0 -w /traces/sfc103demo.pcap</span><br></pre></td></tr></table></figure>
+<p>一些说明: * <code>-v $PWD:/traces</code>: mount current working directory on host machine as <code>traces</code> folder under root directory of target container. Please refer to <a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a> for more information. It is also possible specify volume mount without specifying location of source folder in host machine by syntax such as <code>-v /traces</code>. Command <code>docker inspect &lt;container_name&gt;</code> allows to check the source file in host machine corresponding to volume mounted in container. * <code>--net container:classifier1</code>: monitor a certain container. Rememer to replace <code>classifier1</code> with regard to your need. * <code>nicolaka/netshoot</code> is a very powerful network troubleshooting docker image. Refer to <a href="https://github.com/nicolaka/netshoot" target="_blank" rel="noopener">nicolaka/netshoot</a> for more details. * <code>tcpdump –i eth0 -w /traces/sfc103demo.pcap</code> is actually how to use tcpdump command: - <code>–i eth0</code>: listen for interface <code>eth0</code> - <code>-w /traces/sfc103demo.pcap</code>: output monitored traffic to a PCAP file.</p>
+<p><a href="https://medium.com/the-code-review/top-10-docker-run-command-options-you-cant-live-without-a-reference-d256834e86c1" target="_blank" rel="noopener">Top 10 options for docker run</a> # Volume in container Container 内部数据持久化的问题 =&gt; 解决之道: data volume 机制 3 options are available in docker: * bind mount * volume * tmpfs mount</p>
+<p>Among them,volumes are the preferred mechanism for persisting data generated by and used by Docker containers. While bind mounts are dependent on the directory structure of the host machine, volumes are completely managed by Docker. Volumes have several advantages over bind mounts</p>
+<h1 id="run-script-within-a-dockerfile">Run script within a Dockerfile</h1>
+<p>A short but nice explanation: https://stackoverflow.com/questions/34549859/run-a-script-in-dockerfile</p>
+<h1 id="kill-all-containers-in-a-command-line">Kill all containers in a command line</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container ls | awk &apos;&#123;if (NR&gt;1) print $1&#125;&apos; | xargs docker kill</span><br></pre></td></tr></table></figure>
+<h1 id="rootless-docker-usage">Rootless docker usage</h1>
+<p>今天发现一个很奇怪的现象：通过创建用户组<code>docker</code>并添加自己账户之后， 通过SSH链接的qsong账户，可以无sudo执行docker命令，然而通过teamviewer访问(等同于直接在host上操作)，却依然要求sudo. 这个问题困扰了我许久，下午突然灵光一现，想到了原因：通过创建用户组<code>docker</code>并添加自己账户之后，需要退出重新登录. 我在host上并没有执行log out then log in的操作。</p>
+<h1 id="docker无法使用本地dns服务">Docker无法使用本地DNS服务</h1>
+<p>参考： 1. https://medium.com/<span class="citation" data-cites="faithfulanere/solved-docker-build-could-not-resolve-archive-ubuntu-com-apt-get-fails-to-install-anything-9ea4dfdcdcf2">@faithfulanere/solved-docker-build-could-not-resolve-archive-ubuntu-com-apt-get-fails-to-install-anything-9ea4dfdcdcf2</span> 2. https://github.com/moby/moby/issues/23910 3. https://stackoverflow.com/questions/39400886/docker-cannot-resolve-dns-on-private-network</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run busybox nslookup www.google.com</span><br><span class="line">;; connection timed out; no servers could be reached</span><br></pre></td></tr></table></figure>
+<p>出现这种现象的原因是：当docker进程检测到主机使用的DNS服务器地址为本机环路地址，即（<code>127.0.0.1</code>）,它会转而使用谷歌的公共DNS服务，即<code>8.8.8.8</code>. 然而不幸的是，有些公司/学校是禁止使用外部公共DNS服务的. 所以，最终<code>docker</code>无法使用DNS服务，导致出现一系列问题。</p>
+<p>解决办法：</p>
+<ul>
+<li>Adding a <code>/etc/docker/daemon.json</code> that passed in the docker0 bridge IP as a DNS server =&gt; 应该是把host实际使用的DNS地址存放进去, 而且如果要设定的机器需要经常性地</li>
+<li>Adding a /etc/NetworkManager/dnsmasq.d/docker-bridge.conf file that directs the NM-managed DNS cache to listen to the docker0 bridge IP as well as <code>127.0.1.1</code></li>
+<li>docker build --network=host -t my-image-name 运行容器的时候，采用和host一样的网络协议栈，但是缺乏足够的隔离性，有安全隐患</li>
+</ul>
+<p>Now container DNS lookups go through your local dnsmasq instance, so DNS in the container should work just as well as DNS on the host.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/resolv.conf</span><br><span class="line"># Dynamic resolv.conf(5) file for glibc resolver(3) generated by resolvconf(8)</span><br><span class="line">#     DO NOT EDIT THIS FILE BY HAND -- YOUR CHANGES WILL BE OVERWRITTEN</span><br><span class="line">nameserver 127.0.1.1</span><br><span class="line">search imtld.local</span><br></pre></td></tr></table></figure>
+<p>我们会发现dns服务器为<code>127.0.1.1</code>，记住不是<code>127.0.0.1</code>!好奇葩的一个地址. 原来ubuntu下有一个本地的dns服务叫做<code>dnsmasq</code>，它是由<code>NetworkManager</code>控制的. 它监听的本地地址，<code>--listen-address=127.0.1.1</code> (ubuntu12.04及之前的版本是 127.0.0.1), 这个地址是一个本地回环地址,而你真实的dns服务器地址，是被这个服务管理维护着的 由一张图表示就是： <code>local process -&gt; local dnsmasq -&gt; router -&gt; ISP dns</code> 问题是：为什么<code>dnsmasq</code>不接受来自container的请求呢？</p>
+<p>我们发现，在学校内网中，即使显示地要求docker采用谷歌提供的DNS服务器地址，DNS请求依然无法被解析。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run --dns 8.8.8.8  busybox nslookup www.google.com</span><br><span class="line">;; connection timed out; no servers could be reached</span><br></pre></td></tr></table></figure></p>
+<p>我之后试着<code>ping 8.8.8.8</code>，发现有回复，这说明，虽然我可以ping通谷歌公共DNS服务器，然而学校的网络配置却禁止我使用外部DNS，为什么呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$:nmcli dev show | grep IP4.DNS</span><br><span class="line">IP4.DNS[1]:                             10.59.130.129</span><br><span class="line">IP4.DNS[2]:                             10.59.130.130</span><br></pre></td></tr></table></figure>
+<p>注意：<code>nmcli</code> only applies to systems running <code>NetworkManager</code>, there is not an equivalent for other setups.</p>
+<p><a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a> <a href="http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/" target="_blank" rel="noopener">Docker RUN vs CMD vs ENTRYPOINT</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1563,262 +1228,117 @@ Une route plus representive, en campagne, il y a bcp de priorites à droit. Comm
           </div>
           
 
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">rennsong</p>
-              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">47</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">20</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/hansomesong" title="GitHub &rarr; https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">rennsong</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
-
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
 
 
 
@@ -1827,8 +1347,21 @@ Une route plus representive, en campagne, il y a bcp de priorites à droit. Comm
 
 
 
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
 
 
+
+  
 
 
 
@@ -1845,121 +1378,61 @@ Une route plus representive, en campagne, il y a bcp de priorites à droit. Comm
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.0"></script>
-
-  <script src="/js/motion.js?v=7.1.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
-
-
-
-
-  
-
-  
-
-
-  <script src="/js/next-boot.js?v=7.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-  
-
-  
-
-  
-
-  
-
-
-
-  
-
-
-
-
-  
-
-  
-
-  
-  
-
-  
-  
-    
       
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
     
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
   
 

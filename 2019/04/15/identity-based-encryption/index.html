@@ -1,100 +1,24 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.1.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="认可度比较高的 IBE 实现  Stanford IBE System: Was built and developed by Boneh and Franklin, which was built using C++ based IBE implementation, MIT–style license published it. MIRACL: It is a C++ based librar">
 <meta property="og:type" content="article">
@@ -103,26 +27,21 @@
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="认可度比较高的 IBE 实现  Stanford IBE System: Was built and developed by Boneh and Franklin, which was built using C++ based IBE implementation, MIT–style license published it. MIRACL: It is a C++ based librar">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-15T15:48:27.638Z">
+<meta property="og:updated_time" content="2020-04-12T04:10:33.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="identity-based-encryption">
 <meta name="twitter:description" content="认可度比较高的 IBE 实现  Stanford IBE System: Was built and developed by Boneh and Franklin, which was built using C++ based IBE implementation, MIT–style license published it. MIRACL: It is a C++ based librar">
 
+<link rel="canonical" href="http://rennesong.com/2019/04/15/identity-based-encryption/">
 
 
-  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
-
-
-
-  
-  
-  <link rel="canonical" href="http://rennesong.com/2019/04/15/identity-based-encryption/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -134,15 +53,8 @@
 
 
 
-
-
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -151,9 +63,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -167,153 +78,69 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Rennesong's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
-      
-        <p class="site-subtitle">Blog my life from now on!</p>
-      
-    
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
-
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
+  </ul>
 </nav>
 
-
-
-  
 
 
 
@@ -321,103 +148,61 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/15/identity-based-encryption/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">identity-based-encryption
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          identity-based-encryption
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-04-15 16:23:07 / 修改时间：17:48:27" itemprop="dateCreated datePublished" datetime="2019-04-15T16:23:07+02:00">2019-04-15</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+              <time title="创建时间：2019-04-15 16:23:07" itemprop="dateCreated datePublished" datetime="2019-04-15T16:23:07+08:00">2019-04-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-12 12:10:33" itemprop="dateModified" datetime="2020-04-12T12:10:33+08:00">2020-04-12</time>
+              </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -425,367 +210,187 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        <h1>认可度比较高的 IBE 实现</h1>
+        <h1 id="认可度比较高的-ibe-实现">认可度比较高的 IBE 实现</h1>
 <ul>
 <li>Stanford IBE System: Was built and developed by Boneh and Franklin, which was built using C++ based IBE implementation, MIT–style license published it.</li>
 <li>MIRACL: It is a C++ based library (cryptographic) developed by the Shamus Software.</li>
-<li>Voltage Security Inc. has built the most renowned implementation of the IBE. They offer valuable plugins for various mail clients</li>
+<li>Voltage Security Inc. (创建者正是Bonneh) has built the most renowned implementation of the IBE. They offer valuable plugins for various mail clients</li>
 </ul>
-<h1>参考资料</h1>
-<p><a href="https://medium.com/gigtricks/id-based-cryptography-and-user-authentication-4e6efa07cd03" target="_blank" rel="noopener">https://medium.com/gigtricks/id-based-cryptography-and-user-authentication-4e6efa07cd03</a></p>
+<p>Recently,in order to eliminate the use of certificates in certified public key cryptography and thekey-escrow problem in identity-based cryptography, the notion of certificateless publickey cryptography was introduced.</p>
+<h1 id="参考资料">参考资料</h1>
+<p>https://medium.com/gigtricks/id-based-cryptography-and-user-authentication-4e6efa07cd03</p>
+<p>Recently,in order to eliminate the use of certificates in certified public key cryptography and thekey-escrow problem in identity-based cryptography, the notion of certificateless public key cryptography was introduced.</p>
+<p>SDN和NFV为代表的网络虚拟化技术的进步，改变了网络管理和网络服务提供的模式。未来网络中，网络服务将会以服务链的形式存在。由于SDN本身的实现漏洞不可避免的，服务链的完整性将遭到破坏。为此，提出新的服务链完整性检测方案、同时降低服务链安全检测对服务质量和资源消耗的影响，并据此研究广义背景信息关联的新型隐私保护方法、隐私保护与服务 质量的自适应调节、隐私保护中的资源消耗优化三个科学问题，突破基于有序多重签名的服务链安全性检测性化空 间匿名、基于历史信息的自适应方法、基于安全策略的自主防御等关键技术。实现服务链技术在未来网络使用过程的实现实现: 轻量化，智能化，自主化。</p>
+<p>然后，对于服务链完整性检测</p>
+<p>#版本1： SDN和NFV为代表的网络虚拟化技术的进步，改变了网络管理和网络服务提供的模式。未来 网络中，网络服务将会以服务链的形式存在。由于SDN本身的实现漏洞不可避免的，服务链的 完整性将遭到破坏。为此，提出新的服务链完整性检测方案、同时降低服务链安全检测对服务 质量和资源消耗的影响，并据此研究新型服务链完整性检测方案、完整性检测与服务质量及资 源消耗的自适应调节、服务链自主防护三个科学问题，突破基于有序多重签名的服务链安全性 检测、基于带内遥测技术的自适应方法、基于安全策略的自主防御等关键技术。实现服务链技 术在未来网络使用过程的实现实现: 轻量化，智能化，自主化。</p>
+<p>#版本2</p>
+<ol type="1">
+<li>什么是服务链技术？ 在SDN和NFV等技术的赋能只下，服务链是一种让网络服务中的数据包，将按需按顺的通过一系列网络功能，以实现业务逻辑的技术。服务链技术被视为是未来网络(如数据中心网络，运营商核心网等)提供网络服务的主要形式。 2）服务链技术面临的安全问题是什么？然而，服务链的便利性确是以扩大的攻击面为代价。近年来，一些列研究成果表明，敌手具备绕过访问控制，鉴权授权等安全机制，破坏服务链的完整性，进而造成更大破坏的能力。本项目拟以保护服务链完整性为中心，以提出安全高效可靠的服务链完整性解决方案为突破口，以解决完整性检测方案和服务质量及资源消耗之间的自适应问题为手段，以便为不同的网络服务在不同服务质量要求下选用合理的完整性检测及参数设定，达到让软件定义网络中服务链完整性问题。在此基础上，本项目还将充分利用软件定义网络的集中试管里为手段，推动一定程度的服务链的自主防御机制。最终实现服务链完整性的从发现问题，到问题定位，到最后采取安全措施的闭环控制，确保未来网络中服务链的运行。</li>
+</ol>
+<p>#版本3 服务链是一种在SDN和NFV等技术的赋能之下，让网络服务中的数据包，按需按顺通过一系列网络功能实现业务逻辑的技术。因其灵活性和便利性，服务链被视为未来网络基础设施提供网络服务的主要形式。近年来的研究成果表明，敌手具备绕过访问控制，鉴权授权等安全机制，破坏服务链的完整性，进而造成更大破坏的能力。为了安全便捷地利用服务链技术，本项目拟围绕保护服务链完整性，以安全高效可靠的服务链完整性检测机制为突破口，以服务链完整性检测和服务质量及资源消耗之间的自适应机制为手段，在提供安全可靠的服务链完整性检测的同时降低对服务链服务质量影响。在此基础上，本项目还将利用服务链完整性检测结果，结合软件定义网络的集中式管理机制与全局视野，实现一定程度的针对服务链的自主防御机制，最终实现服务链完整性保护的从发现问题，到定位问题，直至解决问题的闭环控制。</p>
+<p>Leveraging on SDN and NFV, service function chaining (SFC) is a technology provisioning network services by enforcing data packets of network services go through a series of network functions in an ordered way. Because of its flexibility and convenience, SFC is regarded as the main form of network services provided by network infrastructure in the future. Research results in recent years have shown that adversaries have the ability to bypass access control, authentication and authorization and other security mechanisms, undermine the integrity of the service chain, and thus cause greater damage. In order to use this technology safely and conveniently, this project concentrates on the integrity protection of the service function chaining. We start by proposing a safe, efficient and reliable service function chaining integrity verification mechanism. We then provide an adapting mechanism between the service function chaining integrity verification, service quality and resource consumption. The mechanism is a means to provide a safe and reliable integrity verification of service function chaining while reducing the impact on the network service quality. Besides, the project will rely on the service chain integrity verification results, combined with the global view and centralised network resource management provided by SDN and NFV based network, to achieve a certain degree of autonomous defense mechanism for the service function chaining. Finally we achieve a closed-loop control for integrity protection of service function, including problems identification, problems analyse, to problem solving.</p>
+<p>#版本4 服务链是一种在SDN和NFV等技术的赋能之下，让网络服务中的数据包，按需按序通过一系列网络功能实现业务逻辑的技术。因其灵活性和便利性，服务链被视为未来网络基础设施提供网络服务的主要形式。近年来的研究成果表明，敌手具备绕过访问控制、鉴权授权等安全机制，破坏服务链的完整性，进而造成更大破坏的能力。为了安全便捷地利用服务链技术，本项目拟围绕保护服务链完整性，以安全高效可靠的服务链完整性检测机制为突破口，以服务链完整性检测和服务质量及资源消耗之间的自适应机制为手段，在提供安全可靠的服务链完整性检测的同时降低对服务链服务质量影响。在此基础上，本项目还将利用服务链完整性检测反应出的服务链异常问题，结合软件定义网络的集中式管理机制与全局视野，分析异常出现的原因，并采取相应的对策解决，实现一定程度上的针对服务链异常的自主防御机制。</p>
+<p>Leveraging SDN and NFV, service function chaining (SFC) is a technology provisioning network services by enforcing data packets of network services go through a series of network functions in an ordered way. Because of its flexibility and convenience, SFC is regarded as the main form of network services provided by network infrastructure in the future. Research results in recent years have shown that adversaries have the ability to bypass access control, authentication and authorization and other security mechanisms, undermine the integrity of the service chain, and thus cause greater damage. In order to use this technology safely and conveniently, this project concentrates on the integrity protection of the service function chaining. We start by proposing a safe, efficient and reliable service function chaining integrity verification mechanism. We then provide an adapting mechanism between the service function chaining integrity verification, service quality and resource consumption. The mechanism is a means to provide a safe and reliable integrity verification of service function chaining while reducing the impact on the network service quality. Besides, the project will rely on the service chain integrity verification results, combined with the global view and centralised network resource management provided by SDN and NFV based network, identify the causes of SFC related anomalies and propose corresponding solutions.</p>
+<p>#版本5 Leveraging SDN and NFV, service function chaining (SFC) is a technology provisioning network services by enforcing data packets of network services go through a series of network functions in an ordered way. Because of its flexibility and convenience, SFC is regarded as the main form of network services provided by network infrastructure in the future. Research results in recent years have shown that adversaries have the ability to bypass security mechanisms such as access control, authentication and authorization etc., undermine the integrity of the service chain, and thus cause greater damage. In order to safely and conveniently leverage this technology, this project concentrates on the integrity verification of service function chaining. This project starts by proposing a safe, efficient and reliable integrity verification mechanism of service function chaining. The next step is to propose an adaptive mechanism between the integrity verification service function chaining and service quality provided by service function chaining. The envisioned adaptive mechanism is a means to provide a safe and reliable integrity verification of service function chaining while reducing the impact on the network service quality. Besides, the project will rely on the service function chaining integrity verification results, combined with the global view and centralised network resource management capability provided by SDN and NFV based network, to achieve a certain degree of autonomous defense mechanism against abnormal service function chaining, which should be able to identify the causes of SFC related anomalies and propose corresponding solutions.</p>
+<p>SFC完整性检测 第三个科学问题 自主防御那儿 到底难点在哪儿？？？</p>
+<p>network path verification 看来已经是一个研究度极高的科学问题了，只是采用数字签名的方式来做确实少见。想做出来区别于已经工作并不是那么容易的</p>
+<p>先要定位出哪个SF出了问题， 如果只是SF出了问题，那么很可能会涉及到好几个SFC的问题，如果是immpersonation attack的话，那么需要删掉被替换掉的SF, 但是这样的话，所有的相关的SFC都会受到影响。这个时候就需要去抽象的资源池里找到新的SF，是其他的SFC还是共用一个，还是每个人分一个？</p>
+<p>但是如果是底下的OF-switch，那么受影响的服务链也许更多。这个时候我们是简单粗暴地</p>
+<p>简单来讲，我们需要考虑所有可能的策略，变成一个状态空间，然后在状态空间内搜索求解，来达到纳什均衡。</p>
+<p>现在的问题是 不知道是SDN controller出了什么问题？还是VNF实现有BUG？还是Openflow出现了BUG。。。</p>
+<p>将OF-switch打上标签，如果其他服务链也出现类似问题，则顺便将涉及到服务链都进行进行再优化。用什么优化技术啊？</p>
+<p>第一：如何确定哪个环节出问题了？ 首先调取这条服务俩相关的指令，那如果是OVS被敌人攻破了，内部流表发生了流表改变你又如何知道？ 我觉得可以有一套一步步地具体步骤去确定原因，比如是不是OpenFlow message中途被篡改了，如果一切检查下来都没有问题，那只能将所有在这个区域的SFC就行重定位了。 第二：如何选出来最好的对抗措施？ 如果什么原因都查不出来，是不是可以认为相关的攻击不可避免？但如此一来，那么这就不能叫做自主防御了。自主防御=发现问题-&gt;定位原因-&gt;采取相关对策 发现问题这一环节 已经有SFC path verification解决 定位问题是难点 相关对策相关的科学问题 优化算一个？ 在模型选择方面，Stackelberg 双寡头博弈（或谓之 Leader-follower 博弈）得益于其理论求解方便而更受青睐，它可被视为由上下级构成的分布式优化过程，在解决电能定价和分配时，能够描述电网中不同级别用户的需求冲突和权限差别</p>
+<p>如果我们把第三个问题直接换了呢？自主防御其实是一个很大的课题，甚至自己都可以是一个课题，把它看做成青基项目的一个子课题 有点儿装不下</p>
+<p>感觉第三个问题的核心研究方向是：优化，不管有没有涉及到自主防御的问题。 如果我们不提自主防御的问题，我们怎么合理化我们的科学问题 那么优化问题困难点儿一般在哪儿？或者说创新点在哪儿？</p>
+<p>SFC是高度动态化的，SFC的部署我们假设在基础设施中是在不断实施中的。</p>
+<p>首先，我们需要关注文献中发表针对服务链完整性攻击以及SDN控制器等网络中心控制节点都存在哪些漏洞，这有助于我们确定服务链都会面临什么样的问题，例如，服务链可能有合法节点被恶意替换，服务链</p>
 
-      
     </div>
 
     
-
-    
-    
-    
-
-    
-
-    
-      
     
     
 
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/12/nsh-history-tuto/" rel="prev" title="A brief history about Network Service Header">
+      <i class="fa fa-chevron-left"></i> A brief history about Network Service Header
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/17/basic-number-theory/" rel="next" title="A basic tutorial about number theory">
+      A basic tutorial about number theory <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
     
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/04/12/nsh-history-tuto/" rel="next" title="A brief history about Network Service Header">
-                <i class="fa fa-chevron-left"></i> A brief history about Network Service Header
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/17/basic-number-theory/" rel="prev" title="A basic tutorial about number theory">
-                A basic tutorial about number theory <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
   </article>
+  
+  
+  
 
-
-  </div>
 
 
           </div>
           
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">rennsong</p>
-              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">47</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">20</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/hansomesong" title="GitHub &rarr; https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">认可度比较高的 IBE 实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">rennsong</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
 
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#认可度比较高的-ibe-实现"><span class="nav-number">1.</span> <span class="nav-text">认可度比较高的 IBE 实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
 
 
 
@@ -794,8 +399,21 @@
 
 
 
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
 
 
+
+  
 
 
 
@@ -812,151 +430,61 @@
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.0"></script>
-
-  <script src="/js/motion.js?v=7.1.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
-
-
-
-
-  
-  <script src="/js/scrollspy.js?v=7.1.0"></script>
-<script src="/js/post-details.js?v=7.1.0"></script>
-
-
-
-  
-
-
-  <script src="/js/next-boot.js?v=7.1.0"></script>
-
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-
-  
-
-
-
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
-    
-      <script type="text/x-mathjax-config">
-  
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
       
-      equationNumbers: {
-        autoNumber: 'AMS'
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
       }
-    }
-  });
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
-        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
-      }
-    });
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
-    }
-  });
-</script>
-<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
     
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
   
 

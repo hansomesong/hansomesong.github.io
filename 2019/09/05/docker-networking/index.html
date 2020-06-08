@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="容器网络 随着Docker的普及和使用，其自身的性能无法满足大规模集群的使用，需要一个工具对成千上万个容器进行统一编排。在2015年又开始了容器编排之争，行业内最主要的三个编排框架分别是docker公司的swarm、google的kubernetes以及Apache mesos。 Mesos是参考谷歌的borg大规模集群管理系统，并于2009年推出的。swarm和kubernetes是为docke">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 网络教程">
+<meta property="og:url" content="http://rennesong.com/2019/09/05/docker-networking/index.html">
+<meta property="og:site_name" content="Rennesong&#39;s blog">
+<meta property="og:description" content="容器网络 随着Docker的普及和使用，其自身的性能无法满足大规模集群的使用，需要一个工具对成千上万个容器进行统一编排。在2015年又开始了容器编排之争，行业内最主要的三个编排框架分别是docker公司的swarm、google的kubernetes以及Apache mesos。 Mesos是参考谷歌的borg大规模集群管理系统，并于2009年推出的。swarm和kubernetes是为docke">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://rennesong.com/2019/09/05/docker-networking/docker-cnm.png">
+<meta property="og:image" content="http://rennesong.com/2019/09/05/docker-networking/docker-bridge-mode.png">
+<meta property="og:image" content="http://rennesong.com/2019/09/05/docker-networking/docker-overlay-mode.png">
+<meta property="og:updated_time" content="2019-10-08T10:12:22.596Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker 网络教程">
+<meta name="twitter:description" content="容器网络 随着Docker的普及和使用，其自身的性能无法满足大规模集群的使用，需要一个工具对成千上万个容器进行统一编排。在2015年又开始了容器编排之争，行业内最主要的三个编排框架分别是docker公司的swarm、google的kubernetes以及Apache mesos。 Mesos是参考谷歌的borg大规模集群管理系统，并于2009年推出的。swarm和kubernetes是为docke">
+<meta name="twitter:image" content="http://rennesong.com/2019/09/05/docker-networking/docker-cnm.png">
+
+<link rel="canonical" href="http://rennesong.com/2019/09/05/docker-networking/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Docker 网络教程 | Rennesong's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/09/05/docker-networking/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Docker 网络教程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-05 11:23:04" itemprop="dateCreated datePublished" datetime="2019-09-05T11:23:04+08:00">2019-09-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-08 18:12:22" itemprop="dateModified" datetime="2019-10-08T18:12:22+08:00">2019-10-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="容器网络">容器网络</h1>
+<p>随着Docker的普及和使用，其自身的性能无法满足大规模集群的使用，需要一个工具对成千上万个容器进行统一编排。在2015年又开始了容器编排之争，行业内最主要的三个编排框架分别是docker公司的swarm、google的kubernetes以及Apache mesos。</p>
+<p>Mesos是参考谷歌的borg大规模集群管理系统，并于2009年推出的。swarm和kubernetes是为docker等容器技术，新推出的框架。swarm是docker公司发布的，有近水楼台先得月的优势。kubernetes是参考谷歌的borg系统10几年的容器管理经验，重新推出的一套容器管理框架，可谓含着金钥匙出身，kubernetes迅速得到了微软，红帽等支持。这场战争不用打，或许都已经猜到结局是什么，战争的胜利只是一个时间问题。</p>
+<p>2017年10月的dockerCon峰会上，docker公司官方支持Kubernetes，确立了kubernetes成为了容器编排界事实上的标准。</p>
+<p>容器管理与编排平台 资源调度，服务发现，扩容缩容 * Docker 主推的 Swarm + Machine + Compose * Apache 提出的(Twitter主推)的 Mesos * Gooogle 推的开源的 Kubernetes</p>
+<p>虚拟机网络与容器网络异同 * VM network 拥有完善的隔离机制，虚拟网卡与硬件网卡在使用上没有啥区别，而 container network 则使用 network namespace 提供网络在Linux kernel 中的隔离 * 处于安全考虑，很多情况下，容器会部署在VM内部，这种嵌套部署需要设计心得网络模型 * Container migration 速度很快，因此 network policy 的更新需要跟得上其速度 * 容器数量多了，多主机之间的 ARP flooding 会造成大量资源浪费</p>
+<p>Docker 在开始的很长一段时间内只支持使用 <code>Linux bridge + iptables</code> 进行<code>single-host</code>的部署，自动化方面也只有 Pipework 这类 shell 脚本</p>
+<figure>
+<img src="/2019/09/05/docker-networking/docker-cnm.png" alt="Docker 提出的 container network model (CNM)"><span class="image-caption">Docker 提出的 container network model (CNM)</span><figcaption>Docker 提出的 container network model (CNM)</figcaption>
+</figure>
+<ul>
+<li>Sandbox: isolated netwokring running environment. Save the essential container network stack configuration, including: network interface pairs, routing table and DNS configuration. Under linux, sandbox is implemnted in form of linux network namespace. A sanbox may include several endponts from several networks.</li>
+<li>Endpoint: endpoint allows a sandbox to join in a network. Its implementation can be a veth pair or OVS internl port.</li>
+<li>Network: Its implementation can be linux bridge, VLAN, etc.</li>
+</ul>
+<h1 id="libnetwork-实现了以下5中driver">Libnetwork 实现了以下5中driver:</h1>
+<p>有两种方式来创建docker network：</p>
+<ul>
+<li>使用docker network create命令来创建，只能创建docker内建的网络模式</li>
+<li>使用docker plugin，创建自定义网络 创建自定义网络需要设置网络的driver和ipam。</li>
+</ul>
+<p>Docker支持以下5中内建网络模式: ## Bridge: Docker默认的容器网络驱动。由Docker设计的一种NAT网络模型。Container通过一对veth pair连接到docker0网桥上，由Docker为容器动态分配IP及配置路由、防火墙规则等。Bridge模式下，Docker容器于Internet通信，以及不同容器之间的通信，都是通过iptables规则(如更换源或者目的地址等)控制的。 <img src="/2019/09/05/docker-networking/docker-bridge-mode.png" alt="Docker bridge mode"><span class="image-caption">Docker bridge mode</span></p>
+<ul>
+<li>Host: 容器与主机共享同一Network Namespace，共享同一套网络协议栈、路由表及iptables规则等。容器与主机看到的是相同的网络视图.</li>
+<li>Null: 容器内网络配置为空，需要用户手动为容器配置网络接口及路由等。</li>
+<li>Remote: Docker网络插件的实现。Remote driver使得Libnetwork可以通过HTTP RESTful API对接第三方的网络方案，类似SocketPlane的SDN方案只要实现了约定的HTTP URL处理函数及底层的网络接口配置方法，就可以替换Docker原生的网络实现(宋祁朋: 疑似在Docker官方文档中已经找不到这种模式了)。</li>
+</ul>
+<h2 id="overlay-mode">Overlay mode</h2>
+<p>Docker原生的跨主机多子网网络方案。主要通过使用Linux bridge和vxlan隧道实现，底层通过类似于etcd或consul的KV存储系统实现多机的信息同步(宋祁朋：需要确认下)。The overlay network driver creates a distributed network among multiple Docker daemon hosts. This network sits on top of (overlays) the host-specific networks, allowing containers connected to it (including swarm service containers) to communicate securely. Docker transparently handles routing of each packet to and from the correct Docker daemon host and the correct destination container.</p>
+<p>overlay网络模型比较复杂，底层需要类似consul或etcd的KV存储系统进行消息同步，核心是通过Linux网桥与vxlan隧道实现跨主机划分子网。每创建一个网络，Docker daemon 会在主机上创建一个单独的沙盒(i.e. network namespace). 在沙盒中，Docker(实际上是Docker daemon, 下同) 会创建名为br0的网桥，并在网桥上增加一个vxlan接口，每个网络占用一个<code>vxlan ID</code>，当前Docker创建vxlan隧道的ID范围为256~1000，因而最多可以创建745个网络。当添加一个容器到某一个网络上时，Docker会创建一对veth网卡设备，一端连接到此网络相关沙盒内的br0网桥上，另一端放入容器的沙盒内，并设置br0的IP地址作为容器内路由默认的网关地址，从而实现容器加入网络的目的。 <img src="/2019/09/05/docker-networking/docker-overlay-mode.png" alt="Docker overlay mode"><span class="image-caption">Docker overlay mode</span></p>
+<p>总而言之，Docker的整个网络模型，是建立在Network Namespace、Linux网桥、vxlan隧道、iptables规则之上的，也正是由于过于依赖网桥与iptables，导致Docker的网络效率不高，招致了用户和开发者的诟病.</p>
+<h1 id="appendix">Appendix</h1>
+<h2 id="linux-network-namespace">Linux network namespace</h2>
+<p>Linux 内核提供的一种网络资源虚拟隔离技术。不同network namespace具有各自的网络设备，协议栈，路由表以及防火墙规则等。同一network namespace下的进程则共享同一网络试图。Docker提供的5种网络模式均通过 network namespace实现。</p>
+<h2 id="etcd">Etcd</h2>
+<p>Etcd是CoreOS公司开发的开源的K-V存储及服务发现程序，有着大量的拥趸。在集群中，可用于在不同主机间交换配置、状态等信息，其功能强大，相应的配置也略微复杂一些。</p>
+<h2 id="consul">Consul</h2>
+<p>Consul is a fantastic solution for providing, among other things, powerful and reliable service-discovery capability to your network.</p>
+<h1 id="kubernets">Kubernets</h1>
+<h1 id="kubernets-和-docker-之间的关系">Kubernets 和 Docker 之间的关系</h1>
+<p>Kubernetes与Docker有什么关系？ 众所周知，Docker提供容器的生命周期管理，Docker镜像构建运行时容器。但是，由于这些单独的容器必须通信，因此使用Kubernetes。因此，我们说Docker构建容器，这些容器通过Kubernetes相互通信。因此，可以使用Kubernetes手动关联和编排在多个主机上运行的容器。</p>
+<p><code>helm</code> 是 Kubernets 生态中的一个包管理工具。helm chart 是将某个应用所需的所有配置等打包到一起，发布到 helm 的 repo 中，tiller 是 helm 的服务端组件，部署在k8s集群中。在部署应用时就可以使用类似于 <code>apt-get install</code> 的命令<code>helm install</code> 来安装。<code>helm</code> 相关组件的关系如下:</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/docker/" rel="tag"># docker</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/08/26/openstack-learning-note/" rel="prev" title="每天5分钟玩转 OpenStack 读书笔记">
+      <i class="fa fa-chevron-left"></i> 每天5分钟玩转 OpenStack 读书笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/09/06/docker-overlay-net-deep-tuto-zn1/" rel="next" title="深入了解 Docker overlay 网络机制1">
+      深入了解 Docker overlay 网络机制1 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#容器网络"><span class="nav-number">1.</span> <span class="nav-text">容器网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#libnetwork-实现了以下5中driver"><span class="nav-number">2.</span> <span class="nav-text">Libnetwork 实现了以下5中driver:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#overlay-mode"><span class="nav-number">2.1.</span> <span class="nav-text">Overlay mode</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#appendix"><span class="nav-number">3.</span> <span class="nav-text">Appendix</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux-network-namespace"><span class="nav-number">3.1.</span> <span class="nav-text">Linux network namespace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#etcd"><span class="nav-number">3.2.</span> <span class="nav-text">Etcd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#consul"><span class="nav-number">3.3.</span> <span class="nav-text">Consul</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kubernets"><span class="nav-number">4.</span> <span class="nav-text">Kubernets</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kubernets-和-docker-之间的关系"><span class="nav-number">5.</span> <span class="nav-text">Kubernets 和 Docker 之间的关系</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

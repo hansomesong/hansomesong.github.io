@@ -1,130 +1,49 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.1.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="OVS nullOVS 实现中的主要模块 OVS 实现中，主要模块如下图所示:  最新代码包主要包括以下模块和特性：  ovs-vswitchd: 核心模块，实现交换功能的守护程序（daemon），和 Linux 内核模块一起，实现基于流的交换； ovsdb-server ：提供轻量级数据库查询服务。其保存了整个OVS的配置信息，包括接口，流表，VLAN等。ovs-vswitchd从其查询配置信息">
+  <meta name="description" content="OVS OVS 实现中的主要模块 OVS 实现中，主要模块如下图所示: OVS main components 最新代码包主要包括以下模块和特性： * ovs-vswitchd: 核心模块，实现交换功能的守护程序（daemon），和 Linux 内核模块一起，实现基于流的交换； * ovsdb-server ：提供轻量级数据库查询服务。其保存了整个OVS的配置信息，包括接口，流表，VLAN等。ov">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Open vSwitch 详细介绍">
 <meta property="og:url" content="http://rennesong.com/2019/03/24/ovs-tuto/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
-<meta property="og:description" content="OVS nullOVS 实现中的主要模块 OVS 实现中，主要模块如下图所示:  最新代码包主要包括以下模块和特性：  ovs-vswitchd: 核心模块，实现交换功能的守护程序（daemon），和 Linux 内核模块一起，实现基于流的交换； ovsdb-server ：提供轻量级数据库查询服务。其保存了整个OVS的配置信息，包括接口，流表，VLAN等。ovs-vswitchd从其查询配置信息">
+<meta property="og:description" content="OVS OVS 实现中的主要模块 OVS 实现中，主要模块如下图所示: OVS main components 最新代码包主要包括以下模块和特性： * ovs-vswitchd: 核心模块，实现交换功能的守护程序（daemon），和 Linux 内核模块一起，实现基于流的交换； * ovsdb-server ：提供轻量级数据库查询服务。其保存了整个OVS的配置信息，包括接口，流表，VLAN等。ov">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://rennesong.com/2019/03/24/ovs-tuto/ovs-main-components.png">
 <meta property="og:updated_time" content="2019-04-10T20:41:09.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Open vSwitch 详细介绍">
-<meta name="twitter:description" content="OVS nullOVS 实现中的主要模块 OVS 实现中，主要模块如下图所示:  最新代码包主要包括以下模块和特性：  ovs-vswitchd: 核心模块，实现交换功能的守护程序（daemon），和 Linux 内核模块一起，实现基于流的交换； ovsdb-server ：提供轻量级数据库查询服务。其保存了整个OVS的配置信息，包括接口，流表，VLAN等。ovs-vswitchd从其查询配置信息">
+<meta name="twitter:description" content="OVS OVS 实现中的主要模块 OVS 实现中，主要模块如下图所示: OVS main components 最新代码包主要包括以下模块和特性： * ovs-vswitchd: 核心模块，实现交换功能的守护程序（daemon），和 Linux 内核模块一起，实现基于流的交换； * ovsdb-server ：提供轻量级数据库查询服务。其保存了整个OVS的配置信息，包括接口，流表，VLAN等。ov">
 <meta name="twitter:image" content="http://rennesong.com/2019/03/24/ovs-tuto/ovs-main-components.png">
 
+<link rel="canonical" href="http://rennesong.com/2019/03/24/ovs-tuto/">
 
 
-  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
-
-
-
-  
-  
-  <link rel="canonical" href="http://rennesong.com/2019/03/24/ovs-tuto/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -136,15 +55,8 @@
 
 
 
-
-
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -153,9 +65,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -169,153 +80,69 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Rennesong's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
-      
-        <p class="site-subtitle">Blog my life from now on!</p>
-      
-    
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
-
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
+  </ul>
 </nav>
 
-
-
-  
 
 
 
@@ -323,133 +150,70 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/24/ovs-tuto/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">Open vSwitch 详细介绍
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          Open vSwitch 详细介绍
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-03-24 17:57:49" itemprop="dateCreated datePublished" datetime="2019-03-24T17:57:49+01:00">2019-03-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-10 22:41:09" itemprop="dateModified" datetime="2019-04-10T22:41:09+02:00">2019-04-10</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-networking/" itemprop="url" rel="index"><span itemprop="name">linux networking</span></a></span>
-
-                
-                
-              
+              <time title="创建时间：2019-03-24 17:57:49" itemprop="dateCreated datePublished" datetime="2019-03-24T17:57:49+08:00">2019-03-24</time>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-11 04:41:09" itemprop="dateModified" datetime="2019-04-11T04:41:09+08:00">2019-04-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux-networking/" itemprop="url" rel="index"><span itemprop="name">linux networking</span></a>
+                </span>
+            </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -457,488 +221,225 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        <h1>OVS</h1>
-<h2 id="ovs-实现中的主要模块"><a class="header-anchor" href="#ovs-实现中的主要模块">null</a>OVS 实现中的主要模块</h2>
-<p>OVS 实现中，主要模块如下图所示:<br>
-<img src="/2019/03/24/ovs-tuto/ovs-main-components.png" alt="OVS main components"><br>
-最新代码包主要包括以下模块和特性：</p>
-<ul>
-<li>ovs-vswitchd: 核心模块，实现交换功能的守护程序（daemon），和 Linux 内核模块一起，实现基于流的交换；</li>
-<li>ovsdb-server ：提供轻量级数据库查询服务。其保存了整个OVS的配置信息，包括接口，流表，VLAN等。ovs-vswitchd从其查询配置信息；</li>
-<li>ovsdb-tool: 不通过ovs-server就能直接操控数据库</li>
-<li>ovsdb-client: 直接通过ovs-server数据库操作</li>
-<li>ovs-brcompatd：让 ovs-vswitch 替换 Linux bridge，包括获取 bridge ioctls 的 Linux 内核模块；</li>
-<li>ovs-dpctl：dapapath control.  用来配置 switch 内核模块，可以控制转发规则；</li>
-<li>ovs-vsctl: 获取或者更改ovs-vswitchd的配置信息，此工具操作的时候会更新ovsdb-server数据库；</li>
-<li>ovs-appctl：openvswitch apply control, 发送命令来运行相关 daemon(很少使用)；</li>
-<li>ovsdbmonitor: GUI 工具，用于显示 OVS 数据库中的相关数据。</li>
-</ul>
-<p>此外， OVS 也提供了支持 OpenFlow 的特性实现，包括:</p>
-<ul>
-<li>ovs-openflowd：一个简单的 OpenFlow 交换机；</li>
-<li>ovs-controller：一个简单的 OpenFlow 控制器；</li>
-<li>ovs-ofctl :openvswitch openflow control, 用来控制OVS作为OpenFlow交换机工作时的流表内容；</li>
-<li>ovs-pki：OpenFlow 交换机创建和管理公钥框架；</li>
-<li>ovs-tcpundump：实现类似tcpdump 的抓包分析功能</li>
-</ul>
-<p>既然ovs-vswitchd是Open vSwitch的核心模块，咱们就来深入研究下它<br>
-vswitchd 模块主要包括 bridge、ofproto 等模块。作为主模块，负责解析和执行其他各个 ovs 命令。vswitchd 的主要功能就是不断检测并调用所有 bridge 上的 ofproto，执行其上的处理函数。<br>
-ovs-vswitchd.c 中有 main 函数，分析 vswitchd 可以从这里开始，这里包含以下头文件，其中大部分都是与业务无关的代码，其中与业务有关的也就 bridge.h、dpif.h、netdev.h、openflow/openflow.h、ovsdb-idl.h、vconn.h、lib/vswitch-idl.h。以下代码注释来自<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;bridge.h&quot; //the bridge module,需要访问ovsdb-server获取配置信息，与ofprotos和ofproto-dpif也有些关系。</span><br><span class="line">#include &quot;command-line.h&quot;</span><br><span class="line">#include &quot;compiler.h&quot;</span><br><span class="line">#include &quot;daemon.h&quot; //守护进程管理模块</span><br><span class="line">#include &quot;dirs.h&quot; //目录管理模块</span><br><span class="line">#include &quot;dpif.h&quot; //dpif, the DataPath InterFace.ovs-vswitchd使用这个接口与内核模块通信，ovs-dpctl也会使用</span><br><span class="line">#include &quot;dummy.h&quot;</span><br><span class="line">#include &quot;memory.h&quot;</span><br><span class="line">#include &quot;netdev.h&quot; //Generic interface to network devices (&quot;netdev&quot;s).用来管理网络设备的模块</span><br><span class="line">#include &quot;openflow/openflow.h&quot; //openflow协议规格定义</span><br><span class="line">#include &quot;ovsdb-idl.h&quot; //Open vSwitch Database Interface Definition Language (OVSDB IDL).应该是访问ovsdb-server进程的接口</span><br><span class="line">#include &quot;poll-loop.h&quot; //High-level wrapper around the &quot;poll&quot; system call.poll系统调用的封装模块</span><br><span class="line">#include &quot;process.h&quot; //Starting and monitoring subprocesses.进程监控模块</span><br><span class="line">#include &quot;signals.h&quot; //signals系统调用的封装模块</span><br><span class="line">#include &quot;simap.h&quot; //数据结构定义和hash map的封装操作接口模块</span><br><span class="line">#include &quot;stream-ssl.h&quot; //SSL安全网络通信封装模块接口</span><br><span class="line">#include &quot;stream.h&quot; //网络通信封装模块接口</span><br><span class="line">#include &quot;svec.h&quot; //SVEC数据结构操作模块，SVEC是什么？</span><br><span class="line">#include &quot;timeval.h&quot; //计时相关系统接口封装模块</span><br><span class="line">#include &quot;unixctl.h&quot; //Unix domain socket control connection.UNIX相关网络通信模块</span><br><span class="line">#include &quot;util.h&quot;</span><br><span class="line">#include &quot;vconn.h&quot; //virtual connections to OpenFlow devices.</span><br><span class="line">#include &quot;vlog.h&quot;</span><br><span class="line">#include &quot;lib/vswitch-idl.h&quot; //自动生成的文件，应该是Open vSwitch Interface Definition Language，可能是openflow协议的具体内容实现</span><br></pre></td></tr></table></figure>
-<h2 id="ovs-中基本概念"><a class="header-anchor" href="#ovs-中基本概念">null</a>OVS 中基本概念<sup class="footnote-ref"><a href="#fn1" id="fnref1:1">[1]</a></sup></h2>
-<h3 id="1-packet"><a class="header-anchor" href="#1-packet">null</a>1.Packet</h3>
-<p>网络转发的最小数据单元。每个包都来自某个端口，最终会被发往一个或多个目标端口，转发数据包的过程就是网络的唯一功能</p>
-<h3 id="2-bridge"><a class="header-anchor" href="#2-bridge">null</a>2.Bridge</h3>
-<p>Open vSwitch中的一个网桥就是一台以太网交换机。这里交换机不限于二层转发</p>
-<h3 id="3-port"><a class="header-anchor" href="#3-port">null</a>3.Port</h3>
-<p>端口是收发数据包的单元，和物理以太网交换机的端口概念类似. Open vSwitch中，每个端口都属于一个特定的网桥。端口收到的数据包会经过流规则的处理，发往其他端口；也会把其他端口来的数据包发送出去。Open vSwitch支持的端口有以下几种：<br>
-- Normal port: 用户可以把操作系统中的网卡绑定到Open vSwitch上，Open vSwitch会生成一个普通端口处理这块网卡进出的数据包。<br>
-- Internal port: 当设置端口类型为internal，Open vSwitch会创建一快虚拟网卡，此端口收到的所有数据包都会交给这块网卡，网卡发出的包会通过这个端口交给Open vSwitch。<br>
-当Open vSwitch创建一个新网桥时，默认会创建一个与网桥同名的Internal Port<br>
-- Patch port: 当机器中有多个Open vSwitch网桥时，可以使用Patch Port把两个网桥连起来。Patch Port总是成对出现，分别连接在两个网桥上，在两个网桥之间交换数据。<br>
-- Tunnel port: 隧道端口是一种虚拟端口，支持使用 GRE 或 VxLAN 等隧道技术与位于网络上其他位置的远程端口通讯。</p>
-<h3 id="4-interface-iface-接口"><a class="header-anchor" href="#4-interface-iface-接口">null</a>4.Interface(iface/接口)</h3>
+        <h1 id="ovs">OVS</h1>
+<h2 id="ovs-实现中的主要模块">OVS 实现中的主要模块</h2>
+<p>OVS 实现中，主要模块如下图所示: <img src="/2019/03/24/ovs-tuto/ovs-main-components.png" alt="OVS main components"><span class="image-caption">OVS main components</span> 最新代码包主要包括以下模块和特性： * ovs-vswitchd: 核心模块，实现交换功能的守护程序（daemon），和 Linux 内核模块一起，实现基于流的交换； * ovsdb-server ：提供轻量级数据库查询服务。其保存了整个OVS的配置信息，包括接口，流表，VLAN等。ovs-vswitchd从其查询配置信息； * ovsdb-tool: 不通过ovs-server就能直接操控数据库 * ovsdb-client: 直接通过ovs-server数据库操作 * ovs-brcompatd：让 ovs-vswitch 替换 Linux bridge，包括获取 bridge ioctls 的 Linux 内核模块； * ovs-dpctl：dapapath control.  用来配置 switch 内核模块，可以控制转发规则； * ovs-vsctl: 获取或者更改ovs-vswitchd的配置信息，此工具操作的时候会更新ovsdb-server数据库； * ovs-appctl：openvswitch apply control, 发送命令来运行相关 daemon(很少使用)； * ovsdbmonitor: GUI 工具，用于显示 OVS 数据库中的相关数据。</p>
+<p>此外， OVS 也提供了支持 OpenFlow 的特性实现，包括: * ovs-openflowd：一个简单的 OpenFlow 交换机； * ovs-controller：一个简单的 OpenFlow 控制器； * ovs-ofctl :openvswitch openflow control, 用来控制OVS作为OpenFlow交换机工作时的流表内容； * ovs-pki：OpenFlow 交换机创建和管理公钥框架； * ovs-tcpundump：实现类似tcpdump 的抓包分析功能</p>
+<p>既然ovs-vswitchd是Open vSwitch的核心模块，咱们就来深入研究下它 vswitchd 模块主要包括 bridge、ofproto 等模块。作为主模块，负责解析和执行其他各个 ovs 命令。vswitchd 的主要功能就是不断检测并调用所有 bridge 上的 ofproto，执行其上的处理函数。 ovs-vswitchd.c 中有 main 函数，分析 vswitchd 可以从这里开始，这里包含以下头文件，其中大部分都是与业务无关的代码，其中与业务有关的也就 bridge.h、dpif.h、netdev.h、openflow/openflow.h、ovsdb-idl.h、vconn.h、lib/vswitch-idl.h。以下代码注释来自<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;bridge.h&quot; //the bridge module,需要访问ovsdb-server获取配置信息，与ofprotos和ofproto-dpif也有些关系。</span><br><span class="line">#include &quot;command-line.h&quot;</span><br><span class="line">#include &quot;compiler.h&quot;</span><br><span class="line">#include &quot;daemon.h&quot; //守护进程管理模块</span><br><span class="line">#include &quot;dirs.h&quot; //目录管理模块</span><br><span class="line">#include &quot;dpif.h&quot; //dpif, the DataPath InterFace.ovs-vswitchd使用这个接口与内核模块通信，ovs-dpctl也会使用</span><br><span class="line">#include &quot;dummy.h&quot;</span><br><span class="line">#include &quot;memory.h&quot;</span><br><span class="line">#include &quot;netdev.h&quot; //Generic interface to network devices (&quot;netdev&quot;s).用来管理网络设备的模块</span><br><span class="line">#include &quot;openflow/openflow.h&quot; //openflow协议规格定义</span><br><span class="line">#include &quot;ovsdb-idl.h&quot; //Open vSwitch Database Interface Definition Language (OVSDB IDL).应该是访问ovsdb-server进程的接口</span><br><span class="line">#include &quot;poll-loop.h&quot; //High-level wrapper around the &quot;poll&quot; system call.poll系统调用的封装模块</span><br><span class="line">#include &quot;process.h&quot; //Starting and monitoring subprocesses.进程监控模块</span><br><span class="line">#include &quot;signals.h&quot; //signals系统调用的封装模块</span><br><span class="line">#include &quot;simap.h&quot; //数据结构定义和hash map的封装操作接口模块</span><br><span class="line">#include &quot;stream-ssl.h&quot; //SSL安全网络通信封装模块接口</span><br><span class="line">#include &quot;stream.h&quot; //网络通信封装模块接口</span><br><span class="line">#include &quot;svec.h&quot; //SVEC数据结构操作模块，SVEC是什么？</span><br><span class="line">#include &quot;timeval.h&quot; //计时相关系统接口封装模块</span><br><span class="line">#include &quot;unixctl.h&quot; //Unix domain socket control connection.UNIX相关网络通信模块</span><br><span class="line">#include &quot;util.h&quot;</span><br><span class="line">#include &quot;vconn.h&quot; //virtual connections to OpenFlow devices.</span><br><span class="line">#include &quot;vlog.h&quot;</span><br><span class="line">#include &quot;lib/vswitch-idl.h&quot; //自动生成的文件，应该是Open vSwitch Interface Definition Language，可能是openflow协议的具体内容实现</span><br></pre></td></tr></table></figure></p>
+<h2 id="ovs-中基本概念5">OVS 中基本概念<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></h2>
+<h3 id="packet">1.Packet</h3>
+<p>网络转发的最小数据单元。每个包都来自某个端口，最终会被发往一个或多个目标端口，转发数据包的过程就是网络的唯一功能 ### 2.Bridge Open vSwitch中的一个网桥就是一台以太网交换机。这里交换机不限于二层转发 ### 3.Port 端口是收发数据包的单元，和物理以太网交换机的端口概念类似. Open vSwitch中，每个端口都属于一个特定的网桥。端口收到的数据包会经过流规则的处理，发往其他端口；也会把其他端口来的数据包发送出去。Open vSwitch支持的端口有以下几种： - Normal port: 用户可以把操作系统中的网卡绑定到Open vSwitch上，Open vSwitch会生成一个普通端口处理这块网卡进出的数据包。 - Internal port: 当设置端口类型为internal，Open vSwitch会创建一快虚拟网卡，此端口收到的所有数据包都会交给这块网卡，网卡发出的包会通过这个端口交给Open vSwitch。 当Open vSwitch创建一个新网桥时，默认会创建一个与网桥同名的Internal Port - Patch port: 当机器中有多个Open vSwitch网桥时，可以使用Patch Port把两个网桥连起来。Patch Port总是成对出现，分别连接在两个网桥上，在两个网桥之间交换数据。 - Tunnel port: 隧道端口是一种虚拟端口，支持使用 GRE 或 VxLAN 等隧道技术与位于网络上其他位置的远程端口通讯。</p>
+<h3 id="interfaceiface接口">4.Interface(iface/接口)</h3>
 <p>它是连接到 Port 的网络接口设备。Open vSwitch 通过 Interface 与外部交换数据包。在通常情况下，Port 和 Interface 是一对一的关系, 只有在配置 Port 为 bond 模式后，Port 和 Interface 才是一对多的关系。一个接口就是操作系统的一块网卡，这块网卡可能是 Open vSwitch生成的虚拟网卡，也可能是物理网卡挂载在Open vSwitch上，也可能是操作系统的虚拟网卡（TUN/TAP）挂载在 Open vSwitch 上。</p>
-<h3 id="5-datapath"><a class="header-anchor" href="#5-datapath">null</a>5.Datapath</h3>
+<h3 id="datapath">5.Datapath</h3>
 <p>由于流可能非常复杂，对每个进来的数据包都去尝试匹配所有流，效率会非常低，所以有了datapath。Datapath 对流进行缓存，把流的执行结果保存起来，当下次遇到匹配到同一条流的数据包，直接通过 datapath 处理。考虑到转发效率，datapath 完全是在内核态实现的，并且默认的超时时间非常短，好像是3秒。</p>
 <blockquote>
-<p>再重新看一下上面的模块图，datapath是不是可以视作一个交换机，或者说一个桥的实体模块？ 因为传统交换机缓存MAC地址并根据MAC地址进行数据包的转发，而Datapath缓存Flow（流）并根据流进行数据包的转发。<br>
-A datapath is a collection of physical or virtual ports that are<br>
-exposed over OpenFlow as a single switch.  Datapaths and the<br>
-collections of ports that they contain may be fixed or dynamic.</p>
+<p>再重新看一下上面的模块图，datapath是不是可以视作一个交换机，或者说一个桥的实体模块？ 因为传统交换机缓存MAC地址并根据MAC地址进行数据包的转发，而Datapath缓存Flow（流）并根据流进行数据包的转发。 A datapath is a collection of physical or virtual ports that are exposed over OpenFlow as a single switch. Datapaths and the collections of ports that they contain may be fixed or dynamic.</p>
 </blockquote>
-<h3 id="6-flow-table"><a class="header-anchor" href="#6-flow-table">null</a>6.Flow table</h3>
-<p>每个 datapath 都和一个&quot;flow table&quot;关联，当 datapath 接收到数据之后， OVS 会在 flow table 中查找可以匹配的 flow，执行对应的操作, 例如转发数据到另外的端口。</p>
-<h2 id="端口镜像设置"><a class="header-anchor" href="#端口镜像设置">null</a>端口镜像设置<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></h2>
-<p>设置镜像端口的主要作用就是利用tcpdump进行抓包。<br>
-首先要添加 <strong>虚拟网络适配器 <code>dumm0</code></strong> 并启用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip link add name dumm0 type dummy</span><br><span class="line">ip link set dev dumm0 up</span><br></pre></td></tr></table></figure>
-<h3 id="1-监听指定网桥的特定端口数据包"><a class="header-anchor" href="#1-监听指定网桥的特定端口数据包">null</a>1. 监听指定网桥的特定端口数据包</h3>
+<h3 id="flow-table">6.Flow table</h3>
+<p>每个 datapath 都和一个"flow table"关联，当 datapath 接收到数据之后， OVS 会在 flow table 中查找可以匹配的 flow，执行对应的操作, 例如转发数据到另外的端口。</p>
+<h2 id="端口镜像设置6">端口镜像设置<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></h2>
+<p>设置镜像端口的主要作用就是利用tcpdump进行抓包。 首先要添加 <strong>虚拟网络适配器 <code>dumm0</code></strong> 并启用 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip link add name dumm0 type dummy</span><br><span class="line">ip link set dev dumm0 up</span><br></pre></td></tr></table></figure></p>
+<h3 id="监听指定网桥的特定端口数据包">1. 监听指定网桥的特定端口数据包</h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 将虚拟网络适配器`dumm0` 连接到需要监视的网桥<span class="built_in">test</span>-bridge上</span></span><br><span class="line">ovs-vsctl add-port test-bridge dumm0</span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建名为 `mirrors` 的镜像端口, <span class="built_in">test</span>-port 是OVS上之前添加的端口</span></span><br><span class="line">ovs-vsctl -- set Bridge br-sfc mirrors=@m \</span><br><span class="line">-- --id=@dumm0 get Port dumm0  \</span><br><span class="line">-- --id=@sff0-dpl get Port sff0-dpl \</span><br><span class="line">-- --id=@m create Mirror name=ovsMirror \</span><br><span class="line">select-dst-port=@sff0-dpl \</span><br><span class="line">select-src-port=@sff0-dpl \</span><br><span class="line">output-port=@dumm0 select_all=1</span><br></pre></td></tr></table></figure>
-<p>查看镜像端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ovs-vsctl list Mirror</span><br></pre></td></tr></table></figure>
-<p>删除镜像端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl clear bridge br-sfc mirrors</span><br></pre></td></tr></table></figure>
-<h3 id="2-监听整个网桥镜像"><a class="header-anchor" href="#2-监听整个网桥镜像">null</a>2. 监听整个网桥镜像</h3>
+<p>查看镜像端口 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ovs-vsctl list Mirror</span><br></pre></td></tr></table></figure></p>
+<p>删除镜像端口 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl clear bridge br-sfc mirrors</span><br></pre></td></tr></table></figure></p>
+<h3 id="监听整个网桥镜像">2. 监听整个网桥镜像</h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl -- --id=@m create mirror name=ovsMirror \</span><br><span class="line">  -- add bridge br-sfc mirrors @m \</span><br><span class="line">  -- --id=@dumm0 get port dumm0 \</span><br><span class="line">  -- set mirror ovsMirror select_all=true output-port=@dumm0</span><br></pre></td></tr></table></figure>
-<p>没有时间来得及细看这个教程 <a href="https://arthurchiao.github.io/blog/trafic-mirror-with-ovs/" target="_blank" rel="noopener">https://arthurchiao.github.io/blog/trafic-mirror-with-ovs/</a> 看样子也不是不错的！</p>
-<h1>docker network troubleshooting</h1>
-<h2 id="tcpdump-in-docker-container"><a class="header-anchor" href="#tcpdump-in-docker-container">null</a>tcpdump in docker container <sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></h2>
-<p>overlay network traffic in swarm does not go thru docker0 or docker_gwbridge.<br>
-There are 2 options:</p>
-<h3 id="option-1"><a class="header-anchor" href="#option-1">null</a>option 1:</h3>
-<p>Go inside container and do tcpdump:<br>
-nicolaka/netshoot is container with all network debug tools.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti --net container: &lt;container name/id&gt; nicolaka/netshoot</span><br><span class="line">tcpdump -i &lt;eth0&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="option-2"><a class="header-anchor" href="#option-2">null</a>Option 2:</h3>
-<p>Go inside network namespace of overlay network and do tcpdump:<br>
-First find overlay network id with docker network inspect<br>
-Start debug container mounting network namespace:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm -v /var/run/docker/netns:/var/run/docker/netns --privileged=true nicolaka/netshoot</span><br></pre></td></tr></table></figure>
-<p>All namespaces are listed under:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/var/run/docker/netns</span><br></pre></td></tr></table></figure>
-<p>Find your swarm overlay network namespace matching with overlay networkid of previous command.<br>
-Then nsenter into network namespace:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nsenter --net=/var/run/docker/netns/ sh</span><br><span class="line">tcpdump -i vxlan0</span><br></pre></td></tr></table></figure>
-<h2 id="case-study-opendaylight-项目中的-demo-sfc103"><a class="header-anchor" href="#case-study-opendaylight-项目中的-demo-sfc103">null</a>case study: OpenDayLight 项目中的 demo: sfc103</h2>
-<p>OVS is more powerful bridge than linux bridge, but since it is still a L2 bridge, some general bridge conventions it has to conform to<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function ovs_start &#123;</span><br><span class="line">    service openvswitch-switch start</span><br><span class="line">    # In the passive mode, OVS connects to an ODL instance </span><br><span class="line">    # (6640 is the IANA registered port for ovsdb)</span><br><span class="line">    ovs-vsctl set-manager tcp:192.168.1.5:6640</span><br><span class="line">    ovs-vsctl add-br br-sfc</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1>如何理解这段代码</h1>
+<p>没有时间来得及细看这个教程 https://arthurchiao.github.io/blog/trafic-mirror-with-ovs/ 看样子也不是不错的！</p>
+<h1 id="docker-network-troubleshooting">docker network troubleshooting</h1>
+<h2 id="tcpdump-in-docker-container-7">tcpdump in docker container <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></h2>
+<p>overlay network traffic in swarm does not go thru docker0 or docker_gwbridge. There are 2 options: ### option 1: Go inside container and do tcpdump: nicolaka/netshoot is container with all network debug tools. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti --net container: &lt;container name/id&gt; nicolaka/netshoot</span><br><span class="line">tcpdump -i &lt;eth0&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="option-2">Option 2:</h3>
+<p>Go inside network namespace of overlay network and do tcpdump: First find overlay network id with docker network inspect Start debug container mounting network namespace: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm -v /var/run/docker/netns:/var/run/docker/netns --privileged=true nicolaka/netshoot</span><br></pre></td></tr></table></figure></p>
+<p>All namespaces are listed under: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/var/run/docker/netns</span><br></pre></td></tr></table></figure></p>
+<p>Find your swarm overlay network namespace matching with overlay networkid of previous command. Then nsenter into network namespace: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nsenter --net=/var/run/docker/netns/ sh</span><br><span class="line">tcpdump -i vxlan0</span><br></pre></td></tr></table></figure></p>
+<h2 id="case-study-opendaylight-项目中的-demo-sfc103">case study: OpenDayLight 项目中的 demo: sfc103</h2>
+<p>OVS is more powerful bridge than linux bridge, but since it is still a L2 bridge, some general bridge conventions it has to conform to<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function ovs_start &#123;</span><br><span class="line">    service openvswitch-switch start</span><br><span class="line">    # In the passive mode, OVS connects to an ODL instance </span><br><span class="line">    # (6640 is the IANA registered port for ovsdb)</span><br><span class="line">    ovs-vsctl set-manager tcp:192.168.1.5:6640</span><br><span class="line">    ovs-vsctl add-br br-sfc</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="如何理解这段代码">如何理解这段代码</h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function ovs_add_app_veth-br &#123;</span><br><span class="line">    # 创建名为 &apos;app&apos; 的 Linux 网络命名空间(network name space)</span><br><span class="line">    ip netns add app </span><br><span class="line">    # 增加一对 veth 虚拟网卡, 名字分别为: veth-app 以及 veth-br</span><br><span class="line">    # 我知道了 因为在sfc103这个demo中，发送http请求的client和classfier1</span><br><span class="line">    # 处于同一个容器中, 作者想把他们隔离开来</span><br><span class="line">    ip link add veth-app type veth peer name veth-br</span><br><span class="line">    ovs-vsctl add-port br-sfc veth-br</span><br><span class="line">    # dev 指的是 device 的意思</span><br><span class="line">    ip link set dev veth-br up</span><br><span class="line">    # 将 veth-app 添加到 app 虚拟网络环境</span><br><span class="line">    # 注意: 从此 ip link show type veth 将看不到 veth-app</span><br><span class="line">    # 只有在命名空间 app 中才看得到 </span><br><span class="line">    ip link set veth-app netns app</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>network namespace 是实现网络虚拟化的重要功能，它能创建多个隔离的网络空间，它们有独自的网络栈信息。不管是虚拟机还是容器，运行的时候仿佛自己就在独立的网络中。 Initially everything is in the global namespace 对于每个 network namespace。 来说，它会有自己独立的网卡、路由表、ARP 表、iptables 等和网络相关的资源。</p>
-<h1>ovs 使用命令</h1>
+<h1 id="ovs-使用命令">ovs 使用命令</h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 测试flow 匹配执行情况，但并不发送真的packet</span><br><span class="line">ovs-appctl ofproto/trace br-sfc in_port=1,tcp,nw_src=192.168.2.1,nw_dst=192.168.2.2,nw_ttl=64,tcp_dst=80,tcp_flags=syn -generate</span><br></pre></td></tr></table></figure>
-<h1>How can I figure out the OpenFlow port number for a given port? you can print the entire mapping with</h1>
+<h1 id="how-can-i-figure-out-the-openflow-port-number-for-a-given-port-you-can-print-the-entire-mapping-with">How can I figure out the OpenFlow port number for a given port? you can print the entire mapping with</h1>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl -- --columns=name, ofport list Interface</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 添加一条flow</span></span><br><span class="line">ovs-ofctl add-flow -OOpenFlow13 br-sfc "table=0,tcp,priority=1002,in_port=1,nw_src=192.168.2.0/24,nw_dst=192.168.2.0/24,tp_dst=80,actions=encap(nsh),set_field:0x49-&gt;nsh_spi,set_field:255-&gt;nsh_si,set_field:0x1-&gt;nsh_c1,set_field:0x2-&gt;nsh_c2,set_field:0x3-&gt;nsh_c3,set_field:0x4-&gt;nsh_c4, encap(ethernet),load:0xc0a80114-&gt;NXM_NX_TUN_IPV4_DST[],output:2"</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 添加一条flow, 最后将修改过的packet输出至多个端口</span></span><br><span class="line">ovs-ofctl add-flow -OOpenFlow13 br-sfc "table=0,tcp,priority=1002,in_port=1,nw_src=192.168.2.0/24,nw_dst=192.168.2.0/24,tp_dst=80,actions=encap(nsh),set_field:0x49-&gt;nsh_spi,set_field:255-&gt;nsh_si,set_field:0x1-&gt;nsh_c1,set_field:0x2-&gt;nsh_c2,set_field:0x3-&gt;nsh_c3,set_field:0x4-&gt;nsh_c4, encap(ethernet),load:0xc0a80114-&gt;NXM_NX_TUN_IPV4_DST[],output:2,output:3"</span><br></pre></td></tr></table></figure>
-<h1>prerequisite knowledge</h1>
-<h2 id="network-namespace-之间通信"><a class="header-anchor" href="#network-namespace-之间通信">null</a>network namespace 之间通信</h2>
+<h1 id="prerequisite-knowledge">prerequisite knowledge</h1>
+<h2 id="network-namespace-之间通信">network namespace 之间通信</h2>
 <p>默认情况下，network namespace 是不能和主机网络，或者其他 network namespace 通信的。</p>
 <p>有了不同 network namespace 之后，也就有了网络的隔离，但是如果它们之间没有办法通信，也没有实际用处。要把两个网络连接起来，linux 提供了<code>veth pair</code> 。可以把 <code>veth pair</code>当做是双向的 pipe（管道），从一个方向发送的网络数据，可以直接被另外一端接收到；或者也可以想象成两个 namespace 直接通过一个特殊的虚拟网卡连接起来，可以直接通信。</p>
 <p>我们可以使用 ip link add type veth 来创建一对 veth pair 出来，需要记住的是 veth pair 无法单独存在，删除其中一个，另一个也会自动消失。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ip netns exec app ifconfig veth-app 192.168.2.1/24 up</span><br><span class="line"># 配置 veth-app 网卡 MAC 地址</span><br><span class="line">ip netns exec app ip link set dev veth-app  addr 00:00:11:11:11:11</span><br><span class="line"># 选项s: 设置主机 IP 地址和 MAC 的静态映射</span><br><span class="line"># 选项i: 后跟接口, 指定要操作 arp 缓冲区的网络接口 veth-app 是本地接口</span><br><span class="line">ip netns exec app arp -s 192.168.2.2 00:00:22:22:22:22 -i veth-app</span><br><span class="line">ip netns exec app ip link set dev veth-app up</span><br><span class="line"># 为何要把 loopback 设备也开启呢？网上好多例子都是这样</span><br><span class="line">ip netns exec app ip link set dev lo up</span><br><span class="line">ip netns exec app ifconfig veth-app mtu 1400</span><br><span class="line">ovs-vsctl show</span><br></pre></td></tr></table></figure>
-<p>A veth device pair is a virtual ethernet cable, packets sent on one end come out the other (and vice versa of course) <sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>.</p>
-<h1>create tunnel devices using rtnetlink interface</h1>
-<p>Developers of network layer protocol handlers can use RTNETLINK to modify and monitor different components of networking, such as the routing table and network interfaces<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>. =&gt; 这个功能是否可以帮助我实现 Montida’s paper 的实现？</p>
+<p>A veth device pair is a virtual ethernet cable, packets sent on one end come out the other (and vice versa of course) <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p>
+<h1 id="create-tunnel-devices-using-rtnetlink-interface">create tunnel devices using rtnetlink interface</h1>
+<p>Developers of network layer protocol handlers can use RTNETLINK to modify and monitor different components of networking, such as the routing table and network interfaces<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. =&gt; 这个功能是否可以帮助我实现 Montida's paper 的实现？</p>
 <p>It helps reduce the complexity of the kernel code if you implement these protocols in user space.</p>
-<p>rtnetlink就是一组操作rtnetlink消息的宏<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>。</p>
-<p>rtnetlink是基于netlink机制的一个内核和协议栈相关操作的机制。其允许用户程序对内核的路由表进行读写。这个功能非常重要，在很多基础的工具中的使用也非常广泛。但是很少资料直接对 rtnetlink 的具体使用进行讲解，中文的资料只有一些对 <a href="http://man7.org/linux/man-pages/man7/rtnetlink.7.html" title="RTNETLINK(7)" target="_blank" rel="noopener">Manual</a> 的翻译和补充。Linux Journal<sup class="footnote-ref"><a href="#fn6" id="fnref6:1">[6]</a></sup> 有非常详细的一篇框架文章，但是对具体过程解释不详细。另一方面，由于现实的应用中，对路由表等的处理较为复杂，没有比较简单直接的例子。并且其 <a href="http://man7.org/linux/man-pages/man7/rtnetlink.7.html" title="RTNETLINK(7)" target="_blank" rel="noopener">Manual</a> 中说到这个是 Linux IPv4 的路由 socket，但是其支持 Ipv6，应该是 <a href="http://man7.org/linux/man-pages/man7/rtnetlink.7.html" title="RTNETLINK(7)" target="_blank" rel="noopener">Manual</a> 太久没更新的缘故。 因此，这篇文章并不对rtnetlink的数据结构或<a href="http://man7.org/linux/man-pages/man7/rtnetlink.7.html" title="RTNETLINK(7)" target="_blank" rel="noopener">Manual</a>进行详细的解释，而是解释其使用方式，并且举一个具体的使用样例。对一些操作和数据结构的构成有疑惑，可以直接看 <a href="http://man7.org/linux/man-pages/man7/rtnetlink.7.html" title="RTNETLINK(7)" target="_blank" rel="noopener">Manual</a>。</p>
-<h1>基于 VxLAN 的 NSH 封装<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup></h1>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p><a href="https://blog.csdn.net/zhengmx100/article/details/54729272" target="_blank" rel="noopener">https://blog.csdn.net/zhengmx100/article/details/54729272</a> <a href="#fnref1" class="footnote-backref">↩</a> <a href="#fnref1:1" class="footnote-backref">↩</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p><a href="http://blog.kompaz.win/2017/03/19/OpenVSwitch%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#%E7%89%B9%E5%AE%9A%E7%AB%AF%E5%8F%A3%E9%95%9C%E5%83%8F%E8%AE%BE%E7%BD%AE" target="_blank" rel="noopener">http://blog.kompaz.win/2017/03/19/OpenVSwitch基本使用/#特定端口镜像设置</a> <a href="#fnref2" class="footnote-backref">↩</a></p>
-</li>
-<li id="fn3" class="footnote-item"><p><a href="https://forums.docker.com/t/how-to-tcpdump-inter-service-traffic/23463/4" target="_blank" rel="noopener">https://forums.docker.com/t/how-to-tcpdump-inter-service-traffic/23463/4</a> <a href="#fnref3" class="footnote-backref">↩</a></p>
-</li>
-<li id="fn4" class="footnote-item"><p><a href="https://arthurchiao.github.io/blog/ovs-deep-dive-6-internal-port/" target="_blank" rel="noopener">https://arthurchiao.github.io/blog/ovs-deep-dive-6-internal-port/</a> <a href="#fnref4" class="footnote-backref">↩</a></p>
-</li>
-<li id="fn5" class="footnote-item"><p><a href="https://matthewarcus.wordpress.com/2018/02/04/veth-devices-network-namespaces-and-open-vswitch/" target="_blank" rel="noopener">https://matthewarcus.wordpress.com/2018/02/04/veth-devices-network-namespaces-and-open-vswitch/</a> <a href="#fnref5" class="footnote-backref">↩</a></p>
-</li>
-<li id="fn6" class="footnote-item"><p><a href="https://www.linuxjournal.com/article/8498" target="_blank" rel="noopener">https://www.linuxjournal.com/article/8498</a> <a href="#fnref6" class="footnote-backref">↩</a> <a href="#fnref6:1" class="footnote-backref">↩</a></p>
-</li>
-<li id="fn7" class="footnote-item"><p><a href="https://blog.csdn.net/iteye_18932/article/details/82139564" target="_blank" rel="noopener">https://blog.csdn.net/iteye_18932/article/details/82139564</a> <a href="#fnref7" class="footnote-backref">↩</a></p>
-</li>
-<li id="fn8" class="footnote-item"><p><a href="https://www.sdnlab.com/16610.html" target="_blank" rel="noopener">https://www.sdnlab.com/16610.html</a> <a href="#fnref8" class="footnote-backref">↩</a></p>
-</li>
+<p>rtnetlink就是一组操作rtnetlink消息的宏<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>。</p>
+<p>rtnetlink是基于netlink机制的一个内核和协议栈相关操作的机制。其允许用户程序对内核的路由表进行读写。这个功能非常重要，在很多基础的工具中的使用也非常广泛。但是很少资料直接对 rtnetlink 的具体使用进行讲解，中文的资料只有一些对 <a href="http://man7.org/linux/man-pages/man7/rtnetlink.7.html" title="RTNETLINK(7)" target="_blank" rel="noopener">Manual</a> 的翻译和补充。Linux Journal<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> 有非常详细的一篇框架文章，但是对具体过程解释不详细。另一方面，由于现实的应用中，对路由表等的处理较为复杂，没有比较简单直接的例子。并且其 <a href="http://man7.org/linux/man-pages/man7/rtnetlink.7.html" title="RTNETLINK(7)" target="_blank" rel="noopener">Manual</a> 中说到这个是 Linux IPv4 的路由 socket，但是其支持 Ipv6，应该是 <a href="http://man7.org/linux/man-pages/man7/rtnetlink.7.html" title="RTNETLINK(7)" target="_blank" rel="noopener">Manual</a> 太久没更新的缘故。 因此，这篇文章并不对rtnetlink的数据结构或<a href="http://man7.org/linux/man-pages/man7/rtnetlink.7.html" title="RTNETLINK(7)" target="_blank" rel="noopener">Manual</a>进行详细的解释，而是解释其使用方式，并且举一个具体的使用样例。对一些操作和数据结构的构成有疑惑，可以直接看 <a href="http://man7.org/linux/man-pages/man7/rtnetlink.7.html" title="RTNETLINK(7)" target="_blank" rel="noopener">Manual</a>。</p>
+<h1 id="基于-vxlan-的-nsh-封装sdn-lab">基于 VxLAN 的 NSH 封装<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></h1>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>https://blog.csdn.net/zhengmx100/article/details/54729272<a href="#fnref1" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn2" role="doc-endnote"><p>https://blog.csdn.net/zhengmx100/article/details/54729272<a href="#fnref2" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn3" role="doc-endnote"><p>http://blog.kompaz.win/2017/03/19/OpenVSwitch%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#%E7%89%B9%E5%AE%9A%E7%AB%AF%E5%8F%A3%E9%95%9C%E5%83%8F%E8%AE%BE%E7%BD%AE<a href="#fnref3" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn4" role="doc-endnote"><p>https://forums.docker.com/t/how-to-tcpdump-inter-service-traffic/23463/4<a href="#fnref4" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn5" role="doc-endnote"><p>https://arthurchiao.github.io/blog/ovs-deep-dive-6-internal-port/<a href="#fnref5" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn6" role="doc-endnote"><p>https://matthewarcus.wordpress.com/2018/02/04/veth-devices-network-namespaces-and-open-vswitch/<a href="#fnref6" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn7" role="doc-endnote"><p>https://www.linuxjournal.com/article/8498<a href="#fnref7" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn8" role="doc-endnote"><p>https://blog.csdn.net/iteye_18932/article/details/82139564<a href="#fnref8" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn9" role="doc-endnote"><p>https://www.linuxjournal.com/article/8498<a href="#fnref9" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn10" role="doc-endnote"><p>https://www.sdnlab.com/16610.html<a href="#fnref10" class="footnote-back" role="doc-backlink">↩</a></p></li>
 </ol>
 </section>
 
-      
     </div>
 
     
-
-    
-    
-    
-
-    
-
-    
-      
     
     
 
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/10/23/french-useful-phrases/" rel="prev" title="法语积累">
+      <i class="fa fa-chevron-left"></i> 法语积累
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/25/israel-visa/" rel="next" title="2019年巴黎申请以色列旅游签证">
+      2019年巴黎申请以色列旅游签证 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
     
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/10/23/french-useful-phrases/" rel="next" title="法语积累">
-                <i class="fa fa-chevron-left"></i> 法语积累
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/25/israel-visa/" rel="prev" title="2019年巴黎申请以色列旅游签证">
-                2019年巴黎申请以色列旅游签证 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
   </article>
+  
+  
+  
 
-
-  </div>
 
 
           </div>
           
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">rennsong</p>
-              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">47</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">20</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/hansomesong" title="GitHub &rarr; https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">OVS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ovs-实现中的主要模块"><span class="nav-number">1.1.</span> <span class="nav-text">nullOVS 实现中的主要模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ovs-中基本概念"><span class="nav-number">1.2.</span> <span class="nav-text">nullOVS 中基本概念[1]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-packet"><span class="nav-number">1.2.1.</span> <span class="nav-text">null1.Packet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-bridge"><span class="nav-number">1.2.2.</span> <span class="nav-text">null2.Bridge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-port"><span class="nav-number">1.2.3.</span> <span class="nav-text">null3.Port</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-interface-iface-接口"><span class="nav-number">1.2.4.</span> <span class="nav-text">null4.Interface(iface/接口)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-datapath"><span class="nav-number">1.2.5.</span> <span class="nav-text">null5.Datapath</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-flow-table"><span class="nav-number">1.2.6.</span> <span class="nav-text">null6.Flow table</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#端口镜像设置"><span class="nav-number">1.3.</span> <span class="nav-text">null端口镜像设置[2]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-监听指定网桥的特定端口数据包"><span class="nav-number">1.3.1.</span> <span class="nav-text">null1. 监听指定网桥的特定端口数据包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-监听整个网桥镜像"><span class="nav-number">1.3.2.</span> <span class="nav-text">null2. 监听整个网桥镜像</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">docker network troubleshooting</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tcpdump-in-docker-container"><span class="nav-number">2.1.</span> <span class="nav-text">nulltcpdump in docker container [3]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#option-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">nulloption 1:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#option-2"><span class="nav-number">2.1.2.</span> <span class="nav-text">nullOption 2:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#case-study-opendaylight-项目中的-demo-sfc103"><span class="nav-number">2.2.</span> <span class="nav-text">nullcase study: OpenDayLight 项目中的 demo: sfc103</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">如何理解这段代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">ovs 使用命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">How can I figure out the OpenFlow port number for a given port? you can print the entire mapping with</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">prerequisite knowledge</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#network-namespace-之间通信"><span class="nav-number">6.1.</span> <span class="nav-text">nullnetwork namespace 之间通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">create tunnel devices using rtnetlink interface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">基于 VxLAN 的 NSH 封装[8]</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">rennsong</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
 
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ovs"><span class="nav-number">1.</span> <span class="nav-text">OVS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ovs-实现中的主要模块"><span class="nav-number">1.1.</span> <span class="nav-text">OVS 实现中的主要模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ovs-中基本概念5"><span class="nav-number">1.2.</span> <span class="nav-text">OVS 中基本概念2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#packet"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.Packet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#interfaceiface接口"><span class="nav-number">1.2.2.</span> <span class="nav-text">4.Interface(iface/接口)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#datapath"><span class="nav-number">1.2.3.</span> <span class="nav-text">5.Datapath</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flow-table"><span class="nav-number">1.2.4.</span> <span class="nav-text">6.Flow table</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#端口镜像设置6"><span class="nav-number">1.3.</span> <span class="nav-text">端口镜像设置3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#监听指定网桥的特定端口数据包"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 监听指定网桥的特定端口数据包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听整个网桥镜像"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 监听整个网桥镜像</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker-network-troubleshooting"><span class="nav-number">2.</span> <span class="nav-text">docker network troubleshooting</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tcpdump-in-docker-container-7"><span class="nav-number">2.1.</span> <span class="nav-text">tcpdump in docker container 4</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#option-2"><span class="nav-number">2.1.1.</span> <span class="nav-text">Option 2:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#case-study-opendaylight-项目中的-demo-sfc103"><span class="nav-number">2.2.</span> <span class="nav-text">case study: OpenDayLight 项目中的 demo: sfc103</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何理解这段代码"><span class="nav-number">3.</span> <span class="nav-text">如何理解这段代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ovs-使用命令"><span class="nav-number">4.</span> <span class="nav-text">ovs 使用命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#how-can-i-figure-out-the-openflow-port-number-for-a-given-port-you-can-print-the-entire-mapping-with"><span class="nav-number">5.</span> <span class="nav-text">How can I figure out the OpenFlow port number for a given port? you can print the entire mapping with</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#prerequisite-knowledge"><span class="nav-number">6.</span> <span class="nav-text">prerequisite knowledge</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#network-namespace-之间通信"><span class="nav-number">6.1.</span> <span class="nav-text">network namespace 之间通信</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#create-tunnel-devices-using-rtnetlink-interface"><span class="nav-number">7.</span> <span class="nav-text">create tunnel devices using rtnetlink interface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于-vxlan-的-nsh-封装sdn-lab"><span class="nav-number">8.</span> <span class="nav-text">基于 VxLAN 的 NSH 封装10</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
 
 
 
@@ -947,125 +448,35 @@ Then nsenter into network namespace:</p>
 
 
 
+      </div>
+    </footer>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.0"></script>
-
-  <script src="/js/motion.js?v=7.1.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
 
-  
-  <script src="/js/scrollspy.js?v=7.1.0"></script>
-<script src="/js/post-details.js?v=7.1.0"></script>
-
-
-
-  
-
-
-  <script src="/js/next-boot.js?v=7.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-
-  
 
 
 
 
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
 
 
-  
 
-  
 
-  
 
-  
 
-  
-
-  
-
-  
-
-  
 
   
 

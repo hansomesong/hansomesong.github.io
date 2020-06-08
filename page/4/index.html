@@ -1,100 +1,24 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.1.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="Personal blog site, to note technique and life related articles">
 <meta property="og:type" content="website">
@@ -107,21 +31,16 @@
 <meta name="twitter:title" content="Rennesong&#39;s blog">
 <meta name="twitter:description" content="Personal blog site, to note technique and life related articles">
 
+<link rel="canonical" href="http://rennesong.com/page/4/">
 
 
-  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
-
-
-
-  
-  
-  <link rel="canonical" href="http://rennesong.com/page/4/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -133,15 +52,8 @@
 
 
 
-
-
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -150,9 +62,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -166,154 +77,69 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right 
-  page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Rennesong's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
-      
-        <p class="site-subtitle">Blog my life from now on!</p>
-      
-    
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
-
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
+  </ul>
 </nav>
 
-
-
-  
 
 
 
@@ -321,135 +147,61 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content index posts-expand">
             
-  <section id="posts" class="posts-expand">
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/25/hexo-sublime-blog-writting/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/18/use-pbc-impl/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/25/hexo-sublime-blog-writting/" class="post-title-link" itemprop="url">How to gracefully write blog with Sublime Text and Hexo (without command line)</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/18/use-pbc-impl/" class="post-title-link" itemprop="url">use-pbc-impl</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-03-25 10:49:59" itemprop="dateCreated datePublished" datetime="2019-03-25T10:49:59+01:00">2019-03-25</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-27 14:52:01" itemprop="dateModified" datetime="2019-03-27T14:52:01+01:00">2019-03-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Productivity-tools/" itemprop="url" rel="index"><span itemprop="name">Productivity tools</span></a></span>
-
-                
-                
-              
+              <time title="创建时间：2019-04-18 23:15:44" itemprop="dateCreated datePublished" datetime="2019-04-18T23:15:44+08:00">2019-04-18</time>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-19 06:04:28" itemprop="dateModified" datetime="2019-04-19T06:04:28+08:00">2019-04-19</time>
+              </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -457,182 +209,67 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">==&gt; openssl</span><br><span class="line">A CA file has been bootstrapped using certificates from the SystemRoots</span><br><span class="line">keychain. To add additional certificates (e.g. the certificates added in</span><br><span class="line">the System keychain), place .pem files in</span><br><span class="line">  /usr/local/etc/openssl/certs</span><br><span class="line"></span><br><span class="line">and run</span><br><span class="line">  /usr/local/opt/openssl/bin/c_rehash</span><br><span class="line"></span><br><span class="line">openssl is keg-only, which means it was not symlinked into /usr/local,</span><br><span class="line">because Apple has deprecated use of OpenSSL in favor of its own TLS and crypto libraries.</span><br><span class="line"></span><br><span class="line">If you need to have openssl first in your PATH run:</span><br><span class="line">  echo 'export PATH="/usr/local/opt/openssl/bin:$PATH"' &gt;&gt; ~/.zshrc</span><br><span class="line"></span><br><span class="line">For compilers to find openssl you may need to set:</span><br><span class="line">  export LDFLAGS="-L/usr/local/opt/openssl/lib"</span><br><span class="line">  export CPPFLAGS="-I/usr/local/opt/openssl/include"</span><br></pre></td></tr></table></figure>
+<p>我发现在执行 ./configure 命令之后，生成的 Makefile 中关于 LDFLAGS 和 CPPFLAGS 是空的 所以，我只能手动填写了。</p>
+<p>在Linux环境下，只安装openssl是不行的，需要安装libssl-dev <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libssl-dev</span><br></pre></td></tr></table></figure></p>
+<p>安装位置 <code>/usr/include/openssl</code> 估计这个路径被 pbc makefile 涵盖了，所以并不需要要配置 <code>LDFLAGS</code> 和 <code>CPPFLAGS</code> 程序依然可以正常编译</p>
 
-      
-        
-          
-            <p>
-              Sublime is a powerful, easy-to-use, lightweight and elegent text editor. Hexo is a light but powerful static personal blog framework. This post focuse
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/03/25/hexo-sublime-blog-writting/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/25/israel-visa/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/17/systemd-tuto/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/25/israel-visa/" class="post-title-link" itemprop="url">2019年巴黎申请以色列旅游签证</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/17/systemd-tuto/" class="post-title-link" itemprop="url">Linux 系统的开机以及服务管理</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-03-25 01:19:32" itemprop="dateCreated datePublished" datetime="2019-03-25T01:19:32+01:00">2019-03-25</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-06 15:15:40" itemprop="dateModified" datetime="2019-04-06T15:15:40+02:00">2019-04-06</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/签证/" itemprop="url" rel="index"><span itemprop="name">签证</span></a></span>
-
-                
-                
-              
+              <time title="创建时间：2019-04-17 22:51:06" itemprop="dateCreated datePublished" datetime="2019-04-17T22:51:06+08:00">2019-04-17</time>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-18 15:30:40" itemprop="dateModified" datetime="2019-04-18T15:30:40+08:00">2019-04-18</time>
+              </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -640,375 +277,102 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>阮一峰老师对 <code>systemd</code> 有非常精炼易懂的介绍: http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html IBM 的刘明老师对 <code>systemd</code> 的教程也非常不错:https://www.ibm.com/developerworks/cn/linux/1407_liuming_init3/index.html</p>
+<h1 id="关于-systemd-的历史">关于 Systemd 的历史</h1>
+<ul>
+<li><code>systemd</code> 是 Linux 系统中最新的初始化系统 (init), 它主要的设计目标是克服(但不是取代哦) <code>sysvinit</code> 固有的缺点，提高系统的启动速度。</li>
+<li><code>systemd</code> 创始人 Lennart 是 redhat 员工，但 <code>systemd</code> 不是 redhat 项目</li>
+<li><code>systemd</code> 的目标是：尽可能启动更少进程；尽可能将更多进程并行启动</li>
+<li><code>systemd</code> 像是一个小型操作系统一样，接管了系统初始化启动和进程服务管理等</li>
+<li><code>systemd</code> 在设计上很大借鉴了 Mac OSX 的 launchd</li>
+<li><code>systemd</code> 主要的对手是 <code>upstart</code>。从 Ubuntu 16.04 开始，Ubuntu 全面采用了 systemd IBM 的刘明老师在其一篇<a href="https://www.ibm.com/developerworks/cn/linux/1407_liuming_init3/index.html" target="_blank" rel="noopener">2014年的博文</a>中对 <code>systemd</code> 的特性有很好的讲解</li>
+</ul>
+<p><img src="/2019/04/17/systemd-tuto/systemd-components.png" alt="systemd 组成构件"><span class="image-caption">systemd 组成构件</span> 图片来源:https://en.wikipedia.org/wiki/Systemd</p>
+<h1 id="service-management-in-linux">service management in Linux</h1>
+<p>In Linux a service is just another name for a daemon, which is a client/server application that runs in the background. A service is continuously listening for incoming requests and sends a response based on the request given. A process is simply an application or a script which can be running in the foreground or the background.</p>
+<h1 id="文件夹-etcinit.d">文件夹 <code>/etc/init.d</code></h1>
+<p>准确的来说Linux上的服务 (service) 应该叫守护进程 (Daemon), 这也是为什么Linux的服务程序后面都会加一个字母d(如httpd，sshd)。我们所有的服务(daemon)，都是存放在 <code>/etc/init.d</code> 这个目录下。 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">README                  cups-browsed             mountnfs.sh      skeleton</span><br><span class="line">acpid                   dbus                     mysql            speech-dispatcher</span><br><span class="line">alsa-utils              dns-clean                network-manager  ssh</span><br><span class="line">anacron                 grub-common              networking       sslh</span><br><span class="line">apache-htcacheclean     halt                     ondemand         thermald</span><br><span class="line">apache2                 hostname.sh              plymouth         udev</span><br><span class="line">apparmor                hwclock.sh               plymouth-log     ufw</span><br><span class="line">apport                  irqbalance               pppd-dns         umountfs</span><br><span class="line">avahi-daemon            kerneloops               procps           umountnfs.sh</span><br><span class="line">binfmt-support          keyboard-setup.dpkg-bak  rc               umountroot</span><br><span class="line">bluetooth               killprocs                rc.local         unattended-upgrades</span><br><span class="line">bootmisc.sh             kmod                     rcS              urandom</span><br><span class="line">brltty                  lightdm                  reboot           uuidd</span><br><span class="line">checkfs.sh              lxcfs                    resolvconf       virtualbox</span><br><span class="line">checkroot-bootclean.sh  mountall-bootclean.sh    rsync            vtun</span><br><span class="line">checkroot.sh            mountall.sh              rsyslog          whoopsie</span><br><span class="line">console-setup           mountdevsubfs.sh         saned            x11-common</span><br><span class="line">cron                    mountkernfs.sh           sendsigs</span><br><span class="line">cups                    mountnfs-bootclean.sh    single</span><br></pre></td></tr></table></figure></p>
+<h1 id="systemctl-command"><code>systemctl</code> command</h1>
+<p>systemd 的主要命令行工具是 systemctl。多数管理员应该都已经非常熟悉系统服务和 <code>init</code>系统的管理，比如 <code>service</code>、<code>chkconfig</code> 以及 <code>telinit</code> 命令的使用。<code>systemd</code> 也完成同样的管理任务，只是命令工具 <code>systemctl</code> 的语法有所不同而已，参考<a href="https://www.ibm.com/developerworks/cn/linux/1407_liuming_init3/index.html" target="_blank" rel="noopener">表格2</a>来对比 systemctl 和传统的系统管理命令会非常清晰。 In the following, we take service <code>apache2</code> as an example. The management of other services is similar.</p>
+<p>Command <code>systemctl</code> provides the following management features for service: <code>enable, start, stop, restart, reload, status</code>. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/apache2 start</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">To launch a service at boot time</span></span><br><span class="line">systemctl service enable apache2</span><br><span class="line"><span class="meta">#</span><span class="bash">To start a service</span></span><br><span class="line">systemctl service start apache2</span><br><span class="line"><span class="meta">#</span><span class="bash">To stop a service</span></span><br><span class="line">systemctl service stop apache2</span><br><span class="line"><span class="meta">#</span><span class="bash">To restart a service</span></span><br><span class="line">systemctl service restart apache2</span><br><span class="line"><span class="meta">#</span><span class="bash">To reload the configuration without restart the service</span></span><br><span class="line">systemctl service reload apache2</span><br><span class="line"><span class="meta">#</span><span class="bash">Check the running status of a service</span></span><br><span class="line">systemctl service status apache2</span><br></pre></td></tr></table></figure>
+<h1 id="service-command">service command</h1>
+<p><code>service</code> 其实是 <code>sysvinit</code> 提供的命令，通过这个命令，就能实现对 /etc/init.d 里面所有程序进行状态管理。<code>systemctl</code> 是 <code>Systemd</code> 命令。 To start out you can check what services you currently have running by typing: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service --status-all</span><br></pre></td></tr></table></figure></p>
+<p>如果以 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 服务的状态</span></span><br><span class="line">service nginx status</span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动服务 </span></span><br><span class="line">service nginx start</span><br><span class="line"><span class="meta">#</span><span class="bash"> 暂停服务</span></span><br><span class="line">service nginx stop</span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启服务</span></span><br><span class="line">service nginx restart</span><br></pre></td></tr></table></figure></p>
+<h1 id="init-启动过程">init 启动过程</h1>
+<figure>
+<img src="/2019/04/17/systemd-tuto/init-start.jpeg" alt="init启动过程"><span class="image-caption">init启动过程</span><figcaption>init启动过程</figcaption>
+</figure>
+<h1 id="rc.d-目录和-etcrc.local文件"><code>rc*.d</code> 目录和 <code>/etc/rc.local</code>文件</h1>
+<p>文件夹 <code>/etc/rc.d</code>下有七个运行级别的启动项配置，也就是七个rc*.d目录(注意: Ubuntu 16.04 下并没有 <code>/etc/rc.d</code> 这个文件夹，七个 <code>rc*.d</code> 直接位于 <code>/etc</code> 之下)。 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@vps-name:~# ls /etc/r</span><br><span class="line">rc0.d/        rc3.d/        rc6.d/        resolvconf/   rpc</span><br><span class="line">rc1.d/        rc4.d/        rc.local      resolv.conf   rsyslog.conf</span><br><span class="line">rc2.d/        rc5.d/        rcS.d/        rmt           rsyslog.d/</span><br></pre></td></tr></table></figure></p>
+<p>这是一个开机之后会执行的初始化文件，它非常的好用。如果你有什么程序、脚本，想要让它 开机之后自动启动，那么只需要把想要执行的命令写入到这个文件中。例如： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">开机之后自动执行 iptables.sh 这个脚本 （这是一个自己定义的防火墙脚本）</span></span><br><span class="line">bash ~/sh/iptables.sh</span><br></pre></td></tr></table></figure></p>
+<p>引入Systemd机制后，自Debian 9.0开始，系统中默认已不提供/etc/rc.local配置文件。 但是，提供<code>rc.local.service</code>或者<code>rc-local.service</code>，可以通过如下配置，继续使用<code>/etc/rc.local</code>实现系统启动时完成相关自动任务。https://wiki.deepin.io/mediawiki/index.php?title=%E5%9F%BA%E4%BA%8ESystemd%E7%9A%84rc.local%E9%85%8D%E7%BD%AE</p>
 
-      
-        
-          
-            <p>
-              需要的材料
-
-Une demande de visa d’entrée en Israël, remplie et signée
-Passeport en cours de validité au minimum dans les six mois suivants la date de retou
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/03/25/israel-visa/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/24/ovs-tuto/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/17/v2ray-tuto/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/24/ovs-tuto/" class="post-title-link" itemprop="url">Open vSwitch 详细介绍</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/17/v2ray-tuto/" class="post-title-link" itemprop="url">v2ray 科学上网教程</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-03-24 17:57:49" itemprop="dateCreated datePublished" datetime="2019-03-24T17:57:49+01:00">2019-03-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-10 22:41:09" itemprop="dateModified" datetime="2019-04-10T22:41:09+02:00">2019-04-10</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-networking/" itemprop="url" rel="index"><span itemprop="name">linux networking</span></a></span>
-
-                
-                
-              
+              <time title="创建时间：2019-04-17 15:44:14" itemprop="dateCreated datePublished" datetime="2019-04-17T15:44:14+08:00">2019-04-17</time>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              OVS
-nullOVS 实现中的主要模块
-OVS 实现中，主要模块如下图所示:
-
-最新代码包主要包括以下模块和特性：
-
-ovs-vswitchd: 核心模块，实现交换功能的守护程序（daemon），和 Linux 内核模块一起，实现基于流的交换；
-ovsdb-server ：提供轻量级数据库查询服务
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/03/24/ovs-tuto/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2016/10/23/french-useful-phrases/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/10/23/french-useful-phrases/" class="post-title-link" itemprop="url">法语积累</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-10-23 00:21:48" itemprop="dateCreated datePublished" datetime="2016-10-23T00:21:48+02:00">2016-10-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-25 17:25:45" itemprop="dateModified" datetime="2019-06-25T17:25:45+02:00">2019-06-25</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-17 00:32:17" itemprop="dateModified" datetime="2020-03-17T00:32:17+08:00">2020-03-17</time>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/外语/" itemprop="url" rel="index"><span itemprop="name">外语</span></a></span>
-
-                
-                
-              
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/VPS/" itemprop="url" rel="index"><span itemprop="name">VPS</span></a>
+                </span>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -1016,872 +380,73 @@ ovsdb-server ：提供轻量级数据库查询服务
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          
 
-      
-        
-          
-            <p>
-              Ce qui m’effare… 让我惊讶的是…
-formellement ce ne fait que penser qu’a ca
-magouille 勾心斗角
-menopause 更年期
-apres confirmation de votre part, la carte bancaire q
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/10/23/french-useful-phrases/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2016/10/22/tuto-magie-file-system/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/17/vps-install-cofig/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/10/22/tuto-magie-file-system/" class="post-title-link" itemprop="url">tuto_magie_file_system</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/17/vps-install-cofig/" class="post-title-link" itemprop="url">打造趁手的 VPS</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2016-10-22 01:50:29" itemprop="dateCreated datePublished" datetime="2016-10-22T01:50:29+02:00">2016-10-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-25 11:27:10" itemprop="dateModified" datetime="2019-03-25T11:27:10+01:00">2019-03-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              文件系统最初的由来
-文件系统最开始不过是个简单的 *** 磁盘管理器 ***
-操作系统中，所有需要进行读写操作的进程都必须通过这个模块才能对磁盘进行读写。如此一来， 不同进程占用不同的磁盘分区就可以有条不紊地进行。
-为了在磁盘中定位文件，文件夹的概念得以引入。至此，数据了有了树状结构。
-所谓的 虚拟
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/10/22/tuto-magie-file-system/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2016/10/22/TP-IPv6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/10/22/TP-IPv6/" class="post-title-link" itemprop="url">IPv6 实验课准备以及遇到的问题</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-10-22 01:04:42" itemprop="dateCreated datePublished" datetime="2016-10-22T01:04:42+02:00">2016-10-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-25 11:27:10" itemprop="dateModified" datetime="2019-03-25T11:27:10+01:00">2019-03-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              需要熟练记忆的命令
-实验室网络拓扑结构图：
-
-在privileged mode下
-
-show ipv6 interface brief
-show ipv6 route
-
-
-在configuration mode下
-
-Routeur# configure terminalRouteur(config)
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/10/22/TP-IPv6/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2016/10/22/TP-Ethernet-md/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/10/22/TP-Ethernet-md/" class="post-title-link" itemprop="url">Ethernet 交换实验准备工作</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-10-22 00:52:33" itemprop="dateCreated datePublished" datetime="2016-10-22T00:52:33+02:00">2016-10-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-25 11:27:10" itemprop="dateModified" datetime="2019-03-25T11:27:10+01:00">2019-03-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              生成树算法
-介绍下，计算机科学中的经典算法。理论部分
-交换机中生成树算法工作原理
-概括来讲，STP的工作流程可以分为三个阶段：
-
-Root Brideg 选举
-Root Port (for non-root bridge) 选举
-Designated Port 选举
-
-
-【http://www.om
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/10/22/TP-Ethernet-md/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2015/08/19/LTE-Basics/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/08/19/LTE-Basics/" class="post-title-link" itemprop="url">LTE-Basics</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-08-19 18:32:09" itemprop="dateCreated datePublished" datetime="2015-08-19T18:32:09+02:00">2015-08-19</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-25 11:27:10" itemprop="dateModified" datetime="2019-03-25T11:27:10+01:00">2019-03-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              此贴是一个草稿性质的帖子，目的是记录下我对LTE的基础知识的理解和总结，若干时间后，此贴必将是一个宝贵的财富。
-When a UE has packets to transmit, it performs random access (RA) during an allowable time slo
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2015/08/19/LTE-Basics/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2015/08/02/ssh-tuto/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/08/02/ssh-tuto/" class="post-title-link" itemprop="url">Simplify your life with SSH</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2015-08-02 14:22:43" itemprop="dateCreated datePublished" datetime="2015-08-02T14:22:43+02:00">2015-08-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-18 22:21:52" itemprop="dateModified" datetime="2019-07-18T22:21:52+02:00">2019-07-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SSH/" itemprop="url" rel="index"><span itemprop="name">SSH</span></a></span>
-
-                
-                
-              
+              <time title="创建时间：2019-04-17 15:44:14" itemprop="dateCreated datePublished" datetime="2019-04-17T15:44:14+08:00">2019-04-17</time>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-01 13:31:39" itemprop="dateModified" datetime="2020-03-01T13:31:39+08:00">2020-03-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/VPS/" itemprop="url" rel="index"><span itemprop="name">VPS</span></a>
+                </span>
+            </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -1889,164 +454,192 @@ When a UE has packets to transmit, it performs random access (RA) during an allo
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <h1 id="vps-提供商选择">VPS 提供商选择</h1>
+<p>我最终选择了 Vultr 家的，因为有新手注册送50美金的优惠，而且是按时间收费</p>
+<p>https://www.10besty.com/best-vps-hosting-services/ 可以看看这个文章，分析如何选取VPS服务商</p>
+<h1 id="create-a-new-non-root-user">Create a new non-root user</h1>
+<p>OVH 上购买的 VPS 在创建之初只有一个user: <code>root</code>. 使用下列命令查看当前VPS上都有哪些用户: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -d: -f1 /etc/passwd</span><br></pre></td></tr></table></figure></p>
+<p>奇怪的是，当时从root以hansomesong的用户登录的时候，居然不是默认切换到该用户的home directory很奇怪，最后只能在<code>.bashrc</code>文件中加了一个<code>cd</code>指令解决</p>
+<h1 id="添加gui支持">添加GUI支持</h1>
+<h2 id="install-vnc-server-xfce4">Install VNC server + Xfce4</h2>
+<p>参考这个<a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-16-04" target="_blank" rel="noopener">链接</a>, 解释非常详细</p>
+<p>Ubuntu Desktop requires downloading about 500 MB of packages and an additional 2 GB of disk space. If that's too much, you can install a more lightweight desktop environment called Xfce. It's just 45 MB of packages that use an extra 175 MB of space.</p>
+<h2 id="依靠-teamviewer">依靠 Teamviewer</h2>
+<p>https://vitux.com/how-to-install-teamviewer-on-ubuntu/ 该帖子介绍了如何通过CLI界面安装teamviewer</p>
+<p>https://serverfault.com/questions/547206/how-to-find-my-teamviewer-id-on-ssh 该帖子描述了如何通过命令行界面获取安装的teamviewer的ID以及如何设置链接密码</p>
+<p>X11forwarding和GUI desktop有何区别联系呢？</p>
+<p>不知道为啥，每次命令行安装teamviewer结束之后，都会遇到如下错误: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">pst@ubuntu-openstack:~$ sudo apt-get update</span><br><span class="line">...</span><br><span class="line">Ign:13 http://linux.teamviewer.com/deb stable InRelease</span><br><span class="line">Ign:14 http://linux.teamviewer.com/deb stable Release</span><br><span class="line">Ign:15 http://linux.teamviewer.com/deb stable/main amd64 Packages.diff/Index</span><br><span class="line">...</span><br><span class="line">Ign:19 http://linux.teamviewer.com/deb stable/main amd64 Packages</span><br><span class="line">Ign:20 http://linux.teamviewer.com/deb stable/main i386 Packages</span><br><span class="line">Ign:17 http://linux.teamviewer.com/deb stable/main all Packages</span><br><span class="line">Ign:18 http://linux.teamviewer.com/deb stable/main Translation-en</span><br><span class="line">...</span><br><span class="line">Err:19 http://linux.teamviewer.com/deb stable/main amd64 Packages</span><br><span class="line">  Unable to connect to 172.27.254.1:http:</span><br><span class="line">Fetched 3711 kB in 30s (120 kB/s)</span><br><span class="line">Reading package lists... Done</span><br><span class="line">W: The repository &apos;http://linux.teamviewer.com/deb stable Release&apos; does not have a Release file.</span><br><span class="line">N: Data from such a repository can&apos;t be authenticated and is therefore potentially dangerous to use.</span><br><span class="line">N: See apt-secure(8) manpage for repository creation and user configuration details.</span><br><span class="line">E: Failed to fetch http://172.27.254.1/UserCheck/PortalMain?IID=8C811C51-17AD-2746-8F44-757FD1A3A938&amp;origUrl=aHR0cDovL2xpbnV4LnRlYW12aWV3ZXIuY29tL2RlYi9kaXN0cy9zdGFibGUvbWFpbi9iaW5hcnktYW1kNjQvUGFja2FnZXM  Unable to connect to 172.27.254.1:http:</span><br><span class="line">E: Failed to fetch http://172.27.254.1/UserCheck/PortalMain?IID=1113313D-D6BA-3C1B-3173-AFB380757E7F&amp;origUrl=aHR0cDovL2xpbnV4LnRlYW12aWV3ZXIuY29tL2RlYi9kaXN0cy9zdGFibGUvbWFpbi9iaW5hcnktaTM4Ni9QYWNrYWdlcw  Unable to connect to 172.27.254.1:http:</span><br><span class="line">E: Some index files failed to download. They have been ignored, or old ones used instead.</span><br></pre></td></tr></table></figure></p>
+<p>第一反应是，那还是把teamviewer从apt-source中删掉吧。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key remove TeamViewer2017.asc</span><br><span class="line">sudo rm /etc/apt/sources.list.d/teamviewer.list</span><br></pre></td></tr></table></figure></p>
+<p>之后一切正常！</p>
+<h1 id="shadowsocks-安装-通过网友提供的脚本">Shadowsocks 安装 (通过网友提供的脚本)</h1>
+<p>GFW实现网络封锁的手段主要有两种：dns劫持和ip封锁（除此之外，还有dns污染和关键词过滤，这里我们不讨论. ## Shadowsocks 简介 Shadowsocks 是 clowwindy 开发的一个开源代理加密协议，有很多用途，当然最常见的还是拿来翻墙。事实上现在所有的商业的翻墙代理（云梯，多态等）底层都是Shadowsocks技术。</p>
+<p>https://medium.com/<span class="citation" data-cites="thomas_summon">@thomas_summon</span>/%E6%B5%85%E8%B0%88vpn-vps-proxy%E4%BB%A5%E5%8F%8Ashadowsocks%E4%B9%8B%E9%97%B4%E7%9A%84%E8%81%94%E7%B3%BB%E5%92%8C%E5%8C%BA%E5%88%AB-b0198f92db1b Shadowsocks 的一个较为全面的介绍</p>
+<p>参考链接：https://vc2tea.com/whats-shadowsocks/ 写的非常不错！清晰！易懂！</p>
+<p>ShadowsocksR (SSR) 是 Shadowsock 的继承者。</p>
+<figure>
+<img src="/2019/04/17/vps-install-cofig/shadowsocks_principle.png" alt="Shadowsocks principle"><span class="image-caption">Shadowsocks principle</span><figcaption>Shadowsocks principle</figcaption>
+</figure>
+<h2 id="安装-通过网友提供的脚本">安装 (通过网友提供的脚本)</h2>
+<p>为了防止<a href="https://teddysun.com/486.html/comment-page-1#comments" target="_blank" rel="noopener">原链接</a>失效，还是手动复制一遍：</p>
+<p>使用root用户登录，运行以下命令: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</span><br><span class="line">chmod +x shadowsocks-all.sh</span><br><span class="line">./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log</span><br></pre></td></tr></table></figure></p>
+<p>安装完成后，脚本提示如下: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Congratulations, Shadowsocks-Python server install completed!</span><br><span class="line">Your Server IP        :  &lt;your.vps.ip.address&gt;</span><br><span class="line">Your Server Port      :  9164</span><br><span class="line">Your Password         :  &lt;password-to-shadowsocks-python-server&gt;</span><br><span class="line">Your Encryption Method:  aes-256-gcm</span><br><span class="line"></span><br><span class="line">Your QR Code: (For Shadowsocks Windows, OSX, Android and iOS clients)</span><br><span class="line"> ss://YWVzLTI1Ni1nY206MTIzNDU2QDUxLjc3LjIxNS4xODo5MTY0</span><br><span class="line">Your QR Code has been saved as a PNG file path:</span><br><span class="line"> /root/shadowsocks_python_qr.png</span><br><span class="line">Welcome to visit: https://teddysun.com/486.html</span><br><span class="line">Enjoy it!</span><br></pre></td></tr></table></figure></p>
+<p>ShadowsocksX Python libev Go 都有啥区别呢？ 这次安装选下 libev版本 需要设定密码 依然设定 123456 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">Which Shadowsocks server you&apos;d select:</span><br><span class="line">1) Shadowsocks-Python</span><br><span class="line">2) ShadowsocksR</span><br><span class="line">3) Shadowsocks-Go</span><br><span class="line">4) Shadowsocks-libev</span><br><span class="line">Please enter a number (Default Shadowsocks-Python):4</span><br><span class="line"></span><br><span class="line">You choose = Shadowsocks-libev</span><br><span class="line"></span><br><span class="line">Please enter password for Shadowsocks-libev</span><br><span class="line">(Default password: teddysun.com):123456</span><br><span class="line"></span><br><span class="line">password = 123456</span><br><span class="line"></span><br><span class="line">Please enter a port for Shadowsocks-libev [1-65535]</span><br><span class="line">(Default port: 13313):9164</span><br><span class="line"></span><br><span class="line">port = 9164</span><br><span class="line"></span><br><span class="line">Please select stream cipher for Shadowsocks-libev:</span><br><span class="line">1) aes-256-gcm</span><br><span class="line">2) aes-192-gcm</span><br><span class="line">3) aes-128-gcm</span><br><span class="line">4) aes-256-ctr</span><br><span class="line">5) aes-192-ctr</span><br><span class="line">6) aes-128-ctr</span><br><span class="line">7) aes-256-cfb</span><br><span class="line">8) aes-192-cfb</span><br><span class="line">9) aes-128-cfb</span><br><span class="line">10) camellia-128-cfb</span><br><span class="line">11) camellia-192-cfb</span><br><span class="line">12) camellia-256-cfb</span><br><span class="line">13) xchacha20-ietf-poly1305</span><br><span class="line">14) chacha20-ietf-poly1305</span><br><span class="line">15) chacha20-ietf</span><br><span class="line">16) chacha20</span><br><span class="line">17) salsa20</span><br><span class="line">18) rc4-md5</span><br><span class="line">Which cipher you&apos;d select(Default: aes-256-gcm):</span><br><span class="line"></span><br><span class="line">cipher = aes-256-gcm</span><br><span class="line"></span><br><span class="line">[Info] Starting install package autoconf</span><br><span class="line">Do you want install simple-obfs for Shadowsocks-libev? [y/n]</span><br><span class="line">(default: n):y</span><br><span class="line"></span><br><span class="line">You choose = y</span><br><span class="line"></span><br><span class="line">Please select obfs for simple-obfs:</span><br><span class="line">1) http</span><br><span class="line">2) tls</span><br><span class="line">Which obfs you&apos;d select(Default: http):1</span><br><span class="line"></span><br><span class="line">obfs = http</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Press any key to start...or Press Ctrl+C to cancel</span><br></pre></td></tr></table></figure></p>
+<h2 id="卸载方法-通过网友提供的脚本">卸载方法 (通过网友提供的脚本)</h2>
+<p>若已安装多个版本，则卸载时也需多次运行（每次卸载一种。使用root用户登录，运行以下命令： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./shadowsocks-all.sh uninstall</span><br></pre></td></tr></table></figure></p>
+<h2 id="启动脚本">启动脚本</h2>
+<p>启动脚本后面的参数含义，从左至右依次为：启动，停止，重启，查看状态。 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Shadowsocks-Python 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-python start | stop | restart | status</span><br><span class="line"><span class="meta">#</span><span class="bash">ShadowsocksR 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-r start | stop | restart | status</span><br><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-Go 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-go start | stop | restart | status</span><br><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-libev 版：</span></span><br><span class="line">/etc/init.d/shadowsocks-libev start | stop | restart | status</span><br></pre></td></tr></table></figure></p>
+<p>事实证明, <code>shadowsocks-python</code> 程序是通过一个 Python 程序启动了<code>ssserver</code>程序 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@vpsname:~# ps aux | grep ssserver</span><br><span class="line">root      4623  0.0  0.7  51012 15804 ?        Ss   17:08   0:02 /usr/bin/python /usr/local/bin/ssserver -c /etc/shadowsocks-python/config.json -d start</span><br><span class="line">root      6256  0.0  0.0  12916   976 pts/1    S+   22:45   0:00 grep --color=auto ssserver</span><br></pre></td></tr></table></figure></p>
+<h2 id="各版本默认配置文件">各版本默认配置文件</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-Python 版：</span></span><br><span class="line">/etc/shadowsocks-python/config.json</span><br><span class="line"><span class="meta">#</span><span class="bash">ShadowsocksR 版：</span></span><br><span class="line">/etc/shadowsocks-r/config.json</span><br><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-Go 版：</span></span><br><span class="line">/etc/shadowsocks-go/config.json</span><br><span class="line"><span class="meta">#</span><span class="bash">Shadowsocks-libev 版：</span></span><br><span class="line">/etc/shadowsocks-libev/config.json</span><br></pre></td></tr></table></figure>
+<h2 id="mac-osx-客户端如何使用-shadowsocks">Mac OSX 客户端如何使用 Shadowsocks</h2>
+<p>注意：以下内容和VPS配置无关，都是在 VPS 已经安装好 Shadowsocks 的基础上在客户端配置的！</p>
+<h3 id="通过shadowsocks-x-ng客户端">通过Shadowsocks-X NG客户端</h3>
+<p>ShadowsocksX-NG 是官方支持的 macOS 下的 shadowsocks 客户端，支持诸多 shadowsocks 协议的特性。这篇帖子讲了<a href="https://fafe.me/2017/10/07/shadowsocksx-ng/" target="_blank" rel="noopener">ShadowsocksX-NG的工作原理</a>。重要信息如下: * ShadowsocksX-NG 只是 Swift 写的一个 GUI 而已, 底层依赖 ss-local 程序 * ss-local 启动后监听在 1080 端口，接受 socks 协议的请求 * http 协议的代理，则是集成了 privoxy 程序，监听在 1087 端口，然后转发到 1080 端口上，实现对 http 协议的代理 * 还有一个 pac server，监听在 1089 端口，用来给系统代理提供 PAC 文件</p>
+<p>通过客户端的好处是，全局都翻墙，而不仅仅只是浏览器翻墙了 下载地址：https://github.com/shadowsocks/ShadowsocksX-NG/releases</p>
+<p>关于如何使用 Shadowsocks-X 的图文教程: https://enlightor.wordpress.com/2018/04/18/shadowsocksx-ng-on-macosx-10-11-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</p>
+<p>PAC (Proxy Auto Configuration) 文件的放置路径: <code>.ShadowsocksX-NG</code> 文件夹下。</p>
+<p>顾名思义，全局模式 (Global mode) 就是所有流量都走服务器，而 自动代理模式 (Proxy Auto Configuration 是通过代理自动配置文件(PAC文件)来配置走服务器的流量。使用自动代理模式可以实现国内网站直连，国外网站使用代理连接，即加速了浏览国内网站的速度，又节省了服务器的流量，一石二鸟。 ### 通过Chrome插件</p>
+<h2 id="通过proxychains让iterm终端上网">通过ProxyChains让Iterm终端上网</h2>
+<p>http://haoweiguang.me/2017/05/08/Mac%E4%B8%8Bshadowsocks%E5%85%A8%E8%87%AA%E5%8A%A8%E5%9C%B0%E4%BB%A3%E7%90%86%E7%BF%BB%E5%A2%99/</p>
+<p>浏览器科学上网只是一部分，想让命令行工具科学上网肿么办？ <code>ProxyChains</code> 就是一个这样用途的工具，它可以让你的其它工具通过 Socks 或 HTTP 代理访问网络。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install proxychains-ng</span><br></pre></td></tr></table></figure>
+<p>编辑配置文件 mvim /usr/local/etc/proxychains.conf</p>
+<p>为git,nodejs,gradle,maven等进行代理服务器的配置 http://www.snowdream.tech/2016/03/31/proxy-settings-with-shadowsocks/#IDEA</p>
+<h2 id="优化-shadowsocks-setup">优化 [^shadowsocks-setup]</h2>
+<h3 id="bbr加速">BBR加速</h3>
+<p>Shadowsocks加速优化流行的有很多方式，我进行尝试和比较之后，推荐大家使用BBR（一种TCP拥塞控制算法）来加速。</p>
+<p>根据帖子：https://zhuanlan.zhihu.com/p/36750024 安装的BBR</p>
+<p>加速效果比较：https://ssr.tools/674 ### 锐速加速两种方案 锐速已经停更，对于新的系统内核支持有限，建议改用谷歌的开源方案：Google BBR 对 SS 进行优化加速。效果都差不多的。</p>
+<h3 id="kcptun-加速">KCPTUN 加速</h3>
+<p>KCPTUN是一款服务器双边加速工具，可以将服务器的TCP流量，比如Shadowsokcs/Shadowsocksr的流量，转化为KCP协议的UDP流量发出。作为一款暴力发包工具，KCPTUN可以有效解决丢包问题，明显提升传输速度。</p>
+<p>Kcptun是一个非常简单和快速的，基于KCP协议的UDP隧道，它可以将TCP流转换为KCP+UDP流。而KCP是一个快速可靠协议，能以比TCP浪费10%-20%的带宽的代价，换取平均延迟降低 30%-40%，且最大延迟降低三倍的传输效果。</p>
+<p>Kcptun是KCP协议的一个简单应用，可以用于任意TCP网络程序的传输承载，以提高网络流畅度，降低掉线情况。</p>
+<h4 id="服务器端">服务器端</h4>
+<p>通过以下数条指导令安装 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.sh</span><br><span class="line">chmod +x ./kcptun.sh</span><br><span class="line">./kcptun.sh</span><br></pre></td></tr></table></figure></p>
+<p>安装过程中会有提示选项，这里有几点需要注意：</p>
+<ul>
+<li>端口：默认29900，即为KCPTUN与其客户端连接使用的端口，默认即可。</li>
+<li>要加速的地址：默认127.0.0.1。</li>
+<li>要加速的端口：设置为你的SS/SSR使用的端口。</li>
+<li>密码：自己设置，用于KCPTUN客户端连接使用，不要使用默认密码。</li>
+<li>加密方式选择：较强的加密方式会影响网速，建议默认aes或不加密。因为我们是配合ss使用的，所以不必加密，直接选none就行</li>
+<li>加速模式：传输速度自然是fast3最大，流量也消耗最大。所以追求速度的可以选fast3，fast2是最折中的。默认fast即可。随后可以手动修改为其它模式，测试加速效果。</li>
+<li>MTU：默认1350即可。</li>
+<li>sndwnd：发送窗口大小，与服务器的上传带宽大小有关，这项与rcvwnd的比例会影响加速效果，可以暂时设置为默认的512。</li>
+<li>rcvwnd：接收窗口大小，与服务器的下载带宽大小有关，也可以暂设置为默认的512，或者1024也可以。 以下几项中，除了数据压缩外，其它保持默认参数即可。建议关闭数据压缩，可以在一定程度上提升传输效率。其余各项设置，保持默认即可，设置完成后，按任意键开始安装过程。</li>
+</ul>
+<p>注意：客户端和服务端的参数 <code>-sndwnd 2048 -rcvwnd 2048</code> 这两个值不要大于你的本地宽带，否则流量消耗会浪费好几倍。适用大部分 ADSL 接入（非对称上下行）的参数。 其它带宽请按比例调整，比如 50M ADSL，把 -sndwnd -rcvwnd 减掉一半。100M 就是 2048，50M 就是 1024。这两个值可以逐渐调小，但是不能比本地的实际宽带大！ 注意：产生大量重传时，一定是窗口偏大了</p>
+<ul>
+<li>nc（关闭拥塞控制），其实据网友的测试，最重要的就是这个参数 如果不关闭的话，基本没有加速效果，所以预置的几种模式都把它的值设为了 1。[https://www.keakon.net/2016/10/29/用kcptun加速Shadowsocks]</li>
+</ul>
+<p>关于kcptun参数调整设置[https://blog.csdn.net/weixin_41732074/article/details/88747400]</p>
+<p>KCPTUN常用功能及命令：</p>
+<ul>
+<li>KCPTUN安装目录：/usr/local/kcptun</li>
+<li>KCPTUN的参数配置文件：/usr/local/kcptun/server-config.json</li>
+<li>启动：supervisorctl start kcptun</li>
+<li>停止：supervisorctl stop kcptun</li>
+<li>重启：supervisorctl restart kcptun</li>
+<li>状态：supervisorctl status kcptun</li>
+<li>卸载：./kcptun.sh uninstall</li>
+</ul>
+<p>可以通过 <code>./kcptun.sh help</code> 查看脚本的使用说明，比如如何查看日志，查看服务器端配置情况，添加多端口加速等等</p>
+<p>kcptun正常运转时的日志: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"> 2019-12-31 07:46:39 INFO: plugin &quot;plugins/kcptun&quot; enabled</span><br><span class="line"> 2019-12-31 07:46:39 INFO: using tcp fast open</span><br><span class="line"> 2019-12-31 07:46:39 INFO: initializing ciphers... aes-256-gcm</span><br><span class="line"> 2019-12-31 07:46:39 INFO: listening at 127.0.0.1:1086</span><br><span class="line"> 2019-12-31 07:46:39 INFO: tcp port reuse enabled</span><br><span class="line">2019/12/31 07:46:39 version: 20190905</span><br><span class="line">2019/12/31 07:46:39 initiating key derivation</span><br><span class="line">2019/12/31 07:46:39 listening on: 127.0.0.1:63259</span><br><span class="line">2019/12/31 07:46:39 encryption: aes</span><br><span class="line">2019/12/31 07:46:39 nodelay parameters: 1 20 2 1</span><br><span class="line">2019/12/31 07:46:39 remote address: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:46:39 sndwnd: 512 rcvwnd: 512</span><br><span class="line">2019/12/31 07:46:39 compression: true</span><br><span class="line">2019/12/31 07:46:39 mtu: 1350</span><br><span class="line">2019/12/31 07:46:39 datashard: 10 parityshard: 3</span><br><span class="line">2019/12/31 07:46:39 acknodelay: false</span><br><span class="line">2019/12/31 07:46:39 dscp: 0</span><br><span class="line">2019/12/31 07:46:39 sockbuf: 4194304</span><br><span class="line">2019/12/31 07:46:39 smuxbuf: 4194304</span><br><span class="line">2019/12/31 07:46:39 keepalive: 10</span><br><span class="line">2019/12/31 07:46:39 conn: 1</span><br><span class="line">2019/12/31 07:46:39 autoexpire: 0</span><br><span class="line">2019/12/31 07:46:39 scavengettl: 600</span><br><span class="line">2019/12/31 07:46:39 snmplog: </span><br><span class="line">2019/12/31 07:46:39 snmpperiod: 60</span><br><span class="line">2019/12/31 07:46:39 quiet: false</span><br><span class="line">2019/12/31 07:46:39 tcp: false</span><br><span class="line">2019/12/31 07:46:39 connection: 0.0.0.0:54581 -&gt; &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:46:40 stream opened in: 127.0.0.1:63263 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(3)</span><br><span class="line">2019/12/31 07:46:40 stream opened in: 127.0.0.1:63265 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(5)</span><br><span class="line">2019/12/31 07:46:40 stream opened in: 127.0.0.1:63267 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(7)</span><br><span class="line">2019/12/31 07:46:40 stream closed in: 127.0.0.1:63267 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(7)</span><br><span class="line">2019/12/31 07:46:41 stream opened in: 127.0.0.1:63270 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(9)</span><br><span class="line">2019/12/31 07:46:41 stream opened in: 127.0.0.1:63272 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(11)</span><br><span class="line">2019/12/31 07:46:42 stream opened in: 127.0.0.1:63275 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(13)</span><br><span class="line">2019/12/31 07:46:42 stream opened in: 127.0.0.1:63276 out: &lt;ip&gt;.&lt;of&gt;.&lt;my&gt;.&lt;vps&gt;:29900(15)</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h4 id="服务器端安装与使用">服务器端安装与使用</h4>
+<p>在shadowsocks插件中只需要填写kcptun，当然前提是这个命令被放在$PATH涵盖的路径之下，不然，需要填写完整路径。关于参数，</p>
+<p>“key=123456;crypt=none;mode=fast;mtu=1350;sndwnd=512;rcvwnd=512;datashard=10;parityshard=3;dscp=0” 这种格式就好，在kcptun服务器端安装成功只有，会生成这种字符串。</p>
+<p><strong><em>注意</em></strong>:</p>
+<p>在使用kcptun的时候，没有按照kcptun官网github网站上的建议，即没有在<code>/etc/sysctl.conf</code>中添加处理UDP的配置，导致使用kcptun加速之后的效果反而还不如不加速，甚至会出现断网。</p>
+<p>注意在shadowsocks-NR中password给的还是shadowsocks进程的密码，而不是kcptun进程的密码。</p>
+<h1 id="kcptun-参数调优">Kcptun 参数调优</h1>
+<p>https://blog.csdn.net/weixin_41732074/article/details/88747400</p>
+<p>注意: 2019-9-22至2019-9-29回国期间，由于建国70年国庆的缘故，国内安防级别升级，所以我的VPS的公有IP地址被网络长城封禁了。但是我惊讶的发现，带着KCPTUN的代理依然可以正常使用！我猜想是，网络长城封禁了来自OVH且走TCP的流量，因为这被判定为翻墙流量，而KCPTUN走的是UDP，所以幸运地绕过了网络长城！这是个意外的发现。可以考虑再用上混淆等技术？</p>
+<p>注意: 2019-12-24至2020-01-03回国期间，发现我的 kcptun + shadowsocks翻墙工具在西安不好用了。首先肯定不是完全封禁，25/26在北京的时侯还是工作良好的，虽然在机场有时候也连接不上。而在西安，则连接不上的时间越来越长。我怀疑是不是西安的运营商QoS策略问题，毕竟是大规模的UDP流量。</p>
+<p>我又在OVH账户里创建了一个位于新加坡的VPS，这次发现，SSH连接(端口号22)有时候会连接不上，即使连接上了，延时巨大，还很容易断掉，我怀疑是受到了GFW的强烈干扰。幸好之前位于法国的VPS，可以支持通过443端口访问，延时也不算高，可以通过先SSH登录法国的VPS，然后再登录新建的位于新加坡的VPS.</p>
+<h1 id="section"></h1>
+<p>https://zhuanlan.zhihu.com/p/64467370 这个知乎帖子详细分析了国内三大运营商宽带出海的情况 非常值得一读！原来翻墙线路选择有这么大的学问</p>
+<p>https://www.newlearner.site/2019/07/06/vultr-clivps-anniversary.html 关于VPS提供商选择的问题！一些VPS使用心得！看来搬瓦工比较推荐哈！</p>
+<h3 id="section-1"></h3>
+<p>2020-02-25: 这一天，我彻底回了国，结束了为期近10年的法漂岁月。回国之前购买的expressVPN居然在西安不好使！无奈只好重新捡起了shadowsocks+kcptun方案。让人惊讶的是，这次居然没有任何问题，完全可以正常使用！！这是何故呢？ 有可能是OVH的VPS超售问题？但如果是VPS流量超售，为啥19年年末在北京的时候没问题，但是回到西安就有了问题。在无法翻墙的情况下，可以通过使用站长工具: https://ping.chinaz.com/, 看看大多数PING结果是否为time out, 如果是的话，那就VPS去背这个锅。 但如果是西安本地运营商的问题，为啥这次回来了反而可以了？</p>
+<h1 id="shadowsocks-kcptun-udp2raw-翻墙">Shadowsocks + kcptun + udp2raw 翻墙</h1>
+<p>udp2raw-tunnel 项目地址: https://github.com/wangyu-/udp2raw-tunnel ## VPS端 将下载好的udp2raw_amd64放置于路径/usr/local/bin之下。然后创建一个service来管理udp2raw_amd64的启动/停止/重启等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./udp2raw_amd64 -s -l0.0.0.0:9191 -r 127.0.0.1:29900  -a -k &quot;brysj12345&quot; --raw-mode faketcp</span><br></pre></td></tr></table></figure>
+<p>说明: VPS端程序持续监听本地的9191端口。此端口收到的流量会被转发给29900端口(kcptun服务端监听的端口)。具体参数说明: * <code>-a</code>: xxxxx * <code>-s</code>: 服务器模式 * <code>-l</code>: 监听的地址以及端口号</p>
+<p>为了让udp2raw-tunnel开机启动，我们为之创建相应的service [Unit] Description=udp2raw service which redirects traffic incoming from port 9191 to 29900 (port used by kcptun server) on VPS server. Note that if kcptun server changes monitored port, the present service should be accordingly adapted. After=network.target</p>
+<p>[Service] ExecStart=/usr/local/bin/ udp2raw_amd64 -s -l0.0.0.0:9191 -r 127.0.0.1:29900 -a -k "brysj12345" --raw-mode faketcp</p>
+<p>[Install] WantedBy=multi-user.target ## 客户端 思路: 在mac本地端启动</p>
+<p>除了shadowsocks之外，客户端需要下载udp2raw客户端。运行命令为: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/udp2raw_mp_nolibnet -c -l0.0.0.0:3333  -r139.99.88.29:9191 -k &quot;passwd&quot; --raw-mode easy-faketcp</span><br></pre></td></tr></table></figure></p>
+<p>说明: 客户端udp2raw程序一直监听3333端口，并将此端口接受的流量转发给远程VPS的9191端口。</p>
+<p>https://segmentfault.com/a/1190000018458044 这里面给出了比较好的 udp2raw-tunnel启动示例。</p>
+<p><img src="/2019/04/17/vps-install-cofig/ssr-kcptun-udp2raw-vps.png" alt="VPS configurations"><span class="image-caption">VPS configurations</span> 一些思考 # 如何确保SSH链接执行的命令在SSH链接中断的情况下继续执行？？？</p>
+<h1 id="debug">DEBUG</h1>
+<h2 id="kcptun-翻墙链接不稳定">kcptun 翻墙链接不稳定</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">2019/12/31 07:55:19 session marked as expired &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:55:19 connection: 0.0.0.0:56970 -&gt; &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:55:19 stream opened in: 127.0.0.1:63370 out: &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900(3)</span><br><span class="line">2019/12/31 07:55:19 session normally closed &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:55:49 stream closed in: 127.0.0.1:63370 out: &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900(3)</span><br><span class="line">2019/12/31 07:56:09 session marked as expired &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:56:09 connection: 0.0.0.0:54998 -&gt; &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:56:09 stream opened in: 127.0.0.1:63373 out: &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900(3)</span><br><span class="line">2019/12/31 07:56:09 session normally closed &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900</span><br><span class="line">2019/12/31 07:56:18 stream opened in: 127.0.0.1:63376 out: &lt;ip&gt;.&lt;of&gt;.&lt;france&gt;.&lt;vps&gt;:29900(5)</span><br></pre></td></tr></table></figure>
+<p>在出问题的同时，我试图ssh进入到远程VPS中，看看server端的日志(其实到底是服务器端的问题还是客户端的问题)，发现ssh链接过程也很慢 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> qsong@song-macbookpro  ~  ssh vps -vvv</span><br><span class="line">...</span><br><span class="line">debug1: Connecting to 51.77.215.18 [51.77.215.18] port 443.</span><br><span class="line">(上下两条信息间隔有点儿久。。。)</span><br><span class="line">debug1: Connection established.</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>最终ssh链接还是建立了起来.</p>
+<p>奇怪啊，过了大概20来分钟，又可以正常翻墙了，在打开youtube的过程中，还出现了下面这个问题: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2019/12/31 08:11:51 stream closed in: 127.0.0.1:63648 out: 51.77.215.18:29900(21)</span><br><span class="line"> 2019-12-31 08:11:51 ERROR: remote_recv_cb_recv: Connection reset by peer</span><br><span class="line">2019/12/31 08:11:53 stream closed in: 127.0.0.1:63657 out: 51.77.215.18:29900(23)</span><br></pre></td></tr></table></figure></p>
+<p>但是youtube可以正常打开。</p>
+<h2 id="kcptun-udp2raw-翻墙链接不稳定">kcptun + udp2raw 翻墙链接不稳定</h2>
+<p>在西安的时候，发现很神奇的现象: 北京时间早上6点多醒来(法国时间将近午夜)，一切翻墙链接均可用，不管是shadowsocks + Kcptun还是shadowsocks+kcptun+udp2raw。工作正常的情况下，shadowsocks的日志中(路径:<code>~/Library/Logs/ss-local.log</code>)大量显示如下记录: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">2019/12/31 07:15:04 stream opened in: 127.0.0.1:62660 out: 127.0.0.1:3333(33)</span><br><span class="line">2019/12/31 07:15:04 stream opened in: 127.0.0.1:62662 out: 127.0.0.1:3333(35)</span><br><span class="line">2019/12/31 07:15:05 stream opened in: 127.0.0.1:62666 out: 127.0.0.1:3333(37)</span><br><span class="line">2019/12/31 07:15:05 stream opened in: 127.0.0.1:62667 out: 127.0.0.1:3333(39)</span><br><span class="line">2019/12/31 07:15:05 stream closed in: 127.0.0.1:62662 out: 127.0.0.1:3333(35)</span><br><span class="line">2019/12/31 07:15:07 stream opened in: 127.0.0.1:62674 out: 127.0.0.1:3333(41)</span><br><span class="line">2019/12/31 07:15:16 stream closed in: 127.0.0.1:62667 out: 127.0.0.1:3333(39)</span><br><span class="line">2019/12/31 07:15:21 stream closed in: 127.0.0.1:62566 out: 127.0.0.1:3333(5)</span><br><span class="line">2019/12/31 07:15:25 stream closed in: 127.0.0.1:62591 out: 127.0.0.1:3333(13)</span><br><span class="line">2019/12/31 07:15:25 stream closed in: 127.0.0.1:62608 out: 127.0.0.1:3333(17)</span><br><span class="line">2019/12/31 07:15:25 stream closed in: 127.0.0.1:62666 out: 127.0.0.1:3333(37)</span><br><span class="line">2019/12/31 07:15:25 stream opened in: 127.0.0.1:62695 out: 127.0.0.1:3333(43)</span><br><span class="line">2019/12/31 07:15:25 stream closed in: 127.0.0.1:62627 out: 127.0.0.1:3333(21)</span><br><span class="line">2019/12/31 07:15:26 stream closed in: 127.0.0.1:62633 out: 127.0.0.1:3333(25)</span><br><span class="line">2019/12/31 07:15:26 stream closed in: 127.0.0.1:62630 out: 127.0.0.1:3333(23)</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>不过，我感觉在正常工作一段时间之后，无法正常翻墙，日志中出现如下信息: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">2019/12/31 07:29:15 session marked as expired 127.0.0.1:3333</span><br><span class="line">2019/12/31 07:29:15 SetReadBuffer: set udp4 0.0.0.0:52396: setsockopt: no buffer space available</span><br><span class="line">2019/12/31 07:29:15 SetWriteBuffer: set udp4 0.0.0.0:52396: setsockopt: no buffer space available</span><br><span class="line">2019/12/31 07:29:15 connection: 0.0.0.0:52396 -&gt; 127.0.0.1:3333</span><br><span class="line">2019/12/31 07:29:15 stream opened in: 127.0.0.1:62875 out: 127.0.0.1:3333(3)</span><br><span class="line">2019/12/31 07:29:15 session normally closed 127.0.0.1:3333</span><br><span class="line">2019/12/31 07:29:16 stream opened in: 127.0.0.1:62878 out: 127.0.0.1:3333(5)</span><br><span class="line">2019/12/31 07:29:24 stream opened in: 127.0.0.1:62882 out: 127.0.0.1:3333(7)</span><br><span class="line">2019/12/31 07:29:45 stream closed in: 127.0.0.1:62875 out: 127.0.0.1:3333(3)</span><br><span class="line">2019/12/31 07:29:45 stream closed in: 127.0.0.1:62878 out: 127.0.0.1:3333(5)</span><br><span class="line">2019/12/31 07:29:45 stream closed in: 127.0.0.1:62882 out: 127.0.0.1:3333(7)</span><br><span class="line">2019/12/31 07:29:49 session marked as expired 127.0.0.1:3333</span><br><span class="line">2019/12/31 07:29:49 SetReadBuffer: set udp4 0.0.0.0:65215: setsockopt: no buffer space available</span><br><span class="line">2019/12/31 07:29:49 SetWriteBuffer: set udp4 0.0.0.0:65215: setsockopt: no buffer space available</span><br><span class="line">2019/12/31 07:29:49 connection: 0.0.0.0:65215 -&gt; 127.0.0.1:3333</span><br><span class="line">2019/12/31 07:29:49 stream opened in: 127.0.0.1:62890 out: 127.0.0.1:3333(3)</span><br><span class="line">2019/12/31 07:29:49 session normally closed 127.0.0.1:3333</span><br><span class="line">2019/12/31 07:29:53 stream opened in: 127.0.0.1:62892 out: 127.0.0.1:3333(5)</span><br><span class="line">2019/12/31 07:30:19 stream closed in: 127.0.0.1:62890 out: 127.0.0.1:3333(3)</span><br><span class="line">2019/12/31 07:30:19 stream closed in: 127.0.0.1:62892 out: 127.0.0.1:3333(5)</span><br></pre></td></tr></table></figure></p>
+<p>有kcptun用户讨论过类似现象[https://github.com/xtaci/kcptun/issues/254]</p>
+<p>我感觉错误信息诸如<code>SetReadBuffer: set udp4 0.0.0.0:65215: setsockopt: no buffer space available</code>, 是和客户端udp2raw-tunnel程序的参数<code>sockbuff=</code></p>
+<h1 id="configure-ipv6-on-ovh-vps">Configure IPv6 on OVH VPS</h1>
+<p>Link: https://docs.ovh.com/gb/en/vps/configuring-ipv6/ By default, only IPv4 is configured on a OVH VPS. Thus, we need to manually configure IPV6 on our VPS.</p>
+<p>编辑文件: <code>/etc/network/interfaces.d/50-cloud-init.cfg</code> 注意: 修改<code>/etc/network/interfaces</code>, 之后启动<code>service networking restart</code>会报错，因为关于<code>ens3</code>设备是定义在前者之中。如果再此文件中再添加关于<code>ens3</code>的配置，会报错: file exixts.</p>
+<p>之后在Mac终端下, 去ping6这台VPS的IPv6地址就可以ping通了。</p>
+<p>参考资料： [^shadowsocks-setup]: Shadowsocks 服务器搭建比较全的纪录,https://kylindc.github.io/post/63883/</p>
 
-      
-        
-          
-            <p>
-              I have one Ubuntu Linux server (I will call it as remote server in the following of this post) in my office, which is behind a NAT router and restrict
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2015/08/02/ssh-tuto/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
-
-    
       
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2015/08/01/how-to-install-ns-3-in-Ubuntu-15-04/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/17/basic-number-theory/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2015/08/01/how-to-install-ns-3-in-Ubuntu-15-04/" class="post-title-link" itemprop="url">Ubuntu 15.04下安装NS-3</a>
-              
-            
-          </h1>
-        
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/17/basic-number-theory/" class="post-title-link" itemprop="url">A basic tutorial about number theory</a>
+        </h2>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
+              <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2015-08-01 20:00:41" itemprop="dateCreated datePublished" datetime="2015-08-01T20:00:41+02:00">2015-08-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-25 11:27:10" itemprop="dateModified" datetime="2019-03-25T11:27:10+01:00">2019-03-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+              <time title="创建时间：2019-04-17 11:08:23 / 修改时间：18:25:52" itemprop="dateCreated datePublished" datetime="2019-04-17T11:08:23+08:00">2019-04-17</time>
+            </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -2054,71 +647,483 @@ When a UE has packets to transmit, it performs random access (RA) during an allo
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>Disclaimer: the content of this blog is the key takeways and my personal thinking about slides written by Professor Dan Boneh and available in Coursera</p>
+<h1 id="eulers-generalization-of-fermat">Euler’s generalization of Fermat</h1>
+<p>Definition of Euler's <span class="math inline">\(\phi\)</span> function: for an integer <span class="math inline">\(N\)</span>, <span class="math inline">\(\phi(N) = |Z^*_n|\)</span></p>
+<h2 id="modulars-eth-root">Modular's <span class="math inline">\(e^{th}\)</span> root</h2>
+<p>Let <span class="math inline">\(p\)</span> be a prime and <span class="math inline">\(c \in Z_p\)</span></p>
+<p>Def: <span class="math inline">\(x \in Z_p\)</span>, s.t. <span class="math inline">\(x^e = c\)</span> in <span class="math inline">\(Z_p\)</span> is called an <span class="math inline">\(e^{th}\)</span> root Example: <span class="math display">\[
+\begin{align}
+7^{1/3} &amp;= 6 \text{ in } \mathbb{Z}_{11} \nonumber 
+3^{1/2} &amp;= 5 \text{ in } \mathbb{Z}_{11} \nonumber
+1^{1/3} &amp;= 1 \text{ in } \mathbb{Z}_{11} \nonumber
+\end{align}
+\]</span></p>
 
-      
-        
-          
-            <p>
-              官方教程
-Prerequists
-关于Ubuntu下的Prerequistes，[1]中有很详细的解释。
-# 版本管理软件sudo apt-get install git cvs mercurial#sudo apt-get install gcc g++ python python-dev qt4
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2015/08/01/how-to-install-ns-3-in-Ubuntu-15-04/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
       
     </div>
 
     
-
     
     
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/15/identity-based-encryption/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/15/identity-based-encryption/" class="post-title-link" itemprop="url">identity-based-encryption</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-15 16:23:07" itemprop="dateCreated datePublished" datetime="2019-04-15T16:23:07+08:00">2019-04-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-12 12:10:33" itemprop="dateModified" datetime="2020-04-12T12:10:33+08:00">2020-04-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
 
     
-  </section>
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="认可度比较高的-ibe-实现">认可度比较高的 IBE 实现</h1>
+<ul>
+<li>Stanford IBE System: Was built and developed by Boneh and Franklin, which was built using C++ based IBE implementation, MIT–style license published it.</li>
+<li>MIRACL: It is a C++ based library (cryptographic) developed by the Shamus Software.</li>
+<li>Voltage Security Inc. (创建者正是Bonneh) has built the most renowned implementation of the IBE. They offer valuable plugins for various mail clients</li>
+</ul>
+<p>Recently,in order to eliminate the use of certificates in certified public key cryptography and thekey-escrow problem in identity-based cryptography, the notion of certificateless publickey cryptography was introduced.</p>
+<h1 id="参考资料">参考资料</h1>
+<p>https://medium.com/gigtricks/id-based-cryptography-and-user-authentication-4e6efa07cd03</p>
+<p>Recently,in order to eliminate the use of certificates in certified public key cryptography and thekey-escrow problem in identity-based cryptography, the notion of certificateless public key cryptography was introduced.</p>
+<p>SDN和NFV为代表的网络虚拟化技术的进步，改变了网络管理和网络服务提供的模式。未来网络中，网络服务将会以服务链的形式存在。由于SDN本身的实现漏洞不可避免的，服务链的完整性将遭到破坏。为此，提出新的服务链完整性检测方案、同时降低服务链安全检测对服务质量和资源消耗的影响，并据此研究广义背景信息关联的新型隐私保护方法、隐私保护与服务 质量的自适应调节、隐私保护中的资源消耗优化三个科学问题，突破基于有序多重签名的服务链安全性检测性化空 间匿名、基于历史信息的自适应方法、基于安全策略的自主防御等关键技术。实现服务链技术在未来网络使用过程的实现实现: 轻量化，智能化，自主化。</p>
+<p>然后，对于服务链完整性检测</p>
+<p>#版本1： SDN和NFV为代表的网络虚拟化技术的进步，改变了网络管理和网络服务提供的模式。未来 网络中，网络服务将会以服务链的形式存在。由于SDN本身的实现漏洞不可避免的，服务链的 完整性将遭到破坏。为此，提出新的服务链完整性检测方案、同时降低服务链安全检测对服务 质量和资源消耗的影响，并据此研究新型服务链完整性检测方案、完整性检测与服务质量及资 源消耗的自适应调节、服务链自主防护三个科学问题，突破基于有序多重签名的服务链安全性 检测、基于带内遥测技术的自适应方法、基于安全策略的自主防御等关键技术。实现服务链技 术在未来网络使用过程的实现实现: 轻量化，智能化，自主化。</p>
+<p>#版本2</p>
+<ol type="1">
+<li>什么是服务链技术？ 在SDN和NFV等技术的赋能只下，服务链是一种让网络服务中的数据包，将按需按顺的通过一系列网络功能，以实现业务逻辑的技术。服务链技术被视为是未来网络(如数据中心网络，运营商核心网等)提供网络服务的主要形式。 2）服务链技术面临的安全问题是什么？然而，服务链的便利性确是以扩大的攻击面为代价。近年来，一些列研究成果表明，敌手具备绕过访问控制，鉴权授权等安全机制，破坏服务链的完整性，进而造成更大破坏的能力。本项目拟以保护服务链完整性为中心，以提出安全高效可靠的服务链完整性解决方案为突破口，以解决完整性检测方案和服务质量及资源消耗之间的自适应问题为手段，以便为不同的网络服务在不同服务质量要求下选用合理的完整性检测及参数设定，达到让软件定义网络中服务链完整性问题。在此基础上，本项目还将充分利用软件定义网络的集中试管里为手段，推动一定程度的服务链的自主防御机制。最终实现服务链完整性的从发现问题，到问题定位，到最后采取安全措施的闭环控制，确保未来网络中服务链的运行。</li>
+</ol>
+<p>#版本3 服务链是一种在SDN和NFV等技术的赋能之下，让网络服务中的数据包，按需按顺通过一系列网络功能实现业务逻辑的技术。因其灵活性和便利性，服务链被视为未来网络基础设施提供网络服务的主要形式。近年来的研究成果表明，敌手具备绕过访问控制，鉴权授权等安全机制，破坏服务链的完整性，进而造成更大破坏的能力。为了安全便捷地利用服务链技术，本项目拟围绕保护服务链完整性，以安全高效可靠的服务链完整性检测机制为突破口，以服务链完整性检测和服务质量及资源消耗之间的自适应机制为手段，在提供安全可靠的服务链完整性检测的同时降低对服务链服务质量影响。在此基础上，本项目还将利用服务链完整性检测结果，结合软件定义网络的集中式管理机制与全局视野，实现一定程度的针对服务链的自主防御机制，最终实现服务链完整性保护的从发现问题，到定位问题，直至解决问题的闭环控制。</p>
+<p>Leveraging on SDN and NFV, service function chaining (SFC) is a technology provisioning network services by enforcing data packets of network services go through a series of network functions in an ordered way. Because of its flexibility and convenience, SFC is regarded as the main form of network services provided by network infrastructure in the future. Research results in recent years have shown that adversaries have the ability to bypass access control, authentication and authorization and other security mechanisms, undermine the integrity of the service chain, and thus cause greater damage. In order to use this technology safely and conveniently, this project concentrates on the integrity protection of the service function chaining. We start by proposing a safe, efficient and reliable service function chaining integrity verification mechanism. We then provide an adapting mechanism between the service function chaining integrity verification, service quality and resource consumption. The mechanism is a means to provide a safe and reliable integrity verification of service function chaining while reducing the impact on the network service quality. Besides, the project will rely on the service chain integrity verification results, combined with the global view and centralised network resource management provided by SDN and NFV based network, to achieve a certain degree of autonomous defense mechanism for the service function chaining. Finally we achieve a closed-loop control for integrity protection of service function, including problems identification, problems analyse, to problem solving.</p>
+<p>#版本4 服务链是一种在SDN和NFV等技术的赋能之下，让网络服务中的数据包，按需按序通过一系列网络功能实现业务逻辑的技术。因其灵活性和便利性，服务链被视为未来网络基础设施提供网络服务的主要形式。近年来的研究成果表明，敌手具备绕过访问控制、鉴权授权等安全机制，破坏服务链的完整性，进而造成更大破坏的能力。为了安全便捷地利用服务链技术，本项目拟围绕保护服务链完整性，以安全高效可靠的服务链完整性检测机制为突破口，以服务链完整性检测和服务质量及资源消耗之间的自适应机制为手段，在提供安全可靠的服务链完整性检测的同时降低对服务链服务质量影响。在此基础上，本项目还将利用服务链完整性检测反应出的服务链异常问题，结合软件定义网络的集中式管理机制与全局视野，分析异常出现的原因，并采取相应的对策解决，实现一定程度上的针对服务链异常的自主防御机制。</p>
+<p>Leveraging SDN and NFV, service function chaining (SFC) is a technology provisioning network services by enforcing data packets of network services go through a series of network functions in an ordered way. Because of its flexibility and convenience, SFC is regarded as the main form of network services provided by network infrastructure in the future. Research results in recent years have shown that adversaries have the ability to bypass access control, authentication and authorization and other security mechanisms, undermine the integrity of the service chain, and thus cause greater damage. In order to use this technology safely and conveniently, this project concentrates on the integrity protection of the service function chaining. We start by proposing a safe, efficient and reliable service function chaining integrity verification mechanism. We then provide an adapting mechanism between the service function chaining integrity verification, service quality and resource consumption. The mechanism is a means to provide a safe and reliable integrity verification of service function chaining while reducing the impact on the network service quality. Besides, the project will rely on the service chain integrity verification results, combined with the global view and centralised network resource management provided by SDN and NFV based network, identify the causes of SFC related anomalies and propose corresponding solutions.</p>
+<p>#版本5 Leveraging SDN and NFV, service function chaining (SFC) is a technology provisioning network services by enforcing data packets of network services go through a series of network functions in an ordered way. Because of its flexibility and convenience, SFC is regarded as the main form of network services provided by network infrastructure in the future. Research results in recent years have shown that adversaries have the ability to bypass security mechanisms such as access control, authentication and authorization etc., undermine the integrity of the service chain, and thus cause greater damage. In order to safely and conveniently leverage this technology, this project concentrates on the integrity verification of service function chaining. This project starts by proposing a safe, efficient and reliable integrity verification mechanism of service function chaining. The next step is to propose an adaptive mechanism between the integrity verification service function chaining and service quality provided by service function chaining. The envisioned adaptive mechanism is a means to provide a safe and reliable integrity verification of service function chaining while reducing the impact on the network service quality. Besides, the project will rely on the service function chaining integrity verification results, combined with the global view and centralised network resource management capability provided by SDN and NFV based network, to achieve a certain degree of autonomous defense mechanism against abnormal service function chaining, which should be able to identify the causes of SFC related anomalies and propose corresponding solutions.</p>
+<p>SFC完整性检测 第三个科学问题 自主防御那儿 到底难点在哪儿？？？</p>
+<p>network path verification 看来已经是一个研究度极高的科学问题了，只是采用数字签名的方式来做确实少见。想做出来区别于已经工作并不是那么容易的</p>
+<p>先要定位出哪个SF出了问题， 如果只是SF出了问题，那么很可能会涉及到好几个SFC的问题，如果是immpersonation attack的话，那么需要删掉被替换掉的SF, 但是这样的话，所有的相关的SFC都会受到影响。这个时候就需要去抽象的资源池里找到新的SF，是其他的SFC还是共用一个，还是每个人分一个？</p>
+<p>但是如果是底下的OF-switch，那么受影响的服务链也许更多。这个时候我们是简单粗暴地</p>
+<p>简单来讲，我们需要考虑所有可能的策略，变成一个状态空间，然后在状态空间内搜索求解，来达到纳什均衡。</p>
+<p>现在的问题是 不知道是SDN controller出了什么问题？还是VNF实现有BUG？还是Openflow出现了BUG。。。</p>
+<p>将OF-switch打上标签，如果其他服务链也出现类似问题，则顺便将涉及到服务链都进行进行再优化。用什么优化技术啊？</p>
+<p>第一：如何确定哪个环节出问题了？ 首先调取这条服务俩相关的指令，那如果是OVS被敌人攻破了，内部流表发生了流表改变你又如何知道？ 我觉得可以有一套一步步地具体步骤去确定原因，比如是不是OpenFlow message中途被篡改了，如果一切检查下来都没有问题，那只能将所有在这个区域的SFC就行重定位了。 第二：如何选出来最好的对抗措施？ 如果什么原因都查不出来，是不是可以认为相关的攻击不可避免？但如此一来，那么这就不能叫做自主防御了。自主防御=发现问题-&gt;定位原因-&gt;采取相关对策 发现问题这一环节 已经有SFC path verification解决 定位问题是难点 相关对策相关的科学问题 优化算一个？ 在模型选择方面，Stackelberg 双寡头博弈（或谓之 Leader-follower 博弈）得益于其理论求解方便而更受青睐，它可被视为由上下级构成的分布式优化过程，在解决电能定价和分配时，能够描述电网中不同级别用户的需求冲突和权限差别</p>
+<p>如果我们把第三个问题直接换了呢？自主防御其实是一个很大的课题，甚至自己都可以是一个课题，把它看做成青基项目的一个子课题 有点儿装不下</p>
+<p>感觉第三个问题的核心研究方向是：优化，不管有没有涉及到自主防御的问题。 如果我们不提自主防御的问题，我们怎么合理化我们的科学问题 那么优化问题困难点儿一般在哪儿？或者说创新点在哪儿？</p>
+<p>SFC是高度动态化的，SFC的部署我们假设在基础设施中是在不断实施中的。</p>
+<p>首先，我们需要关注文献中发表针对服务链完整性攻击以及SDN控制器等网络中心控制节点都存在哪些漏洞，这有助于我们确定服务链都会面临什么样的问题，例如，服务链可能有合法节点被恶意替换，服务链</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/12/nsh-history-tuto/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/12/nsh-history-tuto/" class="post-title-link" itemprop="url">A brief history about Network Service Header</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-04-12 12:33:32 / 修改时间：18:43:41" itemprop="dateCreated datePublished" datetime="2019-04-12T12:33:32+08:00">2019-04-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>2008年04月，SDN的概念以及 OpenFlow 被提出并被发表(CCR.Vol.38, issue 2) 2011年02月28日，release of OpenFlow 1.1 2011年03月，Open Networking Foundation 组织成立，推广SDN以及标准化 OpenFlow. OpenFlow进入快速发展阶段 2012年02月, release of OpenFlow 1.2 2012年07月，SDN代表厂商Nicira(OVS主要开发者)被VMware收购，随后Google宣布成功在其全球10个IDC网络中部署SDN，这促使SDN引起业界的强烈关注。 2013年09月，LISP and NSH in Open vSwitch <a href="https://fr.slideshare.net/mestery/lisp-and-nsh-in-open-vswitch?next_slideshow=1" target="_blank" rel="noopener">source</a> 2013年10月，ONF 推出 OpenFlow 1.4 2014年05月，<a href="https://wiki.opendaylight.org/view/Service_Function_Chaining:Main" target="_blank" rel="noopener">ODL SFC project</a> 创立 2014年11月，Gary Kinghorn (思科) <a href="https://blogs.cisco.com/datacenter/nsh" target="_blank" rel="noopener">思科博客中</a>介绍 NSH 功能了。思科在发展NSH时，吸取了推出的 vPath 功能的一些经验教训并且推动了NSH的标准化。 2015年03月，release of OpenFlow 1.5.1 specification (at the time of this writing, this is the most recent OpenFlow version) 2015年03月，Paul Quinn (思科) 发布了第一个关于 NSH 的 dfart: draft-ietf-sfc-nsh-00.txt 2015年XX月：P.Quinn et al. RFC7498 “Problem statement for service function chaining” 2015年10月，IETF 发布了关于 SFC architecture 的 RFC7665 问题：RFC7655 要求NSH feature了么？这个链接给出了答案：The NSH protocol is used as an SFC encapsulation which is required for the support of the Service Function Chaining (SFC) Architecture as it defined in RFC7665. https://specs.openstack.org/openstack/openstack-ansible-specs/specs/pike/ovs-nsh.html RFC7665 lacks the definition of an encapsulation scheme (proposed by RFC8300). 2015年10月，Intel 的程序员在 OpenDaylight 社区讨论关于 <a href="https://lists.opendaylight.org/pipermail/sfc-dev/2015-October/002159.html" target="_blank" rel="noopener">NSH push/pop for Openflow</a> 2015年11月，OVS2015 上关于 <a href="https://www.youtube.com/watch?v=65kzpG6494s" target="_blank" rel="noopener">Network Service Headers: Additions to OVS to support SFC报告</a> 2016年03月，Ryo Nakamura (东京大学) 开源了其对于 NSH 实验性质的 Linux<a href="https://github.com/upa/nshkmod" target="_blank" rel="noopener">内核实现</a>。该实现只在 Ubuntu 14.03(kernel version 3.19.0-25 generic) 环境下测试过。 2016年06月，有证据表明 Intel 的工程师已经在做支持 NSH 的 patch 了：https://patchwork.ozlabs.org/patch/630753/ 2016年08月，有博文之处 ODL SFC 项目已经合并到 OPNFV 的 Brahmaputra 版本中 <a href="http://www.qingpingshan.com/m/view.php?aid=123815" target="_blank" rel="noopener">source</a> 2016年09月，IETF 发布了关于 NSH 的 draft 2016年XX月，文章作者提到 ODL SFC project adopts and implements the IETF SFC architecture (RFC7655),&lt;<an implementation of hierarchical service function chaining using opendaylight platform>&gt; 该文章采用的是 OpenFlow 1.4 看来不是非 OpenFlow 1.5不可啊 2017年04月，有博主发了<a href="https://segmentfault.com/a/1190000009084147" target="_blank" rel="noopener">帖子</a> ，记录了如何替换mininet自带的OVS版本 2017年XX月，该文章用 Mininet(openflow 1.3.4) + 定制过的 OpenDaylight 做了关于SFC (基于NSH) 的仿真http://orbit.dtu.dk/files/132152942/OFC17_SPN_20161011_1000_Final.pdf 要是属实的话，说明 openflow1.3.4 (2014年3月就发布了)支持了 NSH？mininet也是支持NSH？只是 OpenDaylight controller 不支持 NSH？ 2017年03月，目前 networking-sfc 项目中的基于ovs的sfc实现还是用的mpls, NSH 可能要 Pike 版本才能支持。[source: https://blog.csdn.net/bc_vnetwork/article/details/65630475] 2017年04月，有博客博主发表博文，支出当前 NSH 并不被主流 OVS 支持 但是有专门针对 NSH 的 patch. 作者同时指出 NF 支持 NSH feature 对于NSH的采用来说至关重要 而且 SFC proxy的实现也找不到 ODL社区邮件 mailing list 里有讨论过 作者还提到是存在 NSH python tools 的，管用，但是性能么，呵呵哒。https://bart.vanbrabant.eu/blog/2017/04/06/service-chaining-with-nsh-and-open-vswitch/ 2017年06月，OpenStack社区文档也讨论了 OVS with NSH support. 该文档中明确指出：The Openvswitch currently doesn’t support the NSH protocol. So the only way to add NSH support to Open vSwitch is through <a href="https://github.com/yyang13/ovs_nsh_patches" target="_blank" rel="noopener">Yi Yang’s patches</a>. 所以如果用户选择了支持NSH的switch的话，specific repo应该被选择 该任务被委派给了 Dimitrios Markou。 https://specs.openstack.org/openstack/openstack-ansible-specs/specs/pike/ovs-nsh.html 2017年10月，前Intel工程师Yi Yang最后一次提交其关于 <a href="patch.%20https://github.com/yyang13/ovs_nsh_patches">nsh support patch</a> 这是针对OVS 2.6.1 版本的 OVS实现做的 2017年11月，Zoltan Balogh 以及 Yi YANG 在OVS17大会上做了 NSH-based Service function chaining with OVS using packet-type aware pipeline 的<a href="https://www.youtube.com/watch?v=RrS11lJmK3Y" target="_blank" rel="noopener">讲座</a>. 该talk中提到了之前网上存在不少针对 NSH的patch, 但是这些patch要么不够generic要么违背了OVS的一些设计原则，总之他们需要做开发 在视频5：45秒出，Encap/Decap for NSH is implemented in OVS 2.8 2017年12月，packet 出版了一本书关于 ODLSFC 的，该书中有关于<code>sfc103 demo</code>的详细安装手册！ https://github.com/hansomesong/OpenDaylight-Cookbook 2018年01月，NSH 正式以 IETF <a href="https://datatracker.ietf.org/doc/rfc8300/" target="_blank" rel="noopener">RFC8300</a> 文档发表 . RFC8300 propose an encapsulation scheme which is not solved by RFC7665 2018年05月，OVS mailinglist 讨论过 OVS 2.9只有和 ODL fluorine 兼容 如果使用fluorine之前的ODL版本，只能用 OVS 2.6.1 patch 版本 https://mail.openvswitch.org/pipermail/ovs-discuss/2018-May/046790.html 2018年08月，Dimitrios Markou 在其PPA中上传一个 OVS package 2.9.2 我怀疑是支持 NSH的 2018年08月，OpenDayLight Flurione 发布 相比于之前的版本 针对OVS 2.9.2 有良好支持 跟过去对NSH的支持有较大改变。 2018年12月，Xiaofan Chen(Sangfor) and Yi Yang (Intel) 在OVS18上做了报告：<a href="https://www.youtube.com/watch?v=HTn4pOgnny0&amp;t=0s&amp;list=PLaJlRa-xItwCzuAL3mP6n02vmXab4Bwu-&amp;index=25" target="_blank" rel="noopener">Sangfor Cloud Security Pool</a>, The First-ever NSH Use Case 作者实现了SFC proxy 并且如果多个SF在同一个Host上，那么NSH encap/decap 并不是必须的 作者还修改了 ONOS代码</an></p>
+<p>2018年01月，OpenStack All OpenStack Networking services and OpenStack Compute instances connect to a virtual network via ports making it possible to create a traffic steering model for service chaining using only ports. Including these ports in a port chain enables steering of traffic through one or more instances providing service functions. (https://docs.openstack.org/newton/networking-guide/config-sfc.html)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/12/secsfc-impl-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/12/secsfc-impl-notes/" class="post-title-link" itemprop="url">secsfc-impl-notes</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-04-12 12:23:35 / 修改时间：18:26:02" itemprop="dateCreated datePublished" datetime="2019-04-12T12:23:35+08:00">2019-04-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NSH/" itemprop="url" rel="index"><span itemprop="name">NSH</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NSH/SFC/" itemprop="url" rel="index"><span itemprop="name">SFC</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://github.com/openvswitch/ovs/blob/master/include/openvswitch/nsh.h" target="_blank" rel="noopener">header file of NSH in OVS</a> 显示 OVS 是支持 NSH metadata type 2 类型的！</p>
+<p>问题是 ODL SFC 我记得只支持 metadata type 1类型的！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/11/elliptic-curve-cipher/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/11/elliptic-curve-cipher/" class="post-title-link" itemprop="url">elliptic-curve-cipher</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-11 23:16:17" itemprop="dateCreated datePublished" datetime="2019-04-11T23:16:17+08:00">2019-04-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-26 18:48:49" itemprop="dateModified" datetime="2019-04-26T18:48:49+08:00">2019-04-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>http://www.ehcoo.com/cryptology1.html 密码学科普教程</p>
+<p>An Essential property for cryptography is that a group has a finite number of points.</p>
+<p>Calculations over the real numbers are slow and inaccurate due to round-off error. Cryptographic applications require fast and precise arithmetic; thus elliptic curve groups over the finite fields of Fp and F2m are used in practice.</p>
+<p>我现在需要解决的问题是：</p>
+<p>不管用什么公钥加密方法，不管是否安全，我现在需要生成一个最大长度为16字节的数字签名(digital signature)</p>
+<p>方案1: Doing the math, you'd need to use 16-bit keys in ECC to generate 64-bit signatures, which is very weak. For ECC, anything less than 128 bits can be considered weak. For RSA this is 1024 bits</p>
+<p>方案二：采用对称加密，对称加密，加密之后信息会是多长？</p>
+<p>方案三：Message authentication code</p>
+<p>最小哈希签名：https://blog.mythsman.com/2016/09/17/1/ 最小哈希签名(minhashing signature)解决的问题是，如何用一个哈希方法来对一个集合（集合大小为n）中的子集进行保留相似度的映射（使他在内存中占用的字节数尽可能的少）。</p>
+<h1 id="essential-knowledge-abouut-group-theory">Essential knowledge abouut Group theory</h1>
+<h2 id="definition-of-group">Definition of group</h2>
+<p>群的定义是：一个集合若定义了一个封闭的运算称为乘法，并且满足下面的几条： * 结合律成立 * 有左单位元e存在，e左乘任何元素都不变 * 有左逆元存在，左逆元与其相乘后是e 这样的集合就是群。</p>
+<h2 id="order-of-group">Order of group</h2>
+<p>群中元素的个数就是群的阶。有限阶的群叫有限群。密码学就是需要用到有限群和有限域的一些定理。</p>
+<h2 id="group-of-prime-ordercyclic-group-of-prime-order">Group of prime order/cyclic group of prime order</h2>
+<p>A group of prime order, or cyclic group of prime order, is any of the following equivalent things: * It is a cyclic group whose order is a prime number. * It is isomorphic to the quotient of the group of integers by a subgroup generated by a prime number. * It is the additive group of a finite prime field (note that we have to say finite because "prime field" also includes the field of rational numbers, the prime field of characteristic zero).</p>
+<p>If <span class="math inline">\(p\)</span> denotes the order of the group, then the cyclic group of order p is denoted <span class="math inline">\(C_p\)</span>, <span class="math inline">\(\mathbb{Z}/p\mathbb{Z}\)</span>, <span class="math inline">\(\mathbb{Z}_p\)</span> or <span class="math inline">\(\mathbb{F}_p\)</span>.</p>
+<p>素数阶有限群的例子：n为素数的模n的剩余类加群<span class="math inline">\(Z_n\)</span></p>
+<h2 id="prime-field-buterinexploring2017">Prime field <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<p>A prime field consists of the set of numbers <span class="math inline">\(0, 1, 2… p-1\)</span>, where <span class="math inline">\(p\)</span> is prime, and the various operations are defined as follows: <span class="math display">\[\begin{align}
+a + b:  (a + b) \\% p \\\\
+a + b:  (a + b) \\% p \\\\
+a - b:  (a - b) \\% p \\\\
+a / b:  (a * b^{(p-2)}) \\% p 
+\end{align}
+\]</span> In elliptic curves in reality, the points and equations are usually computed in prime fields.</p>
+<h2 id="extension-field-buterinexploring2017">Extension field <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></h2>
+<p>The complex number is a typical example of extension field, where the field of real numbers is <strong>extended</strong> with the additional element <span class="math inline">\(sqrt(-1) = i\)</span>. Basically, extension fields work by taking an existing field, then “inventing” a new element and defining the relationship between that element and existing elements (in this case, i² + 1 = 0), making sure that this equation does not hold true for any number that is in the original field, and looking at the set of all linear combinations of elements of the original field and the new element that you have just created.</p>
+<p>To divide in extension field, we do: $a / b: (a * b<sup>{p</sup>{2}-2}) % p $</p>
+<h2 id="multiplicative-group-of-integers-modulo-n">Multiplicative group of integers modulo n</h2>
+<p>n剩余类群的定义：n是一个正整数，对于任意一个正整数，被n除后余数会有几种可能，0、1....n-1。所有的这些剩余类所构成的集合叫模n剩余类群。其中的乘法运算定义为：相加后再和n求模。 举个例子：Z5，模5剩余类群。4与3相乘结果为2 由于循环群是Able群，其中的运算一般也就写为加法。 Z5中的生成元：1首先肯定是，2=1+1、3=1+1+1、4=1+1+1+1、0=1+1+1+1+1 2也是4=2+2、1=2+2+2、3=2+2+2、0=2+2+2+2 不难发现Z5的生成元是1、2、3、4</p>
+<h2 id="order-of-element-in-group">Order of element in group</h2>
+<p>现在说群中元素的阶。群的定义中说群中运算是封闭的，那么若将群中任何一个元素自己和自己相乘若干次后必定会变成单位元e的。这个次数叫做这个元素的阶。</p>
+<p>Theorem: In any group, there is only one identity element. Theorem: A group of prime order is a cyclic group.</p>
+<h2 id="bilinear-paring-aka.-bilinear-map">Bilinear paring (aka. Bilinear map)</h2>
+<ul>
+<li>bilinear maps, or pairings, give cyclic groups additional properties.</li>
+<li>these additional properties were initially seen as detrimental as they could be exploited to break cryptosystems</li>
+<li>it it was later discovered that they could also be exploited to build cryptosystems.</li>
+<li>Boneh and Franklin’s identity-based encryption scheme is perhaps the most famous early example (not the first) of what could be achieved using bilinear maps.</li>
+<li>Some research considered its own field called pairing-based cryptography</li>
+</ul>
+<p>如果不考虑安全性，函数<span class="math inline">\(e(x,y) = g^{x,y}\)</span> 就是一个例子，g需要是生成元</p>
+<h3 id="discrete-log-problem">Discrete log problem</h3>
+<p>Given <span class="math inline">\(g, g^x\)</span>, compute <span class="math inline">\(x\)</span>.</p>
+<h3 id="computational-diffie-hellman-problem">Computational Diffie-Hellman Problem</h3>
+<p>Given <span class="math inline">\(g, g^x, g^y\)</span>, compute <span class="math inline">\(g^{xy}\)</span>.</p>
+<h3 id="decisional-diffie-hellman-problem">Decisional Diffie-Hellman Problem</h3>
+<p>Given <span class="math inline">\(g, g^x, g^y, g^z\)</span>,determine if <span class="math inline">\(xy = z\)</span>.</p>
+<p>A vast array of cryptosystems including the Diffie-Hellman key exchange protocol can be built assuming one of these problems, or one of many other related problems, is difficult to solve. The discrete log problem is the most important, for if it could be solved, all other related problems could also be solved.</p>
+<h2 id="implementation">Implementation</h2>
+<p>There are two mathematical settings to choose from when implementing cyclic groups: finite fields and elliptic curves. Finite fields were proposed first, and much has been published on implementing finite fields and their potential weaknesses.</p>
+<h3 id="finite-field">Finite field</h3>
+<p>One picks a prime n and uses a subgroup G of <span class="math inline">\(Z^{*}_n\)</span> of prime order <span class="math inline">\(r\)</span>. so the group operation is field multiplication.</p>
+<h3 id="elliptic-curve">Elliptic curve</h3>
+<p>For elliptic curves, one takes an elliptic curve <span class="math inline">\(E\)</span> over some finite field <span class="math inline">\(K\)</span> and takes some subgroup <span class="math inline">\(G\)</span> of the group of points <span class="math inline">\(E(K)\)</span> with prime order <span class="math inline">\(r\)</span>, so the group operation is point addition. Finite fields can be viewed as a special case of elliptic curves due to a correspondence between certain singular curves and multiplicative groups of finite fields.</p>
+<p>The security of a 160-bit elliptic curve group and a 1024-bit finite field are roughly equivalent</p>
+<h1 id="椭圆曲线加密开源实现">椭圆曲线加密开源实现</h1>
+<p><a href="https://github.com/warner/python-ecdsa" target="_blank" rel="noopener">Pure-Python ECDSA</a>: This library provides key generation, signing, and verifying, for five popular <code>NIST "Suite B"</code> GF(p) curves, with key lengths of 192, 224, 256, 384, and 521 bits.</p>
+<h1 id="经验教训">经验教训</h1>
+<h2 id="一开始就应该先验证核心的算法而不是纠结于底层的-sfc-nsh-的搭建">一开始就应该先验证核心的算法，而不是纠结于底层的 SFC NSH 的搭建</h2>
+<p>简单地验证下多层签名的时间消耗是很容易的，至少先验证核心的算法是有效的，再逐步考虑更复杂更底层的平台问题才有意义。不然如果这个算法压根就是有问题的，那么底层搭出来了，也是浪费时间</p>
+<h2 id="当底层搭建的被卡住的时候而且明确知道不是自己的问题的时候应该分精力给其他问题而不是推卸责任似的死等">当底层搭建的被卡住的时候，而且明确知道不是自己的问题的时候，应该分精力给其他问题，而不是推卸责任似的死等</h2>
+<h1 id="参考资料">参考资料：</h1>
+<p>https://stackoverflow.com/questions/279418/what-is-a-somewhat-secure-way-of-generating-a-64-bit-signature</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>Exploring Elliptic Curve Pairings,https://medium.com/<span class="citation" data-cites="VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627">@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Exploring Elliptic Curve Pairings,https://medium.com/<span class="citation" data-cites="VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627">@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩</a></p></li>
+</ol>
+</section>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/11/sublime-tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/11/sublime-tips/" class="post-title-link" itemprop="url">sublime-tips</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-11 08:49:48" itemprop="dateCreated datePublished" datetime="2019-04-11T08:49:48+08:00">2019-04-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-05-02 00:15:57" itemprop="dateModified" datetime="2019-05-02T00:15:57+08:00">2019-05-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Productivity-tools/" itemprop="url" rel="index"><span itemprop="name">-Productivity tools</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Sublime Text：一款具有代码高亮、语法提示、自动完成且反应快速的编辑器软件，不仅具有华丽的界面，还支持插件扩展机制，用她来写代码，绝对是一种享受。相比于难于上手的 Vim ，浮肿沉重的 Eclipse ， VS ，即便体积轻巧迅速启动的 Editplus 、 Notepad++ ，在 Sublime Text 面前也略显失色，无疑这款性感无比的编辑器是 Coding 和 Writing 最佳的选择，没有之一。</p>
+<h1 id="打造-python3-开发环境">打造 Python3 开发环境</h1>
+<h1 id="how-to-open-a-file-in-a-new-tab-instead-of-opening-it-in-the-current-tab">How to open a file in a new tab instead of opening it in the current tab?</h1>
+<p>This is because you were only previewing the previous file. If you click on a file once in the sidebar, by default it opens in preview mode. Clicking another file will open it in preview mode, in the same tab. You can disable this behavior by double-clicking the file in the sidebar, by beginning to edit the file, or via the user settings: select <code>Preferences -&gt; Settings-User</code> and add</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;preview_on_click&quot;: false,</span><br></pre></td></tr></table></figure>
+<p>then save the file. With this new behavior, you will need to double-click on a file in the sidebar to open it, and it will not close if you double-click another file.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2126,262 +1131,117 @@ Prerequists
           </div>
           
 
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">rennsong</p>
-              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">47</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">20</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/hansomesong" title="GitHub &rarr; https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">rennsong</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
-
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
 
 
 
@@ -2390,8 +1250,21 @@ Prerequists
 
 
 
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
 
 
+
+  
 
 
 
@@ -2408,127 +1281,61 @@ Prerequists
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.0"></script>
-
-  <script src="/js/motion.js?v=7.1.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
-
-
-
-
-  
-
-  
-
-
-  <script src="/js/next-boot.js?v=7.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-  
-
-  
-
-  
-
-  
-
-
-
-  
-
-
-
-
-  
-
-  
-
-  
-  
-
-  
-  
-    
       
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
     
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
   
 

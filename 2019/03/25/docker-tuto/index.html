@@ -1,129 +1,48 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.1.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="docker教程整理:https://www.jianshu.com/p/4b808c2341bd 1docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i eth0 -w /traces/sfc103demo.pcap 一些说明:  -v $PWD:/traces: moun">
-<meta name="keywords" content="Docker">
+  <meta name="description" content="Docker 以及容器 我们往往会把容器和docker这两个词混为一谈。仔细说来，容器其实指的更多是 Linux container (LXC)技术，LXC 核心的技术是 namespace以及Cgroups。Docker是一家专注于在LXC技术基础上推出更容易管理使用容器技术的公司，Docker同时也是该公司推出的容器引擎。 说到容器技术，也不是什么新技术，只是非常的小众。然而, 随着2013年">
+<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A brief and concise Docker tutorial">
 <meta property="og:url" content="http://rennesong.com/2019/03/25/docker-tuto/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
-<meta property="og:description" content="docker教程整理:https://www.jianshu.com/p/4b808c2341bd 1docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i eth0 -w /traces/sfc103demo.pcap 一些说明:  -v $PWD:/traces: moun">
+<meta property="og:description" content="Docker 以及容器 我们往往会把容器和docker这两个词混为一谈。仔细说来，容器其实指的更多是 Linux container (LXC)技术，LXC 核心的技术是 namespace以及Cgroups。Docker是一家专注于在LXC技术基础上推出更容易管理使用容器技术的公司，Docker同时也是该公司推出的容器引擎。 说到容器技术，也不是什么新技术，只是非常的小众。然而, 随着2013年">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-16T16:17:51.055Z">
+<meta property="og:updated_time" content="2020-06-07T08:26:47.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A brief and concise Docker tutorial">
-<meta name="twitter:description" content="docker教程整理:https://www.jianshu.com/p/4b808c2341bd 1docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i eth0 -w /traces/sfc103demo.pcap 一些说明:  -v $PWD:/traces: moun">
+<meta name="twitter:description" content="Docker 以及容器 我们往往会把容器和docker这两个词混为一谈。仔细说来，容器其实指的更多是 Linux container (LXC)技术，LXC 核心的技术是 namespace以及Cgroups。Docker是一家专注于在LXC技术基础上推出更容易管理使用容器技术的公司，Docker同时也是该公司推出的容器引擎。 说到容器技术，也不是什么新技术，只是非常的小众。然而, 随着2013年">
+
+<link rel="canonical" href="http://rennesong.com/2019/03/25/docker-tuto/">
 
 
-
-  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
-
-
-
-  
-  
-  <link rel="canonical" href="http://rennesong.com/2019/03/25/docker-tuto/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -135,15 +54,8 @@
 
 
 
-
-
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -152,9 +64,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -168,153 +79,69 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Rennesong's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
-      
-        <p class="site-subtitle">Blog my life from now on!</p>
-      
-    
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
-
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
+  </ul>
 </nav>
 
-
-
-  
 
 
 
@@ -322,133 +149,70 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/25/docker-tuto/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">A brief and concise Docker tutorial
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          A brief and concise Docker tutorial
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2019-03-25 11:21:48" itemprop="dateCreated datePublished" datetime="2019-03-25T11:21:48+01:00">2019-03-25</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-16 18:17:51" itemprop="dateModified" datetime="2019-06-16T18:17:51+02:00">2019-06-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
-
-                
-                
-              
+              <time title="创建时间：2019-03-25 11:21:48" itemprop="dateCreated datePublished" datetime="2019-03-25T11:21:48+08:00">2019-03-25</time>
             </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-07 16:26:47" itemprop="dateModified" datetime="2020-06-07T16:26:47+08:00">2020-06-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+                </span>
+            </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -456,396 +220,190 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        <h1></h1>
-<p>docker教程整理:<a href="https://www.jianshu.com/p/4b808c2341bd" target="_blank" rel="noopener">https://www.jianshu.com/p/4b808c2341bd</a></p>
+        <h1 id="docker-以及容器">Docker 以及容器</h1>
+<p>我们往往会把容器和docker这两个词混为一谈。仔细说来，容器其实指的更多是 Linux container (LXC)技术，LXC 核心的技术是 namespace以及Cgroups。Docker是一家专注于在LXC技术基础上推出更容易管理使用容器技术的公司，Docker同时也是该公司推出的容器引擎。</p>
+<p>说到容器技术，也不是什么新技术，只是非常的小众。然而, 随着2013年3月 dotcloud 公司推出了一项新的容器技术 Docker。Docker的出现，降低了容器技术使用的门槛，带来了无可比拟的优势，所以迅速在IT行业内普及。</p>
+<p>docker教程整理:https://www.jianshu.com/p/4b808c2341bd</p>
+<p>Docker 是基于容器技术的轻量级虚拟化技术。其虚拟化技术是基于内核的Cgroup以及Namespace技术。处理逻辑与内核深度融合，所以在很多方面，性能与物理机非常接近。通信上，Docker并不会直接和内核交互，它是通过一个更底层的工具libcontainer与内核交互的。Libcontainer是真正意义上的容器引擎。它通过clone系统调用直接创建容器，通过<code>pivot_root</code> system call 进入容器，且通过直接操作<code>cgroupfs</code>文件实现对资源的管控，而docker本身则侧重于处理更上层的业务。</p>
+<h1 id="层级镜像的概念">层级镜像的概念</h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti -v $PWD:/traces --net container:classifier1 nicolaka/netshoot tcpdump –i eth0 -w /traces/sfc103demo.pcap</span><br></pre></td></tr></table></figure>
-<p>一些说明:</p>
-<ul>
-<li><code>-v $PWD:/traces</code>: mount current working directory on host machine as <code>traces</code> folder under root directory of target container. Please refer to <a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a> for more information. It is also possible specify volume mount without specifying location of source folder in host machine by syntax such as <code>-v /traces</code>. Command <code>docker inspect &lt;container_name&gt;</code> allows to check the source file in host machine corresponding to volume mounted in container.</li>
-<li><code>--net container:classifier1</code>: monitor a certain container. Rememer to replace <code>classifier1</code> with regard to your need.</li>
-<li><code>nicolaka/netshoot</code> is a very powerful network troubleshooting docker image. Refer to <a href="https://github.com/nicolaka/netshoot" target="_blank" rel="noopener">nicolaka/netshoot</a> for more details.</li>
-<li><code>tcpdump –i eth0 -w /traces/sfc103demo.pcap</code> is actually how to use tcpdump command:
-<ul>
-<li><code>–i eth0</code>: listen for interface <code>eth0</code></li>
-<li><code>-w /traces/sfc103demo.pcap</code>: output monitored traffic to a PCAP file.</li>
-</ul>
-</li>
-</ul>
-<p><a href="https://medium.com/the-code-review/top-10-docker-run-command-options-you-cant-live-without-a-reference-d256834e86c1" target="_blank" rel="noopener">Top 10 options for docker run</a></p>
-<h1>Volume in container</h1>
-<p>Container 内部数据持久化的问题 =&gt; 解决之道: data volume 机制<br>
-3 options are available in docker:</p>
-<ul>
-<li>bind mount</li>
-<li>volume</li>
-<li>tmpfs mount</li>
-</ul>
+<p>一些说明: * <code>-v $PWD:/traces</code>: mount current working directory on host machine as <code>traces</code> folder under root directory of target container. Please refer to <a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a> for more information. It is also possible specify volume mount without specifying location of source folder in host machine by syntax such as <code>-v /traces</code>. Command <code>docker inspect &lt;container_name&gt;</code> allows to check the source file in host machine corresponding to volume mounted in container. * <code>--net container:classifier1</code>: monitor a certain container. Rememer to replace <code>classifier1</code> with regard to your need. * <code>nicolaka/netshoot</code> is a very powerful network troubleshooting docker image. Refer to <a href="https://github.com/nicolaka/netshoot" target="_blank" rel="noopener">nicolaka/netshoot</a> for more details. * <code>tcpdump –i eth0 -w /traces/sfc103demo.pcap</code> is actually how to use tcpdump command: - <code>–i eth0</code>: listen for interface <code>eth0</code> - <code>-w /traces/sfc103demo.pcap</code>: output monitored traffic to a PCAP file.</p>
+<p><a href="https://medium.com/the-code-review/top-10-docker-run-command-options-you-cant-live-without-a-reference-d256834e86c1" target="_blank" rel="noopener">Top 10 options for docker run</a> # Volume in container Container 内部数据持久化的问题 =&gt; 解决之道: data volume 机制 3 options are available in docker: * bind mount * volume * tmpfs mount</p>
 <p>Among them,volumes are the preferred mechanism for persisting data generated by and used by Docker containers. While bind mounts are dependent on the directory structure of the host machine, volumes are completely managed by Docker. Volumes have several advantages over bind mounts</p>
-<h1>Run script within a Dockerfile</h1>
-<p>A short but nice explanation: <a href="https://stackoverflow.com/questions/34549859/run-a-script-in-dockerfile" target="_blank" rel="noopener">https://stackoverflow.com/questions/34549859/run-a-script-in-dockerfile</a></p>
-<h1>Kill all containers in a command line</h1>
+<h1 id="run-script-within-a-dockerfile">Run script within a Dockerfile</h1>
+<p>A short but nice explanation: https://stackoverflow.com/questions/34549859/run-a-script-in-dockerfile</p>
+<h1 id="kill-all-containers-in-a-command-line">Kill all containers in a command line</h1>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container ls | awk &apos;&#123;if (NR&gt;1) print $1&#125;&apos; | xargs docker kill</span><br></pre></td></tr></table></figure>
-<p><a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a><br>
-<a href="http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/" target="_blank" rel="noopener">Docker RUN vs CMD vs ENTRYPOINT</a></p>
+<h1 id="rootless-docker-usage">Rootless docker usage</h1>
+<p>今天发现一个很奇怪的现象：通过创建用户组<code>docker</code>并添加自己账户之后， 通过SSH链接的qsong账户，可以无sudo执行docker命令，然而通过teamviewer访问(等同于直接在host上操作)，却依然要求sudo. 这个问题困扰了我许久，下午突然灵光一现，想到了原因：通过创建用户组<code>docker</code>并添加自己账户之后，需要退出重新登录. 我在host上并没有执行log out then log in的操作。</p>
+<h1 id="docker无法使用本地dns服务">Docker无法使用本地DNS服务</h1>
+<p>参考： 1. https://medium.com/<span class="citation" data-cites="faithfulanere/solved-docker-build-could-not-resolve-archive-ubuntu-com-apt-get-fails-to-install-anything-9ea4dfdcdcf2">@faithfulanere/solved-docker-build-could-not-resolve-archive-ubuntu-com-apt-get-fails-to-install-anything-9ea4dfdcdcf2</span> 2. https://github.com/moby/moby/issues/23910 3. https://stackoverflow.com/questions/39400886/docker-cannot-resolve-dns-on-private-network</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run busybox nslookup www.google.com</span><br><span class="line">;; connection timed out; no servers could be reached</span><br></pre></td></tr></table></figure>
+<p>出现这种现象的原因是：当docker进程检测到主机使用的DNS服务器地址为本机环路地址，即（<code>127.0.0.1</code>）,它会转而使用谷歌的公共DNS服务，即<code>8.8.8.8</code>. 然而不幸的是，有些公司/学校是禁止使用外部公共DNS服务的. 所以，最终<code>docker</code>无法使用DNS服务，导致出现一系列问题。</p>
+<p>解决办法：</p>
+<ul>
+<li>Adding a <code>/etc/docker/daemon.json</code> that passed in the docker0 bridge IP as a DNS server =&gt; 应该是把host实际使用的DNS地址存放进去, 而且如果要设定的机器需要经常性地</li>
+<li>Adding a /etc/NetworkManager/dnsmasq.d/docker-bridge.conf file that directs the NM-managed DNS cache to listen to the docker0 bridge IP as well as <code>127.0.1.1</code></li>
+<li>docker build --network=host -t my-image-name 运行容器的时候，采用和host一样的网络协议栈，但是缺乏足够的隔离性，有安全隐患</li>
+</ul>
+<p>Now container DNS lookups go through your local dnsmasq instance, so DNS in the container should work just as well as DNS on the host.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/resolv.conf</span><br><span class="line"># Dynamic resolv.conf(5) file for glibc resolver(3) generated by resolvconf(8)</span><br><span class="line">#     DO NOT EDIT THIS FILE BY HAND -- YOUR CHANGES WILL BE OVERWRITTEN</span><br><span class="line">nameserver 127.0.1.1</span><br><span class="line">search imtld.local</span><br></pre></td></tr></table></figure>
+<p>我们会发现dns服务器为<code>127.0.1.1</code>，记住不是<code>127.0.0.1</code>!好奇葩的一个地址. 原来ubuntu下有一个本地的dns服务叫做<code>dnsmasq</code>，它是由<code>NetworkManager</code>控制的. 它监听的本地地址，<code>--listen-address=127.0.1.1</code> (ubuntu12.04及之前的版本是 127.0.0.1), 这个地址是一个本地回环地址,而你真实的dns服务器地址，是被这个服务管理维护着的 由一张图表示就是： <code>local process -&gt; local dnsmasq -&gt; router -&gt; ISP dns</code> 问题是：为什么<code>dnsmasq</code>不接受来自container的请求呢？</p>
+<p>我们发现，在学校内网中，即使显示地要求docker采用谷歌提供的DNS服务器地址，DNS请求依然无法被解析。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run --dns 8.8.8.8  busybox nslookup www.google.com</span><br><span class="line">;; connection timed out; no servers could be reached</span><br></pre></td></tr></table></figure></p>
+<p>我之后试着<code>ping 8.8.8.8</code>，发现有回复，这说明，虽然我可以ping通谷歌公共DNS服务器，然而学校的网络配置却禁止我使用外部DNS，为什么呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$:nmcli dev show | grep IP4.DNS</span><br><span class="line">IP4.DNS[1]:                             10.59.130.129</span><br><span class="line">IP4.DNS[2]:                             10.59.130.130</span><br></pre></td></tr></table></figure>
+<p>注意：<code>nmcli</code> only applies to systems running <code>NetworkManager</code>, there is not an equivalent for other setups.</p>
+<p><a href="https://docs.docker.com/storage/volumes/" target="_blank" rel="noopener">Docker’s guide to Volumes</a> <a href="http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/" target="_blank" rel="noopener">Docker RUN vs CMD vs ENTRYPOINT</a></p>
 
-      
     </div>
 
     
-
-    
-    
-    
-
-    
-
-    
-      
     
     
 
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Docker/" rel="tag"># Docker</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/03/25/hexo-sublime-blog-writting/" rel="next" title="How to gracefully write blog with Sublime Text and Hexo (without command line)">
-                <i class="fa fa-chevron-left"></i> How to gracefully write blog with Sublime Text and Hexo (without command line)
-              </a>
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/docker/" rel="tag"># docker</a>
           </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/25/hello-world/" rel="prev" title="Hexo 基本命令以及 Markdown 基本语法">
-                Hexo 基本命令以及 Markdown 基本语法 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/25/hexo-sublime-blog-writting/" rel="prev" title="How to gracefully write blog with Sublime Text and Hexo (without command line)">
+      <i class="fa fa-chevron-left"></i> How to gracefully write blog with Sublime Text and Hexo (without command line)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/25/hello-world/" rel="next" title="Hexo 基本命令以及 Markdown 基本语法">
+      Hexo 基本命令以及 Markdown 基本语法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-
-  </div>
 
 
           </div>
           
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">rennsong</p>
-              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">47</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">20</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/hansomesong" title="GitHub &rarr; https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Volume in container</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Run script within a Dockerfile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Kill all containers in a command line</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">rennsong</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
 
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker-以及容器"><span class="nav-number">1.</span> <span class="nav-text">Docker 以及容器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#层级镜像的概念"><span class="nav-number">2.</span> <span class="nav-text">层级镜像的概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#run-script-within-a-dockerfile"><span class="nav-number">3.</span> <span class="nav-text">Run script within a Dockerfile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kill-all-containers-in-a-command-line"><span class="nav-number">4.</span> <span class="nav-text">Kill all containers in a command line</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rootless-docker-usage"><span class="nav-number">5.</span> <span class="nav-text">Rootless docker usage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker无法使用本地dns服务"><span class="nav-number">6.</span> <span class="nav-text">Docker无法使用本地DNS服务</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
 
 
 
@@ -854,125 +412,35 @@
 
 
 
+      </div>
+    </footer>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.0"></script>
-
-  <script src="/js/motion.js?v=7.1.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
 
-  
-  <script src="/js/scrollspy.js?v=7.1.0"></script>
-<script src="/js/post-details.js?v=7.1.0"></script>
-
-
-
-  
-
-
-  <script src="/js/next-boot.js?v=7.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-
-  
 
 
 
 
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
 
 
-  
 
-  
 
-  
 
-  
 
-  
-
-  
-
-  
-
-  
 
   
 

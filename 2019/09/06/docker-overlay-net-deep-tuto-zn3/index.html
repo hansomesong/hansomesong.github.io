@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Introduction In part 1 of this blog post we have seen how Docker creates a dedicated namespace for the overlay and connect the containers to this namespace. In part 2 we have looked in details at how">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入了解 Docker overlay 网络机制3">
+<meta property="og:url" content="http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn3/index.html">
+<meta property="og:site_name" content="Rennesong&#39;s blog">
+<meta property="og:description" content="Introduction In part 1 of this blog post we have seen how Docker creates a dedicated namespace for the overlay and connect the containers to this namespace. In part 2 we have looked in details at how">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn3/overlay-1.png">
+<meta property="og:image" content="http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn3/overlay-2.png">
+<meta property="og:image" content="http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn3/overlay-3.png">
+<meta property="og:image" content="http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn3/getneigh_message.png">
+<meta property="og:image" content="http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn3/consul_arp.png">
+<meta property="og:image" content="http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn3/overlay_consul.png">
+<meta property="og:updated_time" content="2019-09-07T11:49:04.400Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入了解 Docker overlay 网络机制3">
+<meta name="twitter:description" content="Introduction In part 1 of this blog post we have seen how Docker creates a dedicated namespace for the overlay and connect the containers to this namespace. In part 2 we have looked in details at how">
+<meta name="twitter:image" content="http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn3/overlay-1.png">
+
+<link rel="canonical" href="http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>深入了解 Docker overlay 网络机制3 | Rennesong's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          深入了解 Docker overlay 网络机制3
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-06 21:40:45" itemprop="dateCreated datePublished" datetime="2019-09-06T21:40:45+08:00">2019-09-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-07 19:49:04" itemprop="dateModified" datetime="2019-09-07T19:49:04+08:00">2019-09-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="introduction">Introduction</h1>
+<p>In part 1 of this blog post we have seen how Docker creates a dedicated namespace for the overlay and connect the containers to this namespace. In part 2 we have looked in details at how Docker uses VXLAN to tunnel traffic between the hosts in the overlay. In this third post, we will see how we can create our own overlay with standard Linux commands.</p>
+<h1 id="manual-overlay-creation">Manual overlay creation</h1>
+<p>If you have tried the commands from the first two posts, you need to clean-up your Docker hosts by removing all our containers and the overlay network: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ docker rm -f $(docker ps -aq)</span><br><span class="line">docker0:~$ docker network rm demonet</span><br><span class="line">docker1:~$ docker rm -f $(docker ps -aq)</span><br></pre></td></tr></table></figure></p>
+<p>The first thing we are going to do now is to create an network namespace called “overns”: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ip netns add overns</span><br></pre></td></tr></table></figure></p>
+<p>Now we are going to create a bridge in this namespace, give it an IP address and bring the interface up: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ sudo ip netns exec overns ip link add dev br0 type bridge</span><br><span class="line">docker0:~$ sudo ip netns exec overns ip addr add dev br0 192.168.0.1/24</span><br><span class="line">docker0:~$ sudo ip netns exec overns ip link set br0 up</span><br></pre></td></tr></table></figure></p>
+<p>The next step is to create a VXLAN interface and attach it to the bridge: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ sudo ip link add dev vxlan1 type vxlan id 42 proxy learning dstport 4789</span><br><span class="line">docker0:~$ sudo ip link set vxlan1 netns overns</span><br><span class="line">docker0:~$ sudo ip netns exec overns ip link set vxlan1 master br0</span><br><span class="line">docker0:~$ sudo ip netns exec overns ip link set vxlan1 up</span><br></pre></td></tr></table></figure></p>
+<p>The most important command so far is the creation of the VxLAN interface. We configured it to use VxLAN id 42 and to tunnel traffic on the standard VxLAN port. The proxy option allows the vxlan interface to answer ARP queries (we have seen it in part 2). We will discuss the <code>learning</code> option later in this post. Notice that we did not create the VxLAN interface inside the <code>overns</code>namespace but on the host and then moved it to <code>overns</code> namespace. This is necessary so the VxLAN interface can keep a link with our main host interface and send traffic over the network. If we had created the interface inside the <code>overns</code> namespace (like we did for <code>br0</code>) we would not have been able to send traffic outside the <code>overns</code> namespace.</p>
+<p>Once we have run these commands on both <code>docker0</code> and <code>docker1</code>, here is what we have: <img src="/2019/09/06/docker-overlay-net-deep-tuto-zn3/overlay-1.png" alt="VXLAN interface and bridge in an overlay namespace"><span class="image-caption">VXLAN interface and bridge in an overlay namespace</span></p>
+<p>Now we will create containers and connect them to our bridge. Let’s start with docker0. First, we create a container: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ docker run -d --net=none --name=demo debian sleep 3600</span><br></pre></td></tr></table></figure></p>
+<p>We will need the path of the network namespace for this container. We can find it by inspecting the container. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ ctn_ns_path=$(docker inspect --format=&quot;&#123;&#123; .NetworkSettings.SandboxKey&#125;&#125;&quot; demo)</span><br></pre></td></tr></table></figure></p>
+<p>Our container has no network connectivity because of the <code>--net=none</code> option. We now create a <code>veth</code> device and move one of its endpoints (<code>veth1</code>) to our overlay network namespace (i.e. <code>overns</code>), attach it to the bridge and bring it up.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ sudo ip link add dev veth1 mtu 1450 type veth peer name veth2 mtu 1450</span><br><span class="line">docker0:~$ sudo ip link set dev veth1 netns overns</span><br><span class="line">docker0:~$ sudo ip netns exec overns ip link set veth1 master br0</span><br><span class="line">docker0:~$ sudo ip netns exec overns ip link set veth1 up</span><br></pre></td></tr></table></figure>
+<p>The first command uses an MTU of 1450 which is necessary due to the overhead added by the VxLAN header.</p>
+<p>The last step is to configure veth2: send it to our container network namespace and configure it with a MAC address (02:42:c0:a8:00:02) and an IP address (192.168.0.2): <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ ctn_ns=$&#123;ctn_ns_path##*/&#125;</span><br><span class="line">docker0:~$ sudo ln -sf $ctn_ns_path /var/run/netns/$ctn_ns</span><br><span class="line">docker0:~$ sudo ip link set dev veth2 netns $ctn_ns</span><br><span class="line"></span><br><span class="line">docker0:~$ sudo ip netns exec $ctn_ns ip link set dev veth2 name eth0 address 02:42:c0:a8:00:02</span><br><span class="line">docker0:~$ sudo ip netns exec $ctn_ns ip addr add dev eth0 192.168.0.2/24</span><br><span class="line">docker0:~$ sudo ip netns exec $ctn_ns ip link set dev eth0 up</span><br><span class="line"></span><br><span class="line">docker0:~$ sudo rm /var/run/netns/$ctn_ns</span><br></pre></td></tr></table></figure></p>
+<p>The symbolic link in <code>/var/run/netns</code> is required so we can use the native <code>ip netns</code> commands (to move the interface to the container network namespace). We used the same addressing schem as Docker: the last 4 bytes of the MAC address match the IP address of the container and the second one is the VxLAN id.</p>
+<p>We have to do the same on <code>docker1</code> with different MAC and IP addresses (02:42:c0:a8:00:03 and 192.168.0.3). If you use the <code>terraform</code> stack from the <a href="https://github.com/lbernail/dockercon2017" target="_blank" rel="noopener">github repository</a>, there is a helper shell script to attach the container to the overlay. We can use it on docker1: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker1:~$ docker run -d --net=none --name=demo debian sleep 3600</span><br><span class="line">docker1:~$ ./attach-ctn.sh demo 3</span><br></pre></td></tr></table></figure></p>
+<p>The first parameter is the name of the container to attach and the second one is the final digit of the MAC/IP addresses. Here is the setup we have gotten: <img src="/2019/09/06/docker-overlay-net-deep-tuto-zn3/overlay-2.png" alt="Connecting containers to our overlay"><span class="image-caption">Connecting containers to our overlay</span></p>
+<p>Now that our containers are configured, we can test connectivity: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ docker exec -it demo ping 192.168.0.3</span><br><span class="line">PING 192.168.0.3 (192.168.0.3): 56 data bytes</span><br><span class="line">92 bytes from 192.168.0.2: Destination Host Unreachable</span><br></pre></td></tr></table></figure></p>
+<p>We are not able to ping yet. Let’s try to understand why by looking at the ARP entries in the container and in the overlay namespace: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ docker exec demo ip neighbor show</span><br><span class="line">docker0:~$ sudo ip netns exec overns ip neighbor show</span><br></pre></td></tr></table></figure></p>
+<p>Both commands do not return any result: they do not know what is the MAC address associated with IP 192.168.0.3. We can verify that our command is generating an ARP query by running tcpdump in the overlay namespace: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ sudo ip netns exec overns tcpdump -i br0</span><br><span class="line">docker0:~$ tcpdump: verbose output suppressed, use -v or -vv for full protocol decode</span><br></pre></td></tr></table></figure></p>
+<p>If we rerun the ping command from another terminal, here is the tcpdump output we get: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">17:15:27.074500 ARP, Request who-has 192.168.0.3 tell 192.168.0.2, length 28</span><br><span class="line">17:15:28.071265 ARP, Request who-has 192.168.0.3 tell 192.168.0.2, length 28</span><br></pre></td></tr></table></figure></p>
+<p>The ARP query is broadcasted and received by our overlay namespace but does not receive any answer. We have seen in part 2 that the Docker daemon populates the ARP and FDB tables and makes use of the <code>proxy</code> option of the VxLAN interface to answer these queries. We configured our interface with this option so we can do the same by simply populating the ARP and FDB entries in the overlay namespace: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ sudo ip netns exec overns ip neighbor add 192.168.0.3 lladdr 02:42:c0:a8:00:03 dev vxlan1</span><br><span class="line">docker0:~$ sudo ip netns exec overns bridge fdb add 02:42:c0:a8:00:03 dev vxlan1 self dst 10.0.0.11 vni 42 port 4789</span><br></pre></td></tr></table></figure></p>
+<p>The first command creates the ARP entry for 192.168.0.3 and the second one configures the forwarding table by telling it the MAC address is accessible using the VxLAN interface, with VxLAN id 42 and on host 10.0.0.11.</p>
+<p>Do we have connectivity? <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ docker exec -it demo ping 192.168.0.3</span><br><span class="line">PING 192.168.0.3 (192.168.0.3): 56 data bytes</span><br><span class="line">^C--- 192.168.0.3 ping statistics ---</span><br><span class="line">3 packets transmitted, 0 packets received, 100% packet loss</span><br></pre></td></tr></table></figure></p>
+<p>No yet, which makes sense because we have not configured docker1: the ICMP request is received by the container on docker1 but it does not know how to answer. We can verify this on docker1: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker1:~$ sudo ip netns exec overns ip neighbor show</span><br><span class="line"></span><br><span class="line">docker1:~$ sudo ip netns exec overns bridge fdb show</span><br><span class="line">0e:70:32:15:1d:01 dev vxlan1 vlan 0 master br0 permanent</span><br><span class="line">02:42:c0:a8:00:03 dev veth1 vlan 0 master br0</span><br><span class="line">ca:9c:c1:c7:16:f2 dev veth1 vlan 0 master br0 permanent</span><br><span class="line">02:42:c0:a8:00:02 dev vxlan1 vlan 0 master br0</span><br><span class="line">02:42:c0:a8:00:02 dev vxlan1 dst 10.0.0.10 self</span><br><span class="line">33:33:00:00:00:01 dev veth1 self permanent</span><br><span class="line">01:00:5e:00:00:01 dev veth1 self permanent</span><br><span class="line">33:33:ff:c7:16:f2 dev veth1 self permanent</span><br></pre></td></tr></table></figure></p>
+<p>The first command shows, as expected, that we do not have any ARP information about <code>192.168.0.2</code>. The output of the second command is more surprising because we can see the entry in the forwarding database for our container on docker0. What happened is the following: when the ICMP request reached the interface, the entry was “learned” and added to the database. This behavior is made possible by the <code>learning</code> option of the VxLAN interface. Let’s add the ARP information on docker1 and verify that we can now ping: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker1:~$ sudo ip netns exec overns ip neighbor add 192.168.0.2 lladdr 02:42:c0:a8:00:02 dev vxlan1</span><br><span class="line"></span><br><span class="line">docker0:~$ docker exec -it demo ping 192.168.0.3</span><br><span class="line">PING 192.168.0.3 (192.168.0.3): 56 data bytes</span><br><span class="line">64 bytes from 192.168.0.3: icmp_seq=0 ttl=64 time=1.737 ms</span><br><span class="line">64 bytes from 192.168.0.3: icmp_seq=1 ttl=64 time=0.494 ms</span><br></pre></td></tr></table></figure></p>
+<p>We have successfuly built an overlay with standard Linux commands: <img src="/2019/09/06/docker-overlay-net-deep-tuto-zn3/overlay-3.png" alt="Overview of our manual overlay"><span class="image-caption">Overview of our manual overlay</span></p>
+<h1 id="dynamic-container-discovery">Dynamic container discovery</h1>
+<p>We have just created an overlay from scratch. However, we need to manually create ARP and FDB entries for containers to talk to each other. We will now look at how this discovery process can be automated.</p>
+<p>Let us first clean up our setup to start from scratch: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ docker rm -f $(docker ps -aq)</span><br><span class="line">docker0:~$ sudo ip netns delete overns</span><br><span class="line">docker1:~$ docker rm -f $(docker ps -aq)</span><br><span class="line">docker1:~$ sudo ip netns delete overns</span><br></pre></td></tr></table></figure></p>
+<h1 id="catching-network-events-netlink">Catching network events: NETLINK</h1>
+<p><a href="https://en.wikipedia.org/wiki/Netlink" target="_blank" rel="noopener"><code>Netlink</code></a> is used to transfer information between the kernel and user-space processes. <code>iproute2</code>(refer to this <a href="https://www.digitalocean.com/community/tutorials/how-to-use-iproute2-tools-to-manage-network-configuration-on-a-linux-vps" target="_blank" rel="noopener">tutorial</a> for more details), which we used earlier to configure interfaces, relies on <code>Netlink</code> to get/send configuration information to the kernel. It consists of multiple protocols ''families'' to communicate with different kernel components. The most common protocol is <code>NETLINK_ROUTE</code> which is the interface for routing and link configuration.</p>
+<p>For each protocol, <code>Netlink</code> messages are organized by groups, for example for <code>NETLINK_ROUTE</code> you have:</p>
+<ul>
+<li>RTMGRP_LINK: link related messages</li>
+<li>RTMGRP_NEIGH: neighbor related messages</li>
+<li>many others</li>
+</ul>
+<p>For each group, you then have multiple notifications, for example:</p>
+<ul>
+<li>RTMGRP_LINK:
+<ul>
+<li>RTM_NEWLINK: A link was created</li>
+<li>RTM_DELLINK: A link was deleted</li>
+</ul></li>
+<li>RTMGRP_NEIGH:
+<ul>
+<li>RTM_NEWNEIGH: A neighbor was added</li>
+<li>RTM_DELNEIGH: A neighbor was deleted</li>
+<li>RTM_GETNEIGH: The kernel is looking for a neighbor</li>
+</ul></li>
+</ul>
+<p>I described the messages received in userspace when the kernel is sending notifications for these events, but similar messages can be sent to the kernel to configure links or neighbors.</p>
+<p><code>iproute2</code> allows us to listen to <code>Netlink</code> events using the <code>monitor</code> subcommand. If we want to monitor for link information for instance: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ ip monitor link</span><br></pre></td></tr></table></figure></p>
+<p>In another terminal on <code>docker0</code>, we can create a link and then delete it: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ sudo ip link add dev veth1 type veth peer name veth2</span><br><span class="line">docker0:~$ sudo ip link del veth1</span><br></pre></td></tr></table></figure></p>
+<p>On the first terminal we can see some output. When we created the interfaces: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">32: veth2: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state DOWN group default</span><br><span class="line">    link/ether b6:95:d6:b4:21:e9 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">33: veth1: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state DOWN group default</span><br><span class="line">    link/ether a6:e0:7a:da:a9:ea brd ff:ff:ff:ff:ff:ff</span><br></pre></td></tr></table></figure></p>
+<p>When we removed them: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Deleted 33: veth1: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state DOWN group default</span><br><span class="line">    link/ether a6:e0:7a:da:a9:ea brd ff:ff:ff:ff:ff:ff</span><br><span class="line">Deleted 32: veth2: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state DOWN group default</span><br><span class="line">    link/ether b6:95:d6:b4:21:e9 brd ff:ff:ff:ff:ff:ff</span><br></pre></td></tr></table></figure></p>
+<p>We can use this command to monitor other events: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ ip monitor route</span><br></pre></td></tr></table></figure></p>
+<p>In another terminal: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ sudo ip route add 8.8.8.8 via 10.0.0.1</span><br><span class="line">docker0:~$ sudo ip route del 8.8.8.8 via 10.0.0.1</span><br></pre></td></tr></table></figure></p>
+<p>We get the following output: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">8.8.8.8 via 10.0.0.1 dev eth0</span><br><span class="line">Deleted 8.8.8.8 via 10.0.0.1 dev eth0</span><br></pre></td></tr></table></figure></p>
+<p>In our case we are interested in neighbor events, in particular for <code>RTM_GETNEIGH</code> which are generated when the kernel does not have neighbor information and sends this notification to userspace so an application can create it. By default, this event is not sent to userspace but we can enable it and monitor neighbor notifications: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ echo 1 | sudo tee -a /proc/sys/net/ipv4/neigh/eth0/app_solicit</span><br><span class="line">docker0:~$ ip monitor neigh</span><br></pre></td></tr></table></figure></p>
+<p>This setting will not be necessary afterwards because the <code>l2miss</code> and <code>l3miss</code> options of our VxLAN interface will generate the <code>RTM_GETNEIGH</code> events.</p>
+<p>In a second terminal, we can now trigger the generation of the GETNEIGH event: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ ping 10.0.0.100</span><br></pre></td></tr></table></figure></p>
+<p>Here is the output we get: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10.0.0.100 dev eth0  FAILED</span><br><span class="line">miss 10.0.0.100 dev eth0  INCOMPLETE</span><br></pre></td></tr></table></figure></p>
+<p>We can use the same command in containers attached to our overlay. Let’s create an overlay and attach a container to it. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ ./create-overlay.sh</span><br><span class="line">docker0:~$ docker run -d --net=none --name=demo debian sleep 3600</span><br><span class="line">docker0:~$ ./attach-ctn.sh demo 2</span><br><span class="line">docker0:~$ docker exec demo ip monitor neigh</span><br></pre></td></tr></table></figure></p>
+<p>The two shell scripts are available on the github <a href="https://github.com/lbernail/dockercon2017" target="_blank" rel="noopener">repo</a>.</p>
+<p><code>create-overlay</code> creates an overlay called <code>overns</code> using the commands presented earlier: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">sudo ip netns delete overns 2&gt; /dev/null &amp;&amp; echo &quot;Deleting existing overlay&quot;</span><br><span class="line">sudo ip netns add overns</span><br><span class="line">sudo ip netns exec overns ip link add dev br0 type bridge</span><br><span class="line">sudo ip netns exec overns ip addr add dev br0 192.168.0.1/24</span><br><span class="line"></span><br><span class="line">sudo ip link add dev vxlan1 type vxlan id 42 proxy learning l2miss l3miss dstport 4789</span><br><span class="line">sudo ip link set vxlan1 netns overns</span><br><span class="line">sudo ip netns exec overns ip link set vxlan1 master br0</span><br><span class="line"></span><br><span class="line">sudo ip netns exec overns ip link set vxlan1 up</span><br><span class="line">sudo ip netns exec overns ip link set br0 up</span><br></pre></td></tr></table></figure></p>
+<p><code>attach-ctn</code> attaches a container to the overlay. The first parameter is the name of the container and the second one the last byte of its IP address: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">ctn=$&#123;1:-demo&#125;</span><br><span class="line">ip=$&#123;2:-2&#125;</span><br><span class="line"></span><br><span class="line">ctn_ns_path=$(docker inspect --format=&quot;&#123;&#123; .NetworkSettings.SandboxKey&#125;&#125;&quot; $ctn)</span><br><span class="line">ctn_ns=$&#123;ctn_ns_path##*/&#125;</span><br><span class="line"></span><br><span class="line"># create veth interfaces</span><br><span class="line">sudo ip link add dev veth1 mtu 1450 type veth peer name veth2 mtu 1450</span><br><span class="line"></span><br><span class="line"># attach first peer to the bridge in our overlay namespace</span><br><span class="line">sudo ip link set dev veth1 netns overns</span><br><span class="line">sudo ip netns exec overns ip link set veth1 master br0</span><br><span class="line">sudo ip netns exec overns ip link set veth1 up</span><br><span class="line"></span><br><span class="line"># crate symlink to be able to use ip netns commands</span><br><span class="line">sudo ln -sf $ctn_ns_path /var/run/netns/$ctn_ns</span><br><span class="line">sudo ip link set dev veth2 netns $ctn_ns</span><br><span class="line"></span><br><span class="line"># move second peer tp container network namespace and configure it</span><br><span class="line">sudo ip netns exec $ctn_ns ip link set dev veth2 name eth0 address 02:42:c0:a8:00:0$&#123;ip&#125;</span><br><span class="line">sudo ip netns exec $ctn_ns ip addr add dev eth0 192.168.0.$&#123;ip&#125;/24</span><br><span class="line">sudo ip netns exec $ctn_ns ip link set dev eth0 up</span><br><span class="line"></span><br><span class="line"># Clean up symlink</span><br><span class="line">sudo rm /var/run/netns/$</span><br></pre></td></tr></table></figure></p>
+<p>We can now run <code>ip monitor</code> in the container: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ docker exec demo ip monitor neigh</span><br></pre></td></tr></table></figure></p>
+<p>In a second terminal, we can ping an unknown host to generate GETNEIGH events: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ docker exec demo ping 192.168.0.3</span><br></pre></td></tr></table></figure></p>
+<p>In the first terminal we can see the neighbor events: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.0.3 dev eth0  FAILED</span><br></pre></td></tr></table></figure></p>
+<p>We can also look in the network namespace of the overlay: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ sudo ip netns exec overns ip monitor neigh</span><br><span class="line">miss 192.168.0.3 dev vxlan1  STALE</span><br></pre></td></tr></table></figure></p>
+<p>This event is slightly different because it is generated by the vxlan interface (because we created the interface with the <code>l2miss</code> and <code>l3miss</code> options). Let’s add the neighbor entry to the overlay namespace: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ sudo ip netns exec overns ip neighbor add 192.168.0.3 lladdr 02:42:c0:a8:00:03 dev vxlan1 nud permanent</span><br></pre></td></tr></table></figure></p>
+<p>If we run the <code>ip monitor neigh</code> command and try to ping from the other terminal, here is what we get: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ sudo ip netns exec overns ip monitor neigh</span><br><span class="line">miss dev vxlan1 lladdr 02:42:c0:a8:00:03 STALE</span><br></pre></td></tr></table></figure></p>
+<p>Now that we have the ARP information, we are getting an <code>l2miss</code> because we do not know where the MAC address is located in the overlay. Let’s add this information: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ sudo ip netns exec overns bridge fdb add 02:42:c0:a8:00:03 dev vxlan1 self dst 10.0.0.11 vni 42 port 4789</span><br></pre></td></tr></table></figure></p>
+<p>If we run the <code>ip monitor neigh</code> command again and try to ping we will not see neighbor events anymore.</p>
+<p>The ip monitor command is very useful to see what is happening but in our case we want to catch these events to populate L2 and L3 information so we need to interact with them programmatically.</p>
+<p>Here is simple python to subscribe to Netlink messages and decode GETNEIGH events: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"></span><br><span class="line"># Create the netlink socket and bind to NEIGHBOR NOTIFICATION,</span><br><span class="line">s = socket.socket(socket.AF_NETLINK, socket.SOCK_RAW, socket.NETLINK_ROUTE)</span><br><span class="line">s.bind((os.getpid(), RTMGRP_NEIGH))</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    data = s.recv(65535)</span><br><span class="line">    msg_len, msg_type, flags, seq, pid = struct.unpack(&quot;=LHHLL&quot;, data[:16])</span><br><span class="line"></span><br><span class="line">    # We fundamentally only care about GETNEIGH messages</span><br><span class="line">    if msg_type != RTM_GETNEIGH:</span><br><span class="line">        continue</span><br><span class="line"></span><br><span class="line">    data=data[16:]</span><br><span class="line">    ndm_family, _, _, ndm_ifindex, ndm_state, ndm_flags, ndm_type = struct.unpack(&quot;=BBHiHBB&quot;, data[:12])</span><br><span class="line">    logging.debug(&quot;Received a Neighbor miss&quot;)</span><br><span class="line">    logging.debug(&quot;Family: &#123;&#125;&quot;.format(if_family.get(ndm_family,ndm_family)))</span><br><span class="line">    logging.debug(&quot;Interface index: &#123;&#125;&quot;.format(ndm_ifindex))</span><br><span class="line">    logging.debug(&quot;State: &#123;&#125;&quot;.format(nud_state.get(ndm_state,ndm_state)))</span><br><span class="line">    logging.debug(&quot;Flags: &#123;&#125;&quot;.format(ndm_flags))</span><br><span class="line">    logging.debug(&quot;Type: &#123;&#125;&quot;.format(type.get(ndm_type,ndm_type)))</span><br><span class="line"></span><br><span class="line">    data=data[12:]</span><br><span class="line">    rta_len, rta_type = struct.unpack(&quot;=HH&quot;, data[:4])</span><br><span class="line">    logging.debug(&quot;RT Attributes: Len: &#123;&#125;, Type: &#123;&#125;&quot;.format(rta_len,nda_type.get(rta_type,rta_type)))</span><br><span class="line"></span><br><span class="line">    data=data[4:]</span><br><span class="line">    if nda_type.get(rta_type,rta_type) == &quot;NDA_DST&quot;:</span><br><span class="line">      dst=socket.inet_ntoa(data[:4])</span><br><span class="line">      logging.info(&quot;L3Miss: Who has IP: &#123;&#125;?&quot;.format(dst))</span><br><span class="line"></span><br><span class="line">    if nda_type.get(rta_type,rta_type) == &quot;NDA_LLADDR&quot;:</span><br><span class="line">      mac=&quot;%02x:%02x:%02x:%02x:%02x:%02x&quot; % struct.unpack(&quot;BBBBBB&quot;,data[:6])</span><br><span class="line">      logging.info(&quot;L2Miss: Who has MAC: &#123;&#125;?&quot;.format(mac))</span><br></pre></td></tr></table></figure></p>
+<p>This script only contains the interesting lines, the full one is available on the github repository. Let’s go quickly through the most important part of the script. First, we create the NETLINK socket, configure it for NETLINK_ROUTE protocol and subscribe to the neighbor event group (RTMGRP_NEIGH): <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s = socket.socket(socket.AF_NETLINK, socket.SOCK_RAW, socket.NETLINK_ROUTE)</span><br><span class="line">s.bind((os.getpid(), RTMGRP_NEIGH))</span><br></pre></td></tr></table></figure></p>
+<p>The we decode the message and filter to only process GETNEIGH messages: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">msg_len, msg_type, flags, seq, pid = struct.unpack(&quot;=LHHLL&quot;, data[:16])</span><br><span class="line"># We fundamentally only care about GETNEIGH messages</span><br><span class="line">if msg_type != RTM_GETNEIGH:</span><br><span class="line">    continue</span><br></pre></td></tr></table></figure></p>
+<p>To understand how the message is decoded, here is a representation of the message. The Netlink header is represented in orange: Once we have a <code>GETNEIGH</code> message we can decode the ndmsg header (in blue): <img src="/2019/09/06/docker-overlay-net-deep-tuto-zn3/getneigh_message.png" alt="GETNEIGH Netlink message structure"><span class="image-caption">GETNEIGH Netlink message structure</span> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ndm_family, _, _, ndm_ifindex, ndm_state, ndm_flags, ndm_type = struct.unpack(&quot;=BBHiHBB&quot;, data[:12])</span><br></pre></td></tr></table></figure></p>
+<p>This header is followed by an <code>rtattr</code> structure, which contains the data we are interested in. First we decode the header of the structure (purple): <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rta_len, rta_type = struct.unpack(&quot;=HH&quot;, data[:4])</span><br></pre></td></tr></table></figure></p>
+<p>We can receive two different types of messages:</p>
+<ul>
+<li>NDA_DST: L3 miss, the kernel is looking for the MAC address associated with the IP in the data field (4 data bytes after the rta header)</li>
+<li>NDA_LLADDR: L2 miss, the kernel is looking for the vxlan host for the MAC address in the data field (6 data bytes after the rta header) <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">data=data[4:]</span><br><span class="line">if nda_type.get(rta_type,rta_type) == &quot;NDA_DST&quot;:</span><br><span class="line">  dst=socket.inet_ntoa(data[:4])</span><br><span class="line">  logging.info(&quot;L3Miss: Who has IP: &#123;&#125;?&quot;.format(dst))</span><br><span class="line"></span><br><span class="line">if nda_type.get(rta_type,rta_type) == &quot;NDA_LLADDR&quot;:</span><br><span class="line">  mac=&quot;%02x:%02x:%02x:%02x:%02x:%02x&quot; % struct.unpack(&quot;BBBBBB&quot;,data[:6])</span><br><span class="line">  logging.info(&quot;L2Miss: Who has MAC: &#123;&#125;?&quot;.format(mac))</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>We can try this script in our overlay (we recreate everything to start with a clean environment): <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ docker rm -f $(docker ps -aq)</span><br><span class="line">docker0:~$ ./create-overlay.sh</span><br><span class="line">docker0:~$ docker run -d --net=none --name=demo debian sleep 3600</span><br><span class="line">docker0:~$ ./attach-ctn.sh demo 2</span><br><span class="line">docker0:~$ sudo ip netns exec overns python/l2l3miss.py</span><br></pre></td></tr></table></figure></p>
+<p>If we try to ping from another terminal: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ docker exec -it demo ping 192.168.0.3</span><br></pre></td></tr></table></figure></p>
+<p>Here is the output we get: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO:root:L3Miss: Who has IP: 192.168.0.3?</span><br></pre></td></tr></table></figure></p>
+<p>If we add the neighbor information and ping again: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ sudo ip netns exec overns ip neighbor add 192.168.0.3 lladdr 02:42:c0:a8:00:03 dev vxlan1</span><br><span class="line">docker0:~$ docker exec -it demo ping 192.168.0.3</span><br></pre></td></tr></table></figure></p>
+<p>We now get an L2 miss because we have added the L3 information. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO:root:L2Miss: Who has MAC: 02:42:c0:a8:00:03?</span><br></pre></td></tr></table></figure></p>
+<h1 id="dynamic-discovery-with-consul">Dynamic discovery with Consul</h1>
+<p>Now that we have seen how we can be notified of L2 and L3 misses and catch these events in python, we will store all L2 and L3 data in Consul and add the entries in the overlay namespace when we get a neighbor event.</p>
+<p>First, we are going to create the entries in Consul. We can do this using the web interface or curl: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker0:$ curl -X PUT -d &apos;02:42:c0:a8:00:02&apos; http://consul:8500/v1/kv/demo/arp/192.168.0.2</span><br><span class="line">docker0:$ curl -X PUT -d &apos;02:42:c0:a8:00:03&apos; http://consul:8500/v1/kv/demo/arp/192.168.0.3</span><br><span class="line">docker0:$ curl -X PUT -d &apos;10.0.0.10&apos; http://consul:8500/v1/kv/demo/fib/02:42:c0:a8:00:02</span><br><span class="line">docker0:$ curl -X PUT -d &apos;10.0.0.11&apos; http://consul:8500/v1/kv/demo/fib/02:42:c0:a8:00:03</span><br></pre></td></tr></table></figure></p>
+<p>We create two types of entries:</p>
+<ul>
+<li>ARP: using the keys <code>demo/arp/{IP address}</code> with the MAC address as the value</li>
+<li>FIB: using the keys <code>demo/arp/{MAC address}</code> with the IP address of the server in the overlay hosting this Mac address</li>
+</ul>
+<p>In the web interface, we get this for ARP keys: <img src="/2019/09/06/docker-overlay-net-deep-tuto-zn3/consul_arp.png" alt="Consul ARP entries"><span class="image-caption">Consul ARP entries</span></p>
+<p>Now we just need to look up data when we receive a <code>GETNEIGH</code> event and populate the ARP or FIB tables using Consul data. Here is a (slightly simplified) python script which does this: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">from pyroute2 import NetNS</span><br><span class="line"></span><br><span class="line">vxlan_ns=&quot;overns&quot;</span><br><span class="line">consul_host=&quot;consul&quot;</span><br><span class="line">consul_prefix=&quot;demo&quot;</span><br><span class="line"></span><br><span class="line">ipr = NetNS(vxlan_ns)</span><br><span class="line">ipr.bind()</span><br><span class="line"></span><br><span class="line">c=consul.Consul(host=consul_host,port=8500)</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">  msg=ipr.get()</span><br><span class="line">  for m in msg:</span><br><span class="line">    if m[&apos;event&apos;] != &apos;RTM_GETNEIGH&apos;:</span><br><span class="line">      continue</span><br><span class="line"></span><br><span class="line">    ifindex=m[&apos;ifindex&apos;]</span><br><span class="line">    ifname=ipr.get_links(ifindex)[0].get_attr(&quot;IFLA_IFNAME&quot;)</span><br><span class="line"></span><br><span class="line">    if m.get_attr(&quot;NDA_DST&quot;) is not None:</span><br><span class="line">      ipaddr=m.get_attr(&quot;NDA_DST&quot;)</span><br><span class="line">      logging.info(&quot;L3Miss on &#123;&#125;: Who has IP: &#123;&#125;?&quot;.format(ifname,ipaddr))</span><br><span class="line"></span><br><span class="line">      (idx,answer)=c.kv.get(consul_prefix+&quot;/arp/&quot;+ipaddr)</span><br><span class="line">      if answer is not None:</span><br><span class="line">        mac_addr=answer[&quot;Value&quot;]</span><br><span class="line">        logging.info(&quot;Populating ARP table from Consul: IP &#123;&#125; is &#123;&#125;&quot;.format(ipaddr,mac_addr))</span><br><span class="line">        try:</span><br><span class="line">            ipr.neigh(&apos;add&apos;, dst=ipaddr, lladdr=mac_addr, ifindex=ifindex, state=ndmsg.states[&apos;permanent&apos;])</span><br><span class="line">        except NetlinkError as (code,message):</span><br><span class="line">            print(message)</span><br><span class="line"></span><br><span class="line">    if m.get_attr(&quot;NDA_LLADDR&quot;) is not None:</span><br><span class="line">      lladdr=m.get_attr(&quot;NDA_LLADDR&quot;)</span><br><span class="line">      logging.info(&quot;L2Miss on &#123;&#125;: Who has Mac Address: &#123;&#125;?&quot;.format(ifname,lladdr))</span><br><span class="line"></span><br><span class="line">      (idx,answer)=c.kv.get(consul_prefix+&quot;/fib/&quot;+lladdr)</span><br><span class="line">      if answer is not None:</span><br><span class="line">        dst_host=answer[&quot;Value&quot;]</span><br><span class="line">        logging.info(&quot;Populating FIB table from Consul: MAC &#123;&#125; is on host &#123;&#125;&quot;.format(lladdr,dst_host))</span><br><span class="line">        try:</span><br><span class="line">           ipr.fdb(&apos;add&apos;,ifindex=ifindex, lladdr=lladdr, dst=dst_host)</span><br><span class="line">        except NetlinkError as (code,message):</span><br><span class="line">            print(message)</span><br></pre></td></tr></table></figure></p>
+<p>This full version of this script is also available on the github repository mentionned earlier. Here is a quick explanation of what it does:</p>
+<p>Instead of processing <code>Netlink</code> messages manually, we use the pyroute2 library. This library will parse Netlink messages and allow us to send Netlink messages to configure ARP/FIB entries. In addition, we bind the Netlink socket in the overlay namespace. We could use the <code>ip netns</code> command to start the script in the namespace, but we also need to access Consul from the script to get configuration data. To achieve this, we will run the script in the host network namespace and bind the Netlink socket in the overlay namespace: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from pyroute2 import NetNS</span><br><span class="line">ipr = NetNS(vxlan_ns)</span><br><span class="line">ipr.bind()</span><br><span class="line"></span><br><span class="line">c=consul.Consul(host=consul_host,port=8500)</span><br></pre></td></tr></table></figure></p>
+<p>We will now wait for <code>GETNEIGH</code> events: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">  msg=ipr.get()</span><br><span class="line">  for m in msg:</span><br><span class="line">    if m[&apos;event&apos;] != &apos;RTM_GETNEIGH&apos;:</span><br><span class="line">      continue</span><br></pre></td></tr></table></figure></p>
+<p>We retrieve the index of the interface and its name (for logging purposes): <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ifindex=m[&apos;ifindex&apos;]</span><br><span class="line">ifname=ipr.get_links(ifindex)[0].get_attr(&quot;IFLA_IFNAME&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>Now, if the message is an L3 miss, we get the IP address from the Netlink message payload and try to look up the associated ARP entry from Consul. If we find it, we add the neighbor entry to the overlay namespace by sending a Netlink message to the kernel with the relevant information. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">if m.get_attr(&quot;NDA_DST&quot;) is not None:</span><br><span class="line">  ipaddr=m.get_attr(&quot;NDA_DST&quot;)</span><br><span class="line">  logging.info(&quot;L3Miss on &#123;&#125;: Who has IP: &#123;&#125;?&quot;.format(ifname,ipaddr))</span><br><span class="line"></span><br><span class="line">  (idx,answer)=c.kv.get(consul_prefix+&quot;/arp/&quot;+ipaddr)</span><br><span class="line">  if answer is not None:</span><br><span class="line">    mac_addr=answer[&quot;Value&quot;]</span><br><span class="line">    logging.info(&quot;Populating ARP table from Consul: IP &#123;&#125; is &#123;&#125;&quot;.format(ipaddr,mac_addr))</span><br><span class="line">    try:</span><br><span class="line">        ipr.neigh(&apos;add&apos;, dst=ipaddr, lladdr=mac_addr, ifindex=ifindex, state=ndmsg.states[&apos;permanent&apos;])</span><br><span class="line">    except NetlinkError as (code,message):</span><br><span class="line">        print(message)</span><br></pre></td></tr></table></figure></p>
+<p>If the message is an L2 miss, we do the same with the FIB data.</p>
+<p>Let’s now try this script. First, we will clean up everything and recreate the overlay namespace and containers: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ docker rm -f $(docker ps -aq)</span><br><span class="line">docker0:~$ ./create-overlay.sh</span><br><span class="line">docker0:~$ docker run -d --net=none --name=demo debian sleep 3600</span><br><span class="line">docker0:~$ ./attach-ctn.sh demo 2</span><br><span class="line"></span><br><span class="line">docker1:~$ docker rm -f $(docker ps -aq)</span><br><span class="line">docker1:~$ ./create-overlay.sh</span><br><span class="line">docker1:~$ docker run -d --net=none --name=demo debian sleep 3600</span><br><span class="line">docker1:~$ ./attach-ctn.sh demo 3</span><br></pre></td></tr></table></figure></p>
+<p>If we try to ping the container on docker1 from docker0, it will not work because we have no ARP/FIB data yet: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ docker exec -it demo ping -c 4 192.168.0.3</span><br><span class="line">PING 192.168.0.3 (192.168.0.3): 56 data bytes</span><br><span class="line">92 bytes from 192.168.0.2: Destination Host Unreachable</span><br><span class="line">92 bytes from 192.168.0.2: Destination Host Unreachable</span><br><span class="line">92 bytes from 192.168.0.2: Destination Host Unreachable</span><br><span class="line">92 bytes from 192.168.0.2: Destination Host Unreachable</span><br><span class="line">--- 192.168.0.3 ping statistics ---</span><br><span class="line">4 packets transmitted, 0 packets received, 100% packet loss</span><br></pre></td></tr></table></figure></p>
+<p>We will now start our script on both hosts: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ sudo python/arpd-consul.py</span><br><span class="line">docker1:~$ sudo python/arpd-consul.py</span><br></pre></td></tr></table></figure></p>
+<p>And try pinging again (from another terminal on docker0): <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker0:~$ docker exec -it demo ping -c 4 192.168.0.3</span><br><span class="line">PING 192.168.0.3 (192.168.0.3): 56 data bytes</span><br><span class="line">64 bytes from 192.168.0.3: icmp_seq=2 ttl=64 time=999.730 ms</span><br><span class="line">64 bytes from 192.168.0.3: icmp_seq=3 ttl=64 time=0.453 ms</span><br></pre></td></tr></table></figure></p>
+<p>Here is the output we get the python script on docker0: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">INFO Starting new HTTP connection (1): consul</span><br><span class="line">INFO L3Miss on vxlan1: Who has IP: 192.168.0.3?</span><br><span class="line">INFO Populating ARP table from Consul: IP 192.168.0.3 is 02:42:c0:a8:00:03</span><br><span class="line">INFO L2Miss on vxlan1: Who has Mac Address: 02:42:c0:a8:00:03?</span><br><span class="line">INFO Populating FIB table from Consul: MAC 02:42:c0:a8:00:03 is on host 10.0.0.11</span><br><span class="line">INFO L2Miss on vxlan1: Who has Mac Address: 02:42:c0:a8:00:03?</span><br><span class="line">INFO Populating FIB table from Consul: MAC 02:42:c0:a8:00:03 is on host 10.0.0.11</span><br></pre></td></tr></table></figure></p>
+<p>First, we get an L3 miss (no ARP data for 192.168.0.3), we query Consul to find the Mac address and populate the neighbor table. Then we receive an L2 miss (no FIB information for 02:42:c0:a8:00:03), we look up this Mac address in Consul and populate the forwarding database.</p>
+<p>On docker1, we see a similar output but we only get the L3 miss because the L2 forwarding data is learned by the overlay namespace when the ICMP request packet gets to the overlay.</p>
+<p>Here is an overview of what we built: <img src="/2019/09/06/docker-overlay-net-deep-tuto-zn3/overlay_consul.png" alt="Dynamic overlay with Consul"><span class="image-caption">Dynamic overlay with Consul</span></p>
+<h1 id="conclusion">Conclusion</h1>
+<p>This concludes our three part blog post on the Docker overlay. Do not hesitate to ping me (on twitter for instance) if you see some mistakes/inaccuracies or if some part of the posts are not clear. I will do my best to amend these posts quickly.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/docker/" rel="tag"># docker</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/09/06/docker-overlay-net-deep-tuto-zn2/" rel="prev" title="深入了解 Docker overlay 网络机制2">
+      <i class="fa fa-chevron-left"></i> 深入了解 Docker overlay 网络机制2
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/10/11/k8s-tuto/" rel="next" title="k8s-tuto">
+      k8s-tuto <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#manual-overlay-creation"><span class="nav-number">2.</span> <span class="nav-text">Manual overlay creation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dynamic-container-discovery"><span class="nav-number">3.</span> <span class="nav-text">Dynamic container discovery</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#catching-network-events-netlink"><span class="nav-number">4.</span> <span class="nav-text">Catching network events: NETLINK</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dynamic-discovery-with-consul"><span class="nav-number">5.</span> <span class="nav-text">Dynamic discovery with Consul</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conclusion"><span class="nav-number">6.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

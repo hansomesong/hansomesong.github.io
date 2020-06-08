@@ -1,129 +1,48 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.1.0',
-    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="想要使用 Githubs pages 和 hexo 搭建一个静态博客站点，因为 hexo 是台湾小伙儿 tommy3551 使用 Node.js 开发的一个模板引擎，以及我的工作电脑的操作系统系统是 Mac 10.10.4 (Yosemite)。因此，为了使用 hexo, 我首先需要在Mac下安装 node 以及 npm。经过调查，发现 Node js在Mac下有两种安装方式:  基于pkg in">
+  <meta name="description" content="想要使用 Githubs pages 和 hexo 搭建一个静态博客站点，因为 hexo 是台湾小伙儿 tommy3551 使用 Node.js 开发的一个模板引擎，以及我的工作电脑的操作系统系统是 Mac 10.10.4 (Yosemite)。因此，为了使用 hexo, 我首先需要在Mac下安装 node 以及 npm。经过调查，发现 Node js在Mac下有两种安装方式: * 基于pkg i">
 <meta name="keywords" content="Node.js,npm,mac,Yosemite">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何在Mac Yosemite中安装node.js以及NPM">
 <meta property="og:url" content="http://rennesong.com/2015/07/29/How-to-install-node-js-and-npm-on-Mac/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
-<meta property="og:description" content="想要使用 Githubs pages 和 hexo 搭建一个静态博客站点，因为 hexo 是台湾小伙儿 tommy3551 使用 Node.js 开发的一个模板引擎，以及我的工作电脑的操作系统系统是 Mac 10.10.4 (Yosemite)。因此，为了使用 hexo, 我首先需要在Mac下安装 node 以及 npm。经过调查，发现 Node js在Mac下有两种安装方式:  基于pkg in">
+<meta property="og:description" content="想要使用 Githubs pages 和 hexo 搭建一个静态博客站点，因为 hexo 是台湾小伙儿 tommy3551 使用 Node.js 开发的一个模板引擎，以及我的工作电脑的操作系统系统是 Mac 10.10.4 (Yosemite)。因此，为了使用 hexo, 我首先需要在Mac下安装 node 以及 npm。经过调查，发现 Node js在Mac下有两种安装方式: * 基于pkg i">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-03-25T10:27:10.940Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何在Mac Yosemite中安装node.js以及NPM">
-<meta name="twitter:description" content="想要使用 Githubs pages 和 hexo 搭建一个静态博客站点，因为 hexo 是台湾小伙儿 tommy3551 使用 Node.js 开发的一个模板引擎，以及我的工作电脑的操作系统系统是 Mac 10.10.4 (Yosemite)。因此，为了使用 hexo, 我首先需要在Mac下安装 node 以及 npm。经过调查，发现 Node js在Mac下有两种安装方式:  基于pkg in">
+<meta name="twitter:description" content="想要使用 Githubs pages 和 hexo 搭建一个静态博客站点，因为 hexo 是台湾小伙儿 tommy3551 使用 Node.js 开发的一个模板引擎，以及我的工作电脑的操作系统系统是 Mac 10.10.4 (Yosemite)。因此，为了使用 hexo, 我首先需要在Mac下安装 node 以及 npm。经过调查，发现 Node js在Mac下有两种安装方式: * 基于pkg i">
+
+<link rel="canonical" href="http://rennesong.com/2015/07/29/How-to-install-node-js-and-npm-on-Mac/">
 
 
-
-  <link rel="alternate" href="/atom.xml" title="Rennesong's blog" type="application/atom+xml">
-
-
-
-  
-  
-  <link rel="canonical" href="http://rennesong.com/2015/07/29/How-to-install-node-js-and-npm-on-Mac/">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -135,15 +54,8 @@
 
 
 
-
-
-
-
-
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -152,9 +64,8 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -168,153 +79,69 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Rennesong's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
-      
-        <p class="site-subtitle">Blog my life from now on!</p>
-      
-    
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
-
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
+  </ul>
 </nav>
 
-
-
-  
 
 
 
@@ -322,115 +149,61 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://rennesong.com/2015/07/29/How-to-install-node-js-and-npm-on-Mac/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="rennsong">
       <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Rennesong's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">如何在Mac Yosemite中安装node.js以及NPM
-
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          如何在Mac Yosemite中安装node.js以及NPM
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
-              <time title="创建时间：2015-07-29 21:04:34" itemprop="dateCreated datePublished" datetime="2015-07-29T21:04:34+02:00">2015-07-29</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <time title="创建时间：2015-07-29 21:04:34" itemprop="dateCreated datePublished" datetime="2015-07-29T21:04:34+08:00">2015-07-29</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-25 11:27:10" itemprop="dateModified" datetime="2019-03-25T11:27:10+01:00">2019-03-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-03-25 18:27:10" itemprop="dateModified" datetime="2019-03-25T18:27:10+08:00">2019-03-25</time>
+              </span>
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -438,392 +211,171 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        <p>想要使用 Githubs pages 和 hexo 搭建一个静态博客站点，因为 hexo 是台湾小伙儿 tommy3551 使用 Node.js 开发的一个模板引擎，以及我的工作电脑的操作系统系统是 Mac 10.10.4 (Yosemite)。因此，为了使用 hexo, 我首先需要在Mac下安装 node 以及 npm。经过调查，发现 Node js在Mac下有两种安装方式:</p>
-<ul>
-<li>基于pkg installer安装</li>
-<li>通过Homebrew安装</li>
-<li>通过NVM安装<br>
-由于最近使用Homebrew比较多，以及Homebrew以其卓越的用户体验，让我渐渐觉得，好像Mac下凡是跟开发有关的工具/环境都应该通过brew安装。登陆Node.js的官网，看到还有pkg安装包的安装包的方式，猛一下的困惑了，这两种方式我究竟该用哪个呢？</li>
-</ul>
-<h1>误入“歧途”</h1>
+        <p>想要使用 Githubs pages 和 hexo 搭建一个静态博客站点，因为 hexo 是台湾小伙儿 tommy3551 使用 Node.js 开发的一个模板引擎，以及我的工作电脑的操作系统系统是 Mac 10.10.4 (Yosemite)。因此，为了使用 hexo, 我首先需要在Mac下安装 node 以及 npm。经过调查，发现 Node js在Mac下有两种安装方式: * 基于pkg installer安装 * 通过Homebrew安装 * 通过NVM安装 由于最近使用Homebrew比较多，以及Homebrew以其卓越的用户体验，让我渐渐觉得，好像Mac下凡是跟开发有关的工具/环境都应该通过brew安装。登陆Node.js的官网，看到还有pkg安装包的安装包的方式，猛一下的困惑了，这两种方式我究竟该用哪个呢？</p>
+<h1 id="误入歧途">误入“歧途”</h1>
 <p>Google is your teacher. 习惯性的先上网搜了一下，Stack overflow上有一篇帖子讨论了在Mac下究竟哪种方式更方便。看完之后，我感觉，哦，好像直接使用pkg安装包更合适了，心想也是啊，其他开发工具，没有pkg我才使用Homebrew呢，现在有pkg installer,我干嘛不用呢？</p>
-<p>于是，直接下载安装一气呵成。使用的时候，比如输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure>
-<p>系统提示需要管理员权限，Mac下不用sudo好多年啊，好吧，那就sudo一下呗，心想，要是用brew安装不久没这个不便了么，其实我应该使用brew的呀。再后来，使用bew的时候，习惯性地来了个</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>brew doctor</span><br></pre></td></tr></table></figure>
+<p>于是，直接下载安装一气呵成。使用的时候，比如输入 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure></p>
+<p>系统提示需要管理员权限，Mac下不用sudo好多年啊，好吧，那就sudo一下呗，心想，要是用brew安装不久没这个不便了么，其实我应该使用brew的呀。再后来，使用bew的时候，习惯性地来了个 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>brew doctor</span><br></pre></td></tr></table></figure></p>
 <p>输出显现，/usr/local下面有跟node有关的文件，不是被brew管理的，虽然我不是个有洁癖或者强迫症的人，但是看了一下基本上/usr/local/bin里面的文件，基本owner都是自己啊，现在突然多了一下root的感觉还是怪不爽的，年轻人就是喜欢折腾，我还是删了pkg安装的node改用brew再安装一遍吧。自己就是作啊。。。</p>
-<h1>弃暗投明</h1>
-<p>第一步需要删除已安装的node, 这个帖子：<a href="https://gist.github.com/TonyMtz/d75101d9bdf764c890ef" target="_blank" rel="noopener">https://gist.github.com/TonyMtz/d75101d9bdf764c890ef</a> 好评如潮，事实证明，确实是好用，不过我对其略有补充，所以这里再把使用的命令粘过来。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> First list what files are installed by pkg-installer with command lsbom</span><br><span class="line"><span class="meta">#</span> Use a loop in shell to delete them</span><br><span class="line">lsbom -f -l -s -pf /var/db/receipts/org.nodejs.pkg.bom | while read f; do  sudo rm /usr/local/$&#123;f&#125;; done</span><br><span class="line"><span class="meta">#</span> Then delete all node-related bin files under /usr/local/bin</span><br><span class="line">sudo rm -rf /usr/local/lib/node /usr/local/lib/node_modules /var/db/receipts/org.nodejs.*</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> To recap, the best way (I've found) to completely uninstall node + npm is to do the following:</span><br><span class="line"><span class="meta">#</span>go to /usr/local/lib and delete any node and node_modules</span><br><span class="line">cd /usr/local/lib</span><br><span class="line">sudo rm -rf node*</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> go to /usr/local/include and delete any node and node_modules directory</span><br><span class="line">cd /usr/local/include</span><br><span class="line">sudo rm -rf node*</span><br></pre></td></tr></table></figure>
-<p>现在我们可以使用Homebrew来安装node.js以及npm了，很简单：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew instal node</span><br></pre></td></tr></table></figure>
-<p>应该会成功。。。吧。。。</p>
-<h1>柳暗花明</h1>
-<p>不过，让我震惊的是，我居然得到了一些错误信息：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Bash completion has been installed to:</span><br><span class="line">  /usr/local/etc/bash_completion.d</span><br><span class="line">Error: The `brew link` step did not complete successfully</span><br><span class="line">The formula built, but is not symlinked into /usr/local</span><br><span class="line">Could not symlink share/systemtap/tapset/node.stp</span><br><span class="line">/usr/local/share/systemtap/tapset is not writable.</span><br></pre></td></tr></table></figure>
-<p>我第一反应就是：还是之前由于pkg安装后的遗毒啊。网上有些人遇到了跟我一样的问题，比如这篇帖子：<a href="http://stackoverflow.com/questions/31374143/trouble-install-node-js-with-homebrew" target="_blank" rel="noopener">Trouble install node.js with homebrew</a>。这篇帖子印证了我的猜想，我猜测这是因为pkg包安装node的时候，以root身份创建了文件/usr/local/share/systemtap/tapset。现在Homebrew再来安装的时候，没有办法对该文件读写。于是爆出了上述错误。好的补救措施如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 将yourusername以及yourgroupename换成你需要的名字</span><br><span class="line">chown -R &lt;yourusername&gt;:&lt;yourgroupname&gt; systemtap</span><br><span class="line">brew link node</span><br></pre></td></tr></table></figure>
+<h1 id="弃暗投明">弃暗投明</h1>
+<p>第一步需要删除已安装的node, 这个帖子：https://gist.github.com/TonyMtz/d75101d9bdf764c890ef 好评如潮，事实证明，确实是好用，不过我对其略有补充，所以这里再把使用的命令粘过来。 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> First list what files are installed by pkg-installer with command lsbom</span><br><span class="line"><span class="meta">#</span> Use a loop in shell to delete them</span><br><span class="line">lsbom -f -l -s -pf /var/db/receipts/org.nodejs.pkg.bom | while read f; do  sudo rm /usr/local/$&#123;f&#125;; done</span><br><span class="line"><span class="meta">#</span> Then delete all node-related bin files under /usr/local/bin</span><br><span class="line">sudo rm -rf /usr/local/lib/node /usr/local/lib/node_modules /var/db/receipts/org.nodejs.*</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> To recap, the best way (I've found) to completely uninstall node + npm is to do the following:</span><br><span class="line"><span class="meta">#</span>go to /usr/local/lib and delete any node and node_modules</span><br><span class="line">cd /usr/local/lib</span><br><span class="line">sudo rm -rf node*</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> go to /usr/local/include and delete any node and node_modules directory</span><br><span class="line">cd /usr/local/include</span><br><span class="line">sudo rm -rf node*</span><br></pre></td></tr></table></figure></p>
+<p>现在我们可以使用Homebrew来安装node.js以及npm了，很简单： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew instal node</span><br></pre></td></tr></table></figure></p>
+<p>应该会成功。。。吧。。。 # 柳暗花明 不过，让我震惊的是，我居然得到了一些错误信息： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Bash completion has been installed to:</span><br><span class="line">  /usr/local/etc/bash_completion.d</span><br><span class="line">Error: The `brew link` step did not complete successfully</span><br><span class="line">The formula built, but is not symlinked into /usr/local</span><br><span class="line">Could not symlink share/systemtap/tapset/node.stp</span><br><span class="line">/usr/local/share/systemtap/tapset is not writable.</span><br></pre></td></tr></table></figure></p>
+<p>我第一反应就是：还是之前由于pkg安装后的遗毒啊。网上有些人遇到了跟我一样的问题，比如这篇帖子：<a href="http://stackoverflow.com/questions/31374143/trouble-install-node-js-with-homebrew" target="_blank" rel="noopener">Trouble install node.js with homebrew</a>。这篇帖子印证了我的猜想，我猜测这是因为pkg包安装node的时候，以root身份创建了文件/usr/local/share/systemtap/tapset。现在Homebrew再来安装的时候，没有办法对该文件读写。于是爆出了上述错误。好的补救措施如下： <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 将yourusername以及yourgroupename换成你需要的名字</span><br><span class="line">chown -R &lt;yourusername&gt;:&lt;yourgroupname&gt; systemtap</span><br><span class="line">brew link node</span><br></pre></td></tr></table></figure></p>
 <p>现在大功告成啦！</p>
-<h1>风云再起</h1>
-<p>2016年伊始，又想重新开始使用hexo记录博客了，没想到hexo不工作了，而且越倒腾越乱，好像网友有人推荐彻底卸载node npm hexo重新再安装，于是乎，发现了一种更灵活的node体系安装方法：通过NVM（Node Version Manager）,<br>
-以下是网友给出的很详细的教程：(<a href="http://icarus4.logdown.com/posts/175092-nodejs-installation-guide" target="_blank" rel="noopener">http://icarus4.logdown.com/posts/175092-nodejs-installation-guide</a>)</p>
-<h1>总结</h1>
+<h1 id="风云再起">风云再起</h1>
+<p>2016年伊始，又想重新开始使用hexo记录博客了，没想到hexo不工作了，而且越倒腾越乱，好像网友有人推荐彻底卸载node npm hexo重新再安装，于是乎，发现了一种更灵活的node体系安装方法：通过NVM（Node Version Manager）, 以下是网友给出的很详细的教程：(http://icarus4.logdown.com/posts/175092-nodejs-installation-guide)</p>
+<h1 id="总结">总结</h1>
 <p>其实并不是用Homebrew安装node+npm就一定比用编译好的pkg安装包好，只是我个人的喜欢觉得还是用brew管理的更好而已，重要的是选择自己用着觉着顺手的就行。</p>
-<h1>参考资料</h1>
+<h1 id="参考资料">参考资料</h1>
 <p><a href="http://blog.teamtreehouse.com/install-node-js-npm-mac" target="_blank" rel="noopener">How to Install Node.js and NPM on a Mac</a></p>
 
-      
     </div>
 
     
-
-    
-    
-    
-
-    
-
-    
-      
     
     
 
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2015/07/28/Apply-USA-VISA-in-Paris/" rel="prev" title="2015年巴黎申请美国10年签证全攻略">
+      <i class="fa fa-chevron-left"></i> 2015年巴黎申请美国10年签证全攻略
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2015/07/30/Common-used-vim-commands/" rel="next" title="常用 VIM 命令备忘">
+      常用 VIM 命令备忘 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
     
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2015/07/28/Apply-USA-VISA-in-Paris/" rel="next" title="2015年巴黎申请美国10年签证全攻略">
-                <i class="fa fa-chevron-left"></i> 2015年巴黎申请美国10年签证全攻略
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/07/30/Common-used-vim-commands/" rel="prev" title="常用 VIM 命令备忘">
-                常用 VIM 命令备忘 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
   </article>
+  
+  
+  
 
-
-  </div>
 
 
           </div>
           
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">rennsong</p>
-              <div class="site-description motion-element" itemprop="description">Personal blog site, to note technique and life related articles</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">47</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">20</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/hansomesong" title="GitHub &rarr; https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">误入“歧途”</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">弃暗投明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">柳暗花明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">风云再起</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">rennsong</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
 
 <script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#误入歧途"><span class="nav-number">1.</span> <span class="nav-text">误入“歧途”</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#弃暗投明"><span class="nav-number">2.</span> <span class="nav-text">弃暗投明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#风云再起"><span class="nav-number">3.</span> <span class="nav-text">风云再起</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hansomesong" title="GitHub → https://github.com/hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
 
 
 
@@ -832,125 +384,35 @@
 
 
 
+      </div>
+    </footer>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.1.0"></script>
-
-  <script src="/js/motion.js?v=7.1.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
 
-  
-  <script src="/js/scrollspy.js?v=7.1.0"></script>
-<script src="/js/post-details.js?v=7.1.0"></script>
-
-
-
-  
-
-
-  <script src="/js/next-boot.js?v=7.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-
-  
 
 
 
 
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
 
 
-  
 
-  
 
-  
 
-  
 
-  
-
-  
-
-  
-
-  
 
   
 
