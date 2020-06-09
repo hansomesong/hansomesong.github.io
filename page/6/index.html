@@ -163,6 +163,97 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/25/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/25/hello-world/" class="post-title-link" itemprop="url">Hexo 安装，配置，使用以及更新基本命令以及 Markdown 基本语法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-25 18:27:10" itemprop="dateCreated datePublished" datetime="2019-03-25T18:27:10+08:00">2019-03-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-09 22:14:49" itemprop="dateModified" datetime="2020-06-09T22:14:49+08:00">2020-06-09</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="hexo-4.2.1-安装">Hexo 4.2.1 安装</h1>
+<h2 id="安装node.js">安装Node.js</h2>
+<h1 id="the-must-to-know-command-of-hexo">The must-to-know command of Hexo</h1>
+<h2 id="create-a-new-post">Create a new post</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br><span class="line">$ hexo server</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>Please refer to <a href="http://hexo.io/docs/writing.html" target="_blank" rel="noopener">hexo official webiste</a> for more information.</p>
+<h1 id="latex-format-mathmatical-equations-in-hexo">LaTeX format mathmatical equations in Hexo</h1>
+<p>This present personal blog is powered by <a href="https://theme-next.org/" target="_blank" rel="noopener"><code>next</code> theme</a>. Next has a good support for <code>Mathjax</code>.参考<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/MATH.md" target="_blank" rel="noopener">链接</a>以获取更多信息(比如方程的编号问题)</p>
+<h2 id="基础配置">基础配置</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install eslint@4.x babel-eslint@8 --save</span><br></pre></td></tr></table></figure>
+<p>同时对于添加脚注也是一样的，一开始不管怎么 <code>hexo clean &amp;&amp; hexo g</code> 都不工作，后来咋就突然好了呢？ 为了强制浏览器更新资源文件，可以采用’Ctrl+F5’来刷新。</p>
+<h3 id="如何让插入图片居中">如何让插入图片居中？</h3>
+<p>Markdown 没有提供居中图片或者文字的命令，但是 Markdown 支持嵌入的 HTML/CSS 语句。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style&#x3D;&quot;text-align:center&quot; markdown&#x3D;&quot;1&quot;&gt;</span><br><span class="line">![Alt Text](&#x2F;path&#x2F;to&#x2F;image &quot;Caption&quot;)</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="如何给插入的图片居中并且添加caption">如何给插入的图片居中并且添加caption?</h3>
+<p>参加帖子: http://fantding.coding.me/2019/06/12/hexo%E4%B8%BA%E5%9B%BE%E7%89%87%E6%B7%BB%E5%8A%A0caption/</p>
+<p>https://luodian.ink/2018-03-08/Next%E4%B8%BB%E9%A2%98%E4%B8%8B%E5%A6%82%E4%BD%95%E8%AE%A9%E5%9B%BE%E7%89%87%E8%87%AA%E5%8A%A8%E5%B1%85%E4%B8%AD/ 我只参考了博文中的第二点，就实现了图片居中的设置。</p>
+<h2 id="hexo博客如何添加脚注footnote">Hexo博客如何添加脚注(footnote)?</h2>
+<p>删除 Hexo 默认安装的 hexo-renderer-marked 模块， <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm un hexo-renderer-marked --save</span><br></pre></td></tr></table></figure> 安装 <code>hexo-renderer-markdown-it</code> 模块 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-renderer-markdown-it --save</span><br></pre></td></tr></table></figure> The following code snippet is one example: basic footnote<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> here is an inline footnote[^2] (inline footnote) and another one<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> and another one<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p>source:http://www.icms.org.uk/downloads/stocpro/Blaszczyszyn_2.pdf source:http://www.chriskrycho.com/2015/academic-markdown-and-citations.html, Academic Markdown and Citations</p>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>basic footnote content<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>paragraph<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>footnote content with some <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener">markdown</a><a href="#fnref3" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/03/25/docker-tuto/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -194,7 +285,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-07 16:26:47" itemprop="dateModified" datetime="2020-06-07T16:26:47+08:00">2020-06-07</time>
+                <time title="修改时间：2020-06-09 21:39:37" itemprop="dateModified" datetime="2020-06-09T21:39:37+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1026,305 +1117,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2015/08/02/ssh-tuto/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2015/08/02/ssh-tuto/" class="post-title-link" itemprop="url">Simplify your life with SSH</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2015-08-02 14:22:43" itemprop="dateCreated datePublished" datetime="2015-08-02T14:22:43+08:00">2015-08-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-08 14:31:27" itemprop="dateModified" datetime="2020-06-08T14:31:27+08:00">2020-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SSH/" itemprop="url" rel="index"><span itemprop="name">SSH</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="background-and-motivation">Background and motivation</h1>
-<p>I have one Ubuntu Linux server (I will call it as remote server in the following of this post) in my office, which is behind a NAT router and restrictive rewall. Now I want to SSH to the remote server while I'm away from my office. How should I do?</p>
-<figure>
-<img src="/.com//reverse_ssh_illustration.png" alt="Reverse SSH Tunnel Illustration"><span class="image-caption">Reverse SSH Tunnel Illustration</span><figcaption>Reverse SSH Tunnel Illustration</figcaption>
-</figure>
-<h1 id="part-1-reverse-ssh-tunnel">Part 1: Reverse SSH Tunnel</h1>
-<p>关于 SSH port forwaring 概念的介绍。这个帖子: <code>http://www.linux-france.org/prj/edu/archinet/systeme/ch13s04.html</code> 以及 <code>https://www.ssh.com/ssh/tunneling/example</code>讲的还挺好的。</p>
-<p>SSH portforwarding will certainly be an option. However, port forwarding can become tricky if you are dealing with multiple nested NAT environment. Besides, it can be interfered with under various ISP-specific conditions, such as restrictive firewalls which block forwarded ports, or carrier-grade NAT which shares IPv4 addresses among users.</p>
-<p>One alternative to SSH port forwarding is reverse SSH tunneling. The concept of reverse SSH tunneling is simple. For this, you will need another host (so-called &quot;relay host&quot;) outside your restrictive office network, which you can connect to via SSH from where you are. You could set up a relay host using a VPS instance with a public IP address. What you do then is to set up a persistent SSH tunnel from the remote server in your office network to the public relay host. With that, you can connect &quot;back&quot; to the remote server from the relay host (which is why it's called a &quot;reverse&quot; tunnel). As long as the relay host is reachable to you, you can connect to your remote server wherever you are, or however restrictive your NAT or firewall is in your office network.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -fN -R &lt;your_selected_port&gt;:localhost:22 &lt;relayserver_username&gt;@relayserver</span><br></pre></td></tr></table></figure>
-<p>Some explanations about the above command: * term <code>&lt;your_selected_port&gt;</code> is any arbitrary unoccupied port number (e.g. 10222) that you can choose on the relay server(for exampler, your VPS). Similarly, term <code>&lt;relayserver_username&gt;</code> should be replaced by your user name on the relay server; * with the option combination <code>fN</code>, SSH will go right into the background once you successfully authenticate with an SSH server (in this case, relay server). This option is useful when you do not want to execute any command on a remote SSH server, and just want to forward ports; * option <code>R</code>, along side with string <code>&lt;your_selected_port&gt;:localhost:22</code> defines a reverse SSH tunnel. It forwards traffic received by port <code>&lt;your_selected_port&gt;</code> of relay server to port 22 of homeserver.</p>
-<p>Now I will log into my VPS with root user and check the opening port on my VPS:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;user_name&gt;@&lt;your_machine_name&gt;:~# netstat -autn | grep 22222</span><br><span class="line">tcp        0      0 127.0.0.1:22222         0.0.0.0:*               LISTEN</span><br><span class="line">tcp6       0      0 ::1:22222               :::*                    LISTEN</span><br></pre></td></tr></table></figure>
-<p>Now that you can ssh into your remote server with the following command: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@vps639023:~# ssh -p &lt;your_selected_port&gt; &lt;username_at_remote_server&gt;@localhost</span><br></pre></td></tr></table></figure> , where <code>&lt;your_selected_port&gt;</code> should be replaced by port number such as 22222.</p>
-<h2 id="dynamic-port-forwarding">Dynamic port forwarding</h2>
-<p>可以用来翻墙 但是网速。。。很慢。。。</p>
-<h2 id="special-case-outgoing-port-22-i.e.-for-ssh-is-filtered-by-firewall">Special case: outgoing port 22 (i.e. for SSH) is filtered by firewall</h2>
-<p>During the establishment of reverse SSH tunnel (i.e. from remote server to relay server), it is very possible that the remote server has no outbound SSH access to a machine on the public Internet (in my case: my VPS instance), because port <code>22</code> is blokced by restrictive firewall. With port <code>22</code> open allows malicious attackers establishing reverse tunnel and bypassing completely bypassing the firewall. Thus, in practice, some enterprise may block the outbound port 22 for the sake of network security. In this case, how we could establish reverse SSH tunnel?</p>
-<p>The answer is yes if: * the outbound port 443 (i.e. for HTTPS) is not filtered by the firewall in the network of remote server; * web server (Apache2 or Nginx), SSH server and SSLH<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> are installed on the relay server. Please refer to~ for more details.</p>
-<h2 id="compilation-and-installation-of-sslh">Compilation and Installation of SSLH</h2>
-<ol type="1">
-<li>Download source code</li>
-<li>Install pre-requisites: take Debian-based system (e.g. Ubuntu 16.04) as example libwrap0-dev libsystemd-dev libcap-dev libbsd-dev</li>
-<li>Compilation and Installation</li>
-</ol>
-<p>Provided that the operations on the relay server side are done, we now log into the home server can establish a reverse SSH tunnel with relay server with the following command: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -fN -R 10022:localhost:22 root@&lt;your&gt;.&lt;own&gt;.&lt;ip&gt;.&lt;address&gt; -p 443</span><br></pre></td></tr></table></figure> Some explanaition about above command: * with option <code>p</code>, the destination port of SSH is set as 443, instead of 22, which is the default port for SSH. In other words, remote server will establish ssh connection with destination port <code>443</code>, which won't be blocked by firewall.</p>
-<h1 id="part-3-execute-command-on-remote-server-over-ssh-connection">Part 3: execute command on remote server over SSH connection</h1>
-<p>在实际使用Linux的过程中，我们经常会碰到这样的场景：登录到远程服务器上，执行某个命令，比如查看下某个文件夹下的目录，然后再退出。常规的思路是： 1. Run the command &quot;ssh username@host&quot; to log in to the system 2. At the command prompt, run &quot;top&quot; to view process activity on the remote system 3. Exit top and be dropped to the remote command line 4. Type &quot;Exit&quot; to close the command</p>
-<p>SSH已经考虑到了用户的这种需求，可以一条命令完成上述四步：<code>ssh -t username@host 'top'</code>。命令中的选项<code>-t</code>, 作用是分配一个为terminal界面给当前命令，允许用户进行一些交互。比如当你需要执行需要sudo的命令时，<code>-t</code>保证了当需要输入管理员密码的时候，可以通过当前的terminal输入密码。</p>
-<h1 id="part-2-enable-ssh-connection-without-password">Part 2: Enable SSH connection without password</h1>
-<p>There are some issues with this password based authentication, mainly, it allows brute-force password guessing. SSH provides better authentication process: <code>SSH Public key access</code>, which allows to password-less log in.</p>
-<p>To this end, first you have to generate a public and private key pair in your relay server, namely your VPS <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@vps639023:~# ssh-keygen -t rsa -P &#39;&#39;</span><br></pre></td></tr></table></figure> Then, you have to transfer the newly generated public key to your target server: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@vps639023:~# ssh-copy-id -i .ssh&#x2F;id_rsa.pub &lt;user_at_remote_server&gt;@localhost -p 22222</span><br></pre></td></tr></table></figure> Note that command <code>ssh-copy-id</code> relies on scp that uses port 22 as default port. Here we explicitly specify here the used port is 22222. Without option <code>i</code>, <code>ssh-copy-id</code> will copy whatever keys it finds to the remote (might be multiple)!</p>
-<h2 id="一些疑问">一些疑问：</h2>
-<ol type="1">
-<li>产生公钥/私钥对的时候，会被询问是否设置<code>passphrase</code>, 这个和<code>password</code>有何异同(比如会比password更长)? 什么时候需要设置<code>passphrase</code>? 设置了<code>passphrase</code>是否还是真正的<code>password-less</code>登录？</li>
-<li><code>SSH agent</code> 又是啥？和SSH 客户端又有何不同呢？SSH <code>agent forwarding</code> 是什么？ <code>SSH agent</code> 第一个用途是用来解决 <code>unlocking private key with a secret passphrase upon each connection</code> 这个问题的。即，采用被<code>passphrase</code>保护的私钥登录remote server时候(<code>ssh -i path/to/private-key remote-server</code>)时, 虽然不再需要输入登录远程服务器所需要的密码，但是我们需要输入<code>passphrase</code>才能获得对本地私钥的使用权！这其实不就是另一种形式的密码么，而且每次登录都需要输入更长的字符！根本不是我们想要的password-less登录。<code>ssh-agent</code>可以解决这个问题。执行<code>ssh-add path/to/your/private-key</code>, 之后在执行<code>ssh -i path/to/private-key remote-server</code>。第一次还需要输入<code>passphrase</code>，之后再登录remoter-server就不再需要输入<code>passphrase</code>了，因为指定的私钥就会被存储在<code>ssh-agent</code>中(私钥应该是存储在内存中了)。</li>
-</ol>
-<p>SSH agent forwarding can be used to make deploying to a server simple. It allows you to use your local SSH keys instead of leaving keys (without passphrases!) sitting on your server.</p>
-<p>SSH agent forwarding特性有两种方式启用：1）命令行模式下的参数<code>-A</code>, 2）配置文件(如<code>~/.ssh/config</code>)中在相应的Host下，加入directive: <code>ForwardAgent yes</code>。 3.</p>
-<h1 id="part-3-how-make-a-tunnel-persistent-autossh_ssh_tunneling">Part 3: How make a tunnel persistent <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></h1>
-<p>By persistent I mean, that it is made sure the tunnel will always run. For example, once your ssh connection times out (By server-side timeout), your tunnel should be re-established automatically.</p>
-<p>Many NAT firewalls time out idle sessions after a certain period of time to keep their trunks clean. Sometimes the interval between session drops is 24 hours, but on many commodity firewalls, connections are killed after as little as 300 seconds.</p>
-<h2 id="ssh-command-option-serveraliveinterval-and-serveralivecountmax">3.1 SSH command option <code>ServerAliveInterval</code> and <code>ServerAliveCountMax</code></h2>
-<p>To avoid having your SSH sessions become unresponsive after e.g. 5 minutes, do the following (On Linux machine):</p>
-<p>To enable the keep alive system-wide (root access required), edit <code>/etc/ssh/ssh_config</code>; to set the settings for just your user, edit <code>~/.ssh/config</code> (create the file if it doesn’t exist).</p>
-<p>Insert the following snipet of code: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">    ServerAliveInterval 300</span><br><span class="line">    ServerAliveCountMax 2</span><br></pre></td></tr></table></figure> Alternatively, you can also make your OpenSSH server keep alive all connections with clients by adding the following to <code>/etc/ssh/sshd_config</code>: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">    ClientAliveInterval 300</span><br><span class="line">    ClientAliveCountMax 2</span><br></pre></td></tr></table></figure> These settings will make the SSH client or server send a null packet to the other side every 300 seconds (5 minutes), and give up if it doesn’t receive any response after 2 tries, at which point the connection is likely to have been discarded anyway.</p>
-<p>修改完openssh-server的配置之后，可以采取两种方式使配置生效： <code>sudo service ssh restart</code> # 重启ssh server <code>sudo service ssh reload</code> # 重载ssh server 相关配置</p>
-<p>如果你已经安装了openssh-server的话(没有的话,要安装),因为Ubuntu已经使用Upstart来进行管理/etc/init.d里面的任务. 所以<code>/etc/init.d/sshd start</code>已经无效了. 注意: 应该用<code>sudo service ssh start</code>(<strong><em>注意: 是ssh,不是sshd</em></strong>)启动sshd服务,之后可以通过进程查看sshd进程已在运行.</p>
-<p> describes how to use different terminal color schema when establishing SSH connection.</p>
-<h2 id="autossh">3.2 AutoSSH</h2>
-<p>Autossh is a program to start a copy of ssh and monitor it, restarting it as necessary should it die or stop passing traffic.</p>
-<p>AutoSSH basic usage: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usage: autossh [-V] [-M monitor_port[:echo_port]] [-f] [SSH_OPTIONS]</span><br></pre></td></tr></table></figure> The important part to remember is that <code>-f</code> (run in background) is not passed to the ssh command, but handled by autossh itself. Apart from that you can then use it just like you would use ssh to create any forward or reverse tunnels.</p>
-<p><strong>Note 1</strong>: Before you use autossh, make sure the connection works as expected by trying it with ssh first.</p>
-<p><strong>Note 2</strong>: Make sure you use public/private key authentification instead of password-based authentification when you use <code>-f</code>. This is required for ssh as well as for autossh, simply because in a background run a passphrase cannot be entered interactively.</p>
-<p>With option <code>-M</code> AutoSSH will continuously send data back and forth through the pair of monitoring ports in order to keep track of an established connection. If no data is going through anymore, it will restart the connection. The specified monitoring and the port directly above (+1) must be free. The first one is used to send data and the one above to receive data on. For example, if you specify 11111 as monitoring port, then 11112 will be automatically used for receving data. You shoul ensure that both ports are unoccupied.</p>
-<p>Unfortunately, this is not too handy, as it must be made sure both ports (the specified one and the one directly above) are free (not used). So in order to overcome this problem, there is a better solution:</p>
-<p>Options <code>ServerAliveInterval</code> and <code>ServerAliveCountMax</code> of ssh command. They cause the SSH client to send traffic through the encrypted link to the server. This will keep the connection alive when there is no other activity and also when it does not receive any alive data, it will tell AutoSSH that the connection is broken and AutoSSH will then restart the connection.</p>
-<p>The AutoSSH man page also recommends the second solution: &gt;-M [:echo_port], &gt;… &gt;In many ways this [ServerAliveInterval and ServerAliveCountMax options] may be a better solution than the monitoring port.</p>
-<p>You can disable the built-in AutoSSH monitoring port by giving it a value of 0: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autossh -M 0</span><br></pre></td></tr></table></figure> Additionally you will also have to specify values for <code>ServerAliveInterval</code> and <code>ServerAliveCountMax</code>: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autossh -M 0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3"</span><br></pre></td></tr></table></figure></p>
-<table>
-<colgroup>
-<col style="width: 48%">
-<col style="width: 51%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Option</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ServerAliveInterval</td>
-<td style="text-align: left;">ServerAliveInterval: number of seconds that the client will wait before sending a null packet to the server (to keep the connection alive). Default: 30</td>
-</tr>
-<tr class="even">
-<td>ServerAliveCountMax</td>
-<td style="text-align: left;">Sets the number of server alive messages which may be sent without ssh receiving any messages back from the server. If this threshold is reached while server alive messages are being sent, ssh will disconnect from the server, terminating the session. Default: 3</td>
-</tr>
-</tbody>
-</table>
-<h1 id="part-4-enable-the-tunnel-at-system-boot">Part 4: Enable the tunnel at system boot</h1>
-<p>To make sure that even the remote server is restarted, we still have this reverse SSH tunnel, we configure that this server executes this command at boot time.</p>
-<p>In recent years, Linux distributions have increasingly transitioned from other <code>init</code> systems to <code>systemd</code>. The systemd suite of tools provides a fast and flexible init model for managing an entire machine from boot onwards. Refer to <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> for a quick tutorial for systemd.</p>
-<h2 id="under-ubuntu-system">4.1 Under Ubuntu system</h2>
-<h3 id="modify-etcrc.local">Modify <code>/etc/rc.local</code></h3>
-<p>We are going to edit the <code>/etc/rc.local</code> file. This script normally does nothing, but gets executed at boot. If you make any errors in this script, your machine might not boot so make sure to do this correctly.</p>
-<p>Add the following instruction with your preferred editor into <code>/etc/rc.local</code> % credit:https://tex.stackexchange.com/questions/116534/lstlisting-line-wrapping <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autossh -M 10984 -N -f -o &quot;PubkeyAuthentication&#x3D;yes&quot; -o &quot;PasswordAuthentication&#x3D;no&quot; -i &#x2F;path&#x2F;to&#x2F;.ssh&#x2F;id_rsa -R 6666:localhost:22 remy@middleman -p 2222 &amp;</span><br></pre></td></tr></table></figure> We have three new things in this command:</p>
-<ul>
-<li><code>-N</code>: Do not execute a command on the middleman machine</li>
-<li><code>-f</code>: drop in the background</li>
-<li><code>&amp;</code>: Execute this command but do not wait for output or an exit code. If this is not added, your machine might hang at boot.</li>
-</ul>
-<p>Save the file, and as make it executable if necessary: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /etc/rc.local</span><br></pre></td></tr></table></figure></p>
-<h3 id="use-cron-command">Use <code>cron</code> command</h3>
-<p>TBD</p>
-<h3 id="create-systemd-service">Create systemd service</h3>
-<p>If you want a permanent SSH tunnel already created during boot time, you will (nowadays) have to create a systemd service and enable it. There is however an important thing to note about systemd and <code>AutoSSH: -f</code> (background usage) already implies <code>AUTOSSH_GATETIME=0</code>, however <code>-f</code> is not supported by systemd.</p>
-<blockquote>
-<p>http://www.freedesktop.org/software/systemd/man/systemd.service.html […] running programs in the background using “&amp;”, and other elements of shell syntax are not supported.</p>
-</blockquote>
-<p>So in the case of systemd we need to make use of AUTOSSH_GATETIME. Let’s look at a very basic service:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># The following command should be run with root priviledge</span><br><span class="line">$ vim &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;revtun2vps.service</span><br><span class="line">[Unit]</span><br><span class="line">Description&#x3D;AutoSSH managed reverse SSH tunnel service to bind local port 22 with port 22222 on VPS server</span><br><span class="line">After&#x3D;network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Environment&#x3D;&quot;AUTOSSH_GATETIME&#x3D;0&quot;</span><br><span class="line">ExecStart&#x3D;&#x2F;usr&#x2F;bin&#x2F;autossh -M 0 -o &quot;ServerAliveInterval 30&quot; -o &quot;ServerAliveCountMax 3&quot; -N -R 22222:localhost:22 &lt;user_name&gt;@&lt;vps.host.name&gt; -p 443</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy&#x3D;multi-user.target</span><br></pre></td></tr></table></figure>
-<p>One can refer to <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> for more details about the directives such as <code>after=</code>, <code>WantedBy</code>.</p>
-<p>Note 1: 以上systemd service将会以root身份启动autossh进程，如果root身份从未跟VPS建立过SSH connection的话，通过<code>systemctl status revtun2vps.service</code>, 将会看到SSH connection实际上并没有被创建，由于<code>host key verification failed</code>的错误。最后我的解决办法是，<code>sudo su</code> 切换为root，然后<code>ssh-keygen</code>创建root专属的公私钥，最后再<code>ssh-copy-id -i .ssh/id_rsa.pub root@vps.ip.addr -p 443</code>使得root可以免密登录VPS. 之后再启动<code>revtun2vps</code> service，将会顺利创建reverse tunnel了。</p>
-<p>虽然我之前一直都以qsong的身份在和VPS建立SSH连接, 但是 VPS 的host key确实被保存在/home/qsong/.ssh/known_hosts文件中的，当我第一次以root身份去发起连接的时候，root用户的工作目录(即/root)下并没有known_hosts这么一个文件！</p>
-<p>问题：难道 systemd service 启动的 autossh 难道不需要指明运行在后台？</p>
-<p>Tell systemd that we have added some stuff: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure></p>
-<p>Start the service: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start revtun2vps.service</span><br></pre></td></tr></table></figure></p>
-<p>Enable during boot time: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable revtun2vps.service</span><br><span class="line">root@vps273731:~# systemctl enable revtun2vps.service</span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/revtun2vps.service to /etc/systemd/system/revtun2vps.service.</span><br></pre></td></tr></table></figure> Once the service is correctly started: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">qsong-P650SE# systemctl status revtun2vps.service</span><br><span class="line">● revtun2vps.service - AutoSSH managed reverse SSH tunnel creation service to bind local 22 with port 22222 on remote VPS server</span><br><span class="line">   Loaded: loaded (&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;revtun2vps.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since ven. 2019-05-17 18:23:37 CEST; 11s ago</span><br><span class="line"> Main PID: 21307 (autossh)</span><br><span class="line">    Tasks: 2</span><br><span class="line">   Memory: 1.3M</span><br><span class="line">      CPU: 19ms</span><br><span class="line">   CGroup: &#x2F;system.slice&#x2F;revtun2vps.service</span><br><span class="line">           ├─21307 &#x2F;usr&#x2F;lib&#x2F;autossh&#x2F;autossh -M 0 -o ServerAliveInterval 30 -o ServerAliveCountMax 3 -N -R 22222:localhost:22 root@xx.xx.xx.xx -p 443</span><br><span class="line">           └─21319 &#x2F;usr&#x2F;bin&#x2F;ssh -o ServerAliveInterval 30 -o ServerAliveCountMax 3 -N -R 22222:localhost:22 -p 443 root@xx.xx.xxx.xx</span><br><span class="line"></span><br><span class="line">mai 17 18:23:37 qsong-P650SE systemd[1]: Started AutoSSH managed reverse SSH tunnel creation service to bind local 22 with port 22222 on remote VPS server.</span><br><span class="line">mai 17 18:23:37 qsong-P650SE autossh[21307]: port set to 0, monitoring disabled</span><br><span class="line">mai 17 18:23:37 qsong-P650SE autossh[21307]: starting ssh (count 1)</span><br><span class="line">mai 17 18:23:37 qsong-P650SE autossh[21307]: ssh child pid is 21319</span><br></pre></td></tr></table></figure></p>
-<h2 id="under-mac-osx">4.2 Under Mac OSX</h2>
-<p>On Mac, the alternative to service and systemctl is launchctl. Mac OSX relies on <code>launchctl</code> to manage the services that need to be started at boot time. Unfortunately, Systemd, which systemctl is a part of, is a service manager designed specifically for Linux and uses interfaces and constructs specific to it such as <code>cgroups</code>. There is no port of it to Mac OS.</p>
-<p><code>launchd</code>, a unified service-management framework, starts, stops and manages daemons, applications, processes, and scripts in mac OS. <code>launchd</code> has two main tasks. The first is to boot the system, and the second is to load and maintain services.</p>
-<h1 id="part-5-simplify-your-life-with-an-ssh-config-file-ssh_config_tuto">Part 5: Simplify your life With an SSH Config File <a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></h1>
-<p>Create a SSH config file under path <code>~/.ssh/config</code>. This is the per-user configuration file. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> My personal VPS serves as a broker <span class="keyword">for</span> connection from my Mac to my Ubnuntu server</span></span><br><span class="line">Host my_vps</span><br><span class="line">  HostName &lt;your&gt;.&lt;own&gt;.&lt;ip&gt;.&lt;address&gt;</span><br><span class="line">  User root</span><br><span class="line">  Port 443</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> my remote Ubuntu server</span></span><br><span class="line">Host ubuntu_server</span><br><span class="line"><span class="meta">#</span><span class="bash"> example: ProxyCommand ssh -q my_vps nc -qo hostname.or.IP.address.internal.machine 22</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> change hostname.or.IP.address.internal.machine and port 22 to machine you like to reach</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">if</span> you would from the `my_vps` machine</span></span><br><span class="line">ProxyCommand ssh -q my_vps nc -q0 localhost 22222</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> my vagrant vm running <span class="keyword">in</span> my ubuntu_server</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> the following ssh <span class="built_in">command</span> options are obtained from `ps aux | grep ssh` on my ubuntu_server.</span></span><br><span class="line">Host sfc103-vm</span><br><span class="line">  ProxyJump qsong@ubuntu_server</span><br><span class="line">  HostName 127.0.0.1</span><br><span class="line">  User vagrant</span><br><span class="line">  Port 2222</span><br><span class="line">  LogLevel FATAL</span><br><span class="line">  Compression yes</span><br><span class="line">  DSAAuthentication yes</span><br><span class="line">  IdentitiesOnly yes</span><br><span class="line">  StrictHostKeyChecking no</span><br><span class="line">  UserKnownHostsFile /dev/null</span><br><span class="line">  IdentityFile ~/Documents/sfc-patch/sfc-demo/sfc103/.vagrant/machines/odl/virtualbox/private_key</span><br></pre></td></tr></table></figure> Also note that now you have a single SSH host target name for it, you can use this in other applications as well. E.g.: SCP to copy files. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp somefile user@internalmachine:~/</span><br></pre></td></tr></table></figure> Copy your public key from A directly to C: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i .ssh/id_rsa.pub qsong@ubuntu_server</span><br></pre></td></tr></table></figure> This allows one to SSH from A to C without password.</p>
-<p>On my macbook pro, I have <code>openssh 7.9p1</code> installed. From OpenSSH 7.3, <code>ProxyJump</code> is supported in <code>ssh_config</code>. I find that even though my remote <code>ubuntu_server</code> (having OpenSSH 7.2) have no support for such an option, this does not bother the using of <code>ProxyJump</code> on my macbook pro.</p>
-<h1 id="part-6-ssh-connection-with-gui">Part 6: SSH connection with GUI</h1>
-<p>This <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-16-04" target="_blank" rel="noopener">post</a> gives a very detailed tutorial about how to install Xfce and VNC server on Ubuntu 16.04.</p>
-<p>One thing we need to indicate is: I have to establish one reverse SSH tunnel with my VPS.</p>
-<p>On the Ubunutu server, add the following codes into file <code>~/.ssh/config</code>: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host vnc_tunnel_vps</span><br><span class="line">    HostName &lt;vps.ip.address.or.name&gt;</span><br><span class="line">    User &lt;your-user-name&gt;</span><br><span class="line">    Port 443</span><br><span class="line">    RemoteForward 59000 127.0.0.1:5901</span><br></pre></td></tr></table></figure> Port <code>59000</code> at VPS server will be on state of listening. Any traffic to this port on VPS will be forwarded to port <code>5901</code> on the remote Ubuntu server.</p>
-<p>Thus, On the macbook pro, we have to also add some local port forwarding configuration in file <code>~/.ssh/config</code>: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Establish one tunnel between this machine and my vps</span></span><br><span class="line">Host tunnel_vps</span><br><span class="line">  HostName &lt;vps.ip.address.or.name&gt;</span><br><span class="line">  LocalForward 33333 127.0.0.1:22222</span><br><span class="line"><span class="meta">  #</span><span class="bash"> Establish one tunnel to <span class="built_in">bind</span> <span class="built_in">local</span> 59000 with remote 59000 on my vps</span></span><br><span class="line">  LocalForward 59000 127.0.0.1:59000</span><br><span class="line">  User &lt;your-user-name&gt;</span><br><span class="line">  Port 443</span><br></pre></td></tr></table></figure> Note that in the above command, SSH will create two local port forwarding.</p>
-<p>If you want to access to the VNC server running on Ubuntu server, you can either install VNC client or use <code>Screen sharing program</code> integrated into Mac OSX.</p>
-<p>Open <code>Finder</code> application, click menu <code>Go</code> and further click <code>Connect to Server...</code>. On the prompted window, type the following command: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vnc://127.0.0.1:59000</span><br></pre></td></tr></table></figure> You will be required to type password, which is the one you set when installing VNC server.</p>
-<h1 id="part-7-mount-remote-directory-on-a-remote-server-with-sshfs">Part 7: Mount remote directory on a remote server with SSHFS</h1>
-<p>If you use SSHFS on MacOS and the end point stops responding or crashes, you need to do new SSHFS connection. You need to either restart your mac or umount the old connection first. I use sshfs to access data on my vmware ( Ubuntu ) – if that restarts, or crashes – I end up with the following error message: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount_osxfuse: mount point /xx/yy/zz is itself on a OSXFUSE volume</span><br></pre></td></tr></table></figure> This post gives the cause and solution<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>. Simply speaking, the remote directory is not correctly unmounted. We need to find its mount point and unmount it another time.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshfs -o defer_permissions root@hostname.or.ip.address:/path/to/your/folder /mnt/path/to/your/mount_point</span><br></pre></td></tr></table></figure>
-<ul>
-<li>-o <code>defer\_permissions</code>: without this option, we will encounter error <code>permission defined</code> if we try to write something into the mounted directory.</li>
-</ul>
-<h2 id="problem-description">Problem description</h2>
-<p>Now I have three machines: my working laptop (Mac OSX), my remote server (Ubuntu 16.04) and VPS server. I want to mount a directory in my remote Ubuntu server on my working laptop.</p>
-<h2 id="fuse-for-os-x">FUSE for OS X</h2>
-<p>The first step to using SSHFS is to install <a href="https://osxfuse.github.io/" target="_blank" rel="noopener">FUSE for OS X</a> (There’s a prior version called MacFUSE, you don’t want that). Once installed, reboot your Mac. By itself, FUSE for OS X doesn’t do much, it provides the layer for userspace filesystems, but no filesystems itself, so <a href="https://osxfuse.github.io/" target="_blank" rel="noopener">download</a> (found on the FfOSX page) and install SSHFS as well.</p>
-<h2 id="key-idea">key idea</h2>
-<p>All one has to do is bind the one local port (e.g. 33333) of my VPS to a port (e.g. 22222) on remote server. The port of remote server is the one used to establish reverse SSH tunnel.</p>
-<h2 id="concret-steps">concret steps</h2>
-<h3 id="bind-one-local-port-with-port-in-relay-server">1. Bind one local port with port in relay server</h3>
-<p>One one terminal and type into the following command: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -L 33333:localhost:22222 &lt;user_on_relay_server&gt;@&lt;relay_server_addr&gt;</span><br></pre></td></tr></table></figure> With above command, one has to keep this terminal window open. If you want to keep this binding running in the background: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh -NfL 33333:localhost:22222 &lt;user_on_relay_server&gt;@&lt;relay_server_addr&gt;</span></span><br></pre></td></tr></table></figure> Remember to adapt <code>&lt;user_on_relay_server&gt;</code> and <code>&lt;relay_server_addr&gt;</code> for your own case. The <code>-N</code> prevents SSH from executing a command on the remote system. This is useful when just forwarding ports.</p>
-<p>If you have a slow network, you may wish to include the <code>-C</code> option in both the ssh and sshfs commands as well to enable compression. Don't bother if you are on a fast network as in the time taken to compress the file and send the smaller version, you can instead just get the uncompressed version quicker.</p>
-<h3 id="create-a-local-mount-point-and-mount-the-remote-file-system">2.create a local mount point and mount the remote file system</h3>
-<p>Then, mounting the directory <code>my_remote_server:/home/path/to/folder</code> to a local foler for example named <code>pcB</code> on <code>my_working_laptop</code>. First create a mount point: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir /mnt/pcB</span></span><br></pre></td></tr></table></figure> Where you mount it matters as that’s where the drive icon will appear. In the above example, I create the local mount point in the Desktop folder, which makes the drive appear on the Desktop when mounted. The downside of that, is then when the drive is not mounted, you have an empty folder that appear on the Desktop.</p>
-<p>Another popular approach is to mount it in <code>/Volumes</code>, where OS X traditionally mounts drives. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir /Volumes/server</span></span><br></pre></td></tr></table></figure></p>
-<p>Then mount the folder with the following command: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshfs -o defer_permissions -o port=33333 -o volname=sfc103demo &lt;user_at_my_remote_server&gt;@localhost:/home/path/to/folder /mnt/pcB</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><code>-o defer_permissions</code>: this option is very important. Without this option, we will encounter error <code>permission defined</code> if we try to write something into the mounted directory.</li>
-<li><code>-o volname=Server</code> sets the name that the volume will have in the Finder. Otherwise it’s called something like <code>OSXFUSE Volume 0</code> (sshfs)</li>
-</ul>
-<p>By default, the file system is only visible to the person that mounted it. To allow other users to see it you can add <code>-o allow_other</code> to the command line. This can be a little dangerous when combined with <code>-o defer_permissions</code> as everyone will have the permissions of the account that was used for the SSH connection. Use this option with care.</p>
-<h3 id="unmount-the-file-system">3.unmount the file system</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount &#x2F;mnt&#x2F;pcB</span><br></pre></td></tr></table></figure>
-<p>Remember to replace <code>/mnt/pcB</code>. In Mac OSX, one can also eject the mounted file system in the Finder. (key combination <code>cmd+shift+G</code> to open any folder within Finder window)。</p>
-<p>If you encounter the following messages: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount(/mnt/pcB): Resource busy -- try 'diskutil unmount'</span><br></pre></td></tr></table></figure> or <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> fusermount -u /mnt/pcB/</span></span><br></pre></td></tr></table></figure> You may use: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diskutil unmount &#x2F;mnt&#x2F;pcB</span><br></pre></td></tr></table></figure> You can refer to <a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> for more details.</p>
-<h3 id="killing-the-tunnel-mount_remote_fs">4.Killing the tunnel <a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ps ax | grep <span class="string">"ssh_command"</span> | awk <span class="string">'&#123;print $1&#125;'</span> | \</span></span><br><span class="line">  xargs -i kill &#123;&#125; 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
-<p>Firstly, ps is used to find all running processes. We then pipe the output to grep which looks for &quot;ssh_command&quot; (which should be replaced with whichever command you used to establish the tunnel). Then we use awk to return only the PID numbers for the relevant processes and these are finally piped to kill to terminate the process. All errors are redirected to /dev/null. For a simple explanation of output redirection, see this <a href="http://www.xaprb.com/blog/2006/06/06/what-does-devnull-21-mean/" target="_blank" rel="noopener">tutorial</a>.</p>
-<h1 id="part-8-git-over-ssh-git_over_ssh">Part 8: Git over SSH <a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></h1>
-<h1 id="part-9-rsync-through-an-ssh-tunnel">Part 9: Rsync through an SSH tunnel</h1>
-<p>Ref: http://toddharris.net/blog/2005/10/23/rsyncing-through-an-ssh-tunnel/</p>
-<p><code>curl</code>, the HTTP client used by Git, supports SOCKS proxies as provided by <code>ssh -D</code> dynamic tunnel.</p>
-<ol type="1">
-<li>Set up a dynamic (SOCKS) tunnel with: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh &lt;username&gt;@serverA -D 1080 -N</span><br></pre></td></tr></table></figure></li>
-<li>Configure Git to use it as a proxy: Globally (or per-repository) <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config [--global] http.proxy socks5:&#x2F;&#x2F;localhost:1080</span><br></pre></td></tr></table></figure> For a single command: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -c http.proxy&#x3D;socks5:&#x2F;&#x2F;localhost:1080 clone http:&#x2F;&#x2F;serverB&#x2F;repo.git</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="tcpdump-over-ssh-tunnel-and-read-capture-with-local-wireshark">Tcpdump over SSH tunnel and read capture with local wireshark</h1>
-<p>It’s often more useful to capture packets using <code>tcpdump</code> rather than <code>wireshark</code>. For example, you might want to do a remote capture and either don’t have GUI access or don’t have Wireshark installed on the remote machine.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -i &lt;interface-name&gt; -s 65535 -w &lt;some-file&gt;</span><br></pre></td></tr></table></figure>
-<p>Imagine now you want to capture traffic on remote server and use local wirehshark to read captured traffic. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh &lt;remote_server&gt; "sudo tcpdump -s0 -w - 'port 8080'" | wireshark -k -i -</span><br></pre></td></tr></table></figure></p>
-<p><code>tcpdump</code> requires priveldged right to be launched. To avoid inputing password, it is better enable password-less <code>sudo</code></p>
-<h2 id="open-the-etcsudoers-file-as-root-of-course-by-running">Open the /etc/sudoers file (as root, of course!) by running:</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo visudo</span><br></pre></td></tr></table></figure>
-<p><strong>Note that you should never edit /etc/sudoers with a regular text editor, such as Vim or nano, because they do not validate the syntax like the visudo editor!</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username     ALL=(ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure>
-<p>Replace username with your account username, of course. Save the file and exit. If you have any sort of syntax problem, visudo will warn you and you can abort the change or open the file for editing again.</p>
-<p>It is important to add this line at the end of the file, so that the other permissions do not override this directive, since they are processed in order.</p>
-<h1 id="use-ssh-to-create-vpn">Use SSH to create VPN</h1>
-<p>Refer to this tutorial: https://www.kancloud.cn/kancloud/unix-toolbox/50744</p>
-<h1 id="rsync-over-ssh">Rsync over ssh</h1>
-<p>https://gist.github.com/KartikTalwar/4393116</p>
-<p><code>c arcfour</code>: use the weakest but fastest SSH encryption. Must specify &quot;Ciphers arcfour&quot; in sshd_config on destination. 自从 OpenSSH 7.6(?) 之后, OpenSSH 不再支持这么一个Cipher了。https://www.reddit.com/r/archlinux/comments/9wf2nd/ssh_no_arcfour_cipher/ 这个帖子里说，时代在进步，其实有其他的 Cipher 不比 arcfour 慢，但同时还更安全，干嘛不用呢？比如 chacha20-poly1305@openssh.com</p>
-<p>Rsync 在大量小文件的情况下，速度要比scp快的多</p>
-<p>As a test, you can change into /tmp directory and type as follows: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -aHAXxv --numeric-ids --delete --progress -e &quot;ssh -T -c chacha20-poly1305@openssh.com -o Compression&#x3D;no -x&quot; ubuntu_server:~&#x2F;Documents&#x2F;sfc-patch .</span><br></pre></td></tr></table></figure> 关于上述命令的解释:</p>
-<ul>
-<li>a: archive mode - rescursive, preserves owner, preserves permissions, preserves modification times, preserves group, copies symlinks as symlinks, preserves device files.</li>
-<li>H: preserves hard-links</li>
-<li>A: preserves ACLs</li>
-<li>X: preserves extended attributes</li>
-<li>x: don't cross file-system boundaries</li>
-<li>--delete: delete extraneous files from destination dirs (differential clean-up during sync)</li>
-<li>--progress: show progress during transfer</li>
-<li>--numeric-ds: don't map uid/gid values by user/group name</li>
-</ul>
-<p>离开法国之前，我打算把在里尔的ubuntu_server上所有document下的数据全部拷贝至我的移动硬盘 rsync --exclude-from='rsync_exclude_file.txt' -aHAXxv --numeric-ids --delete --progress -e 'ssh -T -c chacha20-poly1305@openssh.com -o Compression=no -x' ubuntu_server:~/Documents/bake /Volumes/Memory/lille_ubunt_server/bake 注意: 原本bake这个文件夹并不存在，命令执行之后，这个文件夹会被自动创建</p>
-<p>最近通过里尔ubuntu_server机器下载了一个新西兰大学网站的一个数据集，该数据集无法通过国内的网址下载获得(不知何故)，现在需要将下载好的文件从ubuntu_server下载到我的Macbook Pro上。但是，通过翻墙服务器建立的SSH链接很不稳定，经常性出现连接中断的问题。导致马上就要下载好的文件，还需要从新下载，很是不方便。经过搜索，发现rsync对于文件夹还是单个文件，都支持断点续传功能。只需要加上<code>--partial</code>参数即可。需要注意的是，对于单个大型文件，用<code>--partial</code>参数的优势非常明显，但是如果在拷贝大量文件（可能有很多小文件不需要进行文件内断点续传）的时候，就要考虑时间上的问题的了。不用-P应该可以节省不少时间。</p>
-<p><code>-c aes128-ctr</code>：选择一个较弱但较快的SSH加密。其他人指定arcfour，这将需要在目标主机上手动修改ssh_config。这并非总是可能的，并且这种加密对我来说效果很好。因为传输的是一个单个大文件，所以我发现采用压缩比不压缩的传输效果好。即<code>compression=yes</code>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">split -a 2 -d -b 10m bigfile.tar.gz bigfile.tar.gz #将压缩包切片</span><br><span class="line">cat bigfile.tar.gz* &gt; bigfile.tar.gz #合并压缩包切片</span><br><span class="line">tar xvf bigfile.tar.gz #解压</span><br></pre></td></tr></table></figure>
-<p>对于一个单一的大文件来说, 参考链接: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for d in &#96;ssh ubuntu_server &#39;find ~&#x2F;Documents&#x2F;comp_aukland -name &quot;dataset.tar.gz[0-9][0-9]&quot;&#39;&#96;; do</span><br><span class="line">    #d&#x3D;$&#123;d%$&#39;\n&#39;&#125;   # Remove a trailing newline.</span><br><span class="line">    #echo &quot;Start to fetch $&#123;d&#125;...\n&quot;</span><br><span class="line">    rsync -aHAXxv --numeric-ids --delete --progress --partial -e &#39;ssh -T -c aes128-ctr -o Compression&#x3D;yes -x&#39; ubuntu_server:&quot;$d&quot; Downloads&#x2F;comp_aukland&#x2F; &amp;</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
-<p>ssh -t ubuntu_server 'find ~/Documents/comp_aukland -name &quot;dataset.tar.gz[0-9][0-9]&quot;' | parallel -j 4 rsync -aHAXxv --numeric-ids --delete --progress --partial -e &quot;ssh -T -c aes128-ctr -o Compression=yes -x&quot; ubuntu_server:{='uq'=} ~/Downloads/comp_aukland/</p>
-<p><code>ssh ubuntu_server 'find ~/Documents/comp_aukland -name &quot;dataset.tar.gz[0-9][0-9]&quot;'</code> 一旦加上<code>-t</code>,则文件末尾会莫名其妙地多了<code>#015</code>，导致无法发现真正的文件 /home/qsong/Documents/comp_aukland/dataset.tar.gz10</p>
-<p>parallel通过添加选项<code>v</code>，可以帮助debug. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rsync -av --progress --partial -e ssh -T -c aes128-ctr -o Compression&#x3D;yes -x ubuntu_server:&#39;dataset.tar.gz00 &#39; Downloads&#x2F;comp_aukland&#x2F;</span><br><span class="line">Unexpected remote arg: ubuntu_server:dataset.tar.gz00</span><br><span class="line">rsync error: syntax or usage error (code 1) at main.c(1374) [sender&#x3D;3.1.3]</span><br></pre></td></tr></table></figure> 不知道为啥文件名dataset.tar.gz00在parallel语句中被额外添加了单引号呢？？？</p>
-<p>最终有效的命令是： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat test-rsync.txt | parallel --will-cite -v -j 4 rsync -aHPAXxv --numeric-ids --delete --progress -e \&quot;ssh -T -c aes128-ctr -o Compression&#x3D;yes -x\&quot; ubuntu_server:&#123;&#x3D;&#39;uq&#39;&#x3D;&#125; ~&#x2F;Downloads&#x2F;comp_aukland&#x2F;</span><br></pre></td></tr></table></figure> 注意： 1. find命令的name域不采用双引号，即-name dataset.tar.gz[0-9][0-9],则name后面的数据将不会按照正则表达式去解释，无法达到预期效果。 2. parallel里如果需要使用quote,使用转义 3. cat命令输出作为parallel输入的时候，{}作为替换字符串，默认是会加上single quote的，这样会导致rsync出现执行错误，需要使用{='uq'=}避免引入single quote</p>
-<p>最终我发现一个很有意思的想象：把一个100M的大文件切割成10多个代销为10M的文件在进行传输，传输的速度是以前的4-10倍！！这一定跟rsync底层实现有关！！！可能是避免了不断来回计算两边的差异么？？？</p>
-<h1 id="part-x-troubleshooting-and-tips">Part X: Troubleshooting and tips</h1>
-<h2 id="connection-closed-by-remote-host-after-one-month-without-any-activity">1. connection closed by remote host after one month without any activity</h2>
-<p>I haven't connected to my Ubuntu server in my office from my Macbook Pro at home since one month. In the meantime, both my VPS and my Ubuntu server have never been shut down. However, I surprisingly observe that the SSH server on my Ubuntu server does not work. When I log into my VPS and further try to ssh into my laptop server, the following error are prompted (in the terminal of my VPS): <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh_exchange_identification: Connection closed by remote host</span><br></pre></td></tr></table></figure> At the terminal of my laptop server at school, such an error message prompts up: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect_to localhost port 22: failed.</span><br></pre></td></tr></table></figure></p>
-<p>I found that <code>sshd</code> daemon is not running at my Ubuntu server. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~ ps aux | grep sshd</span><br><span class="line">qsong    31271  0.0  0.0  15972   952 pts/2    S+   00:40   0:00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn sshd</span><br></pre></td></tr></table></figure> Naturally, I tried to restart sshd service: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">~ sudo service sshd restart</span><br><span class="line">[sudo] password for qsong: </span><br><span class="line">Job for ssh.service failed because the control process exited with error code. See &quot;systemctl status ssh.service&quot; and &quot;journalctl -xe&quot; for details.</span><br><span class="line">~ sudo systemctl restart sshd</span><br><span class="line">Job for ssh.service failed because the control process exited with error code. See &quot;systemctl status ssh.service&quot; and &quot;journalctl -xe&quot; for details.</span><br><span class="line">~ sudo systemctl status ssh.service </span><br><span class="line">● ssh.service - OpenBSD Secure Shell server</span><br><span class="line">   Loaded: loaded (&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;ssh.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: failed (Result: start-limit-hit) since mer. 2019-03-13 00:42:14 CET; 15s ago</span><br><span class="line">  Process: 31500 ExecStartPre&#x3D;&#x2F;usr&#x2F;sbin&#x2F;sshd -t (code&#x3D;exited, status&#x3D;255)</span><br><span class="line"> Main PID: 12601 (code&#x3D;exited, status&#x3D;0&#x2F;SUCCESS)</span><br><span class="line"></span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: Failed to start OpenBSD Secure Shell server.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: ssh.service: Unit entered failed state.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: ssh.service: Failed with result &#39;exit-code&#39;.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: ssh.service: Service hold-off time over, scheduling restart.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: Stopped OpenBSD Secure Shell server.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: ssh.service: Start request repeated too quickly.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: Failed to start OpenBSD Secure Shell server.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: ssh.service: Unit entered failed state.</span><br><span class="line">mars 13 00:42:14 qsong-P650SE systemd[1]: ssh.service: Failed with result &#39;start-limit-hit&#39;.</span><br></pre></td></tr></table></figure></p>
-<p>Finally, I solve this issue by reinstalling <code>openssh-server</code> again. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge openssh-server</span><br><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure></p>
-<p>Now the sshd daemon is runing again. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~ps aux | grep sshd</span><br><span class="line">root      1390  0.0  0.0  65512  5404 ?        Ss   00:46   0:00 /usr/sbin/sshd -D</span><br><span class="line">root      1510  0.0  0.0  96980  6964 ?        Ss   00:47   0:00 sshd: qsong [priv]</span><br><span class="line">qsong     1576  0.0  0.0  96980  3332 ?        S    00:47   0:00 sshd: qsong@pts/15</span><br><span class="line">qsong     2085  0.0  0.0  15940  1020 pts/15   S+   01:07   0:00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn sshd</span><br></pre></td></tr></table></figure></p>
-<h2 id="how-to-check-if-a-certain-port-is-open-or-used">How to check if a certain port is open or used?</h2>
-<p>We can use <code>lsof</code>. The syntax is: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo lsof -i -P -n</span><br><span class="line">$ sudo lsof -i -P -n | grep LISTEN</span><br><span class="line">$ doas lsof -i -P -n | grep &lt;A port Number&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="section"></h2>
-<p>在国内，SSH连接经常会断掉，某一次断掉之后的DEBUG信息(远程VPS的IP地址已经被隐藏)如下: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">debug1: client_input_channel_req: channel 0 rtype keepalive@openssh.com reply 1</span><br><span class="line">debug3: send packet: type 100</span><br><span class="line">debug3: receive packet: type 98</span><br><span class="line">debug1: client_input_channel_req: channel 0 rtype keepalive@openssh.com reply 1</span><br><span class="line">debug3: send packet: type 100</span><br><span class="line">debug3: receive packet: type 98</span><br><span class="line">debug1: client_input_channel_req: channel 0 rtype keepalive@openssh.com reply 1</span><br><span class="line">debug3: send packet: type 100</span><br><span class="line">debug3: send packet: type 1</span><br><span class="line">debug1: channel 0: free: client-session, nchannels 1</span><br><span class="line">debug3: channel 0: status: The following connections are open:</span><br><span class="line">  #0 client-session (t4 r0 i0&#x2F;0 o0&#x2F;0 e[write]&#x2F;0 fd 4&#x2F;5&#x2F;6 sock -1 cc -1)</span><br><span class="line"></span><br><span class="line">debug3: fd 1 is not O_NONBLOCK</span><br><span class="line">Connection to XX.XX.XX.XX closed by remote host.</span><br><span class="line">Connection to XX.XX.XX.XX closed.</span><br><span class="line">Transferred: sent 5912, received 8848 bytes, in 2888.1 seconds</span><br><span class="line">Bytes per second: sent 2.0, received 3.1</span><br><span class="line">debug1: Exit status -1</span><br></pre></td></tr></table></figure></p>
-<p>Refereces:</p>
-<section class="footnotes">
-<hr>
-<ol>
-<li id="fn1"><p>RUTSCHLE YVES, SSLH, http://www.rutschle.net/tech/sslh/README.html.<a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>SSH TUNNELLING FOR FUN AND PROFIT: AUTOSSH, https://www.everythingcli.org/ssh-tunnelling-for-fun-and-profit-autossh/<a href="#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p>Systemd Essentials: Working with Services, Units, and the Journal, https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal<a href="#fnref3" class="footnote-back">↩</a></p></li>
-<li id="fn4"><p>Understanding Systemd Units and Unit Files, https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files<a href="#fnref4" class="footnote-back">↩</a></p></li>
-<li id="fn5"><p>Simplify Your Life With an SSH Config File, https://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/<a href="#fnref5" class="footnote-back">↩</a></p></li>
-<li id="fn6"><p>https://phpsolved.com/mount-point-xyz-osxfuse-volume/<a href="#fnref6" class="footnote-back">↩</a></p></li>
-<li id="fn7"><p>FUSE and SSHFS on OS X, https://stuff-things.net/2015/05/20/fuse-and-sshfs-on-os-x/<a href="#fnref7" class="footnote-back">↩</a></p></li>
-<li id="fn8"><p>Mounting file systems over two SSH hops, https://www.larkinweb.co.uk/computing/mounting_file_systems_over_two_ssh_hops.html<a href="#fnref8" class="footnote-back">↩</a></p></li>
-<li id="fn9"><p>Tunneling git through ssh (to get past a firewall): port specification interperted as relative path?, https://superuser.com/questions/1117698/tunneling-git-through-ssh-to-get-past-a-firewall-port-specification-interpert<a href="#fnref9" class="footnote-back">↩</a></p></li>
-</ol>
-</section>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1394,7 +1186,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1405,8 +1197,10 @@
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
         <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -1496,6 +1290,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

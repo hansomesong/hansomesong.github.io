@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://rennesong.com/2020/06/08/hexo-math-support-tuto/</loc>
+    <loc>http://rennesong.com/2020/06/09/hexo-insert-pictures/</loc>
     
-    <lastmod>2020-06-09T06:40:24.460Z</lastmod>
+    <lastmod>2020-06-09T14:46:25.996Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/09/05/docker-networking/</loc>
+    
+    <lastmod>2020-06-09T14:27:38.361Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2019/03/25/hello-world/</loc>
     
-    <lastmod>2020-06-08T07:28:21.446Z</lastmod>
+    <lastmod>2020-06-09T14:14:49.576Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/03/25/docker-tuto/</loc>
+    
+    <lastmod>2020-06-09T13:39:37.550Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/index.html</loc>
+    
+    <lastmod>2020-06-09T13:34:16.925Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2020/06/08/hexo-math-support-tuto/</loc>
+    
+    <lastmod>2020-06-09T06:40:24.460Z</lastmod>
     
   </url>
   
@@ -40,13 +68,6 @@
     <loc>http://rennesong.com/2015/07/29/How-to-install-node-js-and-npm-on-Mac/</loc>
     
     <lastmod>2020-06-08T04:06:52.473Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/03/25/docker-tuto/</loc>
-    
-    <lastmod>2020-06-07T08:26:47.446Z</lastmod>
     
   </url>
   
@@ -208,13 +229,6 @@
     <loc>http://rennesong.com/2019/10/14/voip-tuto/</loc>
     
     <lastmod>2019-10-16T14:07:49.421Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/09/05/docker-networking/</loc>
-    
-    <lastmod>2019-10-08T10:12:22.596Z</lastmod>
     
   </url>
   
@@ -432,13 +446,6 @@
     <loc>http://rennesong.com/categories/index.html</loc>
     
     <lastmod>2019-03-27T13:48:32.165Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/tags/index.html</loc>
-    
-    <lastmod>2019-03-25T14:48:12.670Z</lastmod>
     
   </url>
   

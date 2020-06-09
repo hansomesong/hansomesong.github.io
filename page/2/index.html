@@ -163,6 +163,75 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/10/31/python-learning-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/31/python-learning-note/" class="post-title-link" itemprop="url">Some pitfalls and useful notes during my Python leanring</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-31 15:31:06" itemprop="dateCreated datePublished" datetime="2019-10-31T15:31:06+08:00">2019-10-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-17 00:32:15" itemprop="dateModified" datetime="2020-03-17T00:32:15+08:00">2020-03-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Python中str类型对象不可以做item assigment。因为string是一个immutable data type. 比如 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [70]: a &#x3D; &quot;123&quot;</span><br><span class="line"></span><br><span class="line">In [71]: a[0]&#x3D;4</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-71-998c6162715b&gt; in &lt;module&gt;</span><br><span class="line">----&gt; 1 a[0]&#x3D;4</span><br><span class="line"></span><br><span class="line">TypeError: &#39;str&#39; object does not support item assignment</span><br></pre></td></tr></table></figure> 再比如，想对str对象做原地址字符交换: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [68]: a &#x3D; &quot;hello&quot;</span><br><span class="line"></span><br><span class="line">In [69]: a[0], a[1] &#x3D; a[1], a[0]</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-69-e773f64dcc58&gt; in &lt;module&gt;</span><br><span class="line">----&gt; 1 a[0], a[1] &#x3D; a[1], a[0]</span><br><span class="line"></span><br><span class="line">TypeError: &#39;str&#39; object does not support item assignment</span><br></pre></td></tr></table></figure></p>
+<h1 id="create-2d-array-without-numpy-with-populating-an-element">Create 2D array without numpy with populating an element</h1>
+<p>source: https://python-forum.io/Thread-Creating-2D-array-without-Numpy</p>
+<p>The first way doesn't work because [[0] * n] creates a mutable list of zeros once. Then when the second *n copies the list, it copies references to first list, not the list itself. So you have a list of references, not a list of lists. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n &#x3D; 10</span><br><span class="line">p &#x3D; [[0] * n for row in n]</span><br></pre></td></tr></table></figure></p>
+<h1 id="jupyter-notebook-安装包问题">Jupyter notebook 安装包问题</h1>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/10/27/python-regex/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1308,7 +1377,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-08 18:12:22" itemprop="dateModified" datetime="2019-10-08T18:12:22+08:00">2019-10-08</time>
+                <time title="修改时间：2020-06-09 22:27:38" itemprop="dateModified" datetime="2020-06-09T22:27:38+08:00">2020-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1339,8 +1408,9 @@
 <p>虚拟机网络与容器网络异同 * VM network 拥有完善的隔离机制，虚拟网卡与硬件网卡在使用上没有啥区别，而 container network 则使用 network namespace 提供网络在Linux kernel 中的隔离 * 处于安全考虑，很多情况下，容器会部署在VM内部，这种嵌套部署需要设计心得网络模型 * Container migration 速度很快，因此 network policy 的更新需要跟得上其速度 * 容器数量多了，多主机之间的 ARP flooding 会造成大量资源浪费</p>
 <p>Docker 在开始的很长一段时间内只支持使用 <code>Linux bridge + iptables</code> 进行<code>single-host</code>的部署，自动化方面也只有 Pipework 这类 shell 脚本</p>
 <figure>
-<img src="/.com//docker-cnm.png" alt="Docker 提出的 container network model (CNM)"><span class="image-caption">Docker 提出的 container network model (CNM)</span><figcaption>Docker 提出的 container network model (CNM)</figcaption>
+<img src="docker-cnm.png" alt="Docker 提出的 container network model (CNM)" id="fig:docker-cnm" /><span class="image-caption">Docker 提出的 container network model (CNM)</span><figcaption>Docker 提出的 container network model (CNM)</figcaption>
 </figure>
+<img src="/2019/09/05/docker-networking/docker-cnm.png" class="" title="Docker 提出的 container network model (CNM) [xxxx]">
 <ul>
 <li>Sandbox: isolated netwokring running environment. Save the essential container network stack configuration, including: network interface pairs, routing table and DNS configuration. Under linux, sandbox is implemnted in form of linux network namespace. A sanbox may include several endponts from several networks.</li>
 <li>Endpoint: endpoint allows a sandbox to join in a network. Its implementation can be a veth pair or OVS internl port.</li>
@@ -1352,7 +1422,7 @@
 <li>使用docker network create命令来创建，只能创建docker内建的网络模式</li>
 <li>使用docker plugin，创建自定义网络 创建自定义网络需要设置网络的driver和ipam。</li>
 </ul>
-<p>Docker支持以下5中内建网络模式: ## Bridge: Docker默认的容器网络驱动。由Docker设计的一种NAT网络模型。Container通过一对veth pair连接到docker0网桥上，由Docker为容器动态分配IP及配置路由、防火墙规则等。Bridge模式下，Docker容器于Internet通信，以及不同容器之间的通信，都是通过iptables规则(如更换源或者目的地址等)控制的。 <img src="/.com//docker-bridge-mode.png" alt="Docker bridge mode"><span class="image-caption">Docker bridge mode</span></p>
+<p>Docker支持以下5中内建网络模式: ## Bridge: Docker默认的容器网络驱动。由Docker设计的一种NAT网络模型。Container通过一对veth pair连接到docker0网桥上，由Docker为容器动态分配IP及配置路由、防火墙规则等。Bridge模式下，Docker容器于Internet通信，以及不同容器之间的通信，都是通过iptables规则(如更换源或者目的地址等)控制的。 <img src="docker-bridge-mode.png" alt="Docker bridge mode" /><span class="image-caption">Docker bridge mode</span></p>
 <ul>
 <li>Host: 容器与主机共享同一Network Namespace，共享同一套网络协议栈、路由表及iptables规则等。容器与主机看到的是相同的网络视图.</li>
 <li>Null: 容器内网络配置为空，需要用户手动为容器配置网络接口及路由等。</li>
@@ -1360,7 +1430,7 @@
 </ul>
 <h2 id="overlay-mode">Overlay mode</h2>
 <p>Docker原生的跨主机多子网网络方案。主要通过使用Linux bridge和vxlan隧道实现，底层通过类似于etcd或consul的KV存储系统实现多机的信息同步(宋祁朋：需要确认下)。The overlay network driver creates a distributed network among multiple Docker daemon hosts. This network sits on top of (overlays) the host-specific networks, allowing containers connected to it (including swarm service containers) to communicate securely. Docker transparently handles routing of each packet to and from the correct Docker daemon host and the correct destination container.</p>
-<p>overlay网络模型比较复杂，底层需要类似consul或etcd的KV存储系统进行消息同步，核心是通过Linux网桥与vxlan隧道实现跨主机划分子网。每创建一个网络，Docker daemon 会在主机上创建一个单独的沙盒(i.e. network namespace). 在沙盒中，Docker(实际上是Docker daemon, 下同) 会创建名为br0的网桥，并在网桥上增加一个vxlan接口，每个网络占用一个<code>vxlan ID</code>，当前Docker创建vxlan隧道的ID范围为256~1000，因而最多可以创建745个网络。当添加一个容器到某一个网络上时，Docker会创建一对veth网卡设备，一端连接到此网络相关沙盒内的br0网桥上，另一端放入容器的沙盒内，并设置br0的IP地址作为容器内路由默认的网关地址，从而实现容器加入网络的目的。 <img src="/.com//docker-overlay-mode.png" alt="Docker overlay mode"><span class="image-caption">Docker overlay mode</span></p>
+<p>overlay网络模型比较复杂，底层需要类似consul或etcd的KV存储系统进行消息同步，核心是通过Linux网桥与vxlan隧道实现跨主机划分子网。每创建一个网络，Docker daemon 会在主机上创建一个单独的沙盒(i.e. network namespace). 在沙盒中，Docker(实际上是Docker daemon, 下同) 会创建名为br0的网桥，并在网桥上增加一个vxlan接口，每个网络占用一个<code>vxlan ID</code>，当前Docker创建vxlan隧道的ID范围为256~1000，因而最多可以创建745个网络。当添加一个容器到某一个网络上时，Docker会创建一对veth网卡设备，一端连接到此网络相关沙盒内的br0网桥上，另一端放入容器的沙盒内，并设置br0的IP地址作为容器内路由默认的网关地址，从而实现容器加入网络的目的。 <img src="docker-overlay-mode.png" alt="Docker overlay mode" /><span class="image-caption">Docker overlay mode</span></p>
 <p>总而言之，Docker的整个网络模型，是建立在Network Namespace、Linux网桥、vxlan隧道、iptables规则之上的，也正是由于过于依赖网桥与iptables，导致Docker的网络效率不高，招致了用户和开发者的诟病.</p>
 <h1 id="appendix">Appendix</h1>
 <h2 id="linux-network-namespace">Linux network namespace</h2>
@@ -1373,79 +1443,6 @@
 <h1 id="kubernets-和-docker-之间的关系">Kubernets 和 Docker 之间的关系</h1>
 <p>Kubernetes与Docker有什么关系？ 众所周知，Docker提供容器的生命周期管理，Docker镜像构建运行时容器。但是，由于这些单独的容器必须通信，因此使用Kubernetes。因此，我们说Docker构建容器，这些容器通过Kubernetes相互通信。因此，可以使用Kubernetes手动关联和编排在多个主机上运行的容器。</p>
 <p><code>helm</code> 是 Kubernets 生态中的一个包管理工具。helm chart 是将某个应用所需的所有配置等打包到一起，发布到 helm 的 repo 中，tiller 是 helm 的服务端组件，部署在k8s集群中。在部署应用时就可以使用类似于 <code>apt-get install</code> 的命令<code>helm install</code> 来安装。<code>helm</code> 相关组件的关系如下:</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/08/26/openstack-learning-note/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/26/openstack-learning-note/" class="post-title-link" itemprop="url">每天5分钟玩转 OpenStack 读书笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-26 18:02:14" itemprop="dateCreated datePublished" datetime="2019-08-26T18:02:14+08:00">2019-08-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-29 23:03:29" itemprop="dateModified" datetime="2019-08-29T23:03:29+08:00">2019-08-29</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>KVM 狭义地来说，其实只是一个 linux 内核模块(<code>kvm.ko</code>), 负责虚拟机的调度以及内存管理。虚拟机的IO则有其他linux内核模块以及QEMU完成。</p>
-<p><code>Libvirt</code> 简单说其实就是KVM的管理工具，不但是KVM，还提供了对 Xen, VirtualBox 的支持。<code>Libvirt</code> 包含 3 个东西：后台 daemon 程序 libvirtd、API 库和命令行工具 virsh</p>
-<p>作为 KVM 和 OpenStack 的实施人员，virsh 和 virt-manager 是一定要会用的。</p>
-<figure>
-<img src="/.com//iaas-paas-saas.jpg" alt="云计算三种模式: IaaS, PaaS, SaaS"><span class="image-caption">云计算三种模式: IaaS, PaaS, SaaS</span><figcaption>云计算三种模式: IaaS, PaaS, SaaS</figcaption>
-</figure>
-<figure>
-<img src="/.com//openstack-vm-creation-procedures.png" alt="OpenStack创建VM步骤示意图"><span class="image-caption">OpenStack创建VM步骤示意图</span><figcaption>OpenStack创建VM步骤示意图</figcaption>
-</figure>
 
       
     </div>
@@ -1530,7 +1527,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1541,8 +1538,10 @@
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
         <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>

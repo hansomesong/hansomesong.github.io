@@ -163,6 +163,66 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/05/02/linux-networking/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/02/linux-networking/" class="post-title-link" itemprop="url">linux-networking</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-05-02 15:39:19 / 修改时间：23:00:52" itemprop="dateCreated datePublished" datetime="2019-05-02T15:39:19+08:00">2019-05-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="linux-iptables-命令">Linux iptables 命令</h1>
+<p>VPS 上安装 kcptun 之后，最后弹出这样的信息: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">警告: 自动添加 iptables 规则失败</span><br><span class="line">如有必要, 请手动添加端口 29900 的防火墙规则:</span><br><span class="line">    iptables -I INPUT -p udp --dport 29900 -j ACCEPT</span><br><span class="line">    service iptables save</span><br><span class="line">    service iptables restart</span><br><span class="line">+ sleep 3</span><br><span class="line">+ systemctl enable supervisord.service</span><br><span class="line">Created symlink from &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;multi-user.target.wants&#x2F;supervisord.service to &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;supervisord.service.</span><br></pre></td></tr></table></figure> 那么问题来了: 这条防火墙规则不添加的话，是否会影响 kcptun 的使用？是否对 kcptun 加速性能有影响？</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/23/linux-command-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1012,142 +1072,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/04/11/elliptic-curve-cipher/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/04/11/elliptic-curve-cipher/" class="post-title-link" itemprop="url">elliptic-curve-cipher</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-04-11 23:16:17" itemprop="dateCreated datePublished" datetime="2019-04-11T23:16:17+08:00">2019-04-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-04-26 18:48:49" itemprop="dateModified" datetime="2019-04-26T18:48:49+08:00">2019-04-26</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>http://www.ehcoo.com/cryptology1.html 密码学科普教程</p>
-<p>An Essential property for cryptography is that a group has a finite number of points.</p>
-<p>Calculations over the real numbers are slow and inaccurate due to round-off error. Cryptographic applications require fast and precise arithmetic; thus elliptic curve groups over the finite fields of Fp and F2m are used in practice.</p>
-<p>我现在需要解决的问题是：</p>
-<p>不管用什么公钥加密方法，不管是否安全，我现在需要生成一个最大长度为16字节的数字签名(digital signature)</p>
-<p>方案1: Doing the math, you'd need to use 16-bit keys in ECC to generate 64-bit signatures, which is very weak. For ECC, anything less than 128 bits can be considered weak. For RSA this is 1024 bits</p>
-<p>方案二：采用对称加密，对称加密，加密之后信息会是多长？</p>
-<p>方案三：Message authentication code</p>
-<p>最小哈希签名：https://blog.mythsman.com/2016/09/17/1/ 最小哈希签名(minhashing signature)解决的问题是，如何用一个哈希方法来对一个集合（集合大小为n）中的子集进行保留相似度的映射（使他在内存中占用的字节数尽可能的少）。</p>
-<h1 id="essential-knowledge-abouut-group-theory">Essential knowledge abouut Group theory</h1>
-<h2 id="definition-of-group">Definition of group</h2>
-<p>群的定义是：一个集合若定义了一个封闭的运算称为乘法，并且满足下面的几条： * 结合律成立 * 有左单位元e存在，e左乘任何元素都不变 * 有左逆元存在，左逆元与其相乘后是e 这样的集合就是群。</p>
-<h2 id="order-of-group">Order of group</h2>
-<p>群中元素的个数就是群的阶。有限阶的群叫有限群。密码学就是需要用到有限群和有限域的一些定理。</p>
-<h2 id="group-of-prime-ordercyclic-group-of-prime-order">Group of prime order/cyclic group of prime order</h2>
-<p>A group of prime order, or cyclic group of prime order, is any of the following equivalent things: * It is a cyclic group whose order is a prime number. * It is isomorphic to the quotient of the group of integers by a subgroup generated by a prime number. * It is the additive group of a finite prime field (note that we have to say finite because &quot;prime field&quot; also includes the field of rational numbers, the prime field of characteristic zero).</p>
-<p>If <span class="math inline">\(p\)</span> denotes the order of the group, then the cyclic group of order p is denoted <span class="math inline">\(C_p\)</span>, <span class="math inline">\(\mathbb{Z}/p\mathbb{Z}\)</span>, <span class="math inline">\(\mathbb{Z}_p\)</span> or <span class="math inline">\(\mathbb{F}_p\)</span>.</p>
-<p>素数阶有限群的例子：n为素数的模n的剩余类加群<span class="math inline">\(Z_n\)</span></p>
-<h2 id="prime-field-buterinexploring2017">Prime field <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></h2>
-<p>A prime field consists of the set of numbers <span class="math inline">\(0, 1, 2… p-1\)</span>, where <span class="math inline">\(p\)</span> is prime, and the various operations are defined as follows: <span class="math display">\[\begin{align}
-a + b:  (a + b) \\% p \\\\
-a + b:  (a + b) \\% p \\\\
-a - b:  (a - b) \\% p \\\\
-a / b:  (a * b^{(p-2)}) \\% p 
-\end{align}
-\]</span> In elliptic curves in reality, the points and equations are usually computed in prime fields.</p>
-<h2 id="extension-field-buterinexploring2017">Extension field <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></h2>
-<p>The complex number is a typical example of extension field, where the field of real numbers is <strong>extended</strong> with the additional element <span class="math inline">\(sqrt(-1) = i\)</span>. Basically, extension fields work by taking an existing field, then “inventing” a new element and defining the relationship between that element and existing elements (in this case, i² + 1 = 0), making sure that this equation does not hold true for any number that is in the original field, and looking at the set of all linear combinations of elements of the original field and the new element that you have just created.</p>
-<p>To divide in extension field, we do: $a / b: (a * b<sup>{p</sup>{2}-2}) % p $</p>
-<h2 id="multiplicative-group-of-integers-modulo-n">Multiplicative group of integers modulo n</h2>
-<p>n剩余类群的定义：n是一个正整数，对于任意一个正整数，被n除后余数会有几种可能，0、1....n-1。所有的这些剩余类所构成的集合叫模n剩余类群。其中的乘法运算定义为：相加后再和n求模。 举个例子：Z5，模5剩余类群。4与3相乘结果为2 由于循环群是Able群，其中的运算一般也就写为加法。 Z5中的生成元：1首先肯定是，2=1+1、3=1+1+1、4=1+1+1+1、0=1+1+1+1+1 2也是4=2+2、1=2+2+2、3=2+2+2、0=2+2+2+2 不难发现Z5的生成元是1、2、3、4</p>
-<h2 id="order-of-element-in-group">Order of element in group</h2>
-<p>现在说群中元素的阶。群的定义中说群中运算是封闭的，那么若将群中任何一个元素自己和自己相乘若干次后必定会变成单位元e的。这个次数叫做这个元素的阶。</p>
-<p>Theorem: In any group, there is only one identity element. Theorem: A group of prime order is a cyclic group.</p>
-<h2 id="bilinear-paring-aka.-bilinear-map">Bilinear paring (aka. Bilinear map)</h2>
-<ul>
-<li>bilinear maps, or pairings, give cyclic groups additional properties.</li>
-<li>these additional properties were initially seen as detrimental as they could be exploited to break cryptosystems</li>
-<li>it it was later discovered that they could also be exploited to build cryptosystems.</li>
-<li>Boneh and Franklin’s identity-based encryption scheme is perhaps the most famous early example (not the first) of what could be achieved using bilinear maps.</li>
-<li>Some research considered its own field called pairing-based cryptography</li>
-</ul>
-<p>如果不考虑安全性，函数<span class="math inline">\(e(x,y) = g^{x,y}\)</span> 就是一个例子，g需要是生成元</p>
-<h3 id="discrete-log-problem">Discrete log problem</h3>
-<p>Given <span class="math inline">\(g, g^x\)</span>, compute <span class="math inline">\(x\)</span>.</p>
-<h3 id="computational-diffie-hellman-problem">Computational Diffie-Hellman Problem</h3>
-<p>Given <span class="math inline">\(g, g^x, g^y\)</span>, compute <span class="math inline">\(g^{xy}\)</span>.</p>
-<h3 id="decisional-diffie-hellman-problem">Decisional Diffie-Hellman Problem</h3>
-<p>Given <span class="math inline">\(g, g^x, g^y, g^z\)</span>,determine if <span class="math inline">\(xy = z\)</span>.</p>
-<p>A vast array of cryptosystems including the Diffie-Hellman key exchange protocol can be built assuming one of these problems, or one of many other related problems, is difficult to solve. The discrete log problem is the most important, for if it could be solved, all other related problems could also be solved.</p>
-<h2 id="implementation">Implementation</h2>
-<p>There are two mathematical settings to choose from when implementing cyclic groups: finite fields and elliptic curves. Finite fields were proposed first, and much has been published on implementing finite fields and their potential weaknesses.</p>
-<h3 id="finite-field">Finite field</h3>
-<p>One picks a prime n and uses a subgroup G of <span class="math inline">\(Z^{*}_n\)</span> of prime order <span class="math inline">\(r\)</span>. so the group operation is field multiplication.</p>
-<h3 id="elliptic-curve">Elliptic curve</h3>
-<p>For elliptic curves, one takes an elliptic curve <span class="math inline">\(E\)</span> over some finite field <span class="math inline">\(K\)</span> and takes some subgroup <span class="math inline">\(G\)</span> of the group of points <span class="math inline">\(E(K)\)</span> with prime order <span class="math inline">\(r\)</span>, so the group operation is point addition. Finite fields can be viewed as a special case of elliptic curves due to a correspondence between certain singular curves and multiplicative groups of finite fields.</p>
-<p>The security of a 160-bit elliptic curve group and a 1024-bit finite field are roughly equivalent</p>
-<h1 id="椭圆曲线加密开源实现">椭圆曲线加密开源实现</h1>
-<p><a href="https://github.com/warner/python-ecdsa" target="_blank" rel="noopener">Pure-Python ECDSA</a>: This library provides key generation, signing, and verifying, for five popular <code>NIST &quot;Suite B&quot;</code> GF(p) curves, with key lengths of 192, 224, 256, 384, and 521 bits.</p>
-<h1 id="经验教训">经验教训</h1>
-<h2 id="一开始就应该先验证核心的算法而不是纠结于底层的-sfc-nsh-的搭建">一开始就应该先验证核心的算法，而不是纠结于底层的 SFC NSH 的搭建</h2>
-<p>简单地验证下多层签名的时间消耗是很容易的，至少先验证核心的算法是有效的，再逐步考虑更复杂更底层的平台问题才有意义。不然如果这个算法压根就是有问题的，那么底层搭出来了，也是浪费时间</p>
-<h2 id="当底层搭建的被卡住的时候而且明确知道不是自己的问题的时候应该分精力给其他问题而不是推卸责任似的死等">当底层搭建的被卡住的时候，而且明确知道不是自己的问题的时候，应该分精力给其他问题，而不是推卸责任似的死等</h2>
-<h1 id="参考资料">参考资料：</h1>
-<p>https://stackoverflow.com/questions/279418/what-is-a-somewhat-secure-way-of-generating-a-64-bit-signature</p>
-<section class="footnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Exploring Elliptic Curve Pairings,https://medium.com/<span class="citation" data-cites="VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627">@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627</span><a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>Exploring Elliptic Curve Pairings,https://medium.com/<span class="citation" data-cites="VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627">@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627</span><a href="#fnref2" class="footnote-back">↩</a></p></li>
-</ol>
-</section>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1217,7 +1141,7 @@ a / b:  (a * b^{(p-2)}) \\% p
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1228,8 +1152,10 @@ a / b:  (a * b^{(p-2)}) \\% p
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
         <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
