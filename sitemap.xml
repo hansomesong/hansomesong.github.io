@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://rennesong.com/2020/06/08/hexo-math-support-tuto/</loc>
+    
+    <lastmod>2020-06-09T06:40:24.460Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/03/25/hello-world/</loc>
+    
+    <lastmod>2020-06-08T07:28:21.446Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/about/index.html</loc>
+    
+    <lastmod>2020-06-08T06:58:26.852Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://rennesong.com/2019/07/14/ssh-into-vm-on-remote-server/</loc>
     
     <lastmod>2020-06-08T06:31:48.630Z</lastmod>
@@ -16,23 +37,9 @@
   </url>
   
   <url>
-    <loc>http://rennesong.com/2020/06/08/hexo-math-support-tuto/</loc>
-    
-    <lastmod>2020-06-08T06:12:20.265Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://rennesong.com/2015/07/29/How-to-install-node-js-and-npm-on-Mac/</loc>
     
     <lastmod>2020-06-08T04:06:52.473Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/03/25/hello-world/</loc>
-    
-    <lastmod>2020-06-08T03:27:20.032Z</lastmod>
     
   </url>
   
@@ -124,13 +131,6 @@
     <loc>http://rennesong.com/2019/10/11/k8s-tuto/</loc>
     
     <lastmod>2019-12-17T17:57:07.124Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/about/index.html</loc>
-    
-    <lastmod>2019-12-17T17:53:45.842Z</lastmod>
     
   </url>
   
@@ -471,14 +471,14 @@
   </url>
   
   <url>
-    <loc>http://rennesong.com/2015/07/28/How-to-establish-personal-blog-with-Github-pages-and-hexo/</loc>
+    <loc>http://rennesong.com/2015/07/30/Common-used-vim-commands/</loc>
     
     <lastmod>2019-03-25T10:27:10.933Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://rennesong.com/2015/07/30/Common-used-vim-commands/</loc>
+    <loc>http://rennesong.com/2015/07/28/How-to-establish-personal-blog-with-Github-pages-and-hexo/</loc>
     
     <lastmod>2019-03-25T10:27:10.933Z</lastmod>
     
