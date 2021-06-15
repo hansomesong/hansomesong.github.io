@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="Creation of VxLAN port with default UDP service port: key&#x3D;flow is meant to get the tunnel ID from the flow and remote_ip&#x3D;flow is meant to get the tunnel destination IP address from the flow 12# br-tun">
@@ -28,7 +28,7 @@
 <meta property="og:description" content="Creation of VxLAN port with default UDP service port: key&#x3D;flow is meant to get the tunnel ID from the flow and remote_ip&#x3D;flow is meant to get the tunnel destination IP address from the flow 12# br-tun">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-03-25T12:49:27.000Z">
-<meta property="article:modified_time" content="2019-04-08T10:46:13.153Z">
+<meta property="article:modified_time" content="2019-04-08T10:46:13.000Z">
 <meta property="article:author" content="rennsong">
 <meta property="article:tag" content="ovs">
 <meta property="article:tag" content="vxlan">
@@ -77,12 +77,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -119,21 +119,6 @@
         <li class="menu-item menu-item-home">
 
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -227,13 +212,13 @@
 <h1 id="create-the-vxlan-port-by-specifying-udp-destination-port-5000.">create the VxLAN port by specifying UDP destination port, 5000.</h1>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-port br-tun vxlan1 -- set Interface vxlan1 type=vxlan options:remote_ip=flow options:key=flow options:dst_port=5000</span><br></pre></td></tr></table></figure>
 <h1 id="create-openflow-flows-without-having-to-have-external-openflow-controller">Create Openflow flows without having to have external Openflow controller</h1>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl add-flow br-tun "in_port=LOCAL actions=set_tunnel:1,set_field:172.16.2.3-&gt;tun_dst,output:1"</span><br></pre></td></tr></table></figure>
-<p>or <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl add-flow br-tun "in_port=LOCAL actions=set_field:172.16.2.3-&gt;tun_dst, set_field:1-&gt;tun_id, output:1</span><br></pre></td></tr></table></figure> <code>set_tunnel</code> is used to specify the VNI. <code>set_field</code> to specify the tunnel destination.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl add-flow br-tun &quot;in_port=LOCAL actions=set_tunnel:1,set_field:172.16.2.3-&gt;tun_dst,output:1&quot; </span><br></pre></td></tr></table></figure>
+<p>or <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl add-flow br-tun &quot;in_port=LOCAL actions=set_field:172.16.2.3-&gt;tun_dst, set_field:1-&gt;tun_id, output:1</span><br></pre></td></tr></table></figure> <code>set_tunnel</code> is used to specify the VNI. <code>set_field</code> to specify the tunnel destination.</p>
 <h1 id="ovs-nsh-测试脚本手动实验">OVS NSH 测试脚本手动实验</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">AT_BANNER([network service header (NSH)])</span><br><span class="line"></span><br><span class="line">### -----------------------------------------------------------------</span><br><span class="line">###   Simple NSH matching test case</span><br><span class="line">### -----------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">AT_SETUP([nsh - matching])</span><br><span class="line"></span><br><span class="line">OVS_VSWITCHD_START([dnl</span><br><span class="line">    set bridge br0 datapath_type&#x3D;dummy \</span><br><span class="line">        protocols&#x3D;OpenFlow10,OpenFlow13,OpenFlow14,OpenFlow15 -- \</span><br><span class="line">    add-port br0 p1 -- set Interface p1 type&#x3D;dummy ofport_request&#x3D;1 -- \</span><br><span class="line">    add-port br0 p2 -- set Interface p2 type&#x3D;dummy ofport_request&#x3D;2])</span><br><span class="line"></span><br><span class="line">AT_DATA([flows.txt], [dnl</span><br><span class="line">    table&#x3D;0,in_port&#x3D;1,dl_type&#x3D;0x894f,nsh_ttl&#x3D;63,nsh_mdtype&#x3D;1,nsh_np&#x3D;3,nsh_spi&#x3D;0x123456,nsh_si&#x3D;255,nsh_c1&#x3D;0x11223344,actions&#x3D;set_field:0x2-&gt;nsh_flags,set_field:254-&gt;nsh_si,set_field:0x44332211-&gt;nsh_c1,2</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">AT_CHECK([</span><br><span class="line">    ovs-ofctl del-flows br0</span><br><span class="line">    ovs-ofctl -Oopenflow13 add-flows br0 flows.txt</span><br><span class="line">    ovs-ofctl -Oopenflow13 dump-flows br0 | ofctl_strip | sort | grep actions</span><br><span class="line">], [0], [dnl</span><br><span class="line"> in_port&#x3D;1,dl_type&#x3D;0x894f,nsh_ttl&#x3D;63,nsh_mdtype&#x3D;1,nsh_np&#x3D;3,nsh_spi&#x3D;0x123456,nsh_si&#x3D;255,nsh_c1&#x3D;0x11223344 actions&#x3D;set_field:2-&gt;nsh_flags,set_field:254-&gt;nsh_si,set_field:0x44332211-&gt;nsh_c1,output:2</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">AT_CHECK([</span><br><span class="line">    ovs-appctl ofproto&#x2F;trace br0 &#39;in_port&#x3D;1,dl_type&#x3D;0x894f,nsh_ttl&#x3D;63,nsh_mdtype&#x3D;1,nsh_np&#x3D;3,nsh_spi&#x3D;0x123456,nsh_si&#x3D;255,nsh_c1&#x3D;0x11223344,nsh_c2&#x3D;0x55667788,nsh_c3&#x3D;0x99aabbcc,nsh_c4&#x3D;0xddeeff00&#39;</span><br><span class="line">], [0], [dnl</span><br><span class="line">Flow: in_port&#x3D;1,vlan_tci&#x3D;0x0000,dl_src&#x3D;00:00:00:00:00:00,dl_dst&#x3D;00:00:00:00:00:00,dl_type&#x3D;0x894f,nsh_flags&#x3D;0,nsh_ttl&#x3D;63,nsh_mdtype&#x3D;1,nsh_np&#x3D;3,nsh_spi&#x3D;0x123456,nsh_si&#x3D;255,nsh_c1&#x3D;0x11223344,nsh_c2&#x3D;0x55667788,nsh_c3&#x3D;0x99aabbcc,nsh_c4&#x3D;0xddeeff00,nw_proto&#x3D;0,nw_tos&#x3D;0,nw_ecn&#x3D;0,nw_ttl&#x3D;0</span><br><span class="line"></span><br><span class="line">bridge(&quot;br0&quot;)</span><br><span class="line">-------------</span><br><span class="line"> 0. in_port&#x3D;1,dl_type&#x3D;0x894f,nsh_ttl&#x3D;63,nsh_mdtype&#x3D;1,nsh_np&#x3D;3,nsh_spi&#x3D;0x123456,nsh_si&#x3D;255,nsh_c1&#x3D;0x11223344, priority 32768</span><br><span class="line">    set_field:2-&gt;nsh_flags</span><br><span class="line">    set_field:254-&gt;nsh_si</span><br><span class="line">    set_field:0x44332211-&gt;nsh_c1</span><br><span class="line">    output:2</span><br><span class="line"></span><br><span class="line">Final flow: in_port&#x3D;1,vlan_tci&#x3D;0x0000,dl_src&#x3D;00:00:00:00:00:00,dl_dst&#x3D;00:00:00:00:00:00,dl_type&#x3D;0x894f,nsh_flags&#x3D;2,nsh_ttl&#x3D;63,nsh_mdtype&#x3D;1,nsh_np&#x3D;3,nsh_spi&#x3D;0x123456,nsh_si&#x3D;254,nsh_c1&#x3D;0x44332211,nsh_c2&#x3D;0x55667788,nsh_c3&#x3D;0x99aabbcc,nsh_c4&#x3D;0xddeeff00,nw_proto&#x3D;0,nw_tos&#x3D;0,nw_ecn&#x3D;0,nw_ttl&#x3D;0</span><br><span class="line">Megaflow: recirc_id&#x3D;0,eth,in_port&#x3D;1,dl_type&#x3D;0x894f,nsh_flags&#x3D;0,nsh_ttl&#x3D;63,nsh_mdtype&#x3D;1,nsh_np&#x3D;3,nsh_spi&#x3D;0x123456,nsh_si&#x3D;255,nsh_c1&#x3D;0x11223344</span><br><span class="line">Datapath actions: set(nsh(flags&#x3D;2,ttl&#x3D;63,spi&#x3D;0x123456,si&#x3D;254,c1&#x3D;0x44332211)),2</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">OVS_VSWITCHD_STOP</span><br><span class="line">AT_CLEANUP</span><br></pre></td></tr></table></figure>
-<p>我觉得 这里面 <code>dnl</code> 应该指代的是 <code>ovs-vsctl add-bridge br0</code>. 比如如下命令：<code>--</code> 双横线好像是代表 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-br br0 -- set bridge br0 datapath_type&#x3D;netdev</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">AT_BANNER<span class="params">([network service header (NSH)</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">### -----------------------------------------------------------------</span></span><br><span class="line"><span class="comment">###   Simple NSH matching test case</span></span><br><span class="line"><span class="comment">### -----------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line">AT_SETUP<span class="params">([nsh - matching])</span></span><br><span class="line"></span><br><span class="line">OVS_VSWITCHD_START<span class="params">([dnl</span></span><br><span class="line"><span class="params">    set bridge br0 <span class="attr">datapath_type</span>=dummy \</span></span><br><span class="line"><span class="params">        <span class="attr">protocols</span>=OpenFlow10,OpenFlow13,OpenFlow14,OpenFlow15 -- \</span></span><br><span class="line"><span class="params">    add-port br0 p1 -- set Interface p1 <span class="attr">type</span>=dummy <span class="attr">ofport_request</span>=1 -- \</span></span><br><span class="line"><span class="params">    add-port br0 p2 -- set Interface p2 <span class="attr">type</span>=dummy <span class="attr">ofport_request</span>=2])</span></span><br><span class="line"></span><br><span class="line">AT_DATA<span class="params">([flows.txt], [dnl</span></span><br><span class="line"><span class="params">    <span class="attr">table</span>=0,<span class="attr">in_port</span>=1,<span class="attr">dl_type</span>=0x894f,<span class="attr">nsh_ttl</span>=63,<span class="attr">nsh_mdtype</span>=1,<span class="attr">nsh_np</span>=3,<span class="attr">nsh_spi</span>=0x123456,<span class="attr">nsh_si</span>=255,<span class="attr">nsh_c1</span>=0x11223344,<span class="attr">actions</span>=set_field:0x2-&gt;nsh_flags,set_field:254-&gt;nsh_si,set_field:0x44332211-&gt;nsh_c1,2</span></span><br><span class="line"><span class="params">])</span></span><br><span class="line"></span><br><span class="line">AT_CHECK<span class="params">([</span></span><br><span class="line"><span class="params">    ovs-ofctl del-flows br0</span></span><br><span class="line"><span class="params">    ovs-ofctl -Oopenflow13 add-flows br0 flows.txt</span></span><br><span class="line"><span class="params">    ovs-ofctl -Oopenflow13 dump-flows br0 | ofctl_strip | sort | grep actions</span></span><br><span class="line"><span class="params">], [0], [dnl</span></span><br><span class="line"><span class="params"> <span class="attr">in_port</span>=1,<span class="attr">dl_type</span>=0x894f,<span class="attr">nsh_ttl</span>=63,<span class="attr">nsh_mdtype</span>=1,<span class="attr">nsh_np</span>=3,<span class="attr">nsh_spi</span>=0x123456,<span class="attr">nsh_si</span>=255,<span class="attr">nsh_c1</span>=0x11223344 <span class="attr">actions</span>=set_field:2-&gt;nsh_flags,set_field:254-&gt;nsh_si,set_field:0x44332211-&gt;nsh_c1,output:2</span></span><br><span class="line"><span class="params">])</span></span><br><span class="line"></span><br><span class="line">AT_CHECK<span class="params">([</span></span><br><span class="line"><span class="params">    ovs-appctl ofproto/trace br0 &#x27;<span class="attr">in_port</span>=1,<span class="attr">dl_type</span>=0x894f,<span class="attr">nsh_ttl</span>=63,<span class="attr">nsh_mdtype</span>=1,<span class="attr">nsh_np</span>=3,<span class="attr">nsh_spi</span>=0x123456,<span class="attr">nsh_si</span>=255,<span class="attr">nsh_c1</span>=0x11223344,<span class="attr">nsh_c2</span>=0x55667788,<span class="attr">nsh_c3</span>=0x99aabbcc,<span class="attr">nsh_c4</span>=0xddeeff00&#x27;</span></span><br><span class="line"><span class="params">], [0], [dnl</span></span><br><span class="line"><span class="params">Flow: <span class="attr">in_port</span>=1,<span class="attr">vlan_tci</span>=0x0000,<span class="attr">dl_src</span>=00:00:00:00:00:00,<span class="attr">dl_dst</span>=00:00:00:00:00:00,<span class="attr">dl_type</span>=0x894f,<span class="attr">nsh_flags</span>=0,<span class="attr">nsh_ttl</span>=63,<span class="attr">nsh_mdtype</span>=1,<span class="attr">nsh_np</span>=3,<span class="attr">nsh_spi</span>=0x123456,<span class="attr">nsh_si</span>=255,<span class="attr">nsh_c1</span>=0x11223344,<span class="attr">nsh_c2</span>=0x55667788,<span class="attr">nsh_c3</span>=0x99aabbcc,<span class="attr">nsh_c4</span>=0xddeeff00,<span class="attr">nw_proto</span>=0,<span class="attr">nw_tos</span>=0,<span class="attr">nw_ecn</span>=0,<span class="attr">nw_ttl</span>=0</span></span><br><span class="line"><span class="params"></span></span><br><span class="line"><span class="params">bridge(&quot;br0&quot;)</span></span><br><span class="line"><span class="params">-------------</span></span><br><span class="line"> 0. in_port=1,dl_type=0x894f,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=255,nsh_c1=0x11223344, priority 32768</span><br><span class="line">    <span class="keyword">set</span>_field<span class="function">:2-</span>&gt;nsh_flags</span><br><span class="line">    <span class="keyword">set</span>_field<span class="function">:254-</span>&gt;nsh_si</span><br><span class="line">    <span class="keyword">set</span>_field<span class="function">:0x44332211-</span>&gt;nsh_c1</span><br><span class="line">    output<span class="function">:2</span></span><br><span class="line"></span><br><span class="line">Final flow: in_port=1,vlan_tci=0x0000,dl_src=00<span class="function">:00</span><span class="function">:00</span><span class="function">:00</span><span class="function">:00</span><span class="function">:00</span>,dl_dst=00<span class="function">:00</span><span class="function">:00</span><span class="function">:00</span><span class="function">:00</span><span class="function">:00</span>,dl_type=0x894f,nsh_flags=2,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=254,nsh_c1=0x44332211,nsh_c2=0x55667788,nsh_c3=0x99aabbcc,nsh_c4=0xddeeff00,nw_proto=0,nw_tos=0,nw_ecn=0,nw_ttl=0</span><br><span class="line">Megaflow: recirc_id=0,eth,in_port=1,dl_type=0x894f,nsh_flags=0,nsh_ttl=63,nsh_mdtype=1,nsh_np=3,nsh_spi=0x123456,nsh_si=255,nsh_c1=0x11223344</span><br><span class="line">Datapath actions: <span class="keyword">set</span><span class="params">(nsh(<span class="attr">flags</span>=2,<span class="attr">ttl</span>=63,<span class="attr">spi</span>=0x123456,<span class="attr">si</span>=254,<span class="attr">c1</span>=0x44332211)</span>),2</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">OVS_VSWITCHD_STOP</span><br><span class="line">AT_CLEANUP</span><br></pre></td></tr></table></figure>
+<p>我觉得 这里面 <code>dnl</code> 应该指代的是 <code>ovs-vsctl add-bridge br0</code>. 比如如下命令：<code>--</code> 双横线好像是代表 <figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl<span class="built_in"> add-br </span>br0 -- set<span class="keyword"> bridge</span> br0 datapath_type=netdev</span><br></pre></td></tr></table></figure></p>
 <h1 id="延伸阅读">延伸阅读</h1>
-<p><a href="http://netsecinfo.blogspot.com/2013/07/linux-ovs-vxlan-based-virtual-networks.html" target="_blank" rel="noopener">Linux OVS &amp; VxLAN based virtual networks</a> <a href="http://netsecinfo.blogspot.com/2011/12/vxlan-virtual-extensible-lan-virtual.html" target="_blank" rel="noopener">VXLAN (Virtual eXtensible LAN) - Virtual Data Centers - Tutorial</a> <a href="https://that.guru/blog/gnu-autotest/" target="_blank" rel="noopener">GNU AUTOTEST</a></p>
+<p><a target="_blank" rel="noopener" href="http://netsecinfo.blogspot.com/2013/07/linux-ovs-vxlan-based-virtual-networks.html">Linux OVS &amp; VxLAN based virtual networks</a> <a target="_blank" rel="noopener" href="http://netsecinfo.blogspot.com/2011/12/vxlan-virtual-extensible-lan-virtual.html">VXLAN (Virtual eXtensible LAN) - Virtual Data Centers - Tutorial</a> <a target="_blank" rel="noopener" href="https://that.guru/blog/gnu-autotest/">GNU AUTOTEST</a></p>
 
     </div>
 
@@ -319,7 +304,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#creation-of-vxlan-port-with-default-udp-service-port"><span class="nav-number">1.</span> <span class="nav-text">Creation of VxLAN port with default UDP service port:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#create-the-vxlan-port-by-specifying-udp-destination-port-5000."><span class="nav-number">2.</span> <span class="nav-text">create the VxLAN port by specifying UDP destination port, 5000.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#create-openflow-flows-without-having-to-have-external-openflow-controller"><span class="nav-number">3.</span> <span class="nav-text">Create Openflow flows without having to have external Openflow controller</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ovs-nsh-测试脚本手动实验"><span class="nav-number">4.</span> <span class="nav-text">OVS NSH 测试脚本手动实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#延伸阅读"><span class="nav-number">5.</span> <span class="nav-text">延伸阅读</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#creation-of-vxlan-port-with-default-udp-service-port"><span class="nav-number">1.</span> <span class="nav-text">Creation of VxLAN port with default UDP service port:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#create-the-vxlan-port-by-specifying-udp-destination-port-5000."><span class="nav-number">2.</span> <span class="nav-text">create the VxLAN port by specifying UDP destination port, 5000.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#create-openflow-flows-without-having-to-have-external-openflow-controller"><span class="nav-number">3.</span> <span class="nav-text">Create Openflow flows without having to have external Openflow controller</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ovs-nsh-%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC%E6%89%8B%E5%8A%A8%E5%AE%9E%E9%AA%8C"><span class="nav-number">4.</span> <span class="nav-text">OVS NSH 测试脚本手动实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%B6%E4%BC%B8%E9%98%85%E8%AF%BB"><span class="nav-number">5.</span> <span class="nav-text">延伸阅读</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -333,29 +318,22 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-          
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-          
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/hansomesong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-  </div>
 
 
 
@@ -378,13 +356,13 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">rennsong</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
         
@@ -413,7 +391,7 @@
 <script src="/js/schemes/muse.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -433,8 +411,6 @@
 
 
 
-
-  
 
   
 

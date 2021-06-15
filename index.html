@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="Personal blog site, to note technique and life related articles">
@@ -72,12 +72,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -116,21 +116,6 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -163,6 +148,632 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2021/06/15/openstack-installation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/15/openstack-installation/" class="post-title-link" itemprop="url">Ubuntu 18.04下通过devstack安装Openstack</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-06-15 12:20:07 / 修改时间：22:10:23" itemprop="dateCreated datePublished" datetime="2021-06-15T12:20:07+08:00">2021-06-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一安装ubuntu-18.04">一、安装Ubuntu 18.04</h1>
+<p>本指南在<code>https://www.osboxes.org/ubuntu/</code>上，下载了VMWare Workstation虚拟机镜像(VMDK文件)，并导入VMware Workstation，完成虚拟机创建。科学上网方式下载速度挺快。 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Distributor</span> ID: Ubuntu</span><br><span class="line"><span class="attribute">Description</span>: Ubuntu <span class="number">18</span>.<span class="number">04</span>.<span class="number">3</span> LTS</span><br><span class="line"><span class="attribute">Release</span>: <span class="number">18</span>.<span class="number">04</span></span><br><span class="line"><span class="attribute">Codename</span>: bionic</span><br></pre></td></tr></table></figure></p>
+<h1 id="二代码仓库国内源替代">二、代码仓库国内源替代</h1>
+<h2 id="apt阿里云镜像">1. apt阿里云镜像</h2>
+<p>首先将原始<code>apt</code>仓库配置做一下备份 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv <span class="regexp">/etc/</span>apt<span class="regexp">/sources.list /</span>etc<span class="regexp">/apt/</span>sources.list.bckup</span><br></pre></td></tr></table></figure> 新建配置文件<code>/etc/apt/sources.list</code>，并写入以下内容： <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic main restricted universe multiverse</span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic main restricted universe multiverse</span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-security main restricted universe multiverse</span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-security main restricted universe multiverse</span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-updates main restricted universe multiverse</span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-updates main restricted universe multiverse</span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-proposed main restricted universe multiverse</span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-proposed main restricted universe multiverse</span><br><span class="line">deb http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-backports main restricted universe multiverse</span><br><span class="line">deb-src http:<span class="regexp">//mi</span>rrors.aliyun.com<span class="regexp">/ubuntu/</span> bionic-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure></p>
+<h2 id="pip阿里云镜像">2. pip阿里云镜像</h2>
+<p>有些教程要求分别以<code>stack</code>和<code>root</code>用户的身份，修改<code>pip</code>仓库镜像地址。经过个人验证，其实只在root用户操作即可，具体操作如下：</p>
+<p>首先，切换为<code>root</code>用户，并进入<code>root</code>的工作目录，即<code>/root</code>之下： <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo su -</span><br><span class="line"><span class="keyword">cd</span> <span class="string">/root</span></span><br></pre></td></tr></table></figure> 然后，创建目录<code>.pip</code>，并创建配置文件<code>.pip/pip.conf</code>，写入相关配置： <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir .pip</span><br><span class="line">cat &gt;&gt; .pip/pip.conf &lt;&lt;EOF</span><br><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"><span class="keyword">index</span>-url=http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line"><span class="keyword">trusted</span>-host=mirrors.aliyun.com</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure> 注意：<strong><em>上面这种cat用法中，EOF作为文件的分隔符，将两个EOF之间的内容输入进<code>.pip/pip.conf</code>之内，其好处是无需先创建文件，再通过<code>vim</code>之类的文本编辑器输入文字，一条命令搞定所有。</em></strong></p>
+<h2 id="安装基础软件包">3. 安装基础软件包</h2>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装python pip</span></span><br><span class="line">sudo apt-<span class="builtin-name">get</span> -y install python3-pip</span><br><span class="line">sudo apt-<span class="builtin-name">get</span> -y install git</span><br><span class="line">sudo pip3 install --upgrade pip</span><br></pre></td></tr></table></figure>
+<h1 id="三添加用户stack">三、添加用户stack</h1>
+<p>创建名为<code>stack</code>的用户，并指定其工作目录<code>/opt/stack</code>，赋予其sudo操作免密权限。具体指令如下： <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd stack</span><br><span class="line">sudo useradd -g stack -s /bin/bash -d /opt/stack -m stack  </span><br><span class="line">sudo chown -R stack:stack /opt/stack</span><br><span class="line">echo <span class="string">&quot;stack ALL=(ALL) NOPASSWD: ALL&quot;</span> | sudo tee /etc/sudoers.d/stack</span><br></pre></td></tr></table></figure> 注意：<strong><em>如果没有执行<code>sudo chown -R stack:stack /opt/stack</code>, 安装<code>openstack</code>的时候，有可能会因<code>permission denied</code>有关原因，遇到不允许在<code>opt/stack/.cache</code>文件夹下输入内容的问题。我查看了下，当时<code>/opt/stack/.cache</code>文件夹以及群组均为 <code>root</code>，而不是<code>stack</code></em></strong>。</p>
+<h1 id="四devstack安装">四、DevStack安装</h1>
+<h2 id="下载devstack源码">1. 下载devstack源码</h2>
+<p>切换至<code>stack</code>用户，并将devstack代码克隆至其工作目录，即<code>/opt/stack</code>下，并将代码切换至<code>stable/train</code>分支，具体操作步骤如下： <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone http:<span class="regexp">//gi</span>t.trystack.cn<span class="regexp">/openstack/</span>devstack.git <span class="regexp">/opt/</span>stack/devstack</span><br><span class="line">cd devstack</span><br><span class="line">git checkout stable/train</span><br></pre></td></tr></table></figure> 注意：</p>
+<ul>
+<li>很多英文技术博客，包括部分国内技术博客，通过从<code>devstack</code>官方代码仓库<code>https://opendev.org/openstack/devstack</code>拉取代码。然而，在国内通过<code>git</code>拉取该代码仓库，无论科学上网与否，速度极其之慢（不超过20kbps），因此需要使用镜像仓库，可以考虑的有<code>http://git.trystack.cn/openstack/devstack.git</code>或者<code>https://github.com/openstack/devstack.git</code>。</li>
+<li>直接克隆下的代码默认处于主分支(即<code>master</code>)分支。其面向的openstack版本比较新，直接在<code>Ubuntu 18.04</code>下安装，会报错。所以我们必须将代码切换至一个相对较老的分支，比如<code>stable/train</code>版本（发布时间为：2019年10月）</li>
+</ul>
+<h2 id="编辑local.conf配置文件">2. 编辑<code>local.conf</code>配置文件</h2>
+<p>配置文件<code>local.conf</code>是针对部署的<code>openstack</code>做的配置，我成功安装所采用的配置如下： <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Host IP - get your Server/VM IP address from ip addr command</span></span><br><span class="line"><span class="attribute">HOST_IP</span>=192.168.XX.XX </span><br><span class="line"><span class="attribute">ADMIN_PASSWORD</span>=admin</span><br><span class="line"><span class="attribute">MYSQL_PASSWORD</span>=admin</span><br><span class="line"><span class="attribute">RABBIT_PASSWORD</span>=admin</span><br><span class="line"><span class="attribute">SERVICE_PASSWORD</span>=admin</span><br><span class="line"><span class="attribute">SERVICE_TOKEN</span>=admin</span><br><span class="line">enable_service placement-api</span><br><span class="line">enable_service placement-client</span><br></pre></td></tr></table></figure> 其实，<code>local.conf</code>配置文件中可以声明的还有很多，但我没有时间去亲自试过，有兴趣的可以试下：例如： <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#每当中断或者超时时，无需重新克隆系统，这样再次运行会快</span></span><br><span class="line">RECLONE=true</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用git国内镜像地址，我是在stackrc文件中修改的，而不是在local.conf</span></span><br><span class="line">GIT_BASE=http:<span class="regexp">//gi</span>t.trystack.cn</span><br><span class="line">NOVNC_REPO=http:<span class="regexp">//gi</span>t.trystack.cn<span class="regexp">/kanaka/</span>noVNC.git</span><br><span class="line">SPICE_REPO=http:<span class="regexp">//gi</span>t.trystack.cn<span class="regexp">/git/</span>spice/sice-html5.git</span><br><span class="line"><span class="comment"># 帖子: </span></span><br><span class="line"><span class="comment"># https://blog.csdn.net/crystonesc/article/details/108281187</span></span><br><span class="line"><span class="comment"># https://blog.csdn.net/hiro618/article/details/106959590</span></span><br><span class="line"><span class="comment"># 介绍了许多其他local.conf配置项，可作参考。</span></span><br></pre></td></tr></table></figure> 注意：<strong><em>如果不设置<code>SERVICE_PASSWORD=admin</code>以及<code>SERVICE_TOKEN=admin</code>，那么openstack安装过程中执行的<code>keystone-manage db_sync</code>会报错！</em></strong></p>
+<h2 id="修改stackrc配置">3. 修改<code>stackrc</code>配置</h2>
+<p>打开<code>stackrc</code>，并将<code>GIT_BASE</code>这一变量修改为如下： <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">GIT_BASE</span>=<span class="variable">$&#123;GIT_BASE:-https://github.com&#125;</span>$</span><br></pre></td></tr></table></figure> 如此修改的原因是，原始配置通过git拉去的速度太慢，更新为上述值之后，下载速度有质的飞跃。</p>
+<p>思考：<code>stackrc</code>和<code>local.conf</code>有啥区别？为啥配置要分成两个文件？从内容上看，<code>stackrc</code>就是一个SHELL脚本，定义了一些环境变量</p>
+<h2 id="执行stack.sh">4. 执行<code>stack.sh</code></h2>
+<p>如果中间遇到问题，大概率都是跟网络配置有关，需要通过安装日志，并根据自己的经验进行trouble shooting.</p>
+<h1 id="debug过程">DEBUG过程</h1>
+<h2 id="现象描述">现象描述</h2>
+<p>安装devstack时会出错：env: ‘/opt/stack/requirements/.venv/bin/pip’: No such file or directory <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+inc<span class="regexp">/python:pip_install:359                env http_proxy= https_proxy= no_proxy= PIP_FIND_LINKS= SETUPTOOLS_SYS_PATH_TECHNIQUE=rewrite /</span>opt<span class="regexp">/stack/</span>requirements<span class="regexp">/.venv/</span>bin<span class="regexp">/pip install -c /</span>opt<span class="regexp">/stack/</span>requirements/upper-constraints.txt -U pbr</span><br><span class="line">env: ‘<span class="regexp">/opt/</span>stack<span class="regexp">/requirements/</span>.venv<span class="regexp">/bin/</span>pip’: No such <span class="keyword">file</span> or directory</span><br></pre></td></tr></table></figure> ## 解决方案 参见：<code>https://blog.csdn.net/ANXIN997483092/article/details/81365588</code> 在<code>local.conf</code> 添加如下内容： <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enable<span class="emphasis">_service placement-api </span></span><br><span class="line"><span class="emphasis">enable_</span>service placement-client</span><br></pre></td></tr></table></figure> 之后在stack用户下： <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd devstack</span><br><span class="line">virtualenv ..<span class="regexp">/requirements/</span>.venv/</span><br></pre></td></tr></table></figure> 这步需要点时间，之后在<code>/opt/stack/requirements/.venv/bin/</code>目录下会生成<code>pip</code>等文件。 之后再运行<code>./stack.sh</code></p>
+<h1 id="一些疑问">一些疑问</h1>
+<p>安装过程中，我发现python安装一直使用的python 2.7，不知道以后会不会有何隐患？如何才能要求用python3以及pip3完成安装配置？</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2021/06/03/kolla-ansible-openstack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/03/kolla-ansible-openstack/" class="post-title-link" itemprop="url">kolla-ansible-openstack</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-03 21:01:11" itemprop="dateCreated datePublished" datetime="2021-06-03T21:01:11+08:00">2021-06-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-15 12:22:21" itemprop="dateModified" datetime="2021-06-15T12:22:21+08:00">2021-06-15</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>网上教程很多，但是感觉都不是特别完整，本文参考的是kolla-ansible官方教程： 官方参考教程：https://docs.openstack.org/kolla-ansible/latest/user/quickstart.html</p>
+<p>为了提升安装速度，需要将软件包源切换为国内源。</p>
+<p>欢迎加QQ群：1026880196 进行交流学习</p>
+<p>需要安装python3-virtualenv这个Python安装包隔离环境。需要注意的是，激活一个venv环境需要 source kolla-ansible-openstack/bin/activate才行</p>
+<h2 id="硬件配置">硬件配置</h2>
+<p>看样子应该</p>
+<h2 id="设置默认pythonpip软连接并换源">设置默认python、pip（软连接）并换源</h2>
+<p>Pip pip是一个用来安装Python软件包的工具，由于Python 2已经退出了历史的舞台，Ubuntu20.04也移除了<code>Python</code>2，所以不能够使用python-pip安装pip。</p>
+<ol type="1">
+<li><p>安装pip3 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install python3-pip -y</span><br></pre></td></tr></table></figure></p></li>
+<li><p>当安装结束，检查pip版本： <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 <span class="comment">--version</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>更换pip源 pip默认使用境外源，下载速度较慢且时而报错，我们可以更换为国内的pip源： <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/.pip/</span><br><span class="line"><span class="keyword">cd</span> .pip</span><br><span class="line">sudo <span class="keyword">vim</span> pip.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure> 将下列内容加入到pip.conf文件中： <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"><span class="keyword">index</span>-url=http://mirrors.cloud.tencent.com/pypi/simple</span><br><span class="line">[install]</span><br><span class="line"><span class="keyword">trusted</span>-host=mirrors.cloud.tencent.com</span><br></pre></td></tr></table></figure></p></li>
+<li><p>查看当前源： <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 config list</span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<p>其他国内源：</p>
+<p>清华源(个人实测，速度很垃圾，强烈不推荐) https://pypi.tuna.tsinghua.edu.cn/simple 腾讯源 http://mirrors.cloud.tencent.com/pypi/simple 豆瓣源 http://pypi.douban.com/simple/</p>
+<ol start="5" type="1">
+<li>更新pip <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install <span class="comment">--upgrade pip</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="部署阶段">部署阶段</h1>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kolla-ansible -<span class="selector-tag">i</span> ./multinode bootstrap-servers</span><br></pre></td></tr></table></figure>
+<h1 id="debug-记录">DEBUG 记录</h1>
+<h2 id="执行pip-install-ansible3.0的时候出现下列问题">执行<code>pip install 'ansible&lt;3.0'</code>的时候，出现下列问题！！！</h2>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">ERROR: Command errored out with <span class="keyword">exit</span> status <span class="number">1</span>:</span><br><span class="line"> command: <span class="regexp">/home/</span>qsong<span class="regexp">/Documents/</span>kolla-ansible-openstack<span class="regexp">/bin/</span>python3 -u -c <span class="string">&#x27;import sys, setuptools, tokenize; sys.argv[0] = &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;/tmp/pip-install-ui2xktr_/ansible/setup.py&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;; __file__=&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;/tmp/pip-install-ui2xktr_/ansible/setup.py&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;;f=getattr(tokenize, &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;open&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;, open)(__file__);code=f.read().replace(&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;\r\n&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;, &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;\n&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;);f.close();exec(compile(code, __file__, &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;exec&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;))&#x27;</span> bdist_wheel -d <span class="regexp">/tmp/</span>pip-wheel-<span class="number">6</span>w8vgw00</span><br><span class="line">     cwd: <span class="regexp">/tmp/</span>pip-install-ui2xktr_<span class="regexp">/ansible/</span></span><br><span class="line">Complete output (<span class="number">6</span> lines):</span><br><span class="line">usage: setup.py [global_opts] cmd1 [cmd1_opts] [cmd2 [cmd2_opts] ...]</span><br><span class="line">   or: setup.py --help [cmd1 cmd2 ...]</span><br><span class="line">   or: setup.py --help-commands</span><br><span class="line">   or: setup.py cmd --help</span><br><span class="line"></span><br><span class="line">error: invalid command <span class="string">&#x27;bdist_wheel&#x27;</span></span><br><span class="line">----------------------------------------</span><br><span class="line">ERROR: Failed building wheel <span class="keyword">for</span> ansible</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">  ERROR: Command errored out with <span class="keyword">exit</span> status <span class="number">1</span>:</span><br><span class="line"> command: <span class="regexp">/home/</span>qsong<span class="regexp">/Documents/</span>kolla-ansible-openstack<span class="regexp">/bin/</span>python3 -u -c <span class="string">&#x27;import sys, setuptools, tokenize; sys.argv[0] = &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;/tmp/pip-install-ui2xktr_/ansible-base/setup.py&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;; __file__=&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;/tmp/pip-install-ui2xktr_/ansible-base/setup.py&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;;f=getattr(tokenize, &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;open&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;, open)(__file__);code=f.read().replace(&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;\r\n&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;, &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;\n&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;);f.close();exec(compile(code, __file__, &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;exec&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;))&#x27;</span> bdist_wheel -d <span class="regexp">/tmp/</span>pip-wheel-<span class="number">4</span>cg0qz86</span><br><span class="line">     cwd: <span class="regexp">/tmp/</span>pip-install-ui2xktr_<span class="regexp">/ansible-base/</span></span><br><span class="line">Complete output (<span class="number">6</span> lines):</span><br><span class="line">usage: setup.py [global_opts] cmd1 [cmd1_opts] [cmd2 [cmd2_opts] ...]</span><br><span class="line">   or: setup.py --help [cmd1 cmd2 ...]</span><br><span class="line">   or: setup.py --help-commands</span><br><span class="line">   or: setup.py cmd --help</span><br><span class="line"></span><br><span class="line">error: invalid command <span class="string">&#x27;bdist_wheel&#x27;</span></span><br><span class="line">----------------------------------------</span><br><span class="line">ERROR: Failed building wheel <span class="keyword">for</span> ansible-base</span><br></pre></td></tr></table></figure>
+<p>关键错误提示：<code>error: invalid command 'bdist_wheel'</code>,通过搜索发现，原因是缺乏<code>wheel</code>这个包，执行<code>pip install wheel</code>即可解决问题。最后，卸载并重安装<code>ansible</code>的时候，再无上述错误发生。 思考：还是要搞清楚，<code>wheel</code>机制是个啥？</p>
+<h2 id="执行kolla-ansible--i-all-in-one-bootstrap-servers报错如下">执行<code>kolla-ansible -i all-in-one bootstrap-servers</code>报错如下：</h2>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Bootstrapping servers : ansible-playbook -i all-in-one -e @<span class="regexp">/etc/</span>kolla<span class="regexp">/globals.yml  -e @/</span>etc<span class="regexp">/kolla/</span>passwords.yml -e CONFIG_DIR=<span class="regexp">/etc/</span>kolla  -e kolla_action=bootstrap-servers <span class="regexp">/home/</span>qsong<span class="regexp">/Documents/</span>kolla-ansible-openstack<span class="regexp">/share/</span>kolla-ansible<span class="regexp">/ansible/</span>kolla-host.yml</span><br><span class="line">ERROR! Unexpected Exception, <span class="keyword">this</span> is probably a bug: cannot <span class="keyword">import</span> name <span class="string">&#x27;AnsibleCollectionLoader&#x27;</span> <span class="keyword">from</span> <span class="string">&#x27;ansible.utils.collection_loader&#x27;</span> (<span class="regexp">/home/</span>qsong<span class="regexp">/Documents/</span>kolla-ansible-openstack<span class="regexp">/lib/</span>python3.<span class="number">8</span><span class="regexp">/site-packages/</span>ansible<span class="regexp">/utils/</span>collection_loader/__init__.py)</span><br><span class="line">the full traceback was:</span><br><span class="line"></span><br><span class="line">Traceback (most recent <span class="keyword">call</span> last):</span><br><span class="line">  <span class="keyword">File</span> <span class="string">&quot;/home/qsong/Documents/kolla-ansible-openstack/bin/ansible-playbook&quot;</span>, line <span class="number">92</span>, in &lt;module&gt;</span><br><span class="line">    mycli = getattr(__import__(<span class="string">&quot;ansible.cli.%s&quot;</span> % sub, fromlist=[myclass]), myclass)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">&quot;/home/qsong/Documents/kolla-ansible-openstack/lib/python3.8/site-packages/ansible/cli/__init__.py&quot;</span>, line <span class="number">22</span>, in &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> ansible.inventory.manager <span class="keyword">import</span> InventoryManager</span><br><span class="line">  <span class="keyword">File</span> <span class="string">&quot;/home/qsong/Documents/kolla-ansible-openstack/lib/python3.8/site-packages/ansible/inventory/manager.py&quot;</span>, line <span class="number">38</span>, in &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> ansible.plugins.loader <span class="keyword">import</span> inventory_loader</span><br><span class="line">  <span class="keyword">File</span> <span class="string">&quot;/home/qsong/Documents/kolla-ansible-openstack/lib/python3.8/site-packages/ansible/plugins/loader.py&quot;</span>, line <span class="number">25</span>, in &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> ansible.utils.collection_loader <span class="keyword">import</span> AnsibleCollectionLoader, AnsibleFlatMapLoader, AnsibleCollectionRef</span><br><span class="line">ImportError: cannot <span class="keyword">import</span> name <span class="string">&#x27;AnsibleCollectionLoader&#x27;</span> <span class="keyword">from</span> <span class="string">&#x27;ansible.utils.collection_loader&#x27;</span> (<span class="regexp">/home/</span>qsong<span class="regexp">/Documents/</span>kolla-ansible-openstack<span class="regexp">/lib/</span>python3.<span class="number">8</span><span class="regexp">/site-packages/</span>ansible<span class="regexp">/utils/</span>collection_loader/__init__.py)</span><br><span class="line">Command failed ansible-playbook -i all-in-one -e @<span class="regexp">/etc/</span>kolla<span class="regexp">/globals.yml  -e @/</span>etc<span class="regexp">/kolla/</span>passwords.yml -e CONFIG_DIR=<span class="regexp">/etc/</span>kolla  -e kolla_action=bootstrap-servers <span class="regexp">/home/</span>qsong<span class="regexp">/Documents/</span>kolla-ansible-openstack<span class="regexp">/share/</span>kolla-ansible<span class="regexp">/ansible/</span>kolla-host.yml</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/10/09/ubuntu20-04-setup-config/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/09/ubuntu20-04-setup-config/" class="post-title-link" itemprop="url">ubuntu20-04-setup-config</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-09 11:45:29" itemprop="dateCreated datePublished" datetime="2020-10-09T11:45:29+08:00">2020-10-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-09 16:52:17" itemprop="dateModified" datetime="2021-06-09T16:52:17+08:00">2021-06-09</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>对于PowerLine字体，如果Ubuntu16.04以及之上版本，可以直接一行命令解决： <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> fonts-powerline</span><br></pre></td></tr></table></figure> 不然需要单独下载字体，放到指定位置，并且更新字体缓存。</p>
+<h1 id="virtualbox-屏幕分辨率">Virtualbox 屏幕分辨率</h1>
+<h1 id="一免密sudo">一、免密sudo</h1>
+<p>为了避免每次使用 sudo 命令时都输入密码，我们可以将密码关闭。操作方法： 第一步：终端输入命令sudo visudo，打开 visudo； 第二步：找到 %sudo ALL=(ALL:ALL) ALL 这一行修改为%sudo ALL=(ALL:ALL) NOPASSWD:ALL</p>
+<h1 id="二更换软件源">二、更换软件源</h1>
+<p>Ubuntu 默认的软件源是境外的，速度上会有些问题，我们可以在「Software &amp; Updates」(软件和更新)中选择国内的镜像。</p>
+<h1 id="三更换软件源">三、更换软件源</h1>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 更新本地报数据库</span></span><br><span class="line">sudo apt update</span><br><span class="line"></span><br><span class="line"><span class="meta"># 更新所有已安装的包（也可以使用 full-upgrade）</span></span><br><span class="line">sudo apt upgrade</span><br><span class="line"></span><br><span class="line"><span class="meta"># 自动移除不需要的包</span></span><br><span class="line">sudo apt autoremove</span><br></pre></td></tr></table></figure>
+<h1 id="四必备软件包安装">四、必备软件包安装</h1>
+<h2 id="安装-python2">5. 安装 Python2</h2>
+<p>Ubuntu20.04 自带了 python3，但是某些第三方工具或者脚本还是用的 python2，因此我们需要自行安装</p>
+<p>apt install python</p>
+<h2 id="安装-git">6. 安装 Git</h2>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt <span class="keyword">install</span> git</span><br></pre></td></tr></table></figure>
+<h2 id="中文输入法">7. 中文输入法</h2>
+<p>由于搜狗输入法目前还不支持Ubuntu20.04，加之其对高分屏支持不太友好，因此不再折腾选择了 <code>ibus-libpinyin</code>。 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> ibus-libpinyin </span><br><span class="line">sudo apt <span class="keyword">install</span> ibus-clutter</span><br></pre></td></tr></table></figure> 复制代码接着在应用程序中找到「Language Support」(语言支持)，更改「Keyboard input method system」(键盘输入法系统)为「IBUS」。重启系统，然后在<strong>Settings&gt;Region &amp; Language&gt;Input Sources（设置&gt;区域与语言&gt;输入源）</strong>中新增「Chinese(Intelligent Pinyin)」(中文(智能拼音))就可以使用中文输入法了。</p>
+<h2 id="proxychains-ng-安装">8. proxychains-ng 安装</h2>
+<p>首先一定要确保gcc automake make之类的工具安装了。不然在源码代码编译的时候，./configure命令会出现错误结果。 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> update</span><br><span class="line">sudo apt-<span class="builtin-name">get</span> install  gcc automake autoconf libtool make</span><br></pre></td></tr></table></figure> 然后切换到/opt目录之下，执行 git clone</p>
+<h2 id="clash-for-ubuntu">9. Clash for Ubuntu</h2>
+<p>第一步： 下载适合的 Clash 二进制文件，一般个人的 64 位电脑下载 clash-linux-amd64-v0.17.1.gz 即可 GitHub 项目地址:https://github.com/Dreamacro/clash/releases</p>
+<p>如果系统支持<code>systemd</code> 编写配置文件 开机自启动 <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> &#x27;[Unit]</span><br><span class="line">Description=clash auto run</span><br><span class="line"> </span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line"> </span><br><span class="line">ExecStart=<span class="string">/root/clash/clash</span> -f <span class="string">/root/clash/config.yaml</span></span><br><span class="line"> </span><br><span class="line">[Install]</span><br><span class="line">WantedBy=default.target&#x27; &gt; <span class="string">/etc/systemd/system/clash.service</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="x使用问题记录">X、使用问题记录</h1>
+<p>参考资料： https://ywnz.com/linuxjc/4002.html</p>
+<p>最后需要重启下系统，不然依然会遇到错误！“dumpcap cannot be run in child process”的错误！！！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/08/28/git-learning-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/28/git-learning-notes/" class="post-title-link" itemprop="url">git常用指令学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-08-28 14:05:51 / 修改时间：15:24:51" itemprop="dateCreated datePublished" datetime="2020-08-28T14:05:51+08:00">2020-08-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>有些项目中的子模块功能(submodule)是由其他开源项目提供的，这种情况下在<code>git clone</code> 的时候一定要加上 <code>--recursive</code>选项，不然相应的子模块文件内容将为空。</p>
+<p>如果你想添加一个新的远程仓库节点，可以通过终端窗口在你代码仓库目录下使用<code>git remote add</code>命令。该命令接受两个参数: A unique remote name, for example, ”my_awesome_new_remote_repo”以及A remote URL, which you can find on the Source sub-tab of your Git repo</p>
+<h1 id="git-分支删除">git 分支删除</h1>
+<p>https://www.educative.io/edpresso/how-to-delete-remote-branches-in-git</p>
+<h1 id="使用场景1你把其他人的开源实现pull了下来针对自己的需求修改补充了许多如果你想自己创建一个repo-怎么办">使用场景1：你把其他人的开源实现pull了下来，针对自己的需求修改/补充了许多，如果你想自己创建一个repo, 怎么办?</h1>
+<h1 id="使用场景2你想回退到过去的某一个-commit-上查看当时写过代码怎么办">使用场景2：你想回退到过去的某一个 commit 上，查看当时写过代码，怎么办？</h1>
+<p>git checkout <COMMIT_HASH_NUMBER> .</p>
+<p>注意： * 命令行最后的那个点号不可以忘记输入 * 将<COMMIT_HASH_NUMBER> 替换为你想回退的那个 commit 的哈希值。</p>
+<h1 id="使用场景3现在你已经查看过了过去的历史现在想恢复至目前所在分支-e.g.-master-上该使用什么命令">使用场景3：现在你已经查看过了过去的历史，现在想恢复至目前所在分支 (e.g., master) 上，该使用什么命令？</h1>
+<p>我第一想法是输入 git checkout HEAD (注意: HEAD 代表了最近的分支的 commit number) 但是该命令的回复却是让我很意外，每一行之前的 M 代表了什么呢？我孤陋寡闻，没有见过这种输出形式啊！猜想应该代表 Modified. 而且我发现，我的代码(文本)还是历史状态，并没有恢复至最近的 commit 版本。</p>
+<p>根据我对 <code>git reset --hard HEAD</code> 命令的体会。<code>git checkout &lt;COMMIT_HASH_NUMBER&gt;</code> . 将过去的 working copy 找了出来。 所以，现在每个文件都处于修改并且added的状态(等待commit, 问题：我是否需要git commit一下呢？)。 因为我只是想查看过去某个状态下的代码，不需要把这些历史内容保存下来。所以我觉得可以git reset --hard一下 之所以说 <code>git reset --hard</code>这个命令比较危险。是因为这个命令会讲所有在stagged/unstagged area的数据都清理掉。换言之，所有没有commit的数据都会丢失。当然，如果你很清楚的知道，这些还没有committed 的数据不需要，那么<code>git reset --hard</code> 对你来说是安全无害的。</p>
+<h1 id="git和mercurial的异同">Git和Mercurial的异同</h1>
+<p>好多项目是通过Mercurial管理的，比如ns3项目</p>
+<p>默认的分支是 default 而 git下则是master hg branch <分支名称>： 创建分支并且跳转至这个新创建的分支 git checkout -b <分支名称> 才具有同等作用</p>
+<p>分支管理 Mercurial下有两类分支：匿名以及命名的。如果想要创建一个命名分分支 hg branch <分支名称> hg commit 只有commit之后，该分支才会存在于现有仓库 分支之间的切换 hg update hg up hg checkout 都是同一个命令的不同说法</p>
+<p>设置用户名称 比较彻底的做法是 在working directory之下，创建一个新文件 .hgrc里面 写下如下的语句 [ui] username = Qipeng Song <a href="mailto:qpsong@gmail.com">qpsong@gmail.com</a></p>
+<p>mercurial提供的扩展功能 在~/.hgrc中可以定义激活的扩展功能 首先，需要在上面说到的文件的最后加上这样的语句： [extensions] purge=</p>
+<p>然后就可以通过hg purge删去那些untracked files了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/06/23/android-device-mount-problem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/23/android-device-mount-problem/" class="post-title-link" itemprop="url">Linux/MAC OSX环境下如何将Android设备挂载为外设？</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-23 17:36:07" itemprop="dateCreated datePublished" datetime="2020-06-23T17:36:07+08:00">2020-06-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-02 10:55:30" itemprop="dateModified" datetime="2021-02-02T10:55:30+08:00">2021-02-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="问题">问题</h1>
+<p>由于安卓设备普遍采用MTP文件系统，而Linux/MAC OSX的文件系统与此不同，所以将安卓设备通过USB连接到电脑上无法被后者识别。因为不能方便地采用诸如<code>rsync</code>等工具来同步手机中的视频招聘到电脑上。 # 分析： 解决方案都只能是在两种不同的文件系统之间做适配。 这个链接：https://www.v2ex.com/t/533974, 做了一些很有启发性的讨论。 # 方案：</p>
+<h2 id="android-file-transfer-via-usb">Android File Transfer via USB</h2>
+<p>手机和电脑通过USB模式直连，USB连接至于MTP模式，通过使用谷歌官方推出的Android File Transfer这个程序，访问进安卓设备内部存放照片视频目录，通过复制粘贴的方式，通过USB数据线传输完成文件备份。</p>
+<h2 id="adb-android-debug-bridge">ADB (Android Debug Bridge)</h2>
+<p>官方推荐，也是最快的方式是通过ADB工具实现安卓设备和电脑主机之间的文件互传。如果你电脑上安装有<code>Android Studio</code>，那么你电脑中已经安装有ADB了。一旦你激活了安卓手机上的开发者选项，并且通过ADB命令连接上你的安卓设备。那么在Android Studio中，你可以通过选项卡<code>View &gt; Tool Windows &gt; Device File Explorer</code>实现安卓设备挂载。</p>
+<h2 id="sshfs">sshfs</h2>
+<p>首先，需要确保MAC OSX系统中已经安装了OSXFUSE以及<code>sshfs</code>。 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span><span class="keyword">install </span>sshfs</span><br></pre></td></tr></table></figure> 其次需要在手机上安装sshelper app并进行相应配置，以保证可以通过ssh访问安卓设备。之后在你的电脑上合适的位置创建使用<code>sshfs</code>所需的挂载点。最后运行下列命令完成挂载。 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshfs ANDROID_IP_ADRESS:<span class="regexp">/storage/</span>emulated<span class="regexp">/0 ~/</span>Android -p <span class="number">2222</span></span><br></pre></td></tr></table></figure> https://askubuntu.com/questions/893090/how-do-i-mount-my-androids-filesystem-over-the-network-with-sshfs</p>
+<h2 id="jmtpfs">jmtpfs</h2>
+<p>有人2013年的时候编写了一个开源文件系统jmtpfs，以方便类Unix操作系统来读写安卓设备。然后后续并没有人继续更新了，并且上手难度高。 https://github.com/JasonFerrara/jmtpfs</p>
+<p>考虑到，我需要备份的是我使用手机以来所有的照片(高达80个G左右), 我觉得最好的方式，还是rsync+parallel的方式。</p>
+<p>手机和主机之间通过wifi实现文件系统挂载，如果是wifi 6的话，那么传输速度应该相当可观。通过sshfs</p>
+<p>本项目的第三步是搭建面向软件定义天基信息系统高逼真度仿真测试平台，并开展渗透测试，以验证开发的渗透测试平台的有效性、可行性。 在硬件层面上，仿真测试平台包括1台普通台式机，2台高性能Dell PowerEdge R730机架式服务器构成(CPU：Intel Xeon E5-2699，内存:32G)。该型服务器足以支持包含数百颗卫星的大型提供低轨卫星星座的仿真。所有物理节点均通过以太网交换机互连。 在软件层面，本项目提出的仿真平台融合了STK/MATLAB真器、容器云平台。其中，STK仿真软件对卫星星座轨道进行计算分析。STK用以快速建立星座模型，获得卫星的位置、速度等信息，并通过编程接口与MATLAB连接，利用MATLAB计算分析得到卫星间可见性和距离，用以确定星间链路的通信延时链路状态等信息。STK将卫星星座信息输出为扑描述文件，并发送给容器引擎Docker。后者根据收到的卫星拓扑描述文件，利用提前制作的软件定义卫星镜像，利用容器网络服务为虚拟卫星分配网卡及IP地址等信息构建星间链路。 对软件定义卫星的模拟方面，本项目拟采取“Docker+QEMU”的技术。该技术组合可以便捷地对基于任何卫星硬件平台、星载操作系统的组合进行模拟。只需要将采用某型硬件以及对应的星载操作系统制作为Docker镜像，即可在仿真中实例化为对应的卫星平台，开展仿真测试，因此具有极好的模块性以及灵活性。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/06/13/numpy-tutorial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/13/numpy-tutorial/" class="post-title-link" itemprop="url">numpy_tutorial</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-13 13:28:19" itemprop="dateCreated datePublished" datetime="2020-06-13T13:28:19+08:00">2020-06-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/06/10/anaconda-tuto/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/10/anaconda-tuto/" class="post-title-link" itemprop="url">Anaconda 使用教程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-10 16:24:46" itemprop="dateCreated datePublished" datetime="2020-06-10T16:24:46+08:00">2020-06-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-12 16:27:16" itemprop="dateModified" datetime="2020-06-12T16:27:16+08:00">2020-06-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>自从15年的时候接触到OSX系统下的包管理器Homebrew，我就一直习惯于用Homebrew来管理. 随着人工智能的大火，越来越多的人开始使用python及其科学计算套件。所以后来Anaconda专门退出了Python一条龙服务。</p>
+<p>Anaconda的Jupyter notebook怎么创建虚拟环境呢？有必要创建虚拟环境么？</p>
+<p>系统：Mac OSX 10.15.5</p>
+<p>我记得在没有安装Anaconda之前，我系统默认的python解释器应该是在Homebrew管理之下的，安装Anaconda之后，通过<code>which python</code>，返回的是，明显是Anaconda安装的解释器(即：<code>/Users/qsong/opt/anaconda3/bin/python</code>，这是个soft link，指向的是和其同一文件夹下的python3.7).</p>
+<h1 id="创建conda虚拟环境">创建conda虚拟环境</h1>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">conda</span> create -n env_name python=<span class="number">2</span>.<span class="number">7</span></span><br><span class="line"><span class="comment"># 同时安装必要的包</span></span><br><span class="line"><span class="attribute">conda</span> create -n env_name numpy matplotlib python=<span class="number">2</span>.<span class="number">7</span></span><br></pre></td></tr></table></figure>
+<h1 id="激活虚拟环境">激活虚拟环境</h1>
+<p>使用如下命令即可激活创建的虚拟环境 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Linux or Mac OSX</span></span><br><span class="line">source <span class="built_in">activate</span> your_env_name(虚拟环境名称)</span><br><span class="line"><span class="comment"># Windows</span></span><br><span class="line"><span class="built_in">activate</span> your_env_name(虚拟环境名称)</span><br></pre></td></tr></table></figure> 此时使用<code>python --version</code>可以检查当前python版本是否为想要的（即虚拟环境的python版本）</p>
+<h1 id="删除虚拟环境">删除虚拟环境</h1>
+<h2 id="删除环境">删除环境</h2>
+<p>使用命令 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda <span class="built_in">remove</span> -n your_env_name(虚拟环境名称) <span class="comment">--all</span></span><br></pre></td></tr></table></figure></p>
+<p>删除虚拟环境中的包： 使用命令 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda <span class="builtin-name">remove</span> --name <span class="variable">$your_env_name</span>  <span class="variable">$package_name</span>（包名）</span><br></pre></td></tr></table></figure></p>
+<h2 id="conda常用命令">conda常用命令</h2>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conda <span class="type">list</span>：查看安装了哪些包。</span><br><span class="line">conda install package_name(包名)：安装包</span><br><span class="line">conda env <span class="type">list</span> 或 conda info -e：查看当前存在哪些虚拟环境</span><br><span class="line">conda update conda：检查更新当前conda</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/06/10/dataset-in-networking-research/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/10/dataset-in-networking-research/" class="post-title-link" itemprop="url">dataset-in-networking-research</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-06-10 09:40:46 / 修改时间：10:00:51" itemprop="dateCreated datePublished" datetime="2020-06-10T09:40:46+08:00">2020-06-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>The background traffic component is drawn from the data collected by the University of Auckland (Auckland VIII). It compromises 20h of continuous bidirectional real-world network traffic collected on 12-03-2006. The IP addresses in the traffic trace have been mapped into <code>10.*.*.*</code> using one-to-one hash mapping for privacy. Before using the data, it is required to be pre-processed.</p>
+<p>The dataset is first analysed to select the traffic destined for the busiest web server (destination IP address <code>10.0.0.63</code>). The selected traffic is then processed to remove TCP flows with less than three packets (SYN attacks) and also flows with no data from the web server<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>关于DDoS检测以及防御的数据集比较稀缺，最常用的还是KDD以及CAIDA数据集<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p>References:</p>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>An investigation into the detection and mitigation of denial of service (dos) attacks: critical information infrastructure protection[M]. Springer Science &amp; Business Media, 2011.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>An investigation into the detection and mitigation of denial of service (dos) attacks: critical information infrastructure protection[M]. Springer Science &amp; Business Media, 2011.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/06/09/hexo-insert-pictures/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -188,7 +799,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-06-09 22:13:49 / 修改时间：22:46:25" itemprop="dateCreated datePublished" datetime="2020-06-09T22:13:49+08:00">2020-06-09</time>
+              <time title="创建时间：2020-06-09 22:13:49 / 修改时间：22:48:04" itemprop="dateCreated datePublished" datetime="2020-06-09T22:13:49+08:00">2020-06-09</time>
             </span>
 
           
@@ -203,25 +814,25 @@
 
       
           <p>总结自：<br />
-<a href="https://hexo.io/zh-cn/docs/asset-folders.html" target="_blank" rel="noopener">Hexo官方资源文件夹使用方式</a><br />
-<a href="https://fuhailin.github.io/Hexo-images/" target="_blank" rel="noopener">在Hexo博客中插入图片的各种方式</a></p>
+<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders.html">Hexo官方资源文件夹使用方式</a><br />
+<a target="_blank" rel="noopener" href="https://fuhailin.github.io/Hexo-images/">在Hexo博客中插入图片的各种方式</a></p>
 <h1 id="绝对路径本地引用">绝对路径本地引用</h1>
-<p>当Hexo项目中只用到少量图片时，可以将图片统一放在<code>source/images</code>文件夹中，通过markdown语法访问它们。图片既可以在首页内容中访问到，也可以在文章正文中访问到。 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">some captions</span>](<span class="link">/images/image.jpg</span>)</span><br></pre></td></tr></table></figure></p>
+<p>当Hexo项目中只用到少量图片时，可以将图片统一放在<code>source/images</code>文件夹中，通过markdown语法访问它们。图片既可以在首页内容中访问到，也可以在文章正文中访问到。 <figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![some captions](<span class="regexp">/images/im</span>age.jpg)</span><br></pre></td></tr></table></figure></p>
 <h1 id="相对路径本地引用">相对路径本地引用</h1>
-<p>图片除了可以放在统一的images文件夹中，还可以放在文章自己的目录中。文章的目录可以通过站点配置文件<code>_config.yml</code>来生成。将<code>_config.yml</code>文件中的配置项<code>post_asset_folder</code>设为<code>true</code>后，执行命令<code>hexo new post_name</code>，在<code>source/_posts</code>中会生成文章<code>post_name.md</code>和同名文件夹<code>post_name</code>。将图片资源放在<code>post_name</code>中，文章就可以使用相对路径引用图片资源了。 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">some caption</span>](<span class="link">image.jpg</span>)</span><br></pre></td></tr></table></figure> <font color=red> 注意：<br />
+<p>图片除了可以放在统一的images文件夹中，还可以放在文章自己的目录中。文章的目录可以通过站点配置文件<code>_config.yml</code>来生成。将<code>_config.yml</code>文件中的配置项<code>post_asset_folder</code>设为<code>true</code>后，执行命令<code>hexo new post_name</code>，在<code>source/_posts</code>中会生成文章<code>post_name.md</code>和同名文件夹<code>post_name</code>。将图片资源放在<code>post_name</code>中，文章就可以使用相对路径引用图片资源了。 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="selector-attr">[some caption]</span>(image.jpg)</span><br></pre></td></tr></table></figure> <font color=red> 注意：<br />
 1. 使用markdown语法插入的图片不能设置图片大小; 2. 在hexo较新的版本中，已经不需要插件<code>hexo-asset-image</code>就能支持文章资源文件夹了。安装此插件反而会导致路径出错（图片路径类似于<code>/.com//docker-cnm.png</code>）。因此需要卸载该插件以防引起冲突。 </font></p>
 <h1 id="标签插件语法引用">标签插件语法引用</h1>
-<p>这种相对路径的图片显示方法在博文详情页面显示没有问题，但是在首页预览页面图片将显示不出来。如果希望图片在文章和首页中同时显示，可以使用标签插件语法。 <figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_path</span> slug %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_img</span> slug [title] %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> slug [title] %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure></p>
+<p>这种相对路径的图片显示方法在博文详情页面显示没有问题，但是在首页预览页面图片将显示不出来。如果希望图片在文章和首页中同时显示，可以使用标签插件语法。 <figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">asset_path</span> slug %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_img</span> slug [title] %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> slug [title] %&#125;</span></span><br></pre></td></tr></table></figure></p>
 <h1 id="cdn引用">CDN引用</h1>
 <p>除了在本地存储图片，还可以将图片上传到一些免费的CDN服务中。比如<code>Cloudinary</code>提供的图片CDN服务，在<code>Cloudinary</code>中上传图片后，会生成对应的url地址，将地址直接拿来引用即可。</p>
 <h1 id="html语法引用">HTML语法引用</h1>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img <span class="attribute">src</span>=<span class="string">"SpellCheck.png"</span> <span class="attribute">width</span>=<span class="string">"50%"</span> <span class="attribute">height</span>=<span class="string">"50%"</span> <span class="attribute">title</span>=<span class="string">"拼写检查工具Grammarly."</span> <span class="attribute">alt</span>=<span class="string">"拼写检查工具Grammarly."</span>/&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img <span class="attribute">src</span>=<span class="string">&quot;SpellCheck.png&quot;</span> <span class="attribute">width</span>=<span class="string">&quot;50%&quot;</span> <span class="attribute">height</span>=<span class="string">&quot;50%&quot;</span> <span class="attribute">title</span>=<span class="string">&quot;拼写检查工具Grammarly.&quot;</span> <span class="attribute">alt</span>=<span class="string">&quot;拼写检查工具Grammarly.&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
 <p>直接将<code>![](image.jpg)</code>替换上面的语法即可。</p>
 <h1 id="启用fancybox点击查看图片大图">启用fancybox：点击查看图片大图</h1>
 <p>我这里使用的是Hexo的NexT主题，NexT主题中提供了fancybox的方便接口。</p>
-<p>Usage：https://github.com/theme-next/theme-next-fancybox3 markdown用法： <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% img http://www.viemu.<span class="keyword">com</span>/<span class="keyword">vi</span>-<span class="keyword">vim</span>-cheat-sheet.gif <span class="number">600</span> <span class="number">600</span> <span class="string">"点击查看大图:vi/vim-cheat-sheet"</span> %&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Usage：https://github.com/theme-next/theme-next-fancybox3 markdown用法： <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% img http:<span class="regexp">//</span>www.viemu.com<span class="regexp">/vi-vim-cheat-sheet.gif 600 600 &quot;点击查看大图:vi/</span>vim-cheat-sheet<span class="string">&quot; %&#125;</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="hexo部分图片禁用fancybox">Hexo部分图片禁用fancybox</h2>
-<p>hexo在使用<code>fancybox</code>插件时，图片的效果还是很可观的，但是我们往往是不需要所有的图片都用<code>fancybox</code>； 例如：hexo next主题下，添加某些图片的时候，有些事不需要可点击的 修改<code>theme\next\source\js\src\utils.js</code> 红色字体部分； <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">diff --git a&#x2F;source&#x2F;js&#x2F;src&#x2F;utils.js b&#x2F;source&#x2F;js&#x2F;src&#x2F;utils.js</span><br><span class="line">index 0f3704e..8516665 100644</span><br><span class="line">--- a&#x2F;source&#x2F;js&#x2F;src&#x2F;utils.js</span><br><span class="line">+++ b&#x2F;source&#x2F;js&#x2F;src&#x2F;utils.js</span><br><span class="line">@@ -11,6 +11,7 @@ NexT.utils &#x3D; NexT.$u &#x3D; &#123;</span><br><span class="line">       .not(&#39;.group-picture img, .post-gallery img&#39;)</span><br><span class="line">       .each(function() &#123;</span><br><span class="line">         var $image &#x3D; $(this);</span><br><span class="line">+        if ($(this).hasClass(&#39;nofancybox&#39;)) return;</span><br><span class="line">         var imageTitle &#x3D; $image.attr(&#39;title&#39;);</span><br><span class="line">         var $imageWrapLink &#x3D; $image.parent(&#39;a&#39;);</span><br></pre></td></tr></table></figure> 在img标签使用的时候加上<code>class=”nofancybox”</code>即可。 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=<span class="string">"http://www.viemu.com/vi-vim-cheat-sheet.gif"</span> <span class="keyword">class</span>=<span class="string">"nofancybox"</span> /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>hexo在使用<code>fancybox</code>插件时，图片的效果还是很可观的，但是我们往往是不需要所有的图片都用<code>fancybox</code>； 例如：hexo next主题下，添加某些图片的时候，有些事不需要可点击的 修改<code>theme\next\source\js\src\utils.js</code> 红色字体部分； <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">diff --git a<span class="regexp">/source/</span>js<span class="regexp">/src/u</span>tils.js b<span class="regexp">/source/</span>js<span class="regexp">/src/u</span>tils.js</span><br><span class="line">index <span class="number">0</span>f3704e..<span class="number">8516665</span> <span class="number">100644</span></span><br><span class="line">--- a<span class="regexp">/source/</span>js<span class="regexp">/src/u</span>tils.js</span><br><span class="line">+++ b<span class="regexp">/source/</span>js<span class="regexp">/src/u</span>tils.js</span><br><span class="line">@@ -<span class="number">11</span>,<span class="number">6</span> +<span class="number">11</span>,<span class="number">7</span> @@ NexT.utils = NexT.<span class="variable">$u</span> = &#123;</span><br><span class="line">       .not(<span class="string">&#x27;.group-picture img, .post-gallery img&#x27;</span>)</span><br><span class="line">       .each(<span class="keyword">function</span>() &#123;</span><br><span class="line">         var <span class="variable">$image</span> = $(this);</span><br><span class="line">+        <span class="keyword">if</span> ($(this).hasClass(<span class="string">&#x27;nofancybox&#x27;</span>)) return;</span><br><span class="line">         var imageTitle = <span class="variable">$image</span>.attr(<span class="string">&#x27;title&#x27;</span>);</span><br><span class="line">         var <span class="variable">$imageWrapLink</span> = <span class="variable">$image</span>.parent(<span class="string">&#x27;a&#x27;</span>);</span><br></pre></td></tr></table></figure> 在img标签使用的时候加上<code>class=”nofancybox”</code>即可。 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=<span class="string">&quot;http://www.viemu.com/vi-vim-cheat-sheet.gif&quot;</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;nofancybox&quot;</span> /&gt;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -272,7 +883,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-09 14:40:24" itemprop="dateModified" datetime="2020-06-09T14:40:24+08:00">2020-06-09</time>
+                <time title="修改时间：2020-06-10 16:38:37" itemprop="dateModified" datetime="2020-06-10T16:38:37+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -297,24 +908,24 @@
       
           <p>原生的Hexo博客系统没有提供对数学公式的支持，但是可以通过<code>Mathjax</code>显示数学公式。<code>Mathjax</code>是一个跨浏览器平台的JavaScript库，支持以<code>MathML</code>, <code>LaTeX</code> and <code>ASCIIMathML</code>等语言在网页的HTML(或者 Markdown) 的源码中显示数学表达式。</p>
 <h1 id="安装hexo-math">安装<code>hexo-math</code></h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-math --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> hexo-<span class="keyword">math</span> --save</span><br></pre></td></tr></table></figure>
 <p>如果安装完毕，启动网站的时候出现跟<code>hexo-inject</code>相关的错误的时候，可以试着先删除<code>hexo-math</code>,然后再重新安装.</p>
 <h1 id="更换markdown渲染引擎">更换Markdown渲染引擎</h1>
-<p><code>Hexo</code>的默认渲染器<code>hexo-renderer-marked</code>，不支持<code>Latex</code>语法，一些<code>Latex</code>中的符号会被误认为是<code>markdown</code>语法，比如<code>\</code>、<code>_</code>和<code>*</code>，这让<code>Mathjax</code>不能正确地渲染（<code>Marked.js</code>和<code>MathJax</code>共存时可能会发生一些渲染冲突，而<code>katex</code>需要渲染器支持，根本不能工作）。举个例子，如下面的LaTeX源码，在采用<code>Hexo</code>的默认渲染器且不处理冲突时便会导致公式内的换行符<code>(\\)</code>失效。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;eqnarray&#125;</span><br><span class="line">\nabla\cdot\vec&#123;E&#125; &amp;&#x3D;&amp; \frac&#123;\rho&#125;&#123;\epsilon_0&#125; \\</span><br><span class="line">\nabla\cdot\vec&#123;B&#125; &amp;&#x3D;&amp; 0 \\</span><br><span class="line">\nabla\times\vec&#123;E&#125; &amp;&#x3D;&amp; -\frac&#123;\partial B&#125;&#123;\partial t&#125; \\</span><br><span class="line">\nabla\times\vec&#123;B&#125; &amp;&#x3D;&amp; \mu_0\left(\vec&#123;J&#125;+\epsilon_0\frac&#123;\partial E&#125;&#123;\partial t&#125; \right)</span><br><span class="line">\end&#123;eqnarray&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure></p>
+<p><code>Hexo</code>的默认渲染器<code>hexo-renderer-marked</code>，不支持<code>Latex</code>语法，一些<code>Latex</code>中的符号会被误认为是<code>markdown</code>语法，比如<code>\</code>、<code>_</code>和<code>*</code>，这让<code>Mathjax</code>不能正确地渲染（<code>Marked.js</code>和<code>MathJax</code>共存时可能会发生一些渲染冲突，而<code>katex</code>需要渲染器支持，根本不能工作）。举个例子，如下面的LaTeX源码，在采用<code>Hexo</code>的默认渲染器且不处理冲突时便会导致公式内的换行符<code>(\\)</code>失效。 <figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line"><span class="symbol">\b</span>egin&#123;eqnarray&#125;</span><br><span class="line"><span class="symbol">\n</span>abla<span class="symbol">\c</span>dot<span class="symbol">\v</span>ec&#123;E&#125; &amp;=&amp; <span class="symbol">\f</span>rac&#123;<span class="symbol">\r</span>ho&#125;&#123;<span class="symbol">\e</span>psilon_0&#125; <span class="symbol">\\</span></span><br><span class="line"><span class="symbol">\n</span>abla<span class="symbol">\c</span>dot<span class="symbol">\v</span>ec&#123;B&#125; &amp;=&amp; 0 <span class="symbol">\\</span></span><br><span class="line"><span class="symbol">\n</span>abla<span class="symbol">\t</span>imes<span class="symbol">\v</span>ec&#123;E&#125; &amp;=&amp; -<span class="symbol">\f</span>rac&#123;<span class="symbol">\p</span>artial B&#125;&#123;<span class="symbol">\p</span>artial t&#125; <span class="symbol">\\</span></span><br><span class="line"><span class="symbol">\n</span>abla<span class="symbol">\t</span>imes<span class="symbol">\v</span>ec&#123;B&#125; &amp;=&amp; <span class="symbol">\m</span>u_0<span class="symbol">\l</span>eft(<span class="symbol">\v</span>ec&#123;J&#125;+<span class="symbol">\e</span>psilon_0<span class="symbol">\f</span>rac&#123;<span class="symbol">\p</span>artial E&#125;&#123;<span class="symbol">\p</span>artial t&#125; <span class="symbol">\r</span>ight)</span><br><span class="line"><span class="symbol">\e</span>nd&#123;eqnarray&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure></p>
 <p>这是Next用户的一大痛点，<a href="ttps://github.com/theme-next/hexo-theme-next/blob/master/docs/MATH.md">Hexo官方网站</a>对此有比较全面的探讨。为了解决上述问题，社区行成了以下几种思路：</p>
 <ol type="1">
 <li>最简单粗暴的办法是，写<code>Latex</code>公式时，对冲突符号添加<code>markdown</code>转义符号<code>\</code>，这个方法很糟糕，公式书写不便，可移植性也差，不建议考虑。</li>
-<li>修改渲染器代码(比如<code>hexo-renderer-marked</code>中的<code>Marked.js</code>文件)里的正则表达式，改动语法规则，例如去掉<code>markdown</code>里用<code>*</code>强调的语法，参考<a href="https://zhuanlan.zhihu.com/p/33857596" target="_blank" rel="noopener">这篇文章</a>，显然这不是一个好的解决方案。</li>
+<li>修改渲染器代码(比如<code>hexo-renderer-marked</code>中的<code>Marked.js</code>文件)里的正则表达式，改动语法规则，例如去掉<code>markdown</code>里用<code>*</code>强调的语法，参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/33857596">这篇文章</a>，显然这不是一个好的解决方案。</li>
 <li>更换在<code>markdown</code>渲染器。对于<code>Mathjax</code>，可以选择<code>hexo-renderer-pandoc</code>或<code>hexo-renderer-kramed</code>。
 <ul>
-<li><code>hexo-renderer-pandoc</code>用的是<code>pandoc</code>渲染器. <code>pandoc</code>是一种特别设计的<code>markdown</code>语法，用它写的文档可以转换成五花八门的格式，该语法天然支持<code>Latex</code>。这也意味着<code>pandoc</code>与<code>markdown</code>语法不全相同，写文章的时候需要注意。<font color="#FF0000">需要指出的是，要使用<code>hexo-renderer-pandoc</code>，则电脑首先需要安装<code>pandoc</code>. 如果电脑采用的是OSX系统以及Homebrew, 则可以通过<code>brew install pandoc</code>来安装。</font></li>
-<li><code>hexo-renderer-kramed</code>引擎是在默认的渲染引擎<code>hexo-renderer-marked</code>的基础上修改了一些bug，两者比较接近，也比较轻量级。但该渲染器也有缺点：不支持行内<code>Latex</code>公式。解决办法是有的——和上面一样，要么在行内自己加上转义符号，要么修改渲染规则。渲染器作者建议是用把公式标注成代码块，参见<a href="https://duskcloudxu.github.io/2018/07/14/hexo-renderer-kramed%E4%B8%8EmathJax%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" target="_blank" rel="noopener">此处</a>。</li>
+<li><code>hexo-renderer-pandoc</code>用的是<code>pandoc</code>渲染器. <code>pandoc</code>是一种特别设计的<code>markdown</code>语法，用它写的文档可以转换成五花八门的格式，该语法天然支持<code>Latex</code>。这也意味着<code>pandoc</code>与<code>markdown</code>语法不全相同，写文章的时候需要注意。<font color=#FF0000 >需要指出的是，要使用<code>hexo-renderer-pandoc</code>，则电脑首先需要安装<code>pandoc</code>. 如果电脑采用的是OSX系统以及Homebrew, 则可以通过<code>brew install pandoc</code>来安装。</font></li>
+<li><code>hexo-renderer-kramed</code>引擎是在默认的渲染引擎<code>hexo-renderer-marked</code>的基础上修改了一些bug，两者比较接近，也比较轻量级。但该渲染器也有缺点：不支持行内<code>Latex</code>公式。解决办法是有的——和上面一样，要么在行内自己加上转义符号，要么修改渲染规则。渲染器作者建议是用把公式标注成代码块，参见<a target="_blank" rel="noopener" href="https://duskcloudxu.github.io/2018/07/14/hexo-renderer-kramed%E4%B8%8EmathJax%E7%9A%84%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">此处</a>。</li>
 </ul></li>
 </ol>
 <h1 id="修改主题配置文件">修改主题配置文件</h1>
 <p><code>hexo</code>把数学渲染相关的配置交由各个主题中的配置文件管理了。我采用的是经典的<code>next</code>主题，是可以直接配置公式支持，可选择<code>mathjax</code>和<code>katex</code>两种主流插件。因此，需要修改该主题目录下的<code>_config.yaml</code>文件。</p>
 <p>注意：无论采用<code>mathjax</code>还是<code>katex</code>，在写每篇博文的时候，都需要Front-matter部分还是要加上语句：<code>mathjax: true</code>.否则，数学公式无法被正常渲染.</p>
-<p><span class="math display">\[\begin{align}
+<p>以下几个公式可以作为测试用例来看看，<code>hexo-math</code>插件是否正常工作，<code>hexo-rendered-pandoc</code>渲染是否正常。如果因为安装了某些插件，有可能会出现下面几个公式无法正常换行。 <span class="math display">\[\begin{align}
 -4 + 5x &amp;= 2+y \nonumber  \\
  w+2 &amp;= -1+w \\
  ab &amp;= cb
@@ -325,8 +936,8 @@
 1 &amp; z &amp; z^2 \\
 \end{matrix}\]</span>
 <h1 id="使用">使用</h1>
-<p>关于如何在博文中书写数学公式，可以查阅<a href="http://blog.mobing.net/content/hexo/hexo-mathjax.html" target="_blank" rel="noopener">这个链接</a>，解释的非常详细和到位。</p>
-<p>行内公式\( f(x) = ax + b \)</p>
+<p>关于如何在博文中书写数学公式，可以查阅<a target="_blank" rel="noopener" href="http://blog.mobing.net/content/hexo/hexo-mathjax.html">这个链接</a>，解释的非常详细和到位。</p>
+<p>行内公式语法如下 <figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\\( <span class="function"><span class="title">f</span>(<span class="variable">x</span>) = <span class="variable">ax</span> + <span class="variable">b</span> \\)</span></span><br></pre></td></tr></table></figure> 效果如：\( f(x) = ax + b \)</p>
 <h2 id="颜色">颜色</h2>
 <p><span class="math display">\[
 \begin{array}{|rc|} 
@@ -351,7 +962,9 @@
 \end{array}
 \]</span></p>
 <h1 id="踩过的坑">踩过的坑</h1>
-<p>我一直没有闹明白<code>hexo-math, hexo-inject</code>以及<code>hexo-render-marked</code>之间到底是个什么关系呢？为啥我调用npm卸载<code>hexo-renderer-marked</code>的时候，输出的日志确显示安装了<code>hexo-inject</code>. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line"></span><br><span class="line">&gt; hexo-math@3.0.4 postinstall &#x2F;Users&#x2F;qsong&#x2F;Documents&#x2F;song&#x2F;personal_blog&#x2F;node_modules&#x2F;hexo-math</span><br><span class="line">&gt; cd ..&#x2F;.. &amp;&amp; npm install --save hexo-inject</span><br><span class="line"></span><br><span class="line">npm WARN deprecated hexo-inject@1.0.0: The author does not use Hexo any more. This plugin is no longer maintained.</span><br><span class="line">npm WARN deprecated core-js@2.6.11: core-js@&lt;3 is no longer maintained and not recommended for usage due to the number of issues. Please, upgrade your dependencies to the actual version of core-js@3.</span><br><span class="line"></span><br><span class="line">&gt; core-js@2.6.11 postinstall &#x2F;Users&#x2F;qsong&#x2F;Documents&#x2F;song&#x2F;personal_blog&#x2F;node_modules&#x2F;core-js</span><br><span class="line">&gt; node -e &quot;try&#123;require(&#39;.&#x2F;postinstall&#39;)&#125;catch(e)&#123;&#125;&quot;</span><br><span class="line"></span><br><span class="line">Thank you for using core-js ( https:&#x2F;&#x2F;github.com&#x2F;zloirock&#x2F;core-js ) for polyfilling JavaScript standard library!</span><br><span class="line"></span><br><span class="line">The project needs your help! Please consider supporting of core-js on Open Collective or Patreon:</span><br><span class="line">&gt; https:&#x2F;&#x2F;opencollective.com&#x2F;core-js</span><br><span class="line">&gt; https:&#x2F;&#x2F;www.patreon.com&#x2F;zloirock</span><br><span class="line"></span><br><span class="line">Also, the author of core-js ( https:&#x2F;&#x2F;github.com&#x2F;zloirock ) is looking for a good job -)</span><br><span class="line"></span><br><span class="line">+ hexo-inject@1.0.0</span><br><span class="line">added 1 package, removed 3 packages, updated 1 package, moved 1 package and audited 459 packages in 85.148s</span><br></pre></td></tr></table></figure></p>
+<p>我一直没有闹明白<code>hexo-math, hexo-inject</code>以及<code>hexo-render-marked</code>之间到底是个什么关系呢？为啥我调用npm卸载<code>hexo-renderer-marked</code>的时候，输出的日志确显示安装了<code>hexo-inject</code>. <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line"></span><br><span class="line">&gt; hexo-math@<span class="number">3.0</span>.<span class="number">4</span> postinstall <span class="regexp">/Users/</span>qsong<span class="regexp">/Documents/</span>song<span class="regexp">/personal_blog/</span>node_modules/hexo-math</span><br><span class="line">&gt; cd ../.. &amp;&amp; npm install --save hexo-<span class="keyword">inject</span></span><br><span class="line"></span><br><span class="line">npm WARN deprecated hexo-<span class="keyword">inject</span>@<span class="number">1.0</span>.<span class="number">0</span>: The author does not use Hexo <span class="keyword">any</span> more. <span class="keyword">This</span> plugin is no longer maintained.</span><br><span class="line">npm WARN deprecated core-js@<span class="number">2.6</span>.<span class="number">11</span>: core-js@&lt;<span class="number">3</span> is no longer maintained and not recommended <span class="keyword">for</span> usage due to the number of issues. Please, upgrade your <span class="keyword">dependencies</span> to the actual version of core-js@<span class="number">3</span>.</span><br><span class="line"></span><br><span class="line">&gt; core-js@<span class="number">2.6</span>.<span class="number">11</span> postinstall <span class="regexp">/Users/</span>qsong<span class="regexp">/Documents/</span>song<span class="regexp">/personal_blog/</span>node_modules/core-js</span><br><span class="line">&gt; node -e <span class="string">&quot;try&#123;require(&#x27;./postinstall&#x27;)&#125;catch(e)&#123;&#125;&quot;</span></span><br><span class="line"></span><br><span class="line">Thank you <span class="keyword">for</span> using core-js ( https:<span class="comment">//github.com/zloirock/core-js ) for polyfilling JavaScript standard library!</span></span><br><span class="line"></span><br><span class="line">The <span class="keyword">project</span> needs your help! Please consider supporting of core-js on Open Collective or Patreon:</span><br><span class="line">&gt; https:<span class="comment">//opencollective.com/core-js</span></span><br><span class="line">&gt; https:<span class="comment">//www.patreon.com/zloirock</span></span><br><span class="line"></span><br><span class="line">Also, the author of core-js ( https:<span class="comment">//github.com/zloirock ) is looking for a good job -)</span></span><br><span class="line"></span><br><span class="line">+ hexo-<span class="keyword">inject</span>@<span class="number">1.0</span>.<span class="number">0</span></span><br><span class="line">added <span class="number">1</span> <span class="keyword">package</span>, removed <span class="number">3</span> packages, updated <span class="number">1</span> <span class="keyword">package</span>, moved <span class="number">1</span> <span class="keyword">package</span> and audited <span class="number">459</span> packages in <span class="number">85.148</span>s</span><br></pre></td></tr></table></figure></p>
+<p>2020-06-10：我发现只要是博客中markdown型的列表(以*，数字，或者圆圈开始的)，之前没有空一行也可以被正常渲染的时候，数学公式渲染就会出问题。给我的感觉就像是<code>hexo-renderred-marked</code>又被重新安装上了。最后再分别删除安装<code>hexo-renderred-marked</code>以及<code>hexo-renderer-pandoc</code>本文中的数学公式就又可以被正常渲染了。</p>
+<p>下面这些个错误输出，我忍了很久，一是确实不影响hexo命令执行效果，二是也不影响数学公式的渲染效果。最后实在觉得，这么多messy的输出太讨人厌，重新删除安装<code>hexo-math</code>解决了。不知道原因何在。 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="string">&quot;anaconda-tuto&quot;</span></span><br><span class="line">INFO  [hexo-math] Using engine <span class="string">&#x27;mathjax&#x27;</span></span><br><span class="line">Unhandled rejection Template render error: (<span class="regexp">/Users/</span>qsong<span class="regexp">/Documents/</span>song<span class="regexp">/personal_blog/</span>node_modules<span class="regexp">/hexo-math/</span>asset/<span class="keyword">inject</span>.swig) [Line <span class="number">2</span>, Column <span class="number">38</span>]</span><br><span class="line">  Error: Unable to <span class="keyword">call</span> `JSON[<span class="string">&quot;stringify&quot;</span>]`, which is undefined or falsey</span><br><span class="line">    at Object._prettifyError (<span class="regexp">/Users/</span>qsong<span class="regexp">/Documents/</span>song<span class="regexp">/personal_blog/</span>node_modules<span class="regexp">/nunjucks/</span>src/lib.js:<span class="number">36</span>:<span class="number">11</span>)</span><br><span class="line">    at <span class="regexp">/Users/</span>qsong<span class="regexp">/Documents/</span>song<span class="regexp">/personal_blog/</span>node_modules<span class="regexp">/nunjucks/</span>src/environment.js:<span class="number">561</span>:<span class="number">19</span></span><br><span class="line">    at Template.root [as rootRenderFunc] (eval at _compile (<span class="regexp">/Users/</span>qsong<span class="regexp">/Documents/</span>song<span class="regexp">/personal_blog/</span>node_modules<span class="regexp">/nunjucks/</span>src/environment.js:<span class="number">631</span>:<span class="number">18</span>), &lt;anonymous&gt;:<span class="number">21</span>:<span class="number">3</span>)</span><br><span class="line">    at Template.render (<span class="regexp">/Users/</span>qsong<span class="regexp">/Documents/</span>song<span class="regexp">/personal_blog/</span>node_modules<span class="regexp">/nunjucks/</span>src/environment.js:<span class="number">550</span>:<span class="number">10</span>)</span><br><span class="line">    at Hexo.njkRenderer (<span class="regexp">/Users/</span>qsong<span class="regexp">/Documents/</span>song<span class="regexp">/personal_blog/</span>themes<span class="regexp">/next/</span>scripts/renderer.js:<span class="number">24</span>:<span class="number">27</span>)</span><br><span class="line">    ...</span><br><span class="line">    at processImmediate (internal/timers.js:<span class="number">439</span>:<span class="number">21</span>)</span><br><span class="line"></span><br><span class="line">INFO  Created: ~<span class="regexp">/Documents/</span>song<span class="regexp">/personal_blog/</span><span class="keyword">source</span><span class="regexp">/_posts/</span>anaconda-tuto.md</span><br></pre></td></tr></table></figure></p>
 <p>参考文献:</p>
 <p>https://yccalan.github.io/%E6%B8%B2%E6%9F%93-Hexo-%E5%8D%9A%E5%AE%A2%E9%87%8C%E7%9A%84-latex-%E5%85%AC%E5%BC%8F/</p>
 <p>http://blog.mobing.net/content/hexo/hexo-mathjax.html</p>
@@ -370,584 +983,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/05/31/VNC%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8BLinux%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/31/VNC%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8BLinux%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">VNC连接远程Linux服务器</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-05-31 10:33:40 / 修改时间：11:24:58" itemprop="dateCreated datePublished" datetime="2020-05-31T10:33:40+08:00">2020-05-31</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>输入vncserver命令之后，输出结果显示如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">New &#39;X&#39; desktop is qsong-P650SE:1</span><br><span class="line"></span><br><span class="line">Starting applications specified in &#x2F;home&#x2F;qsong&#x2F;.vnc&#x2F;xstartup</span><br><span class="line">Log file is &#x2F;home&#x2F;qsong&#x2F;.vnc&#x2F;qsong-P650SE:1.log</span><br></pre></td></tr></table></figure> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ lsof -i:5901</span><br><span class="line">COMMAND    PID  USER   FD   TYPE   DEVICE SIZE&#x2F;OFF NODE NAME</span><br><span class="line">Xtightvnc 5222 qsong    3u  IPv4 35313713      0t0  TCP *:5901 (LISTEN)</span><br></pre></td></tr></table></figure></p>
-<p>OS X has a built in VNC (Screen Sharing) server, but it is a little known feature that it also has a built in VNC client. No additional software is necessary.</p>
-<p>To setup the server go to <code>Preferences-&gt;Sharing</code> and check the “On” checkbox next to <code>Screen Sharing</code>. Make sure to only allow access to Administrators or a specific user/user group.</p>
-<p>To connect to your computer from another one using VNC open Finder and press ⌘+k. In the Server Address enter vnc:// followed by your computer name or IP address, for example: <code>vnc:127.0.0.1:5901</code>.</p>
-<p>在OSX的命令行中键入下列命令，以建立本地端口59010和远程端口5901(ubuntu_server上VNC server监听5901端口). 需要指出的是：<code>ubuntu_server</code>是在我本地电脑中<code>.ssh/config</code>中提前配置好的项目。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 59010:127.0.0.1:5901 -N -f ubuntu_server</span><br></pre></td></tr></table></figure>
-<p>连接到远程服务器之后发现，还是teamviewer香啊！虽然有一定的延时，但是操纵还是很流畅的。 再次复习一下，各个参数的作用： <code>-N</code>: Do not execute a remote command. This is useful for just forwarding ports, 加上这个参数，输入完上述命令之后，依然在本地的shell, 而不会给你开启远程服务器上的shell. <code>-f</code> option backgrounds ssh and</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/04/30/libtrace-tutorial/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/30/libtrace-tutorial/" class="post-title-link" itemprop="url">libtrace-tutorial</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-30 16:54:10" itemprop="dateCreated datePublished" datetime="2020-04-30T16:54:10+08:00">2020-04-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-31 09:26:33" itemprop="dateModified" datetime="2020-05-31T09:26:33+08:00">2020-05-31</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="安装">安装</h1>
-<p>libpcap &gt;= 0.8 Libwandio # from libtrace 4.0, libwandio will no longer be included with libtrace and must be installed separately for libtrace to build and run. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># install libpcap</span><br><span class="line">sudo apt-get install libpcap-dev</span><br></pre></td></tr></table></figure></p>
-<p>Following installation, you may need to add the line <code>/usr/local/lib</code> to your <code>/etc/ld.so.conf</code> and run <code>ldconfig</code> as root. For my case (Ubuntu 16.04 LTS version), <code>/etc/ld.so.conf</code> is a file containing an instrument: <code>include /etc/ld.so.conf.d/*.conf</code> and <code>/usr/local/lib</code> has been written into file <code>etc/ld.so.conf.d/libc.conf</code>.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/03/28/international-internet-arch/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/28/international-internet-arch/" class="post-title-link" itemprop="url">international-internet-arch</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-28 16:03:43 / 修改时间：16:16:10" itemprop="dateCreated datePublished" datetime="2020-03-28T16:03:43+08:00">2020-03-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>互联网骨干网全面解析</p>
-<p><code>骨干网</code>一词源自<code>NSFNet</code>，这是一种用于早期研究的网络，该网络由美国国家科学基金会(NSF)出资兴建。它创建了至今仍在使用的分层结构模型。这种模型中，本地服务提供商连接到区域服务，而后者又依次连接到全国或全球的服务提供商。目前，已有许多骨干网相互连接在一起，这就使得任何两台主机之间都可通信。此外，许多区域性的网络避开了骨干网而直接彼此相连。</p>
-<p>对等互联所采取的形式多种多样，有的是在公共的NAP处连接，有的则是通过直联的方式。但是对于绝大部分互联网骨干运营商来说，单纯依靠对等互联往往不能满足要求，而必须采用对等互联与非对称互联相结合的方式。</p>
-<p>CHINANET八大节点：</p>
-<p>中国电信CHINANET骨干网核心层由北京、上海、广州、沈阳、南京、武汉、成都、西安等8个城市的核心节点组成。核心节点之间为不完全网状结构。以北京、上海、广州为中心的三中心结构，其他核心节点分别以至少两条高速ATM链路与这三个中心相连。另外各省还建立了二级节点。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/03/09/parralel-desktop-preparation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/09/parralel-desktop-preparation/" class="post-title-link" itemprop="url">打造趁手的基于Parallel Desktop的Windows 10系统</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-09 16:49:13" itemprop="dateCreated datePublished" datetime="2020-03-09T16:49:13+08:00">2020-03-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-28 18:34:32" itemprop="dateModified" datetime="2020-03-28T18:34:32+08:00">2020-03-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>parralel desktop 15 明显感觉到在使用 windows app的时候消耗的资源变少了。 安装注意事项: 1. 如果Mac安装有小红伞软件(Avira), 需要关闭实时保护功能，不然安装之后，显示软件被没有被激活 2. 安装完毕止后，关闭掉软件的自动更新。 3. 如果之前安装有 parallel desktop, 也许 # 科研环境</p>
-<h2 id="microsoft-office-2019">Microsoft office 2019</h2>
-<p>破解版，通过拼多多购买。卖家提供了非常详细的安装说明，按照帮助文档一步步执行即可。 安装的时候需要注意，安装包文件需要放在windows文件下面(比如放在C盘下)打开，不然在点击IMG文件的时候，系统会报错”无法加载“ 安装文件存放于李玥的移动硬盘，名为<code>office2019</code>压缩包里。</p>
-<h2 id="microsoft-office-2019for-mac">Microsoft office 2019(for mac)</h2>
-<p>https://www.macappbox.com/a/office-2019-for-mac.html 在这个页面上下载了MS Office 2019 for mac安装包，但是没有安装，因为win10虚拟机里已经安装了MS office没有必要重复安装了，浪费空间！</p>
-<h2 id="endnote-x9">Endnote X9</h2>
-<p>参考链接：https://www.maoxinhang.com/2020/02/28/168/ 版本号 X9.3.1 中科大授权版， 注意事项: 1. 如果是在mac下下载得到的安装包，最好放置在windows系统盘下面 2. 关闭 windows defend 防病毒系统，避免安装过程出现问题 <img src="/.com//endnotex9-install-step1.png" alt="步骤一: 安装文件放置于C盘根目录下并打开"><span class="image-caption">步骤一: 安装文件放置于C盘根目录下并打开</span> <img src="/.com//endnotex9-install-step2.png" alt="步骤二: 安装文件会自动加载注册号无需其他操作"><span class="image-caption">步骤二: 安装文件会自动加载注册号无需其他操作</span></p>
-<h3 id="endnote-x9-使用技巧">Endnote X9 使用技巧</h3>
-<p>EndNote插入引文序号为上标怎么破？https://www.howsci.com/endnote-number-sup.html 如何将中国知网的文献导入到Endnote X9中？ 第一步: 访问中国知网查询页<code>http://new.gb.oversea.cnki.net/index/</code>, 并在搜索框中搜索需要的文献</p>
-<p>第二步：勾选要导出的文献后，选择【导出/参考文献】——进入下一页面——选择EndNote导出——下载的是一个text文件 <img src="/.com//中国知网文献导出3.png" alt="步骤2: 文献导出"><span class="image-caption">步骤2: 文献导出</span></p>
-<p>https://blog.csdn.net/lyc_daniel/article/details/12514057</p>
-<p>Endnote插入文献不现实URL怎么办？https://community.endnote.com/t5/EndNote-General/Showing-URLs-and-DOIs/td-p/26057</p>
-<p>如何获取RFC以及Internet draft文献的RIS格式引用信息？ 可以用开源社区提供的命令行工具包<code>bibutil</code>中的<code>bib2xml</code>以及<code>xml2ris</code> https://tex.stackexchange.com/questions/227852/conversion-of-bibtex-to-endnote-bibliography-02-12-2015/227920 下载地址: https://sourceforge.net/projects/bibutils/</p>
-<h3 id="windows平台下使用docker">Windows平台下使用docker</h3>
-<p>我本人没有这个需要，但是李洋提出了这个问题，并且考虑到以后学生有这方面的需求，还是需要记录下解决方案的。</p>
-<p>对windows 7/8等系统来说，可以采用docker toobox 对于windows 10来说，推荐docker desktop for windows, 采用基于Hyper-V的解决方案。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/11/26/micro-service-architecture/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/26/micro-service-architecture/" class="post-title-link" itemprop="url">Some notes about micro-service architecture</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-26 10:14:46" itemprop="dateCreated datePublished" datetime="2019-11-26T10:14:46+08:00">2019-11-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-18 01:57:33" itemprop="dateModified" datetime="2019-12-18T01:57:33+08:00">2019-12-18</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/11/25/5G/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/25/5G/" class="post-title-link" itemprop="url">5G</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-11-25 10:01:54 / 修改时间：17:02:23" itemprop="dateCreated datePublished" datetime="2019-11-25T10:01:54+08:00">2019-11-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>http://www.sohu.com/a/284291309_257861 很好的科普 关于5G核心网是如何演进的</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/11/24/python-interview-questions/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/24/python-interview-questions/" class="post-title-link" itemprop="url">Python 常见面试问题准备</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-24 10:24:47" itemprop="dateCreated datePublished" datetime="2019-11-24T10:24:47+08:00">2019-11-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-28 17:52:24" itemprop="dateModified" datetime="2019-11-28T17:52:24+08:00">2019-11-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="学习python路线图">学习Python路线图:</h1>
-<h2 id="python基础知识">Python基础知识</h2>
-<h3 id="python-基础数据类型以及数据结构">Python 基础数据类型以及数据结构</h3>
-<h4 id="列表">列表</h4>
-<h4 id="字符串以及正则表达式">字符串(以及正则表达式)</h4>
-<p>在python中，由单引号、双引号和三引号引起来的内容就是字符串。 #### 字典 #### 集合 #### 哈哈</p>
-<h3 id="python-os-module">Python OS module</h3>
-<p>import os os.path.join() os.listdir() os.path.isdir()</p>
-<h3 id="python-单元测试是如何进行的">Python 单元测试是如何进行的?</h3>
-<h3 id="python-内存分析以及内存管理">Python 内存分析以及内存管理</h3>
-<p>https://www.cnblogs.com/geaozhang/p/7111961.html https://stackoverflow.com/questions/14546178/does-python-have-a-stack-heap-and-how-is-memory-managed</p>
-<h2 id="python高级特性">Python高级特性</h2>
-<ul>
-<li>Python 迭代器，生成器</li>
-<li>Python 闭包函数 https://zhuanlan.zhihu.com/p/22229197</li>
-<li>Python 装饰器</li>
-<li>Python GIL 多进程 多线程 https://realpython.com/python-gil/</li>
-</ul>
-<h2 id="面试中常见的算法">面试中常见的算法</h2>
-<ul>
-<li>DFS, BFS</li>
-<li>反转二叉树, 查找重复数字</li>
-</ul>
-<h2 id="python垂直领域应用">Python垂直领域应用</h2>
-<ul>
-<li>web开发: flask, 爬虫</li>
-<li>数据分析: numpy + pandas</li>
-<li>AI 领域: Pytorch</li>
-<li></li>
-</ul>
-<h1 id="python的内存管理模型">Python的内存管理模型</h1>
-<p>对于任何编程语言，我们都需要从下面两个方面去理解其内存管理(memory management)模型: * 内存的分配 * 无用内存的回收 (手动内存回收, 如C语言，以及自动内存回收，如Java/Python)</p>
-<p>Python memory is managed by Python private heap space. Python语言中的内存管理是通过私有堆空间(private heap space) 进行的。任何Python对象以及数据结果都是存储在一个私有的堆空间(private heap spaace)中。程序员必须通过Python解释器进行相关的操作，无法直接访问该私有堆空间。</p>
-<p>Python的垃圾回收机制: 在Python中，每个对象都有指向该对象的引用总数---引用计数(refcount). 对于任何一个Python对象而言，以下操作会导致引用计数的增减: 创建对象，被赋值给其他对象，该对象成为别的容器对象中的一个元素，被作为参数传递给函数. 导致引用计数减小的操作: * 对象的别名被显式的销毁 如 del m * 对象的一个别名被赋值给其他对象 * 对象从一个窗口对象中移除，或，窗口对象本身被销毁 a.remove(123) * 一个本地引用离开了它的作用域，比如上面的foo(x)函数结束时，x指向的对象引用减1。</p>
-<p>当Python的某个对象的引用计数降为0时，说明没有任何引用指向该对象，该对象就成为要被回收的垃圾。</p>
-<h1 id="python易错面试题陷阱题">Python易错面试题(陷阱题)</h1>
-<p>https://lvraikkonen.github.io/2017/06/12/(%E8%BD%AC)Python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%9D%A2%E8%AF%95%E9%A2%98/</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2019/11/05/dynamic-programming/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rennsong">
-      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rennesong's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/05/dynamic-programming/" class="post-title-link" itemprop="url">动态规划之最长公共子序列(附过程图解)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-05 22:11:09" itemprop="dateCreated datePublished" datetime="2019-11-05T22:11:09+08:00">2019-11-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-06 05:42:34" itemprop="dateModified" datetime="2019-11-06T05:42:34+08:00">2019-11-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>声明： 本文转载自 https://blog.csdn.net/hrn1216/article/details/51534607 感谢原作者的辛勤付出以及详细的解释。如有侵权行为，请联系本人删除。</p>
-<h1 id="基本概念">基本概念</h1>
-<p>首先需要科普一下，最长公共子序列（longest common sequence）和最长公共子串（longest common substring）不是一回事儿。什么是子序列呢？即一个给定的序列的子序列，就是将给定序列中零个或多个元素去掉之后得到的结果。什么是子串呢？给定串中任意个连续的字符组成的子序列称为该串的子串。给一个图再解释一下：</p>
-<h1 id="构造lcs">构造LCS</h1>
-<p>本文 <span class="math inline">\(S_1\)</span> 和 <span class="math inline">\(S_2\)</span> 的最LCS并不是只有1个，本文并不是着重讲输出两个序列的所有LCS，只是介绍如何通过上表，输出其中一个LCS。</p>
-<p>       我们根据递归公式构建了上表，我们将从最后一个元素c[8][9]倒推出S1和S2的LCS。</p>
-<p>       c[8][9] = 5，且S1[8] != S2[9]，所以倒推回去，c[8][9]的值来源于c[8][8]的值(因为c[8][8] &gt; c[7][9])。</p>
-<p>       c[8][8] = 5,  且S1[8] = S2[8], 所以倒推回去，c[8][8]的值来源于 c[7][7]。</p>
-<p>       以此类推，如果遇到S1[i] != S2[j] ，且c[i-1][j] = c[i][j-1] 这种存在分支的情况，这里请都选择一个方向（之后遇到这样的情况，也选择相同的方向）。</p>
-<p>       第一种结果为： ———————————————— 版权声明：本文为CSDN博主「Running07」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。 原文链接：https://blog.csdn.net/hrn1216/article/details/51534607</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1013,29 +1052,22 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-          
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-          
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/hansomesong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-  </div>
 
 
 
@@ -1058,13 +1090,13 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">rennsong</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
         
@@ -1093,7 +1125,7 @@
 <script src="/js/schemes/muse.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -1115,61 +1147,6 @@
 
 
   
-
-  
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 

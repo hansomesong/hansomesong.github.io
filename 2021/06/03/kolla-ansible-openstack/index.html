@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="网上教程很多，但是感觉都不是特别完整，本文参考的是kolla-ansible官方教程： 官方参考教程：https:&#x2F;&#x2F;docs.openstack.org&#x2F;kolla-ansible&#x2F;latest&#x2F;user&#x2F;quickstart.html 为了提升安装速度，需要将软件包源切换为国内源。 欢迎加QQ群：1026880196 进行交流学习 需要安装python3-virtualenv这个Python安">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kolla-ansible-openstack">
+<meta property="og:url" content="http://rennesong.com/2021/06/03/kolla-ansible-openstack/index.html">
+<meta property="og:site_name" content="Rennesong&#39;s blog">
+<meta property="og:description" content="网上教程很多，但是感觉都不是特别完整，本文参考的是kolla-ansible官方教程： 官方参考教程：https:&#x2F;&#x2F;docs.openstack.org&#x2F;kolla-ansible&#x2F;latest&#x2F;user&#x2F;quickstart.html 为了提升安装速度，需要将软件包源切换为国内源。 欢迎加QQ群：1026880196 进行交流学习 需要安装python3-virtualenv这个Python安">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-03T13:01:11.000Z">
+<meta property="article:modified_time" content="2021-06-15T04:22:21.003Z">
+<meta property="article:author" content="rennsong">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://rennesong.com/2021/06/03/kolla-ansible-openstack/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>kolla-ansible-openstack | Rennesong's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2021/06/03/kolla-ansible-openstack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          kolla-ansible-openstack
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-03 21:01:11" itemprop="dateCreated datePublished" datetime="2021-06-03T21:01:11+08:00">2021-06-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-15 12:22:21" itemprop="dateModified" datetime="2021-06-15T12:22:21+08:00">2021-06-15</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>网上教程很多，但是感觉都不是特别完整，本文参考的是kolla-ansible官方教程： 官方参考教程：https://docs.openstack.org/kolla-ansible/latest/user/quickstart.html</p>
+<p>为了提升安装速度，需要将软件包源切换为国内源。</p>
+<p>欢迎加QQ群：1026880196 进行交流学习</p>
+<p>需要安装python3-virtualenv这个Python安装包隔离环境。需要注意的是，激活一个venv环境需要 source kolla-ansible-openstack/bin/activate才行</p>
+<h2 id="硬件配置">硬件配置</h2>
+<p>看样子应该</p>
+<h2 id="设置默认pythonpip软连接并换源">设置默认python、pip（软连接）并换源</h2>
+<p>Pip pip是一个用来安装Python软件包的工具，由于Python 2已经退出了历史的舞台，Ubuntu20.04也移除了<code>Python</code>2，所以不能够使用python-pip安装pip。</p>
+<ol type="1">
+<li><p>安装pip3 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install python3-pip -y</span><br></pre></td></tr></table></figure></p></li>
+<li><p>当安装结束，检查pip版本： <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 <span class="comment">--version</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>更换pip源 pip默认使用境外源，下载速度较慢且时而报错，我们可以更换为国内的pip源： <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/.pip/</span><br><span class="line"><span class="keyword">cd</span> .pip</span><br><span class="line">sudo <span class="keyword">vim</span> pip.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure> 将下列内容加入到pip.conf文件中： <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">global</span>]</span><br><span class="line"><span class="keyword">index</span>-url=http://mirrors.cloud.tencent.com/pypi/simple</span><br><span class="line">[install]</span><br><span class="line"><span class="keyword">trusted</span>-host=mirrors.cloud.tencent.com</span><br></pre></td></tr></table></figure></p></li>
+<li><p>查看当前源： <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 config list</span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<p>其他国内源：</p>
+<p>清华源(个人实测，速度很垃圾，强烈不推荐) https://pypi.tuna.tsinghua.edu.cn/simple 腾讯源 http://mirrors.cloud.tencent.com/pypi/simple 豆瓣源 http://pypi.douban.com/simple/</p>
+<ol start="5" type="1">
+<li>更新pip <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install <span class="comment">--upgrade pip</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="部署阶段">部署阶段</h1>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kolla-ansible -<span class="selector-tag">i</span> ./multinode bootstrap-servers</span><br></pre></td></tr></table></figure>
+<h1 id="debug-记录">DEBUG 记录</h1>
+<h2 id="执行pip-install-ansible3.0的时候出现下列问题">执行<code>pip install 'ansible&lt;3.0'</code>的时候，出现下列问题！！！</h2>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">ERROR: Command errored out with <span class="keyword">exit</span> status <span class="number">1</span>:</span><br><span class="line"> command: <span class="regexp">/home/</span>qsong<span class="regexp">/Documents/</span>kolla-ansible-openstack<span class="regexp">/bin/</span>python3 -u -c <span class="string">&#x27;import sys, setuptools, tokenize; sys.argv[0] = &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;/tmp/pip-install-ui2xktr_/ansible/setup.py&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;; __file__=&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;/tmp/pip-install-ui2xktr_/ansible/setup.py&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;;f=getattr(tokenize, &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;open&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;, open)(__file__);code=f.read().replace(&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;\r\n&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;, &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;\n&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;);f.close();exec(compile(code, __file__, &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;exec&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;))&#x27;</span> bdist_wheel -d <span class="regexp">/tmp/</span>pip-wheel-<span class="number">6</span>w8vgw00</span><br><span class="line">     cwd: <span class="regexp">/tmp/</span>pip-install-ui2xktr_<span class="regexp">/ansible/</span></span><br><span class="line">Complete output (<span class="number">6</span> lines):</span><br><span class="line">usage: setup.py [global_opts] cmd1 [cmd1_opts] [cmd2 [cmd2_opts] ...]</span><br><span class="line">   or: setup.py --help [cmd1 cmd2 ...]</span><br><span class="line">   or: setup.py --help-commands</span><br><span class="line">   or: setup.py cmd --help</span><br><span class="line"></span><br><span class="line">error: invalid command <span class="string">&#x27;bdist_wheel&#x27;</span></span><br><span class="line">----------------------------------------</span><br><span class="line">ERROR: Failed building wheel <span class="keyword">for</span> ansible</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">  ERROR: Command errored out with <span class="keyword">exit</span> status <span class="number">1</span>:</span><br><span class="line"> command: <span class="regexp">/home/</span>qsong<span class="regexp">/Documents/</span>kolla-ansible-openstack<span class="regexp">/bin/</span>python3 -u -c <span class="string">&#x27;import sys, setuptools, tokenize; sys.argv[0] = &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;/tmp/pip-install-ui2xktr_/ansible-base/setup.py&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;; __file__=&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;/tmp/pip-install-ui2xktr_/ansible-base/setup.py&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;;f=getattr(tokenize, &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;open&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;, open)(__file__);code=f.read().replace(&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;\r\n&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;, &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;\n&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;);f.close();exec(compile(code, __file__, &#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;exec&#x27;</span><span class="string">&quot;&#x27;&quot;</span><span class="string">&#x27;))&#x27;</span> bdist_wheel -d <span class="regexp">/tmp/</span>pip-wheel-<span class="number">4</span>cg0qz86</span><br><span class="line">     cwd: <span class="regexp">/tmp/</span>pip-install-ui2xktr_<span class="regexp">/ansible-base/</span></span><br><span class="line">Complete output (<span class="number">6</span> lines):</span><br><span class="line">usage: setup.py [global_opts] cmd1 [cmd1_opts] [cmd2 [cmd2_opts] ...]</span><br><span class="line">   or: setup.py --help [cmd1 cmd2 ...]</span><br><span class="line">   or: setup.py --help-commands</span><br><span class="line">   or: setup.py cmd --help</span><br><span class="line"></span><br><span class="line">error: invalid command <span class="string">&#x27;bdist_wheel&#x27;</span></span><br><span class="line">----------------------------------------</span><br><span class="line">ERROR: Failed building wheel <span class="keyword">for</span> ansible-base</span><br></pre></td></tr></table></figure>
+<p>关键错误提示：<code>error: invalid command 'bdist_wheel'</code>,通过搜索发现，原因是缺乏<code>wheel</code>这个包，执行<code>pip install wheel</code>即可解决问题。最后，卸载并重安装<code>ansible</code>的时候，再无上述错误发生。 思考：还是要搞清楚，<code>wheel</code>机制是个啥？</p>
+<h2 id="执行kolla-ansible--i-all-in-one-bootstrap-servers报错如下">执行<code>kolla-ansible -i all-in-one bootstrap-servers</code>报错如下：</h2>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Bootstrapping servers : ansible-playbook -i all-in-one -e @<span class="regexp">/etc/</span>kolla<span class="regexp">/globals.yml  -e @/</span>etc<span class="regexp">/kolla/</span>passwords.yml -e CONFIG_DIR=<span class="regexp">/etc/</span>kolla  -e kolla_action=bootstrap-servers <span class="regexp">/home/</span>qsong<span class="regexp">/Documents/</span>kolla-ansible-openstack<span class="regexp">/share/</span>kolla-ansible<span class="regexp">/ansible/</span>kolla-host.yml</span><br><span class="line">ERROR! Unexpected Exception, <span class="keyword">this</span> is probably a bug: cannot <span class="keyword">import</span> name <span class="string">&#x27;AnsibleCollectionLoader&#x27;</span> <span class="keyword">from</span> <span class="string">&#x27;ansible.utils.collection_loader&#x27;</span> (<span class="regexp">/home/</span>qsong<span class="regexp">/Documents/</span>kolla-ansible-openstack<span class="regexp">/lib/</span>python3.<span class="number">8</span><span class="regexp">/site-packages/</span>ansible<span class="regexp">/utils/</span>collection_loader/__init__.py)</span><br><span class="line">the full traceback was:</span><br><span class="line"></span><br><span class="line">Traceback (most recent <span class="keyword">call</span> last):</span><br><span class="line">  <span class="keyword">File</span> <span class="string">&quot;/home/qsong/Documents/kolla-ansible-openstack/bin/ansible-playbook&quot;</span>, line <span class="number">92</span>, in &lt;module&gt;</span><br><span class="line">    mycli = getattr(__import__(<span class="string">&quot;ansible.cli.%s&quot;</span> % sub, fromlist=[myclass]), myclass)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">&quot;/home/qsong/Documents/kolla-ansible-openstack/lib/python3.8/site-packages/ansible/cli/__init__.py&quot;</span>, line <span class="number">22</span>, in &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> ansible.inventory.manager <span class="keyword">import</span> InventoryManager</span><br><span class="line">  <span class="keyword">File</span> <span class="string">&quot;/home/qsong/Documents/kolla-ansible-openstack/lib/python3.8/site-packages/ansible/inventory/manager.py&quot;</span>, line <span class="number">38</span>, in &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> ansible.plugins.loader <span class="keyword">import</span> inventory_loader</span><br><span class="line">  <span class="keyword">File</span> <span class="string">&quot;/home/qsong/Documents/kolla-ansible-openstack/lib/python3.8/site-packages/ansible/plugins/loader.py&quot;</span>, line <span class="number">25</span>, in &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> ansible.utils.collection_loader <span class="keyword">import</span> AnsibleCollectionLoader, AnsibleFlatMapLoader, AnsibleCollectionRef</span><br><span class="line">ImportError: cannot <span class="keyword">import</span> name <span class="string">&#x27;AnsibleCollectionLoader&#x27;</span> <span class="keyword">from</span> <span class="string">&#x27;ansible.utils.collection_loader&#x27;</span> (<span class="regexp">/home/</span>qsong<span class="regexp">/Documents/</span>kolla-ansible-openstack<span class="regexp">/lib/</span>python3.<span class="number">8</span><span class="regexp">/site-packages/</span>ansible<span class="regexp">/utils/</span>collection_loader/__init__.py)</span><br><span class="line">Command failed ansible-playbook -i all-in-one -e @<span class="regexp">/etc/</span>kolla<span class="regexp">/globals.yml  -e @/</span>etc<span class="regexp">/kolla/</span>passwords.yml -e CONFIG_DIR=<span class="regexp">/etc/</span>kolla  -e kolla_action=bootstrap-servers <span class="regexp">/home/</span>qsong<span class="regexp">/Documents/</span>kolla-ansible-openstack<span class="regexp">/share/</span>kolla-ansible<span class="regexp">/ansible/</span>kolla-host.yml</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/09/ubuntu20-04-setup-config/" rel="prev" title="ubuntu20-04-setup-config">
+      <i class="fa fa-chevron-left"></i> ubuntu20-04-setup-config
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/15/openstack-installation/" rel="next" title="Ubuntu 18.04下通过devstack安装Openstack">
+      Ubuntu 18.04下通过devstack安装Openstack <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">硬件配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4pythonpip%E8%BD%AF%E8%BF%9E%E6%8E%A5%E5%B9%B6%E6%8D%A2%E6%BA%90"><span class="nav-number">2.</span> <span class="nav-text">设置默认python、pip（软连接）并换源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E9%98%B6%E6%AE%B5"><span class="nav-number"></span> <span class="nav-text">部署阶段</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#debug-%E8%AE%B0%E5%BD%95"><span class="nav-number"></span> <span class="nav-text">DEBUG 记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cpip-install-ansible3.0%E7%9A%84%E6%97%B6%E5%80%99%E5%87%BA%E7%8E%B0%E4%B8%8B%E5%88%97%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">执行pip install &#39;ansible&lt;3.0&#39;的时候，出现下列问题！！！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Ckolla-ansible--i-all-in-one-bootstrap-servers%E6%8A%A5%E9%94%99%E5%A6%82%E4%B8%8B"><span class="nav-number">2.</span> <span class="nav-text">执行kolla-ansible -i all-in-one bootstrap-servers报错如下：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

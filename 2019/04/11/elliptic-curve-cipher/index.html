@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="http:&#x2F;&#x2F;www.ehcoo.com&#x2F;cryptology1.html 密码学科普教程 An Essential property for cryptography is that a group has a finite number of points. Calculations over the real numbers are slow and inaccurate due to ro">
@@ -28,7 +28,7 @@
 <meta property="og:description" content="http:&#x2F;&#x2F;www.ehcoo.com&#x2F;cryptology1.html 密码学科普教程 An Essential property for cryptography is that a group has a finite number of points. Calculations over the real numbers are slow and inaccurate due to ro">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-04-11T15:16:17.000Z">
-<meta property="article:modified_time" content="2019-04-26T10:48:49.121Z">
+<meta property="article:modified_time" content="2019-04-26T10:48:49.000Z">
 <meta property="article:author" content="rennsong">
 <meta name="twitter:card" content="summary">
 
@@ -74,12 +74,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -116,21 +116,6 @@
         <li class="menu-item menu-item-home">
 
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -268,7 +253,7 @@ a / b:  (a * b^{(p-2)}) \\% p
 <p>For elliptic curves, one takes an elliptic curve <span class="math inline">\(E\)</span> over some finite field <span class="math inline">\(K\)</span> and takes some subgroup <span class="math inline">\(G\)</span> of the group of points <span class="math inline">\(E(K)\)</span> with prime order <span class="math inline">\(r\)</span>, so the group operation is point addition. Finite fields can be viewed as a special case of elliptic curves due to a correspondence between certain singular curves and multiplicative groups of finite fields.</p>
 <p>The security of a 160-bit elliptic curve group and a 1024-bit finite field are roughly equivalent</p>
 <h1 id="椭圆曲线加密开源实现">椭圆曲线加密开源实现</h1>
-<p><a href="https://github.com/warner/python-ecdsa" target="_blank" rel="noopener">Pure-Python ECDSA</a>: This library provides key generation, signing, and verifying, for five popular <code>NIST &quot;Suite B&quot;</code> GF(p) curves, with key lengths of 192, 224, 256, 384, and 521 bits.</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/warner/python-ecdsa">Pure-Python ECDSA</a>: This library provides key generation, signing, and verifying, for five popular <code>NIST &quot;Suite B&quot;</code> GF(p) curves, with key lengths of 192, 224, 256, 384, and 521 bits.</p>
 <h1 id="经验教训">经验教训</h1>
 <h2 id="一开始就应该先验证核心的算法而不是纠结于底层的-sfc-nsh-的搭建">一开始就应该先验证核心的算法，而不是纠结于底层的 SFC NSH 的搭建</h2>
 <p>简单地验证下多层签名的时间消耗是很容易的，至少先验证核心的算法是有效的，再逐步考虑更复杂更底层的平台问题才有意义。不然如果这个算法压根就是有问题的，那么底层搭出来了，也是浪费时间</p>
@@ -276,7 +261,7 @@ a / b:  (a * b^{(p-2)}) \\% p
 <h1 id="参考资料">参考资料：</h1>
 <p>https://stackoverflow.com/questions/279418/what-is-a-somewhat-secure-way-of-generating-a-64-bit-signature</p>
 <section class="footnotes">
-<hr>
+<hr />
 <ol>
 <li id="fn1"><p>Exploring Elliptic Curve Pairings,https://medium.com/<span class="citation" data-cites="VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627">@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627</span><a href="#fnref1" class="footnote-back">↩</a></p></li>
 <li id="fn2"><p>Exploring Elliptic Curve Pairings,https://medium.com/<span class="citation" data-cites="VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627">@VitalikButerin/exploring-elliptic-curve-pairings-c73c1864e627</span><a href="#fnref2" class="footnote-back">↩</a></p></li>
@@ -362,7 +347,7 @@ a / b:  (a * b^{(p-2)}) \\% p
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#essential-knowledge-abouut-group-theory"><span class="nav-number">1.</span> <span class="nav-text">Essential knowledge abouut Group theory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#definition-of-group"><span class="nav-number">1.1.</span> <span class="nav-text">Definition of group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#order-of-group"><span class="nav-number">1.2.</span> <span class="nav-text">Order of group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#group-of-prime-ordercyclic-group-of-prime-order"><span class="nav-number">1.3.</span> <span class="nav-text">Group of prime order&#x2F;cyclic group of prime order</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#prime-field-buterinexploring2017"><span class="nav-number">1.4.</span> <span class="nav-text">Prime field 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#extension-field-buterinexploring2017"><span class="nav-number">1.5.</span> <span class="nav-text">Extension field 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiplicative-group-of-integers-modulo-n"><span class="nav-number">1.6.</span> <span class="nav-text">Multiplicative group of integers modulo n</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#order-of-element-in-group"><span class="nav-number">1.7.</span> <span class="nav-text">Order of element in group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bilinear-paring-aka.-bilinear-map"><span class="nav-number">1.8.</span> <span class="nav-text">Bilinear paring (aka. Bilinear map)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#discrete-log-problem"><span class="nav-number">1.8.1.</span> <span class="nav-text">Discrete log problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#computational-diffie-hellman-problem"><span class="nav-number">1.8.2.</span> <span class="nav-text">Computational Diffie-Hellman Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decisional-diffie-hellman-problem"><span class="nav-number">1.8.3.</span> <span class="nav-text">Decisional Diffie-Hellman Problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#implementation"><span class="nav-number">1.9.</span> <span class="nav-text">Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#finite-field"><span class="nav-number">1.9.1.</span> <span class="nav-text">Finite field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#elliptic-curve"><span class="nav-number">1.9.2.</span> <span class="nav-text">Elliptic curve</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#椭圆曲线加密开源实现"><span class="nav-number">2.</span> <span class="nav-text">椭圆曲线加密开源实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#经验教训"><span class="nav-number">3.</span> <span class="nav-text">经验教训</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一开始就应该先验证核心的算法而不是纠结于底层的-sfc-nsh-的搭建"><span class="nav-number">3.1.</span> <span class="nav-text">一开始就应该先验证核心的算法，而不是纠结于底层的 SFC NSH 的搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当底层搭建的被卡住的时候而且明确知道不是自己的问题的时候应该分精力给其他问题而不是推卸责任似的死等"><span class="nav-number">3.2.</span> <span class="nav-text">当底层搭建的被卡住的时候，而且明确知道不是自己的问题的时候，应该分精力给其他问题，而不是推卸责任似的死等</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#essential-knowledge-abouut-group-theory"><span class="nav-number">1.</span> <span class="nav-text">Essential knowledge abouut Group theory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#definition-of-group"><span class="nav-number">1.1.</span> <span class="nav-text">Definition of group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#order-of-group"><span class="nav-number">1.2.</span> <span class="nav-text">Order of group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#group-of-prime-ordercyclic-group-of-prime-order"><span class="nav-number">1.3.</span> <span class="nav-text">Group of prime order&#x2F;cyclic group of prime order</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#prime-field-buterinexploring2017"><span class="nav-number">1.4.</span> <span class="nav-text">Prime field 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#extension-field-buterinexploring2017"><span class="nav-number">1.5.</span> <span class="nav-text">Extension field 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiplicative-group-of-integers-modulo-n"><span class="nav-number">1.6.</span> <span class="nav-text">Multiplicative group of integers modulo n</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#order-of-element-in-group"><span class="nav-number">1.7.</span> <span class="nav-text">Order of element in group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bilinear-paring-aka.-bilinear-map"><span class="nav-number">1.8.</span> <span class="nav-text">Bilinear paring (aka. Bilinear map)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#discrete-log-problem"><span class="nav-number">1.8.1.</span> <span class="nav-text">Discrete log problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#computational-diffie-hellman-problem"><span class="nav-number">1.8.2.</span> <span class="nav-text">Computational Diffie-Hellman Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decisional-diffie-hellman-problem"><span class="nav-number">1.8.3.</span> <span class="nav-text">Decisional Diffie-Hellman Problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#implementation"><span class="nav-number">1.9.</span> <span class="nav-text">Implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#finite-field"><span class="nav-number">1.9.1.</span> <span class="nav-text">Finite field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#elliptic-curve"><span class="nav-number">1.9.2.</span> <span class="nav-text">Elliptic curve</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%8A%A0%E5%AF%86%E5%BC%80%E6%BA%90%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">椭圆曲线加密开源实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD"><span class="nav-number">3.</span> <span class="nav-text">经验教训</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E5%BC%80%E5%A7%8B%E5%B0%B1%E5%BA%94%E8%AF%A5%E5%85%88%E9%AA%8C%E8%AF%81%E6%A0%B8%E5%BF%83%E7%9A%84%E7%AE%97%E6%B3%95%E8%80%8C%E4%B8%8D%E6%98%AF%E7%BA%A0%E7%BB%93%E4%BA%8E%E5%BA%95%E5%B1%82%E7%9A%84-sfc-nsh-%E7%9A%84%E6%90%AD%E5%BB%BA"><span class="nav-number">3.1.</span> <span class="nav-text">一开始就应该先验证核心的算法，而不是纠结于底层的 SFC NSH 的搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%93%E5%BA%95%E5%B1%82%E6%90%AD%E5%BB%BA%E7%9A%84%E8%A2%AB%E5%8D%A1%E4%BD%8F%E7%9A%84%E6%97%B6%E5%80%99%E8%80%8C%E4%B8%94%E6%98%8E%E7%A1%AE%E7%9F%A5%E9%81%93%E4%B8%8D%E6%98%AF%E8%87%AA%E5%B7%B1%E7%9A%84%E9%97%AE%E9%A2%98%E7%9A%84%E6%97%B6%E5%80%99%E5%BA%94%E8%AF%A5%E5%88%86%E7%B2%BE%E5%8A%9B%E7%BB%99%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98%E8%80%8C%E4%B8%8D%E6%98%AF%E6%8E%A8%E5%8D%B8%E8%B4%A3%E4%BB%BB%E4%BC%BC%E7%9A%84%E6%AD%BB%E7%AD%89"><span class="nav-number">3.2.</span> <span class="nav-text">当底层搭建的被卡住的时候，而且明确知道不是自己的问题的时候，应该分精力给其他问题，而不是推卸责任似的死等</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -376,29 +361,22 @@ a / b:  (a * b^{(p-2)}) \\% p
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-          
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-          
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/hansomesong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-  </div>
 
 
 
@@ -421,13 +399,13 @@ a / b:  (a * b^{(p-2)}) \\% p
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">rennsong</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
         
@@ -456,7 +434,7 @@ a / b:  (a * b^{(p-2)}) \\% p
 <script src="/js/schemes/muse.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -478,61 +456,6 @@ a / b:  (a * b^{(p-2)}) \\% p
 
 
   
-
-  
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 

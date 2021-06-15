@@ -2,507 +2,868 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://rennesong.com/2020/06/09/hexo-insert-pictures/</loc>
+    <loc>http://rennesong.com/2021/06/15/openstack-installation/</loc>
     
-    <lastmod>2020-06-09T14:46:25.996Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/09/05/docker-networking/</loc>
-    
-    <lastmod>2020-06-09T14:27:38.361Z</lastmod>
+    <lastmod>2021-06-15</lastmod>
     
   </url>
   
   <url>
-    <loc>http://rennesong.com/2019/03/25/hello-world/</loc>
+    <loc>http://rennesong.com/2021/06/03/kolla-ansible-openstack/</loc>
     
-    <lastmod>2020-06-09T14:14:49.576Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/03/25/docker-tuto/</loc>
-    
-    <lastmod>2020-06-09T13:39:37.550Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/tags/index.html</loc>
-    
-    <lastmod>2020-06-09T13:34:16.925Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2020/06/08/hexo-math-support-tuto/</loc>
-    
-    <lastmod>2020-06-09T06:40:24.460Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/about/index.html</loc>
-    
-    <lastmod>2020-06-08T06:58:26.852Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/07/14/ssh-into-vm-on-remote-server/</loc>
-    
-    <lastmod>2020-06-08T06:31:48.630Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2015/08/02/ssh-tuto/</loc>
-    
-    <lastmod>2020-06-08T06:31:27.574Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2015/07/29/How-to-install-node-js-and-npm-on-Mac/</loc>
-    
-    <lastmod>2020-06-08T04:06:52.473Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/04/23/linux-command-note/</loc>
-    
-    <lastmod>2020-06-07T07:26:44.090Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2020/05/31/VNC%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8BLinux%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
-    
-    <lastmod>2020-05-31T03:24:58.755Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2020/04/30/libtrace-tutorial/</loc>
-    
-    <lastmod>2020-05-31T01:26:33.054Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/06/14/bash-tuto/</loc>
-    
-    <lastmod>2020-04-25T10:02:57.676Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/04/15/identity-based-encryption/</loc>
-    
-    <lastmod>2020-04-12T04:10:33.042Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2020/03/09/parralel-desktop-preparation/</loc>
-    
-    <lastmod>2020-03-28T10:34:32.587Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2020/03/28/international-internet-arch/</loc>
-    
-    <lastmod>2020-03-28T08:16:10.173Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/04/17/v2ray-tuto/</loc>
-    
-    <lastmod>2020-03-16T16:32:17.096Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/10/31/python-learning-note/</loc>
-    
-    <lastmod>2020-03-16T16:32:15.898Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/04/17/vps-install-cofig/</loc>
-    
-    <lastmod>2020-03-01T05:31:39.203Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/11/26/micro-service-architecture/</loc>
-    
-    <lastmod>2019-12-17T17:57:33.138Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/10/11/k8s-tuto/</loc>
-    
-    <lastmod>2019-12-17T17:57:07.124Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/11/24/python-interview-questions/</loc>
-    
-    <lastmod>2019-11-28T09:52:24.766Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/11/25/5G/</loc>
-    
-    <lastmod>2019-11-25T09:02:23.916Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/11/05/dynamic-programming/</loc>
-    
-    <lastmod>2019-11-05T21:42:34.254Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/10/26/leetcode-notes/</loc>
-    
-    <lastmod>2019-11-05T21:35:53.648Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/10/27/python-regex/</loc>
-    
-    <lastmod>2019-11-05T21:35:50.445Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/05/20/opendaylight-dev/</loc>
-    
-    <lastmod>2019-10-23T09:00:52.027Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/08/22/dell-r740-handons-notes/</loc>
-    
-    <lastmod>2019-10-23T09:00:43.338Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2016/10/23/french-useful-phrases/</loc>
-    
-    <lastmod>2019-10-23T09:00:38.142Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/04/01/vagrant-virtualbox-install/</loc>
-    
-    <lastmod>2019-10-23T09:00:29.519Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/10/15/linux-c-learning-note/</loc>
-    
-    <lastmod>2019-10-16T14:07:55.181Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/10/14/voip-tuto/</loc>
-    
-    <lastmod>2019-10-16T14:07:49.421Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn3/</loc>
-    
-    <lastmod>2019-09-07T11:49:04.400Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn2/</loc>
-    
-    <lastmod>2019-09-06T16:37:58.300Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn1/</loc>
-    
-    <lastmod>2019-09-06T16:11:47.641Z</lastmod>
+    <lastmod>2021-06-15</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2019/08/26/openstack-learning-note/</loc>
     
-    <lastmod>2019-08-29T15:03:29.541Z</lastmod>
+    <lastmod>2021-06-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://rennesong.com/2019/05/17/intelliJ-idea-install-crack/</loc>
+    <loc>http://rennesong.com/2020/10/09/ubuntu20-04-setup-config/</loc>
     
-    <lastmod>2019-07-19T11:06:00.155Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/07/13/maven-tuto/</loc>
-    
-    <lastmod>2019-07-19T11:05:59.441Z</lastmod>
+    <lastmod>2021-06-09</lastmod>
     
   </url>
   
   <url>
-    <loc>http://rennesong.com/2019/03/27/odl-sfc-design-implementation/</loc>
+    <loc>http://rennesong.com/2015/08/02/ssh-tuto/</loc>
     
-    <lastmod>2019-07-19T11:05:57.838Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/06/21/java-tuto/</loc>
-    
-    <lastmod>2019-07-12T23:09:45.323Z</lastmod>
+    <lastmod>2021-06-04</lastmod>
     
   </url>
   
   <url>
-    <loc>http://rennesong.com/2019/07/13/yang-model-tuto/</loc>
+    <loc>http://rennesong.com/2020/06/23/android-device-mount-problem/</loc>
     
-    <lastmod>2019-07-12T23:03:47.944Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/07/08/odl-l2switch-adaption/</loc>
-    
-    <lastmod>2019-07-11T20:26:37.871Z</lastmod>
+    <lastmod>2021-02-02</lastmod>
     
   </url>
   
   <url>
-    <loc>http://rennesong.com/2019/03/29/latest-sfc103demo-trial/</loc>
+    <loc>http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn3/</loc>
     
-    <lastmod>2019-06-11T03:15:25.291Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/05/02/linux-networking/</loc>
-    
-    <lastmod>2019-05-02T15:00:52.716Z</lastmod>
+    <lastmod>2021-01-20</lastmod>
     
   </url>
   
   <url>
-    <loc>http://rennesong.com/2019/04/11/sublime-tips/</loc>
+    <loc>http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn1/</loc>
     
-    <lastmod>2019-05-01T16:15:57.908Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/04/11/elliptic-curve-cipher/</loc>
-    
-    <lastmod>2019-04-26T10:48:49.121Z</lastmod>
+    <lastmod>2021-01-17</lastmod>
     
   </url>
   
   <url>
-    <loc>http://rennesong.com/2019/04/18/use-pbc-impl/</loc>
+    <loc>http://rennesong.com/2020/03/09/parralel-desktop-preparation/</loc>
     
-    <lastmod>2019-04-18T22:04:28.138Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/04/17/systemd-tuto/</loc>
-    
-    <lastmod>2019-04-18T07:30:40.295Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/04/17/basic-number-theory/</loc>
-    
-    <lastmod>2019-04-17T10:25:52.838Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/04/12/nsh-history-tuto/</loc>
-    
-    <lastmod>2019-04-12T10:43:41.804Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/04/12/secsfc-impl-notes/</loc>
-    
-    <lastmod>2019-04-12T10:26:02.705Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2019/04/08/scapy-learning/</loc>
-    
-    <lastmod>2019-04-12T10:04:48.962Z</lastmod>
+    <lastmod>2021-01-17</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2019/03/24/ovs-tuto/</loc>
     
-    <lastmod>2019-04-10T20:41:09.694Z</lastmod>
+    <lastmod>2021-01-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/03/25/docker-tuto/</loc>
+    
+    <lastmod>2021-01-15</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/04/17/vps-install-cofig/</loc>
+    
+    <lastmod>2020-09-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2020/05/31/VNC%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8BLinux%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    
+    <lastmod>2020-09-01</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2020/08/28/git-learning-notes/</loc>
+    
+    <lastmod>2020-08-28</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/08/22/dell-r740-handons-notes/</loc>
+    
+    <lastmod>2020-08-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2020/04/30/libtrace-tutorial/</loc>
+    
+    <lastmod>2020-08-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2020/06/13/numpy-tutorial/</loc>
+    
+    <lastmod>2020-06-13</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2020/06/10/anaconda-tuto/</loc>
+    
+    <lastmod>2020-06-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/04/01/vagrant-virtualbox-install/</loc>
+    
+    <lastmod>2020-06-10</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2020/06/08/hexo-math-support-tuto/</loc>
+    
+    <lastmod>2020-06-10</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/04/08/scapy-learning/</loc>
+    
+    <lastmod>2020-06-10</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2020/06/10/dataset-in-networking-research/</loc>
+    
+    <lastmod>2020-06-10</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/09/05/docker-networking/</loc>
+    
+    <lastmod>2020-06-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2020/06/09/hexo-insert-pictures/</loc>
+    
+    <lastmod>2020-06-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/03/25/hello-world/</loc>
+    
+    <lastmod>2020-06-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/index.html</loc>
+    
+    <lastmod>2020-06-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/about/index.html</loc>
+    
+    <lastmod>2020-06-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/07/14/ssh-into-vm-on-remote-server/</loc>
+    
+    <lastmod>2020-06-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2015/07/29/How-to-install-node-js-and-npm-on-Mac/</loc>
+    
+    <lastmod>2020-06-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/04/23/linux-command-note/</loc>
+    
+    <lastmod>2020-06-07</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/06/14/bash-tuto/</loc>
+    
+    <lastmod>2020-04-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/04/15/identity-based-encryption/</loc>
+    
+    <lastmod>2020-04-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2020/03/28/international-internet-arch/</loc>
+    
+    <lastmod>2020-03-28</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/04/17/v2ray-tuto/</loc>
+    
+    <lastmod>2020-03-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/10/31/python-learning-note/</loc>
+    
+    <lastmod>2020-03-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/11/26/micro-service-architecture/</loc>
+    
+    <lastmod>2019-12-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/10/11/k8s-tuto/</loc>
+    
+    <lastmod>2019-12-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/11/24/python-interview-questions/</loc>
+    
+    <lastmod>2019-11-28</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/11/25/5G/</loc>
+    
+    <lastmod>2019-11-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/11/05/dynamic-programming/</loc>
+    
+    <lastmod>2019-11-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/10/26/leetcode-notes/</loc>
+    
+    <lastmod>2019-11-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/10/27/python-regex/</loc>
+    
+    <lastmod>2019-11-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/05/20/opendaylight-dev/</loc>
+    
+    <lastmod>2019-10-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2016/10/23/french-useful-phrases/</loc>
+    
+    <lastmod>2019-10-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/10/15/linux-c-learning-note/</loc>
+    
+    <lastmod>2019-10-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/10/14/voip-tuto/</loc>
+    
+    <lastmod>2019-10-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/09/06/docker-overlay-net-deep-tuto-zn2/</loc>
+    
+    <lastmod>2019-09-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/05/17/intelliJ-idea-install-crack/</loc>
+    
+    <lastmod>2019-07-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/07/13/maven-tuto/</loc>
+    
+    <lastmod>2019-07-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/03/27/odl-sfc-design-implementation/</loc>
+    
+    <lastmod>2019-07-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/06/21/java-tuto/</loc>
+    
+    <lastmod>2019-07-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/07/13/yang-model-tuto/</loc>
+    
+    <lastmod>2019-07-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/07/08/odl-l2switch-adaption/</loc>
+    
+    <lastmod>2019-07-11</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/03/29/latest-sfc103demo-trial/</loc>
+    
+    <lastmod>2019-06-11</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/05/02/linux-networking/</loc>
+    
+    <lastmod>2019-05-02</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/04/11/sublime-tips/</loc>
+    
+    <lastmod>2019-05-01</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/04/11/elliptic-curve-cipher/</loc>
+    
+    <lastmod>2019-04-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/04/18/use-pbc-impl/</loc>
+    
+    <lastmod>2019-04-18</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/04/17/systemd-tuto/</loc>
+    
+    <lastmod>2019-04-18</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/04/17/basic-number-theory/</loc>
+    
+    <lastmod>2019-04-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/04/12/nsh-history-tuto/</loc>
+    
+    <lastmod>2019-04-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2019/04/12/secsfc-impl-notes/</loc>
+    
+    <lastmod>2019-04-12</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2019/03/25/linux-ovs-vxlan/</loc>
     
-    <lastmod>2019-04-08T10:46:13.153Z</lastmod>
+    <lastmod>2019-04-08</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2019/03/25/israel-visa/</loc>
     
-    <lastmod>2019-04-06T13:15:40.212Z</lastmod>
+    <lastmod>2019-04-06</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2019/03/28/opnfv-sfc-tuto/</loc>
     
-    <lastmod>2019-03-31T16:18:46.199Z</lastmod>
+    <lastmod>2019-03-31</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2019/03/27/sfc-mailing-list-takeaways/</loc>
     
-    <lastmod>2019-03-27T21:51:29.325Z</lastmod>
+    <lastmod>2019-03-27</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2019/03/26/patched-ovs-older-odl/</loc>
     
-    <lastmod>2019-03-27T18:15:18.395Z</lastmod>
+    <lastmod>2019-03-27</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2015/06/18/%E4%BB%8A%E5%A4%A9%E6%98%AF%E5%BC%80%E8%BD%A6%E7%9A%84%E7%AC%AC20%E4%B8%AA%E5%B0%8F%E6%97%B6/</loc>
     
-    <lastmod>2019-03-27T14:32:49.395Z</lastmod>
+    <lastmod>2019-03-27</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2015/06/24/%E4%BB%8A%E5%A4%A9%E7%BB%83%E8%BD%A6%E5%8F%88%E6%9C%89%E4%B8%80%E4%B8%AA%E6%8C%AB%E8%B4%A5%E6%84%9F/</loc>
     
-    <lastmod>2019-03-27T14:17:22.488Z</lastmod>
+    <lastmod>2019-03-27</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2015/07/28/Apply-USA-VISA-in-Paris/</loc>
     
-    <lastmod>2019-03-27T13:56:52.980Z</lastmod>
+    <lastmod>2019-03-27</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2019/03/25/hexo-sublime-blog-writting/</loc>
     
-    <lastmod>2019-03-27T13:52:01.723Z</lastmod>
+    <lastmod>2019-03-27</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/categories/index.html</loc>
     
-    <lastmod>2019-03-27T13:48:32.165Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2015/08/19/LTE-Basics/</loc>
-    
-    <lastmod>2019-03-25T10:27:10.939Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2015/08/01/win10-ubuntun-dual-boot-system/</loc>
-    
-    <lastmod>2019-03-25T10:27:10.939Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2016/10/22/TP-IPv6/</loc>
-    
-    <lastmod>2019-03-25T10:27:10.936Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rennesong.com/2015/08/01/how-to-install-ns-3-in-Ubuntu-15-04/</loc>
-    
-    <lastmod>2019-03-25T10:27:10.935Z</lastmod>
+    <lastmod>2019-03-27</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2015/07/30/Common-used-vim-commands/</loc>
     
-    <lastmod>2019-03-25T10:27:10.933Z</lastmod>
+    <lastmod>2019-03-25</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2015/07/28/How-to-establish-personal-blog-with-Github-pages-and-hexo/</loc>
     
-    <lastmod>2019-03-25T10:27:10.933Z</lastmod>
+    <lastmod>2019-03-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2015/08/19/LTE-Basics/</loc>
+    
+    <lastmod>2019-03-25</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2016/10/22/TP-Ethernet-md/</loc>
     
-    <lastmod>2019-03-25T10:27:10.931Z</lastmod>
+    <lastmod>2019-03-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2016/10/22/TP-IPv6/</loc>
+    
+    <lastmod>2019-03-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2015/08/01/how-to-install-ns-3-in-Ubuntu-15-04/</loc>
+    
+    <lastmod>2019-03-25</lastmod>
     
   </url>
   
   <url>
     <loc>http://rennesong.com/2016/10/22/tuto-magie-file-system/</loc>
     
-    <lastmod>2019-03-25T10:27:10.929Z</lastmod>
+    <lastmod>2019-03-25</lastmod>
     
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/2015/08/01/win10-ubuntun-dual-boot-system/</loc>
+    
+    <lastmod>2019-03-25</lastmod>
+    
+  </url>
+  
+
+  <url>
+    <loc>http://rennesong.com/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>http://rennesong.com/tags/VIM/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/Github-Pages-Hexo/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/STP/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/IPv6/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/Android/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/docker/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/French/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/hexo/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/mathjax/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/IDEA/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/visa/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/Israel/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/ovs/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/vxlan/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/linux/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/NSH/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/SFC/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/python/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/scapy/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/sublime/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/vagrant/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/virtualbox/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/tags/SSH/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>http://rennesong.com/categories/docker/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/%E5%A4%96%E8%AF%AD/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/hexo/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/Productivity-tools/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/%E7%AD%BE%E8%AF%81/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/kubernetes/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/kubernetes/k8s/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/linux-networking/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/SDN/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/Python/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/tools/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/NSH/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/Python/Regluar-expression/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/SSH/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/Productivity-tools/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/NSH/SFC/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/VPS/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rennesong.com/categories/%E9%A9%BE%E9%A9%B6/</loc>
+    <lastmod>2021-06-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
   
 </urlset>

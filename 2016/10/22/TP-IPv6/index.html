@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -17,18 +17,18 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="需要熟练记忆的命令 实验室网络拓扑结构图：  在privileged mode下  show ipv6 interface brief show ipv6 route  在configuration mode下 123456Routeur# configure terminalRouteur(config)# interface FastEthernet0&#x2F;1.101Routeur(co">
+  <meta name="description" content="需要熟练记忆的命令 实验室网络拓扑结构图：  在privileged mode下  show ipv6 interface brief show ipv6 route  在configuration mode下 123456Routeur# configure terminalRouteur(config)# interface FastEthernet0&#x2F;1.101Routeur(config-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IPv6 实验课准备以及遇到的问题">
 <meta property="og:url" content="http://rennesong.com/2016/10/22/TP-IPv6/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
-<meta property="og:description" content="需要熟练记忆的命令 实验室网络拓扑结构图：  在privileged mode下  show ipv6 interface brief show ipv6 route  在configuration mode下 123456Routeur# configure terminalRouteur(config)# interface FastEthernet0&#x2F;1.101Routeur(co">
+<meta property="og:description" content="需要熟练记忆的命令 实验室网络拓扑结构图：  在privileged mode下  show ipv6 interface brief show ipv6 route  在configuration mode下 123456Routeur# configure terminalRouteur(config)# interface FastEthernet0&#x2F;1.101Routeur(config-">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2016-10-21T17:04:42.000Z">
-<meta property="article:modified_time" content="2019-03-25T10:27:10.936Z">
+<meta property="article:modified_time" content="2019-03-25T10:27:10.000Z">
 <meta property="article:author" content="rennsong">
 <meta property="article:tag" content="IPv6">
 <meta name="twitter:card" content="summary">
@@ -75,12 +75,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -117,21 +117,6 @@
         <li class="menu-item menu-item-home">
 
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -218,7 +203,7 @@
 <li>show ipv6 interface brief</li>
 <li>show ipv6 route</li>
 </ul></li>
-<li>在configuration mode下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Routeur# configure terminal</span><br><span class="line">Routeur(config)# interface FastEthernet0&#x2F;1.101</span><br><span class="line">Routeur(config-if)# ipv6 address 2001:660:7301:27_1::&#x2F;64 eui-64</span><br><span class="line">Routeur(config-if)# exit</span><br><span class="line">Routeur(config)# exit</span><br><span class="line">Routeur#</span><br></pre></td></tr></table></figure> 以上代码块用来配置面向内网的那块以太网卡的 IPV6 地址的 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Routeur# configure terminal</span><br><span class="line">Routeur(config)# interface FastEthernet0&#x2F;0</span><br><span class="line">Routeur(config-if)# no shutdown</span><br><span class="line">Routeur(config-if)# ipv6 address 2001:660:7301:2700::_&#x2F;64</span><br><span class="line">Routeur(config-if)# ipv6 enable</span><br><span class="line">Routeur(config-if)# exit</span><br><span class="line">Routeur(config)#</span><br></pre></td></tr></table></figure> 以上代码块是用来配置面向 Reseau d’Interconnextion 的那块儿以太网卡的IPv6的地址。</li>
+<li>在configuration mode下 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Routeur</span># configure terminal</span><br><span class="line"><span class="attribute">Routeur</span>(config)# interface FastEthernet<span class="number">0</span>/<span class="number">1</span>.<span class="number">101</span></span><br><span class="line"><span class="attribute">Routeur</span>(config-if)# ipv<span class="number">6</span> address <span class="number">2001</span>:<span class="number">660</span>:<span class="number">7301</span>:<span class="number">27</span>_<span class="number">1</span>::/<span class="number">64</span> eui-<span class="number">64</span></span><br><span class="line"><span class="attribute">Routeur</span>(config-if)# exit</span><br><span class="line"><span class="attribute">Routeur</span>(config)# exit</span><br><span class="line"><span class="attribute">Routeur</span>#</span><br></pre></td></tr></table></figure> 以上代码块用来配置面向内网的那块以太网卡的 IPV6 地址的 <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Routeur# configure terminal</span><br><span class="line"><span class="constructor">Routeur(<span class="params">config</span>)</span># interface FastEthernet0/<span class="number">0</span></span><br><span class="line"><span class="constructor">Routeur(<span class="params">config</span>-<span class="params">if</span>)</span># no shutdown</span><br><span class="line"><span class="constructor">Routeur(<span class="params">config</span>-<span class="params">if</span>)</span># ipv6 address <span class="number">2001</span>:<span class="number">660</span>:<span class="number">7301</span>:<span class="number">2700</span>::_/<span class="number">64</span></span><br><span class="line"><span class="constructor">Routeur(<span class="params">config</span>-<span class="params">if</span>)</span># ipv6 enable</span><br><span class="line"><span class="constructor">Routeur(<span class="params">config</span>-<span class="params">if</span>)</span># exit</span><br><span class="line"><span class="constructor">Routeur(<span class="params">config</span>)</span>#</span><br></pre></td></tr></table></figure> 以上代码块是用来配置面向 Reseau d’Interconnextion 的那块儿以太网卡的IPv6的地址。</li>
 </ul>
 <p>配置路由器接口 IPv6 的方法其实有两种，第一种是：直接给出完完整的IPv6地址，第二种是，只告诉这块网卡的网络前缀，然后指定 EUI-64 模式，然后根据该接口的MAC地址，自己生成IPv6地址。</p>
 <p>还没有搞清楚的问题： 在配置模式下，命令ipv6 unicast-routing 是什么意思？ 思科路由器的virtual interface的概念 问题是 在配置模式下，为什么 命令 interface fastethernet 0/1.101 可以直接通过呢？是不是0/1.501之类的命令也可以通过呢？ 路由器属于哪些multicast group里，这个有什么用？ 其实一直没有闹明白，思科路由器下面的 redistribute connected 究竟是个什么意思呢？ 为什么 RA一下子要 3连发呢？ 什么又是 MLD sol???</p>
@@ -343,29 +328,22 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-          
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-          
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/hansomesong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-  </div>
 
 
 
@@ -388,13 +366,13 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">rennsong</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
         
@@ -423,7 +401,7 @@
 <script src="/js/schemes/muse.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -443,8 +421,6 @@
 
 
 
-
-  
 
   
 

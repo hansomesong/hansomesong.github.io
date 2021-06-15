@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="问题 由于安卓设备普遍采用MTP文件系统，而Linux&#x2F;MAC OSX的文件系统与此不同，所以将安卓设备通过USB连接到电脑上无法被后者识别。因为不能方便地采用诸如rsync等工具来同步手机中的视频招聘到电脑上。 # 分析： 解决方案都只能是在两种不同的文件系统之间做适配。 这个链接：https:&#x2F;&#x2F;www.v2ex.com&#x2F;t&#x2F;533974, 做了一些很有启发性的讨论。 # 方案： Androi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux&#x2F;MAC OSX环境下如何将Android设备挂载为外设？">
+<meta property="og:url" content="http://rennesong.com/2020/06/23/android-device-mount-problem/index.html">
+<meta property="og:site_name" content="Rennesong&#39;s blog">
+<meta property="og:description" content="问题 由于安卓设备普遍采用MTP文件系统，而Linux&#x2F;MAC OSX的文件系统与此不同，所以将安卓设备通过USB连接到电脑上无法被后者识别。因为不能方便地采用诸如rsync等工具来同步手机中的视频招聘到电脑上。 # 分析： 解决方案都只能是在两种不同的文件系统之间做适配。 这个链接：https:&#x2F;&#x2F;www.v2ex.com&#x2F;t&#x2F;533974, 做了一些很有启发性的讨论。 # 方案： Androi">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-23T09:36:07.000Z">
+<meta property="article:modified_time" content="2021-02-02T02:55:30.904Z">
+<meta property="article:author" content="rennsong">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://rennesong.com/2020/06/23/android-device-mount-problem/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Linux/MAC OSX环境下如何将Android设备挂载为外设？ | Rennesong's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Rennesong's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog my life from now on!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rennesong.com/2020/06/23/android-device-mount-problem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rennsong">
+      <meta itemprop="description" content="Personal blog site, to note technique and life related articles">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rennesong's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux/MAC OSX环境下如何将Android设备挂载为外设？
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-23 17:36:07" itemprop="dateCreated datePublished" datetime="2020-06-23T17:36:07+08:00">2020-06-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-02 10:55:30" itemprop="dateModified" datetime="2021-02-02T10:55:30+08:00">2021-02-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="问题">问题</h1>
+<p>由于安卓设备普遍采用MTP文件系统，而Linux/MAC OSX的文件系统与此不同，所以将安卓设备通过USB连接到电脑上无法被后者识别。因为不能方便地采用诸如<code>rsync</code>等工具来同步手机中的视频招聘到电脑上。 # 分析： 解决方案都只能是在两种不同的文件系统之间做适配。 这个链接：https://www.v2ex.com/t/533974, 做了一些很有启发性的讨论。 # 方案：</p>
+<h2 id="android-file-transfer-via-usb">Android File Transfer via USB</h2>
+<p>手机和电脑通过USB模式直连，USB连接至于MTP模式，通过使用谷歌官方推出的Android File Transfer这个程序，访问进安卓设备内部存放照片视频目录，通过复制粘贴的方式，通过USB数据线传输完成文件备份。</p>
+<h2 id="adb-android-debug-bridge">ADB (Android Debug Bridge)</h2>
+<p>官方推荐，也是最快的方式是通过ADB工具实现安卓设备和电脑主机之间的文件互传。如果你电脑上安装有<code>Android Studio</code>，那么你电脑中已经安装有ADB了。一旦你激活了安卓手机上的开发者选项，并且通过ADB命令连接上你的安卓设备。那么在Android Studio中，你可以通过选项卡<code>View &gt; Tool Windows &gt; Device File Explorer</code>实现安卓设备挂载。</p>
+<h2 id="sshfs">sshfs</h2>
+<p>首先，需要确保MAC OSX系统中已经安装了OSXFUSE以及<code>sshfs</code>。 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span><span class="keyword">install </span>sshfs</span><br></pre></td></tr></table></figure> 其次需要在手机上安装sshelper app并进行相应配置，以保证可以通过ssh访问安卓设备。之后在你的电脑上合适的位置创建使用<code>sshfs</code>所需的挂载点。最后运行下列命令完成挂载。 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshfs ANDROID_IP_ADRESS:<span class="regexp">/storage/</span>emulated<span class="regexp">/0 ~/</span>Android -p <span class="number">2222</span></span><br></pre></td></tr></table></figure> https://askubuntu.com/questions/893090/how-do-i-mount-my-androids-filesystem-over-the-network-with-sshfs</p>
+<h2 id="jmtpfs">jmtpfs</h2>
+<p>有人2013年的时候编写了一个开源文件系统jmtpfs，以方便类Unix操作系统来读写安卓设备。然后后续并没有人继续更新了，并且上手难度高。 https://github.com/JasonFerrara/jmtpfs</p>
+<p>考虑到，我需要备份的是我使用手机以来所有的照片(高达80个G左右), 我觉得最好的方式，还是rsync+parallel的方式。</p>
+<p>手机和主机之间通过wifi实现文件系统挂载，如果是wifi 6的话，那么传输速度应该相当可观。通过sshfs</p>
+<p>本项目的第三步是搭建面向软件定义天基信息系统高逼真度仿真测试平台，并开展渗透测试，以验证开发的渗透测试平台的有效性、可行性。 在硬件层面上，仿真测试平台包括1台普通台式机，2台高性能Dell PowerEdge R730机架式服务器构成(CPU：Intel Xeon E5-2699，内存:32G)。该型服务器足以支持包含数百颗卫星的大型提供低轨卫星星座的仿真。所有物理节点均通过以太网交换机互连。 在软件层面，本项目提出的仿真平台融合了STK/MATLAB真器、容器云平台。其中，STK仿真软件对卫星星座轨道进行计算分析。STK用以快速建立星座模型，获得卫星的位置、速度等信息，并通过编程接口与MATLAB连接，利用MATLAB计算分析得到卫星间可见性和距离，用以确定星间链路的通信延时链路状态等信息。STK将卫星星座信息输出为扑描述文件，并发送给容器引擎Docker。后者根据收到的卫星拓扑描述文件，利用提前制作的软件定义卫星镜像，利用容器网络服务为虚拟卫星分配网卡及IP地址等信息构建星间链路。 对软件定义卫星的模拟方面，本项目拟采取“Docker+QEMU”的技术。该技术组合可以便捷地对基于任何卫星硬件平台、星载操作系统的组合进行模拟。只需要将采用某型硬件以及对应的星载操作系统制作为Docker镜像，即可在仿真中实例化为对应的卫星平台，开展仿真测试，因此具有极好的模块性以及灵活性。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/13/numpy-tutorial/" rel="prev" title="numpy_tutorial">
+      <i class="fa fa-chevron-left"></i> numpy_tutorial
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/28/git-learning-notes/" rel="next" title="git常用指令学习">
+      git常用指令学习 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#android-file-transfer-via-usb"><span class="nav-number">1.1.</span> <span class="nav-text">Android File Transfer via USB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adb-android-debug-bridge"><span class="nav-number">1.2.</span> <span class="nav-text">ADB (Android Debug Bridge)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sshfs"><span class="nav-number">1.3.</span> <span class="nav-text">sshfs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jmtpfs"><span class="nav-number">1.4.</span> <span class="nav-text">jmtpfs</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">rennsong</p>
+  <div class="site-description" itemprop="description">Personal blog site, to note technique and life related articles</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rennsong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

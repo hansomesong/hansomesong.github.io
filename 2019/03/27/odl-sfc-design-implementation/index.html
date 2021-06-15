@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="NSH NSH header MD type 1 IETF NSH Only NSH Metadata type 1 is implemented. ODL SFC architecture[^cisco-odl-sfc14] Opendaylight sfc architecture * ODL SFC in essence a point to multipoint architecture">
@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="Rennesong&#39;s blog">
 <meta property="og:description" content="NSH NSH header MD type 1 IETF NSH Only NSH Metadata type 1 is implemented. ODL SFC architecture[^cisco-odl-sfc14] Opendaylight sfc architecture * ODL SFC in essence a point to multipoint architecture">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://rennesong.com/.com//NSH-header-md-type1.png">
-<meta property="og:image" content="http://rennesong.com/.com//odl-sfc-architecture.png">
+<meta property="og:image" content="http://rennesong.com/2019/03/27/odl-sfc-design-implementation/NSH-header-md-type1.png">
+<meta property="og:image" content="http://rennesong.com/2019/03/27/odl-sfc-design-implementation/odl-sfc-architecture.png">
 <meta property="article:published_time" content="2019-03-27T08:59:46.000Z">
-<meta property="article:modified_time" content="2019-07-19T11:05:57.838Z">
+<meta property="article:modified_time" content="2019-07-19T11:05:57.000Z">
 <meta property="article:author" content="rennsong">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://rennesong.com/.com//NSH-header-md-type1.png">
+<meta name="twitter:image" content="http://rennesong.com/2019/03/27/odl-sfc-design-implementation/NSH-header-md-type1.png">
 
 <link rel="canonical" href="http://rennesong.com/2019/03/27/odl-sfc-design-implementation/">
 
@@ -77,12 +77,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -119,21 +119,6 @@
         <li class="menu-item menu-item-home">
 
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -223,9 +208,9 @@
 
       
         <h1 id="nsh">NSH</h1>
-<p><img src="/.com//NSH-header-md-type1.png" alt="NSH header MD type 1"><span class="image-caption">NSH header MD type 1</span> IETF NSH Only NSH Metadata type 1 is implemented.</p>
+<p><img src="NSH-header-md-type1.png" alt="NSH header MD type 1" /><span class="image-caption">NSH header MD type 1</span> IETF NSH Only NSH Metadata type 1 is implemented.</p>
 <h1 id="odl-sfc-architecturecisco-odl-sfc14">ODL SFC architecture[^cisco-odl-sfc14]</h1>
-<p><img src="/.com//odl-sfc-architecture.png" alt="Opendaylight sfc architecture"><span class="image-caption">Opendaylight sfc architecture</span> * ODL SFC in essence a point to multipoint architecture * <strong><em>SFC</em></strong> Provider manages all configuration information provided by orchestration system or admin. * <strong><em>SFC</em></strong> Provider writes constructed Service Function Paths and Rendered Service Path to the datastore * <strong><em>Protocol datastore listeners</em></strong> are notified of service objects creation * These listeners will process RSP information and communicate to their controlled southbound devices</p>
+<p><img src="odl-sfc-architecture.png" alt="Opendaylight sfc architecture" /><span class="image-caption">Opendaylight sfc architecture</span> * ODL SFC in essence a point to multipoint architecture * <strong><em>SFC</em></strong> Provider manages all configuration information provided by orchestration system or admin. * <strong><em>SFC</em></strong> Provider writes constructed Service Function Paths and Rendered Service Path to the datastore * <strong><em>Protocol datastore listeners</em></strong> are notified of service objects creation * These listeners will process RSP information and communicate to their controlled southbound devices</p>
 <p>&quot;How do you prove that traffic follows the sugguested path?&quot;. Proof-of-Transit is proposed by Cisco to solve this problem.</p>
 <p>Key elements to support this: * in-site (in-band) OAM: the key idea behind is to transport operation/administration/manintenance related information within the packet, insteading using a dedicated packet (such as ping, traceroute, etc.).</p>
 <ul>
@@ -253,7 +238,7 @@
 <ul>
 <li>support in ODL from release Carbon</li>
 </ul></li>
-<li>data plane <a href="https://www.cisco.com/c/dam/m/en_us/network-intelligence/service-provider/digital-transformation/knowledge-network-webinars/pdfs/0628-techad-ckn.pdf" target="_blank" rel="noopener">link</a>:
+<li>data plane <a target="_blank" rel="noopener" href="https://www.cisco.com/c/dam/m/en_us/network-intelligence/service-provider/digital-transformation/knowledge-network-webinars/pdfs/0628-techad-ckn.pdf">link</a>:
 <ul>
 <li>FD.io/VPP (iOAM/PoT implemented as plug-in)</li>
 <li>IOS (ISR-G2) -P131: an OS in Cisco switch/router</li>
@@ -268,7 +253,7 @@
 <p>我跟montida进行了深入讨论：这个其实就是她之前一直在弄的idea. 最后被否定了。iOAM-PoT的问题在于hamir’s secret sharing是无法保证order的 如果需要保障order的话，需要设计ordered-PoT机制。IETF其实也给出了设计方案(symmetric masking机制)，PoT是被实现的，不知道这个ordered-PoT实现情况。年初Montida的工作，其实就是ordered PoT + NSH type2 meta data传递。后来被替换了成现在北邮设计的签名机制。</p>
 <p>问题：我们这个工作目前最直相关的工作其实就是 iOAM-PoT机制了。我在journal版论文里应该提这个工作，也应该对比iOAM-PoT和我们提出的ordered multiple signature (OMS)之间的性能。我还没有弄出来基于iOAM-PoT的SFC完整性检测实现，但我看了他们这个机制 ，大概率会比我们的 ordered multiple signature (OMS)机制性能好得多。比如，我们设计的签名在保证最低安全限度的前提下, 签名大约要占99 bytes. IOAM-PoT 这个32个字节(如果要保障order的情况下)当然差多少，需要具体实验对比验证尤。</p>
 <h1 id="section"></h1>
-<p><a href="https://www.slideshare.net/frankbrockners/proof-of-transit-securely-verifying-a-path-or-service-chain" target="_blank" rel="noopener">关于PoT最最详细的介绍</a> <a href="https://www.slideshare.net/frankbrockners/nextgen-network-telemetry-is-within-your-packets-inband-oam" target="_blank" rel="noopener">关于IOAM最最详细的介绍</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.slideshare.net/frankbrockners/proof-of-transit-securely-verifying-a-path-or-service-chain">关于PoT最最详细的介绍</a> <a target="_blank" rel="noopener" href="https://www.slideshare.net/frankbrockners/nextgen-network-telemetry-is-within-your-packets-inband-oam">关于IOAM最最详细的介绍</a></p>
 <h1 id="文章的组织结构">文章的组织结构</h1>
 <ul>
 <li><p>Approach Add meta-data to all packets that traverse a path or service chain. The added meta-data allows a verifying node (egress node) to check whether a packet traversed the servcie chain correctly or not. Security mechanisms are used on the meta-data to protect against incorrect or miuse (i.e. configuration mistakes, peoply playing tricks with routing, capturing, spoofing and replaying packets.) The meta-dat is secured through the use of keys. Sercivce functions retrieve the keys from a controller over a secure channel.</p></li>
@@ -362,7 +347,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nsh"><span class="nav-number">1.</span> <span class="nav-text">NSH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#odl-sfc-architecturecisco-odl-sfc14"><span class="nav-number">2.</span> <span class="nav-text">ODL SFC architecture[^cisco-odl-sfc14]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-number">3.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文章的组织结构"><span class="nav-number">4.</span> <span class="nav-text">文章的组织结构</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nsh"><span class="nav-number">1.</span> <span class="nav-text">NSH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#odl-sfc-architecturecisco-odl-sfc14"><span class="nav-number">2.</span> <span class="nav-text">ODL SFC architecture[^cisco-odl-sfc14]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section"><span class="nav-number">3.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E7%9A%84%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">文章的组织结构</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -376,29 +361,22 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-          
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-          
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/hansomesong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-  </div>
 
 
 
@@ -421,13 +399,13 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">rennsong</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
         
@@ -456,7 +434,7 @@
 <script src="/js/schemes/muse.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -476,8 +454,6 @@
 
 
 
-
-  
 
   
 

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="Troubleshooting OVS-2.6.1 with NSH support compilation and setup If you want to test OVS 2.6 with NSH patch, remember to use linux kernel older than 4.3.x 1configure: error: Linux kernel in &#x2F;lib&#x2F;modul">
@@ -28,7 +28,7 @@
 <meta property="og:description" content="Troubleshooting OVS-2.6.1 with NSH support compilation and setup If you want to test OVS 2.6 with NSH patch, remember to use linux kernel older than 4.3.x 1configure: error: Linux kernel in &#x2F;lib&#x2F;modul">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-03-26T07:26:38.000Z">
-<meta property="article:modified_time" content="2019-03-27T18:15:18.395Z">
+<meta property="article:modified_time" content="2019-03-27T18:15:18.000Z">
 <meta property="article:author" content="rennsong">
 <meta property="article:tag" content="NSH">
 <meta property="article:tag" content="SFC">
@@ -76,12 +76,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -118,21 +118,6 @@
         <li class="menu-item menu-item-home">
 
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -224,22 +209,22 @@
         <h1 id="troubleshooting">Troubleshooting</h1>
 <h2 id="ovs-2.6.1-with-nsh-support-compilation-and-setup">OVS-2.6.1 with NSH support compilation and setup</h2>
 <p>If you want to test OVS 2.6 with NSH patch, remember to use linux kernel older than 4.3.x <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configure: error: Linux kernel in /lib/modules/4.4.0-141-generic/build is version 4.4.162, but version newer than 4.3.x is not supported (please refer to the FAQ for advice)</span><br></pre></td></tr></table></figure></p>
-<p>Afert linux kernel downgrade, when trying to configure the source code of OVS, we are encountered with the following error: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configure: error: source dir /lib/modules/4.2.0-42-generic/build doesn't exist</span><br></pre></td></tr></table></figure> The solution is to install the correpsonding linux kernel headers. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install linux-headers-`uname -r`</span></span><br></pre></td></tr></table></figure></p>
+<p>Afert linux kernel downgrade, when trying to configure the source code of OVS, we are encountered with the following error: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configure: error: source dir /lib/modules/4.2.0-42-generic/build doesn&#x27;t exist</span><br></pre></td></tr></table></figure> The solution is to install the correpsonding linux kernel headers. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install linux-headers-`uname -r`</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="ovs-2.6.1-cannot-create-ovs-bridge">OVS-2.6.1 cannot create ovs-bridge</h2>
-<p>when executing with my vagrant machine <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it classifier1 ovs-ofctl dump-flows -OOpenflow13 br-sfc</span><br></pre></td></tr></table></figure> The response is: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl: br-sfc is not a bridge or a socket</span><br></pre></td></tr></table></figure> I checked the log <code>/var/log/openvswitch/ovs-vswitchd.log</code>. I surprisingly found that: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">2019-03-26T23:18:27.931Z|00007|dpif_netlink|WARN|Generic Netlink family &#39;ovs_datapath&#39; does not exist. The Open vSwitch kernel module is probably not loaded.</span><br><span class="line">2019-03-26T23:18:27.931Z|00008|dpif|WARN|failed to enumerate system datapaths: No such file or directory</span><br><span class="line">2019-03-26T23:18:27.931Z|00009|dpif|WARN|failed to create datapath ovs-system: No such file or directory</span><br><span class="line">2019-03-26T23:18:27.933Z|00010|ofproto_dpif|ERR|failed to open datapath of type system: No such file or directory</span><br><span class="line">2019-03-26T23:18:27.933Z|00011|ofproto|ERR|failed to open datapath br-sfc: No such file or directory</span><br><span class="line">2019-03-26T23:18:27.933Z|00012|bridge|ERR|failed to create bridge br-sfc: No such file or directory</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<p>Then I tried: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ovs-vsctl add-br br-test</span><br></pre></td></tr></table></figure> The</p>
+<p>when executing with my vagrant machine <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docker</span> exec -it classifier<span class="number">1</span> ovs-ofctl dump-flows -OOpenflow<span class="number">13</span> br-sfc</span><br></pre></td></tr></table></figure> The response is: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl: br-sfc is not a bridge or a socket</span><br></pre></td></tr></table></figure> I checked the log <code>/var/log/openvswitch/ovs-vswitchd.log</code>. I surprisingly found that: <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="number">2019</span><span class="number">-03</span><span class="number">-26</span>T23:<span class="number">18</span>:<span class="number">27.931</span>Z|<span class="type">00007</span>|<span class="type">dpif_netlink</span>|<span class="type">WARN</span>|<span class="type">Generic</span> Netlink family &#x27;ovs_datapath&#x27; does not exist. The <span class="keyword">Open</span> vSwitch kernel module is probably not loaded.</span><br><span class="line"><span class="number">2019</span><span class="number">-03</span><span class="number">-26</span>T23:<span class="number">18</span>:<span class="number">27.931</span>Z|<span class="type">00008</span>|<span class="type">dpif</span>|<span class="type">WARN</span>|<span class="type">failed</span> to enumerate system datapaths: No such file or directory</span><br><span class="line"><span class="number">2019</span><span class="number">-03</span><span class="number">-26</span>T23:<span class="number">18</span>:<span class="number">27.931</span>Z|<span class="type">00009</span>|<span class="type">dpif</span>|<span class="type">WARN</span>|<span class="type">failed</span> to create datapath ovs-system: No such file or directory</span><br><span class="line"><span class="number">2019</span><span class="number">-03</span><span class="number">-26</span>T23:<span class="number">18</span>:<span class="number">27.933</span>Z|<span class="type">00010</span>|<span class="type">ofproto_dpif</span>|<span class="type">ERR</span>|<span class="type">failed</span> to open datapath of type system: No such file or directory</span><br><span class="line"><span class="number">2019</span><span class="number">-03</span><span class="number">-26</span>T23:<span class="number">18</span>:<span class="number">27.933</span>Z|<span class="type">00011</span>|<span class="type">ofproto</span>|<span class="type">ERR</span>|<span class="type">failed</span> to open datapath br-sfc: No such file or directory</span><br><span class="line"><span class="number">2019</span><span class="number">-03</span><span class="number">-26</span>T23:<span class="number">18</span>:<span class="number">27.933</span>Z|<span class="type">00012</span>|<span class="type">bridge</span>|<span class="type">ERR</span>|<span class="type">failed</span> to create bridge br-sfc: No such file or directory</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>Then I tried: <figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ovs-vsctl <span class="keyword">add</span>-<span class="keyword">br</span> <span class="keyword">br</span>-test</span><br></pre></td></tr></table></figure> The</p>
 <p>the container's linux kernel version is identique to its host: <code>3.13.0-167-generic</code></p>
 <h2 id="section"></h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR: Service 'sff1' failed to build: The command '/bin/sh -c apt-get update &amp;&amp; apt-get install -y vim ping git libtool m4 autoconf automake make     libssl-dev libcap-ng-dev python3 python3-pip python-six vlan iptables wget     net-tools init-system-helpers kmod uuid-runtime' returned a non-zero code: 100</span><br></pre></td></tr></table></figure>
-<p>Because docker use Ubuntu 15.10 image. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W: Failed to fetch http:&#x2F;&#x2F;archive.ubuntu.com&#x2F;ubuntu&#x2F;dists&#x2F;wily-security&#x2F;universe&#x2F;binary-amd64&#x2F;Packages  404  Not Found [IP: 91.189.88.161 80]</span><br></pre></td></tr></table></figure> Its repository URL is not valid any more.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR: Service &#x27;sff1&#x27; failed to build: The command &#x27;/bin/sh -c apt-get update &amp;&amp; apt-get install -y vim ping git libtool m4 autoconf automake make     libssl-dev libcap-ng-dev python3 python3-pip python-six vlan iptables wget     net-tools init-system-helpers kmod uuid-runtime&#x27; returned a non-zero code: 100</span><br></pre></td></tr></table></figure>
+<p>Because docker use Ubuntu 15.10 image. <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W: Failed to fetch http:<span class="regexp">//</span>archive.ubuntu.com<span class="regexp">/ubuntu/</span>dists<span class="regexp">/wily-security/u</span>niverse<span class="regexp">/binary-amd64/</span>Packages  <span class="number">404</span>  Not Found [IP: <span class="number">91.189</span>.<span class="number">88.161</span> <span class="number">80</span>]</span><br></pre></td></tr></table></figure> Its repository URL is not valid any more.</p>
 <h2 id="add-apt-repository-command-not-found-within-ubuntu-14.04-kernel-4.2">add-apt-repository: command not found, within ubuntu 14.04, kernel 4.2</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vagrant@odl:~/sfc/karaf/target/assembly$ sudo add-apt-repository ppa:webupd8team/java -y</span><br><span class="line">sudo: add-apt-repository: command not found</span><br></pre></td></tr></table></figure>
 <p>Solution: The error is simple. The package add-apt-repository is not installed on your system. So, open a terminal and use this command:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install software-properties-common</span><br></pre></td></tr></table></figure>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">sudo</span> apt-<span class="meta">get</span> install software-properties-<span class="meta">common</span></span><br></pre></td></tr></table></figure>
 <h2 id="ovs-in-docker-cannot-creata-ovs-bridge">OVS in docker cannot creata ovs bridge</h2>
 <p>Because docker containers share the same kernel with its host. Thus, we have to install ovs package in host first then install within docker container.</p>
 <h2 id="anormal-error-logs-in-varlogopenvswitchovs-vswitchd.log">Anormal error logs in /var/log/openvswitch/ovs-vswitchd.log</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">2019-03-27T09:01:08.093Z|00006|bridge|INFO|ovs-vswitchd (Open vSwitch) 2.6.1</span><br><span class="line">2019-03-27T09:01:08.246Z|00007|ofproto_dpif|INFO|system@ovs-system: Datapath does not support recirculation</span><br><span class="line">2019-03-27T09:01:08.246Z|00008|ofproto_dpif|INFO|system@ovs-system: MPLS label stack length probed as 0</span><br><span class="line">2019-03-27T09:01:08.246Z|00009|ofproto_dpif|INFO|system@ovs-system: datapath does not support masked set action feature.</span><br><span class="line">2019-03-27T09:01:08.246Z|00010|ofproto_dpif|INFO|system@ovs-system: Datapath does not support truncate action</span><br><span class="line">2019-03-27T09:01:08.246Z|00011|ofproto_dpif|INFO|system@ovs-system: Datapath does not support unique flow ids</span><br><span class="line">2019-03-27T09:01:08.246Z|00012|ofproto_dpif|INFO|system@ovs-system: Datapath does not support ct_state</span><br><span class="line">2019-03-27T09:01:08.246Z|00013|ofproto_dpif|INFO|system@ovs-system: Datapath does not support ct_zone</span><br><span class="line">2019-03-27T09:01:08.246Z|00014|ofproto_dpif|INFO|system@ovs-system: Datapath does not support ct_mark</span><br><span class="line">2019-03-27T09:01:08.246Z|00015|ofproto_dpif|INFO|system@ovs-system: Datapath does not support ct_label</span><br><span class="line">2019-03-27T09:01:08.246Z|00016|ofproto_dpif|INFO|system@ovs-system: Datapath does not support ct_state_nat</span><br><span class="line">2019-03-27T09:01:08.249Z|00017|ofproto_dpif|WARN|system@ovs-system: variable-length userdata feature probe failed (Invalid argument)</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">2019</span>-<span class="number">03</span>-<span class="number">27</span>T<span class="number">09</span>:<span class="number">01</span>:<span class="number">08</span>.<span class="number">093</span>Z|<span class="number">00006</span>|bridge|INFO|ovs-vswitchd (Open vSwitch) <span class="number">2</span>.<span class="number">6</span>.<span class="number">1</span></span><br><span class="line"><span class="attribute">2019</span>-<span class="number">03</span>-<span class="number">27</span>T<span class="number">09</span>:<span class="number">01</span>:<span class="number">08</span>.<span class="number">246</span>Z|<span class="number">00007</span>|ofproto_dpif|INFO|system@ovs-system: Datapath does not support recirculation</span><br><span class="line"><span class="attribute">2019</span>-<span class="number">03</span>-<span class="number">27</span>T<span class="number">09</span>:<span class="number">01</span>:<span class="number">08</span>.<span class="number">246</span>Z|<span class="number">00008</span>|ofproto_dpif|INFO|system@ovs-system: MPLS label stack length probed as <span class="number">0</span></span><br><span class="line"><span class="attribute">2019</span>-<span class="number">03</span>-<span class="number">27</span>T<span class="number">09</span>:<span class="number">01</span>:<span class="number">08</span>.<span class="number">246</span>Z|<span class="number">00009</span>|ofproto_dpif|INFO|system@ovs-system: datapath does not support masked set action feature.</span><br><span class="line"><span class="attribute">2019</span>-<span class="number">03</span>-<span class="number">27</span>T<span class="number">09</span>:<span class="number">01</span>:<span class="number">08</span>.<span class="number">246</span>Z|<span class="number">00010</span>|ofproto_dpif|INFO|system@ovs-system: Datapath does not support truncate action</span><br><span class="line"><span class="attribute">2019</span>-<span class="number">03</span>-<span class="number">27</span>T<span class="number">09</span>:<span class="number">01</span>:<span class="number">08</span>.<span class="number">246</span>Z|<span class="number">00011</span>|ofproto_dpif|INFO|system@ovs-system: Datapath does not support unique flow ids</span><br><span class="line"><span class="attribute">2019</span>-<span class="number">03</span>-<span class="number">27</span>T<span class="number">09</span>:<span class="number">01</span>:<span class="number">08</span>.<span class="number">246</span>Z|<span class="number">00012</span>|ofproto_dpif|INFO|system@ovs-system: Datapath does not support ct_state</span><br><span class="line"><span class="attribute">2019</span>-<span class="number">03</span>-<span class="number">27</span>T<span class="number">09</span>:<span class="number">01</span>:<span class="number">08</span>.<span class="number">246</span>Z|<span class="number">00013</span>|ofproto_dpif|INFO|system@ovs-system: Datapath does not support ct_zone</span><br><span class="line"><span class="attribute">2019</span>-<span class="number">03</span>-<span class="number">27</span>T<span class="number">09</span>:<span class="number">01</span>:<span class="number">08</span>.<span class="number">246</span>Z|<span class="number">00014</span>|ofproto_dpif|INFO|system@ovs-system: Datapath does not support ct_mark</span><br><span class="line"><span class="attribute">2019</span>-<span class="number">03</span>-<span class="number">27</span>T<span class="number">09</span>:<span class="number">01</span>:<span class="number">08</span>.<span class="number">246</span>Z|<span class="number">00015</span>|ofproto_dpif|INFO|system@ovs-system: Datapath does not support ct_label</span><br><span class="line"><span class="attribute">2019</span>-<span class="number">03</span>-<span class="number">27</span>T<span class="number">09</span>:<span class="number">01</span>:<span class="number">08</span>.<span class="number">246</span>Z|<span class="number">00016</span>|ofproto_dpif|INFO|system@ovs-system: Datapath does not support ct_state_nat</span><br><span class="line"><span class="attribute">2019</span>-<span class="number">03</span>-<span class="number">27</span>T<span class="number">09</span>:<span class="number">01</span>:<span class="number">08</span>.<span class="number">249</span>Z|<span class="number">00017</span>|ofproto_dpif|WARN|system@ovs-system: variable-length userdata feature probe failed (Invalid argument)</span><br></pre></td></tr></table></figure>
 <h2 id="empty-openflow-tables">Empty OpenFlow tables:</h2>
 <p>We notice that, even with RESTCONF API, the openflow tables are still empty!!! <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@classifier1:/# ovs-ofctl dump-flows -OOpenflow13 br-sfc</span><br><span class="line">OFPST_FLOW reply (OF1.3) (xid=0x2):</span><br><span class="line">root@classifier1:/#</span><br></pre></td></tr></table></figure></p>
 <p>I think this is due to the lack of <code>openvswitch-datapath-dkms*</code> package. As per its name, this package is important for data path of OVS.</p>
@@ -252,14 +237,14 @@
 <h1 id="appendix">Appendix</h1>
 <h2 id="how-to-downgrade-linux-kernel-version-under-ubuntu-16.04">How to downgrade linux kernel version (under Ubuntu 16.04)</h2>
 <p>If you don't know the exact name of target linux kernel. Take linux kerenl 4.2.x as example, use the following command: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-cache search linux-image | grep linux-image-4.2</span></span><br></pre></td></tr></table></figure></p>
-<p>Install the selected kernel <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install linux-image-4.2.0-42-generic</span><br></pre></td></tr></table></figure></p>
-<p>The output should be similar to the following: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Generating grub configuration file ...</span><br><span class="line">Warning: Setting GRUB_TIMEOUT to a non-zero value when GRUB_HIDDEN_TIMEOUT is set is no longer supported.</span><br><span class="line">Found linux image: &#x2F;boot&#x2F;vmlinuz-4.4.0-31-generic</span><br><span class="line">Found initrd image: &#x2F;boot&#x2F;initrd.img-4.4.0-31-generic</span><br><span class="line">Found linux image: &#x2F;boot&#x2F;vmlinuz-4.2.0-42-generic</span><br><span class="line">Found initrd image: &#x2F;boot&#x2F;initrd.img-4.2.0-42-generic</span><br><span class="line">Found memtest86+ image: &#x2F;memtest86+.elf</span><br><span class="line">Found memtest86+ image: &#x2F;memtest86+.bin</span><br><span class="line">done</span><br></pre></td></tr></table></figure></p>
-<p>You can also verify with the following command: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -l | grep 4.2.0-42-generic</span><br></pre></td></tr></table></figure></p>
-<p>Now we configure <code>grub</code> so that the system starts with kernel 4.2.x. Edit the following configuration file with your preferred text editor: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim &#x2F;etc&#x2F;default&#x2F;grub</span><br></pre></td></tr></table></figure></p>
-<p>Modify as follows: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRUB_DEFAULT&#x3D;&quot;Advanced options for Ubuntu&gt;Ubuntu, with Linux 4.2.0-42-generic&quot;</span><br></pre></td></tr></table></figure> Note that replace the <code>4.2.0-42-generic</code> with your own kernel version.</p>
-<p>Save, quit and update grub: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo update-grub</span><br></pre></td></tr></table></figure></p>
+<p>Install the selected kernel <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install linux-image<span class="number">-4.2</span><span class="number">.0</span><span class="number">-42</span>-generic</span><br></pre></td></tr></table></figure></p>
+<p>The output should be similar to the following: <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Generating</span> grub configuration file ...</span><br><span class="line"><span class="attribute">Warning</span>: Setting GRUB_TIMEOUT to a non-zero value when GRUB_HIDDEN_TIMEOUT is set is no longer supported.</span><br><span class="line"><span class="attribute">Found</span> linux image: /boot/vmlinuz-<span class="number">4</span>.<span class="number">4</span>.<span class="number">0</span>-<span class="number">31</span>-generic</span><br><span class="line"><span class="attribute">Found</span> initrd image: /boot/initrd.img-<span class="number">4</span>.<span class="number">4</span>.<span class="number">0</span>-<span class="number">31</span>-generic</span><br><span class="line"><span class="attribute">Found</span> linux image: /boot/vmlinuz-<span class="number">4</span>.<span class="number">2</span>.<span class="number">0</span>-<span class="number">42</span>-generic</span><br><span class="line"><span class="attribute">Found</span> initrd image: /boot/initrd.img-<span class="number">4</span>.<span class="number">2</span>.<span class="number">0</span>-<span class="number">42</span>-generic</span><br><span class="line"><span class="attribute">Found</span> memtest<span class="number">86</span>+ image: /memtest<span class="number">86</span>+.elf</span><br><span class="line"><span class="attribute">Found</span> memtest<span class="number">86</span>+ image: /memtest<span class="number">86</span>+.bin</span><br><span class="line"><span class="attribute">done</span></span><br></pre></td></tr></table></figure></p>
+<p>You can also verify with the following command: <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">dpkg</span> -l | grep <span class="number">4</span>.<span class="number">2</span>.<span class="number">0</span>-<span class="number">42</span>-generic</span><br></pre></td></tr></table></figure></p>
+<p>Now we configure <code>grub</code> so that the system starts with kernel 4.2.x. Edit the following configuration file with your preferred text editor: <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim <span class="regexp">/etc/</span><span class="keyword">default</span>/grub</span><br></pre></td></tr></table></figure></p>
+<p>Modify as follows: <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">GRUB_DEFAULT</span>=<span class="string">&quot;Advanced options for Ubuntu&gt;Ubuntu, with Linux 4.2.0-42-generic&quot;</span></span><br></pre></td></tr></table></figure> Note that replace the <code>4.2.0-42-generic</code> with your own kernel version.</p>
+<p>Save, quit and update grub: <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> sudo <span class="built_in">update-grub</span></span><br></pre></td></tr></table></figure></p>
 <p>Then reboot your system and check the linux kernel version!</p>
-<p>If you need to remove the kernel versions that you don't need any more. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove linux-headers-4.15.0-33</span><br></pre></td></tr></table></figure></p>
+<p>If you need to remove the kernel versions that you don't need any more. <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> apt-get remove linux-headers-<span class="number">4</span>.<span class="number">15</span>.<span class="number">0</span>-<span class="number">33</span></span><br></pre></td></tr></table></figure></p>
 <p>参考： https://blog.csdn.net/u013431916/article/details/82530523 https://www.jianshu.com/p/a593067fe9fc</p>
 
     </div>
@@ -359,29 +344,22 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-          
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-          
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/hansomesong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-  </div>
 
 
 
@@ -404,13 +382,13 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">rennsong</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
         
@@ -439,7 +417,7 @@
 <script src="/js/schemes/muse.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -459,8 +437,6 @@
 
 
 
-
-  
 
   
 

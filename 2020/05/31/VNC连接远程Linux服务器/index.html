@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -17,18 +17,18 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"rennesong.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="输入vncserver命令之后，输出结果显示如下： 1234New &#39;X&#39; desktop is qsong-P650SE:1Starting applications specified in &#x2F;home&#x2F;qsong&#x2F;.vnc&#x2F;xstartupLog file is &#x2F;home&#x2F;qsong&#x2F;.vnc&#x2F;">
+  <meta name="description" content="输入vncserver命令之后，输出结果显示如下： 1234New &amp;#x27;X&amp;#x27; desktop is qsong-P650SE:1Starting applications specified in &#x2F;home&#x2F;qsong&#x2F;.vnc&#x2F;xstartupLog file is &#x2F;home&#x2F;qsong&#x2F;.vnc&#x2F;qsong-P650SE:1.log 123$ lsof -i:5901CO">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VNC连接远程Linux服务器">
 <meta property="og:url" content="http://rennesong.com/2020/05/31/VNC%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8BLinux%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
 <meta property="og:site_name" content="Rennesong&#39;s blog">
-<meta property="og:description" content="输入vncserver命令之后，输出结果显示如下： 1234New &#39;X&#39; desktop is qsong-P650SE:1Starting applications specified in &#x2F;home&#x2F;qsong&#x2F;.vnc&#x2F;xstartupLog file is &#x2F;home&#x2F;qsong&#x2F;.vnc&#x2F;">
+<meta property="og:description" content="输入vncserver命令之后，输出结果显示如下： 1234New &amp;#x27;X&amp;#x27; desktop is qsong-P650SE:1Starting applications specified in &#x2F;home&#x2F;qsong&#x2F;.vnc&#x2F;xstartupLog file is &#x2F;home&#x2F;qsong&#x2F;.vnc&#x2F;qsong-P650SE:1.log 123$ lsof -i:5901CO">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-31T02:33:40.000Z">
-<meta property="article:modified_time" content="2020-05-31T03:24:58.755Z">
+<meta property="article:modified_time" content="2020-09-01T06:34:42.000Z">
 <meta property="article:author" content="rennsong">
 <meta name="twitter:card" content="summary">
 
@@ -74,12 +74,12 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -116,21 +116,6 @@
         <li class="menu-item menu-item-home">
 
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -188,10 +173,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-05-31 10:33:40 / 修改时间：11:24:58" itemprop="dateCreated datePublished" datetime="2020-05-31T10:33:40+08:00">2020-05-31</time>
+              <time title="创建时间：2020-05-31 10:33:40" itemprop="dateCreated datePublished" datetime="2020-05-31T10:33:40+08:00">2020-05-31</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-01 14:34:42" itemprop="dateModified" datetime="2020-09-01T14:34:42+08:00">2020-09-01</time>
+              </span>
 
           
 
@@ -204,13 +195,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>输入vncserver命令之后，输出结果显示如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">New &#39;X&#39; desktop is qsong-P650SE:1</span><br><span class="line"></span><br><span class="line">Starting applications specified in &#x2F;home&#x2F;qsong&#x2F;.vnc&#x2F;xstartup</span><br><span class="line">Log file is &#x2F;home&#x2F;qsong&#x2F;.vnc&#x2F;qsong-P650SE:1.log</span><br></pre></td></tr></table></figure> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ lsof -i:5901</span><br><span class="line">COMMAND    PID  USER   FD   TYPE   DEVICE SIZE&#x2F;OFF NODE NAME</span><br><span class="line">Xtightvnc 5222 qsong    3u  IPv4 35313713      0t0  TCP *:5901 (LISTEN)</span><br></pre></td></tr></table></figure></p>
+        <p>输入vncserver命令之后，输出结果显示如下： <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">New</span> <span class="string">&#x27;X&#x27;</span> desktop is qsong-P650SE:<span class="number">1</span></span><br><span class="line"></span><br><span class="line">Starting applications specified in <span class="regexp">/home/</span>qsong<span class="regexp">/.vnc/</span>xstartup</span><br><span class="line">Log <span class="keyword">file</span> is <span class="regexp">/home/</span>qsong<span class="regexp">/.vnc/</span>qsong-P650SE:<span class="number">1</span>.log</span><br></pre></td></tr></table></figure> <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ lsof -i:<span class="number">5901</span></span><br><span class="line">COMMAND    PID  <span class="keyword">USER</span>   <span class="title">FD</span>   <span class="keyword">TYPE</span>   DEVICE SIZE/OFF <span class="keyword">NODE</span> <span class="title">NAME</span></span><br><span class="line">Xtightvnc <span class="number">5222</span> qsong    <span class="number">3</span>u  IPv4 <span class="number">35313713</span>      <span class="number">0</span>t0  TCP *:<span class="number">5901</span> (LISTEN)</span><br></pre></td></tr></table></figure></p>
 <p>OS X has a built in VNC (Screen Sharing) server, but it is a little known feature that it also has a built in VNC client. No additional software is necessary.</p>
 <p>To setup the server go to <code>Preferences-&gt;Sharing</code> and check the “On” checkbox next to <code>Screen Sharing</code>. Make sure to only allow access to Administrators or a specific user/user group.</p>
 <p>To connect to your computer from another one using VNC open Finder and press ⌘+k. In the Server Address enter vnc:// followed by your computer name or IP address, for example: <code>vnc:127.0.0.1:5901</code>.</p>
 <p>在OSX的命令行中键入下列命令，以建立本地端口59010和远程端口5901(ubuntu_server上VNC server监听5901端口). 需要指出的是：<code>ubuntu_server</code>是在我本地电脑中<code>.ssh/config</code>中提前配置好的项目。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 59010:127.0.0.1:5901 -N -f ubuntu_server</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh</span> -L <span class="number">59010</span>:<span class="number">127.0.0.1:5901</span> -N -f ubuntu_server</span><br></pre></td></tr></table></figure>
 <p>连接到远程服务器之后发现，还是teamviewer香啊！虽然有一定的延时，但是操纵还是很流畅的。 再次复习一下，各个参数的作用： <code>-N</code>: Do not execute a remote command. This is useful for just forwarding ports, 加上这个参数，输入完上述命令之后，依然在本地的shell, 而不会给你开启远程服务器上的shell. <code>-f</code> option backgrounds ssh and</p>
+<h1 id="内网穿透">内网穿透</h1>
+<p>家中有宽带、手机有流量，希望在任何地方能安全访问家中电脑。用过<code>frp</code>、<code>ngrok</code>,<code>Localtunnel</code>等工具，但需要自己有外网IP主机，门槛有点高；<code>teamviewer</code>及花生壳无需外网IP，但无法P2P访问(注意：这和P2P下载有何区别？？？)，使用带宽就是个“小水管”。</p>
+<p>本文将介绍一个堪称“神器”的工具：smarGate（github.com/lazy-luo/smarGate）</p>
+<p>smarGate提供的服务器地址/端口号应该是：118.25.128.93:39001, 如下所示： <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">netstat -nap | <span class="keyword">grep</span> <span class="number">21889</span>                      </span><br><span class="line">(Not <span class="keyword">all</span> processes could <span class="keyword">be</span> identified, non-owned process info</span><br><span class="line"> will not <span class="keyword">be</span> shown, you would have <span class="keyword">to</span> <span class="keyword">be</span> root <span class="keyword">to</span> see it <span class="keyword">all</span>.)</span><br><span class="line">tcp        <span class="number">0</span>      <span class="number">1</span> <span class="number">172.27</span>.<span class="number">165.153</span>:<span class="number">38378</span>    <span class="number">118.25</span>.<span class="number">128.93</span>:<span class="number">39001</span>     SYN_SENT    <span class="number">21889</span>/proxy_server</span><br></pre></td></tr></table></figure> 然而我里尔的机器因为在学校NAT之后，估计只有面向80/443等少数端口的TCP连接才能建立起来，所以<code>proxy_server</code>发出的TCP请求迟迟不到ACK，所以一直处于<code>SYN_SENT</code>状态。有没有基于80/443端口的内网穿透方案呢？里尔学校的STUN端口号(3478)也被block了</p>
+<p>所以現在的网络环境是採用 Proxy Firewall, 而非 NAT. 也就是說要上 Internet 都得透過 Proxy, 內網無法直接 Routing 出去. 基本上只會開放 80 (http), 443(https), 及 21(FTP), 這幾個 Proxy 支援的 Ports.</p>
+<p>花生壳是一个动态域名解析软件，支持端口映射和内网穿透，从2006年面世起十多年间累计为全球1450多万用户提供动态域名解析服务。2016年5月，全新改版客户端花生壳3.2发布，以颠覆式的NAT-DDNS创新技术、全新的交互界面及功能体验，搭配Web、微信远程管理，全面满足广大用户的多元化需求。</p>
+<p>https://www.hi-linux.com/posts/25686.html</p>
+<p>NAT穿透技术最重要的是识别目标主机的NAT类型.STUN(RFC3489)的NAT类型检测方法 https://www.jianshu.com/p/1432c729df4d</p>
+<p>内网穿透2:无公网IP、无公网服务器方案 Sakura Frp =&gt; https://juejin.im/post/6850418121115860999</p>
+<p>sudo netstat -tunpl | grep LISTEN # check open ports on local machine.</p>
+<p>查看Ubuntu桌面管理器 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#echo $DESKTOP_SESSION</span><br><span class="line">gnome-flashback-compiz</span><br><span class="line">#cat <span class="regexp">/etc/</span>X11/<span class="keyword">default</span>-display-manager</span><br><span class="line"><span class="regexp">/usr/</span>sbin/lightdm</span><br></pre></td></tr></table></figure> 也就是说，我的ubuntu 16.04实际运行的桌面管理器就是LightDM啊 对于用户来说，相比Unity桌面，<code>Gnome Flashback</code>桌面环境是一个简单的并且不错的选择，可以让你找回过去经典的桌面。<code>Gnome Flashback</code>基于GTK3并提供与过去gnome桌面相似的界面。MATE桌面另一个改变是采用mint和xface的，但mint和xface都是基于GTK2。 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install gnome-<span class="keyword">session</span>-flashback</span><br></pre></td></tr></table></figure></p>
 
     </div>
 
@@ -291,6 +293,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F"><span class="nav-number">1.</span> <span class="nav-text">内网穿透</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -304,29 +307,22 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-          
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-          
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/hansomesong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hansomesong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-  </div>
 
 
 
@@ -349,13 +345,13 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">rennsong</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
 
         
@@ -384,7 +380,7 @@
 <script src="/js/schemes/muse.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -404,8 +400,6 @@
 
 
 
-
-  
 
   
 
